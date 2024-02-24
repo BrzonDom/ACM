@@ -26,22 +26,34 @@ def binarySearch_Iter(arr, trg):
     rgt = len(arr) - 1
 
     while lft <= rgt:
+        """     Base case check     """
 
         mid = lft + (rgt - lft) // 2
 
         if arr[mid] == trg:
+            """     If number at mid index is target  
+                        target index found, end iteration   """
+
             print()
             print(f"\tIndex of target: {mid}")
+
             return mid
 
         elif arr[mid] < trg:
+            """"    If number at mid index is less than target
+                        shift left index to mid + 1, continue iteration     """"
+
             lft = mid + 1
             print(f"\t\tTarget left  =>  {arr[lft:rgt+1]}")
 
         else:
+            """"    If number at mid index is equal or grater than target
+                        shift right index to mid - 1, continue iteration     """"
+
             rgt = mid - 1
             print(f"\t\tTarget right =>  {arr[lft:rgt+1]}")
 
+    """     Edge case return    """
     return -1
 
 
@@ -82,15 +94,24 @@ if __name__ == '__main__':
         mid = lft + (rgt - lft) // 2
 
         if arr[mid] == trg:
+            """     If number at mid index is target  
+                        target index found, end iteration   """
+
             print()
             print(f"\tIndex of target: {mid}")
             break
 
         elif arr[mid] < trg:
+            """"    If number at mid index is less than target
+                        shift left index to mid + 1, continue iteration     """"
+
             lft = mid + 1
             print(f"\t\tTarget left  =>  {arr[lft:rgt+1]}")
 
         else:
+            """"    If number at mid index is equal or grater than target
+                        shift right index to mid - 1, continue iteration     """"
+
             rgt = mid - 1
             print(f"\t\tTarget right =>  {arr[lft:rgt+1]}")
 
