@@ -54,6 +54,8 @@ def binarySearch_Iter(arr, trg):
             print(f"\t\tTarget right =>  {arr[lft:rgt+1]}")
 
     """     Edge case return    """
+
+    print("\tTarget not present in the array")
     return -1
 
 
@@ -67,6 +69,9 @@ def binarySearch_Recu(arr, trg, lft, rgt):
         if arr[mid] == trg:
             """     If number at mid index is target  
                         target index found, end recursion   """
+
+            print()
+            print(f"\tIndex of target: {mid}")
 
             return mid
 
@@ -84,6 +89,8 @@ def binarySearch_Recu(arr, trg, lft, rgt):
 
     else:
         """     Edge case return    """
+
+        print("\tTarget not present in the array")
         return -1
 
 
@@ -131,11 +138,23 @@ if __name__ == '__main__':
     print("Iterative function solution:\n")
 
     trgInd = binarySearch_Iter(arr, trg)
-    print(f"\t\tIndex of target: {trgInd}")
+
+    if trgInd == -1:
+        print("\t\tTarget not present in the array")
+    else:
+        print(f"\t\tIndex of target: {trgInd}")
+
     print("\n")
 
     print("Recursive function solution:\n")
 
+    print(f"\tArray:  {arr}")
+    print(f"\tTarget: {trg}")
+
     trgInd = binarySearch_Recu(arr, trg, 0, len(arr)-1)
-    print(f"\t\tIndex of target: {trgInd}")
+
+    if trgInd == -1:
+        print("\t\tTarget not present in the array")
+    else:
+        print(f"\t\tIndex of target: {trgInd}")
 
