@@ -20,7 +20,28 @@ if __name__ == '__main__':
              (2, 6), (5, 9), (5, 10), (4, 7),
              (4, 8), (7, 11), (7, 12)]
 
+
+    nodes = {}
+
     print("Edges:")
     for edge in edges:
-        print(f"\t{edge[0]:2} {edge[1]:2}")
-    print()
+        if edge[0] in nodes:
+            nodes[edge[0]].append(edge[1])
+
+            print(f"[{edge[0]:2}, {edge[1]:2}]", end="  ")
+        else:
+            nodes[edge[0]] = [edge[1]]
+
+            print(f"\n\t[{edge[0]:2}, {edge[1]:2}]", end="  ")
+    print("\n")
+
+    print("Nodes:")
+
+    for parent in nodes:
+        print(f"\t{parent}: ", end="")
+
+        chldStr = ""
+        for child in nodes[parent]:
+            chldStr += f"{child:2}, "
+
+        print(chldStr[:-2])
