@@ -18,8 +18,8 @@ https://www.geeksforgeeks.org/binary-search/
 
 def binarySearch_Iter(arr, trg):
 
-    print(f"Array:  {arr}")
-    print(f"Target: {trg}")
+    print(f"\tArray:  {arr}")
+    print(f"\tTarget: {trg}")
     print()
 
     lft = 0
@@ -31,24 +31,26 @@ def binarySearch_Iter(arr, trg):
 
         if arr[mid] == trg:
             print()
-            print(f"Index of target: {mid}")
+            print(f"\tIndex of target: {mid}")
             return mid
 
         elif arr[mid] < trg:
             lft = mid + 1
-            print(f"\tTarget left  =>  {arr[lft:rgt+1]}")
+            print(f"\t\tTarget left  =>  {arr[lft:rgt+1]}")
 
         else:
             rgt = mid - 1
-            print(f"\tTarget right =>  {arr[lft:rgt+1]}")
+            print(f"\t\tTarget right =>  {arr[lft:rgt+1]}")
 
 
 if __name__ == '__main__':
     arr = [2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 20, 25, 40]
     trg = 10
 
-    print(f"Array:  {arr}")
-    print(f"Target: {trg}")
+    print("Driver solution:\n")
+
+    print(f"\tArray:  {arr}")
+    print(f"\tTarget: {trg}")
     print()
 
     lft = 0
@@ -60,13 +62,20 @@ if __name__ == '__main__':
 
         if arr[mid] == trg:
             print()
-            print(f"Index of target: {mid}")
+            print(f"\tIndex of target: {mid}")
             break
 
         elif arr[mid] < trg:
             lft = mid + 1
-            print(f"\tTarget left  =>  {arr[lft:rgt+1]}")
+            print(f"\t\tTarget left  =>  {arr[lft:rgt+1]}")
 
         else:
             rgt = mid - 1
-            print(f"\tTarget right =>  {arr[lft:rgt+1]}")
+            print(f"\t\tTarget right =>  {arr[lft:rgt+1]}")
+
+
+    print("\n")
+    print("Iterative function solution:\n")
+
+    trgInd = binarySearch_Iter(arr, trg)
+
