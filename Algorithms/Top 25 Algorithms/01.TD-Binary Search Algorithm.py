@@ -23,6 +23,22 @@ https://www.techiedelight.com/binary-search/
     and binary search redefines the search space at every step
     of the algorithm by using the property of the array that it is sorted.
 
+
+    Let’s track the search space by using two indexes – start and end. Initially, start = 0 and end = n-1
+    (as initially, the whole array is our search space).
+    At each step, find the mid-value in the search space and compares it
+    with the target. There are three possible cases:
+
+        If target = nums[mid], return mid.
+
+        If target < nums[mid], discard all elements in the right search space,
+                including the middle element, i.e., nums[mid…high]. Now our new high would be mid-1.
+
+        If target > nums[mid], discard all elements in the left search space,
+                including the middle element, i.e., nums[low…mid]. Now our new low would be mid+1.
+
+    Repeat the process until the target is found, or our search space is exhausted.
+
 """
 
 
@@ -97,17 +113,26 @@ if __name__ == '__main__':
     nums = [2, 5, 6, 8, 9, 10]
     target = 5
 
+    print(f"Array:  {nums}")
+    print(f"Target: {target}")
+    print()
+
+    print("Iterative Implementation:\n")
+
     index = binarySearch_Iter(nums, target)
 
     if index != -1:
-        print('Element found at index', index)
+        print('\tElement found at index', index)
     else:
-        print('Element found not in the list')
+        print('\tElement found not in the list')
+
+    print("\n")
+    print("Recursive Implementation:\n")
 
     (left, right) = (0, len(nums) - 1)
     index = binarySearch_Recu(nums, left, right, target)
 
     if index != -1:
-        print('Element found at index', index)
+        print('\tElement found at index', index)
     else:
-        print('Element found not in the list')
+        print('\tElement found not in the list')
