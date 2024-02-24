@@ -13,3 +13,14 @@ https://www.techiedelight.com/breadth-first-search/
     the minimum length of a path from the source vertex to the node.
 
 """
+
+if __name__ == '__main__':
+
+    edges = [(1, 2), (1, 3), (1, 4), (2, 5),
+             (2, 6), (5, 9), (5, 10), (4, 7),
+             (4, 8), (7, 11), (7, 12)]
+
+    print("Edges:")
+    for edge in edges:
+        print(f"\t{edge[0]:2} {edge[1]:2}")
+    print()
