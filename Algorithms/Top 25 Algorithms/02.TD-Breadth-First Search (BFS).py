@@ -84,11 +84,19 @@ if __name__ == '__main__':
         # vertex 0, 13, and 14 are single nodes
     ]
 
+    print("Edges:")
+    for edge in edges:
+        print(f"\t{edge[0]:2} {edge[1]:2}")
+    print()
+
     # total number of nodes in the graph (labelled from 0 to 14)
     n = 15
 
     # build a graph from the given edges
     graph = Graph(edges, n)
+
+    print()
+    print("Iterative Implementation:\n", end="\n\t")
 
     # to keep track of whether a vertex is discovered or not
     discovered = [False] * n
@@ -100,7 +108,8 @@ if __name__ == '__main__':
             # start BFS traversal from vertex i
             BFS_Iter(graph, i, discovered)
 
-    print()
+    print("\n\n")
+    print("Recursive Implementation:\n", end="\n\t")
 
     # to keep track of whether a vertex is discovered or not
     discovered = [False] * n
@@ -120,3 +129,5 @@ if __name__ == '__main__':
 
             # start BFS traversal from vertex i
             BFS_Recu(graph, q, discovered)
+
+    print()
