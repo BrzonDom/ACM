@@ -15,3 +15,31 @@ https://www.geeksforgeeks.org/binary-search/
         Access to any element of the data structure takes constant time.
 
 """
+
+# def binarySearch(arr, trg):
+
+
+if __name__ == '__main__':
+    arr = [2, 3, 4, 10, 40]
+    trg = 10
+
+    print(f"Array:  {arr}")
+    print(f"Target: {trg}")
+    print()
+
+    lft = 0
+    rgt = len(arr) - 1
+
+    while lft <= rgt:
+
+        mid = lft + (rgt - 1) // 2
+
+        if arr[mid] == trg:
+            print(f"Index of target: {mid}")
+            break
+
+        elif arr[mid] < trg:
+            lft = mid + 1
+
+        else:
+            rgt = mid - 1
