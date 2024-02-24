@@ -31,7 +31,7 @@ class Graph:
 
 
 # Perform BFS on the graph starting from vertex `v`
-def BFS(graph, v, discovered):
+def BFS_Iter(graph, v, discovered):
     # create a queue for doing BFS
     q = deque()
 
@@ -57,7 +57,7 @@ def BFS(graph, v, discovered):
 
 
 # Perform BFS recursively on the graph
-def recursiveBFS(graph, q, discovered):
+def BFS_Recu(graph, q, discovered):
     if not q:
         return
 
@@ -72,7 +72,7 @@ def recursiveBFS(graph, q, discovered):
             discovered[u] = True
             q.append(u)
 
-    recursiveBFS(graph, q, discovered)
+    BFS_Recu(graph, q, discovered)
 
 
 if __name__ == '__main__':
@@ -98,13 +98,9 @@ if __name__ == '__main__':
     for i in range(n):
         if not discovered[i]:
             # start BFS traversal from vertex i
-            BFS(graph, i, discovered)
+            BFS_Iter(graph, i, discovered)
 
-    # total number of nodes in the graph (labelled from 0 to 14)
-    n = 15
-
-    # build a graph from the given edges
-    graph = Graph(edges, n)
+    print()
 
     # to keep track of whether a vertex is discovered or not
     discovered = [False] * n
@@ -123,4 +119,4 @@ if __name__ == '__main__':
             q.append(i)
 
             # start BFS traversal from vertex i
-            recursiveBFS(graph, q, discovered)
+            BFS_Recu(graph, q, discovered)
