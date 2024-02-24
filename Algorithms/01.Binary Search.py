@@ -41,14 +41,14 @@ def binarySearch_Iter(arr, trg):
 
         elif arr[mid] < trg:
             """"    If number at mid index is less than target
-                        shift left index to mid + 1, continue iteration     """"
+                        shift left index to mid + 1, continue iteration     """
 
             lft = mid + 1
             print(f"\t\tTarget left  =>  {arr[lft:rgt+1]}")
 
         else:
             """"    If number at mid index is equal or grater than target
-                        shift right index to mid - 1, continue iteration     """"
+                        shift right index to mid - 1, continue iteration     """
 
             rgt = mid - 1
             print(f"\t\tTarget right =>  {arr[lft:rgt+1]}")
@@ -60,19 +60,30 @@ def binarySearch_Iter(arr, trg):
 def binarySearch_Recu(arr, trg, lft, rgt):
 
     if rgt >= lft:
+        """     Base case check     """
 
         mid = lft + (rgt - lft) // 2
 
         if arr[mid] == trg:
+            """     If number at mid index is target  
+                        target index found, end recursion   """
+
             return mid
 
         elif arr[mid] > trg:
+            """"    If number at mid index is less than target
+                        shift left index to mid + 1, continue recursion     """
+
             return binarySearch_Recu(arr, trg, lft, mid-1)
 
         else:
+            """"    If number at mid index is equal or grater than target
+                        shift right index to mid - 1, continue recursion    """
+
             return binarySearch_Recu(arr, trg, mid+1, rgt)
 
     else:
+        """     Edge case return    """
         return -1
 
 
@@ -103,21 +114,28 @@ if __name__ == '__main__':
 
         elif arr[mid] < trg:
             """"    If number at mid index is less than target
-                        shift left index to mid + 1, continue iteration     """"
+                        shift left index to mid + 1, continue iteration     """
 
             lft = mid + 1
             print(f"\t\tTarget left  =>  {arr[lft:rgt+1]}")
 
         else:
             """"    If number at mid index is equal or grater than target
-                        shift right index to mid - 1, continue iteration     """"
+                        shift right index to mid - 1, continue iteration     """
 
             rgt = mid - 1
             print(f"\t\tTarget right =>  {arr[lft:rgt+1]}")
 
-
     print("\n")
+
     print("Iterative function solution:\n")
 
     trgInd = binarySearch_Iter(arr, trg)
+    print(f"\t\tIndex of target: {trgInd}")
+    print("\n")
+
+    print("Recursive function solution:\n")
+
+    trgInd = binarySearch_Recu(arr, trg, 0, len(arr)-1)
+    print(f"\t\tIndex of target: {trgInd}")
 
