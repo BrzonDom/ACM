@@ -1,18 +1,43 @@
 """
-Binary Search Algorithm
+Binary Search Algorithm – Iterative and Recursive Implementation
 
-https://www.geeksforgeeks.org/binary-search/
+https://www.techiedelight.com/binary-search/
 
-    Description:
+    Given a sorted array of n integers and a target value,
+    determine if the target exists in the array in logarithmic time
+    using the binary search algorithm.
+    If target exists in the array, print the index of it.
 
-        Binary Search is defined as a searching algorithm used in a sorted array by repeatedly
-        dividing the search interval in half. The idea of binary search is to use the information
-        that the array is sorted and reduce the time complexity to O(log N).
 
-    Conditions:
+    The idea is to use binary search which is a Divide and Conquer algorithm.
+    Like all divide-and-conquer algorithms, binary search first divides
+    a large array into two smaller subarrays and then recursively (or iteratively)
+    operate the subarrays. But instead of working on both subarrays,
+    it discards one subarray and continues on the second subarray.
+    This decision of discarding one subarray is made in just one comparison.
 
-        The data structure must be sorted.
-        Access to any element of the data structure takes constant time.
+    So binary search reduces the search space to half at each step.
+    By search space, we mean a subarray of the given array where
+    the target value is located (if present in the array).
+    Initially, the search space is the entire array,
+    and binary search redefines the search space at every step
+    of the algorithm by using the property of the array that it is sorted.
+
+
+    Let’s track the search space by using two indexes – start and end. Initially, start = 0 and end = n-1
+    (as initially, the whole array is our search space).
+    At each step, find the mid-value in the search space and compares it
+    with the target. There are three possible cases:
+
+        If target = nums[mid], return mid.
+
+        If target < nums[mid], discard all elements in the right search space,
+                including the middle element, i.e., nums[mid…high]. Now our new high would be mid-1.
+
+        If target > nums[mid], discard all elements in the left search space,
+                including the middle element, i.e., nums[low…mid]. Now our new low would be mid+1.
+
+    Repeat the process until the target is found, or our search space is exhausted.
 
 """
 
