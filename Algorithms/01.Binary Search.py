@@ -47,7 +47,7 @@ def binarySearch_Iter(arr, trg):
             print(f"\t\tTarget left  =>  {arr[lft:rgt+1]}")
 
         else:
-            """"    If number at mid index is equal or grater than target
+            """"    If number at mid index is grater than target
                         shift right index to mid - 1, continue iteration     """
 
             rgt = mid - 1
@@ -82,7 +82,7 @@ def binarySearch_Recu(arr, trg, lft, rgt):
             return binarySearch_Recu(arr, trg, lft, mid-1)
 
         else:
-            """"    If number at mid index is equal or grater than target
+            """"    If number at mid index is grater than target
                         shift right index to mid - 1, continue recursion    """
 
             return binarySearch_Recu(arr, trg, mid+1, rgt)
@@ -126,8 +126,8 @@ if __name__ == '__main__':
             lft = mid + 1
             print(f"\t\tTarget left  =>  {arr[lft:rgt+1]}")
 
-        else:
-            """"    If number at mid index is equal or grater than target
+        elif arr[mid] > trg:
+            """"    If number at mid index is grater than target
                         shift right index to mid - 1, continue iteration     """
 
             rgt = mid - 1
