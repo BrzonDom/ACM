@@ -16,11 +16,11 @@ https://www.geeksforgeeks.org/binary-search/
 
 """
 
-# def binarySearch(arr, trg):
+# def binarySearch_Iter(arr, trg):
 
 
 if __name__ == '__main__':
-    arr = [2, 3, 4, 10, 40]
+    arr = [2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 20, 25, 40]
     trg = 10
 
     print(f"Array:  {arr}")
@@ -32,14 +32,17 @@ if __name__ == '__main__':
 
     while lft <= rgt:
 
-        mid = lft + (rgt - 1) // 2
+        mid = lft + (rgt - lft) // 2
 
         if arr[mid] == trg:
+            print()
             print(f"Index of target: {mid}")
             break
 
         elif arr[mid] < trg:
             lft = mid + 1
+            print(f"\tTarget left  =>  {arr[lft:rgt+1]}")
 
         else:
             rgt = mid - 1
+            print(f"\tTarget right =>  {arr[lft:rgt+1]}")
