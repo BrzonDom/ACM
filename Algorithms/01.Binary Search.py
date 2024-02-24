@@ -42,6 +42,27 @@ def binarySearch_Iter(arr, trg):
             rgt = mid - 1
             print(f"\t\tTarget right =>  {arr[lft:rgt+1]}")
 
+    return -1
+
+
+def binarySearch_Recu(arr, trg, lft, rgt):
+
+    if rgt >= lft:
+
+        mid = lft + (rgt - lft) // 2
+
+        if arr[mid] == trg:
+            return mid
+
+        elif arr[mid] > trg:
+            return binarySearch_Recu(arr, trg, lft, mid-1)
+
+        else:
+            return binarySearch_Recu(arr, trg, mid+1, rgt)
+
+    else:
+        return -1
+
 
 if __name__ == '__main__':
     arr = [2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 20, 25, 40]
