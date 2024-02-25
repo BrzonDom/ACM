@@ -90,7 +90,7 @@ if __name__ == '__main__':
     print()
 
     # total number of nodes in the graph (labelled from 0 to 14)
-    n = 15
+    n = 13
 
     # build a graph from the given edges
     graph = Graph(edges, n)
