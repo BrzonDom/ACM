@@ -20,10 +20,10 @@ if __name__ == '__main__':
              (2, 6), (5, 9), (5, 10), (4, 7),
              (4, 8), (7, 11), (7, 12)]
 
-
     nodes = {}
 
-    print("Edges:")
+    print("Edges:", end="")
+
     for edge in edges:
         if edge[0] in nodes:
             nodes[edge[0]].append(edge[1])
@@ -33,6 +33,14 @@ if __name__ == '__main__':
             nodes[edge[0]] = [edge[1]]
 
             print(f"\n\t[{edge[0]:2}, {edge[1]:2}]", end="  ")
+
+        if edge[1] in nodes:
+            nodes[edge[1]].append(edge[0])
+
+        else:
+            nodes[edge[1]] = [edge[0]]
+
+
     print("\n")
 
     print("Nodes:")
@@ -45,3 +53,15 @@ if __name__ == '__main__':
             chldStr += f"{child:2}, "
 
         print(chldStr[:-2])
+
+    # visited = []
+    # queue = [nodes]
+    #
+    # print(queue)
+    # while queue:
+    #
+    #     if queue[0] not in visited:
+    #         print(queue[0])
+
+    # for parent in nodes:
+    #     if parent not in queue:
