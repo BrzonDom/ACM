@@ -3,9 +3,10 @@ using namespace std;
 
 int main() {
 
-  cout << "Hello World! \n\n";
-  cout << "I am learning C++" << endl;
-  cout << "I am learning C++";
-  return 0;
+    cout << "Hello World! \n\n";
+    cout << "I am learning C++" << endl;
+    cout << "I am learning C++";
+
+    return 0;
 
 }
