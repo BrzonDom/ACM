@@ -48,8 +48,8 @@ if __name__ == '__main__':
 
     print("One way graph:")
 
-    for parent in grph_one:
-        print(f"\t{parent}: ", end="")
+    for parent in sorted(grph_one):
+        print(f"\t{parent:2}: ", end="")
 
         chldStr = ""
         for child in grph_one[parent]:
@@ -60,23 +60,8 @@ if __name__ == '__main__':
 
     print("Two way graph:")
 
-    for parent in grph_both:
-        print(f"\t{parent}: ", end="")
-
-        chldStr = ""
-        for child in grph_both[parent]:
-            chldStr += f"{child:2}, "
-
-        print(chldStr[:-2])
-
-    sorted(grph_both)
-
-    print("\n")
-
-    print("Two way graph:")
-
-    for parent in grph_both:
-        print(f"\t{parent}: ", end="")
+    for parent in sorted(grph_both):
+        print(f"\t{parent:2}: ", end="")
 
         chldStr = ""
         for child in grph_both[parent]:
