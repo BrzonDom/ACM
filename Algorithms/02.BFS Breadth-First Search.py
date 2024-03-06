@@ -30,12 +30,12 @@ if __name__ == '__main__':
             grph_one[edge[0]].append(edge[1])
             grph_both[edge[0]].append(edge[1])
 
-            # print(f"[{edge[0]:2}, {edge[1]:2}]", end="  ")
+            print(f"[{edge[0]:2}, {edge[1]:2}]", end="  ")
         else:
             grph_one[edge[0]] = [edge[1]]
             grph_both[edge[0]] = [edge[1]]
 
-            # print(f"\n\t[{edge[0]:2}, {edge[1]:2}]", end="  ")
+            print(f"\n\t[{edge[0]:2}, {edge[1]:2}]", end="  ")
 
         if edge[1] in grph_both:
             grph_both[edge[1]].append(edge[0])
@@ -46,13 +46,40 @@ if __name__ == '__main__':
 
     print("\n")
 
-    print("Nodes:")
+    print("One way graph:")
 
     for parent in grph_one:
         print(f"\t{parent}: ", end="")
 
         chldStr = ""
         for child in grph_one[parent]:
+            chldStr += f"{child:2}, "
+
+        print(chldStr[:-2])
+    print("\n")
+
+    print("Two way graph:")
+
+    for parent in grph_both:
+        print(f"\t{parent}: ", end="")
+
+        chldStr = ""
+        for child in grph_both[parent]:
+            chldStr += f"{child:2}, "
+
+        print(chldStr[:-2])
+
+    sorted(grph_both)
+
+    print("\n")
+
+    print("Two way graph:")
+
+    for parent in grph_both:
+        print(f"\t{parent}: ", end="")
+
+        chldStr = ""
+        for child in grph_both[parent]:
             chldStr += f"{child:2}, "
 
         print(chldStr[:-2])
