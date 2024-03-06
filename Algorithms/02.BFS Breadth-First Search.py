@@ -14,6 +14,7 @@ https://www.techiedelight.com/breadth-first-search/
 
 """
 
+
 if __name__ == '__main__':
 
     edges = [(1, 2), (1, 3), (1, 4), (2, 5),
@@ -43,7 +44,6 @@ if __name__ == '__main__':
         else:
             grph_both[edge[1]] = [edge[0]]
 
-
     print("\n")
 
     print("One way graph:")
@@ -56,27 +56,22 @@ if __name__ == '__main__':
             chldStr += f"{child:2}, "
 
         print(chldStr[:-2])
+
     print("\n")
 
     print("Two way graph:")
 
     for parent in sorted(grph_both):
-        print(f"\t{parent:2}: ", end="")
+        print(f"\t{parent:2}: {grph_both[parent]}")
 
-        chldStr = ""
-        for child in grph_both[parent]:
-            chldStr += f"{child:2}, "
+        # print(f"\t{parent:2}: ", end="")
+        #
+        # chldStr = ""
+        # for child in grph_both[parent]:
+        #     chldStr += f"{child:2}, "
+        #
+        # print(chldStr[:-2])
 
-        print(chldStr[:-2])
+    print("\n")
 
-    # visited = []
-    # queue = [grph_one]
-    #
-    # print(queue)
-    # while queue:
-    #
-    #     if queue[0] not in visited:
-    #         print(queue[0])
 
-    # for parent in grph_one:
-    #     if parent not in queue:
