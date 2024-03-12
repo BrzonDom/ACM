@@ -14,6 +14,39 @@ https://www.techiedelight.com/breadth-first-search/
 
 """
 
+def BFS_Iter(grph, start = None, end = None):
+
+    if start is None:
+        start = min(list(grph.keys()))
+
+    # if end is None:
+    #     end = max(list(grph.keys()))
+
+
+    queue = []
+    visited = {}
+
+    queue = queue + [grph[start][0]]
+    visited[grph[start][0]] = True
+
+    while len(queue) > 0:
+        node = queue.pop(0)
+        visited[node] = True
+
+        print(node)
+
+        if node == end:
+            return
+
+        for next in grph[node]:
+            if next not in visited:
+
+                visited[next] = True
+                queue = queue + [next]
+
+
+    return
+
 
 if __name__ == '__main__':
 
@@ -74,4 +107,9 @@ if __name__ == '__main__':
 
     print("\n")
 
+    # print(min(list(grph_both.keys())))
+    # print(max(list(grph_both.keys())))
+    #
+    # print(grph_one[1][0])
 
+    BFS_Iter(grph_both)
