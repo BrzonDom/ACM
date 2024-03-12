@@ -23,15 +23,15 @@ def BFS_Iter(grph, start = None, end = None):
     #     end = max(list(grph.keys()))
 
 
-    queue = []
-    visited = {}
+    queue = [start]
+    visited = {start}
 
-    queue = queue + [grph[start][0]]
-    visited[grph[start][0]] = True
+    # queue = queue + [start]
+    # visited.add(start)
 
     while len(queue) > 0:
         node = queue.pop(0)
-        visited[node] = True
+        visited.add(node)
 
         print(node)
 
@@ -41,7 +41,7 @@ def BFS_Iter(grph, start = None, end = None):
         for next in grph[node]:
             if next not in visited:
 
-                visited[next] = True
+                visited.add(next)
                 queue = queue + [next]
 
 
