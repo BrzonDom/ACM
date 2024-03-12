@@ -19,15 +19,8 @@ def BFS_Iter(grph, start = None, end = None):
     if start is None:
         start = min(list(grph.keys()))
 
-    # if end is None:
-    #     end = max(list(grph.keys()))
-
-
     queue = [start]
     visited = {start}
-
-    # queue = queue + [start]
-    # visited.add(start)
 
     while len(queue) > 0:
         node = queue.pop(0)
@@ -44,8 +37,6 @@ def BFS_Iter(grph, start = None, end = None):
                 visited.add(next)
                 queue = queue + [next]
 
-
-    return
 
 
 if __name__ == '__main__':
