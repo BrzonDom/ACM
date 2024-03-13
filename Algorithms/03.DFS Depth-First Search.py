@@ -18,3 +18,18 @@ if __name__ == '__main__':
     edges = [(1, 2), (1, 3), (1, 4), (2, 5),
              (2, 6), (5, 9), (5, 10), (4, 7),
              (4, 8), (7, 11), (7, 12)]
+
+    edge_set = set()
+
+    print("Edges:", end="")
+
+    for edge in edges:
+        if edge[0] in edge_set:
+
+            print(f"[{edge[0]:2}, {edge[1]:2}]", end="  ")
+        else:
+            edge_set.add(edge[0])
+
+            print(f"\n\t[{edge[0]:2}, {edge[1]:2}]", end="  ")
+
+    print("\n")
