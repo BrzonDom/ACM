@@ -120,6 +120,9 @@ def binarySearch_Recu(arr, trg, lft, rgt):
 
 
 if __name__ == '__main__':
+
+    print("01.Binary Search.py\n")
+
     arr = [2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 20, 25, 40]
     trg = 10
 
