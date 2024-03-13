@@ -87,6 +87,8 @@ def BFS_Recu(grph, qu, vst, end = None):
 
 if __name__ == '__main__':
 
+    print("02.BFS Breadth-First Search.py\n")
+
     edges = [(1, 2), (1, 3), (1, 4), (2, 5),
              (2, 6), (5, 9), (5, 10), (4, 7),
              (4, 8), (7, 11), (7, 12)]
@@ -124,8 +126,10 @@ if __name__ == '__main__':
 
     print("BFS Recursive:", end="\n\t")
 
-    qu = [min(list(grph.keys()))]
+    start = min(list(grph.keys()))
+
+    qu = [start]
     # print(qu)
-    vst = {qu[0]}
+    vst = {start}
 
     BFS_Recu(grph, qu, vst)
