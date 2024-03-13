@@ -47,7 +47,7 @@ def BFS_Iter(grph, start = None, end = None):
     qu = [start]
     vst = {start}
 
-    while not qu:
+    while qu:
         nod = qu.pop(0)
         vst.add(nod)
 
@@ -113,7 +113,13 @@ if __name__ == '__main__':
 
     print("\n")
 
-    # BFS_Iter(grph)
+    print("BFS Iterative:", end="\n\t")
+
+    BFS_Iter(grph)
+
+    print("\n")
+
+    print("BFS Recursive:", end="\n\t")
 
     qu = [min(list(grph.keys()))]
     # print(qu)
