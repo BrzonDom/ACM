@@ -1,3 +1,15 @@
+"""
+Depth-First Search (DFS) – Iterative and Recursive Implementation
+
+https://www.techiedelight.com/depth-first-search/
+
+    Depth–first search (DFS) is an algorithm for traversing or searching
+    tree or graph data structures. One starts at the root
+    (selecting some arbitrary node as the root for a graph) and
+    explore as far as possible along each branch before backtracking.
+
+"""
+
 from collections import deque
 
 # A class to represent a graph object
