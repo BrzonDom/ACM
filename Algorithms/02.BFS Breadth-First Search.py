@@ -15,7 +15,7 @@ https://www.techiedelight.com/breadth-first-search/
 """
 
 
-def edgeToGraph(edges):
+def makeGraph(edges):
 
     grph = {}
 
@@ -63,7 +63,7 @@ def BFS_Iter(grph, start = None, end = None):
                 qu = qu + [nxt]
 
 
-def BFS_Recu(grph, qu, vst, start = None, end = None):
+def BFS_Recu(grph, qu, vst, end = None):
 
     if not qu:
         return
@@ -73,13 +73,16 @@ def BFS_Recu(grph, qu, vst, start = None, end = None):
 
     print(nod, end=" ")
 
+    if nod == end:
+        return
+
     for nxt in grph[nod]:
         if nxt not in vst:
 
             vst.add(nxt)
             qu.append(nxt)
 
-    BFS_Recu(grph, qu, vst, start, end)
+    BFS_Recu(grph, qu, vst, end)
 
 
 if __name__ == '__main__':
@@ -104,7 +107,7 @@ if __name__ == '__main__':
     print("\n")
 
 
-    grph = edgeToGraph(edges)
+    grph = makeGraph(edges)
 
     print("Two way graph:\n")
 
