@@ -110,6 +110,8 @@ def binarySearch_Recu(nums, left, right, target):
 
 if __name__ == '__main__':
 
+    print("01.TD-Binary Search Algorithm.py\n")
+
     nums = [2, 5, 6, 8, 9, 10]
     target = 5
 
