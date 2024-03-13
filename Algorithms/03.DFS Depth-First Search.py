@@ -10,6 +10,29 @@ https://www.techiedelight.com/depth-first-search/
 
 """
 
+def makeGraph(edges):
+
+    grph = {}
+
+    for edge in edges:
+        if edge[0] in grph:
+            grph[edge[0]].append(edge[1])
+
+            # print(f"[{edge[0]:2}, {edge[1]:2}]", end="  ")
+
+        else:
+            grph[edge[0]] = [edge[1]]
+
+            # print(f"\n\t[{edge[0]:2}, {edge[1]:2}]", end="  ")
+
+        if edge[1] in grph:
+            grph[edge[1]].append(edge[0])
+
+        else:
+            grph[edge[1]] = [edge[0]]
+
+    return grph
+
 
 if __name__ == '__main__':
 
@@ -31,5 +54,14 @@ if __name__ == '__main__':
             edge_set.add(edge[0])
 
             print(f"\n\t[{edge[0]:2}, {edge[1]:2}]", end="  ")
+
+    print("\n")
+
+    grph = makeGraph(edges)
+
+    print("Two way graph:\n")
+
+    for parent in sorted(grph):
+        print(f"\t{parent:2}: {grph[parent]}")
 
     print("\n")
