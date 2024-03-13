@@ -77,6 +77,8 @@ def BFS_Recu(graph, q, discovered):
 
 if __name__ == '__main__':
 
+    print("02.TD-Breadth-First Search (BFS).py\n")
+
     # List of graph edges as per the above diagram
     edges = [
         (1, 2), (1, 3), (1, 4), (2, 5), (2, 6), (5, 9),
@@ -96,7 +98,7 @@ if __name__ == '__main__':
     graph = Graph(edges, n)
 
     print()
-    print("Iterative Implementation:\n", end="\n\t")
+    print("Iterative Implementation:", end="\n\t")
 
     # to keep track of whether a vertex is discovered or not
     discovered = [False] * n
@@ -108,8 +110,8 @@ if __name__ == '__main__':
             # start BFS traversal from vertex i
             BFS_Iter(graph, i, discovered)
 
-    print("\n\n")
-    print("Recursive Implementation:\n", end="\n\t")
+    print("\n")
+    print("Recursive Implementation:", end="\n\t")
 
     # to keep track of whether a vertex is discovered or not
     discovered = [False] * n
