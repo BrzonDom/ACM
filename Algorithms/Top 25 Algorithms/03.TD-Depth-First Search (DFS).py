@@ -57,6 +57,8 @@ def DFS_Iter(graph, v, discovered):
 
 if __name__ == '__main__':
 
+    print("03.TD-Depth-First Search (DFS).py\n")
+
     # List of graph edges as per the above diagram
     edges = [
         # Notice that node 0 is unconnected
@@ -70,7 +72,7 @@ if __name__ == '__main__':
     # build a graph from the given edges
     graph = Graph(edges, n)
 
-    print("Recursive Implementation:\n", end="\n\t")
+    print("Recursive Implementation:", end="\n\t")
 
     # to keep track of whether a vertex is discovered or not
     discovered = [False] * n
@@ -81,8 +83,8 @@ if __name__ == '__main__':
         if not discovered[i]:
             DFS_Recu(graph, i, discovered)
 
-    print("\n\n")
-    print("Iterative Implementation:\n", end="\n\t")
+    print("\n")
+    print("Iterative Implementation:", end="\n\t")
 
     # to keep track of whether a vertex is discovered or not
     discovered = [False] * n
