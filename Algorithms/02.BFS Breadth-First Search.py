@@ -51,7 +51,7 @@ def BFS_Iter(grph, start = None, end = None):
         start = min(list(grph.keys()))
 
     qu = [start]
-    vst = {start}
+    # vst = {start}
 
     pth = {start: None}
 
@@ -62,7 +62,7 @@ def BFS_Iter(grph, start = None, end = None):
         print(nod, end=" ")
 
         if nod == end:
-            return
+            return pth
 
         for nxt in grph[nod]:
             if nxt not in pth:
