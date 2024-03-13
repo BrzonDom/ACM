@@ -47,7 +47,7 @@ def BFS_Iter(grph, start = None, end = None):
     qu = [start]
     vst = {start}
 
-    while len(qu) > 0:
+    while not qu:
         nod = qu.pop(0)
         vst.add(nod)
 
@@ -65,7 +65,7 @@ def BFS_Iter(grph, start = None, end = None):
 
 def BFS_Recu(grph, qu, vst, start = None, end = None):
 
-    if len(qu) < 0:
+    if not qu:
         return
 
     nod = qu.pop(0)
@@ -115,7 +115,8 @@ if __name__ == '__main__':
 
     # BFS_Iter(grph)
 
-    qu = [1]
-    vst = {1}
+    qu = [min(list(grph.keys()))]
+    # print(qu)
+    vst = {qu[0]}
 
     BFS_Recu(grph, qu, vst)
