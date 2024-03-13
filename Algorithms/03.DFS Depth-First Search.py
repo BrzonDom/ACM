@@ -10,6 +10,7 @@ https://www.techiedelight.com/depth-first-search/
 
 """
 
+
 def makeGraph(edges):
 
     grph = {}
@@ -18,12 +19,8 @@ def makeGraph(edges):
         if edge[0] in grph:
             grph[edge[0]].append(edge[1])
 
-            # print(f"[{edge[0]:2}, {edge[1]:2}]", end="  ")
-
         else:
             grph[edge[0]] = [edge[1]]
-
-            # print(f"\n\t[{edge[0]:2}, {edge[1]:2}]", end="  ")
 
         if edge[1] in grph:
             grph[edge[1]].append(edge[0])
@@ -34,13 +31,41 @@ def makeGraph(edges):
     return grph
 
 
+def DFS_Iter(grph, start = None, end = None):
+
+    if start is None:
+        start = min(list(grph.keys()))
+
+    stc = [start]
+    pth = {start: None}
+
+    while stc:
+        nod = stc.pop()
+
+        print(nod, end=" ")
+
+        if nod == end:
+            return pth
+
+        # if nod not in pth:
+
+        for nxt in reversed(grph[nod]):
+            if nxt not in pth:
+
+                stc.append(nxt)
+                pth[nxt] = nod
+
+
 if __name__ == '__main__':
 
     print("03.DFS Depth-First Search.py\n")
 
-    edges = [(1, 2), (1, 3), (1, 4), (2, 5),
-             (2, 6), (5, 9), (5, 10), (4, 7),
-             (4, 8), (7, 11), (7, 12)]
+    edges = [
+        (1, 2), (1, 7), (1, 8),
+        (2, 3), (2, 6), (3, 4),
+        (3, 5), (8, 9), (8, 12),
+        (9, 10), (9, 11)
+    ]
 
     edge_set = set()
 
@@ -65,3 +90,7 @@ if __name__ == '__main__':
         print(f"\t{parent:2}: {grph[parent]}")
 
     print("\n")
+
+    print("DFS Iterative:", end="\n\t")
+
+    DFS_Iter(grph)
