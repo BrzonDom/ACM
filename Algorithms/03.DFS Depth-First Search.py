@@ -55,6 +55,8 @@ def DFS_Iter(grph, start = None, end = None):
                 stc.append(nxt)
                 pth[nxt] = nod
 
+    return pth
+
 
 if __name__ == '__main__':
 
@@ -93,4 +95,5 @@ if __name__ == '__main__':
 
     print("DFS Iterative:", end="\n\t")
 
-    DFS_Iter(grph)
+    path = DFS_Iter(grph)
+    print(f"\n\t\tPath: {path}")
