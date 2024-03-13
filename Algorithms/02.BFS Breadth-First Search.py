@@ -23,12 +23,12 @@ def edgeToGraph(edges):
         if edge[0] in grph:
             grph[edge[0]].append(edge[1])
 
-            print(f"[{edge[0]:2}, {edge[1]:2}]", end="  ")
+            # print(f"[{edge[0]:2}, {edge[1]:2}]", end="  ")
 
         else:
             grph[edge[0]] = [edge[1]]
 
-            print(f"\n\t[{edge[0]:2}, {edge[1]:2}]", end="  ")
+            # print(f"\n\t[{edge[0]:2}, {edge[1]:2}]", end="  ")
 
         if edge[1] in grph:
             grph[edge[1]].append(edge[0])
@@ -98,13 +98,14 @@ if __name__ == '__main__':
     #
     # print("\n")
 
-    # print("Two way graph:")
+    grph_both = edgeToGraph(edges)
 
-    # for parent in sorted(grph_both):
-    #     print(f"\t{parent:2}: {grph_both[parent]}")
-    #
-    #
-    # print("\n")
+    print("Two way graph:\n")
+
+    for parent in sorted(grph_both):
+        print(f"\t{parent:2}: {grph_both[parent]}")
+
+    print("\n")
 
 
     # BFS_Iter(grph_one)
