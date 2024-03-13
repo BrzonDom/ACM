@@ -1,3 +1,5 @@
+from collections import deque
+
 # A class to represent a graph object
 class Graph:
     # Constructor
@@ -20,6 +22,37 @@ def DFS_Recu(graph, v, discovered):
     for u in graph.adjList[v]:
         if not discovered[u]:  # if `u` is not yet discovered
             DFS_Recu(graph, u, discovered)
+
+
+# Perform iterative DFS on graph starting from vertex `v`
+def iterativeDFS(graph, v, discovered):
+    # create a stack used to do iterative DFS
+    stack = deque()
+
+    # push the source node into the stack
+    stack.append(v)
+
+    # loop till stack is empty
+    while stack:
+
+        # Pop a vertex from the stack
+        v = stack.pop()
+
+        # if the vertex is already discovered yet, ignore it
+        if discovered[v]:
+            continue
+
+        # we will reach here if the popped vertex `v` is not discovered yet;
+        # print `v` and process its undiscovered adjacent nodes into the stack
+        discovered[v] = True
+        print(v, end=' ')
+
+        # do for every edge (v, u)
+        adjList = graph.adjList[v]
+        for i in reversed(range(len(adjList))):
+            u = adjList[i]
+            if not discovered[u]:
+                stack.append(u)
 
 
 if __name__ == '__main__':
@@ -47,3 +80,15 @@ if __name__ == '__main__':
     for i in range(n):
         if not discovered[i]:
             DFS_Recu(graph, i, discovered)
+
+    print("\n\n")
+    print("Iterative Implementation:\n", end="\n\t")
+
+    # to keep track of whether a vertex is discovered or not
+    discovered = [False] * n
+
+    # Do iterative DFS traversal from all undiscovered nodes to
+    # cover all connected components of a graph
+    for i in range(n):
+        if not discovered[i]:
+            iterativeDFS(graph, i, discovered)
