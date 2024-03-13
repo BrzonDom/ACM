@@ -25,7 +25,7 @@ def DFS_Recu(graph, v, discovered):
 
 
 # Perform iterative DFS on graph starting from vertex `v`
-def iterativeDFS(graph, v, discovered):
+def DFS_Iter(graph, v, discovered):
     # create a stack used to do iterative DFS
     stack = deque()
 
@@ -91,4 +91,4 @@ if __name__ == '__main__':
     # cover all connected components of a graph
     for i in range(n):
         if not discovered[i]:
-            iterativeDFS(graph, i, discovered)
+            DFS_Iter(graph, i, discovered)
