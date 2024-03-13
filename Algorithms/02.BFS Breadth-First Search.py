@@ -14,6 +14,31 @@ https://www.techiedelight.com/breadth-first-search/
 
 """
 
+
+def edgeToGraph(edges):
+
+    grph = {}
+
+    for edge in edges:
+        if edge[0] in grph:
+            grph[edge[0]].append(edge[1])
+
+            print(f"[{edge[0]:2}, {edge[1]:2}]", end="  ")
+
+        else:
+            grph[edge[0]] = [edge[1]]
+
+            print(f"\n\t[{edge[0]:2}, {edge[1]:2}]", end="  ")
+
+        if edge[1] in grph:
+            grph[edge[1]].append(edge[0])
+
+        else:
+            grph[edge[1]] = [edge[0]]
+
+    return grph
+
+
 def BFS_Iter(grph, start = None, end = None):
 
     if start is None:
@@ -45,62 +70,41 @@ if __name__ == '__main__':
              (2, 6), (5, 9), (5, 10), (4, 7),
              (4, 8), (7, 11), (7, 12)]
 
-    grph_one = {}
-    grph_both = {}
+    edge_set = set()
 
     print("Edges:", end="")
 
     for edge in edges:
-        if edge[0] in grph_one:
-            grph_one[edge[0]].append(edge[1])
-            grph_both[edge[0]].append(edge[1])
+        if edge[0] in edge_set:
 
             print(f"[{edge[0]:2}, {edge[1]:2}]", end="  ")
         else:
-            grph_one[edge[0]] = [edge[1]]
-            grph_both[edge[0]] = [edge[1]]
+            edge_set.add(edge[0])
 
             print(f"\n\t[{edge[0]:2}, {edge[1]:2}]", end="  ")
 
-        if edge[1] in grph_both:
-            grph_both[edge[1]].append(edge[0])
-
-        else:
-            grph_both[edge[1]] = [edge[0]]
-
     print("\n")
 
-    print("One way graph:")
-
-    for parent in sorted(grph_one):
-        print(f"\t{parent:2}: ", end="")
-
-        chldStr = ""
-        for child in grph_one[parent]:
-            chldStr += f"{child:2}, "
-
-        print(chldStr[:-2])
-
-    print("\n")
-
-    print("Two way graph:")
-
-    for parent in sorted(grph_both):
-        print(f"\t{parent:2}: {grph_both[parent]}")
-
-        # print(f"\t{parent:2}: ", end="")
-        #
-        # chldStr = ""
-        # for child in grph_both[parent]:
-        #     chldStr += f"{child:2}, "
-        #
-        # print(chldStr[:-2])
-
-    print("\n")
-
-    # print(min(list(grph_both.keys())))
-    # print(max(list(grph_both.keys())))
+    # print("One way graph:")
     #
-    # print(grph_one[1][0])
+    # for parent in sorted(grph_one):
+    #     print(f"\t{parent:2}: ", end="")
+    #
+    #     chldStr = ""
+    #     for child in grph_one[parent]:
+    #         chldStr += f"{child:2}, "
+    #
+    #     print(chldStr[:-2])
+    #
+    # print("\n")
 
-    BFS_Iter(grph_both)
+    # print("Two way graph:")
+
+    # for parent in sorted(grph_both):
+    #     print(f"\t{parent:2}: {grph_both[parent]}")
+    #
+    #
+    # print("\n")
+
+
+    # BFS_Iter(grph_one)
