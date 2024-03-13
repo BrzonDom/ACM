@@ -44,24 +44,42 @@ def BFS_Iter(grph, start = None, end = None):
     if start is None:
         start = min(list(grph.keys()))
 
-    queue = [start]
-    visited = {start}
+    qu = [start]
+    vst = {start}
 
-    while len(queue) > 0:
-        node = queue.pop(0)
-        visited.add(node)
+    while len(qu) > 0:
+        nod = qu.pop(0)
+        vst.add(nod)
 
-        print(node)
+        print(nod, end=" ")
 
-        if node == end:
+        if nod == end:
             return
 
-        for next in grph[node]:
-            if next not in visited:
+        for nxt in grph[nod]:
+            if nxt not in vst:
 
-                visited.add(next)
-                queue = queue + [next]
+                vst.add(nxt)
+                qu = qu + [nxt]
 
+
+def BFS_Recu(grph, qu, vst, start = None, end = None):
+
+    if len(qu) < 0:
+        return
+
+    nod = qu.pop(0)
+    vst.add(nod)
+
+    print(nod, end=" ")
+
+    for nxt in grph[nod]:
+        if nxt not in vst:
+
+            vst.add(nxt)
+            qu.append(nxt)
+
+    BFS_Recu(grph, qu, vst, start, end)
 
 
 if __name__ == '__main__':
@@ -85,27 +103,19 @@ if __name__ == '__main__':
 
     print("\n")
 
-    # print("One way graph:")
-    #
-    # for parent in sorted(grph_one):
-    #     print(f"\t{parent:2}: ", end="")
-    #
-    #     chldStr = ""
-    #     for child in grph_one[parent]:
-    #         chldStr += f"{child:2}, "
-    #
-    #     print(chldStr[:-2])
-    #
-    # print("\n")
 
-    grph_both = edgeToGraph(edges)
+    grph = edgeToGraph(edges)
 
     print("Two way graph:\n")
 
-    for parent in sorted(grph_both):
-        print(f"\t{parent:2}: {grph_both[parent]}")
+    for parent in sorted(grph):
+        print(f"\t{parent:2}: {grph[parent]}")
 
     print("\n")
 
+    # BFS_Iter(grph)
 
-    # BFS_Iter(grph_one)
+    qu = [1]
+    vst = {1}
+
+    BFS_Recu(grph, qu, vst)
