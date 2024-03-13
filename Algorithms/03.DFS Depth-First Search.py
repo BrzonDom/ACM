@@ -47,7 +47,9 @@ def DFS_Iter(grph, start = None, end = None):
         if nod == end:
             return pth
 
-        # if nod not in pth:
+        if nod not in pth:
+            if nod != start:
+                continue
 
         for nxt in reversed(grph[nod]):
             if nxt not in pth:
