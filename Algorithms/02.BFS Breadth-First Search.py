@@ -6,13 +6,19 @@ https://www.techiedelight.com/breadth-first-search/
     Breadth–first search (BFS) is an algorithm for traversing or searching
     tree or graph data structures. It starts at the tree root
     (or some arbitrary node of a graph, sometimes referred to as a ‘search key’)
-    and explores the neighbor grph_one first before moving to the next-level neighbors.
+    and explores the neighbor nodes first before moving to the next-level neighbors.
 
     Breadth–first search (BFS) is a graph traversal algorithm that explores vertices
     in the order of their distance from the source vertex, where distance is
     the minimum length of a path from the source vertex to the node.
 
 """
+
+
+# class Path:
+#     def __init__(self, node, parent = None):
+#         self.node = node
+#         self.parent = parent
 
 
 def makeGraph(edges):
@@ -47,6 +53,9 @@ def BFS_Iter(grph, start = None, end = None):
     qu = [start]
     vst = {start}
 
+    path = {}
+    path[start] = None
+
     while qu:
         nod = qu.pop(0)
         vst.add(nod)
@@ -61,6 +70,10 @@ def BFS_Iter(grph, start = None, end = None):
 
                 vst.add(nxt)
                 qu = qu + [nxt]
+
+                path[nxt] = nod
+
+    return path
 
 
 def BFS_Recu(grph, qu, vst, end = None):
@@ -108,7 +121,6 @@ if __name__ == '__main__':
 
     print("\n")
 
-
     grph = makeGraph(edges)
 
     print("Two way graph:\n")
@@ -120,7 +132,9 @@ if __name__ == '__main__':
 
     print("BFS Iterative:", end="\n\t")
 
-    BFS_Iter(grph)
+    # BFS_Iter(grph, start = None, end = None)
+    path = BFS_Iter(grph)
+    print(f"\n\t\tPath: {path}")
 
     print("\n")
 
@@ -132,4 +146,5 @@ if __name__ == '__main__':
     # print(qu)
     vst = {start}
 
-    BFS_Recu(grph, qu, vst)
+    # BFS_Recu(grph, qu, vst, end = None)
+    BFS_Recu(grph, qu, vst, 10)
