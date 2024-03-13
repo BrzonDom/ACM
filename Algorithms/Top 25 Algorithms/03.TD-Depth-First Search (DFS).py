@@ -12,14 +12,14 @@ class Graph:
 
 
 # Function to perform DFS traversal on the graph on a graph
-def DFS(graph, v, discovered):
+def DFS_Recu(graph, v, discovered):
     discovered[v] = True  # mark the current node as discovered
     print(v, end=' ')  # print the current node
 
     # do for every edge (v, u)
     for u in graph.adjList[v]:
         if not discovered[u]:  # if `u` is not yet discovered
-            DFS(graph, u, discovered)
+            DFS_Recu(graph, u, discovered)
 
 
 if __name__ == '__main__':
@@ -37,6 +37,8 @@ if __name__ == '__main__':
     # build a graph from the given edges
     graph = Graph(edges, n)
 
+    print("Recursive Implementation:\n", end="\n\t")
+
     # to keep track of whether a vertex is discovered or not
     discovered = [False] * n
 
@@ -44,4 +46,4 @@ if __name__ == '__main__':
     # cover all connected components of a graph
     for i in range(n):
         if not discovered[i]:
-            DFS(graph, i, discovered)
+            DFS_Recu(graph, i, discovered)
