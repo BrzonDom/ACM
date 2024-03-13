@@ -57,7 +57,7 @@ def BFS_Iter(grph, start = None, end = None):
 
     while qu:
         nod = qu.pop(0)
-        vst.add(nod)
+        # vst.add(nod)
 
         print(nod, end=" ")
 
@@ -65,22 +65,22 @@ def BFS_Iter(grph, start = None, end = None):
             return
 
         for nxt in grph[nod]:
-            if nxt not in vst:
+            if nxt not in pth:
 
-                vst.add(nxt)
+                # vst.add(nxt)
                 qu = qu + [nxt]
                 pth[nxt] = nod
 
     return pth
 
 
-def BFS_Recu(grph, qu, vst, pth, end = None):
+def BFS_Recu(grph, qu, pth, end = None):
 
     if not qu:
         return
 
     nod = qu.pop(0)
-    vst.add(nod)
+    # vst.add(nod)
 
     print(nod, end=" ")
 
@@ -88,13 +88,13 @@ def BFS_Recu(grph, qu, vst, pth, end = None):
         return
 
     for nxt in grph[nod]:
-        if nxt not in vst:
+        if nxt not in pth:
 
-            vst.add(nxt)
+            # vst.add(nxt)
             qu.append(nxt)
             pth[nxt] = nod
 
-    BFS_Recu(grph, qu, vst, pth, end)
+    BFS_Recu(grph, qu, pth, end)
     return pth
 
 
@@ -144,10 +144,11 @@ if __name__ == '__main__':
 
     qu = [start]
     # print(qu)
-    vst = {start}
+    # vst = {start}
+
     pth = {start: None}
 
-    # BFS_Recu(grph, qu, vst, pth, end = None)
-    path_Re = BFS_Recu(grph, qu, vst, pth, 7)
+    # BFS_Recu(grph, qu, pth, end = None)
+    path_Re = BFS_Recu(grph, qu, pth, 7)
 
     print(f"\n\t\tPath: {path_Re}")
