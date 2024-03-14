@@ -38,6 +38,17 @@ def FibNum_Recu(fibIdx):
         return FibNum_Recu(fibIdx - 1) + FibNum_Recu(fibIdx - 2)
 
 
+FibSequence = [0, 1]
+
+def FibNum_DP(fibIdx):
+
+    if fibIdx < len(FibSequence):
+        return FibSequence[fibIdx]
+
+    else:
+        FibSequence.append(FibNum_DP(fibIdx - 1) + FibNum_DP(fibIdx - 2))
+        return FibSequence[fibIdx]
+
 
 if __name__ == '__main__':
 
@@ -62,10 +73,19 @@ if __name__ == '__main__':
         print(f"\t\tf_{fibCnt:<2} = {num_2}")
 
     print("\n")
+
     print("\tFibonacci number recursive:\n")
 
     fibIndex = 9
 
     fibNum = FibNum_Recu(fibIndex)
+
+    print(f"\t\tf_{fibIndex} = {fibNum}")
+
+    print("\n")
+
+    print("\tFibonacci number dynamically:\n")
+
+    fibNum = FibNum_DP(fibIndex)
 
     print(f"\t\tf_{fibIndex} = {fibNum}")
