@@ -38,12 +38,12 @@ def FibNum_Recu(fibIdx):
         return FibNum_Recu(fibIdx - 1) + FibNum_Recu(fibIdx - 2)
 
 
-def FibNum_Iter(fibIdx):
+def FibNum_Iter(maxFibIdx):
 
-    if fibIdx == 0:
+    if maxFibIdx == 0:
         return 0
 
-    elif fibIdx == 1 or fibIdx == 2:
+    elif maxFibIdx == 1 or maxFibIdx == 2:
         return 1
 
     else:
@@ -51,7 +51,9 @@ def FibNum_Iter(fibIdx):
         num_1 = 1
         num_2 = 1
 
-        for _ in range(2, fibIdx):
+        idxDig = len(str(maxFibIdx))
+
+        for fibIdx in range(3, maxFibIdx + 1):
 
             num = num_1 + num_2
 
@@ -78,21 +80,23 @@ if __name__ == '__main__':
 
     print("\tFibonacci sequence drive code:\n")
 
-    maxFibCnt = 10
+    maxFibIdx = 10
+
+    idxDig = len(str(maxFibIdx))
 
     num_1 = 0
-    print("\t\tf_0  = 0")
+    print(f"\t\tf_{0:<{idxDig}} = 0")
 
     num_2 = 1
-    print("\t\tf_1  = 1")
+    print(f"\t\tf_{1:<{idxDig}} = 1")
 
-    fibCnt = 1
+    fibIdx = 1
 
-    while fibCnt < maxFibCnt:
+    while fibIdx < maxFibIdx:
         num_1, num_2 = num_2, num_1 + num_2
-        fibCnt += 1
+        fibIdx += 1
 
-        print(f"\t\tf_{fibCnt:<2} = {num_2}")
+        print(f"\t\tf_{fibIdx:<{idxDig}} = {num_2}")
 
     print("\n")
 
