@@ -59,6 +59,8 @@ def FibNum_Iter(maxFibIdx):
 
             num_1, num_2 = num_2, num
 
+            print(f"\t\t\tf_{fibIdx:<{idxDig}} = {num}")
+
         return num
 
 
