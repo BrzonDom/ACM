@@ -26,6 +26,7 @@ How Many Fibs ?
 
 """
 
+"""
 def FibNum_Recu(fibIdx):
 
     if fibIdx == 0:
@@ -36,7 +37,7 @@ def FibNum_Recu(fibIdx):
 
     else:
         return FibNum_Recu(fibIdx - 1) + FibNum_Recu(fibIdx - 2)
-
+"""
 
 def FibNum_Iter(maxFibIdx):
 
@@ -64,6 +65,7 @@ def FibNum_Iter(maxFibIdx):
         return num
 
 
+"""
 FibSequence = [0, 1]
 
 def FibNum_DP(fibIdx):
@@ -74,12 +76,14 @@ def FibNum_DP(fibIdx):
     else:
         FibSequence.append(FibNum_DP(fibIdx - 1) + FibNum_DP(fibIdx - 2))
         return FibSequence[fibIdx]
+"""
 
 
 if __name__ == '__main__':
 
     print("How Many Fibs:\n")
 
+    """
     print("\tFibonacci sequence drive code:\n")
 
     maxFibIdx = 10
@@ -101,7 +105,9 @@ if __name__ == '__main__':
         print(f"\t\tf_{fibIdx:<{idxDig}} = {num_2}")
 
     print("\n")
+    """
 
+    """
     print("\tFibonacci number recursive:\n")
 
     fibIndex = 9
@@ -111,6 +117,7 @@ if __name__ == '__main__':
     print(f"\t\tf_{fibIndex} = {fibNum}")
 
     print("\n")
+    """
 
     print("\tFibonacci number iteratively:\n")
 
@@ -120,6 +127,7 @@ if __name__ == '__main__':
 
     print(f"\t\tf_{fibIndex} = {fibNum}")
 
+    """
     print("\n")
 
     print("\tFibonacci number dynamically:\n")
@@ -127,3 +135,6 @@ if __name__ == '__main__':
     fibNum = FibNum_DP(fibIndex)
 
     print(f"\t\tf_{fibIndex} = {fibNum}")
+    """
+
+
