@@ -38,5 +38,16 @@ if __name__ == '__main__':
     for n in range(lenSeq-1):
         jolly[n+1] = False
 
-    print("\t", jolly)
+    print(f"\t{jolly}\n")
 
+    prev = seq[0]
+
+    for itm in seq[1:]:
+        print(f"\t|{prev} - {itm}| = {abs(prev - itm)}")
+
+        jolly[abs(prev - itm)] = True
+
+        prev = itm
+
+    print()
+    print(f"\t{jolly}\n")
