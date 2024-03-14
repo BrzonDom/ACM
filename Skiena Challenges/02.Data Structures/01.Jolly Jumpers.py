@@ -24,3 +24,19 @@ Jolly Jumpers
 
 """
 
+
+if __name__ == '__main__':
+
+    seq = [1, 4, 2, 3]
+
+    print(f"\tSequence: {seq}\n")
+
+    lenSeq = len(seq)
+
+    jolly = {}
+
+    for n in range(lenSeq-1):
+        jolly[n+1] = False
+
+    print("\t", jolly)
+
