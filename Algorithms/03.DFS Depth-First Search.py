@@ -47,9 +47,9 @@ def DFS_Iter(grph, start = None, end = None):
         if nod == end:
             return pth
 
-        if nod not in pth:
-            if nod != start:
-                continue
+        # if nod not in pth:
+        #     if nod != start:
+        #         continue
 
         for nxt in reversed(grph[nod]):
             if nxt not in pth:
@@ -58,6 +58,21 @@ def DFS_Iter(grph, start = None, end = None):
                 pth[nxt] = nod
 
     return pth
+
+
+def DFS_Recu(grph, stc, pth, end = None):
+
+    nod = stc.pop()
+
+    print(nod, end=" ")
+
+    for nxt in reversed(grph[nod]):
+        if nxt not in pth:
+
+            stc.append(nxt)
+            pth[nxt] = nod
+
+            DFS_Recu(grph, stc, pth, None)
 
 
 if __name__ == '__main__':
@@ -97,5 +112,15 @@ if __name__ == '__main__':
 
     print("DFS Iterative:", end="\n\t")
 
-    path = DFS_Iter(grph)
+    path = DFS_Iter(grph, None, 6)
     print(f"\n\t\tPath: {path}")
+    print()
+
+    print("DFS Recursive:", end="\n\t")
+
+    # def DFS_Recu(grph, stc, pth, end = None)
+    stc = [1]
+    pth = {1: None}
+
+    DFS_Recu(grph, stc, pth, None)
+
