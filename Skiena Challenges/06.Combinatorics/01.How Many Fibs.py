@@ -25,3 +25,26 @@ How Many Fibs ?
             =>
 
 """
+
+
+if __name__ == '__main__':
+
+    print("How Many Fibs:\n")
+
+    print("\tFibonacci numbers:\n")
+
+    maxFibCnt = 10
+
+    num_1 = 0
+    print("\t\tf_0  = 0")
+
+    num_2 = 1
+    print("\t\tf_1  = 1")
+
+    fibCnt = 2
+
+    while fibCnt < maxFibCnt:
+        num_1, num_2 = num_2, num_1 + num_2
+        fibCnt += 1
+
+        print(f"\t\tf_{fibCnt:<2} = {num_2}")
