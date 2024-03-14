@@ -38,6 +38,28 @@ def FibNum_Recu(fibIdx):
         return FibNum_Recu(fibIdx - 1) + FibNum_Recu(fibIdx - 2)
 
 
+def FibNum_Iter(fibIdx):
+
+    if fibIdx == 0:
+        return 0
+
+    elif fibIdx == 1 or fibIdx == 2:
+        return 1
+
+    else:
+
+        num_1 = 1
+        num_2 = 1
+
+        for _ in range(2, fibIdx):
+
+            num = num_1 + num_2
+
+            num_1, num_2 = num_2, num
+
+        return num
+
+
 FibSequence = [0, 1]
 
 def FibNum_DP(fibIdx):
@@ -79,6 +101,16 @@ if __name__ == '__main__':
     fibIndex = 9
 
     fibNum = FibNum_Recu(fibIndex)
+
+    print(f"\t\tf_{fibIndex} = {fibNum}")
+
+    print("\n")
+
+    print("\tFibonacci number iteratively:\n")
+
+    fibIndex = 9
+
+    fibNum = FibNum_Iter(fibIndex)
 
     print(f"\t\tf_{fibIndex} = {fibNum}")
 
