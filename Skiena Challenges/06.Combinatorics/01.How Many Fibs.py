@@ -26,12 +26,24 @@ How Many Fibs ?
 
 """
 
+def FibNum_Recu(fibIdx):
+
+    if fibIdx == 0:
+        return 0
+
+    elif fibIdx == 1 or fibIdx == 2:
+        return 1
+
+    else:
+        return FibNum_Recu(fibIdx - 1) + FibNum_Recu(fibIdx - 2)
+
+
 
 if __name__ == '__main__':
 
     print("How Many Fibs:\n")
 
-    print("\tFibonacci numbers:\n")
+    print("\tFibonacci sequence drive code:\n")
 
     maxFibCnt = 10
 
@@ -41,10 +53,19 @@ if __name__ == '__main__':
     num_2 = 1
     print("\t\tf_1  = 1")
 
-    fibCnt = 2
+    fibCnt = 1
 
     while fibCnt < maxFibCnt:
         num_1, num_2 = num_2, num_1 + num_2
         fibCnt += 1
 
         print(f"\t\tf_{fibCnt:<2} = {num_2}")
+
+    print("\n")
+    print("\tFibonacci number recursive:\n")
+
+    fibIndex = 9
+
+    fibNum = FibNum_Recu(fibIndex)
+
+    print(f"\t\tf_{fibIndex} = {fibNum}")
