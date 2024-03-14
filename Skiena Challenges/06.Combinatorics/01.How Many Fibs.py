@@ -7,7 +7,6 @@ How Many Fibs ?
         numbers a and b. Input is terminated by a = b = 0. Otherwise, a ≤ b ≤ 10^(100).
         The numbers a and b are given with no superfluous leading zeros.
 
-
     Output:
         For each test case output on a single line the number of Fibonacci numbers f_i with
         a ≤ f_i ≤ b
@@ -63,6 +62,26 @@ def FibNum_Iter(maxFibIdx):
             print(f"\t\t\tf_{fibIdx:<{idxDig}} = {num}")
 
         return num
+
+
+def FibCnt_Iter(minNum, maxNum):
+
+    cnt = 0
+
+    num_1 = 0
+    num_2 = 1
+    num = 1
+
+    while num <= maxNum:
+
+        if num >= minNum:
+            cnt += 1
+
+        num = num_1 + num_2
+
+        num_1, num_2 = num_2, num
+
+    return cnt
 
 
 """
@@ -127,14 +146,20 @@ if __name__ == '__main__':
 
     print(f"\t\tf_{fibIndex} = {fibNum}")
 
-    """
     print("\n")
 
+    """
     print("\tFibonacci number dynamically:\n")
 
     fibNum = FibNum_DP(fibIndex)
 
     print(f"\t\tf_{fibIndex} = {fibNum}")
     """
+
+    print("\tFibonacci count:\n")
+
+    fibCnt = FibCnt_Iter(10, 100)
+
+    print(fibCnt)
 
 
