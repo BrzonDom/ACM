@@ -8,10 +8,24 @@ Poker Hands
 
     Ranking of hands:
 
-        High card
+        1. High card
 
-        Pair
-            =>
+        2. Pair
+
+        3. Two Pair
+
+        4. Three of a Kind
+
+        5. Straight
+
+        6. Flush
+
+        7. Full House
+
+        8. Four of a Kind
+
+        9. Straight Flush
+
 
     Input:
         The input file contains several lines, each containing the designation of ten cards: the
@@ -47,6 +61,25 @@ Poker Hands
 """
 
 
+# def Rank(hand):
+#
+#     rank1 = False
+#     rank2 = False
+#     rank3 = False
+#
+#     cnt = [0]
+#
+#     for c, card in enumerate(hand):
+#
+#         cnt = [0]
+#
+#         for pair in hand[c:]:
+#             if card[0] == card[0]:
+#                 cnt[-1] += 1
+
+
+
+
 if __name__ == '__main__':
 
     cardDict = {
@@ -68,25 +101,58 @@ if __name__ == '__main__':
     org_hands = ["2H", "3D", "5S", "9C", "KD",
                  "2C", "3H", "4S", "8C", "AH"]
 
+    tst_hand = ["2H", "2D", "2S", "5C", "5D"]
 
 
-    print("Black: ", end="")
-    hand_black = []
 
-    for card in org_hands[0:5]:
+    # print("Black: ", end="")
+    # hand_black = []
+    #
+    # for card in org_hands[0:5]:
+    #     print(card, end=" ")
+    #     hand_black.append((cardDict[card[0]], card[1]))
+    #
+    # print(f"\n\t\t{hand_black}")
+    #
+    # print("\n")
+    #
+    # print("White: ", end="")
+    # hand_white = []
+    #
+    # for card in org_hands[5:10]:
+    #     print(card, end=" ")
+    #
+    #     hand_white.append((cardDict[card[0]], card[1]))
+    #
+    # print(f"\n\t\t{hand_white}")
+
+
+    print("Test: ", end="")
+    hand_test = []
+
+    for card in tst_hand:
         print(card, end=" ")
-        hand_black.append((cardDict[card[0]], card[1]))
 
-    print(f"\n\t\t{hand_black}")
+        hand_test.append((cardDict[card[0]], card[1]))
 
-    print("\n")
+    print(f"\n\t\t{hand_test}")
 
-    print("White: ", end="")
-    hand_white = []
+    cnt = [0]
+    mtch = 0
 
-    for card in org_hands[5:10]:
-        print(card, end=" ")
+    for crd, card in enumerate(hand_test):
 
-        hand_white.append((cardDict[card[0]], card[1]))
+        if mtch > crd:
+            continue
 
-    print(f"\n\t\t{hand_white}")
+        if cnt[-1]:
+            cnt.append(0)
+
+        for pair in hand_test[crd+1:]:
+            if pair[0] == card[0]:
+                cnt[-1] += 1
+                mtch += 1
+
+        mtch += 1
+
+    print(cnt)
