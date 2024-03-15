@@ -38,7 +38,7 @@ if __name__ == '__main__':
     for n in range(lenSeq-1):
         jolly[n+1] = False
 
-    print(f"\t{jolly}\n")
+    # print(f"\t{jolly}\n")
 
     prev = seq[0]
 
@@ -51,3 +51,17 @@ if __name__ == '__main__':
 
     print()
     print(f"\t{jolly}\n")
+
+    isJolly = True
+
+    for key in jolly:
+        if jolly[key] == False:
+
+            isJolly = False
+            break
+
+    if isJolly:
+        print(f"\tSequence is Jolly")
+
+    else:
+        print("\tSequence is Not Jolly")
