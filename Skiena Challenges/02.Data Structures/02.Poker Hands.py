@@ -2,10 +2,16 @@
 
 Poker Hands
 
-    A poker deck contains 52 cards. Each card has a suit of either clubs, diamonds, hearts,
-    or spades (denoted C, D, H, S in the input data). Each card also has a value of either 2
-    through 10, jack, queen, king, or ace (denoted 2, 3, 4, 5, 6, 7, 8, 9, T, J, Q, K, A)
+    A poker deck contains 52 cards. Each card has a suit of either clubs (♣), diamonds (♦),
+    hearts (♥) or spades (♠), (denoted C, D, H, S in the input data). Each card also has a value
+    of either 2 through 10, jack, queen, king, or ace (denoted 2, 3, 4, 5, 6, 7, 8, 9, T, J, Q, K, A)
 
+    Ranking of hands:
+
+        High card
+
+        Pair
+            =>
 
     Input:
         The input file contains several lines, each containing the designation of ten cards: the
@@ -60,13 +66,27 @@ if __name__ == '__main__':
     }
 
     org_hands = ["2H", "3D", "5S", "9C", "KD",
-             "2C", "3H", "4S", "8C", "AH"]
+                 "2C", "3H", "4S", "8C", "AH"]
+
+
 
     print("Black: ", end="")
+    hand_black = []
+
     for card in org_hands[0:5]:
         print(card, end=" ")
+        hand_black.append((cardDict[card[0]], card[1]))
+
+    print(f"\n\t\t{hand_black}")
+
     print("\n")
 
     print("White: ", end="")
+    hand_white = []
+
     for card in org_hands[5:10]:
         print(card, end=" ")
+
+        hand_white.append((cardDict[card[0]], card[1]))
+
+    print(f"\n\t\t{hand_white}")
