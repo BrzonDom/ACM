@@ -27,47 +27,52 @@ Jolly Jumpers
 
 if __name__ == '__main__':
 
-    seq = [1, 4, 2, 3]
+    seqLst = [[1, 4, 2, 3],
+              [1, 4, 2, -1, 6]]
 
-    print(f"\tSequence: {seq}\n")
+    for seq in seqLst:
 
-    lenSeq = len(seq)
+        print(f"\tSequence: {seq}\n")
 
-    jolly = set()
+        lenSeq = len(seq)
 
-    # for n in range(lenSeq-1):
-    #     jolly[n+1] = False
+        jolly = set()
 
-    # print(f"\t{jolly}\n")
+        # for n in range(lenSeq-1):
+        #     jolly[n+1] = False
 
-    prev = seq[0]
+        # print(f"\t{jolly}\n")
 
-    for itm in seq[1:]:
-        print(f"\t|{prev} - {itm}| = {abs(prev - itm)}")
+        prev = seq[0]
 
-        jolly.add(abs(prev - itm))
+        for itm in seq[1:]:
+            print(f"\t\t\t|{prev} - {itm}| = {abs(prev - itm)}")
 
-        prev = itm
+            jolly.add(abs(prev - itm))
 
-    print()
-    print(f"\t{jolly}\n")
+            prev = itm
 
-    isJolly = True
+        print()
+        print(f"\t\t\t{jolly}\n")
 
-    # for key in jolly:
-        # if jolly[key] == False:
-        #
-        #     isJolly = False
-        #     break
+        isJolly = True
 
-    for n in range(1, lenSeq):
-        if n not in jolly:
+        # for key in jolly:
+            # if jolly[key] == False:
+            #
+            #     isJolly = False
+            #     break
 
-            isJolly = False
-            break
+        for n in range(1, lenSeq):
+            if n not in jolly:
 
-    if isJolly:
-        print(f"\tSequence is Jolly")
+                isJolly = False
+                break
 
-    else:
-        print("\tSequence is Not Jolly")
+        if isJolly:
+            print(f"\t\tSequence is Jolly")
+
+        else:
+            print("\t\tSequence is Not Jolly")
+
+        print("\n")
