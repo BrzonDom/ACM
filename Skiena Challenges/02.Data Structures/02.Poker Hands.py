@@ -67,15 +67,15 @@ Poker Hands
 #     rank2 = False
 #     rank3 = False
 #
-#     cnt = [0]
+#     pair_Tab = [0]
 #
 #     for c, card in enumerate(hand):
 #
-#         cnt = [0]
+#         pair_Tab = [0]
 #
 #         for pair in hand[c:]:
 #             if card[0] == card[0]:
-#                 cnt[-1] += 1
+#                 pair_Tab[-1] += 1
 
 
 
@@ -137,7 +137,7 @@ if __name__ == '__main__':
 
     print(f"\n\t\t{hand_test}")
 
-    cnt = [0]
+    pair_Tab = [0]
     mtch = 0
 
     for crd, card in enumerate(hand_test):
@@ -145,14 +145,43 @@ if __name__ == '__main__':
         if mtch > crd:
             continue
 
-        if cnt[-1]:
-            cnt.append(0)
+        if pair_Tab[-1]:
+            pair_Tab.append(0)
 
         for pair in hand_test[crd+1:]:
             if pair[0] == card[0]:
-                cnt[-1] += 1
+                pair_Tab[-1] += 1
                 mtch += 1
 
         mtch += 1
 
-    print(cnt)
+    if pair_Tab[-1] == 0:
+        pair_Tab = pair_Tab[:-1]
+
+    print(f"\n\tSame cards table: {pair_Tab}")
+    # print(pair_Tab)
+
+    if len(pair_Tab) == 1:
+        if pair_Tab[0] == 2:
+           print(f"\n\tPlayer has Three of a Kind")
+
+        # elif pair_Tab[0] == 1:
+        else:
+            print(f"\n\tPlayer has a Pair")
+
+
+        # else:
+        #     print(f"\n\tPlayer has a High Card")
+
+
+    elif len(pair_Tab) == 2:
+        if 1 in pair_Tab and 2 in pair_Tab:
+            print("\n\tPlayer has a FUll House")
+
+        # elif pair_Tab[0] == 1 and pair_Tab[1] == 1:
+        else:
+            print("\n\tPlayer has Two Pairs")
+
+    # elif len(pair_Tab) == 0:
+    else:
+        print(f"\n\tPlayer has a High Card")
