@@ -39,3 +39,34 @@ Poker Hands
             => Tie
 
 """
+
+
+if __name__ == '__main__':
+
+    cardDict = {
+        '2' :  2,
+        '3' :  3,
+        '4' :  4,
+        '5' :  5,
+        '6' :  6,
+        '7' :  7,
+        '8' :  8,
+        '9' :  9,
+        'T' : 10,
+        'J' : 11,
+        'Q' : 12,
+        'K' : 13,
+        'A' : 14
+    }
+
+    org_hands = ["2H", "3D", "5S", "9C", "KD",
+             "2C", "3H", "4S", "8C", "AH"]
+
+    print("Black: ", end="")
+    for card in org_hands[0:5]:
+        print(card, end=" ")
+    print("\n")
+
+    print("White: ", end="")
+    for card in org_hands[5:10]:
+        print(card, end=" ")
