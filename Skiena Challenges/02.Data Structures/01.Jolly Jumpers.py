@@ -33,10 +33,10 @@ if __name__ == '__main__':
 
     lenSeq = len(seq)
 
-    jolly = {}
+    jolly = set()
 
-    for n in range(lenSeq-1):
-        jolly[n+1] = False
+    # for n in range(lenSeq-1):
+    #     jolly[n+1] = False
 
     # print(f"\t{jolly}\n")
 
@@ -45,7 +45,7 @@ if __name__ == '__main__':
     for itm in seq[1:]:
         print(f"\t|{prev} - {itm}| = {abs(prev - itm)}")
 
-        jolly[abs(prev - itm)] = True
+        jolly.add(abs(prev - itm))
 
         prev = itm
 
@@ -54,8 +54,14 @@ if __name__ == '__main__':
 
     isJolly = True
 
-    for key in jolly:
-        if jolly[key] == False:
+    # for key in jolly:
+        # if jolly[key] == False:
+        #
+        #     isJolly = False
+        #     break
+
+    for n in range(1, lenSeq):
+        if n not in jolly:
 
             isJolly = False
             break
