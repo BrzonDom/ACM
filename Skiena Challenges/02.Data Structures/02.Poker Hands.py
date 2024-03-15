@@ -9,22 +9,31 @@ Poker Hands
     Ranking of hands:
 
         1. High card
+            Highest value, then next highest and so on
 
         2. Pair
+            Highest value of pair, then sum of the rest
 
         3. Two Pair
+            Highest value of pair, then other pair value, then the last
 
         4. Three of a Kind
+            Highest value of three
 
         5. Straight
+            Highest card  of a straight
 
         6. Flush
+            Highest value of flush, then next highest value of flush and so on till end of flush
 
         7. Full House
+            Highest value of three
 
         8. Four of a Kind
+            Highest card of four
 
         9. Straight Flush
+            Highest card in hand
 
 
     Input:
@@ -138,12 +147,18 @@ if __name__ == '__main__':
     print(f"\n\t\t{hand_test}")
 
     pair_Tab = [0]
+    info_Tab = [0]
+
+    highCard = 0
     mtch = 0
 
     for crd, card in enumerate(hand_test):
 
         if mtch > crd:
             continue
+
+        if card[0] > highCard:
+            highCard = card[0]
 
         if pair_Tab[-1]:
             pair_Tab.append(0)
@@ -185,3 +200,5 @@ if __name__ == '__main__':
     # elif len(pair_Tab) == 0:
     else:
         print(f"\n\tPlayer has a High Card")
+
+    print(f"\t\tHigh Card: {highCard}")
