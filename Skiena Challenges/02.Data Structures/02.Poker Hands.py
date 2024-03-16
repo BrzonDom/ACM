@@ -79,6 +79,39 @@ def modify(strHand):
     return hand
 
 
+def rank(hand):
+    pair_Tbl = [0]
+
+    card_Srt = [0, 0, 0, 0, 0]
+
+    sortCard = []
+    mtch = 0
+
+    for crd, card in enumerate(hand):
+
+        card_Srt[crd] = card[0]
+
+        if mtch > crd:
+            continue
+
+        if pair_Tbl[-1]:
+            pair_Tbl.append(0)
+
+        for pair in hand[crd + 1:]:
+            if pair[0] == card[0]:
+                pair_Tbl[-1] += 1
+                mtch += 1
+
+        mtch += 1
+
+    if pair_Tbl[-1] == 0:
+        pair_Tbl = pair_Tbl[:-1]
+
+    card_Srt.sort(reverse=True)
+
+    return pair_Tbl, card_Srt
+
+
 if __name__ == '__main__':
 
     cardDict = {
@@ -145,12 +178,12 @@ if __name__ == '__main__':
     for tst_hand in tstHands_Lst:
 
         # print("Test: ", end="")
-        # hand_test = []
+        # hand = []
         #
         # for card in tst_hand:
         #     print(card, end=" ")
         #
-        #     hand_test.append((cardDict[card[0]], card[1]))
+        #     hand.append((cardDict[card[0]], card[1]))
 
         print(f"Test: {tst_hand}")
 
@@ -158,41 +191,43 @@ if __name__ == '__main__':
 
         print(f"\t\t{hand_test}")
 
-        pair_Tbl = [0]
-        info_Tbl = [0]
-        card_Srt = [0, 0, 0, 0, 0]
-
-        sortCard = []
-        mtch = 0
-
-        for crd, card in enumerate(hand_test):
-
-            card_Srt[crd] = card[0]
-
-            if mtch > crd:
-                continue
-
-            # for s, srt in enumerate(card_Srt):
-            #     if card[0] > srt:
-            #         str = card[0]
-
-            if pair_Tbl[-1]:
-                pair_Tbl.append(0)
-
-            for pair in hand_test[crd+1:]:
-                if pair[0] == card[0]:
-                    pair_Tbl[-1] += 1
-                    mtch += 1
-
-            mtch += 1
-
-        if pair_Tbl[-1] == 0:
-            pair_Tbl = pair_Tbl[:-1]
-
-        card_Srt.sort(reverse=True)
+        # pair_Tbl = [0]
+        #
+        # card_Srt = [0, 0, 0, 0, 0]
+        #
+        # sortCard = []
+        # mtch = 0
+        #
+        # for crd, card in enumerate(hand_test):
+        #
+        #     card_Srt[crd] = card[0]
+        #
+        #     if mtch > crd:
+        #         continue
+        #
+        #     # for s, srt in enumerate(card_Srt):
+        #     #     if card[0] > srt:
+        #     #         str = card[0]
+        #
+        #     if pair_Tbl[-1]:
+        #         pair_Tbl.append(0)
+        #
+        #     for pair in hand_test[crd+1:]:
+        #         if pair[0] == card[0]:
+        #             pair_Tbl[-1] += 1
+        #             mtch += 1
+        #
+        #     mtch += 1
+        #
+        # if pair_Tbl[-1] == 0:
+        #     pair_Tbl = pair_Tbl[:-1]
+        #
+        # card_Srt.sort(reverse=True)
 
         # print(f"\n\tSame cards table: {pair_Tbl}")
         # print(pair_Tbl)
+
+        pair_Tbl, card_Srt = rank(hand_test)
 
         if len(pair_Tbl) == 1:
             if pair_Tbl[0] == 2:
