@@ -82,6 +82,7 @@ def modify(strHand):
 def rank(hand):
     pair_Tbl = [0]
 
+    color_Dct = {'C': 0, 'D': 0, 'H': 0, 'S': 0}
     card_Srt = [0, 0, 0, 0, 0]
 
     sortCard = []
@@ -90,6 +91,8 @@ def rank(hand):
     for crd, card in enumerate(hand):
 
         card_Srt[crd] = card[0]
+
+        color_Dct[card[1]] += 1
 
         if mtch > crd:
             continue
@@ -145,7 +148,9 @@ if __name__ == '__main__':
                     # 4.       Full House
                     ["2H", "2D", "2S", "5C", "5D"],
                     # 5.       Four of a Kind
-                    ["2H", "3D", "3S", "3C", "5D"]]
+                    ["2H", "3D", "3S", "3C", "5D"],
+                    # 6.       Flush
+                    ["2H", "6D", "4S", "3C", "5D"]]
 
 
     # strHand_test = tstHands_Lst[0]
@@ -191,41 +196,68 @@ if __name__ == '__main__':
 
         print(f"\t\t{hand_test}")
 
-        # pair_Tbl = [0]
-        #
-        # card_Srt = [0, 0, 0, 0, 0]
-        #
-        # sortCard = []
-        # mtch = 0
-        #
-        # for crd, card in enumerate(hand_test):
-        #
-        #     card_Srt[crd] = card[0]
-        #
-        #     if mtch > crd:
-        #         continue
-        #
-        #     # for s, srt in enumerate(card_Srt):
-        #     #     if card[0] > srt:
-        #     #         str = card[0]
-        #
-        #     if pair_Tbl[-1]:
-        #         pair_Tbl.append(0)
-        #
-        #     for pair in hand_test[crd+1:]:
-        #         if pair[0] == card[0]:
-        #
-        #             pair_Tbl[-1] += 1
-        #             mtch += 1
-        #
-        #     mtch += 1
-        #
-        # if pair_Tbl[-1] == 0:
-        #     pair_Tbl = pair_Tbl[:-1]
-        #
-        # card_Srt.sort(reverse=True)
+        pair_Tbl = [0]
 
-        pair_Tbl, card_Srt = rank(hand_test)
+        color_Dct = {'C': 0, 'D': 0, 'H': 0, 'S': 0}
+        card_Srt = [0, 0, 0, 0, 0]
+
+        sortCard = []
+        mtch = 0
+
+
+
+        for crd, card in enumerate(hand_test):
+
+            card_Srt[crd] = card[0]
+
+            color_Dct[card[1]] += 1
+
+            if mtch > crd:
+                continue
+
+            # for s, srt in enumerate(card_Srt):
+            #     if card[0] > srt:
+            #         str = card[0]
+
+            if pair_Tbl[-1]:
+                pair_Tbl.append(0)
+
+            for pair in hand_test[crd+1:]:
+                if pair[0] == card[0]:
+
+                    pair_Tbl[-1] += 1
+                    mtch += 1
+
+                # else:
+                #     if pair[0] == card[0] + 1 and up:
+                #         flsh += 1
+                #         down = False
+                #
+                #     elif pair[0] == card[0] - 1 and down:
+                #         flsh += 1
+                #         up = False
+                #
+                #     else:
+                #         flsh = 0
+
+            mtch += 1
+
+        if pair_Tbl[-1] == 0:
+            pair_Tbl = pair_Tbl[:-1]
+
+        card_Srt.sort(reverse=True)
+
+        flsh = 0
+
+        prev = card_Srt[0]
+        for nxt in card_Srt[1:]:
+            if nxt == prev - 1:
+                flsh += 1
+                prev = nxt
+            else:
+                break
+
+        # pair_Tbl, card_Srt = rank(hand_test)
 
         if len(pair_Tbl) == 1:
             if pair_Tbl[0] == 2:
@@ -250,9 +282,17 @@ if __name__ == '__main__':
 
         # elif len(pair_Tbl) == 0:
         else:
-            print(f"\n\tPlayer has a High Card")
+            if flsh == 4:
+                print("\n\tPlayer has a Flush")
+
+            else:
+                print(f"\n\tPlayer has a High Card")
 
         print(f"\t\t\tPair table: {pair_Tbl}")
         print(f"\t\tHigh Card: {card_Srt[0]}")
         print(f"\t\t\tSorted cards: {card_Srt}")
+        print(f"\t\t", end="\t")
+        for color in color_Dct:
+            if color_Dct[color]:
+                print(f"{color_Dct[color]}{color}", end="  ")
         print("\n")
