@@ -69,24 +69,14 @@ Poker Hands
 
 """
 
+def modify(strHand):
 
-# def Rank(hand):
-#
-#     rank1 = False
-#     rank2 = False
-#     rank3 = False
-#
-#     pair_Tbl = [0]
-#
-#     for c, card in enumerate(hand):
-#
-#         pair_Tbl = [0]
-#
-#         for pair in hand[c:]:
-#             if card[0] == card[0]:
-#                 pair_Tbl[-1] += 1
+    hand = []
 
+    for card in strHand:
+        hand.append((cardDict[card[0]], card[1]))
 
+    return hand
 
 
 if __name__ == '__main__':
@@ -154,15 +144,19 @@ if __name__ == '__main__':
 
     for tst_hand in tstHands_Lst:
 
-        print("Test: ", end="")
-        hand_test = []
+        # print("Test: ", end="")
+        # hand_test = []
+        #
+        # for card in tst_hand:
+        #     print(card, end=" ")
+        #
+        #     hand_test.append((cardDict[card[0]], card[1]))
 
-        for card in tst_hand:
-            print(card, end=" ")
+        print(f"Test: {tst_hand}")
 
-            hand_test.append((cardDict[card[0]], card[1]))
+        hand_test = modify(tst_hand)
 
-        print(f"\n\t\t{hand_test}")
+        print(f"\t\t{hand_test}")
 
         pair_Tbl = [0]
         info_Tbl = [0]
