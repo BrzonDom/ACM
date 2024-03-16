@@ -125,11 +125,11 @@ if __name__ == '__main__':
                     ["2H", "3D", "3S", "3C", "53"]]
 
 
-    tst_hand = tstHands_Lst[0]
+    # tst_hand = tstHands_Lst[0]
     # tst_hand = ["2H", "2D", "2S", "5C", "5D"]
 
 
-
+    """
     # print("Black: ", end="")
     # hand_black = []
     #
@@ -150,77 +150,81 @@ if __name__ == '__main__':
     #     hand_white.append((cardDict[card[0]], card[1]))
     #
     # print(f"\n\t\t{hand_white}")
+    """
+
+    for tst_hand in tstHands_Lst:
+
+        print("Test: ", end="")
+        hand_test = []
+
+        for card in tst_hand:
+            print(card, end=" ")
+
+            hand_test.append((cardDict[card[0]], card[1]))
+
+        print(f"\n\t\t{hand_test}")
+
+        pair_Tbl = [0]
+        info_Tbl = [0]
+        card_Srt = [0, 0, 0, 0, 0]
+
+        sortCard = []
+        mtch = 0
+
+        for crd, card in enumerate(hand_test):
+
+            card_Srt[crd] = card[0]
+
+            if mtch > crd:
+                continue
+
+            # for s, srt in enumerate(card_Srt):
+            #     if card[0] > srt:
+            #         str = card[0]
+
+            if pair_Tbl[-1]:
+                pair_Tbl.append(0)
+
+            for pair in hand_test[crd+1:]:
+                if pair[0] == card[0]:
+                    pair_Tbl[-1] += 1
+                    mtch += 1
+
+            mtch += 1
+
+        if pair_Tbl[-1] == 0:
+            pair_Tbl = pair_Tbl[:-1]
+
+        card_Srt.sort(reverse=True)
+
+        # print(f"\n\tSame cards table: {pair_Tbl}")
+        # print(pair_Tbl)
+
+        if len(pair_Tbl) == 1:
+            if pair_Tbl[0] == 2:
+               print(f"\n\tPlayer has Three of a Kind")
+
+            # elif pair_Tbl[0] == 1:
+            else:
+                print(f"\n\tPlayer has a Pair")
 
 
-    print("Test: ", end="")
-    hand_test = []
+            # else:
+            #     print(f"\n\tPlayer has a High Card")
 
-    for card in tst_hand:
-        print(card, end=" ")
 
-        hand_test.append((cardDict[card[0]], card[1]))
+        elif len(pair_Tbl) == 2:
+            if 1 in pair_Tbl and 2 in pair_Tbl:
+                print("\n\tPlayer has a FUll House")
 
-    print(f"\n\t\t{hand_test}")
+            # elif pair_Tbl[0] == 1 and pair_Tbl[1] == 1:
+            else:
+                print("\n\tPlayer has Two Pairs")
 
-    pair_Tbl = [0]
-    info_Tbl = [0]
-    card_Srt = [0, 0, 0, 0, 0]
-
-    sortCard = []
-    mtch = 0
-
-    for crd, card in enumerate(hand_test):
-
-        card_Srt[crd] = card[0]
-
-        if mtch > crd:
-            continue
-
-        # for s, srt in enumerate(card_Srt):
-        #     if card[0] > srt:
-        #         str = card[0]
-
-        if pair_Tbl[-1]:
-            pair_Tbl.append(0)
-
-        for pair in hand_test[crd+1:]:
-            if pair[0] == card[0]:
-                pair_Tbl[-1] += 1
-                mtch += 1
-
-        mtch += 1
-
-    if pair_Tbl[-1] == 0:
-        pair_Tbl = pair_Tbl[:-1]
-
-    card_Srt.sort(reverse=True)
-
-    # print(f"\n\tSame cards table: {pair_Tbl}")
-    # print(pair_Tbl)
-
-    if len(pair_Tbl) == 1:
-        if pair_Tbl[0] == 2:
-           print(f"\n\tPlayer has Three of a Kind")
-
-        # elif pair_Tbl[0] == 1:
+        # elif len(pair_Tbl) == 0:
         else:
-            print(f"\n\tPlayer has a Pair")
+            print(f"\n\tPlayer has a High Card")
 
-
-        # else:
-        #     print(f"\n\tPlayer has a High Card")
-
-
-    elif len(pair_Tbl) == 2:
-        if 1 in pair_Tbl and 2 in pair_Tbl:
-            print("\n\tPlayer has a FUll House")
-
-        # elif pair_Tbl[0] == 1 and pair_Tbl[1] == 1:
-        else:
-            print("\n\tPlayer has Two Pairs")
-
-    # elif len(pair_Tbl) == 0:
-    else:
-        print(f"\n\tPlayer has a High Card")
-
-    print(f"\t\tHigh Card: {card_Srt[0]}")
+        print(f"\t\tHigh Card: {card_Srt[0]}")
+        print(f"\t\t\tSorted cards: {card_Srt}")
+        print("\n")
