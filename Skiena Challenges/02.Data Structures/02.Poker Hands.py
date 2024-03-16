@@ -145,11 +145,11 @@ if __name__ == '__main__':
                     # 4.       Full House
                     ["2H", "2D", "2S", "5C", "5D"],
                     # 5.       Four of a Kind
-                    ["2H", "3D", "3S", "3C", "53"]]
+                    ["2H", "3D", "3S", "3C", "5D"]]
 
 
-    # tst_hand = tstHands_Lst[0]
-    # tst_hand = ["2H", "2D", "2S", "5C", "5D"]
+    # strHand_test = tstHands_Lst[0]
+    # strHand_test = ["2H", "2D", "2S", "5C", "5D"]
 
 
     """
@@ -175,19 +175,19 @@ if __name__ == '__main__':
     # print(f"\n\t\t{hand_white}")
     """
 
-    for tst_hand in tstHands_Lst:
+    for strHand_test in tstHands_Lst:
 
         # print("Test: ", end="")
         # hand = []
         #
-        # for card in tst_hand:
+        # for card in strHand_test:
         #     print(card, end=" ")
         #
         #     hand.append((cardDict[card[0]], card[1]))
 
-        print(f"Test: {tst_hand}")
+        print(f"Test: {strHand_test}")
 
-        hand_test = modify(tst_hand)
+        hand_test = modify(strHand_test)
 
         print(f"\t\t{hand_test}")
 
@@ -214,6 +214,7 @@ if __name__ == '__main__':
         #
         #     for pair in hand_test[crd+1:]:
         #         if pair[0] == card[0]:
+        #
         #             pair_Tbl[-1] += 1
         #             mtch += 1
         #
@@ -223,9 +224,6 @@ if __name__ == '__main__':
         #     pair_Tbl = pair_Tbl[:-1]
         #
         # card_Srt.sort(reverse=True)
-
-        # print(f"\n\tSame cards table: {pair_Tbl}")
-        # print(pair_Tbl)
 
         pair_Tbl, card_Srt = rank(hand_test)
 
@@ -254,6 +252,7 @@ if __name__ == '__main__':
         else:
             print(f"\n\tPlayer has a High Card")
 
+        print(f"\t\t\tPair table: {pair_Tbl}")
         print(f"\t\tHigh Card: {card_Srt[0]}")
         print(f"\t\t\tSorted cards: {card_Srt}")
         print("\n")
