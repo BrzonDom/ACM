@@ -149,8 +149,10 @@ if __name__ == '__main__':
                     ["2H", "2D", "2S", "5C", "5D"],
                     # 5.       Four of a Kind
                     ["2H", "3D", "3S", "3C", "5D"],
-                    # 6.       Flush
-                    ["2H", "6D", "4S", "3C", "5D"]]
+                    # 6.       Straight
+                    ["2H", "6D", "4S", "3C", "5D"],
+                    # 7.       Flush
+                    ["2H", "4H", "KH", "3H", "6H"]]
 
 
     # strHand_test = tstHands_Lst[0]
@@ -250,10 +252,12 @@ if __name__ == '__main__':
         flsh = 0
 
         prev = card_Srt[0]
+
         for nxt in card_Srt[1:]:
             if nxt == prev - 1:
                 flsh += 1
                 prev = nxt
+
             else:
                 break
 
@@ -282,8 +286,12 @@ if __name__ == '__main__':
 
         # elif len(pair_Tbl) == 0:
         else:
-            if flsh == 4:
+
+            if max(color_Dct.values()) >= 5:
                 print("\n\tPlayer has a Flush")
+
+            elif flsh >= 4:
+                print("\n\tPlayer has a Straight")
 
             else:
                 print(f"\n\tPlayer has a High Card")
