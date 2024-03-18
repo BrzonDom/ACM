@@ -152,7 +152,9 @@ if __name__ == '__main__':
                     # 6.       Straight
                     ["2H", "6D", "4S", "3C", "5D"],
                     # 7.       Flush
-                    ["2H", "4H", "KH", "3H", "6H"]]
+                    ["2H", "4H", "KH", "3H", "6H"],
+                    # 8.       Straight Flush
+                    ["2D", "6D", "4D", "3D", "5D"]]
 
 
     # strHand_test = tstHands_Lst[0]
@@ -288,7 +290,12 @@ if __name__ == '__main__':
         else:
 
             if max(color_Dct.values()) >= 5:
-                print("\n\tPlayer has a Flush")
+
+                if flsh >= 4:
+                    print("\n\tPlayer has a Straight Flush")
+
+                else:
+                    print("\n\tPlayer has a Flush")
 
             elif flsh >= 4:
                 print("\n\tPlayer has a Straight")
