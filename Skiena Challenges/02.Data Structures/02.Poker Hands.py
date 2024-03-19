@@ -227,20 +227,6 @@ if __name__ == '__main__':
 
             color_Dct[card[1]].append(card[0])
 
-            # if mtch > crd:
-            #     continue
-            #
-            # if pair_Tbl[-1]:
-            #     pair_Tbl.append(0)
-            #
-            # for pair in hand_test[crd+1:]:
-            #     if pair[0] == card[0]:
-            #
-            #         pair_Tbl[-1] += 1
-            #         mtch += 1
-            #
-            # mtch += 1
-
         # if pair_Tbl[-1] == 0:
         #     pair_Tbl = pair_Tbl[:-1]
 
@@ -273,20 +259,32 @@ if __name__ == '__main__':
 
             if strght == 4:
                 print("\n\tStraight Flush")
+                print(f"\t\tCards: {sorted(cards.keys(), reverse=True)}")
 
             else:
                 print("\n\tFlush")
+                print(f"\t\tCards: {sorted(cards.keys(), reverse=True)}")
 
         elif len(cards) == 5:
 
             if strght == 4:
                 print("\n\tStraight")
+                print(f"\t\tCards: {sorted(cards.keys(), reverse=True)}")
 
             else:
                 print(f"\n\tHigh Card")
+                print(f"\t\tCards: {sorted(cards.keys(), reverse=True)}")
 
         elif len(cards) == 4:
             print(f"\n\tPair")
+
+            pair = list(cards.keys())[list(cards.values()).index(2)]
+            rest = list(cards.keys())
+            rest.remove(pair)
+            rest.sort(reverse=True)
+
+            print(f"\t\tPair: {pair}")
+            print(f"\t\tRest: {rest}")
 
 
         elif len(cards) == 3:
@@ -294,16 +292,49 @@ if __name__ == '__main__':
             if 3 in cards.values():
                 print(f"\n\tThree of a Kind")
 
+                three = list(cards.keys())[list(cards.values()).index(3)]
+                rest = list(cards.keys())
+                rest.remove(three)
+                rest.sort(reverse=True)
+
+                print(f"\t\tThree: {three}")
+                print(f"\t\tRest:  {rest}")
+
             else:
                 print("\n\tTwo Pairs")
+
+                ind = list(cards.values()).index(2)
+
+                pairs = [list(cards.keys())[ind]]
+                pairs.append(list(cards.keys())[list(cards.values()).index(2, ind+1)])
+
+                rest = list(cards.keys())
+                rest.remove(pairs[0])
+                rest.remove(pairs[1])
+
+                print(f"\t\tPairs: {pairs}")
+                print(f"\t\tRest:  {rest[0]}")
 
         elif len(cards) == 2:
 
             if 3 in cards.values():
                 print("\n\tFull House")
 
+                pair = list(cards.keys())[list(cards.values()).index(2)]
+                three = list(cards.keys())[list(cards.values()).index(3)]
+
+                print(f"\t\tThree: {three}")
+                print(f"\t\tPair:  {pair}")
+
             else:
                 print("\n\tFour of a Kind")
+
+                four = list(cards.keys())[list(cards.values()).index(4)]
+                rest = list(cards.keys())
+                rest.remove(four)
+
+                print(f"\t\tFour: {four}")
+                print(f"\t\tRest: {rest[0]}")
 
 
 
@@ -347,7 +378,7 @@ if __name__ == '__main__':
                 print(f"\n\tPlayer has a High Card")
         """
 
-        print(f"\t{sorted(cards, reverse=True)}")
+        # print(f"\t{sorted(cards, reverse=True)}")
 
         # print(f"\t\t\tPair table: {pair_Tbl}")
         # print(f"\t\tHigh Card: {card_Srt[0]}")
