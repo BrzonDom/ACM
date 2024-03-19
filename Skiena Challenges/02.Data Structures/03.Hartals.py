@@ -107,5 +107,9 @@ for c in range(Input[0]):
                     lostDays += 1
                     lost = True
 
+                elif lost:
+                    print("\t\t\t\t\tX")
+
+
     print(f"\n\tDays lost: {lostDays}")
     print("\n")
