@@ -12,10 +12,10 @@ Poker Hands
             Highest value, then next highest and so on
 
         2. Pair
-            Highest value of pair, then sum of the rest
+            Highest value of pair, then highest value of the rest and so on
 
         3. Two Pair
-            Highest value of pair, then other pair value, then the last
+            Highest value of pair, then other pair value, then the last card
 
         4. Three of a Kind
             Highest value of three
@@ -202,61 +202,66 @@ if __name__ == '__main__':
 
         pair_Tbl = [0]
 
-        color_Dct = {'C': 0, 'D': 0, 'H': 0, 'S': 0}
+        color_Dct = {'C': [], 'D': [], 'H': [], 'S': []}
         card_Srt = [0, 0, 0, 0, 0]
+
+        cards = {}
+
+        # pairs = set()
+        # threes = 0
+        # fours = 0
+        # rest = []
 
         sortCard = []
         mtch = 0
 
-
-
         for crd, card in enumerate(hand_test):
 
-            card_Srt[crd] = card[0]
+            # card_Srt[crd] = card[0]
 
-            color_Dct[card[1]] += 1
+            if card[0] not in cards:
+                cards[card[0]] = 1
 
-            if mtch > crd:
-                continue
+            else:
+                cards[card[0]] += 1
 
-            # for s, srt in enumerate(card_Srt):
-            #     if card[0] > srt:
-            #         str = card[0]
+            color_Dct[card[1]].append(card[0])
 
-            if pair_Tbl[-1]:
-                pair_Tbl.append(0)
+            # if mtch > crd:
+            #     continue
+            #
+            # if pair_Tbl[-1]:
+            #     pair_Tbl.append(0)
+            #
+            # for pair in hand_test[crd+1:]:
+            #     if pair[0] == card[0]:
+            #
+            #         pair_Tbl[-1] += 1
+            #         mtch += 1
+            #
+            # mtch += 1
 
-            for pair in hand_test[crd+1:]:
-                if pair[0] == card[0]:
+        # if pair_Tbl[-1] == 0:
+        #     pair_Tbl = pair_Tbl[:-1]
 
-                    pair_Tbl[-1] += 1
-                    mtch += 1
-
-                # else:
-                #     if pair[0] == card[0] + 1 and up:
-                #         flsh += 1
-                #         down = False
-                #
-                #     elif pair[0] == card[0] - 1 and down:
-                #         flsh += 1
-                #         up = False
-                #
-                #     else:
-                #         flsh = 0
-
-            mtch += 1
-
-        if pair_Tbl[-1] == 0:
-            pair_Tbl = pair_Tbl[:-1]
-
-        card_Srt.sort(reverse=True)
+        # card_Srt.sort(reverse=True)
 
         flsh = 0
 
-        prev = card_Srt[0]
+        # prev = card_Srt[0]
+        #
+        # for nxt in card_Srt[1:]:
+        #     if nxt == prev - 1:
+        #         flsh += 1
+        #         prev = nxt
+        #
+        #     else:
+        #         break
 
-        for nxt in card_Srt[1:]:
-            if nxt == prev - 1:
+        prev = sorted(cards.keys())[0]
+
+        for nxt in sorted(cards.keys())[1:]:
+            if nxt == prev + 1:
                 flsh += 1
                 prev = nxt
 
@@ -265,6 +270,8 @@ if __name__ == '__main__':
 
         # pair_Tbl, card_Srt = rank(hand_test)
 
+
+        """
         if len(pair_Tbl) == 1:
             if pair_Tbl[0] == 2:
                print(f"\n\tPlayer has Three of a Kind")
@@ -289,7 +296,7 @@ if __name__ == '__main__':
         # elif len(pair_Tbl) == 0:
         else:
 
-            if max(color_Dct.values()) >= 5:
+            if len(max(color_Dct.values(), key=len)) >= 5:
 
                 if flsh >= 4:
                     print("\n\tPlayer has a Straight Flush")
@@ -302,12 +309,14 @@ if __name__ == '__main__':
 
             else:
                 print(f"\n\tPlayer has a High Card")
+        """
 
-        print(f"\t\t\tPair table: {pair_Tbl}")
-        print(f"\t\tHigh Card: {card_Srt[0]}")
-        print(f"\t\t\tSorted cards: {card_Srt}")
-        print(f"\t\t", end="\t")
-        for color in color_Dct:
-            if color_Dct[color]:
-                print(f"{color_Dct[color]}{color}", end="  ")
+        print(cards)
+        # print(f"\t\t\tPair table: {pair_Tbl}")
+        # print(f"\t\tHigh Card: {card_Srt[0]}")
+        # print(f"\t\t\tSorted cards: {card_Srt}")
+        # print(f"\t\t", end="\t")
+        # for color in color_Dct:
+        #     if color_Dct[color]:
+        #         print(f"{sorted(color_Dct[color], reverse=True)} {color}", end="  ")
         print("\n")
