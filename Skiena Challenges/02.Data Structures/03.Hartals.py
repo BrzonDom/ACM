@@ -35,6 +35,28 @@ Hartals
 """
 import copy
 
+days = {
+    0: "Saturday",
+    1 : "Sunday",
+    2 : "Monday",
+    3 : "Tuesday",
+    4 : "Wednesday",
+    5 : "Thursday",
+    6 : "Friday"
+    # 7 : "Saturday"
+}
+
+# days = {
+#     0 : "Sunday",
+#     1 : "Monday",
+#     2 : "Tuesday",
+#     3 : "Wednesday",
+#     4 : "Thursday",
+#     5 : "Friday",
+#     6 : "Saturday"
+# }
+
+
 Input_Str = "2 14 3 3 4 8 100 4 12 15 25 40"
 
 Input = list(map(int, Input_Str.split()))
@@ -66,54 +88,24 @@ for c in range(Input[0]):
     print(f"\tCases: {Cases[c][1]}")
     print()
 
-# days = {
-#     0 : "Sunday",
-#     1 : "Monday",
-#     2 : "Tuesday",
-#     3 : "Wednesday",
-#     4 : "Thursday",
-#     5 : "Friday",
-#     6 : "Saturday"
-# }
+    lostDays = 0
 
-# days = {
-#     1 : "Sunday",
-#     2 : "Monday",
-#     3 : "Tuesday",
-#     4 : "Wednesday",
-#     5 : "Thursday",
-#     6 : "Friday",
-#     7 : "Saturday"
-# }
+    Hartals = copy.deepcopy(Cases[c][1])
 
-days = {
-    0: "Saturday",
-    1 : "Sunday",
-    2 : "Monday",
-    3 : "Tuesday",
-    4 : "Wednesday",
-    5 : "Thursday",
-    6 : "Friday"
-    # 7 : "Saturday"
-}
+    for d in range(1, Cases[c][0]):
+        print(f"\t\t{d:2} {d % 7} : {days[(d % 7)]}")
 
-lostDays = 0
+        lost = False
 
-Hartals = copy.deepcopy(Cases[0][1])
+        for cs, case in enumerate(Cases[c][1]):
 
-for d in range(1, Cases[0][0]):
-    print(f"\t{d:2} {d % 7} : {days[(d % 7)]}")
+            if d == Hartals[cs]:
+                Hartals[cs] += case
 
-    lost = False
+                if not ((d % 7) == 6 or (d % 7) == 7) and not lost:
+                    print("\t\t\t\t\tX")
+                    lostDays += 1
+                    lost = True
 
-    for c, case in enumerate(Cases[0][1]):
-
-        if d == Hartals[c]:
-            Hartals[c] += case
-
-            if not ((d % 7) == 6 or (d % 7) == 7) and not lost:
-                print("\t\t\t\t\tX")
-                lostDays += 1
-                lost = True
-
-print(f"\nDays lost: {lostDays}")
+    print(f"\n\tDays lost: {lostDays}")
+    print("\n")
