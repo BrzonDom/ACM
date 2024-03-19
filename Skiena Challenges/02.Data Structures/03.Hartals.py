@@ -33,5 +33,33 @@ Hartals
             => 15
 
 """
+import copy
 
-Input = ["2 14 3 3 4 8 100 4 12 15 25 40"]
+Input_Str = "2 14 3 3 4 8 100 4 12 15 25 40"
+
+Input = list(map(int, Input_Str.split()))
+
+print(f"Input string:   \"{Input_Str}\"")
+print(f"Input:         {Input}")
+print()
+
+Input_ext = copy.deepcopy(Input)
+
+Cases = [[] for _ in range(Input[0])]
+
+Input_ext = Input_ext[1:]
+
+# print(Input_ext)
+
+for c in range(Input[0]):
+
+    Cases[c].append(Input_ext[0])
+    Cases[c].append([])
+    Input_ext = Input_ext[1:]
+
+    for p in range(1, Input_ext[0] + 1):
+        Cases[c][1].append(Input_ext[p])
+
+    Input_ext = Input_ext[Input_ext[0] + 1:]
+
+print(f"\tCases: {Cases}")
