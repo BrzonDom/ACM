@@ -41,7 +41,7 @@ Input = list(map(int, Input_Str.split()))
 
 print(f"Input string:   \"{Input_Str}\"")
 print(f"Input:         {Input}")
-print()
+print("\n")
 
 Input_ext = copy.deepcopy(Input)
 
@@ -62,4 +62,35 @@ for c in range(Input[0]):
 
     Input_ext = Input_ext[Input_ext[0] + 1:]
 
-print(f"\tCases: {Cases}")
+    print(f"\tDays: {Cases[c][0]}")
+    print(f"\tCases: {Cases[c][1]}")
+    print()
+
+
+days = {
+    0 : "Sunday",
+    1 : "Monday",
+    2 : "Tuesday",
+    3 : "Wednesday",
+    4 : "Thursday",
+    5 : "Friday",
+    6 : "Saturday"
+}
+
+lostDays = 0
+
+Hartals = copy.deepcopy(Cases[0][1])
+
+for d in range(Cases[0][0]):
+    print(f"\t{d:2} {d % 7} : {days[d % 7]}")
+
+    lost = False
+
+    for c, case in enumerate(Cases[0][1]):
+
+        if (d % 7) == Hartals[c]:
+            Hartals[c] = (Hartals[c] + case) % 7
+
+            if not ((d % 7) == 5 or (d % 7) == 6) and not lost:
+                lostDays += 1
+                lost = True
