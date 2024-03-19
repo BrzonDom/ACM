@@ -148,7 +148,7 @@ if __name__ == '__main__':
                     # 4.       Full House
                     ["2H", "2D", "2S", "5C", "5D"],
                     # 5.       Four of a Kind
-                    ["2H", "3D", "3S", "3C", "5D"],
+                    ["2H", "3D", "3S", "3C", "3D"],
                     # 6.       Straight
                     ["2H", "6D", "4S", "3C", "5D"],
                     # 7.       Flush
@@ -246,13 +246,13 @@ if __name__ == '__main__':
 
         # card_Srt.sort(reverse=True)
 
-        flsh = 0
+        strght = 0
 
         # prev = card_Srt[0]
         #
         # for nxt in card_Srt[1:]:
         #     if nxt == prev - 1:
-        #         flsh += 1
+        #         strght += 1
         #         prev = nxt
         #
         #     else:
@@ -262,13 +262,49 @@ if __name__ == '__main__':
 
         for nxt in sorted(cards.keys())[1:]:
             if nxt == prev + 1:
-                flsh += 1
+                strght += 1
                 prev = nxt
 
             else:
                 break
 
         # pair_Tbl, card_Srt = rank(hand_test)
+        if len(max(color_Dct.values(), key=len)) == 5:
+
+            if strght == 4:
+                print("\n\tStraight Flush")
+
+            else:
+                print("\n\tFlush")
+
+        elif len(cards) == 5:
+
+            if strght == 4:
+                print("\n\tStraight")
+
+            else:
+                print(f"\n\tHigh Card")
+
+        elif len(cards) == 4:
+            print(f"\n\tPair")
+
+
+        elif len(cards) == 3:
+
+            if 3 in cards.values():
+                print(f"\n\tThree of a Kind")
+
+            else:
+                print("\n\tTwo Pairs")
+
+        elif len(cards) == 2:
+
+            if 3 in cards.values():
+                print("\n\tFull House")
+
+            else:
+                print("\n\tFour of a Kind")
+
 
 
         """
@@ -287,7 +323,7 @@ if __name__ == '__main__':
 
         elif len(pair_Tbl) == 2:
             if 1 in pair_Tbl and 2 in pair_Tbl:
-                print("\n\tPlayer has a FUll House")
+                print("\n\tPlayer has a Full House")
 
             # elif pair_Tbl[0] == 1 and pair_Tbl[1] == 1:
             else:
@@ -298,20 +334,21 @@ if __name__ == '__main__':
 
             if len(max(color_Dct.values(), key=len)) >= 5:
 
-                if flsh >= 4:
+                if strght >= 4:
                     print("\n\tPlayer has a Straight Flush")
 
                 else:
                     print("\n\tPlayer has a Flush")
 
-            elif flsh >= 4:
+            elif strght >= 4:
                 print("\n\tPlayer has a Straight")
 
             else:
                 print(f"\n\tPlayer has a High Card")
         """
 
-        print(cards)
+        print(f"\t{sorted(cards, reverse=True)}")
+
         # print(f"\t\t\tPair table: {pair_Tbl}")
         # print(f"\t\tHigh Card: {card_Srt[0]}")
         # print(f"\t\t\tSorted cards: {card_Srt}")
