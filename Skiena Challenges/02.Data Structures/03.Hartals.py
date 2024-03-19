@@ -66,31 +66,54 @@ for c in range(Input[0]):
     print(f"\tCases: {Cases[c][1]}")
     print()
 
+# days = {
+#     0 : "Sunday",
+#     1 : "Monday",
+#     2 : "Tuesday",
+#     3 : "Wednesday",
+#     4 : "Thursday",
+#     5 : "Friday",
+#     6 : "Saturday"
+# }
+
+# days = {
+#     1 : "Sunday",
+#     2 : "Monday",
+#     3 : "Tuesday",
+#     4 : "Wednesday",
+#     5 : "Thursday",
+#     6 : "Friday",
+#     7 : "Saturday"
+# }
 
 days = {
-    0 : "Sunday",
-    1 : "Monday",
-    2 : "Tuesday",
-    3 : "Wednesday",
-    4 : "Thursday",
-    5 : "Friday",
-    6 : "Saturday"
+    0: "Saturday",
+    1 : "Sunday",
+    2 : "Monday",
+    3 : "Tuesday",
+    4 : "Wednesday",
+    5 : "Thursday",
+    6 : "Friday"
+    # 7 : "Saturday"
 }
 
 lostDays = 0
 
 Hartals = copy.deepcopy(Cases[0][1])
 
-for d in range(Cases[0][0]):
-    print(f"\t{d:2} {d % 7} : {days[d % 7]}")
+for d in range(1, Cases[0][0]):
+    print(f"\t{d:2} {d % 7} : {days[(d % 7)]}")
 
     lost = False
 
     for c, case in enumerate(Cases[0][1]):
 
-        if (d % 7) == Hartals[c]:
-            Hartals[c] = (Hartals[c] + case) % 7
+        if d == Hartals[c]:
+            Hartals[c] += case
 
-            if not ((d % 7) == 5 or (d % 7) == 6) and not lost:
+            if not ((d % 7) == 6 or (d % 7) == 7) and not lost:
+                print("\t\t\t\t\tX")
                 lostDays += 1
                 lost = True
+
+print(f"\nDays lost: {lostDays}")
