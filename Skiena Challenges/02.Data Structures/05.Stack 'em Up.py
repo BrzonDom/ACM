@@ -101,3 +101,23 @@ Input = list(map(int, Input_Str.split()))
 print("Input string: ", end="\n\t\t\t\"\"\"")
 print(Input_Str, end="\"\"\"\n\n")
 print(f"Input: {Input}")
+
+Cases = [[] for _ in range(Input[0])]
+Input = Input[1:]
+
+ShfflCnt = Input[0]
+Input = Input[1:]
+
+Shffls = [[] for _ in range(ShfflCnt)]
+
+for c in range(ShfflCnt):
+
+    Shffls[c] = Input[c*52: 52 + c*52]
+
+Moves = Input[ShfflCnt * 52:]
+
+print(Moves)
+
+
+
+
