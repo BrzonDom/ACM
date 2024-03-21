@@ -35,6 +35,10 @@ Erdos Numbers
         Smith, M.N.
         Hsueh, Z.
         Chen, X.
+            =>  Scenario 1
+                Smith, M.N. 1
+                Hsueh, Z. infinity
+                Chen, X. 2
 
 """
 
@@ -91,9 +95,12 @@ for scene in range(int(ScenNum)):
 
         Auth_Lst = Auth_Lst[0::2]
 
+        Work_Dict[Work_Str[1:]] = Auth_Lst
+
         for auth in Auth_Lst:
 
-            Work_Dict[Work_Str[1:]] = Auth_Lst
+            # if auth != "Erdos P.":
+            #     Erdo_Dict[auth] = 0
 
             for coAuth in Auth_Lst:
                 if auth == coAuth:
@@ -143,6 +150,44 @@ for scene in range(int(ScenNum)):
     print("\tWorks data:")
     for work in Work_Dict:
         print(f"\t\t{work:{maxWrkLen}} : {Work_Dict[work]}")
-    print()
+    print("\n")
+
+    Erdo_Dict = {}
+    Erdo_Queue = [[]]
+
+    for auth in Auth_Dict["Erdos P."]:
+        Erdo_Dict[auth] = 1
+        Erdo_Queue[0].append(auth)
+
+    while len(max(Erdo_Queue, key=len)) > 0:
+
+        if Erdo_Queue[-1]:
+            Erdo_Queue.append([])
+
+        for q, queue in enumerate(Erdo_Queue):
+
+            # if len(Erdo_Queue) <= q + 1:
+            #     Erdo_Queue.append([])
+
+            for auth in queue:
+
+                coAuth_Lst = Auth_Dict[auth]
+
+                for coAuth in coAuth_Lst:
+
+                    if coAuth == "Erdos P.":
+                        continue
+
+                    if coAuth not in Erdo_Dict:
+                        Erdo_Queue[q+1].append(coAuth)
+                        Erdo_Dict[coAuth] = q + 2
+
+            Erdo_Queue[q] = []
+
+
+    print("\tErdos authors:")
+    for auth in Erdo_Dict:
+        print(f"\t\t{auth:{maxAthLen}} : {Erdo_Dict[auth]}")
+
 
     print("\n")
