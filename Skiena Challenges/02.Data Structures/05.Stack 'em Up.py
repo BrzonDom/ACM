@@ -128,3 +128,14 @@ print("Moves:")
 
 for m in Moves:
     print(f"\t{m:2}: {Shffls[m-1]}")
+print()
+
+for m in Moves:
+
+    for p, n in enumerate(Shffls[m-1]):
+
+        Next_Cards[p] = Prev_Cards[n-1]
+
+    Prev_Cards = copy.deepcopy(Next_Cards)
+
+print(Next_Cards)
