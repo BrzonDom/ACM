@@ -128,7 +128,7 @@ print("Moves:")
 
 for m in Moves:
     print(f"\t{m:2}: {Shffls[m-1]}")
-print()
+print("\n")
 
 for m in Moves:
 
@@ -138,4 +138,11 @@ for m in Moves:
 
     Prev_Cards = copy.deepcopy(Next_Cards)
 
-print(Next_Cards)
+print("Shuffled cards:", end="\n\t")
+
+for c, card in enumerate(Next_Cards):
+    if (c+1) % 13 == 0:
+        print(f"{card}\n", end="\t")
+
+    else:
+        print(card, end=", ")
