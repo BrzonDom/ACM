@@ -57,6 +57,10 @@ Chen, X.
 ScenNum, Input_Str = Input_Str.split("\n", 2)[1:]
 
 for scene in range(int(ScenNum)):
+
+    Works_Dict = {}
+    Auth_Dict = {}
+
     print(f"{scene+1}. Scene:\n")
 
     PaperNameNum, Input_Str = Input_Str.split("\n", 1)
@@ -83,6 +87,21 @@ for scene in range(int(ScenNum)):
 
         for a in range(0, len(Auth_Lst), 2):
             Authors.add(Auth_Lst[a] + " " + Auth_Lst[a+1])
+            Auth_Lst[a] = Auth_Lst[a] + " " + Auth_Lst[a+1]
+
+        Auth_Lst = Auth_Lst[0::2]
+
+        for auth in Auth_Lst:
+
+            for coAuth in Auth_Lst:
+                if auth == coAuth:
+                    continue
+
+                if auth not in Auth_Dict:
+                    Auth_Dict[auth] = [coAuth]
+
+                else:
+                    Auth_Dict[auth] += [coAuth]
 
         Works.add(Works_Str)
 
@@ -104,6 +123,11 @@ for scene in range(int(ScenNum)):
     print("\tWorks:")
     for work in Works:
         print(f"\t\t{work}")
+    print("\n")
+
+    print("\tCo-Authors:")
+    for auth in Auth_Dict:
+        print(f"\t\t{auth} : {Auth_Dict[auth]}")
     print()
 
     print("\n")
