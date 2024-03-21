@@ -54,3 +54,16 @@ Stacks of Flapjacks
                 1 2 0
 
 """
+
+InputRaw_Str = """
+1 2 3 4 5
+5 4 3 2 1
+5 1 2 3 4
+"""
+
+InputLst_Str = InputRaw_Str.split("\n")[1:-1]
+
+print(f"Input:")
+
+for Input in InputLst_Str:
+    print(f"\t{Input}")
