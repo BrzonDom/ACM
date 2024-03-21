@@ -153,36 +153,60 @@ for scene in range(int(ScenNum)):
     print("\n")
 
     Erdo_Dict = {}
-    Erdo_Queue = [[]]
+    # Erdo_Queue = [[]]
+    Erdo_Queue = [[], []]
+    ErdoCnt = 1
 
     for auth in Auth_Dict["Erdos P."]:
-        Erdo_Dict[auth] = 1
+        Erdo_Dict[auth] = ErdoCnt
         Erdo_Queue[0].append(auth)
 
-    while len(max(Erdo_Queue, key=len)) > 0:
+    # while len(max(Erdo_Queue, key=len)) > 0:
+    while Erdo_Queue[0]:
 
-        if Erdo_Queue[-1]:
-            Erdo_Queue.append([])
+        ErdoCnt += 1
 
-        for q, queue in enumerate(Erdo_Queue):
+        # if Erdo_Queue[-1]:
+        #     Erdo_Queue.append([])
+
+        # for q, queue in enumerate(Erdo_Queue):
+        for a, auth in enumerate(Erdo_Queue[0]):
+
+            # if auth == "Erdos P.":
+            #     continue
+
+            coAuth_Lst = Auth_Dict[auth]
+
+            for coAuth in coAuth_Lst:
+
+                if coAuth == "Erdos P.":
+                    continue
+
+                if coAuth not in Erdo_Dict:
+                    Erdo_Queue[1].append(coAuth)
+                    Erdo_Dict[coAuth] = ErdoCnt
 
             # if len(Erdo_Queue) <= q + 1:
             #     Erdo_Queue.append([])
 
-            for auth in queue:
+            # for auth in queue:
+            #
+            #     coAuth_Lst = Auth_Dict[auth]
+            #
+            #     for coAuth in coAuth_Lst:
+            #
+            #         if coAuth == "Erdos P.":
+            #             continue
+            #
+            #         if coAuth not in Erdo_Dict:
+            #             Erdo_Queue[q+1].append(coAuth)
+            #             Erdo_Dict[coAuth] = q + 2
+            #
+            # Erdo_Queue[q] = []
 
-                coAuth_Lst = Auth_Dict[auth]
+        Erdo_Queue[0] = Erdo_Queue[1]
+        Erdo_Queue[1] = []
 
-                for coAuth in coAuth_Lst:
-
-                    if coAuth == "Erdos P.":
-                        continue
-
-                    if coAuth not in Erdo_Dict:
-                        Erdo_Queue[q+1].append(coAuth)
-                        Erdo_Dict[coAuth] = q + 2
-
-            Erdo_Queue[q] = []
 
 
     print("\tErdos authors:")
