@@ -2,16 +2,13 @@
 
 Contest Scoreboard
 
-    Want to compete in the ACM ICPC? Then you had better know how to keep score!
-    Contestants are ranked first by the number of problems solved (the more the better),
-    then by decreasing amounts of penalty time. If two or more contestants are tied in
-    both problems solved and penalty time, they are displayed in order of increasing team
-    numbers.
-    A problem is considered solved by a contestant if any of the submissions for that
-    problem was judged correct. Penalty time is computed as the number of minutes it
-    took until the first correct submission for a problem was received, plus 20 minutes for
-    each incorrect submission prior to the correct solution. Unsolved problems incur no
-    time penalties.
+    Contestants are ranked first by the number of problems solved, then by decreasing amounts
+    of penalty time. If two or more contestants are tied in both problems solved and penalty time,
+    they are displayed in order of increasing team numbers. A problem is considered solved by a
+    contestant if any of the submissions for that problem was judged correct. Penalty time is
+    computed as the number of minutes it took until the first correct submission for a problem
+    was received, plus 20 minutes for each incorrect submission prior to the correct solution.
+    Unsolved problems incur no time penalties.
 
     Input:
         The input begins with a single positive integer on a line by itself indicating the number
@@ -46,3 +43,20 @@ Contest Scoreboard
 
 """
 
+InputRaw_Str = """
+1
+
+1 2 10 I
+3 1 11 C
+1 2 19 R
+1 2 21 C
+1 1 25 C
+"""
+
+Cases = int(InputRaw_Str[1])
+
+print(f"Cases: {Cases}\n")
+
+Input = list(InputRaw_Str.split("\n"))[3:-1]
+
+print(f"\tInput: {Input}")
