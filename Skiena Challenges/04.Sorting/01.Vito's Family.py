@@ -29,3 +29,18 @@ Vito's Family
                 4
 
 """
+
+InputRaw_Str = """
+2
+2 2 4
+3 2 4 6
+"""
+
+Cases = int(InputRaw_Str[1])
+
+for case in range(Cases):
+    Input_Str = InputRaw_Str.split("\n")[case+2]
+    Input = list(map(int, Input_Str.split()))
+
+    print(f"Input: {Input}")
+    print()
