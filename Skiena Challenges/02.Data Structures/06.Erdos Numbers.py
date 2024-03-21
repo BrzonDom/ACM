@@ -38,3 +38,20 @@ Erdos Numbers
 
 """
 
+Input_Str = """
+1
+4 3
+Smith, M.N., Martin, G., Erdos, P.: Newtonian forms of prime factors
+Erdos, P., Reisig, W.: Stuttering in petri nets
+Smith, M.N., Chen, X.: First order derivates in structured programming
+Jablonski, T., Hsueh, Z.: Selfstabilizing data structures
+Smith, M.N.
+Hsueh, Z.
+Chen, X.
+"""
+
+# ScenNum, PaperNameCnt, PapersNames = Input_Str.split("\n", 3)[1:]
+
+# Input_Lst = Input_Str.split("\n", 3)[1:]
+
+ScenNum, Input_Str = Input_Str.split("\n", 2)[1:]
