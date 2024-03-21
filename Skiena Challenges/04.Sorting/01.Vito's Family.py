@@ -63,11 +63,13 @@ for case in range(Cases):
             print(f"\t\t\tRounded down:  {Med // 2}")
 
             Median = round(Med / 2)
+            # MedLst = [Median - 1, Median, Median + 1]
 
         else:
             print(f"\t\tMedian:  {Med // 2}")
 
             Median = Med // 2
+            # MedLst = [Median - 1, Median, Median + 1]
 
     else:
         Median = HousLst[(RelatNum - 1) // 2]
@@ -81,8 +83,20 @@ for case in range(Cases):
         Sum += abs(hous - Median)
 
     print(f"\t\tSum:  {Sum}")
+    print()
 
+    print(f"\t\tTest Medians:")
 
+    MedLst = [Median - 1, Median, Median + 1]
 
+    for Med in MedLst:
+        print(f"\t\t\tMedian:  {Med}")
+        SumTst = 0
+
+        for hous in HousLst:
+            SumTst += abs(hous - Med)
+
+        print(f"\t\t\t\tSum:  {Sum}")
+        print()
 
     print("\n")
