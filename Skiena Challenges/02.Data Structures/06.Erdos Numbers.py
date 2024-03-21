@@ -70,9 +70,22 @@ for scene in range(int(ScenNum)):
     Papers = list(Input_Str.split("\n", PaperNum)[:PaperNum])
     Input_Str = Input_Str.split("\n", PaperNum)[PaperNum]
 
+    Authors = set()
+    Works = set()
+
     print("\tPapers:")
     for paper in Papers:
         print(f"\t\t{paper}")
+
+        Auth_Str, Works_Str = paper.split(":")
+
+        Auth_Lst = Auth_Str.split(", ")
+
+        for a in range(0, len(Auth_Lst), 2):
+            Authors.add(Auth_Lst[a] + " " + Auth_Lst[a+1])
+
+        Works.add(Works_Str)
+
     print()
 
     Names = list(Input_Str.split("\n", NameNum)[:NameNum])
@@ -81,6 +94,16 @@ for scene in range(int(ScenNum)):
     print("\tNames:")
     for name in Names:
         print(f"\t\t{name}")
+    print("\n")
+
+    print("\tAuthors:")
+    for auth in Authors:
+        print(f"\t\t{auth}")
+    print()
+
+    print("\tWorks:")
+    for work in Works:
+        print(f"\t\t{work}")
     print()
 
     print("\n")
