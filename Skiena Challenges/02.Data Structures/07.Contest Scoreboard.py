@@ -53,6 +53,13 @@ InputRaw_Str = """
 1 1 25 C
 """
 
+# class Stats:
+#     def __init__(self, player, problem, time, state):
+#         self.player = player
+#         self.problem = problem
+#         self.time = time
+#         self.state = state
+
 Cases = int(InputRaw_Str[1])
 
 print(f"Cases: {Cases}\n")
@@ -60,3 +67,35 @@ print(f"Cases: {Cases}\n")
 Input = list(InputRaw_Str.split("\n"))[3:-1]
 
 print(f"\tInput: {Input}")
+print()
+
+stats = {}
+
+for submit in Input:
+    submit_lst = list(submit.split())
+
+    player = int(submit_lst[0])
+    problem = int(submit_lst[1])
+    time = int(submit_lst[2])
+    state = submit_lst[3]
+
+    if player not in stats:
+        stats[player] = {"Solved"  : [],
+                         "Time"    : 0,
+                         "Penalty" : 0}
+
+    if state == 'C':
+        stats[player]["Solved"] += [problem]
+        stats[player]["Time"] += time
+
+    elif state == 'I' and problem not in stats[player]["Solved"]:
+        stats[player]["Penalty"] += 20
+
+
+for player in stats:
+    print(f"\tPlayer: {player}\n")
+    print(f"\t\tSolved problems: {stats[player]['Solved']}")
+    print(f"\t\tTime:            {stats[player]['Time']}")
+    print(f"\t\tPenalty:         {stats[player]['Penalty']}")
+    print(f"\t\tTotal time:      {stats[player]['Time'] + stats[player]['Penalty']}")
+    print("\n")
