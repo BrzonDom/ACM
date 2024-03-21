@@ -55,3 +55,32 @@ Chen, X.
 # Input_Lst = Input_Str.split("\n", 3)[1:]
 
 ScenNum, Input_Str = Input_Str.split("\n", 2)[1:]
+
+for scene in range(int(ScenNum)):
+    print(f"{scene+1}. Scene:\n")
+
+    PaperNameNum, Input_Str = Input_Str.split("\n", 1)
+
+    PaperNum, NameNum = list(map(int, PaperNameNum.split()))
+
+    print(f"\tNum. of Papers:  {PaperNum}")
+    print(f"\tNum. of Names:   {NameNum}")
+    print()
+
+    Papers = list(Input_Str.split("\n", PaperNum)[:PaperNum])
+    Input_Str = Input_Str.split("\n", PaperNum)[PaperNum]
+
+    print("\tPapers:")
+    for paper in Papers:
+        print(f"\t\t{paper}")
+    print()
+
+    Names = list(Input_Str.split("\n", NameNum)[:NameNum])
+    Input_Str = Input_Str.split("\n", NameNum)[NameNum]
+
+    print("\tNames:")
+    for name in Names:
+        print(f"\t\t{name}")
+    print()
+
+    print("\n")
