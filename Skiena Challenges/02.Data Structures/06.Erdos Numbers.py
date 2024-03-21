@@ -58,7 +58,7 @@ ScenNum, Input_Str = Input_Str.split("\n", 2)[1:]
 
 for scene in range(int(ScenNum)):
 
-    Works_Dict = {}
+    Work_Dict = {}
     Auth_Dict = {}
 
     print(f"{scene+1}. Scene:\n")
@@ -81,7 +81,7 @@ for scene in range(int(ScenNum)):
     for paper in Papers:
         print(f"\t\t{paper}")
 
-        Auth_Str, Works_Str = paper.split(":")
+        Auth_Str, Work_Str = paper.split(":")
 
         Auth_Lst = Auth_Str.split(", ")
 
@@ -93,6 +93,8 @@ for scene in range(int(ScenNum)):
 
         for auth in Auth_Lst:
 
+            Work_Dict[Work_Str[1:]] = Auth_Lst
+
             for coAuth in Auth_Lst:
                 if auth == coAuth:
                     continue
@@ -103,7 +105,10 @@ for scene in range(int(ScenNum)):
                 else:
                     Auth_Dict[auth] += [coAuth]
 
-        Works.add(Works_Str)
+        # for work in Auth_Lst:
+
+
+        Works.add(Work_Str[1:])
 
     print()
 
@@ -125,9 +130,14 @@ for scene in range(int(ScenNum)):
         print(f"\t\t{work}")
     print("\n")
 
-    print("\tCo-Authors:")
+    print("\tAuthors data:")
     for auth in Auth_Dict:
         print(f"\t\t{auth} : {Auth_Dict[auth]}")
+    print()
+
+    print("\tWorks data:")
+    for work in Work_Dict:
+        print(f"\t\t{work} : {Work_Dict[work]}")
     print()
 
     print("\n")
