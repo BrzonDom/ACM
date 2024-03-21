@@ -44,9 +44,24 @@ for case in range(Cases):
 
     print(f"Input: {Input}\n")
 
-    Relat = Input[0]
-    Hous = Input[1:]
+    RelatNum = Input[0]
+    HousLst = Input[1:]
 
-    print(f"\tRelatives: {Relat}")
-    print(f"\tHouse numbers: {Hous}")
+    print(f"\tRelatives: {RelatNum}")
+    print(f"\tHouse numbers: {HousLst}")
+    print()
+
+    HousLst = sorted(HousLst)
+
+    if RelatNum % 2 == 0:
+        Median = HousLst[RelatNum // 2 - 1] + HousLst[RelatNum // 2]
+
+        Median = Median / 2
+        print(f"\t\tMedian: {Median}")
+        # print(f"\t\t\t")
+
+    else:
+        Median = HousLst[(RelatNum - 1) // 2]
+        print(f"\t\tMedian: {Median}")
+
     print("\n")
