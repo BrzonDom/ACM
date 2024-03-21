@@ -54,14 +54,35 @@ for case in range(Cases):
     HousLst = sorted(HousLst)
 
     if RelatNum % 2 == 0:
-        Median = HousLst[RelatNum // 2 - 1] + HousLst[RelatNum // 2]
+        Med = HousLst[RelatNum // 2 - 1] + HousLst[RelatNum // 2]
 
-        Median = Median / 2
-        print(f"\t\tMedian: {Median}")
-        # print(f"\t\t\t")
+        if Med % 2 != 0:
+            print(f"\t\tMedian:  {Med / 2}")
+            print(f"\t\t\tRounded:       {round(Med / 2)}")
+            print(f"\t\t\tRounded up:    {Med // 2 + 1}")
+            print(f"\t\t\tRounded down:  {Med // 2}")
+
+            Median = round(Med / 2)
+
+        else:
+            print(f"\t\tMedian:  {Med // 2}")
+
+            Median = Med // 2
 
     else:
         Median = HousLst[(RelatNum - 1) // 2]
-        print(f"\t\tMedian: {Median}")
+
+        print(f"\t\tMedian:  {Median}")
+    print()
+
+    Sum = 0
+
+    for hous in HousLst:
+        Sum += abs(hous - Median)
+
+    print(f"\t\tSum:  {Sum}")
+
+
+
 
     print("\n")
