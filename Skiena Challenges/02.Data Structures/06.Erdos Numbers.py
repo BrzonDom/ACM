@@ -130,14 +130,19 @@ for scene in range(int(ScenNum)):
         print(f"\t\t{work}")
     print("\n")
 
+    maxAthLen = len(max(Auth_Dict.keys(), key=len))
+
     print("\tAuthors data:")
     for auth in Auth_Dict:
-        print(f"\t\t{auth} : {Auth_Dict[auth]}")
+        print(f"\t\t{auth:{maxAthLen}} : {Auth_Dict[auth]}")
     print()
+
+    maxWrkLen = len(max(Work_Dict.keys(), key=len))
+    # print(maxWrkLen)
 
     print("\tWorks data:")
     for work in Work_Dict:
-        print(f"\t\t{work} : {Work_Dict[work]}")
+        print(f"\t\t{work:{maxWrkLen}} : {Work_Dict[work]}")
     print()
 
     print("\n")
