@@ -100,7 +100,7 @@ for scene in range(int(ScenNum)):
         for auth in Auth_Lst:
 
             # if auth != "Erdos P.":
-            #     Erdo_Dict[auth] = 0
+            #     ErdoVal_Dict[auth] = 0
 
             for coAuth in Auth_Lst:
                 if auth == coAuth:
@@ -152,28 +152,22 @@ for scene in range(int(ScenNum)):
         print(f"\t\t{work:{maxWrkLen}} : {Work_Dict[work]}")
     print("\n")
 
-    Erdo_Dict = {}
+    ErdoVal_Dict = {}
+    ErdoCon_Dict = {}
     # Erdo_Queue = [[]]
     Erdo_Queue = [[], []]
     ErdoCnt = 1
 
     for auth in Auth_Dict["Erdos P."]:
-        Erdo_Dict[auth] = ErdoCnt
+        ErdoVal_Dict[auth] = ErdoCnt
+        ErdoCon_Dict[auth] = "Erdos P."
         Erdo_Queue[0].append(auth)
 
-    # while len(max(Erdo_Queue, key=len)) > 0:
     while Erdo_Queue[0]:
 
         ErdoCnt += 1
 
-        # if Erdo_Queue[-1]:
-        #     Erdo_Queue.append([])
-
-        # for q, queue in enumerate(Erdo_Queue):
         for a, auth in enumerate(Erdo_Queue[0]):
-
-            # if auth == "Erdos P.":
-            #     continue
 
             coAuth_Lst = Auth_Dict[auth]
 
@@ -182,36 +176,17 @@ for scene in range(int(ScenNum)):
                 if coAuth == "Erdos P.":
                     continue
 
-                if coAuth not in Erdo_Dict:
+                if coAuth not in ErdoVal_Dict:
                     Erdo_Queue[1].append(coAuth)
-                    Erdo_Dict[coAuth] = ErdoCnt
-
-            # if len(Erdo_Queue) <= q + 1:
-            #     Erdo_Queue.append([])
-
-            # for auth in queue:
-            #
-            #     coAuth_Lst = Auth_Dict[auth]
-            #
-            #     for coAuth in coAuth_Lst:
-            #
-            #         if coAuth == "Erdos P.":
-            #             continue
-            #
-            #         if coAuth not in Erdo_Dict:
-            #             Erdo_Queue[q+1].append(coAuth)
-            #             Erdo_Dict[coAuth] = q + 2
-            #
-            # Erdo_Queue[q] = []
+                    ErdoVal_Dict[coAuth] = ErdoCnt
+                    ErdoCon_Dict[coAuth] = auth
 
         Erdo_Queue[0] = Erdo_Queue[1]
         Erdo_Queue[1] = []
 
-
-
     print("\tErdos authors:")
-    for auth in Erdo_Dict:
-        print(f"\t\t{auth:{maxAthLen}} : {Erdo_Dict[auth]}")
+    for auth in ErdoVal_Dict:
+        print(f"\t\t{auth:{maxAthLen}} : {ErdoVal_Dict[auth]} [{ErdoCon_Dict[auth]}]")
 
 
     print("\n")
