@@ -55,6 +55,15 @@ Stacks of Flapjacks
 
 """
 
+
+def flip(lst, indx):
+
+    revLst = lst[:indx]
+    revLst = revLst[::-1]
+
+    return revLst + lst[indx:]
+
+
 InputRaw_Str = """
 1 2 3 4 5
 5 4 3 2 1
@@ -63,7 +72,24 @@ InputRaw_Str = """
 
 InputLst_Str = InputRaw_Str.split("\n")[1:-1]
 
-print(f"Input:")
+print("Input:")
 
 for Input in InputLst_Str:
     print(f"\t{Input}")
+print("\n")
+
+print("Example:\n")
+
+expLst = [8, 4, 6, 7, 5, 2]
+
+print(f"\tExample list: \n\t\t{expLst}\n")
+
+expLst = flip(expLst, 3)
+print(f"\tFlip 3:\n\t\t{expLst}\n")
+
+expLst = flip(expLst, 1)
+
+print(f"\tFlip 1:\n\t\t{expLst}\n")
+
+
+print(f"\t")
