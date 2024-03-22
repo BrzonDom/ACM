@@ -54,6 +54,7 @@ Stacks of Flapjacks
                 1 2 0
 
 """
+
 import copy
 
 
@@ -79,7 +80,7 @@ def sortSmpl_Prt(Lst):
     print()
 
     StpCnt = 0
-    FlipLst = []
+    FlipRec = []
 
     for n, num in enumerate(LstSort):
 
@@ -101,13 +102,34 @@ def sortSmpl_Prt(Lst):
         print(f"\t\t\t{Lst} = flip(Lst, {LstLen-n})")
         print()
 
-        FlipLst += [numPos, LstLen-n]
+        FlipRec += [numPos, LstLen-n]
 
     print(f"\n\t\tSolved: {Lst}")
-    FlipLst.append(0)
-    print(f"\t\t\tFlips: {FlipLst}")
+    FlipRec.append(0)
+    print(f"\t\t\tFlips: {FlipRec}")
 
-    return FlipLst
+    return FlipRec
+
+
+def sortBFS_Prt(Lst):
+
+    LstSol = sorted(Lst, reverse=True)
+
+    if LstSol == Lst:
+        print(f"\n\t\tSolved: {LstSol}")
+        print(f"\t\t\tFlips: [0]")
+        return [0]
+
+    LstLen = len(Lst)
+    LstSort = sorted(Lst)
+
+    Flips = []
+    for f in range(1, LstLen+1):
+        Flips += [f]
+
+    FlipRec = []
+
+    return Lst
 
 
 InputRaw_Str = """
@@ -146,7 +168,7 @@ for Lst in InputLst:
 
     StpCnt = 0
 
-    FlipLst = []
+    FlipRec = []
 
     for n, num in enumerate(LstSort):
 
@@ -168,25 +190,38 @@ for Lst in InputLst:
         print(f"\t\t\t{Lst} = flip(Lst, {LstLen-n})")
         print()
 
-        FlipLst += [numPos, LstLen-n]
+        FlipRec += [numPos, LstLen - n]
 
     print(f"\n\t\tSolved: {Lst}")
-    FlipLst.append(0)
-    print(f"\t\t\tFlips: {FlipLst}")
+    FlipRec.append(0)
+    print(f"\t\t\tFlips: {FlipRec}")
 
     print("\n")
 
+"""
 print("Function simple solution:\n")
 
-for Lst in InputLstOrg:
+InputLst = copy.deepcopy(InputLstOrg)
 
-    FlipLst = sortSmpl_Prt(Lst)
-    print(f"\t\t\t\tReturn: {FlipLst}")
+for Lst in InputLst:
+
+    FlipRec = sortSmpl_Prt(Lst)
+    print(f"\t\t\t\tReturn: {FlipRec}")
     print("\n")
+"""
+
+print("Function BFS solution:\n")
+
+InputLst = copy.deepcopy(InputLstOrg)
+
+for Lst in InputLst:
+
+    print(f"\tList: {Lst}\n")
 
 
-"""     Output
 
+"""__Output__"""
+"""
 Input:
 	1 2 3 4 5
 	5 4 3 2 1
@@ -237,52 +272,13 @@ Driver simple solution:
 			Flips: [2, 5, 3, 4, 0]
 
 
-Function simple solution:
+Function BFS solution:
 
 	List: [1, 2, 3, 4, 5]
 
-		Sorted:    [1, 2, 3, 4, 5]
-		Solution:  [5, 4, 3, 2, 1]
-
-		 1.StpCnt:
-			[1, 2, 3, 4, 5] = flip(Lst, 1)
-			[5, 4, 3, 2, 1] = flip(Lst, 5)
-
-
-		Solved: [5, 4, 3, 2, 1]
-			Flips: [1, 5, 0]
-				Return: [1, 5, 0]
-
-
 	List: [5, 4, 3, 2, 1]
 
-		Sorted:    [1, 2, 3, 4, 5]
-		Solution:  [5, 4, 3, 2, 1]
-
-
-		Solved: [5, 4, 3, 2, 1]
-			Flips: [0]
-				Return: [0]
-
-
 	List: [5, 1, 2, 3, 4]
-
-		Sorted:    [1, 2, 3, 4, 5]
-		Solution:  [5, 4, 3, 2, 1]
-
-		 1.StpCnt:
-			[1, 5, 2, 3, 4] = flip(Lst, 2)
-			[4, 3, 2, 5, 1] = flip(Lst, 5)
-
-		 2.StpCnt:
-			[2, 3, 4, 5, 1] = flip(Lst, 3)
-			[5, 4, 3, 2, 1] = flip(Lst, 4)
-
-
-		Solved: [5, 4, 3, 2, 1]
-			Flips: [2, 5, 3, 4, 0]
-				Return: [2, 5, 3, 4, 0]
-
 
 
 Process finished with exit code 0
