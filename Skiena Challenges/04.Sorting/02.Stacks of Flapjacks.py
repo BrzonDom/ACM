@@ -72,10 +72,19 @@ InputRaw_Str = """
 
 InputLst_Str = InputRaw_Str.split("\n")[1:-1]
 
+InputLst = []
+
 print("Input:")
 
 for Input in InputLst_Str:
     print(f"\t{Input}")
+
+    InputLst.append(list(map(int, Input.split())))
+
+# print()
+# for Input in InputLst:
+#     print(f"\t{Input}")
+
 print("\n")
 
 print("Example:\n")
@@ -91,5 +100,3 @@ expLst = flip(expLst, 6)
 
 print(f"\tFlip 1:\n\t\t{expLst}\n")
 
-
-print(f"\t")
