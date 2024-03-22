@@ -185,3 +185,106 @@ for Lst in InputLstOrg:
     print("\n")
 
 
+"""     Output
+
+Input:
+	1 2 3 4 5
+	5 4 3 2 1
+	5 1 2 3 4
+
+
+Driver simple solution:
+
+	List: [1, 2, 3, 4, 5]
+
+		Sorted:    [1, 2, 3, 4, 5]
+		Solution:  [5, 4, 3, 2, 1]
+
+		 1.StpCnt:
+			[1, 2, 3, 4, 5] = flip(Lst, 1)
+			[5, 4, 3, 2, 1] = flip(Lst, 5)
+
+
+		Solved: [5, 4, 3, 2, 1]
+			Flips: [1, 5, 0]
+
+
+	List: [5, 4, 3, 2, 1]
+
+		Sorted:    [1, 2, 3, 4, 5]
+		Solution:  [5, 4, 3, 2, 1]
+
+
+		Solved: [5, 4, 3, 2, 1]
+			Flips: [0]
+
+
+	List: [5, 1, 2, 3, 4]
+
+		Sorted:    [1, 2, 3, 4, 5]
+		Solution:  [5, 4, 3, 2, 1]
+
+		 1.StpCnt:
+			[1, 5, 2, 3, 4] = flip(Lst, 2)
+			[4, 3, 2, 5, 1] = flip(Lst, 5)
+
+		 2.StpCnt:
+			[2, 3, 4, 5, 1] = flip(Lst, 3)
+			[5, 4, 3, 2, 1] = flip(Lst, 4)
+
+
+		Solved: [5, 4, 3, 2, 1]
+			Flips: [2, 5, 3, 4, 0]
+
+
+Function simple solution:
+
+	List: [1, 2, 3, 4, 5]
+
+		Sorted:    [1, 2, 3, 4, 5]
+		Solution:  [5, 4, 3, 2, 1]
+
+		 1.StpCnt:
+			[1, 2, 3, 4, 5] = flip(Lst, 1)
+			[5, 4, 3, 2, 1] = flip(Lst, 5)
+
+
+		Solved: [5, 4, 3, 2, 1]
+			Flips: [1, 5, 0]
+				Return: [1, 5, 0]
+
+
+	List: [5, 4, 3, 2, 1]
+
+		Sorted:    [1, 2, 3, 4, 5]
+		Solution:  [5, 4, 3, 2, 1]
+
+
+		Solved: [5, 4, 3, 2, 1]
+			Flips: [0]
+				Return: [0]
+
+
+	List: [5, 1, 2, 3, 4]
+
+		Sorted:    [1, 2, 3, 4, 5]
+		Solution:  [5, 4, 3, 2, 1]
+
+		 1.StpCnt:
+			[1, 5, 2, 3, 4] = flip(Lst, 2)
+			[4, 3, 2, 5, 1] = flip(Lst, 5)
+
+		 2.StpCnt:
+			[2, 3, 4, 5, 1] = flip(Lst, 3)
+			[5, 4, 3, 2, 1] = flip(Lst, 4)
+
+
+		Solved: [5, 4, 3, 2, 1]
+			Flips: [2, 5, 3, 4, 0]
+				Return: [2, 5, 3, 4, 0]
+
+
+
+Process finished with exit code 0
+
+"""
