@@ -54,6 +54,7 @@ Stacks of Flapjacks
                 1 2 0
 
 """
+import copy
 
 
 def flip(lst, indx):
@@ -62,6 +63,51 @@ def flip(lst, indx):
     revLst = revLst[::-1]
 
     return revLst + lst[indx:]
+
+
+def sortSmpl_Prt(Lst):
+
+    print(f"\tList: {Lst}\n")
+
+    LstLen = len(Lst)
+
+    LstSort = sorted(Lst)
+    LstSol = sorted(Lst, reverse=True)
+
+    print(f"\t\tSorted:    {LstSort}")
+    print(f"\t\tSolution:  {LstSol}")
+    print()
+
+    StpCnt = 0
+    FlipLst = []
+
+    for n, num in enumerate(LstSort):
+
+        if Lst.index(num) == LstSol.index(num):
+            continue
+
+        elif Lst == LstSol:
+            break
+
+        numPos = Lst.index(num) + 1
+        StpCnt += 1
+
+        print(f"\t\t{StpCnt:2}.StpCnt:")
+
+        Lst = flip(Lst, numPos)
+        print(f"\t\t\t{Lst} = flip(Lst, {numPos})")
+
+        Lst = flip(Lst, LstLen-n)
+        print(f"\t\t\t{Lst} = flip(Lst, {LstLen-n})")
+        print()
+
+        FlipLst += [numPos, LstLen-n]
+
+    print(f"\n\t\tSolved: {Lst}")
+    FlipLst.append(0)
+    print(f"\t\t\tFlips: {FlipLst}")
+
+    return FlipLst
 
 
 InputRaw_Str = """
@@ -81,10 +127,6 @@ for Input in InputLst_Str:
 
     InputLst.append(list(map(int, Input.split())))
 
-# print()
-# for Input in InputLst:
-#     print(f"\t{Input}")
-
 print("\n")
 
 for Lst in InputLst:
@@ -98,11 +140,6 @@ for Lst in InputLst:
     print(f"\t\tSorted:    {LstSort}")
     print(f"\t\tSolution:  {LstSol}")
     print()
-
-    # Pos = {}
-
-    # for num in LstSort:
-    #     Pos[num] = False
 
     StpCnt = 0
 
@@ -119,23 +156,16 @@ for Lst in InputLst:
         numPos = Lst.index(num) + 1
         StpCnt += 1
 
-        """
-        print(f"\t\t{num} = Lst[{numPos - 1}]")
-        print(f"\t\t\t     Lst[:{numPos}] = {Lst[:numPos]}")
-        print(f"\t\t\tflip(Lst, {numPos}) = {flip(Lst, numPos)}")
-        print()
-        """
-
         print(f"\t\t{StpCnt:2}.StpCnt:")
 
         Lst = flip(Lst, numPos)
-        FlipLst.append(numPos)
         print(f"\t\t\t{Lst} = flip(Lst, {numPos})")
 
         Lst = flip(Lst, LstLen-n)
-        FlipLst.append(LstLen-n)
         print(f"\t\t\t{Lst} = flip(Lst, {LstLen-n})")
         print()
+
+        FlipLst += [numPos, LstLen-n]
 
     print(f"\n\t\tSolved: {Lst}")
     FlipLst.append(0)
