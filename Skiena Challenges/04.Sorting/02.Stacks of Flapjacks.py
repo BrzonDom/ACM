@@ -111,25 +111,41 @@ def sortSmpl_Prt(Lst):
     return FlipRec
 
 
-def sortBFS_Prt(Lst):
+def sortBFS_Prt(InLst):
 
-    LstSol = sorted(Lst, reverse=True)
+    LstSol = sorted(InLst, reverse=True)
 
-    if LstSol == Lst:
-        print(f"\n\t\tSolved: {LstSol}")
-        print(f"\t\t\tFlips: [0]")
-        return [0]
+    if LstSol == InLst:
+        print(f"\t\tSolved: {InLst}")
+        # print(f"\t\t\tFlips: [0]")
+        return InLst
 
-    LstLen = len(Lst)
-    LstSort = sorted(Lst)
+    LstLen = len(InLst)
+    LstSort = sorted(InLst)
 
     Flips = []
     for f in range(1, LstLen+1):
         Flips += [f]
 
+    StpCnt = 0
+    MtchCnt = 0
     FlipRec = []
 
-    return Lst
+    Queue = [InLst]
+
+    while Queue:
+
+        Lst = Queue[0]
+        Queue = Queue[1:]
+
+        if Lst == LstSol:
+            print(f"\t\tSolved: {Lst}")
+            return Lst
+
+        for flp in Flips:
+            Queue.append(flip(Lst, flp))
+
+    return InLst
 
 
 InputRaw_Str = """
@@ -210,6 +226,37 @@ for Lst in InputLst:
     print("\n")
 """
 
+print("Driver BFS testing:\n")
+
+InputLst = copy.deepcopy(InputLstOrg)
+
+for Lst in InputLst:
+
+    print(f"\tList: {Lst}\n")
+
+    LstLen = len(Lst)
+
+    LstSol = sorted(Lst, reverse=True)
+    LstSort = sorted(Lst)
+
+    Flips = []
+    for f in range(1, LstLen+1):
+        Flips += [f]
+
+    print(f"\t\tFlips: {Flips}")
+    print()
+
+    for flp in Flips:
+        # flpLst = flip(Lst, flp)
+        print(f"\t\tFlip[{flp}] = {flip(Lst, flp)}")
+
+    # print()
+    # for n, num in enumerate(Lst[LstLen::-1]):
+    #     print(f"{n}. {num}")
+
+    print("\n")
+
+
 print("Function BFS solution:\n")
 
 InputLst = copy.deepcopy(InputLstOrg)
@@ -218,6 +265,23 @@ for Lst in InputLst:
 
     print(f"\tList: {Lst}\n")
 
+    LstSol = sortBFS_Prt(Lst)
+    print(f"\t\t\tReturn: {LstSol}")
+    print("\n")
+
+
+# print("Example:\n")
+#
+# expLst = [8, 4, 6, 7, 5, 2]
+#
+# print(f"\tExample list: \n\t\t{expLst}\n")
+#
+# expLst = flip(expLst, 4)
+# print(f"\tFlip 4:\n\t\t{expLst}\n")
+#
+# expLst = flip(expLst, 6)
+#
+# print(f"\tFlip 1:\n\t\t{expLst}\n")
 
 
 """__Output__"""
