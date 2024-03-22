@@ -58,6 +58,14 @@ Stacks of Flapjacks
 import copy
 
 
+class TowerCls:
+
+    def __init__(self, state, action = None, previous = None):
+        self.state = copy.deepcopy(state)
+        self.action = action
+        self.previous = previous
+
+
 def flip(lst, indx):
 
     revLst = lst[:indx+1]
@@ -66,93 +74,93 @@ def flip(lst, indx):
     return revLst + lst[indx+1:]
 
 
-def sortSmpl_Prt(Lst):
+def sortSmpl_Prt(Twr):
 
-    print(f"\tList: {Lst}\n")
+    print(f"\tTower: {Twr}\n")
 
-    LstLen = len(Lst)
+    twrLen = len(Twr)
 
-    LstSort = sorted(Lst)
-    LstSol = sorted(Lst, reverse=True)
+    twrSort = sorted(Twr)
+    twrSol = sorted(Twr, reverse=True)
 
-    print(f"\t\tSorted:    {LstSort}")
-    print(f"\t\tSolution:  {LstSol}")
+    print(f"\t\tSorted:    {twrSort}")
+    print(f"\t\tSolution:  {twrSol}")
     print()
 
     StpCnt = 0
-    MtchCnt = LstLen
+    MtchCnt = twrLen
 
     FlipRec = []
 
-    for n, num in enumerate(LstSort):
+    for n, num in enumerate(twrSort):
 
         MtchCnt -= 1
 
-        if Lst.index(num) == LstSol.index(num):
+        if Twr.index(num) == twrSol.index(num):
             continue
 
-        elif Lst == LstSol:
+        elif Twr == twrSol:
             break
 
-        numPos = Lst.index(num)
+        numPos = Twr.index(num)
         StpCnt += 1
 
         print(f"\t\t{StpCnt:2}.StpCnt:")
 
-        Lst = flip(Lst, numPos)
-        print(f"\t\t\t{Lst} = flip(Lst, {numPos})")
+        Twr = flip(Twr, numPos)
+        print(f"\t\t\t{Twr} = flip(Twr, {numPos})")
 
-        Lst = flip(Lst, MtchCnt)
-        print(f"\t\t\t{Lst} = flip(Lst, {MtchCnt})")
+        Twr = flip(Twr, MtchCnt)
+        print(f"\t\t\t{Twr} = flip(Twr, {MtchCnt})")
         print()
 
         FlipRec += [numPos, MtchCnt]
 
-    print(f"\n\t\tSolved: {Lst}")
+    print(f"\n\t\tSolved: {Twr}")
     FlipRec.append(0)
     print(f"\t\t\tFlips: {FlipRec}")
 
     return FlipRec
 
 
-# def sortBFS_Rec(InLst, FlipRec, MtchCnt):
+# def sortBFS_Rec(inTwr, FlipRec, MtchCnt):
 
 
-def sortBFS_Iter_Prt(InLst):
+def sortBFS_Iter_Prt(inTwr):
 
-    LstSol = sorted(InLst, reverse=True)
+    twrSol = sorted(inTwr, reverse=True)
 
-    if LstSol == InLst:
-        print(f"\t\tSolved: {InLst}")
+    if twrSol == inTwr:
+        print(f"\t\tSolved: {inTwr}")
         # print(f"\t\t\tFlips: [0]")
-        return InLst
+        return inTwr
 
-    LstLen = len(InLst)
-    LstSort = sorted(InLst)
+    twrLen = len(inTwr)
+    twrSort = sorted(inTwr)
 
     Flips = []
-    for f in range(1, LstLen+1):
+    for f in range(1, twrLen+1):
         Flips += [f]
 
     StpCnt = 0
     MtchCnt = 0
     FlipRec = []
 
-    Queue = [InLst]
+    Queue = [inTwr]
 
     while Queue:
 
-        Lst = Queue[0]
+        Twr = Queue[0]
         Queue = Queue[1:]
 
-        if Lst == LstSol:
-            print(f"\t\tSolved: {Lst}")
-            return Lst
+        if Twr == twrSol:
+            print(f"\t\tSolved: {Twr}")
+            return Twr
 
         for flp in Flips:
-            Queue.append(flip(Lst, flp))
+            Queue.append(flip(Twr, flp))
 
-    return InLst
+    return inTwr
 
 
 InputRaw_Str = """
@@ -178,48 +186,49 @@ print("\n")
 # """
 print("Driver simple solution:\n")
 
-for Lst in InputLst:
-    print(f"\tList: {Lst}\n")
+for Twr in InputLst:
 
-    LstLen = len(Lst)
+    print(f"\tTower: {Twr}\n")
 
-    LstSort = sorted(Lst)
-    LstSol = sorted(Lst, reverse=True)
+    twrLen = len(Twr)
 
-    print(f"\t\tSorted:    {LstSort}")
-    print(f"\t\tSolution:  {LstSol}")
+    twrSort = sorted(Twr)
+    twrSol = sorted(Twr, reverse=True)
+
+    print(f"\t\tSorted:    {twrSort}")
+    print(f"\t\tSolution:  {twrSol}")
     print()
 
     StpCnt = 0
-    MtchCnt = LstLen
+    MtchCnt = twrLen
 
     FlipRec = []
 
-    for n, num in enumerate(LstSort):
+    for n, num in enumerate(twrSort):
 
         MtchCnt -= 1
 
-        if Lst.index(num) == LstSol.index(num):
+        if Twr.index(num) == twrSol.index(num):
             continue
 
-        elif Lst == LstSol:
+        elif Twr == twrSol:
             break
 
-        numPos = Lst.index(num)
+        numPos = Twr.index(num)
         StpCnt += 1
 
         print(f"\t\t{StpCnt:2}.StpCnt:")
 
-        Lst = flip(Lst, numPos)
-        print(f"\t\t\t{Lst} = flip(Lst, {numPos})")
+        Twr = flip(Twr, numPos)
+        print(f"\t\t\t{Twr} = flip(Twr, {numPos})")
 
-        Lst = flip(Lst, MtchCnt)
-        print(f"\t\t\t{Lst} = flip(Lst, {MtchCnt})")
+        Twr = flip(Twr, MtchCnt)
+        print(f"\t\t\t{Twr} = flip(Twr, {MtchCnt})")
         print()
 
         FlipRec += [numPos, MtchCnt]
 
-    print(f"\n\t\tSolved: {Lst}")
+    print(f"\n\t\tSolved: {Twr}")
     FlipRec.append(0)
     print(f"\t\t\tFlips: {FlipRec}")
 
@@ -231,9 +240,10 @@ print("Function simple solution:\n")
 
 InputLst = copy.deepcopy(InputLstOrg)
 
-for Lst in InputLst:
+for Twr in InputLst:
 
-    FlipRec = sortSmpl_Prt(Lst)
+    FlipRec = sortSmpl_Prt(Twr)
+
     print(f"\t\t\t\tReturn: {FlipRec}")
     print("\n")
 # """
@@ -242,28 +252,28 @@ for Lst in InputLst:
 #
 # InputLst = copy.deepcopy(InputLstOrg)
 #
-# for Lst in InputLst:
+# for Twr in InputLst:
 #
-#     print(f"\tList: {Lst}\n")
+#     print(f"\tTower: {Twr}\n")
 #
-#     LstLen = len(Lst)
+#     twrLen = len(Twr)
 #
-#     LstSol = sorted(Lst, reverse=True)
-#     LstSort = sorted(Lst)
+#     twrSol = sorted(Twr, reverse=True)
+#     twrSort = sorted(Twr)
 #
 #     Flips = []
-#     for f in range(2, LstLen+1):
+#     for f in range(2, twrLen+1):
 #         Flips += [f]
 #
 #     print(f"\t\tFlips: {Flips}")
 #     print()
 #
 #     for flp in Flips:
-#         # flpLst = flip(Lst, flp)
-#         print(f"\t\tFlip[{flp}] = {flip(Lst, flp)}")
+#         # flpLst = flip(Twr, flp)
+#         print(f"\t\tFlip[{flp}] = {flip(Twr, flp)}")
 #
 #     # print()
-#     # for n, num in enumerate(Lst[LstLen::-1]):
+#     # for n, num in enumerate(Twr[twrLen::-1]):
 #     #     print(f"{n}. {num}")
 #
 #     print("\n")
@@ -273,12 +283,12 @@ for Lst in InputLst:
 #
 # InputLst = copy.deepcopy(InputLstOrg)
 #
-# for Lst in InputLst:
+# for Twr in InputLst:
 #
-#     print(f"\tList: {Lst}\n")
+#     print(f"\tTower: {Twr}\n")
 #
-#     LstSol = sortBFS_Iter_Prt(Lst)
-#     print(f"\t\t\tReturn: {LstSol}")
+#     twrSol = sortBFS_Iter_Prt(Twr)
+#     print(f"\t\t\tReturn: {twrSol}")
 #     print("\n")
 
 """
@@ -306,21 +316,21 @@ Input:
 
 Driver simple solution:
 
-	List: [1, 2, 3, 4, 5]
+	Tower: [1, 2, 3, 4, 5]
 
 		Sorted:    [1, 2, 3, 4, 5]
 		Solution:  [5, 4, 3, 2, 1]
 
 		 1.StpCnt:
-			[1, 2, 3, 4, 5] = flip(Lst, 0)
-			[5, 4, 3, 2, 1] = flip(Lst, 4)
+			[1, 2, 3, 4, 5] = flip(Twr, 0)
+			[5, 4, 3, 2, 1] = flip(Twr, 4)
 
 
 		Solved: [5, 4, 3, 2, 1]
 			Flips: [0, 4, 0]
 
 
-	List: [5, 4, 3, 2, 1]
+	Tower: [5, 4, 3, 2, 1]
 
 		Sorted:    [1, 2, 3, 4, 5]
 		Solution:  [5, 4, 3, 2, 1]
@@ -330,18 +340,18 @@ Driver simple solution:
 			Flips: [0]
 
 
-	List: [5, 1, 2, 3, 4]
+	Tower: [5, 1, 2, 3, 4]
 
 		Sorted:    [1, 2, 3, 4, 5]
 		Solution:  [5, 4, 3, 2, 1]
 
 		 1.StpCnt:
-			[1, 5, 2, 3, 4] = flip(Lst, 1)
-			[4, 3, 2, 5, 1] = flip(Lst, 4)
+			[1, 5, 2, 3, 4] = flip(Twr, 1)
+			[4, 3, 2, 5, 1] = flip(Twr, 4)
 
 		 2.StpCnt:
-			[2, 3, 4, 5, 1] = flip(Lst, 2)
-			[5, 4, 3, 2, 1] = flip(Lst, 3)
+			[2, 3, 4, 5, 1] = flip(Twr, 2)
+			[5, 4, 3, 2, 1] = flip(Twr, 3)
 
 
 		Solved: [5, 4, 3, 2, 1]
@@ -350,14 +360,14 @@ Driver simple solution:
 
 Function simple solution:
 
-	List: [1, 2, 3, 4, 5]
+	Tower: [1, 2, 3, 4, 5]
 
 		Sorted:    [1, 2, 3, 4, 5]
 		Solution:  [5, 4, 3, 2, 1]
 
 		 1.StpCnt:
-			[1, 2, 3, 4, 5] = flip(Lst, 0)
-			[5, 4, 3, 2, 1] = flip(Lst, 4)
+			[1, 2, 3, 4, 5] = flip(Twr, 0)
+			[5, 4, 3, 2, 1] = flip(Twr, 4)
 
 
 		Solved: [5, 4, 3, 2, 1]
@@ -365,7 +375,7 @@ Function simple solution:
 				Return: [0, 4, 0]
 
 
-	List: [5, 4, 3, 2, 1]
+	Tower: [5, 4, 3, 2, 1]
 
 		Sorted:    [1, 2, 3, 4, 5]
 		Solution:  [5, 4, 3, 2, 1]
@@ -376,18 +386,18 @@ Function simple solution:
 				Return: [0]
 
 
-	List: [5, 1, 2, 3, 4]
+	Tower: [5, 1, 2, 3, 4]
 
 		Sorted:    [1, 2, 3, 4, 5]
 		Solution:  [5, 4, 3, 2, 1]
 
 		 1.StpCnt:
-			[1, 5, 2, 3, 4] = flip(Lst, 1)
-			[4, 3, 2, 5, 1] = flip(Lst, 4)
+			[1, 5, 2, 3, 4] = flip(Twr, 1)
+			[4, 3, 2, 5, 1] = flip(Twr, 4)
 
 		 2.StpCnt:
-			[2, 3, 4, 5, 1] = flip(Lst, 2)
-			[5, 4, 3, 2, 1] = flip(Lst, 3)
+			[2, 3, 4, 5, 1] = flip(Twr, 2)
+			[5, 4, 3, 2, 1] = flip(Twr, 3)
 
 
 		Solved: [5, 4, 3, 2, 1]
