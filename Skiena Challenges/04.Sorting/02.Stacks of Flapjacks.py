@@ -87,6 +87,38 @@ for Input in InputLst_Str:
 
 print("\n")
 
+for Lst in InputLst:
+    print(f"\tList: {Lst}\n")
+
+    LstLen = len(Lst)
+
+    LstSort = sorted(Lst)
+    print(f"\t\tSorted:    {LstSort}")
+
+    LstSol = sorted(Lst, reverse=True)
+    print(f"\t\tSolution:  {LstSol}")
+    print()
+
+    # Pos = {}
+
+    # for num in LstSort:
+    #     Pos[num] = False
+
+    for n, num in enumerate(LstSort):
+
+        numPos = Lst.index(num) + 1
+
+        print(f"\t\t{num} = Lst[{numPos - 1}]")
+        print(f"\t\t\t     Lst[:{numPos}] = {Lst[:numPos]}")
+        print(f"\t\t\tflip(Lst, {numPos}) = {flip(Lst, numPos)}")
+        print()
+
+    # print(f"{Lst}")
+    # print(f"{LstSort}")
+
+    print("\n")
+
+"""
 print("Example:\n")
 
 expLst = [8, 4, 6, 7, 5, 2]
@@ -99,4 +131,5 @@ print(f"\tFlip 4:\n\t\t{expLst}\n")
 expLst = flip(expLst, 6)
 
 print(f"\tFlip 1:\n\t\t{expLst}\n")
+"""
 
