@@ -60,9 +60,10 @@ import copy
 
 class TowerCls:
 
-    def __init__(self, state, action = None, previous = None):
+    def __init__(self, state, action = None, match = 0, previous = None):
         self.state = copy.deepcopy(state)
         self.action = action
+        self.match = match
         self.previous = previous
 
 
@@ -183,7 +184,7 @@ for Input in InputLst_Str:
 InputLstOrg = copy.deepcopy(InputLst)
 print("\n")
 
-# """
+"""
 print("Driver simple solution:\n")
 
 for Twr in InputLst:
@@ -235,7 +236,7 @@ for Twr in InputLst:
     print("\n")
 # """
 
-# """
+"""
 print("Function simple solution:\n")
 
 InputLst = copy.deepcopy(InputLstOrg)
@@ -245,6 +246,70 @@ for Twr in InputLst:
     FlipRec = sortSmpl_Prt(Twr)
 
     print(f"\t\t\t\tReturn: {FlipRec}")
+    print("\n")
+# """
+
+# """
+print("Driver simple class solution:\n")
+
+for Twr in InputLst:
+
+    print(f"\tTower: {Twr}\n")
+
+    Tower = TowerCls(Twr)
+
+    twrLen = len(Twr)
+
+    twrSort = sorted(Twr)
+    twrSol = sorted(Twr, reverse=True)
+
+    print(f"\t\tSorted:    {twrSort}")
+    print(f"\t\tSolution:  {twrSol}")
+    print()
+
+    StpCnt = 0
+    # MtchCnt = twrLen
+
+    FlipRec = []
+
+    # for n, num in enumerate(twrSort):
+    while Tower.state != twrSol:
+
+        # MtchCnt -= 1
+
+        for pos in range(Tower.match, twrLen):
+
+            if Tower.state[twrLen-pos-1] == twrSol[twrLen-pos-1]:
+                Tower.match += 1
+
+            else:
+                break
+
+        StpCnt += 1
+        MtchCnt = Tower.match
+
+        numIndx = Tower.state.index(twrSol[twrLen - MtchCnt - 1])
+        numPos = twrLen - 1 - MtchCnt
+
+        print(f"\t\t{StpCnt:2}.StpCnt:")
+
+        Twr = flip(Twr, numIndx)
+        print(f"\t\t\t{Twr} = flip(Twr, {numIndx})")
+
+        Tower = TowerCls(Twr, numIndx, MtchCnt, Tower)
+
+        Twr = flip(Twr, numPos)
+        print(f"\t\t\t{Twr} = flip(Twr, {numPos})")
+        print()
+
+        Tower = TowerCls(Twr, numPos, Tower.match, Tower)
+
+        FlipRec += [numIndx, numPos]
+
+    print(f"\n\t\tSolved: {Twr}")
+    FlipRec.append(0)
+    print(f"\t\t\tFlips: {FlipRec}")
+
     print("\n")
 # """
 
