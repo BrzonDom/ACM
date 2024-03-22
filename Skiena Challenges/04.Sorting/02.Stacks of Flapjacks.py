@@ -127,7 +127,10 @@ for Input in InputLst_Str:
 
     InputLst.append(list(map(int, Input.split())))
 
+InputLstOrg = copy.deepcopy(InputLst)
 print("\n")
+
+print("Driver simple solution:\n")
 
 for Lst in InputLst:
     print(f"\tList: {Lst}\n")
@@ -173,18 +176,12 @@ for Lst in InputLst:
 
     print("\n")
 
-"""
-print("Example:\n")
+print("Function simple solution:\n")
 
-expLst = [8, 4, 6, 7, 5, 2]
+for Lst in InputLstOrg:
 
-print(f"\tExample list: \n\t\t{expLst}\n")
+    FlipLst = sortSmpl_Prt(Lst)
+    print(f"\t\t\t\tReturn: {FlipLst}")
+    print("\n")
 
-expLst = flip(expLst, 4)
-print(f"\tFlip 4:\n\t\t{expLst}\n")
-
-expLst = flip(expLst, 6)
-
-print(f"\tFlip 1:\n\t\t{expLst}\n")
-"""
 
