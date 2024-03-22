@@ -39,11 +39,35 @@ Bridge
         2
         5
         10
-        =>  17
-            1 2
-            1
-            5 10
-            2
-            1 2
+            =>  17
+                1 2
+                1
+                5 10
+                2
+                1 2
 
 """
+
+InputRaw_Str = """
+1
+
+4
+1
+2
+5
+10
+"""
+
+InputLst_Str = InputRaw_Str.split("\n")[1:-1]
+
+# print(InputLst_Str)
+
+InputLst = []
+
+for Input in InputLst_Str[1:]:
+    InputLst.append(int(Input))
+
+print(f"Input: {InputLst}")
+
+
+
