@@ -84,10 +84,10 @@ expLst = [8, 4, 6, 7, 5, 2]
 
 print(f"\tExample list: \n\t\t{expLst}\n")
 
-expLst = flip(expLst, 3)
-print(f"\tFlip 3:\n\t\t{expLst}\n")
+expLst = flip(expLst, 4)
+print(f"\tFlip 4:\n\t\t{expLst}\n")
 
-expLst = flip(expLst, 1)
+expLst = flip(expLst, 6)
 
 print(f"\tFlip 1:\n\t\t{expLst}\n")
 
