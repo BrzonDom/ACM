@@ -379,7 +379,7 @@ Input:
 	5 1 2 3 4
 
 
-Driver simple solution:
+Driver simple class solution:
 
 	Tower: [1, 2, 3, 4, 5]
 
@@ -421,53 +421,6 @@ Driver simple solution:
 
 		Solved: [5, 4, 3, 2, 1]
 			Flips: [1, 4, 2, 3, 0]
-
-
-Function simple solution:
-
-	Tower: [1, 2, 3, 4, 5]
-
-		Sorted:    [1, 2, 3, 4, 5]
-		Solution:  [5, 4, 3, 2, 1]
-
-		 1.StpCnt:
-			[1, 2, 3, 4, 5] = flip(Twr, 0)
-			[5, 4, 3, 2, 1] = flip(Twr, 4)
-
-
-		Solved: [5, 4, 3, 2, 1]
-			Flips: [0, 4, 0]
-				Return: [0, 4, 0]
-
-
-	Tower: [5, 4, 3, 2, 1]
-
-		Sorted:    [1, 2, 3, 4, 5]
-		Solution:  [5, 4, 3, 2, 1]
-
-
-		Solved: [5, 4, 3, 2, 1]
-			Flips: [0]
-				Return: [0]
-
-
-	Tower: [5, 1, 2, 3, 4]
-
-		Sorted:    [1, 2, 3, 4, 5]
-		Solution:  [5, 4, 3, 2, 1]
-
-		 1.StpCnt:
-			[1, 5, 2, 3, 4] = flip(Twr, 1)
-			[4, 3, 2, 5, 1] = flip(Twr, 4)
-
-		 2.StpCnt:
-			[2, 3, 4, 5, 1] = flip(Twr, 2)
-			[5, 4, 3, 2, 1] = flip(Twr, 3)
-
-
-		Solved: [5, 4, 3, 2, 1]
-			Flips: [1, 4, 2, 3, 0]
-				Return: [1, 4, 2, 3, 0]
 
 
 
