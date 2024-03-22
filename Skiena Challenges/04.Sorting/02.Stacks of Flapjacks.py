@@ -104,9 +104,20 @@ for Lst in InputLst:
     # for num in LstSort:
     #     Pos[num] = False
 
+    StpCnt = 0
+
+    FlipLst = []
+
     for n, num in enumerate(LstSort):
 
+        if Lst.index(num) == LstSol.index(num):
+            continue
+
+        elif Lst == LstSol:
+            break
+
         numPos = Lst.index(num) + 1
+        StpCnt += 1
 
         """
         print(f"\t\t{num} = Lst[{numPos - 1}]")
@@ -115,14 +126,20 @@ for Lst in InputLst:
         print()
         """
 
-        print(f"\t\t{n+1:2}.Step: flip(Lst, {numPos})")
+        print(f"\t\t{StpCnt:2}.StpCnt:")
 
         Lst = flip(Lst, numPos)
-        print(f"\t\t\t{Lst}")
+        FlipLst.append(numPos)
+        print(f"\t\t\t{Lst} = flip(Lst, {numPos})")
 
         Lst = flip(Lst, LstLen-n)
-        print(f"\t\t\t{Lst}")
+        FlipLst.append(LstLen-n)
+        print(f"\t\t\t{Lst} = flip(Lst, {LstLen-n})")
         print()
+
+    print(f"\n\t\tSolved: {Lst}")
+    FlipLst.append(0)
+    print(f"\t\t\tFlips: {FlipLst}")
 
     print("\n")
 
