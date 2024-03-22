@@ -93,9 +93,9 @@ for Lst in InputLst:
     LstLen = len(Lst)
 
     LstSort = sorted(Lst)
-    print(f"\t\tSorted:    {LstSort}")
-
     LstSol = sorted(Lst, reverse=True)
+
+    print(f"\t\tSorted:    {LstSort}")
     print(f"\t\tSolution:  {LstSol}")
     print()
 
@@ -108,13 +108,21 @@ for Lst in InputLst:
 
         numPos = Lst.index(num) + 1
 
+        """
         print(f"\t\t{num} = Lst[{numPos - 1}]")
         print(f"\t\t\t     Lst[:{numPos}] = {Lst[:numPos]}")
         print(f"\t\t\tflip(Lst, {numPos}) = {flip(Lst, numPos)}")
         print()
+        """
 
-    # print(f"{Lst}")
-    # print(f"{LstSort}")
+        print(f"\t\t{n+1:2}.Step: flip(Lst, {numPos})")
+
+        Lst = flip(Lst, numPos)
+        print(f"\t\t\t{Lst}")
+
+        Lst = flip(Lst, LstLen-n)
+        print(f"\t\t\t{Lst}")
+        print()
 
     print("\n")
 
