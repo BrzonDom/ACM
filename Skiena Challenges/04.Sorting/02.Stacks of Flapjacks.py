@@ -60,10 +60,10 @@ import copy
 
 def flip(lst, indx):
 
-    revLst = lst[:indx]
+    revLst = lst[:indx+1]
     revLst = revLst[::-1]
 
-    return revLst + lst[indx:]
+    return revLst + lst[indx+1:]
 
 
 def sortSmpl_Prt(Lst):
@@ -80,9 +80,13 @@ def sortSmpl_Prt(Lst):
     print()
 
     StpCnt = 0
+    MtchCnt = LstLen
+
     FlipRec = []
 
     for n, num in enumerate(LstSort):
+
+        MtchCnt -= 1
 
         if Lst.index(num) == LstSol.index(num):
             continue
@@ -90,7 +94,7 @@ def sortSmpl_Prt(Lst):
         elif Lst == LstSol:
             break
 
-        numPos = Lst.index(num) + 1
+        numPos = Lst.index(num)
         StpCnt += 1
 
         print(f"\t\t{StpCnt:2}.StpCnt:")
@@ -98,11 +102,11 @@ def sortSmpl_Prt(Lst):
         Lst = flip(Lst, numPos)
         print(f"\t\t\t{Lst} = flip(Lst, {numPos})")
 
-        Lst = flip(Lst, LstLen-n)
-        print(f"\t\t\t{Lst} = flip(Lst, {LstLen-n})")
+        Lst = flip(Lst, MtchCnt)
+        print(f"\t\t\t{Lst} = flip(Lst, {MtchCnt})")
         print()
 
-        FlipRec += [numPos, LstLen-n]
+        FlipRec += [numPos, MtchCnt]
 
     print(f"\n\t\tSolved: {Lst}")
     FlipRec.append(0)
@@ -111,7 +115,10 @@ def sortSmpl_Prt(Lst):
     return FlipRec
 
 
-def sortBFS_Prt(InLst):
+# def sortBFS_Rec(InLst, FlipRec, MtchCnt):
+
+
+def sortBFS_Iter_Prt(InLst):
 
     LstSol = sorted(InLst, reverse=True)
 
@@ -168,6 +175,7 @@ for Input in InputLst_Str:
 InputLstOrg = copy.deepcopy(InputLst)
 print("\n")
 
+# """
 print("Driver simple solution:\n")
 
 for Lst in InputLst:
@@ -183,10 +191,13 @@ for Lst in InputLst:
     print()
 
     StpCnt = 0
+    MtchCnt = LstLen
 
     FlipRec = []
 
     for n, num in enumerate(LstSort):
+
+        MtchCnt -= 1
 
         if Lst.index(num) == LstSol.index(num):
             continue
@@ -194,7 +205,7 @@ for Lst in InputLst:
         elif Lst == LstSol:
             break
 
-        numPos = Lst.index(num) + 1
+        numPos = Lst.index(num)
         StpCnt += 1
 
         print(f"\t\t{StpCnt:2}.StpCnt:")
@@ -202,19 +213,20 @@ for Lst in InputLst:
         Lst = flip(Lst, numPos)
         print(f"\t\t\t{Lst} = flip(Lst, {numPos})")
 
-        Lst = flip(Lst, LstLen-n)
-        print(f"\t\t\t{Lst} = flip(Lst, {LstLen-n})")
+        Lst = flip(Lst, MtchCnt)
+        print(f"\t\t\t{Lst} = flip(Lst, {MtchCnt})")
         print()
 
-        FlipRec += [numPos, LstLen - n]
+        FlipRec += [numPos, MtchCnt]
 
     print(f"\n\t\tSolved: {Lst}")
     FlipRec.append(0)
     print(f"\t\t\tFlips: {FlipRec}")
 
     print("\n")
+# """
 
-"""
+# """
 print("Function simple solution:\n")
 
 InputLst = copy.deepcopy(InputLstOrg)
@@ -224,65 +236,65 @@ for Lst in InputLst:
     FlipRec = sortSmpl_Prt(Lst)
     print(f"\t\t\t\tReturn: {FlipRec}")
     print("\n")
+# """
+
+# print("Driver BFS testing:\n")
+#
+# InputLst = copy.deepcopy(InputLstOrg)
+#
+# for Lst in InputLst:
+#
+#     print(f"\tList: {Lst}\n")
+#
+#     LstLen = len(Lst)
+#
+#     LstSol = sorted(Lst, reverse=True)
+#     LstSort = sorted(Lst)
+#
+#     Flips = []
+#     for f in range(2, LstLen+1):
+#         Flips += [f]
+#
+#     print(f"\t\tFlips: {Flips}")
+#     print()
+#
+#     for flp in Flips:
+#         # flpLst = flip(Lst, flp)
+#         print(f"\t\tFlip[{flp}] = {flip(Lst, flp)}")
+#
+#     # print()
+#     # for n, num in enumerate(Lst[LstLen::-1]):
+#     #     print(f"{n}. {num}")
+#
+#     print("\n")
+
+
+# print("Function BFS solution:\n")
+#
+# InputLst = copy.deepcopy(InputLstOrg)
+#
+# for Lst in InputLst:
+#
+#     print(f"\tList: {Lst}\n")
+#
+#     LstSol = sortBFS_Iter_Prt(Lst)
+#     print(f"\t\t\tReturn: {LstSol}")
+#     print("\n")
+
 """
+print("Example:\n")
 
-print("Driver BFS testing:\n")
+expLst = [8, 4, 6, 7, 5, 2]
 
-InputLst = copy.deepcopy(InputLstOrg)
+print(f"\tExample list: \n\t\t{expLst}\n")
 
-for Lst in InputLst:
+expLst = flip(expLst, 4)
+print(f"\tFlip 4:\n\t\t{expLst}\n")
 
-    print(f"\tList: {Lst}\n")
+expLst = flip(expLst, 6)
 
-    LstLen = len(Lst)
-
-    LstSol = sorted(Lst, reverse=True)
-    LstSort = sorted(Lst)
-
-    Flips = []
-    for f in range(1, LstLen+1):
-        Flips += [f]
-
-    print(f"\t\tFlips: {Flips}")
-    print()
-
-    for flp in Flips:
-        # flpLst = flip(Lst, flp)
-        print(f"\t\tFlip[{flp}] = {flip(Lst, flp)}")
-
-    # print()
-    # for n, num in enumerate(Lst[LstLen::-1]):
-    #     print(f"{n}. {num}")
-
-    print("\n")
-
-
-print("Function BFS solution:\n")
-
-InputLst = copy.deepcopy(InputLstOrg)
-
-for Lst in InputLst:
-
-    print(f"\tList: {Lst}\n")
-
-    LstSol = sortBFS_Prt(Lst)
-    print(f"\t\t\tReturn: {LstSol}")
-    print("\n")
-
-
-# print("Example:\n")
-#
-# expLst = [8, 4, 6, 7, 5, 2]
-#
-# print(f"\tExample list: \n\t\t{expLst}\n")
-#
-# expLst = flip(expLst, 4)
-# print(f"\tFlip 4:\n\t\t{expLst}\n")
-#
-# expLst = flip(expLst, 6)
-#
-# print(f"\tFlip 1:\n\t\t{expLst}\n")
-
+print(f"\tFlip 1:\n\t\t{expLst}\n")
+# """
 
 """__Output__"""
 """
@@ -300,12 +312,12 @@ Driver simple solution:
 		Solution:  [5, 4, 3, 2, 1]
 
 		 1.StpCnt:
-			[1, 2, 3, 4, 5] = flip(Lst, 1)
-			[5, 4, 3, 2, 1] = flip(Lst, 5)
+			[1, 2, 3, 4, 5] = flip(Lst, 0)
+			[5, 4, 3, 2, 1] = flip(Lst, 4)
 
 
 		Solved: [5, 4, 3, 2, 1]
-			Flips: [1, 5, 0]
+			Flips: [0, 4, 0]
 
 
 	List: [5, 4, 3, 2, 1]
@@ -324,71 +336,63 @@ Driver simple solution:
 		Solution:  [5, 4, 3, 2, 1]
 
 		 1.StpCnt:
-			[1, 5, 2, 3, 4] = flip(Lst, 2)
-			[4, 3, 2, 5, 1] = flip(Lst, 5)
+			[1, 5, 2, 3, 4] = flip(Lst, 1)
+			[4, 3, 2, 5, 1] = flip(Lst, 4)
 
 		 2.StpCnt:
-			[2, 3, 4, 5, 1] = flip(Lst, 3)
+			[2, 3, 4, 5, 1] = flip(Lst, 2)
+			[5, 4, 3, 2, 1] = flip(Lst, 3)
+
+
+		Solved: [5, 4, 3, 2, 1]
+			Flips: [1, 4, 2, 3, 0]
+
+
+Function simple solution:
+
+	List: [1, 2, 3, 4, 5]
+
+		Sorted:    [1, 2, 3, 4, 5]
+		Solution:  [5, 4, 3, 2, 1]
+
+		 1.StpCnt:
+			[1, 2, 3, 4, 5] = flip(Lst, 0)
 			[5, 4, 3, 2, 1] = flip(Lst, 4)
 
 
 		Solved: [5, 4, 3, 2, 1]
-			Flips: [2, 5, 3, 4, 0]
-
-
-Driver BFS testing:
-
-	List: [1, 2, 3, 4, 5]
-
-		Flips: [1, 2, 3, 4, 5]
-
-		Flip[1] = [1, 2, 3, 4, 5]
-		Flip[2] = [2, 1, 3, 4, 5]
-		Flip[3] = [3, 2, 1, 4, 5]
-		Flip[4] = [4, 3, 2, 1, 5]
-		Flip[5] = [5, 4, 3, 2, 1]
+			Flips: [0, 4, 0]
+				Return: [0, 4, 0]
 
 
 	List: [5, 4, 3, 2, 1]
 
-		Flips: [1, 2, 3, 4, 5]
+		Sorted:    [1, 2, 3, 4, 5]
+		Solution:  [5, 4, 3, 2, 1]
 
-		Flip[1] = [5, 4, 3, 2, 1]
-		Flip[2] = [4, 5, 3, 2, 1]
-		Flip[3] = [3, 4, 5, 2, 1]
-		Flip[4] = [2, 3, 4, 5, 1]
-		Flip[5] = [1, 2, 3, 4, 5]
+
+		Solved: [5, 4, 3, 2, 1]
+			Flips: [0]
+				Return: [0]
 
 
 	List: [5, 1, 2, 3, 4]
 
-		Flips: [1, 2, 3, 4, 5]
+		Sorted:    [1, 2, 3, 4, 5]
+		Solution:  [5, 4, 3, 2, 1]
 
-		Flip[1] = [5, 1, 2, 3, 4]
-		Flip[2] = [1, 5, 2, 3, 4]
-		Flip[3] = [2, 1, 5, 3, 4]
-		Flip[4] = [3, 2, 1, 5, 4]
-		Flip[5] = [4, 3, 2, 1, 5]
+		 1.StpCnt:
+			[1, 5, 2, 3, 4] = flip(Lst, 1)
+			[4, 3, 2, 5, 1] = flip(Lst, 4)
 
+		 2.StpCnt:
+			[2, 3, 4, 5, 1] = flip(Lst, 2)
+			[5, 4, 3, 2, 1] = flip(Lst, 3)
 
-Function BFS solution:
-
-	List: [1, 2, 3, 4, 5]
 
 		Solved: [5, 4, 3, 2, 1]
-			Return: [5, 4, 3, 2, 1]
-
-
-	List: [5, 4, 3, 2, 1]
-
-		Solved: [5, 4, 3, 2, 1]
-			Return: [5, 4, 3, 2, 1]
-
-
-	List: [5, 1, 2, 3, 4]
-
-		Solved: [5, 4, 3, 2, 1]
-			Return: [5, 4, 3, 2, 1]
+			Flips: [1, 4, 2, 3, 0]
+				Return: [1, 4, 2, 3, 0]
 
 
 
