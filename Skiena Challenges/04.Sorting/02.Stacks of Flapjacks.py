@@ -336,13 +336,60 @@ Driver simple solution:
 			Flips: [2, 5, 3, 4, 0]
 
 
+Driver BFS testing:
+
+	List: [1, 2, 3, 4, 5]
+
+		Flips: [1, 2, 3, 4, 5]
+
+		Flip[1] = [1, 2, 3, 4, 5]
+		Flip[2] = [2, 1, 3, 4, 5]
+		Flip[3] = [3, 2, 1, 4, 5]
+		Flip[4] = [4, 3, 2, 1, 5]
+		Flip[5] = [5, 4, 3, 2, 1]
+
+
+	List: [5, 4, 3, 2, 1]
+
+		Flips: [1, 2, 3, 4, 5]
+
+		Flip[1] = [5, 4, 3, 2, 1]
+		Flip[2] = [4, 5, 3, 2, 1]
+		Flip[3] = [3, 4, 5, 2, 1]
+		Flip[4] = [2, 3, 4, 5, 1]
+		Flip[5] = [1, 2, 3, 4, 5]
+
+
+	List: [5, 1, 2, 3, 4]
+
+		Flips: [1, 2, 3, 4, 5]
+
+		Flip[1] = [5, 1, 2, 3, 4]
+		Flip[2] = [1, 5, 2, 3, 4]
+		Flip[3] = [2, 1, 5, 3, 4]
+		Flip[4] = [3, 2, 1, 5, 4]
+		Flip[5] = [4, 3, 2, 1, 5]
+
+
 Function BFS solution:
 
 	List: [1, 2, 3, 4, 5]
 
+		Solved: [5, 4, 3, 2, 1]
+			Return: [5, 4, 3, 2, 1]
+
+
 	List: [5, 4, 3, 2, 1]
 
+		Solved: [5, 4, 3, 2, 1]
+			Return: [5, 4, 3, 2, 1]
+
+
 	List: [5, 1, 2, 3, 4]
+
+		Solved: [5, 4, 3, 2, 1]
+			Return: [5, 4, 3, 2, 1]
+
 
 
 Process finished with exit code 0
