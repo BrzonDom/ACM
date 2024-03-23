@@ -81,10 +81,10 @@ def sortSmpl_Prt(Twr):
 
     twrLen = len(Twr)
 
-    twrSort = sorted(Twr)
-    twrSol = sorted(Twr, reverse=True)
+    # twrSort = sorted(Twr, reverse=True)
+    twrSol = sorted(Twr)
 
-    print(f"\t\tSorted:    {twrSort}")
+    # print(f"\t\tSorted:    {twrSort}")
     print(f"\t\tSolution:  {twrSol}")
     print()
 
@@ -93,15 +93,15 @@ def sortSmpl_Prt(Twr):
 
     FlipRec = []
 
-    for n, num in enumerate(twrSort):
+    for num in twrSol[::-1]:
 
         MtchCnt -= 1
 
-        if Twr.index(num) == twrSol.index(num):
-            continue
-
-        elif Twr == twrSol:
+        if Twr == twrSol:
             break
+
+        elif Twr.index(num) == twrSol.index(num):
+            continue
 
         numPos = Twr.index(num)
         StpCnt += 1
@@ -260,7 +260,7 @@ if __name__ == '__main__':
 
 
     """Driver simple solution"""
-    # """
+    """
     print("Driver simple solution:\n")
     
     for Twr in InputLst:
@@ -314,7 +314,7 @@ if __name__ == '__main__':
 
 
     """Function simple solution"""
-    """
+    # """
     print("Function simple solution:\n")
     
     InputLst = copy.deepcopy(InputLstOrg)
@@ -498,7 +498,7 @@ Input:
 	    5 1 2 3 4
 
 
-Driver simple solution:
+Function simple solution:
 
 	Tower: [1, 2, 3, 4, 5]
 
@@ -507,6 +507,7 @@ Driver simple solution:
 
 		Solved: [1, 2, 3, 4, 5]
 			Flips: [0]
+				Return: [0]
 
 
 	Tower: [5, 4, 3, 2, 1]
@@ -520,6 +521,7 @@ Driver simple solution:
 
 		Solved: [1, 2, 3, 4, 5]
 			Flips: [0, 4, 0]
+				Return: [0, 4, 0]
 
 
 	Tower: [5, 1, 2, 3, 4]
@@ -537,6 +539,7 @@ Driver simple solution:
 
 		Solved: [1, 2, 3, 4, 5]
 			Flips: [0, 4, 0, 3, 0]
+				Return: [0, 4, 0, 3, 0]
 
 
 
