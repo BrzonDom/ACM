@@ -124,290 +124,367 @@ def sortSmpl_Prt(Twr):
     return FlipRec
 
 
-# def sortBFS_Rec(inTwr, FlipRec, MtchCnt):
-
-
-def sortBFS_Iter_Prt(inTwr):
-
-    twrSol = sorted(inTwr, reverse=True)
-
-    if twrSol == inTwr:
-        print(f"\t\tSolved: {inTwr}")
-        # print(f"\t\t\tFlips: [0]")
-        return inTwr
-
-    twrLen = len(inTwr)
-    twrSort = sorted(inTwr)
-
-    Flips = []
-    for f in range(1, twrLen+1):
-        Flips += [f]
-
-    StpCnt = 0
-    MtchCnt = 0
-    FlipRec = []
-
-    Queue = [inTwr]
-
-    while Queue:
-
-        Twr = Queue[0]
-        Queue = Queue[1:]
-
-        if Twr == twrSol:
-            print(f"\t\tSolved: {Twr}")
-            return Twr
-
-        for flp in Flips:
-            Queue.append(flip(Twr, flp))
-
-    return inTwr
-
-
-InputRaw_Str = """
-1 2 3 4 5
-5 4 3 2 1
-5 1 2 3 4
-"""
-
-InputLst_Str = InputRaw_Str.split("\n")[1:-1]
-
-InputLst = []
-
-print("Input:")
-
-for Input in InputLst_Str:
-    print(f"\t{Input}")
-
-    InputLst.append(list(map(int, Input.split())))
-
-InputLstOrg = copy.deepcopy(InputLst)
-print("\n")
-
-"""
-print("Driver simple solution:\n")
-
-for Twr in InputLst:
-
-    print(f"\tTower: {Twr}\n")
-
-    twrLen = len(Twr)
-
-    twrSort = sorted(Twr)
-    twrSol = sorted(Twr, reverse=True)
-
-    print(f"\t\tSorted:    {twrSort}")
-    print(f"\t\tSolution:  {twrSol}")
-    print()
-
-    StpCnt = 0
-    MtchCnt = twrLen
-
-    FlipRec = []
-
-    for n, num in enumerate(twrSort):
-
-        MtchCnt -= 1
-
-        if Twr.index(num) == twrSol.index(num):
-            continue
-
-        elif Twr == twrSol:
-            break
-
-        numPos = Twr.index(num)
-        StpCnt += 1
-
-        print(f"\t\t{StpCnt:2}.Step:")
-
-        Twr = flip(Twr, numPos)
-        print(f"\t\t\t{Twr} = flip(Twr, {numPos})")
-
-        Twr = flip(Twr, MtchCnt)
-        print(f"\t\t\t{Twr} = flip(Twr, {MtchCnt})")
-        print()
-
-        FlipRec += [numPos, MtchCnt]
-
-    print(f"\n\t\tSolved: {Twr}")
-    FlipRec.append(0)
-    print(f"\t\t\tFlips: {FlipRec}")
-
-    print("\n")
-# """
-
-"""
-print("Function simple solution:\n")
-
-InputLst = copy.deepcopy(InputLstOrg)
-
-for Twr in InputLst:
-
-    FlipRec = sortSmpl_Prt(Twr)
-
-    print(f"\t\t\t\tReturn: {FlipRec}")
-    print("\n")
-# """
-
-# """
-print("Driver simple class solution:\n")
-
-for Twr in InputLst:
-
-    orgTwr = Twr
-
-    print(f"\tTower: {Twr}\n")
-
-    Tower = TowerCls(Twr)
-
-    twrLen = len(Twr)
-
-    twrSort = sorted(Twr)
-    twrSol = sorted(Twr, reverse=True)
-
-    print(f"\t\tSorted:    {twrSort}")
-    print(f"\t\tSolution:  {twrSol}")
-    print()
-
-    StpCnt = 0
-    # MtchCnt = twrLen
-
-    FlipRec = []
-
-    # for n, num in enumerate(twrSort):
-    while Tower.state != twrSol:
-
-        # MtchCnt -= 1
-
-        for pos in range(Tower.match, twrLen):
-
-            if Tower.state[twrLen-pos-1] == twrSol[twrLen-pos-1]:
-                Tower.match += 1
-
-            else:
-                break
-
-        StpCnt += 1
-        MtchCnt = Tower.match
-
-        numIndx = Tower.state.index(twrSol[twrLen - MtchCnt - 1])
-        numPos = twrLen - 1 - MtchCnt
-
-        print(f"\t\t{StpCnt:2}.Step:")
-
-        Twr = flip(Twr, numIndx)
-        print(f"\t\t\t{Twr} = flip(Twr, {numIndx})")
-
-        Tower = TowerCls(Twr, numIndx, MtchCnt, Tower)
-
-        Twr = flip(Twr, numPos)
-        print(f"\t\t\t{Twr} = flip(Twr, {numPos})")
-        print()
-
-        Tower = TowerCls(Twr, numPos, Tower.match, Tower)
-
-        FlipRec += [numIndx, numPos]
-
-    print(f"\n\t\tSolved: {Twr}")
-    FlipRec.append(0)
-    print(f"\t\t\tFlips: {FlipRec}")
-    print()
-
-    allTwrs = []
-    allFlps = []
-
-    while Tower.action != None:
-
-        allTwrs.append(Tower.state)
-        allFlps.append(Tower.action)
-
-        Tower = Tower.previous
-
-    allTwrs = allTwrs[::-1]
-    allFlps = allFlps[::-1] + [0]
-
-    print(f"\tTower: {orgTwr}\n")
-
-    for t, pthTwr in enumerate(allTwrs):
-        print(f"\t\t{t+1:2}.Step:")
-
-        print(f"\t\t\t{pthTwr} = flip(Twr, {allFlps[t]})")
-        print()
-
-    print(f"\n\t\tSolved: {twrSol}")
-    print(f"\t\t\tFlips: {allFlps}")
-
-    # print(allTwrs)
-    # print(allFlps)
-
-    print("\n")
-
-# """
-
-# print("Driver BFS testing:\n")
+# def sortBFS_Cls_Prt(inTwr):
 #
-# InputLst = copy.deepcopy(InputLstOrg)
+#     twrSol = sorted(inTwr, reverse=True)
+#     twrLen = len(inTwr)
 #
-# for Twr in InputLst:
-#
-#     print(f"\tTower: {Twr}\n")
-#
-#     twrLen = len(Twr)
-#
-#     twrSol = sorted(Twr, reverse=True)
-#     twrSort = sorted(Twr)
-#
-#     Flips = []
-#     for f in range(2, twrLen+1):
-#         Flips += [f]
-#
-#     print(f"\t\tFlips: {Flips}")
+#     print(f"\tTower: {inTwr}\n")
+#     print(f"\t\tSolution:  {twrSol}")
 #     print()
 #
-#     for flp in Flips:
-#         # flpLst = flip(Twr, flp)
-#         print(f"\t\tFlip[{flp}] = {flip(Twr, flp)}")
+#     Twr = TowerCls(inTwr)
 #
-#     # print()
-#     # for n, num in enumerate(Twr[twrLen::-1]):
-#     #     print(f"{n}. {num}")
+#     queueTwr = [Twr]
 #
-#     print("\n")
-
-
-# print("Function BFS solution:\n")
+#     while queueTwr:
 #
-# InputLst = copy.deepcopy(InputLstOrg)
+#         cTwr = queueTwr[0]
+#         queueTwr = queueTwr[1:]
 #
-# for Twr in InputLst:
+#         if Twr.state == twrSol:
+#             break
 #
-#     print(f"\tTower: {Twr}\n")
+#         for pos in range(Twr.match + 1, twrLen):
 #
-#     twrSol = sortBFS_Iter_Prt(Twr)
-#     print(f"\t\t\tReturn: {twrSol}")
-#     print("\n")
+#             if Twr.state[twrLen - pos] == twrSol[twrLen - pos]:
+#                 Twr.match += 1
+#
+#             else:
+#                 break
+#
+#     return
 
-"""
-print("Example:\n")
 
-expLst = [8, 4, 6, 7, 5, 2]
+def sortBFS_Prt(inTwr):
 
-print(f"\tExample list: \n\t\t{expLst}\n")
+    twrSol = sorted(inTwr, reverse=True)
+    twrLen = len(inTwr)
 
-expLst = flip(expLst, 4)
-print(f"\tFlip 4:\n\t\t{expLst}\n")
+    print(f"\tTower: {inTwr}\n")
+    print(f"\t\tSolution:  {twrSol}")
+    print()
 
-expLst = flip(expLst, 6)
+    queueTwr = [inTwr]
 
-print(f"\tFlip 1:\n\t\t{expLst}\n")
-# """
+    vstdTwr = set()
+    vstdTwr.add(str(inTwr))
+
+    while queueTwr:
+
+        cTwr = queueTwr[0]
+        queueTwr = queueTwr[1:]
+
+        if cTwr == twrSol:
+            return
+
+        mtchCnt = match = 0
+
+        for m, mtch in enumerate(twrSol[::-1]):
+
+            if cTwr[twrLen - m - 1] == mtch:
+                mtchCnt += 1
+
+            else:
+                match = mtch
+                break
+
+        for flp in range(1, twrLen - mtchCnt):
+            nTwr = flip(cTwr, flp)
+
+            if str(nTwr) not in vstdTwr:
+                queueTwr += [nTwr]
+                vstdTwr.add(str(nTwr))
+
+    return
+
+    # if twrSol == inTwr:
+    #     print(f"\t\tSolved: {inTwr}")
+    #     # print(f"\t\t\tFlips: [0]")
+    #     return inTwr
+    #
+    # twrLen = len(inTwr)
+    # twrSort = sorted(inTwr)
+    #
+    # Flips = []
+    # for f in range(1, twrLen+1):
+    #     Flips += [f]
+    #
+    # StpCnt = 0
+    # MtchCnt = 0
+    # FlipRec = []
+    #
+    # Queue = [inTwr]
+    #
+    # while Queue:
+    #
+    #     Twr = Queue[0]
+    #     Queue = Queue[1:]
+    #
+    #     if Twr == twrSol:
+    #         print(f"\t\tSolved: {Twr}")
+    #         return Twr
+    #
+    #     for flp in Flips:
+    #         Queue.append(flip(Twr, flp))
+    #
+    # return inTwr
+
+
+if __name__ == '__main__':
+
+    InputRaw_Str = """
+    1 2 3 4 5
+    5 4 3 2 1
+    5 1 2 3 4
+    """
+
+    InputLst_Str = InputRaw_Str.split("\n")[1:-1]
+
+    InputLst = []
+
+    print("Input:")
+
+    for Input in InputLst_Str:
+        print(f"\t{Input}")
+
+        InputLst.append(list(map(int, Input.split())))
+
+    InputLstOrg = copy.deepcopy(InputLst)
+    print("\n")
+
+
+    """Driver simple solution"""
+    """
+    print("Driver simple solution:\n")
+    
+    for Twr in InputLst:
+    
+        print(f"\tTower: {Twr}\n")
+    
+        twrLen = len(Twr)
+    
+        twrSort = sorted(Twr)
+        twrSol = sorted(Twr, reverse=True)
+    
+        print(f"\t\tSorted:    {twrSort}")
+        print(f"\t\tSolution:  {twrSol}")
+        print()
+    
+        StpCnt = 0
+        MtchCnt = twrLen
+    
+        FlipRec = []
+    
+        for n, num in enumerate(twrSort):
+    
+            MtchCnt -= 1
+    
+            if Twr.index(num) == twrSol.index(num):
+                continue
+    
+            elif Twr == twrSol:
+                break
+    
+            numPos = Twr.index(num)
+            StpCnt += 1
+    
+            print(f"\t\t{StpCnt:2}.Step:")
+    
+            Twr = flip(Twr, numPos)
+            print(f"\t\t\t{Twr} = flip(Twr, {numPos})")
+    
+            Twr = flip(Twr, MtchCnt)
+            print(f"\t\t\t{Twr} = flip(Twr, {MtchCnt})")
+            print()
+    
+            FlipRec += [numPos, MtchCnt]
+    
+        print(f"\n\t\tSolved: {Twr}")
+        FlipRec.append(0)
+        print(f"\t\t\tFlips: {FlipRec}")
+    
+        print("\n")
+    # """
+
+    """Function simple solution"""
+    """
+    print("Function simple solution:\n")
+    
+    InputLst = copy.deepcopy(InputLstOrg)
+    
+    for Twr in InputLst:
+    
+        FlipRec = sortSmpl_Prt(Twr)
+    
+        print(f"\t\t\t\tReturn: {FlipRec}")
+        print("\n")
+    # """
+
+
+    """Driver simple class solution"""
+    # """
+    print("Driver simple class solution:\n")
+
+    for Twr in InputLst:
+
+        orgTwr = Twr
+
+        print(f"\tTower: {Twr}\n")
+
+        Tower = TowerCls(Twr)
+
+        twrLen = len(Twr)
+
+        twrSort = sorted(Twr)
+        twrSol = sorted(Twr, reverse=True)
+
+        print(f"\t\tSorted:    {twrSort}")
+        print(f"\t\tSolution:  {twrSol}")
+        print()
+
+        StpCnt = 0
+        # MtchCnt = twrLen
+
+        FlipRec = []
+
+        # for n, num in enumerate(twrSort):
+        while Tower.state != twrSol:
+
+            # MtchCnt -= 1
+
+            for pos in range(Tower.match, twrLen):
+
+                if Tower.state[twrLen-pos-1] == twrSol[twrLen-pos-1]:
+                    Tower.match += 1
+
+                else:
+                    break
+
+            StpCnt += 1
+            MtchCnt = Tower.match
+
+            numIndx = Tower.state.index(twrSol[twrLen - MtchCnt - 1])
+            numPos = twrLen - 1 - MtchCnt
+
+            print(f"\t\t{StpCnt:2}.Step:")
+
+            Twr = flip(Twr, numIndx)
+            print(f"\t\t\t{Twr} = flip(Twr, {numIndx})")
+
+            Tower = TowerCls(Twr, numIndx, MtchCnt, Tower)
+
+            Twr = flip(Twr, numPos)
+            print(f"\t\t\t{Twr} = flip(Twr, {numPos})")
+            print()
+
+            Tower = TowerCls(Twr, numPos, Tower.match, Tower)
+
+            FlipRec += [numIndx, numPos]
+
+        print(f"\n\t\tSolved: {Twr}")
+        FlipRec.append(0)
+        print(f"\t\t\tFlips: {FlipRec}")
+        print()
+
+        allTwrs = []
+        allFlps = []
+
+        while Tower.action != None:
+
+            allTwrs.append(Tower.state)
+            allFlps.append(Tower.action)
+
+            Tower = Tower.previous
+
+        allTwrs = allTwrs[::-1]
+        allFlps = allFlps[::-1] + [0]
+
+        print(f"\tTower: {orgTwr}\n")
+
+        for t, pthTwr in enumerate(allTwrs):
+            print(f"\t\t{t+1:2}.Step:")
+
+            print(f"\t\t\t{pthTwr} = flip(Twr, {allFlps[t]})")
+            print()
+
+        print(f"\n\t\tSolved: {twrSol}")
+        print(f"\t\t\tFlips: {allFlps}")
+
+        # print(allTwrs)
+        # print(allFlps)
+
+        print("\n")
+
+    """Driver BFS testing"""
+    """
+    print("Driver BFS testing:\n")
+
+    InputLst = copy.deepcopy(InputLstOrg)
+
+    for Twr in InputLst:
+
+        print(f"\tTower: {Twr}\n")
+
+        twrLen = len(Twr)
+
+        twrSol = sorted(Twr, reverse=True)
+        twrSort = sorted(Twr)
+
+        Flips = []
+        for f in range(2, twrLen+1):
+            Flips += [f]
+
+        print(f"\t\tFlips: {Flips}")
+        print()
+
+        for flp in Flips:
+            # flpLst = flip(Twr, flp)
+            print(f"\t\tFlip[{flp}] = {flip(Twr, flp)}")
+
+        # print()
+        # for n, num in enumerate(Twr[twrLen::-1]):
+        #     print(f"{n}. {num}")
+
+        print("\n")
+    # """
+
+
+    # print("Function BFS solution:\n")
+    #
+    # InputLst = copy.deepcopy(InputLstOrg)
+    #
+    # for Twr in InputLst:
+    #
+    #     print(f"\tTower: {Twr}\n")
+    #
+    #     twrSol = sortBFS_Iter_Prt(Twr)
+    #     print(f"\t\t\tReturn: {twrSol}")
+    #     print("\n")
+
+
+    """Flips examples"""
+    """
+    print("Example:\n")
+    
+    expLst = [8, 4, 6, 7, 5, 2]
+    
+    print(f"\tExample list: \n\t\t{expLst}\n")
+    
+    expLst = flip(expLst, 4)
+    print(f"\tFlip 4:\n\t\t{expLst}\n")
+    
+    expLst = flip(expLst, 6)
+    
+    print(f"\tFlip 1:\n\t\t{expLst}\n")
+    # """
 
 """__Output__"""
 """
 Input:
-	1 2 3 4 5
-	5 4 3 2 1
-	5 1 2 3 4
+	    1 2 3 4 5
+	    5 4 3 2 1
+	    5 1 2 3 4
 
 
 Driver simple class solution:
