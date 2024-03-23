@@ -167,8 +167,8 @@ def sortBFS_Prt(inTwr):
 
     queueTwr = [inTwr]
 
-    vstdTwr = set()
-    vstdTwr.add(str(inTwr))
+    flpsRec = {}
+    flpsRec[str(inTwr)] = []
 
     while queueTwr:
 
@@ -176,7 +176,12 @@ def sortBFS_Prt(inTwr):
         queueTwr = queueTwr[1:]
 
         if cTwr == twrSol:
-            return cTwr
+
+            flpsRec[str(cTwr)] += [0]
+
+            print(f"\t\tFlips: {flpsRec[str(cTwr)]}")
+
+            return flpsRec[str(cTwr)]
 
         mtchCnt = match = 0
 
@@ -192,9 +197,9 @@ def sortBFS_Prt(inTwr):
         for flp in range(1, twrLen - mtchCnt):
             nTwr = flip(cTwr, flp)
 
-            if str(nTwr) not in vstdTwr:
+            if str(nTwr) not in flpsRec:
                 queueTwr += [nTwr]
-                vstdTwr.add(str(nTwr))
+                flpsRec[str(nTwr)] = flpsRec[str(cTwr)] + [flp]
 
     return
 
@@ -255,7 +260,7 @@ if __name__ == '__main__':
 
 
     """Driver simple solution"""
-    """
+    # """
     print("Driver simple solution:\n")
     
     for Twr in InputLst:
@@ -459,7 +464,7 @@ if __name__ == '__main__':
 
     InputLst = copy.deepcopy(InputLstOrg)
 
-    for Twr in InputLst:
+    for Twr in InputLst[1:]:
 
         # print(f"\tTower: {Twr}\n")
 
