@@ -106,7 +106,7 @@ def sortSmpl_Prt(Twr):
         numPos = Twr.index(num)
         StpCnt += 1
 
-        print(f"\t\t{StpCnt:2}.StpCnt:")
+        print(f"\t\t{StpCnt:2}.Step:")
 
         Twr = flip(Twr, numPos)
         print(f"\t\t\t{Twr} = flip(Twr, {numPos})")
@@ -218,7 +218,7 @@ for Twr in InputLst:
         numPos = Twr.index(num)
         StpCnt += 1
 
-        print(f"\t\t{StpCnt:2}.StpCnt:")
+        print(f"\t\t{StpCnt:2}.Step:")
 
         Twr = flip(Twr, numPos)
         print(f"\t\t\t{Twr} = flip(Twr, {numPos})")
@@ -253,6 +253,8 @@ for Twr in InputLst:
 print("Driver simple class solution:\n")
 
 for Twr in InputLst:
+
+    orgTwr = Twr
 
     print(f"\tTower: {Twr}\n")
 
@@ -291,7 +293,7 @@ for Twr in InputLst:
         numIndx = Tower.state.index(twrSol[twrLen - MtchCnt - 1])
         numPos = twrLen - 1 - MtchCnt
 
-        print(f"\t\t{StpCnt:2}.StpCnt:")
+        print(f"\t\t{StpCnt:2}.Step:")
 
         Twr = flip(Twr, numIndx)
         print(f"\t\t\t{Twr} = flip(Twr, {numIndx})")
@@ -309,8 +311,37 @@ for Twr in InputLst:
     print(f"\n\t\tSolved: {Twr}")
     FlipRec.append(0)
     print(f"\t\t\tFlips: {FlipRec}")
+    print()
+
+    allTwrs = []
+    allFlps = []
+
+    while Tower.action != None:
+
+        allTwrs.append(Tower.state)
+        allFlps.append(Tower.action)
+
+        Tower = Tower.previous
+
+    allTwrs = allTwrs[::-1]
+    allFlps = allFlps[::-1] + [0]
+
+    print(f"\tTower: {orgTwr}\n")
+
+    for t, pthTwr in enumerate(allTwrs):
+        print(f"\t\t{t+1:2}.Step:")
+
+        print(f"\t\t\t{pthTwr} = flip(Twr, {allFlps[t]})")
+        print()
+
+    print(f"\n\t\tSolved: {twrSol}")
+    print(f"\t\t\tFlips: {allFlps}")
+
+    # print(allTwrs)
+    # print(allFlps)
 
     print("\n")
+
 # """
 
 # print("Driver BFS testing:\n")
@@ -386,8 +417,20 @@ Driver simple class solution:
 		Sorted:    [1, 2, 3, 4, 5]
 		Solution:  [5, 4, 3, 2, 1]
 
-		 1.StpCnt:
+		 1.Step:
 			[1, 2, 3, 4, 5] = flip(Twr, 0)
+			[5, 4, 3, 2, 1] = flip(Twr, 4)
+
+
+		Solved: [5, 4, 3, 2, 1]
+			Flips: [0, 4, 0]
+
+	Tower: [1, 2, 3, 4, 5]
+
+		 1.Step:
+			[1, 2, 3, 4, 5] = flip(Twr, 0)
+
+		 2.Step:
 			[5, 4, 3, 2, 1] = flip(Twr, 4)
 
 
@@ -404,18 +447,42 @@ Driver simple class solution:
 		Solved: [5, 4, 3, 2, 1]
 			Flips: [0]
 
+	Tower: [5, 4, 3, 2, 1]
+
+
+		Solved: [5, 4, 3, 2, 1]
+			Flips: [0]
+
 
 	Tower: [5, 1, 2, 3, 4]
 
 		Sorted:    [1, 2, 3, 4, 5]
 		Solution:  [5, 4, 3, 2, 1]
 
-		 1.StpCnt:
+		 1.Step:
 			[1, 5, 2, 3, 4] = flip(Twr, 1)
 			[4, 3, 2, 5, 1] = flip(Twr, 4)
 
-		 2.StpCnt:
+		 2.Step:
 			[2, 3, 4, 5, 1] = flip(Twr, 2)
+			[5, 4, 3, 2, 1] = flip(Twr, 3)
+
+
+		Solved: [5, 4, 3, 2, 1]
+			Flips: [1, 4, 2, 3, 0]
+
+	Tower: [5, 1, 2, 3, 4]
+
+		 1.Step:
+			[1, 5, 2, 3, 4] = flip(Twr, 1)
+
+		 2.Step:
+			[4, 3, 2, 5, 1] = flip(Twr, 4)
+
+		 3.Step:
+			[2, 3, 4, 5, 1] = flip(Twr, 2)
+
+		 4.Step:
 			[5, 4, 3, 2, 1] = flip(Twr, 3)
 
 
