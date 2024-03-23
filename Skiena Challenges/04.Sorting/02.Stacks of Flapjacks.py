@@ -176,7 +176,7 @@ def sortBFS_Prt(inTwr):
         queueTwr = queueTwr[1:]
 
         if cTwr == twrSol:
-            return
+            return cTwr
 
         mtchCnt = match = 0
 
@@ -307,6 +307,7 @@ if __name__ == '__main__':
         print("\n")
     # """
 
+
     """Function simple solution"""
     """
     print("Function simple solution:\n")
@@ -323,7 +324,7 @@ if __name__ == '__main__':
 
 
     """Driver simple class solution"""
-    # """
+    """
     print("Driver simple class solution:\n")
 
     for Twr in InputLst:
@@ -415,6 +416,8 @@ if __name__ == '__main__':
         # print(allFlps)
 
         print("\n")
+    # """
+
 
     """Driver BFS testing"""
     """
@@ -450,17 +453,20 @@ if __name__ == '__main__':
     # """
 
 
-    # print("Function BFS solution:\n")
-    #
-    # InputLst = copy.deepcopy(InputLstOrg)
-    #
-    # for Twr in InputLst:
-    #
-    #     print(f"\tTower: {Twr}\n")
-    #
-    #     twrSol = sortBFS_Iter_Prt(Twr)
-    #     print(f"\t\t\tReturn: {twrSol}")
-    #     print("\n")
+    """Function BFS solution"""
+    # """
+    print("Function BFS solution:\n")
+
+    InputLst = copy.deepcopy(InputLstOrg)
+
+    for Twr in InputLst:
+
+        # print(f"\tTower: {Twr}\n")
+
+        twrSol = sortBFS_Prt(Twr)
+        print(f"\t\t\tReturn: {twrSol}")
+        print("\n")
+    # """
 
 
     """Flips examples"""
@@ -487,84 +493,27 @@ Input:
 	    5 1 2 3 4
 
 
-Driver simple class solution:
+Function BFS solution:
 
 	Tower: [1, 2, 3, 4, 5]
 
-		Sorted:    [1, 2, 3, 4, 5]
 		Solution:  [5, 4, 3, 2, 1]
 
-		 1.Step:
-			[1, 2, 3, 4, 5] = flip(Twr, 0)
-			[5, 4, 3, 2, 1] = flip(Twr, 4)
-
-
-		Solved: [5, 4, 3, 2, 1]
-			Flips: [0, 4, 0]
-
-	Tower: [1, 2, 3, 4, 5]
-
-		 1.Step:
-			[1, 2, 3, 4, 5] = flip(Twr, 0)
-
-		 2.Step:
-			[5, 4, 3, 2, 1] = flip(Twr, 4)
-
-
-		Solved: [5, 4, 3, 2, 1]
-			Flips: [0, 4, 0]
+			Return: [5, 4, 3, 2, 1]
 
 
 	Tower: [5, 4, 3, 2, 1]
 
-		Sorted:    [1, 2, 3, 4, 5]
 		Solution:  [5, 4, 3, 2, 1]
 
-
-		Solved: [5, 4, 3, 2, 1]
-			Flips: [0]
-
-	Tower: [5, 4, 3, 2, 1]
-
-
-		Solved: [5, 4, 3, 2, 1]
-			Flips: [0]
+			Return: [5, 4, 3, 2, 1]
 
 
 	Tower: [5, 1, 2, 3, 4]
 
-		Sorted:    [1, 2, 3, 4, 5]
 		Solution:  [5, 4, 3, 2, 1]
 
-		 1.Step:
-			[1, 5, 2, 3, 4] = flip(Twr, 1)
-			[4, 3, 2, 5, 1] = flip(Twr, 4)
-
-		 2.Step:
-			[2, 3, 4, 5, 1] = flip(Twr, 2)
-			[5, 4, 3, 2, 1] = flip(Twr, 3)
-
-
-		Solved: [5, 4, 3, 2, 1]
-			Flips: [1, 4, 2, 3, 0]
-
-	Tower: [5, 1, 2, 3, 4]
-
-		 1.Step:
-			[1, 5, 2, 3, 4] = flip(Twr, 1)
-
-		 2.Step:
-			[4, 3, 2, 5, 1] = flip(Twr, 4)
-
-		 3.Step:
-			[2, 3, 4, 5, 1] = flip(Twr, 2)
-
-		 4.Step:
-			[5, 4, 3, 2, 1] = flip(Twr, 3)
-
-
-		Solved: [5, 4, 3, 2, 1]
-			Flips: [1, 4, 2, 3, 0]
+			Return: [5, 4, 3, 2, 1]
 
 
 
