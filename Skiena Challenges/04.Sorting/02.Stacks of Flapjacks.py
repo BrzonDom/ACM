@@ -156,9 +156,9 @@ def sortSmpl_Prt(Twr):
 #     return
 
 
-def sortBFS_Prt(inTwr):
+def sortBFS_Sol(inTwr):
 
-    twrSol = sorted(inTwr, reverse=True)
+    twrSol = sorted(inTwr)
     twrLen = len(inTwr)
 
     print(f"\tTower: {inTwr}\n")
@@ -201,39 +201,8 @@ def sortBFS_Prt(inTwr):
                 queueTwr += [nTwr]
                 flpsRec[str(nTwr)] = flpsRec[str(cTwr)] + [flp]
 
-    return
+    return 0
 
-    # if twrSol == inTwr:
-    #     print(f"\t\tSolved: {inTwr}")
-    #     # print(f"\t\t\tFlips: [0]")
-    #     return inTwr
-    #
-    # twrLen = len(inTwr)
-    # twrSort = sorted(inTwr)
-    #
-    # Flips = []
-    # for f in range(1, twrLen+1):
-    #     Flips += [f]
-    #
-    # StpCnt = 0
-    # MtchCnt = 0
-    # FlipRec = []
-    #
-    # Queue = [inTwr]
-    #
-    # while Queue:
-    #
-    #     Twr = Queue[0]
-    #     Queue = Queue[1:]
-    #
-    #     if Twr == twrSol:
-    #         print(f"\t\tSolved: {Twr}")
-    #         return Twr
-    #
-    #     for flp in Flips:
-    #         Queue.append(flip(Twr, flp))
-    #
-    # return inTwr
 
 
 if __name__ == '__main__':
@@ -329,7 +298,7 @@ if __name__ == '__main__':
 
 
     """Driver simple class solution"""
-    # """
+    """
     print("Driver simple class solution:\n")
 
     for Twr in InputLst:
@@ -425,51 +394,17 @@ if __name__ == '__main__':
     # """
 
 
-    """Driver BFS testing"""
-    """
-    print("Driver BFS testing:\n")
+    """Function BFS solution"""
+    # """
+    print("Function BFS solution:\n")
 
     InputLst = copy.deepcopy(InputLstOrg)
 
     for Twr in InputLst:
 
-        print(f"\tTower: {Twr}\n")
-
-        twrLen = len(Twr)
-
-        twrSol = sorted(Twr, reverse=True)
-        twrSort = sorted(Twr)
-
-        Flips = []
-        for f in range(2, twrLen+1):
-            Flips += [f]
-
-        print(f"\t\tFlips: {Flips}")
-        print()
-
-        for flp in Flips:
-            # flpLst = flip(Twr, flp)
-            print(f"\t\tFlip[{flp}] = {flip(Twr, flp)}")
-
-        # print()
-        # for n, num in enumerate(Twr[twrLen::-1]):
-        #     print(f"{n}. {num}")
-
-        print("\n")
-    # """
-
-
-    """Function BFS solution"""
-    """
-    print("Function BFS solution:\n")
-
-    InputLst = copy.deepcopy(InputLstOrg)
-
-    for Twr in InputLst[1:]:
-
         # print(f"\tTower: {Twr}\n")
 
-        twrSol = sortBFS_Prt(Twr)
+        twrSol = sortBFS_Sol(Twr)
         print(f"\t\t\tReturn: {twrSol}")
         print("\n")
     # """
@@ -499,87 +434,30 @@ Input:
 	    5 1 2 3 4
 
 
-Driver simple class solution:
+Function BFS solution:
 
 	Tower: [1, 2, 3, 4, 5]
 
 		Solution:  [1, 2, 3, 4, 5]
 
-
-		Solved: [1, 2, 3, 4, 5]
-			Flips: [0]
-
-
-	Tower: [1, 2, 3, 4, 5]
-
-
-		Solved: [1, 2, 3, 4, 5]
-			Flips: [0]
-
+		Flips: [0]
+			Return: [0]
 
 
 	Tower: [5, 4, 3, 2, 1]
 
 		Solution:  [1, 2, 3, 4, 5]
 
-		 1.Step:
-			[5, 4, 3, 2, 1] = flip(Twr, 0)
-			[1, 2, 3, 4, 5] = flip(Twr, 4)
-
-
-		Solved: [1, 2, 3, 4, 5]
-			Flips: [0, 4, 0]
-
-
-	Tower: [5, 4, 3, 2, 1]
-
-		 1.Step:
-			[5, 4, 3, 2, 1] = flip(Twr, 0)
-
-		 2.Step:
-			[1, 2, 3, 4, 5] = flip(Twr, 4)
-
-
-		Solved: [1, 2, 3, 4, 5]
-			Flips: [0, 4, 0]
-
+		Flips: [4, 0]
+			Return: [4, 0]
 
 
 	Tower: [5, 1, 2, 3, 4]
 
 		Solution:  [1, 2, 3, 4, 5]
 
-		 1.Step:
-			[5, 1, 2, 3, 4] = flip(Twr, 0)
-			[4, 3, 2, 1, 5] = flip(Twr, 4)
-
-		 2.Step:
-			[4, 3, 2, 1, 5] = flip(Twr, 0)
-			[1, 2, 3, 4, 5] = flip(Twr, 3)
-
-
-		Solved: [1, 2, 3, 4, 5]
-			Flips: [0, 4, 0, 3, 0]
-
-
-	Tower: [5, 1, 2, 3, 4]
-
-		 1.Step:
-			[5, 1, 2, 3, 4] = flip(Twr, 0)
-
-		 2.Step:
-			[4, 3, 2, 1, 5] = flip(Twr, 4)
-
-		 3.Step:
-			[4, 3, 2, 1, 5] = flip(Twr, 0)
-
-		 4.Step:
-			[1, 2, 3, 4, 5] = flip(Twr, 3)
-
-
-		Solved: [1, 2, 3, 4, 5]
-			Flips: [0, 4, 0, 3, 0]
-
+		Flips: [4, 3, 0]
+			Return: [4, 3, 0]
 
 
 
