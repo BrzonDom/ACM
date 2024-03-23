@@ -60,14 +60,24 @@ InputRaw_Str = """
 
 InputLst_Str = InputRaw_Str.split("\n")[1:-1]
 
-# print(InputLst_Str)
+print(InputLst_Str)
+print()
 
 InputLst = []
 
 for Input in InputLst_Str[1:]:
-    InputLst.append(int(Input))
 
-print(f"Input: {InputLst}")
+    if Input.isnumeric():
 
+        InputLst.append(int(Input))
+
+print(f"Input: {InputLst}\n")
+
+pplNum = InputLst[0]
+
+print(f"\tNumber of people: {pplNum}")
+
+spdLst = InputLst[1: pplNum + 1]
+print(f"\tSpeed of people:  {spdLst}")
 
 
