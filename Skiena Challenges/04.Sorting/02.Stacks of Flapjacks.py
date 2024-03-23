@@ -498,27 +498,66 @@ Input:
 	    5 1 2 3 4
 
 
-Function BFS solution:
+Driver simple solution:
 
 	Tower: [1, 2, 3, 4, 5]
 
+		Sorted:    [1, 2, 3, 4, 5]
 		Solution:  [5, 4, 3, 2, 1]
 
-			Return: [5, 4, 3, 2, 1]
+		 1.Step:
+			[1, 2, 3, 4, 5] = flip(Twr, 0)
+			[5, 4, 3, 2, 1] = flip(Twr, 4)
 
+
+		Solved: [5, 4, 3, 2, 1]
+			Flips: [0, 4, 0]
+
+
+	Tower: [5, 4, 3, 2, 1]
+
+		Sorted:    [1, 2, 3, 4, 5]
+		Solution:  [5, 4, 3, 2, 1]
+
+
+		Solved: [5, 4, 3, 2, 1]
+			Flips: [0]
+
+
+	Tower: [5, 1, 2, 3, 4]
+
+		Sorted:    [1, 2, 3, 4, 5]
+		Solution:  [5, 4, 3, 2, 1]
+
+		 1.Step:
+			[1, 5, 2, 3, 4] = flip(Twr, 1)
+			[4, 3, 2, 5, 1] = flip(Twr, 4)
+
+		 2.Step:
+			[2, 3, 4, 5, 1] = flip(Twr, 2)
+			[5, 4, 3, 2, 1] = flip(Twr, 3)
+
+
+		Solved: [5, 4, 3, 2, 1]
+			Flips: [1, 4, 2, 3, 0]
+
+
+Function BFS solution:
 
 	Tower: [5, 4, 3, 2, 1]
 
 		Solution:  [5, 4, 3, 2, 1]
 
-			Return: [5, 4, 3, 2, 1]
+		Flips: [0]
+			Return: [0]
 
 
 	Tower: [5, 1, 2, 3, 4]
 
 		Solution:  [5, 4, 3, 2, 1]
 
-			Return: [5, 4, 3, 2, 1]
+		Flips: [4, 3, 4, 0]
+			Return: [4, 3, 4, 0]
 
 
 
