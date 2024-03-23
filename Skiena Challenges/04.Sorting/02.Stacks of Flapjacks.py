@@ -314,7 +314,7 @@ if __name__ == '__main__':
 
 
     """Function simple solution"""
-    # """
+    """
     print("Function simple solution:\n")
     
     InputLst = copy.deepcopy(InputLstOrg)
@@ -329,7 +329,7 @@ if __name__ == '__main__':
 
 
     """Driver simple class solution"""
-    """
+    # """
     print("Driver simple class solution:\n")
 
     for Twr in InputLst:
@@ -342,10 +342,10 @@ if __name__ == '__main__':
 
         twrLen = len(Twr)
 
-        twrSort = sorted(Twr)
-        twrSol = sorted(Twr, reverse=True)
+        # twrSort = sorted(Twr)
+        twrSol = sorted(Twr)
 
-        print(f"\t\tSorted:    {twrSort}")
+        # print(f"\t\tSorted:    {twrSort}")
         print(f"\t\tSolution:  {twrSol}")
         print()
 
@@ -369,8 +369,9 @@ if __name__ == '__main__':
 
             StpCnt += 1
             MtchCnt = Tower.match
+            Match = twrSol[twrLen - MtchCnt - 1]
 
-            numIndx = Tower.state.index(twrSol[twrLen - MtchCnt - 1])
+            numIndx = Tower.state.index(Match)
             numPos = twrLen - 1 - MtchCnt
 
             print(f"\t\t{StpCnt:2}.Step:")
@@ -391,7 +392,7 @@ if __name__ == '__main__':
         print(f"\n\t\tSolved: {Twr}")
         FlipRec.append(0)
         print(f"\t\t\tFlips: {FlipRec}")
-        print()
+        print("\n")
 
         allTwrs = []
         allFlps = []
@@ -420,7 +421,7 @@ if __name__ == '__main__':
         # print(allTwrs)
         # print(allFlps)
 
-        print("\n")
+        print("\n\n")
     # """
 
 
@@ -498,7 +499,7 @@ Input:
 	    5 1 2 3 4
 
 
-Function simple solution:
+Driver simple class solution:
 
 	Tower: [1, 2, 3, 4, 5]
 
@@ -507,7 +508,14 @@ Function simple solution:
 
 		Solved: [1, 2, 3, 4, 5]
 			Flips: [0]
-				Return: [0]
+
+
+	Tower: [1, 2, 3, 4, 5]
+
+
+		Solved: [1, 2, 3, 4, 5]
+			Flips: [0]
+
 
 
 	Tower: [5, 4, 3, 2, 1]
@@ -521,7 +529,20 @@ Function simple solution:
 
 		Solved: [1, 2, 3, 4, 5]
 			Flips: [0, 4, 0]
-				Return: [0, 4, 0]
+
+
+	Tower: [5, 4, 3, 2, 1]
+
+		 1.Step:
+			[5, 4, 3, 2, 1] = flip(Twr, 0)
+
+		 2.Step:
+			[1, 2, 3, 4, 5] = flip(Twr, 4)
+
+
+		Solved: [1, 2, 3, 4, 5]
+			Flips: [0, 4, 0]
+
 
 
 	Tower: [5, 1, 2, 3, 4]
@@ -539,7 +560,26 @@ Function simple solution:
 
 		Solved: [1, 2, 3, 4, 5]
 			Flips: [0, 4, 0, 3, 0]
-				Return: [0, 4, 0, 3, 0]
+
+
+	Tower: [5, 1, 2, 3, 4]
+
+		 1.Step:
+			[5, 1, 2, 3, 4] = flip(Twr, 0)
+
+		 2.Step:
+			[4, 3, 2, 1, 5] = flip(Twr, 4)
+
+		 3.Step:
+			[4, 3, 2, 1, 5] = flip(Twr, 0)
+
+		 4.Step:
+			[1, 2, 3, 4, 5] = flip(Twr, 3)
+
+
+		Solved: [1, 2, 3, 4, 5]
+			Flips: [0, 4, 0, 3, 0]
+
 
 
 
