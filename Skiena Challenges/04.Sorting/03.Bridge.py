@@ -47,6 +47,7 @@ Bridge
                 1 2
 
 """
+import copy
 
 InputRaw_Str = """
 1
@@ -79,5 +80,30 @@ print(f"\tNumber of people: {pplNum}")
 
 spdLst = InputLst[1: pplNum + 1]
 print(f"\tSpeed of people:  {spdLst}")
+
+# strt = copy.deepcopy(spdLst)
+# end = []
+#
+# torch = True
+#
+# while len(end) != pplNum:
+#
+#     if torch:
+#
+#         for p, per1 in enumerate(strt):
+#             for per2 in strt[p+1:]:
+
+"""__Output__"""
+"""
+['1', '', '4', '1', '2', '5', '10']
+
+Input: [4, 1, 2, 5, 10]
+
+	Number of people: 4
+	Speed of people:  [1, 2, 5, 10]
+
+Process finished with exit code 0
+
+"""
 
 
