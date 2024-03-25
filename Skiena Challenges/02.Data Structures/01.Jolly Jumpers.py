@@ -76,3 +76,34 @@ if __name__ == '__main__':
             print("\t\tSequence is Not Jolly")
 
         print("\n")
+
+
+"""__Output__"""
+"""
+	Sequence: [1, 4, 2, 3]
+
+			|1 - 4| = 3
+			|4 - 2| = 2
+			|2 - 3| = 1
+
+			{1, 2, 3}
+
+		Sequence is Jolly
+
+
+	Sequence: [1, 4, 2, -1, 6]
+
+			|1 - 4| = 3
+			|4 - 2| = 2
+			|2 - -1| = 3
+			|-1 - 6| = 7
+
+			{2, 3, 7}
+
+		Sequence is Not Jolly
+
+
+
+Process finished with exit code 0
+
+"""
