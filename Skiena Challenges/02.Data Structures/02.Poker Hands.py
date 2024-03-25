@@ -388,3 +388,79 @@ if __name__ == '__main__':
         #     if color_Dct[color]:
         #         print(f"{sorted(color_Dct[color], reverse=True)} {color}", end="  ")
         print("\n")
+
+
+"""__Output__"""
+"""
+Test: ['2H', '4D', 'KS', '3C', '6D']
+		[(2, 'H'), (4, 'D'), (13, 'S'), (3, 'C'), (6, 'D')]
+
+	High Card
+		Cards: [13, 6, 4, 3, 2]
+
+
+Test: ['2H', 'KD', '3S', '3C', '5D']
+		[(2, 'H'), (13, 'D'), (3, 'S'), (3, 'C'), (5, 'D')]
+
+	Pair
+		Pair: 3
+		Rest: [13, 5, 2]
+
+
+Test: ['2H', '2D', 'JS', '3C', '3D']
+		[(2, 'H'), (2, 'D'), (11, 'S'), (3, 'C'), (3, 'D')]
+
+	Two Pairs
+		Pairs: [2, 3]
+		Rest:  11
+
+
+Test: ['2H', '2D', '2S', '3C', '5D']
+		[(2, 'H'), (2, 'D'), (2, 'S'), (3, 'C'), (5, 'D')]
+
+	Three of a Kind
+		Three: 2
+		Rest:  [5, 3]
+
+
+Test: ['2H', '2D', '2S', '5C', '5D']
+		[(2, 'H'), (2, 'D'), (2, 'S'), (5, 'C'), (5, 'D')]
+
+	Full House
+		Three: 2
+		Pair:  5
+
+
+Test: ['2H', '3D', '3S', '3C', '3D']
+		[(2, 'H'), (3, 'D'), (3, 'S'), (3, 'C'), (3, 'D')]
+
+	Four of a Kind
+		Four: 3
+		Rest: 2
+
+
+Test: ['2H', '6D', '4S', '3C', '5D']
+		[(2, 'H'), (6, 'D'), (4, 'S'), (3, 'C'), (5, 'D')]
+
+	Straight
+		Cards: [6, 5, 4, 3, 2]
+
+
+Test: ['2H', '4H', 'KH', '3H', '6H']
+		[(2, 'H'), (4, 'H'), (13, 'H'), (3, 'H'), (6, 'H')]
+
+	Flush
+		Cards: [13, 6, 4, 3, 2]
+
+
+Test: ['2D', '6D', '4D', '3D', '5D']
+		[(2, 'D'), (6, 'D'), (4, 'D'), (3, 'D'), (5, 'D')]
+
+	Straight Flush
+		Cards: [6, 5, 4, 3, 2]
+
+
+
+Process finished with exit code 0
+
+"""
