@@ -131,6 +131,7 @@ for couple in coupleLst:
     print("\n")
 # """
 
+optTbl = Table((1, 5), 1, [2, 10, 1], [5], 6, None)
 
 for couple in coupleLst:
 
@@ -154,15 +155,32 @@ for couple in coupleLst:
 
     curTbl = Table(there, back, start, end, time, None)
 
-    print(f"\tThere: {curTbl.there}")
-    print(f"\tTime:  {curTbl.time}")
+    print(f"\t\tThere: {curTbl.there}")
+    print(f"\t\tTime:  {curTbl.time}")
     print()
-    print(f"\t\tBack:  {curTbl.back}")
+    print(f"\t\t\tBack:  {curTbl.back}")
     print()
-    print(f"\t\tStart: {curTbl.start}")
-    print(f"\t\tEnd:   {curTbl.end}")
+    print(f"\t\t\tStart: {curTbl.start}")
+    print(f"\t\t\tEnd:   {curTbl.end}")
     print()
     print("\n")
+
+    if optTbl.time > curTbl.time:
+        optTbl = curTbl
+
+
+print("Optimal decision:\n")
+
+print(f"\tThere: {optTbl.there}")
+print(f"\tTime:  {optTbl.time}")
+print()
+print(f"\t\tBack:  {optTbl.back}")
+print()
+print(f"\t\tStart: {optTbl.start}")
+print(f"\t\tEnd:   {optTbl.end}")
+print()
+print("\n")
+
 
     # print(f"Rest:  {rest}")
     # print()
@@ -226,6 +244,68 @@ Input: [4, 1, 2, 5, 10]
 	Speed of people:  [1, 2, 5, 10]
 
 
+		There: (1, 2)
+		Time:  3
+
+			Back:  1
+
+			Start: [5, 10, 1]
+			End:   [2]
+
+
+
+		There: (1, 5)
+		Time:  6
+
+			Back:  1
+
+			Start: [2, 10, 1]
+			End:   [5]
+
+
+
+		There: (1, 10)
+		Time:  11
+
+			Back:  1
+
+			Start: [2, 5, 1]
+			End:   [10]
+
+
+
+		There: (2, 5)
+		Time:  7
+
+			Back:  2
+
+			Start: [1, 10, 2]
+			End:   [5]
+
+
+
+		There: (2, 10)
+		Time:  12
+
+			Back:  2
+
+			Start: [1, 5, 2]
+			End:   [10]
+
+
+
+		There: (5, 10)
+		Time:  15
+
+			Back:  5
+
+			Start: [1, 2, 5]
+			End:   [10]
+
+
+
+Optimal decision:
+
 	There: (1, 2)
 	Time:  3
 
@@ -233,56 +313,6 @@ Input: [4, 1, 2, 5, 10]
 
 		Start: [5, 10, 1]
 		End:   [2]
-
-
-
-	There: (1, 5)
-	Time:  6
-
-		Back:  1
-
-		Start: [2, 10, 1]
-		End:   [5]
-
-
-
-	There: (1, 10)
-	Time:  11
-
-		Back:  1
-
-		Start: [2, 5, 1]
-		End:   [10]
-
-
-
-	There: (2, 5)
-	Time:  7
-
-		Back:  2
-
-		Start: [1, 10, 2]
-		End:   [5]
-
-
-
-	There: (2, 10)
-	Time:  12
-
-		Back:  2
-
-		Start: [1, 5, 2]
-		End:   [10]
-
-
-
-	There: (5, 10)
-	Time:  15
-
-		Back:  5
-
-		Start: [1, 2, 5]
-		End:   [10]
 
 
 
