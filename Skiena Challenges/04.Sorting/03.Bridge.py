@@ -80,18 +80,52 @@ print(f"\tNumber of people: {pplNum}")
 
 spdLst = InputLst[1: pplNum + 1]
 print(f"\tSpeed of people:  {spdLst}")
+print("\n")
 
-# strt = copy.deepcopy(spdLst)
-# end = []
-#
-# torch = True
-#
-# while len(end) != pplNum:
-#
-#     if torch:
-#
-#         for p, per1 in enumerate(strt):
-#             for per2 in strt[p+1:]:
+strt = copy.deepcopy(spdLst)
+end = []
+
+torch = True
+time = 0
+
+# print(strt)
+# strt.sort()
+# print(strt[2:])
+# print(strt[:2])
+
+while strt:
+
+    if torch:
+
+        strt.sort()
+
+        end += strt[:2]
+        time += max(strt[:2])
+
+        strt = strt[2:]
+
+        torch = False
+
+        print(f"Time: {time}")
+        print(f"\t\t{strt} ________ {end}")
+        print()
+
+    else:
+
+        end.sort()
+
+        strt += [end[0]]
+        time += end[0]
+
+        end = end[1:]
+
+        torch = True
+
+        print(f"Time: {time}")
+        print(f"\t\t{strt} ________ {end}")
+        print()
+
+
 
 """__Output__"""
 """
@@ -101,6 +135,23 @@ Input: [4, 1, 2, 5, 10]
 
 	Number of people: 4
 	Speed of people:  [1, 2, 5, 10]
+
+
+Time: 2
+		[5, 10] ________ [1, 2]
+
+Time: 3
+		[5, 10, 1] ________ [2]
+
+Time: 8
+		[10] ________ [2, 1, 5]
+
+Time: 9
+		[10, 1] ________ [2, 5]
+
+Time: 19
+		[] ________ [2, 5, 1, 10]
+
 
 Process finished with exit code 0
 
