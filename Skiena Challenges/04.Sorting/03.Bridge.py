@@ -48,6 +48,8 @@ Bridge
 
 """
 import copy
+from itertools import combinations
+
 
 InputRaw_Str = """
 1
@@ -85,14 +87,25 @@ print("\n")
 strt = copy.deepcopy(spdLst)
 end = []
 
-torch = True
+# torch = True
 time = 0
 
-# print(strt)
-# strt.sort()
-# print(strt[2:])
-# print(strt[:2])
+coupleLst = combinations(spdLst, 2)
 
+for couple in coupleLst:
+    # print(list(couple))
+
+    print(f"Group: {list(couple)}")
+
+    rest = copy.deepcopy(spdLst)
+    rest.remove(couple[0])
+    rest.remove(couple[1])
+
+    print(f"Rest:  {rest}")
+    print()
+
+
+"""
 while strt:
 
     if torch:
@@ -124,7 +137,7 @@ while strt:
         print(f"Time: {time}")
         print(f"\t\t{strt} ________ {end}")
         print()
-
+# """
 
 
 """__Output__"""
@@ -137,20 +150,23 @@ Input: [4, 1, 2, 5, 10]
 	Speed of people:  [1, 2, 5, 10]
 
 
-Time: 2
-		[5, 10] ________ [1, 2]
+Group: [1, 2]
+Rest:  [5, 10]
 
-Time: 3
-		[5, 10, 1] ________ [2]
+Group: [1, 5]
+Rest:  [2, 10]
 
-Time: 8
-		[10] ________ [2, 1, 5]
+Group: [1, 10]
+Rest:  [2, 5]
 
-Time: 9
-		[10, 1] ________ [2, 5]
+Group: [2, 5]
+Rest:  [1, 10]
 
-Time: 19
-		[] ________ [2, 5, 1, 10]
+Group: [2, 10]
+Rest:  [1, 5]
+
+Group: [5, 10]
+Rest:  [1, 2]
 
 
 Process finished with exit code 0
