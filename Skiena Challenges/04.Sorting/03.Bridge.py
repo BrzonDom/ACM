@@ -104,14 +104,11 @@ print("\n")
 strtPlc = copy.deepcopy(spdLst)
 endPlc = []
 
-# torch = True
-time = 0
-
 caseLen = 2
 
 caseMem = {}
 
-while caseLen <= 4:
+while caseLen <= pplNum:
 
     caseTpl = (combinations(spdLst, caseLen))
 
@@ -142,6 +139,10 @@ while caseLen <= 4:
                 end = [max(there)]
                 time = sum(there)
 
+                previous = caseMem[str(start)]
+
+                curTbl = Table(there, back, start, end, time, previous)
+
             else:
 
                 back = None
@@ -149,7 +150,7 @@ while caseLen <= 4:
                 end = there
                 time = max(there)
 
-            curTbl = Table(there, back, start, end, time)
+                curTbl = Table(there, back, start, end, time)
 
             print(f"\t\t\t\t{str(there):10} {str(time):5} {str(start):10} {str(end):10}")
 
@@ -184,7 +185,40 @@ while caseLen <= 4:
 
     caseLen += 1
 
+print()
+
+stpCnt = 2
+
+time = 0
+path = []
+
+finCase = caseMem[str(strtPlc)]
+
+
+print(f"\tFinal case: {strtPlc}")
+print()
+print("\t\t1.Step:\n")
+print(f"\t\t\tThere: {finCase.there}")
+print(f"\t\t\tTime:  {finCase.time}")
+print()
+print(f"\t\t\tBack:  {finCase.back}")
+print()
+print(f"\t\t\tStart: {finCase.start}")
+print(f"\t\t\tEnd:   {finCase.end}")
+print()
+
+pathCase = finCase.previous
+
+time += finCase.time
+path += [finCase.there]
+path += [[finCase.back]]
+
+# while pathCase.previous != None:
+
+# print(path)
+
 print("\n")
+
 
 for case in caseMem:
     print(f"\t{str(case):15} {str(caseMem[case].there):10} {str(caseMem[case].time):5} {str(caseMem[case].start):10} {str(caseMem[case].end):10}")
@@ -543,6 +577,19 @@ Input: [4, 1, 2, 5, 10]
 				End:   [2]
 
 
+
+
+	Final case: [1, 2, 5, 10]
+
+		1.Step:
+
+			There: [1, 2]
+			Time:  3
+
+			Back:  1
+
+			Start: [1, 5, 10]
+			End:   [2]
 
 
 
