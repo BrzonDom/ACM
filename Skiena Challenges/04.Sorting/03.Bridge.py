@@ -213,7 +213,25 @@ time += finCase.time
 path += [finCase.there]
 path += [[finCase.back]]
 
-# while pathCase.previous != None:
+while pathCase != None:
+    print(f"\t\t{stpCnt}.Step:\n")
+    stpCnt += 1
+
+    print(f"\t\t\tThere: {pathCase.there}")
+    print(f"\t\t\tTime:  {pathCase.time}")
+    print()
+    print(f"\t\t\tBack:  {pathCase.back}")
+    print()
+    print(f"\t\t\tStart: {pathCase.start}")
+    print(f"\t\t\tEnd:   {pathCase.end}")
+    print()
+
+    time += pathCase.time
+    path += [pathCase.there]
+    path += [[pathCase.back]]
+
+    pathCase = pathCase.previous
+
 
 # print(path)
 
