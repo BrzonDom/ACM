@@ -107,7 +107,54 @@ endPlc = []
 # torch = True
 time = 0
 
-coupleLst = combinations(spdLst, 2)
+caseTpl = (combinations(spdLst, 3))
+
+caseLst = [list(case) for case in caseTpl]
+
+# print(caseLst)
+
+# Table(self, there, back, start, end, time, previous):
+
+caseMem = {}
+
+for case in caseLst:
+
+    print(f"\tCase: {case}\n")
+
+    thereTpl = combinations(case, 2)
+
+    thereLst = [list(there) for there in thereTpl]
+
+    frstDec = True
+
+    for there in thereLst:
+
+        rest = [rem for rem in case if rem not in there]
+
+        back = min(there)
+        start = rest + [min(there)]
+        end = [max(there)]
+        time = sum(there)
+
+        curTbl = Table(there, back, start, end, time)
+
+        print(f"\t\t\t{str(there):10} {str(time):5} {str(start):10} {str(end):10}")
+
+        if frstDec:
+            optTbl = curTbl
+            frstDec = False
+
+        elif optTbl.time > curTbl.time:
+            optTbl = curTbl
+
+    print()
+
+    print(f"\t\t{str(optTbl.there):10} {str(optTbl.time):5} {str(optTbl.start):10} {str(optTbl.end):10}")
+
+    caseMem[str(case)] = optTbl
+
+    print("\n")
+
 
 """
 for couple in coupleLst:
@@ -135,6 +182,7 @@ for couple in coupleLst:
 
 frst = True
 
+"""
 for couple in coupleLst:
 
     # (self, there, back, start, end, time, previous):
@@ -188,7 +236,9 @@ print()
 print("\n")
 
 prvTbl = optTbl
+# """
 
+"""
 frst = True
 
 coupleLst = combinations(prvTbl.start, 2)
@@ -242,6 +292,7 @@ print(f"\t\tStart: {optTbl.start}")
 print(f"\t\tEnd:   {optTbl.end}")
 print()
 print("\n")
+# """
 
 
 """
@@ -289,122 +340,45 @@ Input: [4, 1, 2, 5, 10]
 	Speed of people:  [1, 2, 5, 10]
 
 
-		There: (1, 2)
-		Time:  3
+	Case: [1, 2, 5]
 
-			Back:  1
+			[1, 2]     3     [5, 1]     [2]       
+			[1, 5]     6     [2, 1]     [5]       
+			[2, 5]     7     [1, 2]     [5]       
 
-			Start: [5, 10, 1]
-			End:   [2]
-
-
-
-		There: (1, 5)
-		Time:  6
-
-			Back:  1
-
-			Start: [2, 10, 1]
-			End:   [5]
+		[1, 2]     3     [5, 1]     [2]       
 
 
+	Case: [1, 2, 10]
 
-		There: (1, 10)
-		Time:  11
+			[1, 2]     3     [10, 1]    [2]       
+			[1, 10]    11    [2, 1]     [10]      
+			[2, 10]    12    [1, 2]     [10]      
 
-			Back:  1
-
-			Start: [2, 5, 1]
-			End:   [10]
-
+		[1, 2]     3     [10, 1]    [2]       
 
 
-		There: (2, 5)
-		Time:  7
+	Case: [1, 5, 10]
 
-			Back:  2
+			[1, 5]     6     [10, 1]    [5]       
+			[1, 10]    11    [5, 1]     [10]      
+			[5, 10]    15    [1, 5]     [10]      
 
-			Start: [1, 10, 2]
-			End:   [5]
-
-
-
-		There: (2, 10)
-		Time:  12
-
-			Back:  2
-
-			Start: [1, 5, 2]
-			End:   [10]
+		[1, 5]     6     [10, 1]    [5]       
 
 
+	Case: [2, 5, 10]
 
-		There: (5, 10)
-		Time:  15
+			[2, 5]     7     [10, 2]    [5]       
+			[2, 10]    12    [5, 2]     [10]      
+			[5, 10]    15    [2, 5]     [10]      
 
-			Back:  5
-
-			Start: [1, 2, 5]
-			End:   [10]
-
-
-
-1. Optimal decision:
-
-	There: (1, 2)
-	Time:  3
-
-		Back:  1
-
-		Start: [5, 10, 1]
-		End:   [2]
-
-
-
-		There: (5, 10)
-		Time:  15
-
-			Back:  2
-
-			Start: [1, 2]
-			End:   [5, 10]
-
-
-
-		There: (5, 1)
-		Time:  9
-
-			Back:  1
-
-			Start: [10, 1]
-			End:   [2, 5]
-
-
-
-		There: (10, 1)
-		Time:  14
-
-			Back:  1
-
-			Start: [5, 1]
-			End:   [2, 10]
-
-
-
-2. Optimal decision:
-
-	There: (5, 1)
-	Time:  9
-
-		Back:  1
-
-		Start: [10, 1]
-		End:   [2, 5]
-
+		[2, 5]     7     [10, 2]    [5]       
 
 
 
 Process finished with exit code 0
+
 
 """
 
