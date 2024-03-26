@@ -131,7 +131,9 @@ for couple in coupleLst:
     print("\n")
 # """
 
-optTbl = Table((1, 5), 1, [2, 10, 1], [5], 6, None)
+# optTbl = Table((1, 5), 1, [2, 10, 1], [5], 6, None)
+
+frst = True
 
 for couple in coupleLst:
 
@@ -165,11 +167,15 @@ for couple in coupleLst:
     print()
     print("\n")
 
-    if optTbl.time > curTbl.time:
+    if frst:
+        optTbl = curTbl
+        frst = False
+
+    elif optTbl.time > curTbl.time:
         optTbl = curTbl
 
 
-print("Optimal decision:\n")
+print("1. Optimal decision:\n")
 
 print(f"\tThere: {optTbl.there}")
 print(f"\tTime:  {optTbl.time}")
@@ -181,22 +187,61 @@ print(f"\t\tEnd:   {optTbl.end}")
 print()
 print("\n")
 
+prvTbl = optTbl
 
-    # print(f"Rest:  {rest}")
-    # print()
-    #
-    # print(f"\tTime:   {sum(couple)}")
-    # print(f"\tTime of the group:   {max(couple)}")
-    # print(f"\tTime of the return:  {min(couple)}")
-    # print()
-    # print(f"\tStart:  {rest + [min(couple)]}")
-    # print(f"\tEnd:    {max(couple)}")
-    # print("\n")
+frst = True
 
-# while strtPlc:
-#
-#     coupleLst = combinations(strtPlc, 2)
-#
+coupleLst = combinations(prvTbl.start, 2)
+
+for couple in coupleLst:
+
+    rest = copy.deepcopy(prvTbl.start)
+    rest.remove(couple[0])
+    rest.remove(couple[1])
+
+    there = couple
+
+    end = prvTbl.end + list(couple)
+
+    back = min(end)
+
+    time = prvTbl.time + max(couple) + min(end)
+
+    end.remove(back)
+
+    start = rest + [back]
+
+    curTbl = Table(there, back, start, end, time, prvTbl)
+
+    print(f"\t\tThere: {curTbl.there}")
+    print(f"\t\tTime:  {curTbl.time}")
+    print()
+    print(f"\t\t\tBack:  {curTbl.back}")
+    print()
+    print(f"\t\t\tStart: {curTbl.start}")
+    print(f"\t\t\tEnd:   {curTbl.end}")
+    print()
+    print("\n")
+
+    if frst:
+        optTbl = curTbl
+        frst = False
+
+    elif optTbl.time > curTbl.time:
+        optTbl = curTbl
+
+
+print("2. Optimal decision:\n")
+
+print(f"\tThere: {optTbl.there}")
+print(f"\tTime:  {optTbl.time}")
+print()
+print(f"\t\tBack:  {optTbl.back}")
+print()
+print(f"\t\tStart: {optTbl.start}")
+print(f"\t\tEnd:   {optTbl.end}")
+print()
+print("\n")
 
 
 """
@@ -304,7 +349,7 @@ Input: [4, 1, 2, 5, 10]
 
 
 
-Optimal decision:
+1. Optimal decision:
 
 	There: (1, 2)
 	Time:  3
@@ -313,6 +358,48 @@ Optimal decision:
 
 		Start: [5, 10, 1]
 		End:   [2]
+
+
+
+		There: (5, 10)
+		Time:  15
+
+			Back:  2
+
+			Start: [1, 2]
+			End:   [5, 10]
+
+
+
+		There: (5, 1)
+		Time:  9
+
+			Back:  1
+
+			Start: [10, 1]
+			End:   [2, 5]
+
+
+
+		There: (10, 1)
+		Time:  14
+
+			Back:  1
+
+			Start: [5, 1]
+			End:   [2, 10]
+
+
+
+2. Optimal decision:
+
+	There: (5, 1)
+	Time:  9
+
+		Back:  1
+
+		Start: [10, 1]
+		End:   [2, 5]
 
 
 
