@@ -111,7 +111,7 @@ caseLen = 2
 
 caseMem = {}
 
-while caseLen <= 3:
+while caseLen <= 4:
 
     caseTpl = (combinations(spdLst, caseLen))
 
@@ -151,7 +151,7 @@ while caseLen <= 3:
 
             curTbl = Table(there, back, start, end, time)
 
-            print(f"\t\t\t{str(there):10} {str(time):5} {str(start):10} {str(end):10}")
+            print(f"\t\t\t\t{str(there):10} {str(time):5} {str(start):10} {str(end):10}")
 
             if frstDec:
                 optTbl = curTbl
@@ -161,8 +161,22 @@ while caseLen <= 3:
                 optTbl = curTbl
 
         print()
+        print("\t\tOptimal decision:\n")
 
-        print(f"\t\t{str(optTbl.there):10} {str(optTbl.time):5} {str(optTbl.start):10} {str(optTbl.end):10}")
+        print(f"\t\t\tThere: {optTbl.there}")
+        print(f"\t\t\tTime:  {optTbl.time}")
+
+        if optTbl.back != None:
+            print()
+            print(f"\t\t\t\tBack:  {optTbl.back}")
+            print()
+            print(f"\t\t\t\tStart: {optTbl.start}")
+        else:
+            print()
+        print(f"\t\t\t\tEnd:   {optTbl.end}")
+        print()
+
+        # print(f"\t\t{str(optTbl.there):10} {str(optTbl.time):5} {str(optTbl.start):10} {str(optTbl.end):10}")
 
         caseMem[str(case)] = optTbl
 
@@ -314,7 +328,6 @@ print()
 print("\n")
 # """
 
-
 """
 while strtPlc:
 
@@ -362,80 +375,173 @@ Input: [4, 1, 2, 5, 10]
 
 	Case: [1, 2]
 
-			[1, 2]     2     []         [1, 2]    
+				[1, 2]     2     []         [1, 2]    
 
-		[1, 2]     2     []         [1, 2]    
+		Optimal decision:
+
+			There: [1, 2]
+			Time:  2
+
+				End:   [1, 2]
+
 
 
 	Case: [1, 5]
 
-			[1, 5]     5     []         [1, 5]    
+				[1, 5]     5     []         [1, 5]    
 
-		[1, 5]     5     []         [1, 5]    
+		Optimal decision:
+
+			There: [1, 5]
+			Time:  5
+
+				End:   [1, 5]
+
 
 
 	Case: [1, 10]
 
-			[1, 10]    10    []         [1, 10]   
+				[1, 10]    10    []         [1, 10]   
 
-		[1, 10]    10    []         [1, 10]   
+		Optimal decision:
+
+			There: [1, 10]
+			Time:  10
+
+				End:   [1, 10]
+
 
 
 	Case: [2, 5]
 
-			[2, 5]     5     []         [2, 5]    
+				[2, 5]     5     []         [2, 5]    
 
-		[2, 5]     5     []         [2, 5]    
+		Optimal decision:
+
+			There: [2, 5]
+			Time:  5
+
+				End:   [2, 5]
+
 
 
 	Case: [2, 10]
 
-			[2, 10]    10    []         [2, 10]   
+				[2, 10]    10    []         [2, 10]   
 
-		[2, 10]    10    []         [2, 10]   
+		Optimal decision:
+
+			There: [2, 10]
+			Time:  10
+
+				End:   [2, 10]
+
 
 
 	Case: [5, 10]
 
-			[5, 10]    10    []         [5, 10]   
+				[5, 10]    10    []         [5, 10]   
 
-		[5, 10]    10    []         [5, 10]   
+		Optimal decision:
+
+			There: [5, 10]
+			Time:  10
+
+				End:   [5, 10]
+
 
 
 	Case: [1, 2, 5]
 
-			[1, 2]     3     [1, 5]     [2]       
-			[1, 5]     6     [1, 2]     [5]       
-			[2, 5]     7     [1, 2]     [5]       
+				[1, 2]     3     [1, 5]     [2]       
+				[1, 5]     6     [1, 2]     [5]       
+				[2, 5]     7     [1, 2]     [5]       
 
-		[1, 2]     3     [1, 5]     [2]       
+		Optimal decision:
+
+			There: [1, 2]
+			Time:  3
+
+				Back:  1
+
+				Start: [1, 5]
+				End:   [2]
+
 
 
 	Case: [1, 2, 10]
 
-			[1, 2]     3     [1, 10]    [2]       
-			[1, 10]    11    [1, 2]     [10]      
-			[2, 10]    12    [1, 2]     [10]      
+				[1, 2]     3     [1, 10]    [2]       
+				[1, 10]    11    [1, 2]     [10]      
+				[2, 10]    12    [1, 2]     [10]      
 
-		[1, 2]     3     [1, 10]    [2]       
+		Optimal decision:
+
+			There: [1, 2]
+			Time:  3
+
+				Back:  1
+
+				Start: [1, 10]
+				End:   [2]
+
 
 
 	Case: [1, 5, 10]
 
-			[1, 5]     6     [1, 10]    [5]       
-			[1, 10]    11    [1, 5]     [10]      
-			[5, 10]    15    [1, 5]     [10]      
+				[1, 5]     6     [1, 10]    [5]       
+				[1, 10]    11    [1, 5]     [10]      
+				[5, 10]    15    [1, 5]     [10]      
 
-		[1, 5]     6     [1, 10]    [5]       
+		Optimal decision:
+
+			There: [1, 5]
+			Time:  6
+
+				Back:  1
+
+				Start: [1, 10]
+				End:   [5]
+
 
 
 	Case: [2, 5, 10]
 
-			[2, 5]     7     [2, 10]    [5]       
-			[2, 10]    12    [2, 5]     [10]      
-			[5, 10]    15    [2, 5]     [10]      
+				[2, 5]     7     [2, 10]    [5]       
+				[2, 10]    12    [2, 5]     [10]      
+				[5, 10]    15    [2, 5]     [10]      
 
-		[2, 5]     7     [2, 10]    [5]       
+		Optimal decision:
+
+			There: [2, 5]
+			Time:  7
+
+				Back:  2
+
+				Start: [2, 10]
+				End:   [5]
+
+
+
+	Case: [1, 2, 5, 10]
+
+				[1, 2]     3     [1, 5, 10] [2]       
+				[1, 5]     6     [1, 2, 10] [5]       
+				[1, 10]    11    [1, 2, 5]  [10]      
+				[2, 5]     7     [1, 2, 10] [5]       
+				[2, 10]    12    [1, 2, 5]  [10]      
+				[5, 10]    15    [1, 2, 5]  [10]      
+
+		Optimal decision:
+
+			There: [1, 2]
+			Time:  3
+
+				Back:  1
+
+				Start: [1, 5, 10]
+				End:   [2]
+
 
 
 
@@ -450,6 +556,7 @@ Input: [4, 1, 2, 5, 10]
 	[1, 2, 10]      [1, 2]     3     [1, 10]    [2]       
 	[1, 5, 10]      [1, 5]     6     [1, 10]    [5]       
 	[2, 5, 10]      [2, 5]     7     [2, 10]    [5]       
+	[1, 2, 5, 10]   [1, 2]     3     [1, 5, 10] [2]       
 
 Process finished with exit code 0
 
