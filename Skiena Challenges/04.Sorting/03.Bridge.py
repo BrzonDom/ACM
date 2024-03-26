@@ -107,53 +107,64 @@ endPlc = []
 # torch = True
 time = 0
 
-caseTpl = (combinations(spdLst, 3))
-
-caseLst = [list(case) for case in caseTpl]
-
-# print(caseLst)
-
-# Table(self, there, back, start, end, time, previous):
+caseLen = 2
 
 caseMem = {}
 
-for case in caseLst:
+while caseLen <= 3:
 
-    print(f"\tCase: {case}\n")
+    caseTpl = (combinations(spdLst, caseLen))
 
-    thereTpl = combinations(case, 2)
+    caseLst = [list(case) for case in caseTpl]
 
-    thereLst = [list(there) for there in thereTpl]
+    # print(caseLst)
 
-    frstDec = True
+    # Table(self, there, back, start, end, time, previous):
 
-    for there in thereLst:
+    for case in caseLst:
 
-        rest = [rem for rem in case if rem not in there]
+        print(f"\tCase: {case}\n")
 
-        back = min(there)
-        start = rest + [min(there)]
-        end = [max(there)]
-        time = sum(there)
+        thereTpl = combinations(case, 2)
 
-        curTbl = Table(there, back, start, end, time)
+        thereLst = [list(there) for there in thereTpl]
 
-        print(f"\t\t\t{str(there):10} {str(time):5} {str(start):10} {str(end):10}")
+        frstDec = True
 
-        if frstDec:
-            optTbl = curTbl
-            frstDec = False
+        for there in thereLst:
 
-        elif optTbl.time > curTbl.time:
-            optTbl = curTbl
+            rest = [rem for rem in case if rem not in there]
 
-    print()
+            back = min(there)
+            start = sorted(rest + [min(there)])
+            end = [max(there)]
+            time = sum(there)
 
-    print(f"\t\t{str(optTbl.there):10} {str(optTbl.time):5} {str(optTbl.start):10} {str(optTbl.end):10}")
+            curTbl = Table(there, back, start, end, time)
 
-    caseMem[str(case)] = optTbl
+            print(f"\t\t\t{str(there):10} {str(time):5} {str(start):10} {str(end):10}")
 
-    print("\n")
+            if frstDec:
+                optTbl = curTbl
+                frstDec = False
+
+            elif optTbl.time > curTbl.time:
+                optTbl = curTbl
+
+        print()
+
+        print(f"\t\t{str(optTbl.there):10} {str(optTbl.time):5} {str(optTbl.start):10} {str(optTbl.end):10}")
+
+        caseMem[str(case)] = optTbl
+
+        print("\n")
+
+    caseLen += 1
+
+print("\n")
+
+for case in caseMem:
+    print(f"\t{str(case):15} {str(caseMem[case].there):10} {str(caseMem[case].time):5} {str(caseMem[case].start):10} {str(caseMem[case].end):10}")
 
 
 """
@@ -340,45 +351,98 @@ Input: [4, 1, 2, 5, 10]
 	Speed of people:  [1, 2, 5, 10]
 
 
+	Case: [1, 2]
+
+			[1, 2]     3     [1]        [2]       
+
+		[1, 2]     3     [1]        [2]       
+
+
+	Case: [1, 5]
+
+			[1, 5]     6     [1]        [5]       
+
+		[1, 5]     6     [1]        [5]       
+
+
+	Case: [1, 10]
+
+			[1, 10]    11    [1]        [10]      
+
+		[1, 10]    11    [1]        [10]      
+
+
+	Case: [2, 5]
+
+			[2, 5]     7     [2]        [5]       
+
+		[2, 5]     7     [2]        [5]       
+
+
+	Case: [2, 10]
+
+			[2, 10]    12    [2]        [10]      
+
+		[2, 10]    12    [2]        [10]      
+
+
+	Case: [5, 10]
+
+			[5, 10]    15    [5]        [10]      
+
+		[5, 10]    15    [5]        [10]      
+
+
 	Case: [1, 2, 5]
 
-			[1, 2]     3     [5, 1]     [2]       
-			[1, 5]     6     [2, 1]     [5]       
+			[1, 2]     3     [1, 5]     [2]       
+			[1, 5]     6     [1, 2]     [5]       
 			[2, 5]     7     [1, 2]     [5]       
 
-		[1, 2]     3     [5, 1]     [2]       
+		[1, 2]     3     [1, 5]     [2]       
 
 
 	Case: [1, 2, 10]
 
-			[1, 2]     3     [10, 1]    [2]       
-			[1, 10]    11    [2, 1]     [10]      
+			[1, 2]     3     [1, 10]    [2]       
+			[1, 10]    11    [1, 2]     [10]      
 			[2, 10]    12    [1, 2]     [10]      
 
-		[1, 2]     3     [10, 1]    [2]       
+		[1, 2]     3     [1, 10]    [2]       
 
 
 	Case: [1, 5, 10]
 
-			[1, 5]     6     [10, 1]    [5]       
-			[1, 10]    11    [5, 1]     [10]      
+			[1, 5]     6     [1, 10]    [5]       
+			[1, 10]    11    [1, 5]     [10]      
 			[5, 10]    15    [1, 5]     [10]      
 
-		[1, 5]     6     [10, 1]    [5]       
+		[1, 5]     6     [1, 10]    [5]       
 
 
 	Case: [2, 5, 10]
 
-			[2, 5]     7     [10, 2]    [5]       
-			[2, 10]    12    [5, 2]     [10]      
+			[2, 5]     7     [2, 10]    [5]       
+			[2, 10]    12    [2, 5]     [10]      
 			[5, 10]    15    [2, 5]     [10]      
 
-		[2, 5]     7     [10, 2]    [5]       
+		[2, 5]     7     [2, 10]    [5]       
 
 
+
+
+	[1, 2]          [1, 2]     3     [1]        [2]       
+	[1, 5]          [1, 5]     6     [1]        [5]       
+	[1, 10]         [1, 10]    11    [1]        [10]      
+	[2, 5]          [2, 5]     7     [2]        [5]       
+	[2, 10]         [2, 10]    12    [2]        [10]      
+	[5, 10]         [5, 10]    15    [5]        [10]      
+	[1, 2, 5]       [1, 2]     3     [1, 5]     [2]       
+	[1, 2, 10]      [1, 2]     3     [1, 10]    [2]       
+	[1, 5, 10]      [1, 5]     6     [1, 10]    [5]       
+	[2, 5, 10]      [2, 5]     7     [2, 10]    [5]       
 
 Process finished with exit code 0
-
 
 """
 
