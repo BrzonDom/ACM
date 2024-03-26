@@ -50,6 +50,23 @@ Bridge
 import copy
 from itertools import combinations
 
+class Table:
+
+    # def __init__(self, there, rest, end, time):
+    #     self.there = there
+    #     self.back = min(there)
+    #     self.start = rest + self.back
+    #     self.end = max(there)
+    #     self.time = sum(there)
+
+    def __init__(self, there = None, back = None, start = None, end = None, time = 0, previous = None):
+        self.there = there
+        self.back = back
+        self.start = start
+        self.end = end
+        self.time = time
+        self.previous = previous
+
 
 InputRaw_Str = """
 1
@@ -84,14 +101,15 @@ spdLst = InputLst[1: pplNum + 1]
 print(f"\tSpeed of people:  {spdLst}")
 print("\n")
 
-strt = copy.deepcopy(spdLst)
-end = []
+strtPlc = copy.deepcopy(spdLst)
+endPlc = []
 
 # torch = True
 time = 0
 
 coupleLst = combinations(spdLst, 2)
 
+"""
 for couple in coupleLst:
     # print(list(couple))
 
@@ -111,39 +129,89 @@ for couple in coupleLst:
     print(f"\tStart:  {rest + [min(couple)]}")
     print(f"\tEnd:    {max(couple)}")
     print("\n")
+# """
+
+
+for couple in coupleLst:
+
+    # (self, there, back, start, end, time, previous):
+
+    rest = copy.deepcopy(spdLst)
+    rest.remove(couple[0])
+    rest.remove(couple[1])
+
+    there = couple
+
+    end = endPlc + list(couple)
+
+    back = min(end)
+
+    time = max(couple) + min(end)
+
+    end.remove(back)
+
+    start = rest + [back]
+
+    curTbl = Table(there, back, start, end, time, None)
+
+    print(f"\tThere: {curTbl.there}")
+    print(f"\tTime:  {curTbl.time}")
+    print()
+    print(f"\t\tBack:  {curTbl.back}")
+    print()
+    print(f"\t\tStart: {curTbl.start}")
+    print(f"\t\tEnd:   {curTbl.end}")
+    print()
+    print("\n")
+
+    # print(f"Rest:  {rest}")
+    # print()
+    #
+    # print(f"\tTime:   {sum(couple)}")
+    # print(f"\tTime of the group:   {max(couple)}")
+    # print(f"\tTime of the return:  {min(couple)}")
+    # print()
+    # print(f"\tStart:  {rest + [min(couple)]}")
+    # print(f"\tEnd:    {max(couple)}")
+    # print("\n")
+
+# while strtPlc:
+#
+#     coupleLst = combinations(strtPlc, 2)
+#
 
 
 """
-while strt:
+while strtPlc:
 
     if torch:
 
-        strt.sort()
+        strtPlc.sort()
 
-        end += strt[:2]
-        time += max(strt[:2])
+        endPlc += strtPlc[:2]
+        time += max(strtPlc[:2])
 
-        strt = strt[2:]
+        strtPlc = strtPlc[2:]
 
         torch = False
 
         print(f"Time: {time}")
-        print(f"\t\t{strt} ________ {end}")
+        print(f"\t\t{strtPlc} ________ {endPlc}")
         print()
 
     else:
 
-        end.sort()
+        endPlc.sort()
 
-        strt += [end[0]]
-        time += end[0]
+        strtPlc += [endPlc[0]]
+        time += endPlc[0]
 
-        end = end[1:]
+        endPlc = endPlc[1:]
 
         torch = True
 
         print(f"Time: {time}")
-        print(f"\t\t{strt} ________ {end}")
+        print(f"\t\t{strtPlc} ________ {endPlc}")
         print()
 # """
 
@@ -158,70 +226,64 @@ Input: [4, 1, 2, 5, 10]
 	Speed of people:  [1, 2, 5, 10]
 
 
-Group: [1, 2]
-Rest:  [5, 10]
+	There: (1, 2)
+	Time:  3
 
-	Time:   3
-	Time of the group:   2
-	Time of the return:  1
+		Back:  1
 
-	Start:  [5, 10, 1]
-	End:    2
+		Start: [5, 10, 1]
+		End:   [2]
 
 
-Group: [1, 5]
-Rest:  [2, 10]
 
-	Time:   6
-	Time of the group:   5
-	Time of the return:  1
+	There: (1, 5)
+	Time:  6
 
-	Start:  [2, 10, 1]
-	End:    5
+		Back:  1
 
-
-Group: [1, 10]
-Rest:  [2, 5]
-
-	Time:   11
-	Time of the group:   10
-	Time of the return:  1
-
-	Start:  [2, 5, 1]
-	End:    10
+		Start: [2, 10, 1]
+		End:   [5]
 
 
-Group: [2, 5]
-Rest:  [1, 10]
 
-	Time:   7
-	Time of the group:   5
-	Time of the return:  2
+	There: (1, 10)
+	Time:  11
 
-	Start:  [1, 10, 2]
-	End:    5
+		Back:  1
 
-
-Group: [2, 10]
-Rest:  [1, 5]
-
-	Time:   12
-	Time of the group:   10
-	Time of the return:  2
-
-	Start:  [1, 5, 2]
-	End:    10
+		Start: [2, 5, 1]
+		End:   [10]
 
 
-Group: [5, 10]
-Rest:  [1, 2]
 
-	Time:   15
-	Time of the group:   10
-	Time of the return:  5
+	There: (2, 5)
+	Time:  7
 
-	Start:  [1, 2, 5]
-	End:    10
+		Back:  2
+
+		Start: [1, 10, 2]
+		End:   [5]
+
+
+
+	There: (2, 10)
+	Time:  12
+
+		Back:  2
+
+		Start: [1, 5, 2]
+		End:   [10]
+
+
+
+	There: (5, 10)
+	Time:  15
+
+		Back:  5
+
+		Start: [1, 2, 5]
+		End:   [10]
+
 
 
 
