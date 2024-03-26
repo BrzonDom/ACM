@@ -104,6 +104,14 @@ for couple in coupleLst:
     print(f"Rest:  {rest}")
     print()
 
+    print(f"\tTime:   {sum(couple)}")
+    print(f"\tTime of the group:   {max(couple)}")
+    print(f"\tTime of the return:  {min(couple)}")
+    print()
+    print(f"\tStart:  {rest + [min(couple)]}")
+    print(f"\tEnd:    {max(couple)}")
+    print("\n")
+
 
 """
 while strt:
