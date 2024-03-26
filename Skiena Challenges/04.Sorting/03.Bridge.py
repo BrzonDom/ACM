@@ -108,6 +108,87 @@ caseLen = 2
 
 caseMem = {}
 
+while caseLen <= 4:
+
+    caseTpl = (combinations(spdLst, caseLen))
+
+    caseLst = [list(case) for case in caseTpl]
+
+    # print(caseLst)
+
+    # Table(self, there, back, start, end, time, previous):
+
+    for case in caseLst:
+
+        print(f"\tCase: {case}\n")
+
+        moved = [mov for mov in spdLst if mov not in case]
+
+        thereTpl = combinations(case, 2)
+
+        thereLst = [list(there) for there in thereTpl]
+
+        frstDec = True
+
+        for there in thereLst:
+
+            rest = [rem for rem in case if rem not in there]
+
+            if rest:
+
+                end = sorted([done for done in spdLst if done not in rest])
+                back, end = end[0], end[1:]
+                start = sorted(rest + [back])
+                time = max(there) + back
+
+                previous = caseMem[str(start)]
+
+                curTbl = Table(there, back, start, end, time, previous)
+
+            else:
+
+                back = None
+                start = []
+                end = sorted(spdLst)
+                time = max(there)
+
+                curTbl = Table(there, back, start, end, time)
+
+            print(f"\t\t\t\t{str(there):10} {str(time):5} {str(start):10} {str(end):10}")
+
+            if frstDec:
+                optTbl = curTbl
+                frstDec = False
+
+            elif optTbl.time > curTbl.time:
+                optTbl = curTbl
+
+        print()
+        print("\t\tOptimal decision:\n")
+
+        print(f"\t\t\tThere: {optTbl.there}")
+        print(f"\t\t\tTime:  {optTbl.time}")
+
+        if optTbl.back != None:
+            print()
+            print(f"\t\t\t\tBack:  {optTbl.back}")
+            print()
+            print(f"\t\t\t\tStart: {optTbl.start}")
+        else:
+            print()
+        print(f"\t\t\t\tEnd:   {optTbl.end}")
+        print()
+
+        # print(f"\t\t{str(optTbl.there):10} {str(optTbl.time):5} {str(optTbl.start):10} {str(optTbl.end):10}")
+
+        caseMem[str(case)] = optTbl
+
+        print("\n")
+
+    caseLen += 1
+
+
+"""
 while caseLen <= pplNum:
 
     caseTpl = (combinations(spdLst, caseLen))
@@ -184,6 +265,7 @@ while caseLen <= pplNum:
         print("\n")
 
     caseLen += 1
+# """
 
 print()
 
@@ -195,7 +277,7 @@ path = []
 pathCase = caseMem[str(strtPlc)]
 
 
-print(f"\tFinal case: {strtPlc}\n")
+# print(f"\tFinal case: {strtPlc}\n")
 
 # print()
 # print("\t\t1.Step:\n")
@@ -214,6 +296,7 @@ print(f"\tFinal case: {strtPlc}\n")
 # path += [finCase.there]
 # path += [[finCase.back]]
 
+"""
 while pathCase != None:
     print(f"\t\t{stpCnt}.Step:\n")
     stpCnt += 1
@@ -245,7 +328,7 @@ print("\n")
 
 for case in caseMem:
     print(f"\t{str(case):15} {str(caseMem[case].there):10} {str(caseMem[case].time):5} {str(caseMem[case].start):10} {str(caseMem[case].end):10}")
-
+# """
 
 """
 for couple in coupleLst:
@@ -432,87 +515,87 @@ Input: [4, 1, 2, 5, 10]
 
 	Case: [1, 2]
 
-				[1, 2]     2     []         [1, 2]    
+				[1, 2]     2     []         [1, 2, 5, 10]
 
 		Optimal decision:
 
 			There: [1, 2]
 			Time:  2
 
-				End:   [1, 2]
+				End:   [1, 2, 5, 10]
 
 
 
 	Case: [1, 5]
 
-				[1, 5]     5     []         [1, 5]    
+				[1, 5]     5     []         [1, 2, 5, 10]
 
 		Optimal decision:
 
 			There: [1, 5]
 			Time:  5
 
-				End:   [1, 5]
+				End:   [1, 2, 5, 10]
 
 
 
 	Case: [1, 10]
 
-				[1, 10]    10    []         [1, 10]   
+				[1, 10]    10    []         [1, 2, 5, 10]
 
 		Optimal decision:
 
 			There: [1, 10]
 			Time:  10
 
-				End:   [1, 10]
+				End:   [1, 2, 5, 10]
 
 
 
 	Case: [2, 5]
 
-				[2, 5]     5     []         [2, 5]    
+				[2, 5]     5     []         [1, 2, 5, 10]
 
 		Optimal decision:
 
 			There: [2, 5]
 			Time:  5
 
-				End:   [2, 5]
+				End:   [1, 2, 5, 10]
 
 
 
 	Case: [2, 10]
 
-				[2, 10]    10    []         [2, 10]   
+				[2, 10]    10    []         [1, 2, 5, 10]
 
 		Optimal decision:
 
 			There: [2, 10]
 			Time:  10
 
-				End:   [2, 10]
+				End:   [1, 2, 5, 10]
 
 
 
 	Case: [5, 10]
 
-				[5, 10]    10    []         [5, 10]   
+				[5, 10]    10    []         [1, 2, 5, 10]
 
 		Optimal decision:
 
 			There: [5, 10]
 			Time:  10
 
-				End:   [5, 10]
+				End:   [1, 2, 5, 10]
 
 
 
 	Case: [1, 2, 5]
 
-				[1, 2]     3     [1, 5]     [2]       
-				[1, 5]     6     [1, 2]     [5]       
-				[2, 5]     7     [1, 2]     [5]       
+				[1, 2]     3     [1, 5]     [2, 10]   
+				[1, 5]     6     [1, 2]     [5, 10]   
+				[2, 5]     7     [1, 2]     [5, 10]   
 
 		Optimal decision:
 
@@ -522,15 +605,15 @@ Input: [4, 1, 2, 5, 10]
 				Back:  1
 
 				Start: [1, 5]
-				End:   [2]
+				End:   [2, 10]
 
 
 
 	Case: [1, 2, 10]
 
-				[1, 2]     3     [1, 10]    [2]       
-				[1, 10]    11    [1, 2]     [10]      
-				[2, 10]    12    [1, 2]     [10]      
+				[1, 2]     3     [1, 10]    [2, 5]    
+				[1, 10]    11    [1, 2]     [5, 10]   
+				[2, 10]    12    [1, 2]     [5, 10]   
 
 		Optimal decision:
 
@@ -540,15 +623,15 @@ Input: [4, 1, 2, 5, 10]
 				Back:  1
 
 				Start: [1, 10]
-				End:   [2]
+				End:   [2, 5]
 
 
 
 	Case: [1, 5, 10]
 
-				[1, 5]     6     [1, 10]    [5]       
-				[1, 10]    11    [1, 5]     [10]      
-				[5, 10]    15    [1, 5]     [10]      
+				[1, 5]     6     [1, 10]    [2, 5]    
+				[1, 10]    11    [1, 5]     [2, 10]   
+				[5, 10]    12    [1, 2]     [5, 10]   
 
 		Optimal decision:
 
@@ -558,25 +641,25 @@ Input: [4, 1, 2, 5, 10]
 				Back:  1
 
 				Start: [1, 10]
-				End:   [5]
+				End:   [2, 5]
 
 
 
 	Case: [2, 5, 10]
 
-				[2, 5]     7     [2, 10]    [5]       
-				[2, 10]    12    [2, 5]     [10]      
-				[5, 10]    15    [2, 5]     [10]      
+				[2, 5]     6     [1, 10]    [2, 5]    
+				[2, 10]    11    [1, 5]     [2, 10]   
+				[5, 10]    11    [1, 2]     [5, 10]   
 
 		Optimal decision:
 
 			There: [2, 5]
-			Time:  7
+			Time:  6
 
-				Back:  2
+				Back:  1
 
-				Start: [2, 10]
-				End:   [5]
+				Start: [1, 10]
+				End:   [2, 5]
 
 
 
@@ -604,53 +687,6 @@ Input: [4, 1, 2, 5, 10]
 
 	Final case: [1, 2, 5, 10]
 
-		1.Step:
-
-			There: [1, 2]
-			Time:  3
-
-			Back:  1
-
-			Start: [1, 5, 10]
-			End:   [2]
-
-		2.Step:
-
-			There: [1, 5]
-			Time:  6
-
-			Back:  1
-
-			Start: [1, 10]
-			End:   [5]
-
-		3.Step:
-
-			There: [1, 10]
-			Time:  10
-
-			Back:  None
-
-			Start: []
-			End:   [1, 10]
-
-
-
-	Time: 19
-	Path: [[1, 2], [1], [1, 5], [1], [1, 10], [None]]
-
-
-	[1, 2]          [1, 2]     2     []         [1, 2]    
-	[1, 5]          [1, 5]     5     []         [1, 5]    
-	[1, 10]         [1, 10]    10    []         [1, 10]   
-	[2, 5]          [2, 5]     5     []         [2, 5]    
-	[2, 10]         [2, 10]    10    []         [2, 10]   
-	[5, 10]         [5, 10]    10    []         [5, 10]   
-	[1, 2, 5]       [1, 2]     3     [1, 5]     [2]       
-	[1, 2, 10]      [1, 2]     3     [1, 10]    [2]       
-	[1, 5, 10]      [1, 5]     6     [1, 10]    [5]       
-	[2, 5, 10]      [2, 5]     7     [2, 10]    [5]       
-	[1, 2, 5, 10]   [1, 2]     3     [1, 5, 10] [2]       
 
 Process finished with exit code 0
 
