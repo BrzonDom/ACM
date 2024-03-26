@@ -187,31 +187,32 @@ while caseLen <= pplNum:
 
 print()
 
-stpCnt = 2
+stpCnt = 1
 
 time = 0
 path = []
 
-finCase = caseMem[str(strtPlc)]
+pathCase = caseMem[str(strtPlc)]
 
 
-print(f"\tFinal case: {strtPlc}")
-print()
-print("\t\t1.Step:\n")
-print(f"\t\t\tThere: {finCase.there}")
-print(f"\t\t\tTime:  {finCase.time}")
-print()
-print(f"\t\t\tBack:  {finCase.back}")
-print()
-print(f"\t\t\tStart: {finCase.start}")
-print(f"\t\t\tEnd:   {finCase.end}")
-print()
+print(f"\tFinal case: {strtPlc}\n")
 
-pathCase = finCase.previous
-
-time += finCase.time
-path += [finCase.there]
-path += [[finCase.back]]
+# print()
+# print("\t\t1.Step:\n")
+# print(f"\t\t\tThere: {finCase.there}")
+# print(f"\t\t\tTime:  {finCase.time}")
+# print()
+# print(f"\t\t\tBack:  {finCase.back}")
+# print()
+# print(f"\t\t\tStart: {finCase.start}")
+# print(f"\t\t\tEnd:   {finCase.end}")
+# print()
+#
+# pathCase = finCase.previous
+#
+# time += finCase.time
+# path += [finCase.there]
+# path += [[finCase.back]]
 
 while pathCase != None:
     print(f"\t\t{stpCnt}.Step:\n")
@@ -235,6 +236,10 @@ while pathCase != None:
 
 # print(path)
 
+print("\n")
+
+print(f"\tTime: {time}")
+print(f"\tPath: {path}")
 print("\n")
 
 
@@ -629,6 +634,10 @@ Input: [4, 1, 2, 5, 10]
 			Start: []
 			End:   [1, 10]
 
+
+
+	Time: 19
+	Path: [[1, 2], [1], [1, 5], [1], [1, 10], [None]]
 
 
 	[1, 2]          [1, 2]     2     []         [1, 2]    
