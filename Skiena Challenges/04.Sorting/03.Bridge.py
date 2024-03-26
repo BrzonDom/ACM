@@ -161,20 +161,68 @@ Input: [4, 1, 2, 5, 10]
 Group: [1, 2]
 Rest:  [5, 10]
 
+	Time:   3
+	Time of the group:   2
+	Time of the return:  1
+
+	Start:  [5, 10, 1]
+	End:    2
+
+
 Group: [1, 5]
 Rest:  [2, 10]
+
+	Time:   6
+	Time of the group:   5
+	Time of the return:  1
+
+	Start:  [2, 10, 1]
+	End:    5
+
 
 Group: [1, 10]
 Rest:  [2, 5]
 
+	Time:   11
+	Time of the group:   10
+	Time of the return:  1
+
+	Start:  [2, 5, 1]
+	End:    10
+
+
 Group: [2, 5]
 Rest:  [1, 10]
+
+	Time:   7
+	Time of the group:   5
+	Time of the return:  2
+
+	Start:  [1, 10, 2]
+	End:    5
+
 
 Group: [2, 10]
 Rest:  [1, 5]
 
+	Time:   12
+	Time of the group:   10
+	Time of the return:  2
+
+	Start:  [1, 5, 2]
+	End:    10
+
+
 Group: [5, 10]
 Rest:  [1, 2]
+
+	Time:   15
+	Time of the group:   10
+	Time of the return:  5
+
+	Start:  [1, 2, 5]
+	End:    10
+
 
 
 Process finished with exit code 0
