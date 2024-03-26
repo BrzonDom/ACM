@@ -609,6 +609,26 @@ Input: [4, 1, 2, 5, 10]
 			Start: [1, 5, 10]
 			End:   [2]
 
+		2.Step:
+
+			There: [1, 5]
+			Time:  6
+
+			Back:  1
+
+			Start: [1, 10]
+			End:   [5]
+
+		3.Step:
+
+			There: [1, 10]
+			Time:  10
+
+			Back:  None
+
+			Start: []
+			End:   [1, 10]
+
 
 
 	[1, 2]          [1, 2]     2     []         [1, 2]    
