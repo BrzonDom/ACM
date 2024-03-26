@@ -59,11 +59,12 @@ class Table:
     #     self.end = max(there)
     #     self.time = sum(there)
 
-    def __init__(self, there = None, back = None, start = None, end = None, time = 0, previous = None):
+    def __init__(self, there = None, back = None, start = None, end = None, total = 0, time = 0, previous = None):
         self.there = there
         self.back = back
         self.start = start
         self.end = end
+        self.total = total
         self.time = time
         self.previous = previous
 
@@ -143,7 +144,7 @@ while caseLen <= 4:
 
                 previous = caseMem[str(start)]
 
-                curTbl = Table(there, back, start, end, time, previous)
+                curTbl = Table(there, back, start, end, previous.total + time, time, previous)
 
             else:
 
@@ -152,7 +153,7 @@ while caseLen <= 4:
                 end = sorted(spdLst)
                 time = max(there)
 
-                curTbl = Table(there, back, start, end, time)
+                curTbl = Table(there, back, start, end, time, time)
 
             print(f"\t\t\t\t{str(there):10} {str(time):5} {str(start):10} {str(end):10}")
 
@@ -160,17 +161,18 @@ while caseLen <= 4:
                 optTbl = curTbl
                 frstDec = False
 
-            elif optTbl.time > curTbl.time:
+            elif optTbl.total > curTbl.total:
                 optTbl = curTbl
 
         print()
         print("\t\tOptimal decision:\n")
 
         print(f"\t\t\tThere: {optTbl.there}")
-        print(f"\t\t\tTime:  {optTbl.time}")
+        print(f"\t\t\tTotal: {optTbl.total}")
 
         if optTbl.back != None:
             print()
+            print(f"\t\t\t\tTime:  {optTbl.time}")
             print(f"\t\t\t\tBack:  {optTbl.back}")
             print()
             print(f"\t\t\t\tStart: {optTbl.start}")
@@ -276,34 +278,17 @@ path = []
 
 pathCase = caseMem[str(strtPlc)]
 
+print(f"\tFinal case: {strtPlc}\n")
 
-# print(f"\tFinal case: {strtPlc}\n")
-
-# print()
-# print("\t\t1.Step:\n")
-# print(f"\t\t\tThere: {finCase.there}")
-# print(f"\t\t\tTime:  {finCase.time}")
-# print()
-# print(f"\t\t\tBack:  {finCase.back}")
-# print()
-# print(f"\t\t\tStart: {finCase.start}")
-# print(f"\t\t\tEnd:   {finCase.end}")
-# print()
-#
-# pathCase = finCase.previous
-#
-# time += finCase.time
-# path += [finCase.there]
-# path += [[finCase.back]]
-
-"""
+# """
 while pathCase != None:
     print(f"\t\t{stpCnt}.Step:\n")
     stpCnt += 1
 
     print(f"\t\t\tThere: {pathCase.there}")
-    print(f"\t\t\tTime:  {pathCase.time}")
+    print(f"\t\t\tTotal: {pathCase.total}")
     print()
+    print(f"\t\t\tTime:  {pathCase.time}")
     print(f"\t\t\tBack:  {pathCase.back}")
     print()
     print(f"\t\t\tStart: {pathCase.start}")
@@ -316,6 +301,7 @@ while pathCase != None:
 
     pathCase = pathCase.previous
 
+path = path[:-1]
 
 # print(path)
 
@@ -327,179 +313,7 @@ print("\n")
 
 
 for case in caseMem:
-    print(f"\t{str(case):15} {str(caseMem[case].there):10} {str(caseMem[case].time):5} {str(caseMem[case].start):10} {str(caseMem[case].end):10}")
-# """
-
-"""
-for couple in coupleLst:
-    # print(list(couple))
-
-    print(f"Group: {list(couple)}")
-
-    rest = copy.deepcopy(spdLst)
-    rest.remove(couple[0])
-    rest.remove(couple[1])
-
-    print(f"Rest:  {rest}")
-    print()
-
-    print(f"\tTime:   {sum(couple)}")
-    print(f"\tTime of the group:   {max(couple)}")
-    print(f"\tTime of the return:  {min(couple)}")
-    print()
-    print(f"\tStart:  {rest + [min(couple)]}")
-    print(f"\tEnd:    {max(couple)}")
-    print("\n")
-# """
-
-# optTbl = Table((1, 5), 1, [2, 10, 1], [5], 6, None)
-
-frst = True
-
-"""
-for couple in coupleLst:
-
-    # (self, there, back, start, end, time, previous):
-
-    rest = copy.deepcopy(spdLst)
-    rest.remove(couple[0])
-    rest.remove(couple[1])
-
-    there = couple
-
-    end = endPlc + list(couple)
-
-    back = min(end)
-
-    time = max(couple) + min(end)
-
-    end.remove(back)
-
-    start = rest + [back]
-
-    curTbl = Table(there, back, start, end, time, None)
-
-    print(f"\t\tThere: {curTbl.there}")
-    print(f"\t\tTime:  {curTbl.time}")
-    print()
-    print(f"\t\t\tBack:  {curTbl.back}")
-    print()
-    print(f"\t\t\tStart: {curTbl.start}")
-    print(f"\t\t\tEnd:   {curTbl.end}")
-    print()
-    print("\n")
-
-    if frst:
-        optTbl = curTbl
-        frst = False
-
-    elif optTbl.time > curTbl.time:
-        optTbl = curTbl
-
-
-print("1. Optimal decision:\n")
-
-print(f"\tThere: {optTbl.there}")
-print(f"\tTime:  {optTbl.time}")
-print()
-print(f"\t\tBack:  {optTbl.back}")
-print()
-print(f"\t\tStart: {optTbl.start}")
-print(f"\t\tEnd:   {optTbl.end}")
-print()
-print("\n")
-
-prvTbl = optTbl
-# """
-
-"""
-frst = True
-
-coupleLst = combinations(prvTbl.start, 2)
-
-for couple in coupleLst:
-
-    rest = copy.deepcopy(prvTbl.start)
-    rest.remove(couple[0])
-    rest.remove(couple[1])
-
-    there = couple
-
-    end = prvTbl.end + list(couple)
-
-    back = min(end)
-
-    time = prvTbl.time + max(couple) + min(end)
-
-    end.remove(back)
-
-    start = rest + [back]
-
-    curTbl = Table(there, back, start, end, time, prvTbl)
-
-    print(f"\t\tThere: {curTbl.there}")
-    print(f"\t\tTime:  {curTbl.time}")
-    print()
-    print(f"\t\t\tBack:  {curTbl.back}")
-    print()
-    print(f"\t\t\tStart: {curTbl.start}")
-    print(f"\t\t\tEnd:   {curTbl.end}")
-    print()
-    print("\n")
-
-    if frst:
-        optTbl = curTbl
-        frst = False
-
-    elif optTbl.time > curTbl.time:
-        optTbl = curTbl
-
-
-print("2. Optimal decision:\n")
-
-print(f"\tThere: {optTbl.there}")
-print(f"\tTime:  {optTbl.time}")
-print()
-print(f"\t\tBack:  {optTbl.back}")
-print()
-print(f"\t\tStart: {optTbl.start}")
-print(f"\t\tEnd:   {optTbl.end}")
-print()
-print("\n")
-# """
-
-"""
-while strtPlc:
-
-    if torch:
-
-        strtPlc.sort()
-
-        endPlc += strtPlc[:2]
-        time += max(strtPlc[:2])
-
-        strtPlc = strtPlc[2:]
-
-        torch = False
-
-        print(f"Time: {time}")
-        print(f"\t\t{strtPlc} ________ {endPlc}")
-        print()
-
-    else:
-
-        endPlc.sort()
-
-        strtPlc += [endPlc[0]]
-        time += endPlc[0]
-
-        endPlc = endPlc[1:]
-
-        torch = True
-
-        print(f"Time: {time}")
-        print(f"\t\t{strtPlc} ________ {endPlc}")
-        print()
+    print(f"\t\t{str(case):15} {str(caseMem[case].there):10} {str(caseMem[case].time):5} {str(caseMem[case].start):15} {str(caseMem[case].end):15}")
 # """
 
 
@@ -520,7 +334,7 @@ Input: [4, 1, 2, 5, 10]
 		Optimal decision:
 
 			There: [1, 2]
-			Time:  2
+			Total: 2
 
 				End:   [1, 2, 5, 10]
 
@@ -533,7 +347,7 @@ Input: [4, 1, 2, 5, 10]
 		Optimal decision:
 
 			There: [1, 5]
-			Time:  5
+			Total: 5
 
 				End:   [1, 2, 5, 10]
 
@@ -546,7 +360,7 @@ Input: [4, 1, 2, 5, 10]
 		Optimal decision:
 
 			There: [1, 10]
-			Time:  10
+			Total: 10
 
 				End:   [1, 2, 5, 10]
 
@@ -559,7 +373,7 @@ Input: [4, 1, 2, 5, 10]
 		Optimal decision:
 
 			There: [2, 5]
-			Time:  5
+			Total: 5
 
 				End:   [1, 2, 5, 10]
 
@@ -572,7 +386,7 @@ Input: [4, 1, 2, 5, 10]
 		Optimal decision:
 
 			There: [2, 10]
-			Time:  10
+			Total: 10
 
 				End:   [1, 2, 5, 10]
 
@@ -585,7 +399,7 @@ Input: [4, 1, 2, 5, 10]
 		Optimal decision:
 
 			There: [5, 10]
-			Time:  10
+			Total: 10
 
 				End:   [1, 2, 5, 10]
 
@@ -600,8 +414,9 @@ Input: [4, 1, 2, 5, 10]
 		Optimal decision:
 
 			There: [1, 2]
-			Time:  3
+			Total: 8
 
+				Time:  3
 				Back:  1
 
 				Start: [1, 5]
@@ -618,8 +433,9 @@ Input: [4, 1, 2, 5, 10]
 		Optimal decision:
 
 			There: [1, 2]
-			Time:  3
+			Total: 13
 
+				Time:  3
 				Back:  1
 
 				Start: [1, 10]
@@ -635,13 +451,14 @@ Input: [4, 1, 2, 5, 10]
 
 		Optimal decision:
 
-			There: [1, 5]
-			Time:  6
+			There: [5, 10]
+			Total: 14
 
-				Back:  1
+				Time:  12
+				Back:  2
 
-				Start: [1, 10]
-				End:   [2, 5]
+				Start: [1, 2]
+				End:   [5, 10]
 
 
 
@@ -653,13 +470,14 @@ Input: [4, 1, 2, 5, 10]
 
 		Optimal decision:
 
-			There: [2, 5]
-			Time:  6
+			There: [5, 10]
+			Total: 13
 
+				Time:  11
 				Back:  1
 
-				Start: [1, 10]
-				End:   [2, 5]
+				Start: [1, 2]
+				End:   [5, 10]
 
 
 
@@ -675,8 +493,9 @@ Input: [4, 1, 2, 5, 10]
 		Optimal decision:
 
 			There: [1, 2]
-			Time:  3
+			Total: 17
 
+				Time:  3
 				Back:  1
 
 				Start: [1, 5, 10]
@@ -687,8 +506,59 @@ Input: [4, 1, 2, 5, 10]
 
 	Final case: [1, 2, 5, 10]
 
+		1.Step:
+
+			There: [1, 2]
+			Total: 17
+
+			Time:  3
+			Back:  1
+
+			Start: [1, 5, 10]
+			End:   [2]
+
+		2.Step:
+
+			There: [5, 10]
+			Total: 14
+
+			Time:  12
+			Back:  2
+
+			Start: [1, 2]
+			End:   [5, 10]
+
+		3.Step:
+
+			There: [1, 2]
+			Total: 2
+
+			Time:  2
+			Back:  None
+
+			Start: []
+			End:   [1, 2, 5, 10]
+
+
+
+	Time: 17
+	Path: [[1, 2], [1], [5, 10], [2], [1, 2]]
+
+
+		[1, 2]          [1, 2]     2     []              [1, 2, 5, 10]  
+		[1, 5]          [1, 5]     5     []              [1, 2, 5, 10]  
+		[1, 10]         [1, 10]    10    []              [1, 2, 5, 10]  
+		[2, 5]          [2, 5]     5     []              [1, 2, 5, 10]  
+		[2, 10]         [2, 10]    10    []              [1, 2, 5, 10]  
+		[5, 10]         [5, 10]    10    []              [1, 2, 5, 10]  
+		[1, 2, 5]       [1, 2]     3     [1, 5]          [2, 10]        
+		[1, 2, 10]      [1, 2]     3     [1, 10]         [2, 5]         
+		[1, 5, 10]      [5, 10]    12    [1, 2]          [5, 10]        
+		[2, 5, 10]      [5, 10]    11    [1, 2]          [5, 10]        
+		[1, 2, 5, 10]   [1, 2]     3     [1, 5, 10]      [2]            
 
 Process finished with exit code 0
+
 
 """
 
