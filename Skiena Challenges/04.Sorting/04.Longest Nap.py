@@ -69,3 +69,33 @@ Longest Nap
                 Day #4: the longest nap starts at 13:00 and will last for 5 hours and 0 minutes.
 
 """
+
+InputRaw_Str = """
+4
+10:00 12:00 Lectures
+12:00 13:00 Lunch, like always.
+13:00 15:00 Boring lectures...
+15:30 17:45 Reading
+4
+10:00 12:00 Lectures
+12:00 13:00 Lunch, just lunch.
+13:00 15:00 Lectures, lectures... oh, no!
+16:45 17:45 Reading (to be or not to be?)
+4
+10:00 12:00 Lectures, as everyday.
+12:00 13:00 Lunch, again!!!
+13:00 15:00 Lectures, more lectures!
+15:30 17:15 Reading (I love reading, but should I schedule it?)
+1
+12:00 13:00 I love lunch! Have you ever noticed it? :)
+"""
+
+InputRaw_Str = InputRaw_Str[1:-1]
+
+print("Raw Input:\n", end="\"\"\"\n")
+print(InputRaw_Str, end="\"\"\"\n")
+print()
+
+InputRaw_Lst = InputRaw_Str.split("\n")
+
+print(InputRaw_Lst)
