@@ -69,6 +69,7 @@ Longest Nap
                 Day #4: the longest nap starts at 13:00 and will last for 5 hours and 0 minutes.
 
 """
+import copy
 
 InputRaw_Str = """
 4
@@ -155,21 +156,24 @@ for InputDay in InputLst:
 
     print("\t\tMinutes:\n")
 
-    minutLst = []
+    minutAptLst = []
+    minutFreLst = [[0, 0] for _ in range(len(timeLst) + 1)]
 
-    for time in timeLst:
+    minutFreLst[0][0], minutFreLst[-1][1] = 0, 480
 
-        minutLst.append([time[0][0] * 60 + time[0][1] - 10 * 60, time[1][0] * 60 + time[1][1] - 10 * 60])
+    for t, time in enumerate(timeLst):
 
-        print(f"\t\t\t{time[0][0]:02}:{time[0][1]:02} = {time[0][0] * 60 + time[0][1]:4}  => {minutLst[-1][0]}")
-        print(f"\t\t\t{time[1][0]:02}:{time[1][1]:02} = {time[1][0] * 60 + time[1][1]:4}  => {minutLst[-1][1]}")
+        minutAptLst.append([time[0][0] * 60 + time[0][1] - 10 * 60, time[1][0] * 60 + time[1][1] - 10 * 60])
+
+        print(f"\t\t\t{time[0][0]:02}:{time[0][1]:02} = {time[0][0] * 60 + time[0][1]:4}  => {minutAptLst[t][0]}")
+        print(f"\t\t\t{time[1][0]:02}:{time[1][1]:02} = {time[1][0] * 60 + time[1][1]:4}  => {minutAptLst[t][1]}")
         print()
 
-        # time[0] = time[0][0] * 60 + time[0][1] - 10 * 60
-        # time[1] = time[1][0] * 60 + time[1][1] - 10 * 60
+        minutFreLst[t][1] = minutAptLst[t][0]
+        minutFreLst[t+1][0] = minutAptLst[t][1]
 
-        # print("\t\t", time[0], time[1])
-    print()
+    print(f"\t\t\t{minutFreLst}")
+    print("\n")
 
 
 """__Output__"""
@@ -234,6 +238,8 @@ Input times:
 			15:30 =  930  => 330
 			17:45 = 1065  => 465
 
+			[[0, 0], [120, 120], [180, 180], [300, 330], [465, 480]]
+
 
 	2.Day:
 		10:00 12:00
@@ -264,6 +270,8 @@ Input times:
 
 			16:45 = 1005  => 405
 			17:45 = 1065  => 465
+
+			[[0, 0], [120, 120], [180, 180], [300, 405], [465, 480]]
 
 
 	3.Day:
@@ -296,6 +304,8 @@ Input times:
 			15:30 =  930  => 330
 			17:15 = 1035  => 435
 
+			[[0, 0], [120, 120], [180, 180], [300, 330], [435, 480]]
+
 
 	4.Day:
 		12:00 13:00
@@ -308,6 +318,8 @@ Input times:
 
 			12:00 =  720  => 120
 			13:00 =  780  => 180
+
+			[[0, 120], [180, 480]]
 
 
 
