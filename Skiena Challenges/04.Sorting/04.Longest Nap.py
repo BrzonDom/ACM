@@ -154,7 +154,7 @@ for InputDay in InputLst:
     print(f"\t\t{timeLst}")
     print("\n")
 
-    print("\t\tMinutes:\n")
+    print("\t\tBusy minutes:")
 
     minutAptLst = []
     minutFreLst = [[0, 0] for _ in range(len(timeLst) + 1)]
@@ -172,7 +172,21 @@ for InputDay in InputLst:
         minutFreLst[t][1] = minutAptLst[t][0]
         minutFreLst[t+1][0] = minutAptLst[t][1]
 
-    print(f"\t\t\t{minutFreLst}")
+
+    print("\t\tFree minutes:")
+
+    napTime = [0, 0]
+
+    for time in minutFreLst:
+
+        if time[1] - time[0] > 0:
+            print(f"\t\t\t{time[0]:4} : {time[1]:4} => {time[1] - time[0]:4}")
+
+            if napTime[1] < (time[1] - time[0]):
+                napTime[1] = time[1] - time[0]
+                napTime[0] = time[0]
+
+    # print(f"\t\t\t{minutFreLst}")
     print("\n")
 
 
@@ -224,8 +238,7 @@ Input times:
 		[[[10, 0], [12, 0]], [[12, 0], [13, 0]], [[13, 0], [15, 0]], [[15, 30], [17, 45]]]
 
 
-		Minutes:
-
+		Busy minutes:
 			10:00 =  600  => 0
 			12:00 =  720  => 120
 
@@ -238,7 +251,9 @@ Input times:
 			15:30 =  930  => 330
 			17:45 = 1065  => 465
 
-			[[0, 0], [120, 120], [180, 180], [300, 330], [465, 480]]
+		Free minutes:
+			 300 :  330 =>   30
+			 465 :  480 =>   15
 
 
 	2.Day:
@@ -257,8 +272,7 @@ Input times:
 		[[[10, 0], [12, 0]], [[12, 0], [13, 0]], [[13, 0], [15, 0]], [[16, 45], [17, 45]]]
 
 
-		Minutes:
-
+		Busy minutes:
 			10:00 =  600  => 0
 			12:00 =  720  => 120
 
@@ -271,7 +285,9 @@ Input times:
 			16:45 = 1005  => 405
 			17:45 = 1065  => 465
 
-			[[0, 0], [120, 120], [180, 180], [300, 405], [465, 480]]
+		Free minutes:
+			 300 :  405 =>  105
+			 465 :  480 =>   15
 
 
 	3.Day:
@@ -290,8 +306,7 @@ Input times:
 		[[[10, 0], [12, 0]], [[12, 0], [13, 0]], [[13, 0], [15, 0]], [[15, 30], [17, 15]]]
 
 
-		Minutes:
-
+		Busy minutes:
 			10:00 =  600  => 0
 			12:00 =  720  => 120
 
@@ -304,7 +319,9 @@ Input times:
 			15:30 =  930  => 330
 			17:15 = 1035  => 435
 
-			[[0, 0], [120, 120], [180, 180], [300, 330], [435, 480]]
+		Free minutes:
+			 300 :  330 =>   30
+			 435 :  480 =>   45
 
 
 	4.Day:
@@ -314,12 +331,13 @@ Input times:
 		[[[12, 0], [13, 0]]]
 
 
-		Minutes:
-
+		Busy minutes:
 			12:00 =  720  => 120
 			13:00 =  780  => 180
 
-			[[0, 120], [180, 480]]
+		Free minutes:
+			   0 :  120 =>  120
+			 180 :  480 =>  300
 
 
 
