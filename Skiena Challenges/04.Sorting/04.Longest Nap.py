@@ -101,6 +101,7 @@ InputStr_Lst = InputRaw_Str.split("\n")
 # print(InputStr_Lst)
 
 lstIndx = 0
+dayCnt = 1
 InputLst = []
 
 print("Inputs: \n")
@@ -112,10 +113,13 @@ while lstIndx < len(InputStr_Lst):
 
         InputLst.append(InputStr_Lst[lstIndx + 1: lstIndx + 1 + apptmNum])
 
-        for Input in InputStr_Lst[lstIndx + 1: lstIndx + 1 + apptmNum]:
-            print(f"\t{Input}")
+        print(f"\t{dayCnt}.Day:")
+
+        for Input in InputLst[dayCnt-1]:
+            print(f"\t\t{Input}")
         print("\n")
 
+        dayCnt += 1
         lstIndx += apptmNum
 
     else:
