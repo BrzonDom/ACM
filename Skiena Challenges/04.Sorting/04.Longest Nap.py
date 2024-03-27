@@ -126,11 +126,13 @@ while lstIndx < len(InputStr_Lst):
         lstIndx += 1
 print()
 
-dayCnt = 1
+dayCnt = 0
 
 print("Input times:\n")
 
 for InputDay in InputLst:
+
+    dayCnt += 1
 
     timeLst_Str = []
     timeLst = []
@@ -149,11 +151,21 @@ for InputDay in InputLst:
         print()
 
     print(f"\t\t{timeLst}")
-
-    dayCnt += 1
     print("\n")
 
+    print("\tMinutes:")
 
+    minutLst = []
+
+    for time in timeLst:
+
+        time[0] = time[0][0] * 60 + time[0][1] - 10 * 60
+        time[1] = time[1][0] * 60 + time[1][1] - 10 * 60
+
+        print("\t\t", time[0], time[1])
+
+
+    print()
 
 
 
@@ -206,6 +218,12 @@ Input times:
 		[[[10, 0], [12, 0]], [[12, 0], [13, 0]], [[13, 0], [15, 0]], [[15, 30], [17, 45]]]
 
 
+	Minutes:
+		 0 120
+		 120 180
+		 180 300
+		 330 465
+
 	2.Day:
 		10:00 12:00
 		[[10, 0], [12, 0]]
@@ -221,6 +239,12 @@ Input times:
 
 		[[[10, 0], [12, 0]], [[12, 0], [13, 0]], [[13, 0], [15, 0]], [[16, 45], [17, 45]]]
 
+
+	Minutes:
+		 0 120
+		 120 180
+		 180 300
+		 405 465
 
 	3.Day:
 		10:00 12:00
@@ -238,6 +262,12 @@ Input times:
 		[[[10, 0], [12, 0]], [[12, 0], [13, 0]], [[13, 0], [15, 0]], [[15, 30], [17, 15]]]
 
 
+	Minutes:
+		 0 120
+		 120 180
+		 180 300
+		 330 435
+
 	4.Day:
 		12:00 13:00
 		[[12, 0], [13, 0]]
@@ -245,7 +275,11 @@ Input times:
 		[[[12, 0], [13, 0]]]
 
 
+	Minutes:
+		 120 180
+
 
 Process finished with exit code 0
+
 
 """
