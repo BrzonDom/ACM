@@ -187,6 +187,12 @@ for InputDay in InputLst:
                 napTime[0] = time[0]
 
     # print(f"\t\t\t{minutFreLst}")
+    print()
+
+    napTime[0] += 600
+    print("\t\tNap:")
+    print(f"\t\t\tStart:     {napTime[0] // 60:02}:{napTime[0] % 60:02}")
+    print(f"\t\t\tDuration:  {napTime[1] // 60} hours {napTime[1] % 60} minutes")
     print("\n")
 
 
@@ -255,6 +261,10 @@ Input times:
 			 300 :  330 =>   30
 			 465 :  480 =>   15
 
+		Nap:
+			Start:     15:00
+			Duration:  0 hours 30 minutes
+
 
 	2.Day:
 		10:00 12:00
@@ -288,6 +298,10 @@ Input times:
 		Free minutes:
 			 300 :  405 =>  105
 			 465 :  480 =>   15
+
+		Nap:
+			Start:     15:00
+			Duration:  1 hours 45 minutes
 
 
 	3.Day:
@@ -323,6 +337,10 @@ Input times:
 			 300 :  330 =>   30
 			 435 :  480 =>   45
 
+		Nap:
+			Start:     17:15
+			Duration:  0 hours 45 minutes
+
 
 	4.Day:
 		12:00 13:00
@@ -338,6 +356,10 @@ Input times:
 		Free minutes:
 			   0 :  120 =>  120
 			 180 :  480 =>  300
+
+		Nap:
+			Start:     13:00
+			Duration:  5 hours 0 minutes
 
 
 
