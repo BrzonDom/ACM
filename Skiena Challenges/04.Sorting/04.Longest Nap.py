@@ -125,3 +125,36 @@ while lstIndx < len(InputStr_Lst):
     else:
         lstIndx += 1
 
+"""__Output__"""
+"""
+Inputs: 
+
+	1.Day:
+		10:00 12:00 Lectures
+		12:00 13:00 Lunch, like always.
+		13:00 15:00 Boring lectures...
+		15:30 17:45 Reading
+
+
+	2.Day:
+		10:00 12:00 Lectures
+		12:00 13:00 Lunch, just lunch.
+		13:00 15:00 Lectures, lectures... oh, no!
+		16:45 17:45 Reading (to be or not to be?)
+
+
+	3.Day:
+		10:00 12:00 Lectures, as everyday.
+		12:00 13:00 Lunch, again!!!
+		13:00 15:00 Lectures, more lectures!
+		15:30 17:15 Reading (I love reading, but should I schedule it?)
+
+
+	4.Day:
+		12:00 13:00 I love lunch! Have you ever noticed it? :)
+
+
+
+Process finished with exit code 0
+
+"""
