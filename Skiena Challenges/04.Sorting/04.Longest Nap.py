@@ -92,10 +92,32 @@ InputRaw_Str = """
 
 InputRaw_Str = InputRaw_Str[1:-1]
 
-print("Raw Input:\n", end="\"\"\"\n")
-print(InputRaw_Str, end="\"\"\"\n")
-print()
+# print("Raw Input:\n", end="\"\"\"\n")
+# print(InputRaw_Str, end="\"\"\"\n")
+# print()
 
-InputRaw_Lst = InputRaw_Str.split("\n")
+InputStr_Lst = InputRaw_Str.split("\n")
 
-print(InputRaw_Lst)
+# print(InputStr_Lst)
+
+lstIndx = 0
+InputLst = []
+
+print("Inputs: \n")
+
+while lstIndx < len(InputStr_Lst):
+
+    if InputStr_Lst[lstIndx].isnumeric():
+        apptmNum = int(InputStr_Lst[lstIndx])
+
+        InputLst.append(InputStr_Lst[lstIndx + 1: lstIndx + 1 + apptmNum])
+
+        for Input in InputStr_Lst[lstIndx + 1: lstIndx + 1 + apptmNum]:
+            print(f"\t{Input}")
+        print("\n")
+
+        lstIndx += apptmNum
+
+    else:
+        lstIndx += 1
+
