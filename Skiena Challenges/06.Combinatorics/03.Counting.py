@@ -34,6 +34,8 @@ Counting
                 13
 
 """
+from itertools import combinations
+
 
 InputRaw_Str = """
 2
@@ -50,4 +52,17 @@ valDict = {
 numSet = {1, 2, 3, 4}
 
 print(numSet)
+print()
 # print(type(numSet))
+
+for n in range(2, 21):
+
+    if n % 3 == 0:
+        minDig = n // 3
+
+    else:
+        minDig = (n // 3) + 1
+
+    print(f"\tNum: {n:2}\t\tMaxDig: {n:2}\t\tMinDig: {minDig:2}")
+    # print(f"\t\t{n % 3}")
+
