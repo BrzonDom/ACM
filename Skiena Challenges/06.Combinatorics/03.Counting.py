@@ -34,3 +34,20 @@ Counting
                 13
 
 """
+
+InputRaw_Str = """
+2
+3
+"""
+
+valDict = {
+    '1' : 1,
+    '2' : 2,
+    '3' : 3,
+    '4' : 1
+}
+
+numSet = {1, 2, 3, 4}
+
+print(numSet)
+# print(type(numSet))
