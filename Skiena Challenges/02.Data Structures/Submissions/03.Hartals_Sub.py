@@ -12,7 +12,22 @@ days = {
     # 7 : "Saturday"
 }
 
-"""
+"""__Solution 1__"""
+# """
+import copy
+from sys import stdin
+
+dayPrnt = {
+    0 : "Saturday",
+    1 : "Sunday",
+    2 : "Monday",
+    3 : "Tuesday",
+    4 : "Wednesday",
+    5 : "Thursday",
+    6 : "Friday"
+    # 7 : "Saturday"
+}
+
 cases = int(stdin.readline())
 
 for case in range(cases):
@@ -26,52 +41,35 @@ for case in range(cases):
     for _ in range(partNum):
         hartLst.append(int(stdin.readline()))
 
-
-
-
     # print(f"\tDays: {dayNum}")
     # print(f"\tHartals: {hartLst}")
     # print()
 
     lostDays = 0
-    hartState = copy.deepcopy(hartLst)
+    hartVal = copy.deepcopy(hartLst)
 
-    for d in range(1, dayNum):
-        # print(f"\t\t{d:2} {d % 7} : {days[(d % 7)]}")
+    for day in range(1, dayNum + 1):
+        # print(f"\t\t{day:2} {day % 7} : {dayPrnt[(day % 7)]}")
 
         lost = False
 
-        for h, hart in enumerate(hartLst):
+        for h, hart in enumerate(hartVal):
 
-            if d == hartState[h]:
-                hartState[h] += hart
+            if day == hartLst[h]:
+                hartLst[h] += hart
 
-                if not ((d % 7) == 6 or (d % 7) == 7) and not lost:
+                if not ((day % 7) == 0 or (day % 7) == 6) and not lost:
                     # print("\t\t\t\t\tX")
                     lostDays += 1
                     lost = True
 
-                # elif lost:
-                    # print("\t\t\t\t\tX")
-
-
-    # print(f"\n\tDays lost: {lostDays}")
-    # print("\n")
-
     print(lostDays)
 # """
 
+
+"""__Solution 2__"""
 """
-casesTst = [[14, 3, 3, 4, 8], [100, 4, 12, 15, 25, 40]]
-
-for case in casesTst:
-
-    dayNum = case[0]
-
-    partNum = case[1]
-
-    hartLst = case[2:]
-# """
+from sys import stdin
 
 def readCase():
 
@@ -105,16 +103,6 @@ for c in range(cases):
 
     dayNum, hartLst = readCase()
 
-    calendar = [0 for _ in range(dayNum)]
-
-    for hart in hartLst:
-
-        curHart = hart
-
-        while curHart <= dayNum:
-
-            if not ((curHart-1) % 7 == 6 or (curHart-1) % 7 == 5):
-                calendar[curHart-1] = 1
-            curHart += hart
-
-    print(sum(calendar))
+    print(lostDays(dayNum, hartLst))
+    
+"""
