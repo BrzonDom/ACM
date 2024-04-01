@@ -49,7 +49,7 @@ valDict = {
     '4' : 1
 }
 
-numSet = {1, 2, 3, 4}
+numSet = {'1', '2', '3', '4'}
 
 print(numSet)
 print()
@@ -63,33 +63,248 @@ for n in range(2, 21):
     else:
         minDig = (n // 3) + 1
 
-    print(f"\tNum: {n:2}\t\tMaxDig: {n:2}\t\tMinDig: {minDig:2}")
+    print(f"\tNum: {n:2}\n\t\tMinDig.: {minDig:2}\n")
+
+    for d in range(minDig, n+1):
+
+        print(f"\t\t{d:2}: ")
+
+    print()
     # print(f"\t\t{n % 3}")
 
 
 """__Output__"""
 """
-{1, 2, 3, 4}
+{'3', '1', '2', '4'}
 
-	Num:  2		MaxDig:  2		MinDig:  1
-	Num:  3		MaxDig:  3		MinDig:  1
-	Num:  4		MaxDig:  4		MinDig:  2
-	Num:  5		MaxDig:  5		MinDig:  2
-	Num:  6		MaxDig:  6		MinDig:  2
-	Num:  7		MaxDig:  7		MinDig:  3
-	Num:  8		MaxDig:  8		MinDig:  3
-	Num:  9		MaxDig:  9		MinDig:  3
-	Num: 10		MaxDig: 10		MinDig:  4
-	Num: 11		MaxDig: 11		MinDig:  4
-	Num: 12		MaxDig: 12		MinDig:  4
-	Num: 13		MaxDig: 13		MinDig:  5
-	Num: 14		MaxDig: 14		MinDig:  5
-	Num: 15		MaxDig: 15		MinDig:  5
-	Num: 16		MaxDig: 16		MinDig:  6
-	Num: 17		MaxDig: 17		MinDig:  6
-	Num: 18		MaxDig: 18		MinDig:  6
-	Num: 19		MaxDig: 19		MinDig:  7
-	Num: 20		MaxDig: 20		MinDig:  7
+	Num:  2
+		MinDig.:  1
+
+		 1: 
+		 2: 
+
+	Num:  3
+		MinDig.:  1
+
+		 1: 
+		 2: 
+		 3: 
+
+	Num:  4
+		MinDig.:  2
+
+		 2: 
+		 3: 
+		 4: 
+
+	Num:  5
+		MinDig.:  2
+
+		 2: 
+		 3: 
+		 4: 
+		 5: 
+
+	Num:  6
+		MinDig.:  2
+
+		 2: 
+		 3: 
+		 4: 
+		 5: 
+		 6: 
+
+	Num:  7
+		MinDig.:  3
+
+		 3: 
+		 4: 
+		 5: 
+		 6: 
+		 7: 
+
+	Num:  8
+		MinDig.:  3
+
+		 3: 
+		 4: 
+		 5: 
+		 6: 
+		 7: 
+		 8: 
+
+	Num:  9
+		MinDig.:  3
+
+		 3: 
+		 4: 
+		 5: 
+		 6: 
+		 7: 
+		 8: 
+		 9: 
+
+	Num: 10
+		MinDig.:  4
+
+		 4: 
+		 5: 
+		 6: 
+		 7: 
+		 8: 
+		 9: 
+		10: 
+
+	Num: 11
+		MinDig.:  4
+
+		 4: 
+		 5: 
+		 6: 
+		 7: 
+		 8: 
+		 9: 
+		10: 
+		11: 
+
+	Num: 12
+		MinDig.:  4
+
+		 4: 
+		 5: 
+		 6: 
+		 7: 
+		 8: 
+		 9: 
+		10: 
+		11: 
+		12: 
+
+	Num: 13
+		MinDig.:  5
+
+		 5: 
+		 6: 
+		 7: 
+		 8: 
+		 9: 
+		10: 
+		11: 
+		12: 
+		13: 
+
+	Num: 14
+		MinDig.:  5
+
+		 5: 
+		 6: 
+		 7: 
+		 8: 
+		 9: 
+		10: 
+		11: 
+		12: 
+		13: 
+		14: 
+
+	Num: 15
+		MinDig.:  5
+
+		 5: 
+		 6: 
+		 7: 
+		 8: 
+		 9: 
+		10: 
+		11: 
+		12: 
+		13: 
+		14: 
+		15: 
+
+	Num: 16
+		MinDig.:  6
+
+		 6: 
+		 7: 
+		 8: 
+		 9: 
+		10: 
+		11: 
+		12: 
+		13: 
+		14: 
+		15: 
+		16: 
+
+	Num: 17
+		MinDig.:  6
+
+		 6: 
+		 7: 
+		 8: 
+		 9: 
+		10: 
+		11: 
+		12: 
+		13: 
+		14: 
+		15: 
+		16: 
+		17: 
+
+	Num: 18
+		MinDig.:  6
+
+		 6: 
+		 7: 
+		 8: 
+		 9: 
+		10: 
+		11: 
+		12: 
+		13: 
+		14: 
+		15: 
+		16: 
+		17: 
+		18: 
+
+	Num: 19
+		MinDig.:  7
+
+		 7: 
+		 8: 
+		 9: 
+		10: 
+		11: 
+		12: 
+		13: 
+		14: 
+		15: 
+		16: 
+		17: 
+		18: 
+		19: 
+
+	Num: 20
+		MinDig.:  7
+
+		 7: 
+		 8: 
+		 9: 
+		10: 
+		11: 
+		12: 
+		13: 
+		14: 
+		15: 
+		16: 
+		17: 
+		18: 
+		19: 
+		20: 
+
 
 Process finished with exit code 0
 
