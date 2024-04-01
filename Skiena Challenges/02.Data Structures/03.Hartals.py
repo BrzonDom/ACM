@@ -36,7 +36,7 @@ Hartals
 import copy
 
 days = {
-    0: "Saturday",
+    0 : "Saturday",
     1 : "Sunday",
     2 : "Monday",
     3 : "Tuesday",
@@ -92,7 +92,7 @@ for c in range(Input[0]):
 
     Hartals = copy.deepcopy(Cases[c][1])
 
-    for d in range(1, Cases[c][0]):
+    for d in range(1, Cases[c][0] + 1):
         print(f"\t\t{d:2} {d % 7} : {days[(d % 7)]}")
 
         lost = False
@@ -102,13 +102,19 @@ for c in range(Input[0]):
             if d == Hartals[cs]:
                 Hartals[cs] += case
 
-                if not ((d % 7) == 6 or (d % 7) == 7) and not lost:
-                    print("\t\t\t\t\tX")
+                if not ((d % 7) == 0 or (d % 7) == 6) and not lost:
+                    print(f"\t\t\t\t\tX")
                     lostDays += 1
                     lost = True
 
                 elif lost:
                     print("\t\t\t\t\tX")
+
+        if (d % 7) == 6:
+            print("\t\t\t\t\tFo")
+
+        if (d % 7) == 0:
+            print("\t\t\t\t\tSo")
 
 
     print(f"\n\tDays lost: {lostDays}")
@@ -132,7 +138,9 @@ Input:         [2, 14, 3, 3, 4, 8, 100, 4, 12, 15, 25, 40]
 					X
 		 5 5 : Thursday
 		 6 6 : Friday
+					Fo
 		 7 0 : Saturday
+					So
 		 8 1 : Sunday
 					X
 					X
@@ -144,6 +152,9 @@ Input:         [2, 14, 3, 3, 4, 8, 100, 4, 12, 15, 25, 40]
 					X
 					X
 		13 6 : Friday
+					Fo
+		14 0 : Saturday
+					So
 
 	Days lost: 5
 
@@ -157,7 +168,9 @@ Input:         [2, 14, 3, 3, 4, 8, 100, 4, 12, 15, 25, 40]
 		 4 4 : Wednesday
 		 5 5 : Thursday
 		 6 6 : Friday
+					Fo
 		 7 0 : Saturday
+					So
 		 8 1 : Sunday
 		 9 2 : Monday
 		10 3 : Tuesday
@@ -165,7 +178,9 @@ Input:         [2, 14, 3, 3, 4, 8, 100, 4, 12, 15, 25, 40]
 		12 5 : Thursday
 					X
 		13 6 : Friday
+					Fo
 		14 0 : Saturday
+					So
 		15 1 : Sunday
 					X
 		16 2 : Monday
@@ -173,7 +188,9 @@ Input:         [2, 14, 3, 3, 4, 8, 100, 4, 12, 15, 25, 40]
 		18 4 : Wednesday
 		19 5 : Thursday
 		20 6 : Friday
+					Fo
 		21 0 : Saturday
+					So
 		22 1 : Sunday
 		23 2 : Monday
 		24 3 : Tuesday
@@ -182,7 +199,9 @@ Input:         [2, 14, 3, 3, 4, 8, 100, 4, 12, 15, 25, 40]
 					X
 		26 5 : Thursday
 		27 6 : Friday
+					Fo
 		28 0 : Saturday
+					So
 		29 1 : Sunday
 		30 2 : Monday
 					X
@@ -190,7 +209,9 @@ Input:         [2, 14, 3, 3, 4, 8, 100, 4, 12, 15, 25, 40]
 		32 4 : Wednesday
 		33 5 : Thursday
 		34 6 : Friday
+					Fo
 		35 0 : Saturday
+					So
 		36 1 : Sunday
 					X
 		37 2 : Monday
@@ -199,7 +220,9 @@ Input:         [2, 14, 3, 3, 4, 8, 100, 4, 12, 15, 25, 40]
 		40 5 : Thursday
 					X
 		41 6 : Friday
+					Fo
 		42 0 : Saturday
+					So
 		43 1 : Sunday
 		44 2 : Monday
 		45 3 : Tuesday
@@ -207,7 +230,9 @@ Input:         [2, 14, 3, 3, 4, 8, 100, 4, 12, 15, 25, 40]
 		46 4 : Wednesday
 		47 5 : Thursday
 		48 6 : Friday
+					Fo
 		49 0 : Saturday
+					So
 		50 1 : Sunday
 					X
 		51 2 : Monday
@@ -215,7 +240,9 @@ Input:         [2, 14, 3, 3, 4, 8, 100, 4, 12, 15, 25, 40]
 		53 4 : Wednesday
 		54 5 : Thursday
 		55 6 : Friday
+					Fo
 		56 0 : Saturday
+					So
 		57 1 : Sunday
 		58 2 : Monday
 		59 3 : Tuesday
@@ -224,14 +251,18 @@ Input:         [2, 14, 3, 3, 4, 8, 100, 4, 12, 15, 25, 40]
 					X
 		61 5 : Thursday
 		62 6 : Friday
+					Fo
 		63 0 : Saturday
+					So
 		64 1 : Sunday
 		65 2 : Monday
 		66 3 : Tuesday
 		67 4 : Wednesday
 		68 5 : Thursday
 		69 6 : Friday
+					Fo
 		70 0 : Saturday
+					So
 		71 1 : Sunday
 		72 2 : Monday
 					X
@@ -241,7 +272,9 @@ Input:         [2, 14, 3, 3, 4, 8, 100, 4, 12, 15, 25, 40]
 					X
 					X
 		76 6 : Friday
+					Fo
 		77 0 : Saturday
+					So
 		78 1 : Sunday
 		79 2 : Monday
 		80 3 : Tuesday
@@ -249,15 +282,18 @@ Input:         [2, 14, 3, 3, 4, 8, 100, 4, 12, 15, 25, 40]
 		81 4 : Wednesday
 		82 5 : Thursday
 		83 6 : Friday
+					Fo
 		84 0 : Saturday
-					X
+					So
 		85 1 : Sunday
 		86 2 : Monday
 		87 3 : Tuesday
 		88 4 : Wednesday
 		89 5 : Thursday
 		90 6 : Friday
+					Fo
 		91 0 : Saturday
+					So
 		92 1 : Sunday
 		93 2 : Monday
 		94 3 : Tuesday
@@ -265,8 +301,12 @@ Input:         [2, 14, 3, 3, 4, 8, 100, 4, 12, 15, 25, 40]
 		96 5 : Thursday
 					X
 		97 6 : Friday
+					Fo
 		98 0 : Saturday
+					So
 		99 1 : Sunday
+		100 2 : Monday
+					X
 
 	Days lost: 15
 
