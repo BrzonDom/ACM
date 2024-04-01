@@ -41,46 +41,41 @@ if __name__ == '__main__':
 
         Input = list(map(int, InputStr.split()))
 
-        seq = Input[1:]
+        lenSeq, seq = Input[0], Input[1:]
 
-    # for seq in seqLst:
-
-        print(f"\tSequence: {seq}\n")
-
-        lenSeq = len(seq)
+        print(f"\tSequence: {seq}")
+        print(f"\t\tLenght: {lenSeq}\n")
 
         jolly = set()
 
-        # for n in range(lenSeq-1):
-        #     jolly[n+1] = False
-
-        # print(f"\t{jolly}\n")
+        isJolly = True
 
         prev = seq[0]
 
-        for itm in seq[1:]:
-            print(f"\t\t\t|{prev} - {itm}| = {abs(prev - itm)}")
+        for nxt in seq[1:]:
+            abVal = abs(prev - nxt)
 
-            jolly.add(abs(prev - itm))
+            print(f"\t\t\t|{prev} - {nxt}| = {abVal}")
 
-            prev = itm
+            if abVal in jolly or abVal <= 0 or abVal >= lenSeq:
+                isJolly = False
+                break
+
+            else:
+                jolly.add(abVal)
+
+            prev = nxt
 
         print()
         print(f"\t\t\t{jolly}\n")
 
-        isJolly = True
-
-        # for key in jolly:
-            # if jolly[key] == False:
-            #
-            #     isJolly = False
-            #     break
-
-        for n in range(1, lenSeq):
-            if n not in jolly:
-
-                isJolly = False
-                break
+        # isJolly = True
+        #
+        # for n in range(1, lenSeq):
+        #     if n not in jolly:
+        #
+        #         isJolly = False
+        #         break
 
         if isJolly:
             print(f"\t\tSequence is Jolly")
