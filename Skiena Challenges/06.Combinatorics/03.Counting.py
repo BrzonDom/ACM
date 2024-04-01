@@ -80,18 +80,35 @@ for n in range(10, 21):
     print(f"\tNum: {n:2}\n\t\tMinDig.: {minDig:2}\n")
 
     print(f"\t\t{minDig:2}: {combLst}")
-
-    # for d in range(minDig + 1, n + 1):
-    #
-    #     print(f"\t\t{d:2}: ")
-
     print()
-    # print(f"\t\t{n % 3}")
+print()
+
+maxDigSet = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+
+maxDig = len(maxDigSet)
+
+minDig = maxDig // 3
+
+if maxDig % 3 != 0:
+    minDig += 1
+
+digSetDict = {}
+
+digSetDict[maxDig] = [maxDigSet]
+
+print(f"\tNum.: {maxDig}")
+print(f"\t\tMaxDigSet: {maxDigSet}")
+print()
+
+print(f"\t\t\t{maxDig:2}: {digSetDict[maxDig]}")
+
+for dig in range(maxDig - 1, minDig - 1, -1):
+    print(f"\t\t\t{dig:2}:")
 
 
 """__Output__"""
 """
-{'2', '1', '3', '4'}
+{'3', '1', '4', '2'}
 
 	Num: 10
 		MinDig.:  4
@@ -148,6 +165,17 @@ for n in range(10, 21):
 
 		 7: [[3, 3, 3, 3, 3, 3, 2]]
 
+
+	Num.: 10
+		MaxDigSet: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+
+			10: [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]
+			 9:
+			 8:
+			 7:
+			 6:
+			 5:
+			 4:
 
 Process finished with exit code 0
 
