@@ -82,14 +82,13 @@ def readCase():
     return dayNum, [int(stdin.readline()) for _ in range(partNum)]
 
 
-
 cases = int(stdin.readline())
 
 for c in range(cases):
 
     dayNum, hartLst = readCase()
 
-    calendar = [0 for _ in range(dayNum)]
+    lostDays = 0
 
     for hart in hartLst:
 
@@ -98,7 +97,7 @@ for c in range(cases):
         while curHart <= dayNum:
 
             if not ((curHart-1) % 7 == 6 or (curHart-1) % 7 == 5):
-                calendar[curHart - 1] = 1
+                lostDays += 1
             curHart += hart
 
     # for holDay in range(dayNum):
@@ -106,6 +105,6 @@ for c in range(cases):
     #     if holDay % 7 == 6 or holDay % 7 == 5:
     #         calendar[holDay] = 0
 
-    lostDays = sum(calendar)
+    # lostDays = sum(calendar)
 
     print(lostDays)
