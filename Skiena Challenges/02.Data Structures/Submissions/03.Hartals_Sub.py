@@ -12,10 +12,68 @@ days = {
     # 7 : "Saturday"
 }
 
-# """
+# # """
+# cases = int(stdin.readline())
+#
+# for case in range(cases):
+#
+#     dayNum = int(stdin.readline())
+#
+#     partNum = int(stdin.readline())
+#
+#     hartLst = []
+#
+#     for _ in range(partNum):
+#         hartLst.append(int(stdin.readline()))
+# # """
+#
+#     """
+#     casesTst = [[14, 3, 3, 4, 8], [100, 4, 12, 15, 25, 40]]
+#
+#     for case in casesTst:
+#
+#         dayNum = case[0]
+#
+#         partNum = case[1]
+#
+#         hartLst = case[2:]
+#     # """
+#
+#     # print(f"\tDays: {dayNum}")
+#     # print(f"\tHartals: {hartLst}")
+#     # print()
+#
+#     lostDays = 0
+#     hartState = copy.deepcopy(hartLst)
+#
+#     for d in range(1, dayNum):
+#         # print(f"\t\t{d:2} {d % 7} : {days[(d % 7)]}")
+#
+#         lost = False
+#
+#         for h, hart in enumerate(hartLst):
+#
+#             if d == hartState[h]:
+#                 hartState[h] += hart
+#
+#                 if not ((d % 7) == 6 or (d % 7) == 7) and not lost:
+#                     # print("\t\t\t\t\tX")
+#                     lostDays += 1
+#                     lost = True
+#
+#                 # elif lost:
+#                     # print("\t\t\t\t\tX")
+#
+#
+#     # print(f"\n\tDays lost: {lostDays}")
+#     # print("\n")
+#
+#     print(lostDays)
+
+
 cases = int(stdin.readline())
 
-for case in range(cases):
+for c in range(cases):
 
     dayNum = int(stdin.readline())
 
@@ -25,48 +83,23 @@ for case in range(cases):
 
     for _ in range(partNum):
         hartLst.append(int(stdin.readline()))
-# """
 
-    """
-    casesTst = [[14, 3, 3, 4, 8], [100, 4, 12, 15, 25, 40]]
-    
-    for case in casesTst:
-    
-        dayNum = case[0]
-    
-        partNum = case[1]
-    
-        hartLst = case[2:]
-    # """
+    calendar = [0 for _ in range(dayNum)]
 
-    # print(f"\tDays: {dayNum}")
-    # print(f"\tHartals: {hartLst}")
-    # print()
+    for hart in hartLst:
 
-    lostDays = 0
-    hartState = copy.deepcopy(hartLst)
+        curHart = hart
 
-    for d in range(1, dayNum):
-        # print(f"\t\t{d:2} {d % 7} : {days[(d % 7)]}")
+        while curHart <= dayNum:
 
-        lost = False
+            calendar[curHart - 1] = 1
+            curHart += hart
 
-        for h, hart in enumerate(hartLst):
+    for holDay in range(dayNum):
 
-            if d == hartState[h]:
-                hartState[h] += hart
+        if holDay % 7 == 6 or holDay % 7 == 5:
+            calendar[holDay] = 0
 
-                if not ((d % 7) == 6 or (d % 7) == 7) and not lost:
-                    # print("\t\t\t\t\tX")
-                    lostDays += 1
-                    lost = True
-
-                # elif lost:
-                    # print("\t\t\t\t\tX")
-
-
-    # print(f"\n\tDays lost: {lostDays}")
-    # print("\n")
+    lostDays = sum(calendar)
 
     print(lostDays)
-
