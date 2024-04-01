@@ -109,7 +109,7 @@ for case in range(caseNum):
     print("\n")
 
 
-# """
+"""
 Input_ext = copy.deepcopy(Input)
 
 Cases = [[] for _ in range(Input[0])]
@@ -172,39 +172,43 @@ Input:         [2, 14, 3, 3, 4, 8, 100, 4, 12, 15, 25, 40]
 
 
 	Days: 14
-	Cases: [3, 4, 8]
+	Parties: 3
+
+	Hartals: [3, 4, 8]
 
 		 1 1 : Sunday
 		 2 2 : Monday
 		 3 3 : Tuesday
-					X
+					X 3
 		 4 4 : Wednesday
-					X
+					X 4
 		 5 5 : Thursday
 		 6 6 : Friday
-					Fo
+					O
 		 7 0 : Saturday
-					So
+					O
 		 8 1 : Sunday
-					X
-					X
+					X 4
+					X 8
 		 9 2 : Monday
-					X
+					X 3
 		10 3 : Tuesday
 		11 4 : Wednesday
 		12 5 : Thursday
-					X
-					X
+					X 3
+					X 4
 		13 6 : Friday
-					Fo
+					O
 		14 0 : Saturday
-					So
+					O
 
 	Days lost: 5
 
 
 	Days: 100
-	Cases: [12, 15, 25, 40]
+	Parties: 4
+
+	Hartals: [12, 15, 25, 40]
 
 		 1 1 : Sunday
 		 2 2 : Monday
@@ -212,145 +216,145 @@ Input:         [2, 14, 3, 3, 4, 8, 100, 4, 12, 15, 25, 40]
 		 4 4 : Wednesday
 		 5 5 : Thursday
 		 6 6 : Friday
-					Fo
+					O
 		 7 0 : Saturday
-					So
+					O
 		 8 1 : Sunday
 		 9 2 : Monday
 		10 3 : Tuesday
 		11 4 : Wednesday
 		12 5 : Thursday
-					X
+					X 12
 		13 6 : Friday
-					Fo
+					O
 		14 0 : Saturday
-					So
+					O
 		15 1 : Sunday
-					X
+					X 15
 		16 2 : Monday
 		17 3 : Tuesday
 		18 4 : Wednesday
 		19 5 : Thursday
 		20 6 : Friday
-					Fo
+					O
 		21 0 : Saturday
-					So
+					O
 		22 1 : Sunday
 		23 2 : Monday
 		24 3 : Tuesday
-					X
+					X 12
 		25 4 : Wednesday
-					X
+					X 25
 		26 5 : Thursday
 		27 6 : Friday
-					Fo
+					O
 		28 0 : Saturday
-					So
+					O
 		29 1 : Sunday
 		30 2 : Monday
-					X
+					X 15
 		31 3 : Tuesday
 		32 4 : Wednesday
 		33 5 : Thursday
 		34 6 : Friday
-					Fo
+					O
 		35 0 : Saturday
-					So
+					O
 		36 1 : Sunday
-					X
+					X 12
 		37 2 : Monday
 		38 3 : Tuesday
 		39 4 : Wednesday
 		40 5 : Thursday
-					X
+					X 40
 		41 6 : Friday
-					Fo
+					O
 		42 0 : Saturday
-					So
+					O
 		43 1 : Sunday
 		44 2 : Monday
 		45 3 : Tuesday
-					X
+					X 15
 		46 4 : Wednesday
 		47 5 : Thursday
 		48 6 : Friday
-					Fo
+					O
 		49 0 : Saturday
-					So
+					O
 		50 1 : Sunday
-					X
+					X 25
 		51 2 : Monday
 		52 3 : Tuesday
 		53 4 : Wednesday
 		54 5 : Thursday
 		55 6 : Friday
-					Fo
+					O
 		56 0 : Saturday
-					So
+					O
 		57 1 : Sunday
 		58 2 : Monday
 		59 3 : Tuesday
 		60 4 : Wednesday
-					X
-					X
+					X 12
+					X 15
 		61 5 : Thursday
 		62 6 : Friday
-					Fo
+					O
 		63 0 : Saturday
-					So
+					O
 		64 1 : Sunday
 		65 2 : Monday
 		66 3 : Tuesday
 		67 4 : Wednesday
 		68 5 : Thursday
 		69 6 : Friday
-					Fo
+					O
 		70 0 : Saturday
-					So
+					O
 		71 1 : Sunday
 		72 2 : Monday
-					X
+					X 12
 		73 3 : Tuesday
 		74 4 : Wednesday
 		75 5 : Thursday
-					X
-					X
+					X 15
+					X 25
 		76 6 : Friday
-					Fo
+					O
 		77 0 : Saturday
-					So
+					O
 		78 1 : Sunday
 		79 2 : Monday
 		80 3 : Tuesday
-					X
+					X 40
 		81 4 : Wednesday
 		82 5 : Thursday
 		83 6 : Friday
-					Fo
+					O
 		84 0 : Saturday
-					So
+					O
 		85 1 : Sunday
 		86 2 : Monday
 		87 3 : Tuesday
 		88 4 : Wednesday
 		89 5 : Thursday
 		90 6 : Friday
-					Fo
+					O
 		91 0 : Saturday
-					So
+					O
 		92 1 : Sunday
 		93 2 : Monday
 		94 3 : Tuesday
 		95 4 : Wednesday
 		96 5 : Thursday
-					X
+					X 12
 		97 6 : Friday
-					Fo
+					O
 		98 0 : Saturday
-					So
+					O
 		99 1 : Sunday
 		100 2 : Monday
-					X
+					X 25
 
 	Days lost: 15
 
