@@ -78,25 +78,22 @@ for case in range(caseNum):
 
     hartVal = copy.deepcopy(hartLst)
 
-    lostDays = 0
+    lostDays = set()
 
     for day in range(1, dayNum + 1):
         print(f"\t\t{day:2} {day % 7} : {dayPrnt[(day % 7)]}")
 
-        lost = False
+        # lost = False
 
         for h, hart in enumerate(hartVal):
 
             if day == hartLst[h]:
                 hartLst[h] += hart
 
-                if not ((day % 7) == 0 or (day % 7) == 6) and not lost:
+                if not ((day % 7) == 0 or (day % 7) == 6):
                     print(f"\t\t\t\t\tX {hart}")
-                    lostDays += 1
-                    lost = True
 
-                elif lost:
-                    print(f"\t\t\t\t\tX {hart}")
+                    lostDays.add(day)
 
         if (day % 7) == 6:
             print("\t\t\t\t\tO")
@@ -105,7 +102,8 @@ for case in range(caseNum):
             print("\t\t\t\t\tO")
 
 
-    print(f"\n\tDays lost: {lostDays}")
+    print(f"\n\tDays lost: {len(lostDays)}")
+    print(f"\t\tLost days: {lostDays}")
     print("\n")
 
 
@@ -203,6 +201,7 @@ Input:         [2, 14, 3, 3, 4, 8, 100, 4, 12, 15, 25, 40]
 					O
 
 	Days lost: 5
+		Lost days: {3, 4, 8, 9, 12}
 
 
 	Days: 100
@@ -357,6 +356,7 @@ Input:         [2, 14, 3, 3, 4, 8, 100, 4, 12, 15, 25, 40]
 					X 25
 
 	Days lost: 15
+		Lost days: {96, 36, 100, 40, 72, 75, 12, 45, 15, 80, 50, 24, 25, 60, 30}
 
 
 
