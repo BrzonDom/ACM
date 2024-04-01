@@ -16,10 +16,10 @@ Jolly Jumpers
 
     Sample:
 
-        1 4 2 3
+        4 1 4 2 3
             => Jolly
 
-        1 4 2 -1 6
+        5 1 4 2 -1 6
             => Not Jolly
 
 """
@@ -27,10 +27,23 @@ Jolly Jumpers
 
 if __name__ == '__main__':
 
-    seqLst = [[1, 4, 2, 3],
-              [1, 4, 2, -1, 6]]
+    # seqLst = [[1, 4, 2, 3],
+    #           [1, 4, 2, -1, 6]]
 
-    for seq in seqLst:
+    InputRaw_Str = """
+    4 1 4 2 3
+    5 1 4 2 -1 6
+    """
+
+    InputRaw_Lst = InputRaw_Str.split("\n")[1:-1]
+
+    for InputStr in InputRaw_Lst:
+
+        Input = list(map(int, InputStr.split()))
+
+        seq = Input[1:]
+
+    # for seq in seqLst:
 
         print(f"\tSequence: {seq}\n")
 
