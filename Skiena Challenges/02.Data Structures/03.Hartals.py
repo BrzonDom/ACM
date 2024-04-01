@@ -35,7 +35,7 @@ Hartals
 """
 import copy
 
-days = {
+dayPrnt = {
     0 : "Saturday",
     1 : "Sunday",
     2 : "Monday",
@@ -46,16 +46,6 @@ days = {
     # 7 : "Saturday"
 }
 
-# days = {
-#     0 : "Sunday",
-#     1 : "Monday",
-#     2 : "Tuesday",
-#     3 : "Wednesday",
-#     4 : "Thursday",
-#     5 : "Friday",
-#     6 : "Saturday"
-# }
-
 
 Input_Str = "2 14 3 3 4 8 100 4 12 15 25 40"
 
@@ -65,13 +55,66 @@ print(f"Input string:   \"{Input_Str}\"")
 print(f"Input:         {Input}")
 print("\n")
 
+Input_read = copy.deepcopy(Input)
+
+caseNum = Input_read.pop(0)
+
+for case in range(caseNum):
+
+    dayNum = Input_read.pop(0)
+
+    partNum = Input_read.pop(0)
+
+    hartLst = []
+
+    for h in range(partNum):
+            hartLst.append(Input_read.pop(0))
+
+    print(f"\tDays: {dayNum}")
+    print(f"\tParties: {partNum}")
+    print()
+    print(f"\tHartals: {hartLst}")
+    print()
+
+    hartVal = copy.deepcopy(hartLst)
+
+    lostDays = 0
+
+    for day in range(1, dayNum + 1):
+        print(f"\t\t{day:2} {day % 7} : {dayPrnt[(day % 7)]}")
+
+        lost = False
+
+        for h, hart in enumerate(hartVal):
+
+            if day == hartLst[h]:
+                hartLst[h] += hart
+
+                if not ((day % 7) == 0 or (day % 7) == 6) and not lost:
+                    print(f"\t\t\t\t\tX {hart}")
+                    lostDays += 1
+                    lost = True
+
+                elif lost:
+                    print(f"\t\t\t\t\tX {hart}")
+
+        if (day % 7) == 6:
+            print("\t\t\t\t\tO")
+
+        if (day % 7) == 0:
+            print("\t\t\t\t\tO")
+
+
+    print(f"\n\tDays lost: {lostDays}")
+    print("\n")
+
+
+# """
 Input_ext = copy.deepcopy(Input)
 
 Cases = [[] for _ in range(Input[0])]
 
 Input_ext = Input_ext[1:]
-
-# print(Input_ext)
 
 for c in range(Input[0]):
 
@@ -93,7 +136,7 @@ for c in range(Input[0]):
     Hartals = copy.deepcopy(Cases[c][1])
 
     for d in range(1, Cases[c][0] + 1):
-        print(f"\t\t{d:2} {d % 7} : {days[(d % 7)]}")
+        print(f"\t\t{d:2} {d % 7} : {dayPrnt[(d % 7)]}")
 
         lost = False
 
@@ -119,6 +162,7 @@ for c in range(Input[0]):
 
     print(f"\n\tDays lost: {lostDays}")
     print("\n")
+# """
 
 
 """__Output__"""
