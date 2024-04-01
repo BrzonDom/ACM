@@ -25,8 +25,6 @@ while True:
     except EOFError:
         break
 
-# for strSeq in stdin:
-
     lenSeq, seq = inSeq[0], inSeq[1:]
 
     jolly = set()
@@ -38,8 +36,6 @@ while True:
     for nxt in seq[1:]:
         abVal = abs(prev - nxt)
 
-        print(f"\t\t\t|{prev} - {nxt}| = {abVal}")
-
         if abVal in jolly or abVal <= 0 or abVal >= lenSeq:
             isJolly = False
             break
@@ -49,7 +45,7 @@ while True:
 
         prev = nxt
 
-    if isJolly:
+    if isJolly and len(jolly) == lenSeq - 1:
         print("Jolly")
 
     else:
