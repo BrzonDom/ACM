@@ -68,7 +68,7 @@ for case in range(caseNum):
     hartLst = []
 
     for h in range(partNum):
-            hartLst.append(Input_read.pop(0))
+        hartLst.append(Input_read.pop(0))
 
     print(f"\tDays: {dayNum}")
     print(f"\tParties: {partNum}")
