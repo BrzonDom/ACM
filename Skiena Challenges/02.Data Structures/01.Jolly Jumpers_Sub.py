@@ -1,5 +1,6 @@
 from sys import stdin
 
+"""
 def isJolly(seq, lenSeq):
 
     difSeq = [False] * lenSeq
@@ -14,23 +15,46 @@ def isJolly(seq, lenSeq):
         difSeq[d] = True
 
     return "Jolly"
-
+# """
 
 while True:
 
     try:
-        seq = list(map(int, input().split()))
+        inSeq = list(map(int, input().split()))
 
     except EOFError:
         break
 
 # for strSeq in stdin:
 
-    lenSeq = seq[0]
+    lenSeq, seq = inSeq[0], inSeq[1:]
 
-    seq = seq[1:]
+    jolly = set()
 
-    print(isJolly(seq, lenSeq))
+    isJolly = True
+
+    prev = seq[0]
+
+    for nxt in seq[1:]:
+        abVal = abs(prev - nxt)
+
+        print(f"\t\t\t|{prev} - {nxt}| = {abVal}")
+
+        if abVal in jolly or abVal <= 0 or abVal >= lenSeq:
+            isJolly = False
+            break
+
+        else:
+            jolly.add(abVal)
+
+        prev = nxt
+
+    if isJolly:
+        print("Jolly")
+
+    else:
+        print("Not Jolly")
+
 
     """
     jolly = set()
