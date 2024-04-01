@@ -67,7 +67,53 @@ for case in range(cases):
 # """
 
 
-"""__Solution 2__"""
+"""__Solution 2"""
+"""
+import copy
+from sys import stdin
+
+cases = int(stdin.readline())
+
+for case in range(cases):
+
+    dayNum = int(stdin.readline())
+
+    partNum = int(stdin.readline())
+
+    hartLst = []
+
+    for _ in range(partNum):
+        hartLst.append(int(stdin.readline()))
+
+    # print(f"\tDays: {dayNum}")
+    # print(f"\tHartals: {hartLst}")
+    # print()
+
+    lostDays = set()
+
+    hartVal = copy.deepcopy(hartLst)
+
+    for day in range(1, dayNum + 1):
+
+        # lost = False
+
+        for h, hart in enumerate(hartVal):
+
+            if day == hartLst[h]:
+                hartLst[h] += hart
+
+                # if not ((day % 7) == 0 or (day % 7) == 6) and not lost:
+                #     lostDays += 1
+                #     lost = True
+
+                if not ((day % 7) == 0 or (day % 7) == 6):
+                    lostDays.add(day)
+
+    print(len(lostDays))
+# """
+
+
+"""__Solution 3__"""
 """
 from sys import stdin
 
