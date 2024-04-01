@@ -34,6 +34,7 @@ Counting
                 13
 
 """
+import copy
 from itertools import combinations
 
 
@@ -84,6 +85,7 @@ for n in range(10, 21):
 print()
 
 maxDigSet = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+# maxDigSet = [1, 1, 1]
 
 maxDig = len(maxDigSet)
 
@@ -97,18 +99,43 @@ digSetDict = {}
 digSetDict[maxDig] = [maxDigSet]
 
 print(f"\tNum.: {maxDig}")
-print(f"\t\tMaxDigSet: {maxDigSet}")
+print(f"\t\tMinDig: {minDig}")
+# print(f"\t\tMaxDigSet: {maxDigSet}")
 print()
 
 print(f"\t\t\t{maxDig:2}: {digSetDict[maxDig]}")
 
 for dig in range(maxDig - 1, minDig - 1, -1):
-    print(f"\t\t\t{dig:2}:")
+
+    digSetDict[dig] = []
+
+    for digSet in digSetDict[dig+1]:
+        if digSet[-1] == 1 and digSet[-2] == 1:
+            newDigSet = copy.deepcopy(digSet)
+
+            newDigSet = newDigSet[:-2] + [2]
+            newDigSet.sort(reverse=True)
+
+            if newDigSet not in digSetDict[dig]:
+                digSetDict[dig] += [newDigSet]
+
+        if 1 in digSet and 2 in digSet:
+            newDigSet = copy.deepcopy(digSet)
+
+            newDigSet.remove(1)
+            newDigSet.remove(2)
+            newDigSet += [3]
+            newDigSet.sort(reverse=True)
+
+            if newDigSet not in digSetDict[dig]:
+                digSetDict[dig] += [newDigSet]
+
+    print(f"\t\t\t{dig:2}: {digSetDict[dig]}")
 
 
 """__Output__"""
 """
-{'3', '1', '4', '2'}
+{'4', '2', '3', '1'}
 
 	Num: 10
 		MinDig.:  4
@@ -167,15 +194,15 @@ for dig in range(maxDig - 1, minDig - 1, -1):
 
 
 	Num.: 10
-		MaxDigSet: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+		MinDig: 4
 
 			10: [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]
-			 9:
-			 8:
-			 7:
-			 6:
-			 5:
-			 4:
+			 9: [[2, 1, 1, 1, 1, 1, 1, 1, 1]]
+			 8: [[2, 2, 1, 1, 1, 1, 1, 1], [3, 1, 1, 1, 1, 1, 1, 1]]
+			 7: [[2, 2, 2, 1, 1, 1, 1], [3, 2, 1, 1, 1, 1, 1]]
+			 6: [[2, 2, 2, 2, 1, 1], [3, 2, 2, 1, 1, 1], [3, 3, 1, 1, 1, 1]]
+			 5: [[2, 2, 2, 2, 2], [3, 2, 2, 2, 1], [3, 3, 2, 1, 1]]
+			 4: [[3, 3, 2, 2], [3, 3, 3, 1]]
 
 Process finished with exit code 0
 
