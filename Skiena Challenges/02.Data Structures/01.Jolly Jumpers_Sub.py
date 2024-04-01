@@ -45,36 +45,11 @@ while True:
 
         prev = nxt
 
-    if isJolly and len(jolly) == lenSeq - 1:
-        print("Jolly")
-
-    else:
-        print("Not Jolly")
-
-
-    """
-    jolly = set()
-
-    prev = seq[0]
-
-    for itm in seq[1:]:
-
-        jolly.add(abs(prev - itm))
-
-        prev = itm
-
-    isJolly = True
-
-    for n in range(1, lenSeq):
-        if n not in jolly:
-            isJolly = False
-            break
-
     if isJolly:
         print("Jolly")
 
     else:
-        print("Not Jolly")
-    # """
+        print("Not jolly")
+
         
 
