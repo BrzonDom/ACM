@@ -73,18 +73,21 @@ for case in casesTst:
     hartLst = case[2:]
 # """
 
-cases = int(stdin.readline())
-
-for c in range(cases):
+def readCase():
 
     dayNum = int(stdin.readline())
 
     partNum = int(stdin.readline())
 
-    hartLst = []
+    return dayNum, [int(stdin.readline()) for _ in range(partNum)]
 
-    for _ in range(partNum):
-        hartLst.append(int(stdin.readline()))
+
+
+cases = int(stdin.readline())
+
+for c in range(cases):
+
+    dayNum, hartLst = readCase()
 
     calendar = [0 for _ in range(dayNum)]
 
