@@ -89,6 +89,7 @@ if __name__ == '__main__':
 """__Output__"""
 """
 	Sequence: [1, 4, 2, 3]
+		Lenght: 4
 
 			|1 - 4| = 3
 			|4 - 2| = 2
@@ -100,13 +101,13 @@ if __name__ == '__main__':
 
 
 	Sequence: [1, 4, 2, -1, 6]
+		Lenght: 5
 
 			|1 - 4| = 3
 			|4 - 2| = 2
 			|2 - -1| = 3
-			|-1 - 6| = 7
 
-			{2, 3, 7}
+			{2, 3}
 
 		Sequence is Not Jolly
 
