@@ -86,21 +86,65 @@ Stack 'em Up
 """
 import copy
 
-Input_Str = """
-            1
+InputRaw_Str = """
+2
 
-            2
-            2 1 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
-            27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 52 51
-            52 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
-            27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 1
-            1
-            2
-            """
+2
+2 1 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
+27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 52 51
+52 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
+27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 1
+1
+2
 
-Input = list(map(int, Input_Str.split()))
-print("Input string: ", end="\n\t\t\t\"\"\"")
-print(Input_Str, end="\"\"\"\n\n")
+1
+2 1 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
+27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 52 51
+1
+"""
+
+InputStr_Lst = InputRaw_Str[1:].split("\n")
+print(InputStr_Lst)
+print()
+
+caseNum = int(InputStr_Lst.pop(0))
+
+print(f"Num. of cases: {caseNum}\n")
+
+for case in range(caseNum):
+    print(f"\t{case+1}.Case:\n")
+
+    shfflNum = int(InputStr_Lst[1])
+    InputStr_Lst = InputStr_Lst[2:]
+
+    print(f"\t\tNum. of shuffles: {shfflNum}\n")
+
+    shfflLst = [[] for _ in range(shfflNum)]
+
+    # print(InputStr_Lst.pop(0) + '\n' + InputStr_Lst.pop(0))
+
+    for shffl in range(shfflNum):
+        shfflLst[shffl] = list(map(int, InputStr_Lst.pop(0).split()))
+        shfflLst[shffl] += list(map(int, InputStr_Lst.pop(0).split()))
+        print(f"\t\t\t{shffl+1}.:\t{shfflLst[shffl]}")
+    print()
+
+    usedLst = []
+
+    while InputStr_Lst[0] != '':
+        usedLst.append(int(InputStr_Lst.pop(0)))
+
+    print(f"\t\tUsed shuffles: {usedLst}")
+
+    print("\n")
+
+print(InputStr_Lst)
+
+quit()
+
+Input = list(map(int, InputRaw_Str.split()))
+print("Input string: ", end="\n\"\"\"")
+print(InputRaw_Str, end="\"\"\"\n\n")
 print(f"Input: {Input}\n")
 
 Cases = [[] for _ in range(Input[0])]
@@ -204,6 +248,26 @@ Positions = {
     52 : 52
 }
 
+cardsPrnt = {
+    '2' : '2 ',
+    '3' : '3 ',
+    '4' : '4 ',
+    '5' : '5 ',
+    '6' : '6 ',
+    '7' : '7 ',
+    '8' : '8 ',
+    '9' : '9 ',
+   '10' : '10 ',
+    'J' : 'Jack ',
+    'Q' : 'Queen ',
+    'K' : 'King ',
+    'A' : 'Ace ',
+    'C' : 'of Clubs',
+    'D' : 'of Diamonds',
+    'H' : 'of Hearts',
+    'S' : 'of Spades'
+}
+
 Org_Cards = ['2C', '3C', '4C', '5C', '6C', '7C', '8C', '9C', '10C', 'JC', 'QC', 'KC', 'AC',
              '2D', '3D', '4D', '5D', '6D', '7D', '8D', '9D', '10D', 'JD', 'QD', 'KD', 'AD',
              '2H', '3H', '4H', '5H', '6H', '7H', '8H', '9H', '10H', 'JH', 'QH', 'KH', 'AH',
@@ -232,3 +296,34 @@ for m in Moves:
         Positions[pos] = nxtPos
 
 print(Positions)
+
+"""__Output__"""
+"""
+['2', '', '2', '2 1 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26', '27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 52 51', '52 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26', '27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 1', '1', '2', '', '1', '2 1 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26', '27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 52 51', '1', '']
+
+Num. of cases: 2
+
+	1.Case:
+
+		Num. of shuffles: 2
+
+			1.:	[2, 1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 52, 51]
+			2.:	[52, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 1]
+
+		Used shuffles: [1, 2]
+
+
+	2.Case:
+
+		Num. of shuffles: 1
+
+			1.:	[2, 1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 52, 51]
+
+		Used shuffles: [1]
+
+
+['']
+
+Process finished with exit code 0
+
+"""
