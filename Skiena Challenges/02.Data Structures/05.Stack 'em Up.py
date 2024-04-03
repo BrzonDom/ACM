@@ -188,10 +188,9 @@ for case in range(caseNum):
 
     print("\n")
 
-print(InputStr_Lst)
+# print(InputStr_Lst)
 
-quit()
-
+"""
 Input = list(map(int, InputRaw_Str.split()))
 print("Input string: ", end="\n\"\"\"")
 print(InputRaw_Str, end="\"\"\"\n\n")
@@ -327,6 +326,7 @@ for m in Moves:
         Positions[pos] = nxtPos
 
 print(Positions)
+# """
 
 """__Output__"""
 """
@@ -473,7 +473,6 @@ Num. of cases: 2
 			King of Spades
 
 
-['']
 
 Process finished with exit code 0
 
