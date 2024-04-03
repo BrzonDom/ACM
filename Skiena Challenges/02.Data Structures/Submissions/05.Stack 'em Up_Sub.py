@@ -85,6 +85,43 @@ Stack 'em Up
 
 """
 import copy
+from sys import stdin
+
+caseNum = int(stdin.readline())
+skipLine = stdin.readline()
+
+for case in range(caseNum):
+
+    print(f"\t{case+1}.Case:\n")
+
+    shfflNum = int(stdin.readline())
+
+    print(f"\t\tNum. of shuffles: {shfflNum}\n")
+
+    shfflLst = [[] for _ in range(shfflNum)]
+
+    for shffl in range(shfflNum):
+        shfflLst[shffl] = list(map(int, stdin.readline().split()))
+        shfflLst[shffl] += list(map(int, stdin.readline().split()))
+        print(f"\t\t\t{shffl+1}.:\t{shfflLst[shffl]}")
+    print()
+
+    moveLst = []
+
+    moveLine = stdin.readline()
+
+    while moveLine != '\n':
+
+        moveLst.append(int(moveLine))
+
+        moveLine = stdin.readline()
+
+    print(f"\t\tUsed shuffles: {moveLst}\n")
+
+    print("\n")
+
+
+quit()
 
 InputRaw_Str = """
 2
@@ -103,51 +140,6 @@ InputRaw_Str = """
 1
 """
 
-cardsPrnt = {
-    '2' : '2 ',
-    '3' : '3 ',
-    '4' : '4 ',
-    '5' : '5 ',
-    '6' : '6 ',
-    '7' : '7 ',
-    '8' : '8 ',
-    '9' : '9 ',
-    '0' : '10 ',
-    'J' : 'Jack ',
-    'Q' : 'Queen ',
-    'K' : 'King ',
-    'A' : 'Ace ',
-    'C' : 'of Clubs',
-    'D' : 'of Diamonds',
-    'H' : 'of Hearts',
-    'S' : 'of Spades'
-}
-
-# Org_Cards = ['2C', '3C', '4C', '5C', '6C', '7C', '8C', '9C', '0C', 'JC', 'QC', 'KC', 'AC',
-#              '2D', '3D', '4D', '5D', '6D', '7D', '8D', '9D', '0D', 'JD', 'QD', 'KD', 'AD',
-#              '2H', '3H', '4H', '5H', '6H', '7H', '8H', '9H', '0H', 'JH', 'QH', 'KH', 'AH',
-#              '2S', '3S', '4S', '5S', '6S', '7S', '8S', '9S', '0S', 'JS', 'QS', 'KS', 'AS']
-#
-#
-# for card in Org_Cards:
-#     print(f"\"{cardsPrnt[card[0]]}{cardsPrnt[card[1]]}\",")
-#
-#
-# quit()
-
-prev_Cards = [
-    "2 of Clubs", "3 of Clubs", "4 of Clubs", "5 of Clubs","6 of Clubs", "7 of Clubs", "8 of Clubs",
-    "9 of Clubs", "10 of Clubs", "Jack of Clubs", "Queen of Clubs", "King of Clubs", "Ace of Clubs",
-
-    "2 of Diamonds", "3 of Diamonds", "4 of Diamonds", "5 of Diamonds", "6 of Diamonds", "7 of Diamonds", "8 of Diamonds",
-    "9 of Diamonds", "10 of Diamonds", "Jack of Diamonds", "Queen of Diamonds", "King of Diamonds", "Ace of Diamonds",
-
-    "2 of Hearts", "3 of Hearts", "4 of Hearts", "5 of Hearts", "6 of Hearts", "7 of Hearts", "8 of Hearts",
-    "9 of Hearts", "10 of Hearts", "Jack of Hearts", "Queen of Hearts", "King of Hearts", "Ace of Hearts",
-
-    "2 of Spades", "3 of Spades", "4 of Spades", "5 of Spades", "6 of Spades", "7 of Spades", "8 of Spades",
-    "9 of Spades", "10 of Spades", "Jack of Spades", "Queen of Spades", "King of Spades", "Ace of Spades"
-]
 
 InputStr_Lst = InputRaw_Str[1:].split("\n")
 print(InputStr_Lst)
@@ -214,16 +206,5 @@ for case in range(caseNum):
     for c, card in enumerate(next_Cards):
 
         print("\t\t\t", card)
-
-        # if (c+1) % 13 == 0:
-        #     print(card, end="\n\t\t\t")
-        #
-        # else:
-        #     print(card, end=" ")
-
-    # print()
-    # for card in next_Cards:
-    #     print(f"\t\t\t{cardsPrnt[card[0]]}{cardsPrnt[card[1]]}")
-    #     # print(f"\t\t{card}")
 
     print("\n")
