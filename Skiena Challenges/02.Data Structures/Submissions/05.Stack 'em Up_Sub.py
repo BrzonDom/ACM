@@ -162,6 +162,8 @@ for case in range(caseNum):
         # print("\t\t\t", card)
         print(card)
 
+    print()
+
     # print("\n")
 
 
