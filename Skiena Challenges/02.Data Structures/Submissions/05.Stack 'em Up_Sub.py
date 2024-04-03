@@ -162,7 +162,8 @@ for case in range(caseNum):
         # print("\t\t\t", card)
         print(card)
 
-    print()
+    if case + 1 < caseNum:
+        print("")
 
     # print("\n")
 
