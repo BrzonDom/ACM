@@ -96,13 +96,23 @@ for case in range(caseNum):
 
     shfflNum = int(stdin.readline())
 
+    shfflAll = []
+
+    while len(shfflAll) < shfflNum * 52:
+        shfflAll += list(map(int, stdin.readline().split()))
+
     # print(f"\t\tNum. of shuffles: {shfflNum}\n")
 
-    shfflLst = [[] for _ in range(shfflNum)]
+    shfflLst = []
 
-    for shffl in range(shfflNum):
-        shfflLst[shffl] = list(map(int, stdin.readline().split()))
-        shfflLst[shffl] += list(map(int, stdin.readline().split()))
+    for s in range(shfflNum):
+        shfflLst.append(shfflAll[s * 52: (s + 1) * 52])
+
+    # shfflLst = [[] for _ in range(shfflNum)]
+
+    # for shffl in range(shfflNum):
+    #     shfflLst[shffl] = list(map(int, stdin.readline().split()))
+    #     shfflLst[shffl] += list(map(int, stdin.readline().split()))
     #     print(f"\t\t\t{shffl+1}.:\t{shfflLst[shffl]}")
 
     # print()
