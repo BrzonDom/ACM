@@ -92,19 +92,20 @@ skipLine = stdin.readline()
 
 for case in range(caseNum):
 
-    print(f"\t{case+1}.Case:\n")
+    # print(f"\t{case+1}.Case:\n")
 
     shfflNum = int(stdin.readline())
 
-    print(f"\t\tNum. of shuffles: {shfflNum}\n")
+    # print(f"\t\tNum. of shuffles: {shfflNum}\n")
 
     shfflLst = [[] for _ in range(shfflNum)]
 
     for shffl in range(shfflNum):
         shfflLst[shffl] = list(map(int, stdin.readline().split()))
         shfflLst[shffl] += list(map(int, stdin.readline().split()))
-        print(f"\t\t\t{shffl+1}.:\t{shfflLst[shffl]}")
-    print()
+    #     print(f"\t\t\t{shffl+1}.:\t{shfflLst[shffl]}")
+
+    # print()
 
     moveLst = []
 
@@ -116,7 +117,7 @@ for case in range(caseNum):
 
         moveLine = stdin.readline()
 
-    print(f"\t\tUsed shuffles: {moveLst}\n")
+    # print(f"\t\tUsed shuffles: {moveLst}\n")
 
     prev_Cards = [
         "2 of Clubs", "3 of Clubs", "4 of Clubs", "5 of Clubs", "6 of Clubs", "7 of Clubs", "8 of Clubs",
@@ -144,13 +145,14 @@ for case in range(caseNum):
 
         prev_Cards = copy.deepcopy(next_Cards)
 
-    print(f"\t\tShuffled cards:\n")
+    # print(f"\t\tShuffled cards:\n")
 
     for c, card in enumerate(next_Cards):
 
-        print("\t\t\t", card)
+        # print("\t\t\t", card)
+        print(card)
 
-    print("\n")
+    # print("\n")
 
 
 quit()
