@@ -86,149 +86,104 @@ Stack 'em Up
 """
 import copy
 
-Input_Str = """
-            1
+InputRaw_Str = """
+2
 
-            2
-            2 1 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
-            27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 52 51
-            52 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
-            27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 1
-            1
-            2
-            """
+2
+2 1 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
+27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 52 51
+52 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
+27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 1
+1
+2
 
-Input = list(map(int, Input_Str.split()))
-print("Input string: ", end="\n\t\t\t\"\"\"")
-print(Input_Str, end="\"\"\"\n\n")
-print(f"Input: {Input}\n")
+1
+2 1 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
+27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 52 51
+1
+"""
 
-Cases = [[] for _ in range(Input[0])]
-Input = Input[1:]
-
-ShfflCnt = Input[0]
-Input = Input[1:]
-
-Shffls = [[] for _ in range(ShfflCnt)]
-
-for c in range(ShfflCnt):
-
-    Shffls[c] = Input[c*52: 52 + c*52]
-
-Moves = Input[ShfflCnt * 52:]
-
-print("Moves:")
-
-for m in Moves:
-    print(f"\t{m:2}: {Shffls[m-1]}")
-
-print("\n")
-
-Prev_Cards = ['2C', '3C', '4C', '5C', '6C', '7C', '8C', '9C', '10C', 'JC', 'QC', 'KC', 'AC',
-              '2D', '3D', '4D', '5D', '6D', '7D', '8D', '9D', '10D', 'JD', 'QD', 'KD', 'AD',
-              '2H', '3H', '4H', '5H', '6H', '7H', '8H', '9H', '10H', 'JH', 'QH', 'KH', 'AH',
-              '2S', '3S', '4S', '5S', '6S', '7S', '8S', '9S', '10S', 'JS', 'QS', 'KS', 'AS']
-
-Next_Cards = copy.deepcopy(Prev_Cards)
-
-for m in Moves:
-
-    for p, n in enumerate(Shffls[m-1]):
-
-        Next_Cards[p] = Prev_Cards[n-1]
-
-    Prev_Cards = copy.deepcopy(Next_Cards)
-
-print("Shuffled cards:", end="\n\t")
-
-for c, card in enumerate(Next_Cards):
-    if (c+1) % 13 == 0:
-        print(f"{card}\n", end="\t")
-
-    else:
-        print(card, end=", ")
-print("\n\n")
-
-Positions = {
-     1 :  1,
-     2 :  2,
-     3 :  3,
-     4 :  4,
-     5 :  5,
-     6 :  6,
-     7 :  7,
-     8 :  8,
-     9 :  9,
-    10 : 10,
-    11 : 11,
-    12 : 12,
-    13 : 13,
-    14 : 14,
-    15 : 15,
-    16 : 16,
-    17 : 17,
-    18 : 18,
-    19 : 19,
-    20 : 20,
-    21 : 21,
-    22 : 22,
-    23 : 23,
-    24 : 24,
-    25 : 25,
-    26 : 26,
-    27 : 27,
-    28 : 28,
-    29 : 29,
-    30 : 30,
-    31 : 31,
-    32 : 32,
-    33 : 33,
-    34 : 34,
-    35 : 35,
-    36 : 36,
-    37 : 37,
-    38 : 38,
-    39 : 39,
-    40 : 40,
-    41 : 41,
-    42 : 42,
-    43 : 43,
-    44 : 44,
-    45 : 45,
-    46 : 46,
-    47 : 47,
-    48 : 48,
-    49 : 49,
-    50 : 50,
-    51 : 51,
-    52 : 52
+cardsPrnt = {
+    '2' : '2 ',
+    '3' : '3 ',
+    '4' : '4 ',
+    '5' : '5 ',
+    '6' : '6 ',
+    '7' : '7 ',
+    '8' : '8 ',
+    '9' : '9 ',
+    '0' : '10 ',
+    'J' : 'Jack ',
+    'Q' : 'Queen ',
+    'K' : 'King ',
+    'A' : 'Ace ',
+    'C' : 'of Clubs',
+    'D' : 'of Diamonds',
+    'H' : 'of Hearts',
+    'S' : 'of Spades'
 }
 
-Org_Cards = ['2C', '3C', '4C', '5C', '6C', '7C', '8C', '9C', '10C', 'JC', 'QC', 'KC', 'AC',
-             '2D', '3D', '4D', '5D', '6D', '7D', '8D', '9D', '10D', 'JD', 'QD', 'KD', 'AD',
-             '2H', '3H', '4H', '5H', '6H', '7H', '8H', '9H', '10H', 'JH', 'QH', 'KH', 'AH',
-             '2S', '3S', '4S', '5S', '6S', '7S', '8S', '9S', '10S', 'JS', 'QS', 'KS', 'AS']
+InputStr_Lst = InputRaw_Str[1:].split("\n")
+print(InputStr_Lst)
+print()
 
+caseNum = int(InputStr_Lst.pop(0))
 
-# Positions = [ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13,
-#              14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26,
-#              27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39,
-#              40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52]
+print(f"Num. of cases: {caseNum}\n")
 
-# print()
-# for pos in range(1, 53):
-#     Positions[pos] = pos
-#     print(f"{pos:2} : {pos:>2},")
+for case in range(caseNum):
+    print(f"\t{case+1}.Case:\n")
 
-# print(Positions)
+    shfflNum = int(InputStr_Lst[1])
+    InputStr_Lst = InputStr_Lst[2:]
 
-for m in Moves:
+    print(f"\t\tNum. of shuffles: {shfflNum}\n")
 
-    for pos in Positions:
+    shfflLst = [[] for _ in range(shfflNum)]
 
-        prvPos = Positions[pos] - 1
-        nxtPos = Shffls[m-1][prvPos]
+    # print(InputStr_Lst.pop(0) + '\n' + InputStr_Lst.pop(0))
 
-        Positions[pos] = nxtPos
+    for shffl in range(shfflNum):
+        shfflLst[shffl] = list(map(int, InputStr_Lst.pop(0).split()))
+        shfflLst[shffl] += list(map(int, InputStr_Lst.pop(0).split()))
+        print(f"\t\t\t{shffl+1}.:\t{shfflLst[shffl]}")
+    print()
 
-print(Positions)
+    moveLst = []
+
+    while InputStr_Lst[0] != '':
+        moveLst.append(int(InputStr_Lst.pop(0)))
+
+    print(f"\t\tUsed shuffles: {moveLst}\n")
+
+    prev_Cards = ['2C', '3C', '4C', '5C', '6C', '7C', '8C', '9C', '0C', 'JC', 'QC', 'KC', 'AC',
+                  '2D', '3D', '4D', '5D', '6D', '7D', '8D', '9D', '0D', 'JD', 'QD', 'KD', 'AD',
+                  '2H', '3H', '4H', '5H', '6H', '7H', '8H', '9H', '0H', 'JH', 'QH', 'KH', 'AH',
+                  '2S', '3S', '4S', '5S', '6S', '7S', '8S', '9S', '0S', 'JS', 'QS', 'KS', 'AS']
+
+    next_Cards = copy.deepcopy(prev_Cards)
+
+    for move in moveLst:
+
+        for to, frm in enumerate(shfflLst[move - 1]):
+
+            next_Cards[to] = prev_Cards[frm-1]
+
+        prev_Cards = copy.deepcopy(next_Cards)
+
+    print(f"\t\tShuffled cards:", end="\n\n\t\t\t")
+
+    for c, card in enumerate(next_Cards):
+
+        if (c+1) % 13 == 0:
+            print(card, end="\n\t\t\t")
+
+        else:
+            print(card, end=" ")
+    print()
+
+    for card in next_Cards:
+        print(f"\t\t\t{cardsPrnt[card[0]]}{cardsPrnt[card[1]]}")
+        # print(f"\t\t{card}")
+
+    print("\n")
