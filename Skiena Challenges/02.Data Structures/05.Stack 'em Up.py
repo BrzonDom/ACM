@@ -101,6 +101,7 @@ InputRaw_Str = """
 2 1 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 52 51
 1
+
 """
 
 cardsPrnt = {
@@ -139,14 +140,23 @@ for case in range(caseNum):
 
     print(f"\t\tNum. of shuffles: {shfflNum}\n")
 
-    shfflLst = [[] for _ in range(shfflNum)]
+    shfflAll = []
 
-    # print(InputStr_Lst.pop(0) + '\n' + InputStr_Lst.pop(0))
+    while len(shfflAll) < shfflNum * 52:
+        shfflAll += list(map(int, InputStr_Lst.pop(0).split()))
 
-    for shffl in range(shfflNum):
-        shfflLst[shffl] = list(map(int, InputStr_Lst.pop(0).split()))
-        shfflLst[shffl] += list(map(int, InputStr_Lst.pop(0).split()))
-        print(f"\t\t\t{shffl+1}.:\t{shfflLst[shffl]}")
+    # shfflLst = [[] for _ in range(shfflNum)]
+
+    shfflLst = []
+
+    for s in range(shfflNum):
+        shfflLst.append(shfflAll[s * 52: (s+1) * 52])
+        print(f"\t\t\t{s + 1}.:\t{shfflLst[s]}")
+
+    # for shffl in range(shfflNum):
+    #     shfflLst[shffl] = list(map(int, InputStr_Lst.pop(0).split()))
+    #     shfflLst[shffl] += list(map(int, InputStr_Lst.pop(0).split()))
+    #     print(f"\t\t\t{shffl+1}.:\t{shfflLst[shffl]}")
     print()
 
     moveLst = []
