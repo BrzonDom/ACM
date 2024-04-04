@@ -187,6 +187,10 @@ for scene in range(int(ScenNum)):
     print("\tErdos authors:")
     for auth in ErdoVal_Dict:
         print(f"\t\t{auth:{maxAthLen}} : {ErdoVal_Dict[auth]} [{ErdoCon_Dict[auth]}]")
+    print()
+
+    for auth in Names:
+        print(f"\t\t{auth}")
 
 
     print("\n")
