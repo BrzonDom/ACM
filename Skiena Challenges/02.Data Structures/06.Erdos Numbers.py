@@ -58,6 +58,7 @@ Chen, X.
 
 # Input_Lst = Input_Str.split("\n", 3)[1:]
 
+"""     Read line with number of scenarios  """
 ScenNum, Input_Str = Input_Str.split("\n", 2)[1:]
 
 for scene in range(int(ScenNum)):
@@ -67,15 +68,20 @@ for scene in range(int(ScenNum)):
 
     print(f"{scene+1}. Scene:\n")
 
-    PaperNameNum, Input_Str = Input_Str.split("\n", 1)
+    """     Read line with numbers of papers and names      """
+    PaperNameStr, Input_Str = Input_Str.split("\n", 1)
 
-    PaperNum, NameNum = list(map(int, PaperNameNum.split()))
+    """     Extract number of papers and names      """
+    PaperNum, NameNum = list(map(int, PaperNameStr.split()))
 
     print(f"\tNum. of Papers:  {PaperNum}")
     print(f"\tNum. of Names:   {NameNum}")
     print()
 
+    """     Extract list of papers      """
     Papers = list(Input_Str.split("\n", PaperNum)[:PaperNum])
+
+    """     Read line of papers     """
     Input_Str = Input_Str.split("\n", PaperNum)[PaperNum]
 
     Authors = set()
@@ -85,23 +91,27 @@ for scene in range(int(ScenNum)):
     for paper in Papers:
         print(f"\t\t{paper}")
 
+        """     Extract authors and work    """
         Auth_Str, Work_Str = paper.split(":")
 
+        """     Split authors into a list   """
         Auth_Lst = Auth_Str.split(", ")
 
+        """     Modify list of authors      """
         for a in range(0, len(Auth_Lst), 2):
+
+            """     Add to set of authors       """
             Authors.add(Auth_Lst[a] + " " + Auth_Lst[a+1])
             Auth_Lst[a] = Auth_Lst[a] + " " + Auth_Lst[a+1]
 
         Auth_Lst = Auth_Lst[0::2]
 
+        """     Record data of works to authors     """
         Work_Dict[Work_Str[1:]] = Auth_Lst
 
         for auth in Auth_Lst:
 
-            # if auth != "Erdos P.":
-            #     ErdoVal_Dict[auth] = 0
-
+            """     Record data of authors to co-authors    """
             for coAuth in Auth_Lst:
                 if auth == coAuth:
                     continue
@@ -114,7 +124,7 @@ for scene in range(int(ScenNum)):
 
         # for work in Auth_Lst:
 
-
+        """     Add to set of works     """
         Works.add(Work_Str[1:])
 
     print()
@@ -122,16 +132,19 @@ for scene in range(int(ScenNum)):
     Names = list(Input_Str.split("\n", NameNum)[:NameNum])
     Input_Str = Input_Str.split("\n", NameNum)[NameNum]
 
+    """     Print needed names      """
     print("\tNames:")
     for name in Names:
         print(f"\t\t{name}")
     print("\n")
 
+    """     Print authors   """
     print("\tAuthors:")
     for auth in Authors:
         print(f"\t\t{auth}")
     print()
 
+    """     Print works     """
     print("\tWorks:")
     for work in Works:
         print(f"\t\t{work}")
@@ -139,37 +152,63 @@ for scene in range(int(ScenNum)):
 
     maxAthLen = len(max(Auth_Dict.keys(), key=len))
 
+    """     Print data of authors to co-authors     """
     print("\tAuthors data:")
     for auth in Auth_Dict:
         print(f"\t\t{auth:{maxAthLen}} : {Auth_Dict[auth]}")
     print()
 
     maxWrkLen = len(max(Work_Dict.keys(), key=len))
-    # print(maxWrkLen)
 
+    """     Print data of works to authors      """
     print("\tWorks data:")
     for work in Work_Dict:
         print(f"\t\t{work:{maxWrkLen}} : {Work_Dict[work]}")
     print("\n")
 
+    """     Data of Erdo value          """
     ErdoVal_Dict = {}
+    """     Data of Erdo connection     """
     ErdoCon_Dict = {}
-    # Erdo_Queue = [[]]
+
+    """     Queue for Erdo value levels """
     Erdo_Queue = [[], []]
+
     ErdoCnt = 1
+
+    print("\t\tErdos values process:\n")
 
     for auth in Auth_Dict["Erdos P."]:
         ErdoVal_Dict[auth] = ErdoCnt
         ErdoCon_Dict[auth] = "Erdos P."
         Erdo_Queue[0].append(auth)
 
+        # print(f"\t\t{auth}")
+
+    print(f"\t\t\t{ErdoCnt}. Erdo value")
+    print(f"\t\t\t\tQueue: {Erdo_Queue[0]}")
+    # print()
+
+    # print()
+    # print("Queue:", Erdo_Queue)
+    print("\t\t\t\tValues:", ErdoVal_Dict)
+    print("\t\t\t\tConnection:", ErdoCon_Dict)
+    print()
+
     while Erdo_Queue[0]:
 
         ErdoCnt += 1
 
+        print(f"\t\t\t{ErdoCnt}. Erdo value")
+        print(f"\t\t\t\tQueue: {Erdo_Queue[0]}")
+        print("\t\t\t\tValues:", ErdoVal_Dict)
+        print("\t\t\t\tConnection:", ErdoCon_Dict)
+        print()
+
         for a, auth in enumerate(Erdo_Queue[0]):
 
             coAuth_Lst = Auth_Dict[auth]
+            print(f"\t\t\t\t\tCo-auth. of {auth}: {coAuth_Lst}")
 
             for coAuth in coAuth_Lst:
 
@@ -183,6 +222,8 @@ for scene in range(int(ScenNum)):
 
         Erdo_Queue[0] = Erdo_Queue[1]
         Erdo_Queue[1] = []
+
+        print()
 
     print("\tErdos authors:")
     for auth in ErdoVal_Dict:
