@@ -172,12 +172,14 @@ for scene in range(int(ScenNum)):
     ErdoCon_Dict = {}
 
     """     Queue for Erdo value levels """
-    Erdo_Queue = [[], []]
+    # Erdo_Queue = [[], []]
+    Erdo_Queue = [["Erdos P."], []]
 
-    ErdoCnt = 1
+    ErdoCnt = 0
 
     print("\t\tErdos values process:\n")
 
+    """
     for auth in Auth_Dict["Erdos P."]:
         ErdoVal_Dict[auth] = ErdoCnt
         ErdoCon_Dict[auth] = "Erdos P."
@@ -194,6 +196,7 @@ for scene in range(int(ScenNum)):
     print("\t\t\t\tValues:", ErdoVal_Dict)
     print("\t\t\t\tConnection:", ErdoCon_Dict)
     print()
+    # """
 
     while Erdo_Queue[0]:
 
