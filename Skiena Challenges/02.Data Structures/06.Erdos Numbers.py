@@ -101,8 +101,8 @@ for scene in range(int(ScenNum)):
         for a in range(0, len(Auth_Lst), 2):
 
             """     Add to set of authors       """
-            Authors.add(Auth_Lst[a] + " " + Auth_Lst[a+1])
-            Auth_Lst[a] = Auth_Lst[a] + " " + Auth_Lst[a+1]
+            Authors.add(Auth_Lst[a] + ", " + Auth_Lst[a+1])
+            Auth_Lst[a] = Auth_Lst[a] + ", " + Auth_Lst[a+1]
 
         Auth_Lst = Auth_Lst[0::2]
 
@@ -173,7 +173,7 @@ for scene in range(int(ScenNum)):
 
     """     Queue for Erdo value levels """
     # Erdo_Queue = [[], []]
-    Erdo_Queue = [["Erdos P."], []]
+    Erdo_Queue = [["Erdos, P."], []]
 
     ErdoCnt = 0
 
@@ -215,7 +215,7 @@ for scene in range(int(ScenNum)):
 
             for coAuth in coAuth_Lst:
 
-                if coAuth == "Erdos P.":
+                if coAuth == "Erdos, P.":
                     continue
 
                 if coAuth not in ErdoVal_Dict:
@@ -230,7 +230,7 @@ for scene in range(int(ScenNum)):
     print()
 
     for auth in Auth_Lst:
-        if auth == "Erdos P.":
+        if auth == "Erdos, P.":
             continue
 
         if auth not in ErdoVal_Dict:
