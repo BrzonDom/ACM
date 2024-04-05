@@ -202,7 +202,7 @@ for scene in range(int(ScenNum)):
             continue
 
         if auth not in ErdoVal_Dict:
-            ErdoVal_Dict[auth] = 0
+            ErdoVal_Dict[auth] = "infinity"
 
     # print()
     # print("\t\t\t\tValues:", ErdoVal_Dict)
@@ -211,10 +211,5 @@ for scene in range(int(ScenNum)):
     print("\tErdos authors:")
     for auth in Names:
         print(f"\t\t{auth:{maxAthLen}} : {ErdoVal_Dict[auth]}")
-    print()
-
-    for auth in ErdoVal_Dict:
-        if auth not in Names:
-            print(f"\t\t{auth:{maxAthLen}} : {ErdoVal_Dict[auth]}")
 
     print("\n")
