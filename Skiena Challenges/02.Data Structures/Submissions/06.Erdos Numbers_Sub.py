@@ -164,8 +164,6 @@ for scene in range(int(ScenNum)):
 
     """     Data of Erdo value          """
     ErdoVal_Dict = {}
-    """     Data of Erdo connection     """
-    ErdoCon_Dict = {}
 
     """     Queue for Erdo value levels """
     # Erdo_Queue = [[], []]
@@ -201,7 +199,6 @@ for scene in range(int(ScenNum)):
         print(f"\t\t\t{ErdoCnt}. Erdo value")
         print(f"\t\t\t\tQueue: {Erdo_Queue[0]}")
         print("\t\t\t\tValues:", ErdoVal_Dict)
-        print("\t\t\t\tConnection:", ErdoCon_Dict)
         print()
 
         for a, auth in enumerate(Erdo_Queue[0]):
@@ -217,7 +214,6 @@ for scene in range(int(ScenNum)):
                 if coAuth not in ErdoVal_Dict:
                     Erdo_Queue[1].append(coAuth)
                     ErdoVal_Dict[coAuth] = ErdoCnt
-                    ErdoCon_Dict[coAuth] = auth
 
         Erdo_Queue[0] = Erdo_Queue[1]
         Erdo_Queue[1] = []
@@ -231,20 +227,18 @@ for scene in range(int(ScenNum)):
 
         if auth not in ErdoVal_Dict:
             ErdoVal_Dict[auth] = 0
-            ErdoCon_Dict[auth] = None
 
     # print()
     # print("\t\t\t\tValues:", ErdoVal_Dict)
-    # print("\t\t\t\tConnection:", ErdoCon_Dict)
     # print()
 
     print("\tErdos authors:")
     for auth in Names:
-        print(f"\t\t{auth:{maxAthLen}} : {ErdoVal_Dict[auth]} [{ErdoCon_Dict[auth]}]")
+        print(f"\t\t{auth:{maxAthLen}} : {ErdoVal_Dict[auth]}")
     print()
 
     for auth in ErdoVal_Dict:
         if auth not in Names:
-            print(f"\t\t{auth:{maxAthLen}} : {ErdoVal_Dict[auth]} [{ErdoCon_Dict[auth]}]")
+            print(f"\t\t{auth:{maxAthLen}} : {ErdoVal_Dict[auth]}")
 
     print("\n")
