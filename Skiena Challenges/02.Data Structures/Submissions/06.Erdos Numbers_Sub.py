@@ -85,8 +85,8 @@ for scene in range(int(ScenNum)):
     for paper in Papers:
         print(f"\t\t{paper}")
 
-        """     Extract authors and work    """
-        Auth_Str, Work_Str = paper.split(":")
+        """     Extract authors     """
+        Auth_Str = paper.split(":")[0]
 
         """     Split authors into a list   """
         Auth_Lst = Auth_Str.split(", ")
