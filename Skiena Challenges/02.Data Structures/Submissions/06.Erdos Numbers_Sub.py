@@ -124,12 +124,6 @@ for scene in range(int(ScenNum)):
         print(f"\t\t{name}")
     print("\n")
 
-    """     Print authors   """
-    print("\tAuthors:")
-    for auth in Authors:
-        print(f"\t\t{auth}")
-    print()
-
     maxAthLen = len(max(Auth_Dict.keys(), key=len))
 
     """     Print data of authors to co-authors     """
@@ -142,31 +136,11 @@ for scene in range(int(ScenNum)):
     ErdoVal_Dict = {}
 
     """     Queue for Erdo value levels """
-    # Erdo_Queue = [[], []]
     Erdo_Queue = [["Erdos, P."], []]
 
     ErdoCnt = 0
 
     print("\t\tErdos values process:\n")
-
-    """
-    for auth in Auth_Dict["Erdos P."]:
-        ErdoVal_Dict[auth] = ErdoCnt
-        ErdoCon_Dict[auth] = "Erdos P."
-        Erdo_Queue[0].append(auth)
-
-        # print(f"\t\t{auth}")
-
-    print(f"\t\t\t{ErdoCnt}. Erdo value")
-    print(f"\t\t\t\tQueue: {Erdo_Queue[0]}")
-    # print()
-
-    # print()
-    # print("Queue:", Erdo_Queue)
-    print("\t\t\t\tValues:", ErdoVal_Dict)
-    print("\t\t\t\tConnection:", ErdoCon_Dict)
-    print()
-    # """
 
     while Erdo_Queue[0]:
 
@@ -203,10 +177,6 @@ for scene in range(int(ScenNum)):
 
         if auth not in ErdoVal_Dict:
             ErdoVal_Dict[auth] = "infinity"
-
-    # print()
-    # print("\t\t\t\tValues:", ErdoVal_Dict)
-    # print()
 
     print("\tErdos authors:")
     for auth in Names:
