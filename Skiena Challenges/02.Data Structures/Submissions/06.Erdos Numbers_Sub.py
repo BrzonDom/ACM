@@ -59,7 +59,6 @@ ScenNum, Input_Str = Input_Str.split("\n", 2)[1:]
 
 for scene in range(int(ScenNum)):
 
-    Work_Dict = {}
     Auth_Dict = {}
 
     print(f"{scene+1}. Scene:\n")
@@ -101,9 +100,6 @@ for scene in range(int(ScenNum)):
 
         Auth_Lst = Auth_Lst[0::2]
 
-        """     Record data of works to authors     """
-        Work_Dict[Work_Str[1:]] = Auth_Lst
-
         for auth in Auth_Lst:
 
             """     Record data of authors to co-authors    """
@@ -141,14 +137,6 @@ for scene in range(int(ScenNum)):
     for auth in Auth_Dict:
         print(f"\t\t{auth:{maxAthLen}} : {Auth_Dict[auth]}")
     print()
-
-    maxWrkLen = len(max(Work_Dict.keys(), key=len))
-
-    """     Print data of works to authors      """
-    print("\tWorks data:")
-    for work in Work_Dict:
-        print(f"\t\t{work:{maxWrkLen}} : {Work_Dict[work]}")
-    print("\n")
 
     """     Data of Erdo value          """
     ErdoVal_Dict = {}
