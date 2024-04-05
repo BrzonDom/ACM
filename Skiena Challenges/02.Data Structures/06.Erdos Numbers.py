@@ -229,7 +229,7 @@ for scene in range(int(ScenNum)):
         print()
     print()
 
-    for auth in Auth_Lst:
+    for auth in Authors:
         if auth == "Erdos, P.":
             continue
 
@@ -243,7 +243,12 @@ for scene in range(int(ScenNum)):
     # print()
 
     print("\tErdos authors:")
-    for auth in ErdoVal_Dict:
+    for auth in Names:
         print(f"\t\t{auth:{maxAthLen}} : {ErdoVal_Dict[auth]} [{ErdoCon_Dict[auth]}]")
+    print()
+
+    for auth in ErdoVal_Dict:
+        if auth not in Names:
+            print(f"\t\t{auth:{maxAthLen}} : {ErdoVal_Dict[auth]} [{ErdoCon_Dict[auth]}]")
 
     print("\n")
