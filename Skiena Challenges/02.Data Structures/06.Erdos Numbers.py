@@ -227,10 +227,23 @@ for scene in range(int(ScenNum)):
         Erdo_Queue[1] = []
 
         print()
+    print()
+
+    for auth in Auth_Lst:
+        if auth == "Erdos P.":
+            continue
+
+        if auth not in ErdoVal_Dict:
+            ErdoVal_Dict[auth] = 0
+            ErdoCon_Dict[auth] = None
+
+    # print()
+    # print("\t\t\t\tValues:", ErdoVal_Dict)
+    # print("\t\t\t\tConnection:", ErdoCon_Dict)
+    # print()
 
     print("\tErdos authors:")
     for auth in ErdoVal_Dict:
         print(f"\t\t{auth:{maxAthLen}} : {ErdoVal_Dict[auth]} [{ErdoCon_Dict[auth]}]")
-
 
     print("\n")
