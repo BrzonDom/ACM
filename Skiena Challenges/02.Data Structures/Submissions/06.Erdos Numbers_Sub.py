@@ -81,7 +81,6 @@ for scene in range(int(ScenNum)):
     Input_Str = Input_Str.split("\n", PaperNum)[PaperNum]
 
     Authors = set()
-    Works = set()
 
     print("\tPapers:")
     for paper in Papers:
@@ -118,11 +117,6 @@ for scene in range(int(ScenNum)):
                 else:
                     Auth_Dict[auth] += [coAuth]
 
-        # for work in Auth_Lst:
-
-        """     Add to set of works     """
-        Works.add(Work_Str[1:])
-
     print()
 
     Names = list(Input_Str.split("\n", NameNum)[:NameNum])
@@ -139,12 +133,6 @@ for scene in range(int(ScenNum)):
     for auth in Authors:
         print(f"\t\t{auth}")
     print()
-
-    """     Print works     """
-    print("\tWorks:")
-    for work in Works:
-        print(f"\t\t{work}")
-    print("\n")
 
     maxAthLen = len(max(Auth_Dict.keys(), key=len))
 
