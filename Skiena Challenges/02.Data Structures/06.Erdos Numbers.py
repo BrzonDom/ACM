@@ -129,6 +129,15 @@ def dataAuthPrint(Auth_Dict):
         print(f"\t\t{auth:{maxAthLen}} : {Auth_Dict[auth]}")
     print()
 
+
+def dataWorkPrint(Work_Dict):
+
+    print("\tWorks data:")
+    for work in Work_Dict:
+        print(f"\t\t{work:{maxWrkLen}} : {Work_Dict[work]}")
+    print("\n")
+
+
 # ScenNum, PaperNameCnt, PapersNames = Input_Str.split("\n", 3)[1:]
 
 # Input_Lst = Input_Str.split("\n", 3)[1:]
@@ -248,10 +257,12 @@ if __name__ == "__main__":
         maxWrkLen = len(max(Work_Dict.keys(), key=len))
 
         """     Print data of works to authors      """
-        print("\tWorks data:")
-        for work in Work_Dict:
-            print(f"\t\t{work:{maxWrkLen}} : {Work_Dict[work]}")
-        print("\n")
+        dataWorkPrint(Work_Dict)
+
+        # print("\tWorks data:")
+        # for work in Work_Dict:
+        #     print(f"\t\t{work:{maxWrkLen}} : {Work_Dict[work]}")
+        # print("\n")
 
         """     Data of Erdo value          """
         ErdoVal_Dict = {}
