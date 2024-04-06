@@ -79,35 +79,20 @@ InputRaw_Str = """
 10
 """
 
-InputLst_Str = InputRaw_Str.split("\n")[1:-1]
+if __name__ == "__main__":
 
-print(InputLst_Str)
-print()
+    InputLst_Str = InputRaw_Str.split("\n")[1:-1]
 
-InputLst = []
+    print(InputLst_Str)
+    print()
 
-for Input in InputLst_Str[1:]:
+    InputLst = []
 
-    if Input.isnumeric():
+    for Input in InputLst_Str[1:]:
 
-        InputLst.append(int(Input))
+        if Input.isnumeric():
 
-print(f"Input: {InputLst}\n")
-
-pplNum = InputLst[0]
-
-print(f"\tNumber of people: {pplNum}")
-
-spdLst = InputLst[1: pplNum + 1]
-print(f"\tSpeed of people:  {spdLst}")
-print("\n")
-
-
-InputCollection = [[4, 1, 2, 5, 10],
-                   [4, 1, 3, 8, 10]]
-
-
-for InputLst in InputCollection:
+            InputLst.append(int(Input))
 
     print(f"Input: {InputLst}\n")
 
@@ -119,222 +104,239 @@ for InputLst in InputCollection:
     print(f"\tSpeed of people:  {spdLst}")
     print("\n")
 
-    strtPlc = copy.deepcopy(spdLst)
-    endPlc = []
 
-    caseLen = 2
+    InputCollection = [[4, 1, 2, 5, 10],
+                       [4, 1, 3, 8, 10]]
 
-    caseMem = {}
 
-    while caseLen <= pplNum:
+    for InputLst in InputCollection:
 
-        caseTpl = (combinations(spdLst, caseLen))
+        print(f"Input: {InputLst}\n")
 
-        caseLst = [list(case) for case in caseTpl]
+        pplNum = InputLst[0]
 
-        # print(caseLst)
+        print(f"\tNumber of people: {pplNum}")
 
-        # Table(self, there, back, start, end, time, previous):
+        spdLst = InputLst[1: pplNum + 1]
+        print(f"\tSpeed of people:  {spdLst}")
+        print("\n")
 
-        for case in caseLst:
+        strtPlc = copy.deepcopy(spdLst)
+        endPlc = []
 
-            print(f"\tCase: {case}\n")
+        caseLen = 2
 
-            moved = [mov for mov in spdLst if mov not in case]
+        caseMem = {}
 
-            thereTpl = combinations(case, 2)
+        while caseLen <= pplNum:
 
-            thereLst = [list(there) for there in thereTpl]
+            caseTpl = (combinations(spdLst, caseLen))
 
-            frstDec = True
+            caseLst = [list(case) for case in caseTpl]
 
-            for there in thereLst:
+            # print(caseLst)
 
-                rest = [rem for rem in case if rem not in there]
+            # Table(self, there, back, start, end, time, previous):
 
-                if rest:
+            for case in caseLst:
 
-                    end = sorted([done for done in spdLst if done not in rest])
-                    back, end = end[0], end[1:]
-                    start = sorted(rest + [back])
-                    time = max(there) + back
+                print(f"\tCase: {case}\n")
 
-                    previous = caseMem[str(start)]
+                moved = [mov for mov in spdLst if mov not in case]
 
-                    curTbl = Table(there, back, start, end, previous.total + time, time, previous)
+                thereTpl = combinations(case, 2)
 
+                thereLst = [list(there) for there in thereTpl]
+
+                frstDec = True
+
+                for there in thereLst:
+
+                    rest = [rem for rem in case if rem not in there]
+
+                    if rest:
+
+                        end = sorted([done for done in spdLst if done not in rest])
+                        back, end = end[0], end[1:]
+                        start = sorted(rest + [back])
+                        time = max(there) + back
+
+                        previous = caseMem[str(start)]
+
+                        curTbl = Table(there, back, start, end, previous.total + time, time, previous)
+
+                    else:
+
+                        back = None
+                        start = []
+                        end = sorted(spdLst)
+                        time = max(there)
+
+                        curTbl = Table(there, back, start, end, time, time)
+
+                    print(f"\t\t\t\t{str(there):10} {str(time):5} {str(start):10} {str(end):10}")
+
+                    if frstDec:
+                        optTbl = curTbl
+                        frstDec = False
+
+                    elif optTbl.total > curTbl.total:
+                        optTbl = curTbl
+
+                print()
+                print("\t\tOptimal decision:\n")
+
+                print(f"\t\t\tThere: {optTbl.there}")
+                print(f"\t\t\tTotal: {optTbl.total}")
+
+                if optTbl.back != None:
+                    print()
+                    print(f"\t\t\t\tTime:  {optTbl.time}")
+                    print(f"\t\t\t\tBack:  {optTbl.back}")
+                    print()
+                    print(f"\t\t\t\tStart: {optTbl.start}")
                 else:
-
-                    back = None
-                    start = []
-                    end = sorted(spdLst)
-                    time = max(there)
-
-                    curTbl = Table(there, back, start, end, time, time)
-
-                print(f"\t\t\t\t{str(there):10} {str(time):5} {str(start):10} {str(end):10}")
-
-                if frstDec:
-                    optTbl = curTbl
-                    frstDec = False
-
-                elif optTbl.total > curTbl.total:
-                    optTbl = curTbl
-
-            print()
-            print("\t\tOptimal decision:\n")
-
-            print(f"\t\t\tThere: {optTbl.there}")
-            print(f"\t\t\tTotal: {optTbl.total}")
-
-            if optTbl.back != None:
+                    print()
+                print(f"\t\t\t\tEnd:   {optTbl.end}")
                 print()
-                print(f"\t\t\t\tTime:  {optTbl.time}")
-                print(f"\t\t\t\tBack:  {optTbl.back}")
+
+                # print(f"\t\t{str(optTbl.there):10} {str(optTbl.time):5} {str(optTbl.start):10} {str(optTbl.end):10}")
+
+                caseMem[str(case)] = optTbl
+
+                print("\n")
+
+            caseLen += 1
+
+
+        """
+        while caseLen <= pplNum:
+        
+            caseTpl = (combinations(spdLst, caseLen))
+        
+            caseLst = [list(case) for case in caseTpl]
+        
+            # print(caseLst)
+        
+            # Table(self, there, back, start, end, time, previous):
+        
+            for case in caseLst:
+        
+                print(f"\tCase: {case}\n")
+        
+                thereTpl = combinations(case, 2)
+        
+                thereLst = [list(there) for there in thereTpl]
+        
+                frstDec = True
+        
+                for there in thereLst:
+        
+                    rest = [rem for rem in case if rem not in there]
+        
+                    if rest:
+        
+                        back = min(there)
+                        start = sorted(rest + [min(there)])
+                        end = [max(there)]
+                        time = sum(there)
+        
+                        previous = caseMem[str(start)]
+        
+                        curTbl = Table(there, back, start, end, time, previous)
+        
+                    else:
+        
+                        back = None
+                        start = []
+                        end = there
+                        time = max(there)
+        
+                        curTbl = Table(there, back, start, end, time)
+        
+                    print(f"\t\t\t\t{str(there):10} {str(time):5} {str(start):10} {str(end):10}")
+        
+                    if frstDec:
+                        optTbl = curTbl
+                        frstDec = False
+        
+                    elif optTbl.time > curTbl.time:
+                        optTbl = curTbl
+        
                 print()
-                print(f"\t\t\t\tStart: {optTbl.start}")
-            else:
-                print()
-            print(f"\t\t\t\tEnd:   {optTbl.end}")
-            print()
-
-            # print(f"\t\t{str(optTbl.there):10} {str(optTbl.time):5} {str(optTbl.start):10} {str(optTbl.end):10}")
-
-            caseMem[str(case)] = optTbl
-
-            print("\n")
-
-        caseLen += 1
-
-
-    """
-    while caseLen <= pplNum:
-    
-        caseTpl = (combinations(spdLst, caseLen))
-    
-        caseLst = [list(case) for case in caseTpl]
-    
-        # print(caseLst)
-    
-        # Table(self, there, back, start, end, time, previous):
-    
-        for case in caseLst:
-    
-            print(f"\tCase: {case}\n")
-    
-            thereTpl = combinations(case, 2)
-    
-            thereLst = [list(there) for there in thereTpl]
-    
-            frstDec = True
-    
-            for there in thereLst:
-    
-                rest = [rem for rem in case if rem not in there]
-    
-                if rest:
-    
-                    back = min(there)
-                    start = sorted(rest + [min(there)])
-                    end = [max(there)]
-                    time = sum(there)
-    
-                    previous = caseMem[str(start)]
-    
-                    curTbl = Table(there, back, start, end, time, previous)
-    
+                print("\t\tOptimal decision:\n")
+        
+                print(f"\t\t\tThere: {optTbl.there}")
+                print(f"\t\t\tTime:  {optTbl.time}")
+        
+                if optTbl.back != None:
+                    print()
+                    print(f"\t\t\t\tBack:  {optTbl.back}")
+                    print()
+                    print(f"\t\t\t\tStart: {optTbl.start}")
                 else:
-    
-                    back = None
-                    start = []
-                    end = there
-                    time = max(there)
-    
-                    curTbl = Table(there, back, start, end, time)
-    
-                print(f"\t\t\t\t{str(there):10} {str(time):5} {str(start):10} {str(end):10}")
-    
-                if frstDec:
-                    optTbl = curTbl
-                    frstDec = False
-    
-                elif optTbl.time > curTbl.time:
-                    optTbl = curTbl
-    
+                    print()
+                print(f"\t\t\t\tEnd:   {optTbl.end}")
+                print()
+        
+                # print(f"\t\t{str(optTbl.there):10} {str(optTbl.time):5} {str(optTbl.start):10} {str(optTbl.end):10}")
+        
+                caseMem[str(case)] = optTbl
+        
+                print("\n")
+        
+            caseLen += 1
+        # """
+
+        print()
+
+        stpCnt = 1
+
+        time = 0
+        path = []
+
+        pathCase = caseMem[str(strtPlc)]
+
+        print(f"\tFinal case: {strtPlc}\n")
+
+        # """
+        while pathCase != None:
+            print(f"\t\t{stpCnt}.Step:\n")
+            stpCnt += 1
+
+            print(f"\t\t\tThere: {pathCase.there}")
+            print(f"\t\t\tTotal: {pathCase.total}")
             print()
-            print("\t\tOptimal decision:\n")
-    
-            print(f"\t\t\tThere: {optTbl.there}")
-            print(f"\t\t\tTime:  {optTbl.time}")
-    
-            if optTbl.back != None:
-                print()
-                print(f"\t\t\t\tBack:  {optTbl.back}")
-                print()
-                print(f"\t\t\t\tStart: {optTbl.start}")
-            else:
-                print()
-            print(f"\t\t\t\tEnd:   {optTbl.end}")
+            print(f"\t\t\tTime:  {pathCase.time}")
+            print(f"\t\t\tBack:  {pathCase.back}")
             print()
-    
-            # print(f"\t\t{str(optTbl.there):10} {str(optTbl.time):5} {str(optTbl.start):10} {str(optTbl.end):10}")
-    
-            caseMem[str(case)] = optTbl
-    
-            print("\n")
-    
-        caseLen += 1
-    # """
+            print(f"\t\t\tStart: {pathCase.start}")
+            print(f"\t\t\tEnd:   {pathCase.end}")
+            print()
 
-    print()
+            time += pathCase.time
+            path += [pathCase.there]
+            path += [[pathCase.back]]
 
-    stpCnt = 1
+            pathCase = pathCase.previous
 
-    time = 0
-    path = []
+        path = path[:-1]
 
-    pathCase = caseMem[str(strtPlc)]
+        # print(path)
 
-    print(f"\tFinal case: {strtPlc}\n")
+        print("\n")
 
-    # """
-    while pathCase != None:
-        print(f"\t\t{stpCnt}.Step:\n")
-        stpCnt += 1
-
-        print(f"\t\t\tThere: {pathCase.there}")
-        print(f"\t\t\tTotal: {pathCase.total}")
-        print()
-        print(f"\t\t\tTime:  {pathCase.time}")
-        print(f"\t\t\tBack:  {pathCase.back}")
-        print()
-        print(f"\t\t\tStart: {pathCase.start}")
-        print(f"\t\t\tEnd:   {pathCase.end}")
-        print()
-
-        time += pathCase.time
-        path += [pathCase.there]
-        path += [[pathCase.back]]
-
-        pathCase = pathCase.previous
-
-    path = path[:-1]
-
-    # print(path)
-
-    print("\n")
-
-    print(f"\tTime: {time}")
-    print(f"\tPath: {path}")
-    print("\n")
+        print(f"\tTime: {time}")
+        print(f"\tPath: {path}")
+        print("\n")
 
 
-    for case in caseMem:
-        print(f"\t\t{str(case):15} {str(caseMem[case].there):10} {str(caseMem[case].time):5} {str(caseMem[case].start):15} {str(caseMem[case].end):15}")
+        for case in caseMem:
+            print(f"\t\t{str(case):15} {str(caseMem[case].there):10} {str(caseMem[case].time):5} {str(caseMem[case].start):15} {str(caseMem[case].end):15}")
 
-    print("\n")
+        print("\n")
 
-    # """
+        # """
 
 
 """__Output__"""
