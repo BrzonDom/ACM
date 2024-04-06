@@ -97,6 +97,14 @@ def paperExtract_Prt(Papers):
     print()
 
 
+def namePrint(Names):
+
+    print("\tNames:")
+    for name in Names:
+        print(f"\t\t{name}")
+    print("\n")
+
+
 # ScenNum, PaperNameCnt, PapersNames = Input_Str.split("\n", 3)[1:]
 
 # Input_Lst = Input_Str.split("\n", 3)[1:]
@@ -180,10 +188,12 @@ if __name__ == "__main__":
         Input_Str = Input_Str.split("\n", NameNum)[NameNum]
 
         """     Print needed names      """
-        print("\tNames:")
-        for name in Names:
-            print(f"\t\t{name}")
-        print("\n")
+        namePrint(Names)
+
+        # print("\tNames:")
+        # for name in Names:
+        #     print(f"\t\t{name}")
+        # print("\n")
 
         """     Print authors   """
         print("\tAuthors:")
