@@ -106,6 +106,54 @@ def paperExtract_Prt(Papers):
     print()
 
 
+def valueExtract_Prt(Auth_Dict):
+
+    """     Data of Erdo value          """
+    ErdoVal_Dict = {}
+    """     Data of Erdo connection     """
+    ErdoCon_Dict = {}
+
+    """     Queue for Erdo value levels """
+    Erdo_Queue = [["Erdos, P."], []]
+    ErdoCnt = 0
+
+    print("\t\tErdos values process:\n")
+
+    while Erdo_Queue[0]:
+
+        ErdoCnt += 1
+
+        print(f"\t\t\t{ErdoCnt}. Erdo value")
+        print(f"\t\t\t\tQueue: {Erdo_Queue[0]}")
+        print("\t\t\t\tValues:", ErdoVal_Dict)
+        print("\t\t\t\tConnection:", ErdoCon_Dict)
+        print()
+
+        for a, auth in enumerate(Erdo_Queue[0]):
+
+            coAuth_Lst = Auth_Dict[auth]
+            print(f"\t\t\t\t\tCo-auth. of {auth}: {coAuth_Lst}")
+
+            for coAuth in coAuth_Lst:
+
+                if coAuth == "Erdos, P.":
+                    continue
+
+                if coAuth not in ErdoVal_Dict:
+                    Erdo_Queue[1].append(coAuth)
+                    ErdoVal_Dict[coAuth] = ErdoCnt
+                    ErdoCon_Dict[coAuth] = auth
+
+        Erdo_Queue[0] = Erdo_Queue[1]
+        Erdo_Queue[1] = []
+
+        print()
+    print()
+
+    return ErdoVal_Dict, ErdoCon_Dict
+
+
+
 def namePrint(Names):
 
     print("\tNames:")
@@ -203,47 +251,50 @@ if __name__ == "__main__":
         """     Print data of works to authors      """
         dataWorkPrint(Work_Dict)
 
-        """     Data of Erdo value          """
-        ErdoVal_Dict = {}
-        """     Data of Erdo connection     """
-        ErdoCon_Dict = {}
+        ErdoVal_Dict, ErdoCon_Dict = valueExtract_Prt(Auth_Dict)
 
-        """     Queue for Erdo value levels """
-        Erdo_Queue = [["Erdos, P."], []]
-        ErdoCnt = 0
 
-        print("\t\tErdos values process:\n")
-
-        while Erdo_Queue[0]:
-
-            ErdoCnt += 1
-
-            print(f"\t\t\t{ErdoCnt}. Erdo value")
-            print(f"\t\t\t\tQueue: {Erdo_Queue[0]}")
-            print("\t\t\t\tValues:", ErdoVal_Dict)
-            print("\t\t\t\tConnection:", ErdoCon_Dict)
-            print()
-
-            for a, auth in enumerate(Erdo_Queue[0]):
-
-                coAuth_Lst = Auth_Dict[auth]
-                print(f"\t\t\t\t\tCo-auth. of {auth}: {coAuth_Lst}")
-
-                for coAuth in coAuth_Lst:
-
-                    if coAuth == "Erdos, P.":
-                        continue
-
-                    if coAuth not in ErdoVal_Dict:
-                        Erdo_Queue[1].append(coAuth)
-                        ErdoVal_Dict[coAuth] = ErdoCnt
-                        ErdoCon_Dict[coAuth] = auth
-
-            Erdo_Queue[0] = Erdo_Queue[1]
-            Erdo_Queue[1] = []
-
-            print()
-        print()
+        # """     Data of Erdo value          """
+        # ErdoVal_Dict = {}
+        # """     Data of Erdo connection     """
+        # ErdoCon_Dict = {}
+        #
+        # """     Queue for Erdo value levels """
+        # Erdo_Queue = [["Erdos, P."], []]
+        # ErdoCnt = 0
+        #
+        # print("\t\tErdos values process:\n")
+        #
+        # while Erdo_Queue[0]:
+        #
+        #     ErdoCnt += 1
+        #
+        #     print(f"\t\t\t{ErdoCnt}. Erdo value")
+        #     print(f"\t\t\t\tQueue: {Erdo_Queue[0]}")
+        #     print("\t\t\t\tValues:", ErdoVal_Dict)
+        #     print("\t\t\t\tConnection:", ErdoCon_Dict)
+        #     print()
+        #
+        #     for a, auth in enumerate(Erdo_Queue[0]):
+        #
+        #         coAuth_Lst = Auth_Dict[auth]
+        #         print(f"\t\t\t\t\tCo-auth. of {auth}: {coAuth_Lst}")
+        #
+        #         for coAuth in coAuth_Lst:
+        #
+        #             if coAuth == "Erdos, P.":
+        #                 continue
+        #
+        #             if coAuth not in ErdoVal_Dict:
+        #                 Erdo_Queue[1].append(coAuth)
+        #                 ErdoVal_Dict[coAuth] = ErdoCnt
+        #                 ErdoCon_Dict[coAuth] = auth
+        #
+        #     Erdo_Queue[0] = Erdo_Queue[1]
+        #     Erdo_Queue[1] = []
+        #
+        #     print()
+        # print()
 
         for auth in Authors:
             if auth == "Erdos, P.":
