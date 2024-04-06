@@ -91,109 +91,111 @@ InputRaw_Str = """
 12:00 13:00 I love lunch! Have you ever noticed it? :)
 """
 
-InputRaw_Str = InputRaw_Str[1:-1]
+if __name__ == "__main__":
 
-# print("Raw Input:\n", end="\"\"\"\n")
-# print(InputRaw_Str, end="\"\"\"\n")
-# print()
+    InputRaw_Str = InputRaw_Str[1:-1]
 
-InputStr_Lst = InputRaw_Str.split("\n")
+    # print("Raw Input:\n", end="\"\"\"\n")
+    # print(InputRaw_Str, end="\"\"\"\n")
+    # print()
 
-# print(InputStr_Lst)
+    InputStr_Lst = InputRaw_Str.split("\n")
 
-lstIndx = 0
-dayCnt = 1
-InputLst = []
+    # print(InputStr_Lst)
 
-print("Inputs: \n")
+    lstIndx = 0
+    dayCnt = 1
+    InputLst = []
 
-while lstIndx < len(InputStr_Lst):
+    print("Inputs: \n")
 
-    if InputStr_Lst[lstIndx].isnumeric():
-        apptmNum = int(InputStr_Lst[lstIndx])
+    while lstIndx < len(InputStr_Lst):
 
-        InputLst.append(InputStr_Lst[lstIndx + 1: lstIndx + 1 + apptmNum])
+        if InputStr_Lst[lstIndx].isnumeric():
+            apptmNum = int(InputStr_Lst[lstIndx])
+
+            InputLst.append(InputStr_Lst[lstIndx + 1: lstIndx + 1 + apptmNum])
+
+            print(f"\t{dayCnt}.Day:")
+
+            for Input in InputLst[dayCnt-1]:
+                print(f"\t\t{Input}")
+            print("\n")
+
+            dayCnt += 1
+            lstIndx += apptmNum
+
+        else:
+            lstIndx += 1
+    print()
+
+    dayCnt = 0
+
+    print("Input times:\n")
+
+    for InputDay in InputLst:
+
+        dayCnt += 1
+
+        timeLst_Str = []
+        timeLst = []
 
         print(f"\t{dayCnt}.Day:")
 
-        for Input in InputLst[dayCnt-1]:
-            print(f"\t\t{Input}")
+        for Apptm in InputDay:
+
+            print(f"\t\t{Apptm[0:5]} {Apptm[6:11]}")
+            # print(Apptm[0:2], ":", Apptm[3:5], "  ", Apptm[6:8], ":", Apptm[9:11])
+
+            timeLst_Str.append([Apptm[0:5], Apptm[6:11]])
+            timeLst.append([[int(Apptm[0:2]), int(Apptm[3:5])], [int(Apptm[6:8]), int(Apptm[9:11])]])
+
+            print(f"\t\t{timeLst[-1]}")
+            print()
+
+        print(f"\t\t{timeLst}")
         print("\n")
 
-        dayCnt += 1
-        lstIndx += apptmNum
+        print("\t\tBusy minutes:")
 
-    else:
-        lstIndx += 1
-print()
+        minutAptLst = []
+        minutFreLst = [[0, 0] for _ in range(len(timeLst) + 1)]
 
-dayCnt = 0
+        minutFreLst[0][0], minutFreLst[-1][1] = 0, 480
 
-print("Input times:\n")
+        for t, time in enumerate(timeLst):
 
-for InputDay in InputLst:
+            minutAptLst.append([time[0][0] * 60 + time[0][1] - 10 * 60, time[1][0] * 60 + time[1][1] - 10 * 60])
 
-    dayCnt += 1
+            print(f"\t\t\t{time[0][0]:02}:{time[0][1]:02} = {time[0][0] * 60 + time[0][1]:4}  => {minutAptLst[t][0]}")
+            print(f"\t\t\t{time[1][0]:02}:{time[1][1]:02} = {time[1][0] * 60 + time[1][1]:4}  => {minutAptLst[t][1]}")
+            print()
 
-    timeLst_Str = []
-    timeLst = []
+            minutFreLst[t][1] = minutAptLst[t][0]
+            minutFreLst[t+1][0] = minutAptLst[t][1]
 
-    print(f"\t{dayCnt}.Day:")
 
-    for Apptm in InputDay:
+        print("\t\tFree minutes:")
 
-        print(f"\t\t{Apptm[0:5]} {Apptm[6:11]}")
-        # print(Apptm[0:2], ":", Apptm[3:5], "  ", Apptm[6:8], ":", Apptm[9:11])
+        napTime = [0, 0]
 
-        timeLst_Str.append([Apptm[0:5], Apptm[6:11]])
-        timeLst.append([[int(Apptm[0:2]), int(Apptm[3:5])], [int(Apptm[6:8]), int(Apptm[9:11])]])
+        for time in minutFreLst:
 
-        print(f"\t\t{timeLst[-1]}")
+            if time[1] - time[0] > 0:
+                print(f"\t\t\t{time[0]:4} : {time[1]:4} => {time[1] - time[0]:4}")
+
+                if napTime[1] < (time[1] - time[0]):
+                    napTime[1] = time[1] - time[0]
+                    napTime[0] = time[0]
+
+        # print(f"\t\t\t{minutFreLst}")
         print()
 
-    print(f"\t\t{timeLst}")
-    print("\n")
-
-    print("\t\tBusy minutes:")
-
-    minutAptLst = []
-    minutFreLst = [[0, 0] for _ in range(len(timeLst) + 1)]
-
-    minutFreLst[0][0], minutFreLst[-1][1] = 0, 480
-
-    for t, time in enumerate(timeLst):
-
-        minutAptLst.append([time[0][0] * 60 + time[0][1] - 10 * 60, time[1][0] * 60 + time[1][1] - 10 * 60])
-
-        print(f"\t\t\t{time[0][0]:02}:{time[0][1]:02} = {time[0][0] * 60 + time[0][1]:4}  => {minutAptLst[t][0]}")
-        print(f"\t\t\t{time[1][0]:02}:{time[1][1]:02} = {time[1][0] * 60 + time[1][1]:4}  => {minutAptLst[t][1]}")
-        print()
-
-        minutFreLst[t][1] = minutAptLst[t][0]
-        minutFreLst[t+1][0] = minutAptLst[t][1]
-
-
-    print("\t\tFree minutes:")
-
-    napTime = [0, 0]
-
-    for time in minutFreLst:
-
-        if time[1] - time[0] > 0:
-            print(f"\t\t\t{time[0]:4} : {time[1]:4} => {time[1] - time[0]:4}")
-
-            if napTime[1] < (time[1] - time[0]):
-                napTime[1] = time[1] - time[0]
-                napTime[0] = time[0]
-
-    # print(f"\t\t\t{minutFreLst}")
-    print()
-
-    napTime[0] += 600
-    print("\t\tNap:")
-    print(f"\t\t\tStart:     {napTime[0] // 60:02}:{napTime[0] % 60:02}")
-    print(f"\t\t\tDuration:  {napTime[1] // 60} hours {napTime[1] % 60} minutes")
-    print("\n")
+        napTime[0] += 600
+        print("\t\tNap:")
+        print(f"\t\t\tStart:     {napTime[0] // 60:02}:{napTime[0] % 60:02}")
+        print(f"\t\t\tDuration:  {napTime[1] // 60} hours {napTime[1] % 60} minutes")
+        print("\n")
 
 
 """__Output__"""
