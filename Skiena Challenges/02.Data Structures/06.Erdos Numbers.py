@@ -164,7 +164,6 @@ def valueDefault(Authors):
             ErdoCon_Dict[auth] = None
 
 
-
 def namePrint(Names):
 
     print("\tNames:")
@@ -202,6 +201,22 @@ def dataWorkPrint(Work_Dict):
     for work in Work_Dict:
         print(f"\t\t{work:{maxWrkLen}} : {Work_Dict[work]}")
     print("\n")
+
+
+def valuePrint(Names):
+
+    print("\tErdos authors:")
+    for auth in Names:
+        print(f"\t\t{auth:{maxAthLen}} : {ErdoVal_Dict[auth]} [{ErdoCon_Dict[auth]}]")
+    print()
+
+    for auth in ErdoVal_Dict:
+        if auth not in Names:
+            print(f"\t\t{auth:{maxAthLen}} : {ErdoVal_Dict[auth]} [{ErdoCon_Dict[auth]}]")
+
+    print("\n")
+
+
 
 
 # ScenNum, PaperNameCnt, PapersNames = Input_Str.split("\n", 3)[1:]
@@ -321,13 +336,15 @@ if __name__ == "__main__":
         # print("\t\t\t\tConnection:", ErdoCon_Dict)
         # print()
 
-        print("\tErdos authors:")
-        for auth in Names:
-            print(f"\t\t{auth:{maxAthLen}} : {ErdoVal_Dict[auth]} [{ErdoCon_Dict[auth]}]")
-        print()
+        valuePrint(Names)
 
-        for auth in ErdoVal_Dict:
-            if auth not in Names:
-                print(f"\t\t{auth:{maxAthLen}} : {ErdoVal_Dict[auth]} [{ErdoCon_Dict[auth]}]")
-
-        print("\n")
+        # print("\tErdos authors:")
+        # for auth in Names:
+        #     print(f"\t\t{auth:{maxAthLen}} : {ErdoVal_Dict[auth]} [{ErdoCon_Dict[auth]}]")
+        # print()
+        #
+        # for auth in ErdoVal_Dict:
+        #     if auth not in Names:
+        #         print(f"\t\t{auth:{maxAthLen}} : {ErdoVal_Dict[auth]} [{ErdoCon_Dict[auth]}]")
+        #
+        # print("\n")
