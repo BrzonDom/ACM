@@ -54,9 +54,48 @@ Hsueh, Z.
 Chen, X.
 """
 
-# def paperExtract(Papers):
-#
-#     for paper in Papers:
+def paperExtract_Prt(Papers):
+    print("\tPapers:")
+    for paper in Papers:
+        print(f"\t\t{paper}")
+
+        """     Extract authors and work    """
+        Auth_Str, Work_Str = paper.split(":")
+
+        """     Split authors into a list   """
+        Auth_Lst = Auth_Str.split(", ")
+
+        """     Modify list of authors      """
+        for a in range(0, len(Auth_Lst), 2):
+            """     Add to set of authors       """
+            Authors.add(Auth_Lst[a] + ", " + Auth_Lst[a + 1])
+            Auth_Lst[a] = Auth_Lst[a] + ", " + Auth_Lst[a + 1]
+
+        Auth_Lst = Auth_Lst[0::2]
+
+        """     Record data of works to authors     """
+        Work_Dict[Work_Str[1:]] = Auth_Lst
+
+        for auth in Auth_Lst:
+
+            """     Record data of authors to co-authors    """
+            for coAuth in Auth_Lst:
+                if auth == coAuth:
+                    continue
+
+                if auth not in Auth_Dict:
+                    Auth_Dict[auth] = [coAuth]
+
+                else:
+                    Auth_Dict[auth] += [coAuth]
+
+        # for work in Auth_Lst:
+
+        """     Add to set of works     """
+        Works.add(Work_Str[1:])
+
+    print()
+
 
 # ScenNum, PaperNameCnt, PapersNames = Input_Str.split("\n", 3)[1:]
 
@@ -93,47 +132,49 @@ if __name__ == "__main__":
         Authors = set()
         Works = set()
 
-        print("\tPapers:")
-        for paper in Papers:
-            print(f"\t\t{paper}")
+        paperExtract_Prt(Papers)
 
-            """     Extract authors and work    """
-            Auth_Str, Work_Str = paper.split(":")
-
-            """     Split authors into a list   """
-            Auth_Lst = Auth_Str.split(", ")
-
-            """     Modify list of authors      """
-            for a in range(0, len(Auth_Lst), 2):
-
-                """     Add to set of authors       """
-                Authors.add(Auth_Lst[a] + ", " + Auth_Lst[a+1])
-                Auth_Lst[a] = Auth_Lst[a] + ", " + Auth_Lst[a+1]
-
-            Auth_Lst = Auth_Lst[0::2]
-
-            """     Record data of works to authors     """
-            Work_Dict[Work_Str[1:]] = Auth_Lst
-
-            for auth in Auth_Lst:
-
-                """     Record data of authors to co-authors    """
-                for coAuth in Auth_Lst:
-                    if auth == coAuth:
-                        continue
-
-                    if auth not in Auth_Dict:
-                        Auth_Dict[auth] = [coAuth]
-
-                    else:
-                        Auth_Dict[auth] += [coAuth]
-
-            # for work in Auth_Lst:
-
-            """     Add to set of works     """
-            Works.add(Work_Str[1:])
-
-        print()
+        # print("\tPapers:")
+        # for paper in Papers:
+        #     print(f"\t\t{paper}")
+        #
+        #     """     Extract authors and work    """
+        #     Auth_Str, Work_Str = paper.split(":")
+        #
+        #     """     Split authors into a list   """
+        #     Auth_Lst = Auth_Str.split(", ")
+        #
+        #     """     Modify list of authors      """
+        #     for a in range(0, len(Auth_Lst), 2):
+        #
+        #         """     Add to set of authors       """
+        #         Authors.add(Auth_Lst[a] + ", " + Auth_Lst[a+1])
+        #         Auth_Lst[a] = Auth_Lst[a] + ", " + Auth_Lst[a+1]
+        #
+        #     Auth_Lst = Auth_Lst[0::2]
+        #
+        #     """     Record data of works to authors     """
+        #     Work_Dict[Work_Str[1:]] = Auth_Lst
+        #
+        #     for auth in Auth_Lst:
+        #
+        #         """     Record data of authors to co-authors    """
+        #         for coAuth in Auth_Lst:
+        #             if auth == coAuth:
+        #                 continue
+        #
+        #             if auth not in Auth_Dict:
+        #                 Auth_Dict[auth] = [coAuth]
+        #
+        #             else:
+        #                 Auth_Dict[auth] += [coAuth]
+        #
+        #     # for work in Auth_Lst:
+        #
+        #     """     Add to set of works     """
+        #     Works.add(Work_Str[1:])
+        #
+        # print()
 
         Names = list(Input_Str.split("\n", NameNum)[:NameNum])
         Input_Str = Input_Str.split("\n", NameNum)[NameNum]
