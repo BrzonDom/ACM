@@ -54,7 +54,9 @@ Hsueh, Z.
 Chen, X.
 """
 
+
 def paperExtract_Prt(Papers):
+
     print("\tPapers:")
     for paper in Papers:
         print(f"\t\t{paper}")
@@ -122,8 +124,6 @@ def workPrint(Works):
 
 def dataAuthPrint(Auth_Dict):
 
-    maxAthLen = len(max(Auth_Dict.keys(), key=len))
-
     print("\tAuthors data:")
     for auth in Auth_Dict:
         print(f"\t\t{auth:{maxAthLen}} : {Auth_Dict[auth]}")
@@ -175,94 +175,26 @@ if __name__ == "__main__":
 
         paperExtract_Prt(Papers)
 
-        # print("\tPapers:")
-        # for paper in Papers:
-        #     print(f"\t\t{paper}")
-        #
-        #     """     Extract authors and work    """
-        #     Auth_Str, Work_Str = paper.split(":")
-        #
-        #     """     Split authors into a list   """
-        #     Auth_Lst = Auth_Str.split(", ")
-        #
-        #     """     Modify list of authors      """
-        #     for a in range(0, len(Auth_Lst), 2):
-        #
-        #         """     Add to set of authors       """
-        #         Authors.add(Auth_Lst[a] + ", " + Auth_Lst[a+1])
-        #         Auth_Lst[a] = Auth_Lst[a] + ", " + Auth_Lst[a+1]
-        #
-        #     Auth_Lst = Auth_Lst[0::2]
-        #
-        #     """     Record data of works to authors     """
-        #     Work_Dict[Work_Str[1:]] = Auth_Lst
-        #
-        #     for auth in Auth_Lst:
-        #
-        #         """     Record data of authors to co-authors    """
-        #         for coAuth in Auth_Lst:
-        #             if auth == coAuth:
-        #                 continue
-        #
-        #             if auth not in Auth_Dict:
-        #                 Auth_Dict[auth] = [coAuth]
-        #
-        #             else:
-        #                 Auth_Dict[auth] += [coAuth]
-        #
-        #     # for work in Auth_Lst:
-        #
-        #     """     Add to set of works     """
-        #     Works.add(Work_Str[1:])
-        #
-        # print()
-
         Names = list(Input_Str.split("\n", NameNum)[:NameNum])
         Input_Str = Input_Str.split("\n", NameNum)[NameNum]
 
         """     Print needed names      """
         namePrint(Names)
 
-        # print("\tNames:")
-        # for name in Names:
-        #     print(f"\t\t{name}")
-        # print("\n")
-
         """     Print authors   """
         authPrint(Authors)
-
-        # print("\tAuthors:")
-        # for auth in Authors:
-        #     print(f"\t\t{auth}")
-        # print()
 
         """     Print works     """
         workPrint(Works)
 
-        # print("\tWorks:")
-        # for work in Works:
-        #     print(f"\t\t{work}")
-        # print("\n")
-
         maxAthLen = len(max(Auth_Dict.keys(), key=len))
+        maxWrkLen = len(max(Work_Dict.keys(), key=len))
 
         """     Print data of authors to co-authors     """
         dataAuthPrint(Auth_Dict)
 
-        # print("\tAuthors data:")
-        # for auth in Auth_Dict:
-        #     print(f"\t\t{auth:{maxAthLen}} : {Auth_Dict[auth]}")
-        # print()
-
-        maxWrkLen = len(max(Work_Dict.keys(), key=len))
-
         """     Print data of works to authors      """
         dataWorkPrint(Work_Dict)
-
-        # print("\tWorks data:")
-        # for work in Work_Dict:
-        #     print(f"\t\t{work:{maxWrkLen}} : {Work_Dict[work]}")
-        # print("\n")
 
         """     Data of Erdo value          """
         ErdoVal_Dict = {}
@@ -270,31 +202,10 @@ if __name__ == "__main__":
         ErdoCon_Dict = {}
 
         """     Queue for Erdo value levels """
-        # Erdo_Queue = [[], []]
         Erdo_Queue = [["Erdos, P."], []]
-
         ErdoCnt = 0
 
         print("\t\tErdos values process:\n")
-
-        """
-        for auth in Auth_Dict["Erdos P."]:
-            ErdoVal_Dict[auth] = ErdoCnt
-            ErdoCon_Dict[auth] = "Erdos P."
-            Erdo_Queue[0].append(auth)
-    
-            # print(f"\t\t{auth}")
-    
-        print(f"\t\t\t{ErdoCnt}. Erdo value")
-        print(f"\t\t\t\tQueue: {Erdo_Queue[0]}")
-        # print()
-    
-        # print()
-        # print("Queue:", Erdo_Queue)
-        print("\t\t\t\tValues:", ErdoVal_Dict)
-        print("\t\t\t\tConnection:", ErdoCon_Dict)
-        print()
-        # """
 
         while Erdo_Queue[0]:
 
