@@ -41,10 +41,9 @@ Erdos Numbers
                 Chen, X. 2
 
 """
-from sys import stdin
 
 Input_Str = """
-2
+1
 4 3
 Smith, M.N., Martin, G., Erdos, P.: Newtonian forms of prime factors
 Erdos, P., Reisig, W.: Stuttering in petri nets
@@ -62,6 +61,7 @@ Hsueh, Z.
 Jablonski, T.
 
 """
+from sys import stdin
 
 """     Read line with number of scenarios  """
 # ScenNum, Input_Str = Input_Str.split("\n", 2)[1:]
@@ -89,7 +89,8 @@ for scene in range(int(ScenNum)):
     # Papers = list(Input_Str.split("\n", PaperNum)[:PaperNum])
     Papers = []
     for _ in range(PaperNum):
-        Papers.append(stdin.readline()[:-1])
+        paper = stdin.readline()
+        Papers.append(paper[:-1])
 
     """     Read line of papers     """
     # Input_Str = Input_Str.split("\n", PaperNum)[PaperNum]
@@ -135,7 +136,8 @@ for scene in range(int(ScenNum)):
 
     Names = []
     for _ in range(NameNum):
-        Names.append(stdin.readline()[:-1])
+        name = stdin.readline()
+        Names.append(name[:-1])
 
     """     Print needed names      """
     # print("\tNames:")
