@@ -112,6 +112,14 @@ def authPrint(Authors):
     print()
 
 
+def workPrint(Works):
+    #
+    print("\tWorks:")
+    for work in Works:
+        print(f"\t\t{work}")
+    print("\n")
+
+
 # ScenNum, PaperNameCnt, PapersNames = Input_Str.split("\n", 3)[1:]
 
 # Input_Lst = Input_Str.split("\n", 3)[1:]
@@ -211,10 +219,12 @@ if __name__ == "__main__":
         # print()
 
         """     Print works     """
-        print("\tWorks:")
-        for work in Works:
-            print(f"\t\t{work}")
-        print("\n")
+        workPrint(Works)
+
+        # print("\tWorks:")
+        # for work in Works:
+        #     print(f"\t\t{work}")
+        # print("\n")
 
         maxAthLen = len(max(Auth_Dict.keys(), key=len))
 
