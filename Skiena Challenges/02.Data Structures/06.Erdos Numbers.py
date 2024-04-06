@@ -105,6 +105,13 @@ def namePrint(Names):
     print("\n")
 
 
+def authPrint(Authors):
+    print("\tAuthors:")
+    for auth in Authors:
+        print(f"\t\t{auth}")
+    print()
+
+
 # ScenNum, PaperNameCnt, PapersNames = Input_Str.split("\n", 3)[1:]
 
 # Input_Lst = Input_Str.split("\n", 3)[1:]
@@ -196,10 +203,12 @@ if __name__ == "__main__":
         # print("\n")
 
         """     Print authors   """
-        print("\tAuthors:")
-        for auth in Authors:
-            print(f"\t\t{auth}")
-        print()
+        authPrint(Authors)
+
+        # print("\tAuthors:")
+        # for auth in Authors:
+        #     print(f"\t\t{auth}")
+        # print()
 
         """     Print works     """
         print("\tWorks:")
