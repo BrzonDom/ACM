@@ -54,201 +54,207 @@ Hsueh, Z.
 Chen, X.
 """
 
+# def paperExtract(Papers):
+#
+#     for paper in Papers:
+
 # ScenNum, PaperNameCnt, PapersNames = Input_Str.split("\n", 3)[1:]
 
 # Input_Lst = Input_Str.split("\n", 3)[1:]
 
-"""     Read line with number of scenarios  """
-ScenNum, Input_Str = Input_Str.split("\n", 2)[1:]
+if __name__ == "__main__":
 
-for scene in range(int(ScenNum)):
+    """     Read line with number of scenarios  """
+    ScenNum, Input_Str = Input_Str.split("\n", 2)[1:]
 
-    Work_Dict = {}
-    Auth_Dict = {}
+    for scene in range(int(ScenNum)):
 
-    print(f"{scene+1}. Scene:\n")
+        Work_Dict = {}
+        Auth_Dict = {}
 
-    """     Read line with numbers of papers and names      """
-    PaperNameStr, Input_Str = Input_Str.split("\n", 1)
+        print(f"{scene+1}. Scene:\n")
 
-    """     Extract number of papers and names      """
-    PaperNum, NameNum = list(map(int, PaperNameStr.split()))
+        """     Read line with numbers of papers and names      """
+        PaperNameStr, Input_Str = Input_Str.split("\n", 1)
 
-    print(f"\tNum. of Papers:  {PaperNum}")
-    print(f"\tNum. of Names:   {NameNum}")
-    print()
+        """     Extract number of papers and names      """
+        PaperNum, NameNum = list(map(int, PaperNameStr.split()))
 
-    """     Extract list of papers      """
-    Papers = list(Input_Str.split("\n", PaperNum)[:PaperNum])
+        print(f"\tNum. of Papers:  {PaperNum}")
+        print(f"\tNum. of Names:   {NameNum}")
+        print()
 
-    """     Read line of papers     """
-    Input_Str = Input_Str.split("\n", PaperNum)[PaperNum]
+        """     Extract list of papers      """
+        Papers = list(Input_Str.split("\n", PaperNum)[:PaperNum])
 
-    Authors = set()
-    Works = set()
+        """     Read line of papers     """
+        Input_Str = Input_Str.split("\n", PaperNum)[PaperNum]
 
-    print("\tPapers:")
-    for paper in Papers:
-        print(f"\t\t{paper}")
+        Authors = set()
+        Works = set()
 
-        """     Extract authors and work    """
-        Auth_Str, Work_Str = paper.split(":")
+        print("\tPapers:")
+        for paper in Papers:
+            print(f"\t\t{paper}")
 
-        """     Split authors into a list   """
-        Auth_Lst = Auth_Str.split(", ")
+            """     Extract authors and work    """
+            Auth_Str, Work_Str = paper.split(":")
 
-        """     Modify list of authors      """
-        for a in range(0, len(Auth_Lst), 2):
+            """     Split authors into a list   """
+            Auth_Lst = Auth_Str.split(", ")
 
-            """     Add to set of authors       """
-            Authors.add(Auth_Lst[a] + ", " + Auth_Lst[a+1])
-            Auth_Lst[a] = Auth_Lst[a] + ", " + Auth_Lst[a+1]
+            """     Modify list of authors      """
+            for a in range(0, len(Auth_Lst), 2):
 
-        Auth_Lst = Auth_Lst[0::2]
+                """     Add to set of authors       """
+                Authors.add(Auth_Lst[a] + ", " + Auth_Lst[a+1])
+                Auth_Lst[a] = Auth_Lst[a] + ", " + Auth_Lst[a+1]
 
-        """     Record data of works to authors     """
-        Work_Dict[Work_Str[1:]] = Auth_Lst
+            Auth_Lst = Auth_Lst[0::2]
 
-        for auth in Auth_Lst:
+            """     Record data of works to authors     """
+            Work_Dict[Work_Str[1:]] = Auth_Lst
 
-            """     Record data of authors to co-authors    """
-            for coAuth in Auth_Lst:
-                if auth == coAuth:
-                    continue
+            for auth in Auth_Lst:
 
-                if auth not in Auth_Dict:
-                    Auth_Dict[auth] = [coAuth]
+                """     Record data of authors to co-authors    """
+                for coAuth in Auth_Lst:
+                    if auth == coAuth:
+                        continue
 
-                else:
-                    Auth_Dict[auth] += [coAuth]
+                    if auth not in Auth_Dict:
+                        Auth_Dict[auth] = [coAuth]
 
-        # for work in Auth_Lst:
+                    else:
+                        Auth_Dict[auth] += [coAuth]
 
-        """     Add to set of works     """
-        Works.add(Work_Str[1:])
+            # for work in Auth_Lst:
 
-    print()
+            """     Add to set of works     """
+            Works.add(Work_Str[1:])
 
-    Names = list(Input_Str.split("\n", NameNum)[:NameNum])
-    Input_Str = Input_Str.split("\n", NameNum)[NameNum]
+        print()
 
-    """     Print needed names      """
-    print("\tNames:")
-    for name in Names:
-        print(f"\t\t{name}")
-    print("\n")
+        Names = list(Input_Str.split("\n", NameNum)[:NameNum])
+        Input_Str = Input_Str.split("\n", NameNum)[NameNum]
 
-    """     Print authors   """
-    print("\tAuthors:")
-    for auth in Authors:
-        print(f"\t\t{auth}")
-    print()
+        """     Print needed names      """
+        print("\tNames:")
+        for name in Names:
+            print(f"\t\t{name}")
+        print("\n")
 
-    """     Print works     """
-    print("\tWorks:")
-    for work in Works:
-        print(f"\t\t{work}")
-    print("\n")
+        """     Print authors   """
+        print("\tAuthors:")
+        for auth in Authors:
+            print(f"\t\t{auth}")
+        print()
 
-    maxAthLen = len(max(Auth_Dict.keys(), key=len))
+        """     Print works     """
+        print("\tWorks:")
+        for work in Works:
+            print(f"\t\t{work}")
+        print("\n")
 
-    """     Print data of authors to co-authors     """
-    print("\tAuthors data:")
-    for auth in Auth_Dict:
-        print(f"\t\t{auth:{maxAthLen}} : {Auth_Dict[auth]}")
-    print()
+        maxAthLen = len(max(Auth_Dict.keys(), key=len))
 
-    maxWrkLen = len(max(Work_Dict.keys(), key=len))
+        """     Print data of authors to co-authors     """
+        print("\tAuthors data:")
+        for auth in Auth_Dict:
+            print(f"\t\t{auth:{maxAthLen}} : {Auth_Dict[auth]}")
+        print()
 
-    """     Print data of works to authors      """
-    print("\tWorks data:")
-    for work in Work_Dict:
-        print(f"\t\t{work:{maxWrkLen}} : {Work_Dict[work]}")
-    print("\n")
+        maxWrkLen = len(max(Work_Dict.keys(), key=len))
 
-    """     Data of Erdo value          """
-    ErdoVal_Dict = {}
-    """     Data of Erdo connection     """
-    ErdoCon_Dict = {}
+        """     Print data of works to authors      """
+        print("\tWorks data:")
+        for work in Work_Dict:
+            print(f"\t\t{work:{maxWrkLen}} : {Work_Dict[work]}")
+        print("\n")
 
-    """     Queue for Erdo value levels """
-    # Erdo_Queue = [[], []]
-    Erdo_Queue = [["Erdos, P."], []]
+        """     Data of Erdo value          """
+        ErdoVal_Dict = {}
+        """     Data of Erdo connection     """
+        ErdoCon_Dict = {}
 
-    ErdoCnt = 0
+        """     Queue for Erdo value levels """
+        # Erdo_Queue = [[], []]
+        Erdo_Queue = [["Erdos, P."], []]
 
-    print("\t\tErdos values process:\n")
+        ErdoCnt = 0
 
-    """
-    for auth in Auth_Dict["Erdos P."]:
-        ErdoVal_Dict[auth] = ErdoCnt
-        ErdoCon_Dict[auth] = "Erdos P."
-        Erdo_Queue[0].append(auth)
+        print("\t\tErdos values process:\n")
 
-        # print(f"\t\t{auth}")
-
-    print(f"\t\t\t{ErdoCnt}. Erdo value")
-    print(f"\t\t\t\tQueue: {Erdo_Queue[0]}")
-    # print()
-
-    # print()
-    # print("Queue:", Erdo_Queue)
-    print("\t\t\t\tValues:", ErdoVal_Dict)
-    print("\t\t\t\tConnection:", ErdoCon_Dict)
-    print()
-    # """
-
-    while Erdo_Queue[0]:
-
-        ErdoCnt += 1
-
+        """
+        for auth in Auth_Dict["Erdos P."]:
+            ErdoVal_Dict[auth] = ErdoCnt
+            ErdoCon_Dict[auth] = "Erdos P."
+            Erdo_Queue[0].append(auth)
+    
+            # print(f"\t\t{auth}")
+    
         print(f"\t\t\t{ErdoCnt}. Erdo value")
         print(f"\t\t\t\tQueue: {Erdo_Queue[0]}")
+        # print()
+    
+        # print()
+        # print("Queue:", Erdo_Queue)
         print("\t\t\t\tValues:", ErdoVal_Dict)
         print("\t\t\t\tConnection:", ErdoCon_Dict)
         print()
+        # """
 
-        for a, auth in enumerate(Erdo_Queue[0]):
+        while Erdo_Queue[0]:
 
-            coAuth_Lst = Auth_Dict[auth]
-            print(f"\t\t\t\t\tCo-auth. of {auth}: {coAuth_Lst}")
+            ErdoCnt += 1
 
-            for coAuth in coAuth_Lst:
+            print(f"\t\t\t{ErdoCnt}. Erdo value")
+            print(f"\t\t\t\tQueue: {Erdo_Queue[0]}")
+            print("\t\t\t\tValues:", ErdoVal_Dict)
+            print("\t\t\t\tConnection:", ErdoCon_Dict)
+            print()
 
-                if coAuth == "Erdos, P.":
-                    continue
+            for a, auth in enumerate(Erdo_Queue[0]):
 
-                if coAuth not in ErdoVal_Dict:
-                    Erdo_Queue[1].append(coAuth)
-                    ErdoVal_Dict[coAuth] = ErdoCnt
-                    ErdoCon_Dict[coAuth] = auth
+                coAuth_Lst = Auth_Dict[auth]
+                print(f"\t\t\t\t\tCo-auth. of {auth}: {coAuth_Lst}")
 
-        Erdo_Queue[0] = Erdo_Queue[1]
-        Erdo_Queue[1] = []
+                for coAuth in coAuth_Lst:
 
+                    if coAuth == "Erdos, P.":
+                        continue
+
+                    if coAuth not in ErdoVal_Dict:
+                        Erdo_Queue[1].append(coAuth)
+                        ErdoVal_Dict[coAuth] = ErdoCnt
+                        ErdoCon_Dict[coAuth] = auth
+
+            Erdo_Queue[0] = Erdo_Queue[1]
+            Erdo_Queue[1] = []
+
+            print()
         print()
-    print()
 
-    for auth in Authors:
-        if auth == "Erdos, P.":
-            continue
+        for auth in Authors:
+            if auth == "Erdos, P.":
+                continue
 
-        if auth not in ErdoVal_Dict:
-            ErdoVal_Dict[auth] = 0
-            ErdoCon_Dict[auth] = None
+            if auth not in ErdoVal_Dict:
+                ErdoVal_Dict[auth] = 0
+                ErdoCon_Dict[auth] = None
 
-    # print()
-    # print("\t\t\t\tValues:", ErdoVal_Dict)
-    # print("\t\t\t\tConnection:", ErdoCon_Dict)
-    # print()
+        # print()
+        # print("\t\t\t\tValues:", ErdoVal_Dict)
+        # print("\t\t\t\tConnection:", ErdoCon_Dict)
+        # print()
 
-    print("\tErdos authors:")
-    for auth in Names:
-        print(f"\t\t{auth:{maxAthLen}} : {ErdoVal_Dict[auth]} [{ErdoCon_Dict[auth]}]")
-    print()
-
-    for auth in ErdoVal_Dict:
-        if auth not in Names:
+        print("\tErdos authors:")
+        for auth in Names:
             print(f"\t\t{auth:{maxAthLen}} : {ErdoVal_Dict[auth]} [{ErdoCon_Dict[auth]}]")
+        print()
 
-    print("\n")
+        for auth in ErdoVal_Dict:
+            if auth not in Names:
+                print(f"\t\t{auth:{maxAthLen}} : {ErdoVal_Dict[auth]} [{ErdoCon_Dict[auth]}]")
+
+        print("\n")
