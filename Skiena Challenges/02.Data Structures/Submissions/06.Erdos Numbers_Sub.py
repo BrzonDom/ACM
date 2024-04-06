@@ -43,7 +43,7 @@ Erdos Numbers
 """
 
 Input_Str = """
-1
+2
 4 3
 Smith, M.N., Martin, G., Erdos, P.: Newtonian forms of prime factors
 Erdos, P., Reisig, W.: Stuttering in petri nets
@@ -63,146 +63,145 @@ Jablonski, T.
 """
 from sys import stdin
 
-"""     Read line with number of scenarios  """
-# ScenNum, Input_Str = Input_Str.split("\n", 2)[1:]
-ScenNum = int(stdin.readline())
+if __name__ == "__main__":
 
-for scene in range(int(ScenNum)):
+    """     Read line with number of scenarios  """
+    # ScenNum, Input_Str = Input_Str.split("\n", 2)[1:]
+    ScenNum = int(stdin.readline())
 
-    Auth_Dict = {}
+    for scene in range(int(ScenNum)):
 
-    # print(f"\n\n{scene+1}. Scene:\n")
-    print(f"Scenario {scene+1}")
+        Auth_Dict = {}
 
-    """     Read line with numbers of papers and names      """
-    # PaperNameStr, Input_Str = Input_Str.split("\n", 1)
-    PaperNameStr = stdin.readline()
+        # print(f"\n\n{scene+1}. Scene:\n")
+        print(f"Scenario {scene+1}")
 
-    """     Extract number of papers and names      """
-    PaperNum, NameNum = list(map(int, PaperNameStr.split()))
+        """     Read line with numbers of papers and names      """
+        # PaperNameStr, Input_Str = Input_Str.split("\n", 1)
+        PaperNameStr = stdin.readline()
 
-    # print(f"\tNum. of Papers:  {PaperNum}")
-    # print(f"\tNum. of Names:   {NameNum}")
-    # print()
+        """     Extract number of papers and names      """
+        PaperNum, NameNum = list(map(int, PaperNameStr.split()))
 
-    """     Extract list of papers      """
-    # Papers = list(Input_Str.split("\n", PaperNum)[:PaperNum])
-    Papers = []
-    for _ in range(PaperNum):
-        paper = stdin.readline()
-        Papers.append(paper[:-1])
-
-    """     Read line of papers     """
-    # Input_Str = Input_Str.split("\n", PaperNum)[PaperNum]
-
-    Authors = set()
-
-    # print("\tPapers:")
-    for paper in Papers:
-        # print(f"\t\t{paper}")
-
-        """     Extract authors     """
-        Auth_Str = paper.split(":")[0]
-
-        """     Split authors into a list   """
-        Auth_Lst = Auth_Str.split(", ")
-
-        """     Modify list of authors      """
-        for a in range(0, len(Auth_Lst), 2):
-
-            """     Add to set of authors       """
-            Authors.add(Auth_Lst[a] + ", " + Auth_Lst[a+1])
-            Auth_Lst[a] = Auth_Lst[a] + ", " + Auth_Lst[a+1]
-
-        Auth_Lst = Auth_Lst[0::2]
-
-        for auth in Auth_Lst:
-
-            """     Record data of authors to co-authors    """
-            for coAuth in Auth_Lst:
-                if auth == coAuth:
-                    continue
-
-                if auth not in Auth_Dict:
-                    Auth_Dict[auth] = [coAuth]
-
-                else:
-                    Auth_Dict[auth] += [coAuth]
-
-    # print()
-
-    # Names = list(Input_Str.split("\n", NameNum)[:NameNum])
-    # Input_Str = Input_Str.split("\n", NameNum)[NameNum]
-
-    Names = []
-    for _ in range(NameNum):
-        name = stdin.readline()
-        Names.append(name[:-1])
-
-    """     Print needed names      """
-    # print("\tNames:")
-    # for name in Names:
-    #     print(f"\t\t{name}")
-    # print("\n")
-
-    maxAthLen = len(max(Auth_Dict.keys(), key=len))
-
-    """     Print data of authors to co-authors     """
-    # print("\tAuthors data:")
-    # for auth in Auth_Dict:
-    #     print(f"\t\t{auth:{maxAthLen}} : {Auth_Dict[auth]}")
-    # print()
-
-    """     Data of Erdo value          """
-    ErdoVal_Dict = {}
-
-    """     Queue for Erdo value levels """
-    Erdo_Queue = [["Erdos, P."], []]
-
-    ErdoCnt = 0
-
-    # print("\t\tErdos values process:\n")
-
-    while Erdo_Queue[0]:
-
-        ErdoCnt += 1
-
-        # print(f"\t\t\t{ErdoCnt}. Erdo value")
-        # print(f"\t\t\t\tQueue: {Erdo_Queue[0]}")
-        # print("\t\t\t\tValues:", ErdoVal_Dict)
+        # print(f"\tNum. of Papers:  {PaperNum}")
+        # print(f"\tNum. of Names:   {NameNum}")
         # print()
 
-        for a, auth in enumerate(Erdo_Queue[0]):
+        """     Extract list of papers      """
+        # Papers = list(Input_Str.split("\n", PaperNum)[:PaperNum])
 
-            coAuth_Lst = Auth_Dict[auth]
-            # print(f"\t\t\t\t\tCo-auth. of {auth}: {coAuth_Lst}")
+        Papers = [stdin.readline().rstrip() for _ in range(PaperNum)]
 
-            for coAuth in coAuth_Lst:
+        """     Read line of papers     """
+        # Input_Str = Input_Str.split("\n", PaperNum)[PaperNum]
 
-                if coAuth == "Erdos, P.":
-                    continue
+        Authors = set()
 
-                if coAuth not in ErdoVal_Dict:
-                    Erdo_Queue[1].append(coAuth)
-                    ErdoVal_Dict[coAuth] = ErdoCnt
+        # print("\tPapers:")
+        for paper in Papers:
+            # print(f"\t\t{paper}")
 
-        Erdo_Queue[0] = Erdo_Queue[1]
-        Erdo_Queue[1] = []
+            """     Extract authors     """
+            Auth_Str = paper.split(":")[0]
 
-    #     print()
-    # print()
+            """     Split authors into a list   """
+            Auth_Lst = Auth_Str.split(", ")
 
-    for auth in Authors:
-        if auth == "Erdos, P.":
-            continue
+            """     Modify list of authors      """
+            for a in range(0, len(Auth_Lst), 2):
 
-        if auth not in ErdoVal_Dict:
-            ErdoVal_Dict[auth] = "infinity"
+                """     Add to set of authors       """
+                Authors.add(Auth_Lst[a] + ", " + Auth_Lst[a+1])
+                Auth_Lst[a] = Auth_Lst[a] + ", " + Auth_Lst[a+1]
 
-    # print("\tErdos authors:")
-    for auth in Names:
-        # print(f"\t\t{auth:{maxAthLen}} : {ErdoVal_Dict[auth]}")
+            Auth_Lst = Auth_Lst[0::2]
 
-        print(f"{auth} {ErdoVal_Dict[auth]}")
+            for auth in Auth_Lst:
 
-    # print("\n")
+                """     Record data of authors to co-authors    """
+                for coAuth in Auth_Lst:
+                    if auth == coAuth:
+                        continue
+
+                    if auth not in Auth_Dict:
+                        Auth_Dict[auth] = [coAuth]
+
+                    else:
+                        Auth_Dict[auth] += [coAuth]
+
+        # print()
+
+        # Names = list(Input_Str.split("\n", NameNum)[:NameNum])
+        # Input_Str = Input_Str.split("\n", NameNum)[NameNum]
+
+        Names = [stdin.readline().rstrip() for _ in range(NameNum)]
+
+        """     Print needed names      """
+        # print("\tNames:")
+        # for name in Names:
+        #     print(f"\t\t{name}")
+        # print("\n")
+
+        maxAthLen = len(max(Auth_Dict.keys(), key=len))
+
+        """     Print data of authors to co-authors     """
+        # print("\tAuthors data:")
+        # for auth in Auth_Dict:
+        #     print(f"\t\t{auth:{maxAthLen}} : {Auth_Dict[auth]}")
+        # print()
+
+        """     Data of Erdo value          """
+        ErdoVal_Dict = {}
+
+        """     Queue for Erdo value levels """
+        Erdo_Queue = [["Erdos, P."], []]
+
+        ErdoCnt = 0
+
+        # print("\t\tErdos values process:\n")
+
+        while Erdo_Queue[0]:
+
+            ErdoCnt += 1
+
+            # print(f"\t\t\t{ErdoCnt}. Erdo value")
+            # print(f"\t\t\t\tQueue: {Erdo_Queue[0]}")
+            # print("\t\t\t\tValues:", ErdoVal_Dict)
+            # print()
+
+            for a, auth in enumerate(Erdo_Queue[0]):
+
+                coAuth_Lst = Auth_Dict[auth]
+                # print(f"\t\t\t\t\tCo-auth. of {auth}: {coAuth_Lst}")
+
+                for coAuth in coAuth_Lst:
+
+                    if coAuth == "Erdos, P.":
+                        continue
+
+                    if coAuth not in ErdoVal_Dict:
+                        Erdo_Queue[1].append(coAuth)
+                        ErdoVal_Dict[coAuth] = ErdoCnt
+
+            Erdo_Queue[0] = Erdo_Queue[1]
+            Erdo_Queue[1] = []
+
+        #     print()
+        # print()
+
+        for auth in Authors:
+            if auth == "Erdos, P.":
+                continue
+
+            if auth not in ErdoVal_Dict:
+                ErdoVal_Dict[auth] = "infinity"
+
+        # print("\tErdos authors:")
+        for auth in Names:
+            # print(f"\t\t{auth:{maxAthLen}} : {ErdoVal_Dict[auth]}")
+
+            print(f"{auth} {ErdoVal_Dict[auth]}")
+
+        # print("\n")
+
+    # endLine = stdin.readline()
