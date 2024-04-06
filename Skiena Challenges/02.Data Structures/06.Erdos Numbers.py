@@ -120,6 +120,15 @@ def workPrint(Works):
     print("\n")
 
 
+def dataAuthPrint(Auth_Dict):
+
+    maxAthLen = len(max(Auth_Dict.keys(), key=len))
+
+    print("\tAuthors data:")
+    for auth in Auth_Dict:
+        print(f"\t\t{auth:{maxAthLen}} : {Auth_Dict[auth]}")
+    print()
+
 # ScenNum, PaperNameCnt, PapersNames = Input_Str.split("\n", 3)[1:]
 
 # Input_Lst = Input_Str.split("\n", 3)[1:]
@@ -229,10 +238,12 @@ if __name__ == "__main__":
         maxAthLen = len(max(Auth_Dict.keys(), key=len))
 
         """     Print data of authors to co-authors     """
-        print("\tAuthors data:")
-        for auth in Auth_Dict:
-            print(f"\t\t{auth:{maxAthLen}} : {Auth_Dict[auth]}")
-        print()
+        dataAuthPrint(Auth_Dict)
+
+        # print("\tAuthors data:")
+        # for auth in Auth_Dict:
+        #     print(f"\t\t{auth:{maxAthLen}} : {Auth_Dict[auth]}")
+        # print()
 
         maxWrkLen = len(max(Work_Dict.keys(), key=len))
 
