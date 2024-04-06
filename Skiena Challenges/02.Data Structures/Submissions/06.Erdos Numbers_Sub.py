@@ -41,9 +41,10 @@ Erdos Numbers
                 Chen, X. 2
 
 """
+from sys import stdin
 
 Input_Str = """
-1
+2
 4 3
 Smith, M.N., Martin, G., Erdos, P.: Newtonian forms of prime factors
 Erdos, P., Reisig, W.: Stuttering in petri nets
@@ -52,19 +53,29 @@ Jablonski, T., Hsueh, Z.: Selfstabilizing data structures
 Smith, M.N.
 Hsueh, Z.
 Chen, X.
+3 3
+Smith, M.N., Martin, G., Erdos, P.: Newtonian forms of prime factors
+Smith, M.N., Chen, X., Hsueh, Z.: First order derivates in structured programming
+Jablonski, T., Hsueh, Z.: Selfstabilizing data structures
+Martin, G.
+Hsueh, Z.
+Jablonski, T.
+
 """
 
 """     Read line with number of scenarios  """
-ScenNum, Input_Str = Input_Str.split("\n", 2)[1:]
+# ScenNum, Input_Str = Input_Str.split("\n", 2)[1:]
+ScenNum = int(stdin.readline())
 
 for scene in range(int(ScenNum)):
 
     Auth_Dict = {}
 
-    print(f"{scene+1}. Scene:\n")
+    print(f"\n\n{scene+1}. Scene:\n")
 
     """     Read line with numbers of papers and names      """
-    PaperNameStr, Input_Str = Input_Str.split("\n", 1)
+    # PaperNameStr, Input_Str = Input_Str.split("\n", 1)
+    PaperNameStr = stdin.readline()
 
     """     Extract number of papers and names      """
     PaperNum, NameNum = list(map(int, PaperNameStr.split()))
@@ -74,10 +85,13 @@ for scene in range(int(ScenNum)):
     print()
 
     """     Extract list of papers      """
-    Papers = list(Input_Str.split("\n", PaperNum)[:PaperNum])
+    # Papers = list(Input_Str.split("\n", PaperNum)[:PaperNum])
+    Papers = []
+    for _ in range(PaperNum):
+        Papers.append(stdin.readline()[:-1])
 
     """     Read line of papers     """
-    Input_Str = Input_Str.split("\n", PaperNum)[PaperNum]
+    # Input_Str = Input_Str.split("\n", PaperNum)[PaperNum]
 
     Authors = set()
 
@@ -115,8 +129,12 @@ for scene in range(int(ScenNum)):
 
     print()
 
-    Names = list(Input_Str.split("\n", NameNum)[:NameNum])
-    Input_Str = Input_Str.split("\n", NameNum)[NameNum]
+    # Names = list(Input_Str.split("\n", NameNum)[:NameNum])
+    # Input_Str = Input_Str.split("\n", NameNum)[NameNum]
+
+    Names = []
+    for _ in range(NameNum):
+        Names.append(stdin.readline()[:-1])
 
     """     Print needed names      """
     print("\tNames:")
