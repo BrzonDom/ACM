@@ -153,6 +153,17 @@ def valueExtract_Prt(Auth_Dict):
     return ErdoVal_Dict, ErdoCon_Dict
 
 
+def valueDefault(Authors):
+
+    for auth in Authors:
+        if auth == "Erdos, P.":
+            continue
+
+        if auth not in ErdoVal_Dict:
+            ErdoVal_Dict[auth] = 0
+            ErdoCon_Dict[auth] = None
+
+
 
 def namePrint(Names):
 
@@ -253,7 +264,6 @@ if __name__ == "__main__":
 
         ErdoVal_Dict, ErdoCon_Dict = valueExtract_Prt(Auth_Dict)
 
-
         # """     Data of Erdo value          """
         # ErdoVal_Dict = {}
         # """     Data of Erdo connection     """
@@ -296,13 +306,15 @@ if __name__ == "__main__":
         #     print()
         # print()
 
-        for auth in Authors:
-            if auth == "Erdos, P.":
-                continue
+        valueDefault(Authors)
 
-            if auth not in ErdoVal_Dict:
-                ErdoVal_Dict[auth] = 0
-                ErdoCon_Dict[auth] = None
+        # for auth in Authors:
+        #     if auth == "Erdos, P.":
+        #         continue
+        #
+        #     if auth not in ErdoVal_Dict:
+        #         ErdoVal_Dict[auth] = 0
+        #         ErdoCon_Dict[auth] = None
 
         # print()
         # print("\t\t\t\tValues:", ErdoVal_Dict)
