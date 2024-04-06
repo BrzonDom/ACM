@@ -55,6 +55,13 @@ Chen, X.
 """
 
 
+def numberExtract_Prt(PaperNameStr):
+
+    PaperNum, NameNum = list(map(int, PaperNameStr.split()))
+
+    return PaperNum, NameNum
+
+
 def paperExtract_Prt(Papers):
 
     print("\tPapers:")
