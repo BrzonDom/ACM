@@ -66,18 +66,14 @@ from sys import stdin
 if __name__ == "__main__":
 
     """     Read line with number of scenarios  """
-    # ScenNum, Input_Str = Input_Str.split("\n", 2)[1:]
     ScenNum = int(stdin.readline())
 
     for scene in range(int(ScenNum)):
-
-        Auth_Dict = {}
 
         # print(f"\n\n{scene+1}. Scene:\n")
         print(f"Scenario {scene+1}")
 
         """     Read line with numbers of papers and names      """
-        # PaperNameStr, Input_Str = Input_Str.split("\n", 1)
         PaperNameStr = stdin.readline()
 
         """     Extract number of papers and names      """
@@ -88,14 +84,10 @@ if __name__ == "__main__":
         # print()
 
         """     Extract list of papers      """
-        # Papers = list(Input_Str.split("\n", PaperNum)[:PaperNum])
-
         Papers = [stdin.readline().rstrip() for _ in range(PaperNum)]
 
-        """     Read line of papers     """
-        # Input_Str = Input_Str.split("\n", PaperNum)[PaperNum]
-
         Authors = set()
+        Auth_Dict = {}
 
         # print("\tPapers:")
         for paper in Papers:
@@ -130,9 +122,6 @@ if __name__ == "__main__":
                         Auth_Dict[auth] += [coAuth]
 
         # print()
-
-        # Names = list(Input_Str.split("\n", NameNum)[:NameNum])
-        # Input_Str = Input_Str.split("\n", NameNum)[NameNum]
 
         Names = [stdin.readline().rstrip() for _ in range(NameNum)]
 
