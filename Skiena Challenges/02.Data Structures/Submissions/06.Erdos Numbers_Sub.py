@@ -146,10 +146,6 @@ if __name__ == "__main__":
         """     Extract number of papers and names      """
         PaperNum, NameNum = list(map(int, PaperNameStr.split()))
 
-        # print(f"\tNum. of Papers:  {PaperNum}")
-        # print(f"\tNum. of Names:   {NameNum}")
-        # print()
-
         """     Extract list of papers      """
         Papers = [stdin.readline().rstrip() for _ in range(PaperNum)]
 
@@ -158,74 +154,13 @@ if __name__ == "__main__":
 
         authData = extractAuth(Papers)
 
-        for auth in authData:
-            print(f"{auth} : {authData[auth]}")
-        print()
-
         valueData = valueAuth(authData)
 
-        for auth in authData:
+        for name in Names:
 
-            if auth not in valueData:
-                print(f"{auth} : 0")
+            if name not in valueData:
+                print(f"{name} infinity")
 
             else:
-                print(f"{auth} : {valueData[auth]}")
+                print(f"{name} {valueData[name]}")
 
-        quit()
-
-        """     Data of Erdo value          """
-        ErdoVal_Dict = {}
-
-        """     Queue for Erdo value levels """
-        Erdo_Queue = [["Erdos, P."], []]
-
-        ErdoCnt = 0
-
-        # print("\t\tErdos values process:\n")
-
-        while Erdo_Queue[0]:
-
-            ErdoCnt += 1
-
-            # print(f"\t\t\t{ErdoCnt}. Erdo value")
-            # print(f"\t\t\t\tQueue: {Erdo_Queue[0]}")
-            # print("\t\t\t\tValues:", ErdoVal_Dict)
-            # print()
-
-            for a, auth in enumerate(Erdo_Queue[0]):
-
-                coAuth_Lst = Auth_Dict[auth]
-                # print(f"\t\t\t\t\tCo-auth. of {auth}: {coAuth_Lst}")
-
-                for coAuth in coAuth_Lst:
-
-                    if coAuth == "Erdos, P.":
-                        continue
-
-                    if coAuth not in ErdoVal_Dict:
-                        Erdo_Queue[1].append(coAuth)
-                        ErdoVal_Dict[coAuth] = ErdoCnt
-
-            Erdo_Queue[0] = Erdo_Queue[1]
-            Erdo_Queue[1] = []
-
-        #     print()
-        # print()
-
-        for auth in Authors:
-            if auth == "Erdos, P.":
-                continue
-
-            if auth not in ErdoVal_Dict:
-                ErdoVal_Dict[auth] = "infinity"
-
-        # print("\tErdos authors:")
-        for auth in Names:
-            # print(f"\t\t{auth:{maxAthLen}} : {ErdoVal_Dict[auth]}")
-
-            print(f"{auth} {ErdoVal_Dict[auth]}")
-
-        # print("\n")
-
-    # endLine = stdin.readline()
