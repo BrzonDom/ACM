@@ -64,6 +64,16 @@ Jablonski, T.
 from sys import stdin
 
 
+def readInput():
+
+    PaperNum, NameNum = list(map(int, stdin.readline().split()))
+
+    Papers = [stdin.readline() for _ in range(PaperNum)]
+    Names = [stdin.readline().rstrip() for _ in range(NameNum)]
+
+    return Papers, Names
+
+
 def extractAuth(Papers):
 
     authData = {}
@@ -140,17 +150,7 @@ if __name__ == "__main__":
         # print(f"\n\n{scene+1}. Scene:\n")
         print(f"Scenario {scene+1}")
 
-        """     Read line with numbers of papers and names      """
-        PaperNameStr = stdin.readline()
-
-        """     Extract number of papers and names      """
-        PaperNum, NameNum = list(map(int, PaperNameStr.split()))
-
-        """     Extract list of papers      """
-        Papers = [stdin.readline().rstrip() for _ in range(PaperNum)]
-
-        """     Extract list of names       """
-        Names = [stdin.readline().rstrip() for _ in range(NameNum)]
+        Papers, Names = readInput()
 
         authData = extractAuth(Papers)
 
