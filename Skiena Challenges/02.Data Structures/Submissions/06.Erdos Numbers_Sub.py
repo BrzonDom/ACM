@@ -99,6 +99,37 @@ def extractAuth(Papers):
     return authData
 
 
+def valueAuth(authData):
+
+    valueData = {}
+
+    curQueue = ["Erdos, P."]
+    nxtQueue = []
+    value = 0
+
+    while curQueue:
+
+        value += 1
+
+        for auth in curQueue:
+
+            coAuthLst = authData[auth]
+
+            for coAuth in coAuthLst:
+
+                if coAuth == "Erdos, P.":
+                    continue
+
+                if coAuth not in valueData:
+
+                    valueData[coAuth] = value
+                    nxtQueue.append(coAuth)
+
+        curQueue, nxtQueue = nxtQueue, []
+
+    return valueData
+
+
 if __name__ == "__main__":
 
     """     Read line with number of scenarios  """
@@ -129,56 +160,19 @@ if __name__ == "__main__":
 
         for auth in authData:
             print(f"{auth} : {authData[auth]}")
+        print()
+
+        valueData = valueAuth(authData)
+
+        for auth in authData:
+
+            if auth not in valueData:
+                print(f"{auth} : 0")
+
+            else:
+                print(f"{auth} : {valueData[auth]}")
 
         quit()
-
-        # print("\tPapers:")
-        for paper in Papers:
-            # print(f"\t\t{paper}")
-
-            """     Extract authors     """
-            Auth_Str = paper.split(":")[0]
-
-            """     Split authors into a list   """
-            Auth_Lst = Auth_Str.split(", ")
-
-            """     Modify list of authors      """
-            for a in range(0, len(Auth_Lst), 2):
-
-                """     Add to set of authors       """
-                Authors.add(Auth_Lst[a] + ", " + Auth_Lst[a+1])
-                Auth_Lst[a] = Auth_Lst[a] + ", " + Auth_Lst[a+1]
-
-            Auth_Lst = Auth_Lst[0::2]
-
-            for auth in Auth_Lst:
-
-                """     Record data of authors to co-authors    """
-                for coAuth in Auth_Lst:
-                    if auth == coAuth:
-                        continue
-
-                    if auth not in Auth_Dict:
-                        Auth_Dict[auth] = [coAuth]
-
-                    else:
-                        Auth_Dict[auth] += [coAuth]
-
-        # print()
-
-        """     Print needed names      """
-        # print("\tNames:")
-        # for name in Names:
-        #     print(f"\t\t{name}")
-        # print("\n")
-
-        maxAthLen = len(max(Auth_Dict.keys(), key=len))
-
-        """     Print data of authors to co-authors     """
-        # print("\tAuthors data:")
-        # for auth in Auth_Dict:
-        #     print(f"\t\t{auth:{maxAthLen}} : {Auth_Dict[auth]}")
-        # print()
 
         """     Data of Erdo value          """
         ErdoVal_Dict = {}
