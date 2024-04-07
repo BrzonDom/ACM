@@ -63,6 +63,42 @@ Jablonski, T.
 """
 from sys import stdin
 
+
+def extractAuth(Papers):
+
+    authData = {}
+
+    for paper in Papers:
+
+        """     Extract string of authors     """
+        authStr = paper.split(":")[0]
+
+        """     Split string of authors into a list   """
+        authLst = authStr.split(", ")
+
+        """     Modify list of authors      """
+        for a in range(0, len(authLst), 2):
+            authLst[a] = authLst[a] + ", " + authLst[a+1]
+
+        authLst = authLst[::2]
+
+        for auth in authLst:
+
+            """     Record data of authors to co-authors    """
+            for coAuth in authLst:
+
+                if auth == coAuth:
+                    continue
+
+                if auth not in authData:
+                    authData[auth] = [coAuth]
+
+                else:
+                    authData[auth] += [coAuth]
+
+    return authData
+
+
 if __name__ == "__main__":
 
     """     Read line with number of scenarios  """
@@ -86,8 +122,15 @@ if __name__ == "__main__":
         """     Extract list of papers      """
         Papers = [stdin.readline().rstrip() for _ in range(PaperNum)]
 
-        Authors = set()
-        Auth_Dict = {}
+        """     Extract list of names       """
+        Names = [stdin.readline().rstrip() for _ in range(NameNum)]
+
+        authData = extractAuth(Papers)
+
+        for auth in authData:
+            print(f"{auth} : {authData[auth]}")
+
+        quit()
 
         # print("\tPapers:")
         for paper in Papers:
@@ -122,8 +165,6 @@ if __name__ == "__main__":
                         Auth_Dict[auth] += [coAuth]
 
         # print()
-
-        Names = [stdin.readline().rstrip() for _ in range(NameNum)]
 
         """     Print needed names      """
         # print("\tNames:")
