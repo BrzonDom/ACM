@@ -34,38 +34,51 @@ decodeDict = {'1': '`', '2': '1', '3': '2', '4': '3', '5': '4', '6': '5',
               ',': 'M', '.': ',', '/': '.'
               }
 
+if __name__ == "__main__":
 
-print(f"Input: {InputStr}")
-print()
-
-"""
-row1 = "`1234567890-="
-row2 = "QWERTYUIOP[]\\"
-row3 = "ASDFGHJKL;'"
-row4 = "ZXCVBNM,./"
-
-rows = [row1, row2, row3, row4]
-
-for r, row in enumerate(rows):
-    print(f"{r+1}.Row ({len(row)}): {row}")
-print()
-
-for row in rows:
-    for c, char in enumerate(row[1:]):
-        print(f"\'{char}\': \'{row[c]}\'", end=", ")
+    print(f"Input: {InputStr}")
     print()
-# """
 
-# print(f"\tEncoded string: {InputStr}")
+    """
+    row1 = "`1234567890-="
+    row2 = "QWERTYUIOP[]\\"
+    row3 = "ASDFGHJKL;'"
+    row4 = "ZXCVBNM,./"
+    
+    rows = [row1, row2, row3, row4]
+    
+    for r, row in enumerate(rows):
+        print(f"{r+1}.Row ({len(row)}): {row}")
+    print()
+    
+    for row in rows:
+        for c, char in enumerate(row[1:]):
+            print(f"\'{char}\': \'{row[c]}\'", end=", ")
+        print()
+    # """
 
-OutputStr = ""
+    # print(f"\tEncoded string: {InputStr}")
 
-for char in InputStr:
-    if char in decodeDict:
-        OutputStr += decodeDict[char]
-    else:
-        OutputStr += char
+    OutputStr = ""
 
-print(f"\tEncoded string: {InputStr}")
-print(f"\tDecoded string: {OutputStr}")
-print()
+    for char in InputStr:
+        if char in decodeDict:
+            OutputStr += decodeDict[char]
+        else:
+            OutputStr += char
+
+    print(f"\tEncoded string: {InputStr}")
+    print(f"\tDecoded string: {OutputStr}")
+    print()
+
+
+"""__Output__"""
+"""
+Input: O S, GOMR YPFSU/
+
+	Encoded string: O S, GOMR YPFSU/
+	Decoded string: I AM FINE TODAY.
+
+
+Process finished with exit code 0
+"""
