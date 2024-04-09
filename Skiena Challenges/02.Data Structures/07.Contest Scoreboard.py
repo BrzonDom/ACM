@@ -113,13 +113,15 @@ def makeStats(Queue):
 
 def showStats(stats):
 
-    for player in stats:
+    Players = sorted(list(stats.keys()))
+
+    for player in Players:
         print(f"\t\tPlayer: {player}\n")
         print(f"\t\t\tSolved problems: {stats[player]['Solved']}")
         print(f"\t\t\tTime:            {stats[player]['Time']}")
         print(f"\t\t\tPenalty:         {stats[player]['Penalty']}")
         print(f"\t\t\tTotal time:      {stats[player]['Time'] + stats[player]['Penalty']}")
-
+        print("\n")
 
 
 if __name__ == "__main__":
