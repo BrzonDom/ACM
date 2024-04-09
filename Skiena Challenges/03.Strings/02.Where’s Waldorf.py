@@ -55,3 +55,27 @@ Where’s Waldorf
                 7 8
 
 """
+
+InputRaw_Str = """
+1
+
+8 11
+abcDEFGhigg
+hEbkWalDork
+FtyAwaldORm
+FtsimrLqsrc
+byoArBeDeyv
+Klcbqwikomk
+strEBGadhrb
+yUiqlxcnBjf
+4
+Waldorf
+Bambi
+Betty
+Dagbert
+"""
+
+InputRaw_Str = InputRaw_Str[1:-1]
+
+print("Input:")
+print(InputRaw_Str)
