@@ -97,11 +97,11 @@ for case in range(caseNum):
     print()
 
     Grid = [["" for c in range(ColNum)] for r in range(RowNum)]
-    # Grid = np.empty((RowNum, ColNum))
 
-    # print(Grid)
-
-    # quit()
+    print("\t\t\t\t", end="")
+    for col in range(ColNum):
+        print(f"{col+1:<5}", end="")
+    print()
 
     for row in range(RowNum):
         line = InputStr_Lst.pop(0)
@@ -110,7 +110,7 @@ for case in range(caseNum):
 
             Grid[row][col] = line[col].upper()
 
-        print("\t\t\t", Grid[row])
+        print(f"\t\t\t{row+1}", Grid[row])
     print("\n")
 
     wordNum = int(InputStr_Lst.pop(0))
@@ -140,5 +140,10 @@ for case in range(caseNum):
 
     for start in strtIndx:
         print(f"\t\t{start} : {strtIndx[start]}")
+    print()
+
+    for word in Words:
+
+
 
     print()
