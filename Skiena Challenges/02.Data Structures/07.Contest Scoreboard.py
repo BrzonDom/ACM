@@ -84,6 +84,33 @@ def readQueue(InputLst):
     return Input
 
 
+def makeStats(Queue):
+
+    stats = {}
+
+    for submit in Queue:
+        submit_lst = list(submit.split())
+
+        player = int(submit_lst[0])
+        problem = int(submit_lst[1])
+        time = int(submit_lst[2])
+        state = submit_lst[3]
+
+        if player not in stats:
+            stats[player] = {"Solved": [],
+                             "Time": 0,
+                             "Penalty": 0}
+
+        if state == 'C':
+            stats[player]["Solved"] += [problem]
+            stats[player]["Time"] += time
+
+        elif state == 'I' and problem not in stats[player]["Solved"]:
+            stats[player]["Penalty"] += 20
+
+    return stats
+
+
 if __name__ == "__main__":
 
     InputLst = list(InputRaw_Str.split("\n"))
@@ -113,27 +140,27 @@ if __name__ == "__main__":
         print(f"\t\tInput: {Queue}")
         print()
 
-        stats = {}
+        stats = makeStats(Queue)
 
-        for submit in Queue:
-            submit_lst = list(submit.split())
-
-            player = int(submit_lst[0])
-            problem = int(submit_lst[1])
-            time = int(submit_lst[2])
-            state = submit_lst[3]
-
-            if player not in stats:
-                stats[player] = {"Solved"  : [],
-                                 "Time"    : 0,
-                                 "Penalty" : 0}
-
-            if state == 'C':
-                stats[player]["Solved"] += [problem]
-                stats[player]["Time"] += time
-
-            elif state == 'I' and problem not in stats[player]["Solved"]:
-                stats[player]["Penalty"] += 20
+        # for submit in Queue:
+        #     submit_lst = list(submit.split())
+        #
+        #     player = int(submit_lst[0])
+        #     problem = int(submit_lst[1])
+        #     time = int(submit_lst[2])
+        #     state = submit_lst[3]
+        #
+        #     if player not in stats:
+        #         stats[player] = {"Solved"  : [],
+        #                          "Time"    : 0,
+        #                          "Penalty" : 0}
+        #
+        #     if state == 'C':
+        #         stats[player]["Solved"] += [problem]
+        #         stats[player]["Time"] += time
+        #
+        #     elif state == 'I' and problem not in stats[player]["Solved"]:
+        #         stats[player]["Penalty"] += 20
 
 
         for player in stats:
