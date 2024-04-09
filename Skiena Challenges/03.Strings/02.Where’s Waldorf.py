@@ -104,7 +104,7 @@ for case in range(caseNum):
 
         for col in range(ColNum):
 
-            Grid[row][col] = line[col]
+            Grid[row][col] = line[col].upper()
 
         print("\t\t\t", Grid[row])
     print("\n")
@@ -117,6 +117,7 @@ for case in range(caseNum):
 
     for w in range(wordNum):
 
-        Words.append(InputStr_Lst.pop(0))
+        Words.append(InputStr_Lst.pop(0).upper())
         print("\t\t\t", Words[-1])
+    print("\n")
     print()
