@@ -113,6 +113,10 @@ def getStart(RowNum, ColNum, Grid, strtChar):
                 if Grid[row][col] == char:
                     strtIndx[char].append((row, col))
 
+    for strt in strtIndx:
+        print(f"\t\t{strt} : {strtIndx[strt]}")
+    print("\n")
+
     return strtIndx
 
 
@@ -195,9 +199,10 @@ if __name__ == "__main__":
         #             if Grid[row][col] == char:
         #                 strtIndx[char].append((row, col))
 
-        for start in strtIndx:
-            print(f"\t\t{start} : {strtIndx[start]}")
-        print()
+        # for strt in strtIndx:
+        #     print(f"\t\t{strt} : {strtIndx[strt]}")
+        # print()
+
 
         for word in Words:
             for start in strtIndx[word[0]]:
@@ -378,9 +383,10 @@ Cases: 1
 			 DAGBERT
 
 
-		D : [(0, 3), (1, 7), (2, 7), (4, 7), (6, 7)]
 		W : [(1, 4), (2, 4), (5, 5)]
 		B : [(0, 1), (1, 2), (4, 0), (4, 5), (5, 3), (6, 4), (6, 10), (7, 8)]
+		D : [(0, 3), (1, 7), (2, 7), (4, 7), (6, 7)]
+
 
 		[1, 4] WALDORF (7)
 			( 1, 0) : [  7,   4]
