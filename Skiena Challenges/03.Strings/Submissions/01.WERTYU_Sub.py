@@ -41,24 +41,24 @@ if __name__ == "__main__":
     InputStr = ""
 
     for line in sys.stdin:
-        InputStr = line
+        InputStr += line
 
     # print(f"Input: {InputStr}")
     # print()
 
-        OutputStr = ""
+    OutputStr = ""
 
-        for char in InputStr:
-            if char in decodeDict:
-                OutputStr += decodeDict[char]
-            else:
-                OutputStr += char
+    for char in InputStr:
+        if char in decodeDict:
+            OutputStr += decodeDict[char]
+        else:
+            OutputStr += char
 
-        # print(f"\tEncoded string: {InputStr}")
-        # print(f"\tDecoded string: {OutputStr}")
+    # print(f"\tEncoded string: {InputStr}")
+    # print(f"\tDecoded string: {OutputStr}")
 
-        print(OutputStr, end="")
-        # print()
+    print(OutputStr, end="")
+    # print()
 
 """__Output__"""
 """
