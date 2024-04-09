@@ -149,28 +149,36 @@ for case in range(caseNum):
             strRow, strCol = start
 
             print(f"\t\t[{strRow}, {strCol}] {word} ({len(word)})")
-            print()
+            # print()
             # print(f"\t\t\tTop: {bordTop}")
 
             bordRight = (strCol + len(word) - 1) < ColNum
             bordDown = (strRow + len(word) - 1) < RowNum
             bordLeft = (strCol - (len(word) - 1)) >= 0
-            bordTop = (strCol - (len(word) - 1)) >= 0
+            bordTop = (strRow - (len(word) - 1)) >= 0
 
-            print(f"\t\t\tRight: {bordRight}")
-            print(f"\t\t\tDown: {bordDown}")
-            print(f"\t\t\tLeft: {bordLeft}")
-            print(f"\t\t\tTop: {bordTop}")
-            print()
+            # print(f"\t\t\tRight: {bordRight}")
+            # print(f"\t\t\tDown: {bordDown}")
+            # print(f"\t\t\tLeft: {bordLeft}")
+            # print(f"\t\t\tTop: {bordTop}")
+            # print()
 
-            print(f"\t\t\t( 1, 0) : [{strRow + len(word) - 1:3}, {strCol:3}]")
-            print(f"\t\t\t( 1, 1) : [{strRow + len(word) - 1:3}, {strCol + len(word) - 1:3}]")
-            print(f"\t\t\t( 0, 1) : [{strRow:3}, {strCol + len(word) - 1:3}]")
-            print(f"\t\t\t(-1, 1) : [{strRow - (len(word) - 1):3}, {strCol + len(word) - 1:3}]")
-            print(f"\t\t\t(-1, 0) : [{strRow - (len(word) - 1):3}, {strCol:3}]")
-            print(f"\t\t\t(-1,-1) : [{strRow - (len(word) - 1):3}, {strCol - (len(word) - 1):3}]")
-            print(f"\t\t\t( 0,-1) : [{strRow:3}, {strCol - (len(word) - 1):3}]")
-            print(f"\t\t\t( 1,-1) : [{strRow + len(word) - 1:3}, {strCol - (len(word) - 1):3}]")
+            if bordDown:
+                print(f"\t\t\t( 1, 0) : [{strRow + len(word) - 1:3}, {strCol:3}]")
+                if bordRight:
+                    print(f"\t\t\t( 1, 1) : [{strRow + len(word) - 1:3}, {strCol + len(word) - 1:3}]")
+            if bordRight:
+                print(f"\t\t\t( 0, 1) : [{strRow:3}, {strCol + len(word) - 1:3}]")
+                if bordTop:
+                    print(f"\t\t\t(-1, 1) : [{strRow - (len(word) - 1):3}, {strCol + len(word) - 1:3}]")
+            if bordTop:
+                print(f"\t\t\t(-1, 0) : [{strRow - (len(word) - 1):3}, {strCol:3}]")
+                if bordLeft:
+                    print(f"\t\t\t(-1,-1) : [{strRow - (len(word) - 1):3}, {strCol - (len(word) - 1):3}]")
+            if bordLeft:
+                print(f"\t\t\t( 0,-1) : [{strRow:3}, {strCol - (len(word) - 1):3}]")
+                if bordDown:
+                    print(f"\t\t\t( 1,-1) : [{strRow + len(word) - 1:3}, {strCol - (len(word) - 1):3}]")
             print()
 
 
@@ -209,388 +217,123 @@ Cases: 1
 		D : [(0, 3), (1, 7), (2, 7), (4, 7), (6, 7)]
 
 		[1, 4] WALDORF (7)
-
-			Right: True
-			Down: True
-			Left: False
-			Top: False
-
 			( 1, 0) : [  7,   4]
 			( 1, 1) : [  7,  10]
 			( 0, 1) : [  1,  10]
-			(-1, 1) : [ -5,  10]
-			(-1, 0) : [ -5,   4]
-			(-1,-1) : [ -5,  -2]
-			( 0,-1) : [  1,  -2]
-			( 1,-1) : [  7,  -2]
 
 		[2, 4] WALDORF (7)
-
-			Right: True
-			Down: False
-			Left: False
-			Top: False
-
-			( 1, 0) : [  8,   4]
-			( 1, 1) : [  8,  10]
 			( 0, 1) : [  2,  10]
-			(-1, 1) : [ -4,  10]
-			(-1, 0) : [ -4,   4]
-			(-1,-1) : [ -4,  -2]
-			( 0,-1) : [  2,  -2]
-			( 1,-1) : [  8,  -2]
 
 		[5, 5] WALDORF (7)
 
-			Right: False
-			Down: False
-			Left: False
-			Top: False
-
-			( 1, 0) : [ 11,   5]
-			( 1, 1) : [ 11,  11]
-			( 0, 1) : [  5,  11]
-			(-1, 1) : [ -1,  11]
-			(-1, 0) : [ -1,   5]
-			(-1,-1) : [ -1,  -1]
-			( 0,-1) : [  5,  -1]
-			( 1,-1) : [ 11,  -1]
-
 		[0, 1] BAMBI (5)
-
-			Right: True
-			Down: True
-			Left: False
-			Top: False
-
 			( 1, 0) : [  4,   1]
 			( 1, 1) : [  4,   5]
 			( 0, 1) : [  0,   5]
-			(-1, 1) : [ -4,   5]
-			(-1, 0) : [ -4,   1]
-			(-1,-1) : [ -4,  -3]
-			( 0,-1) : [  0,  -3]
-			( 1,-1) : [  4,  -3]
 
 		[1, 2] BAMBI (5)
-
-			Right: True
-			Down: True
-			Left: False
-			Top: False
-
 			( 1, 0) : [  5,   2]
 			( 1, 1) : [  5,   6]
 			( 0, 1) : [  1,   6]
-			(-1, 1) : [ -3,   6]
-			(-1, 0) : [ -3,   2]
-			(-1,-1) : [ -3,  -2]
-			( 0,-1) : [  1,  -2]
-			( 1,-1) : [  5,  -2]
 
 		[4, 0] BAMBI (5)
-
-			Right: True
-			Down: False
-			Left: False
-			Top: False
-
-			( 1, 0) : [  8,   0]
-			( 1, 1) : [  8,   4]
 			( 0, 1) : [  4,   4]
 			(-1, 1) : [  0,   4]
 			(-1, 0) : [  0,   0]
-			(-1,-1) : [  0,  -4]
-			( 0,-1) : [  4,  -4]
-			( 1,-1) : [  8,  -4]
 
 		[4, 5] BAMBI (5)
-
-			Right: True
-			Down: False
-			Left: True
-			Top: True
-
-			( 1, 0) : [  8,   5]
-			( 1, 1) : [  8,   9]
 			( 0, 1) : [  4,   9]
 			(-1, 1) : [  0,   9]
 			(-1, 0) : [  0,   5]
 			(-1,-1) : [  0,   1]
 			( 0,-1) : [  4,   1]
-			( 1,-1) : [  8,   1]
 
 		[5, 3] BAMBI (5)
-
-			Right: True
-			Down: False
-			Left: False
-			Top: False
-
-			( 1, 0) : [  9,   3]
-			( 1, 1) : [  9,   7]
 			( 0, 1) : [  5,   7]
 			(-1, 1) : [  1,   7]
 			(-1, 0) : [  1,   3]
-			(-1,-1) : [  1,  -1]
-			( 0,-1) : [  5,  -1]
-			( 1,-1) : [  9,  -1]
 
 		[6, 4] BAMBI (5)
-
-			Right: True
-			Down: False
-			Left: True
-			Top: True
-
-			( 1, 0) : [ 10,   4]
-			( 1, 1) : [ 10,   8]
 			( 0, 1) : [  6,   8]
 			(-1, 1) : [  2,   8]
 			(-1, 0) : [  2,   4]
 			(-1,-1) : [  2,   0]
 			( 0,-1) : [  6,   0]
-			( 1,-1) : [ 10,   0]
 
 		[6, 10] BAMBI (5)
-
-			Right: False
-			Down: False
-			Left: True
-			Top: True
-
-			( 1, 0) : [ 10,  10]
-			( 1, 1) : [ 10,  14]
-			( 0, 1) : [  6,  14]
-			(-1, 1) : [  2,  14]
 			(-1, 0) : [  2,  10]
 			(-1,-1) : [  2,   6]
 			( 0,-1) : [  6,   6]
-			( 1,-1) : [ 10,   6]
 
 		[7, 8] BAMBI (5)
-
-			Right: False
-			Down: False
-			Left: True
-			Top: True
-
-			( 1, 0) : [ 11,   8]
-			( 1, 1) : [ 11,  12]
-			( 0, 1) : [  7,  12]
-			(-1, 1) : [  3,  12]
 			(-1, 0) : [  3,   8]
 			(-1,-1) : [  3,   4]
 			( 0,-1) : [  7,   4]
-			( 1,-1) : [ 11,   4]
 
 		[0, 1] BETTY (5)
-
-			Right: True
-			Down: True
-			Left: False
-			Top: False
-
 			( 1, 0) : [  4,   1]
 			( 1, 1) : [  4,   5]
 			( 0, 1) : [  0,   5]
-			(-1, 1) : [ -4,   5]
-			(-1, 0) : [ -4,   1]
-			(-1,-1) : [ -4,  -3]
-			( 0,-1) : [  0,  -3]
-			( 1,-1) : [  4,  -3]
 
 		[1, 2] BETTY (5)
-
-			Right: True
-			Down: True
-			Left: False
-			Top: False
-
 			( 1, 0) : [  5,   2]
 			( 1, 1) : [  5,   6]
 			( 0, 1) : [  1,   6]
-			(-1, 1) : [ -3,   6]
-			(-1, 0) : [ -3,   2]
-			(-1,-1) : [ -3,  -2]
-			( 0,-1) : [  1,  -2]
-			( 1,-1) : [  5,  -2]
 
 		[4, 0] BETTY (5)
-
-			Right: True
-			Down: False
-			Left: False
-			Top: False
-
-			( 1, 0) : [  8,   0]
-			( 1, 1) : [  8,   4]
 			( 0, 1) : [  4,   4]
 			(-1, 1) : [  0,   4]
 			(-1, 0) : [  0,   0]
-			(-1,-1) : [  0,  -4]
-			( 0,-1) : [  4,  -4]
-			( 1,-1) : [  8,  -4]
 
 		[4, 5] BETTY (5)
-
-			Right: True
-			Down: False
-			Left: True
-			Top: True
-
-			( 1, 0) : [  8,   5]
-			( 1, 1) : [  8,   9]
 			( 0, 1) : [  4,   9]
 			(-1, 1) : [  0,   9]
 			(-1, 0) : [  0,   5]
 			(-1,-1) : [  0,   1]
 			( 0,-1) : [  4,   1]
-			( 1,-1) : [  8,   1]
 
 		[5, 3] BETTY (5)
-
-			Right: True
-			Down: False
-			Left: False
-			Top: False
-
-			( 1, 0) : [  9,   3]
-			( 1, 1) : [  9,   7]
 			( 0, 1) : [  5,   7]
 			(-1, 1) : [  1,   7]
 			(-1, 0) : [  1,   3]
-			(-1,-1) : [  1,  -1]
-			( 0,-1) : [  5,  -1]
-			( 1,-1) : [  9,  -1]
 
 		[6, 4] BETTY (5)
-
-			Right: True
-			Down: False
-			Left: True
-			Top: True
-
-			( 1, 0) : [ 10,   4]
-			( 1, 1) : [ 10,   8]
 			( 0, 1) : [  6,   8]
 			(-1, 1) : [  2,   8]
 			(-1, 0) : [  2,   4]
 			(-1,-1) : [  2,   0]
 			( 0,-1) : [  6,   0]
-			( 1,-1) : [ 10,   0]
 
 		[6, 10] BETTY (5)
-
-			Right: False
-			Down: False
-			Left: True
-			Top: True
-
-			( 1, 0) : [ 10,  10]
-			( 1, 1) : [ 10,  14]
-			( 0, 1) : [  6,  14]
-			(-1, 1) : [  2,  14]
 			(-1, 0) : [  2,  10]
 			(-1,-1) : [  2,   6]
 			( 0,-1) : [  6,   6]
-			( 1,-1) : [ 10,   6]
 
 		[7, 8] BETTY (5)
-
-			Right: False
-			Down: False
-			Left: True
-			Top: True
-
-			( 1, 0) : [ 11,   8]
-			( 1, 1) : [ 11,  12]
-			( 0, 1) : [  7,  12]
-			(-1, 1) : [  3,  12]
 			(-1, 0) : [  3,   8]
 			(-1,-1) : [  3,   4]
 			( 0,-1) : [  7,   4]
-			( 1,-1) : [ 11,   4]
 
 		[0, 3] DAGBERT (7)
-
-			Right: True
-			Down: True
-			Left: False
-			Top: False
-
 			( 1, 0) : [  6,   3]
 			( 1, 1) : [  6,   9]
 			( 0, 1) : [  0,   9]
-			(-1, 1) : [ -6,   9]
-			(-1, 0) : [ -6,   3]
-			(-1,-1) : [ -6,  -3]
-			( 0,-1) : [  0,  -3]
-			( 1,-1) : [  6,  -3]
 
 		[1, 7] DAGBERT (7)
-
-			Right: False
-			Down: True
-			Left: True
-			Top: True
-
 			( 1, 0) : [  7,   7]
-			( 1, 1) : [  7,  13]
-			( 0, 1) : [  1,  13]
-			(-1, 1) : [ -5,  13]
-			(-1, 0) : [ -5,   7]
-			(-1,-1) : [ -5,   1]
 			( 0,-1) : [  1,   1]
 			( 1,-1) : [  7,   1]
 
 		[2, 7] DAGBERT (7)
-
-			Right: False
-			Down: False
-			Left: True
-			Top: True
-
-			( 1, 0) : [  8,   7]
-			( 1, 1) : [  8,  13]
-			( 0, 1) : [  2,  13]
-			(-1, 1) : [ -4,  13]
-			(-1, 0) : [ -4,   7]
-			(-1,-1) : [ -4,   1]
 			( 0,-1) : [  2,   1]
-			( 1,-1) : [  8,   1]
 
 		[4, 7] DAGBERT (7)
-
-			Right: False
-			Down: False
-			Left: True
-			Top: True
-
-			( 1, 0) : [ 10,   7]
-			( 1, 1) : [ 10,  13]
-			( 0, 1) : [  4,  13]
-			(-1, 1) : [ -2,  13]
-			(-1, 0) : [ -2,   7]
-			(-1,-1) : [ -2,   1]
 			( 0,-1) : [  4,   1]
-			( 1,-1) : [ 10,   1]
 
 		[6, 7] DAGBERT (7)
-
-			Right: False
-			Down: False
-			Left: True
-			Top: True
-
-			( 1, 0) : [ 12,   7]
-			( 1, 1) : [ 12,  13]
-			( 0, 1) : [  6,  13]
-			(-1, 1) : [  0,  13]
 			(-1, 0) : [  0,   7]
 			(-1,-1) : [  0,   1]
 			( 0,-1) : [  6,   1]
-			( 1,-1) : [ 12,   1]
 
 
 
