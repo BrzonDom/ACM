@@ -111,6 +111,17 @@ def makeStats(Queue):
     return stats
 
 
+def showStats(stats):
+
+    for player in stats:
+        print(f"\t\tPlayer: {player}\n")
+        print(f"\t\t\tSolved problems: {stats[player]['Solved']}")
+        print(f"\t\t\tTime:            {stats[player]['Time']}")
+        print(f"\t\t\tPenalty:         {stats[player]['Penalty']}")
+        print(f"\t\t\tTotal time:      {stats[player]['Time'] + stats[player]['Penalty']}")
+
+
+
 if __name__ == "__main__":
 
     InputLst = list(InputRaw_Str.split("\n"))
@@ -162,11 +173,14 @@ if __name__ == "__main__":
         #     elif state == 'I' and problem not in stats[player]["Solved"]:
         #         stats[player]["Penalty"] += 20
 
+        showStats(stats)
 
-        for player in stats:
-            print(f"\t\tPlayer: {player}\n")
-            print(f"\t\t\tSolved problems: {stats[player]['Solved']}")
-            print(f"\t\t\tTime:            {stats[player]['Time']}")
-            print(f"\t\t\tPenalty:         {stats[player]['Penalty']}")
-            print(f"\t\t\tTotal time:      {stats[player]['Time'] + stats[player]['Penalty']}")
-            print("\n")
+        # for player in stats:
+        #     print(f"\t\tPlayer: {player}\n")
+        #     print(f"\t\t\tSolved problems: {stats[player]['Solved']}")
+        #     print(f"\t\t\tTime:            {stats[player]['Time']}")
+        #     print(f"\t\t\tPenalty:         {stats[player]['Penalty']}")
+        #     print(f"\t\t\tTotal time:      {stats[player]['Time'] + stats[player]['Penalty']}")
+        #     print("\n")
+
+        print("\n")
