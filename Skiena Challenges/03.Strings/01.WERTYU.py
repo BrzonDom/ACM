@@ -19,7 +19,7 @@ WERTYU
 
 """
 
-InputRaw_Str = "O S, GOMR YPFSU/"
+InputStr = "O S, GOMR YPFSU/"
 
 decodeDict = {'1': '`', '2': '1', '3': '2', '4': '3', '5': '4', '6': '5',
               '7': '6', '8': '7', '9': '8', '0': '9', '-': '0', '=': '-',
@@ -35,9 +35,10 @@ decodeDict = {'1': '`', '2': '1', '3': '2', '4': '3', '5': '4', '6': '5',
               }
 
 
-print(f"Input: {InputRaw_Str}")
+print(f"Input: {InputStr}")
 print()
 
+"""
 row1 = "`1234567890-="
 row2 = "QWERTYUIOP[]\\"
 row3 = "ASDFGHJKL;'"
@@ -53,13 +54,18 @@ for row in rows:
     for c, char in enumerate(row[1:]):
         print(f"\'{char}\': \'{row[c]}\'", end=", ")
     print()
+# """
 
-outputStr = ""
+# print(f"\tEncoded string: {InputStr}")
 
-for char in InputRaw_Str:
+OutputStr = ""
+
+for char in InputStr:
     if char in decodeDict:
-        outputStr += decodeDict[char]
+        OutputStr += decodeDict[char]
     else:
-        outputStr += char
+        OutputStr += char
 
-print(outputStr)
+print(f"\tEncoded string: {InputStr}")
+print(f"\tDecoded string: {OutputStr}")
+print()
