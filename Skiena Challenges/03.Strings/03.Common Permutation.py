@@ -53,5 +53,19 @@ print()
 words = ["", ""]
 
 for words[0], words[1] in zip(InputStr_Lst[:-1:2], InputStr_Lst[1::2]):
-    print("\t", words[0], words[1])
+    print("\t1. Word:", words[0])
+    print("\t2. Word:", words[1])
+    print()
 
+    dataWord = {0: {}, 1: {}}
+    # print(dataWord)
+
+    for w, word in enumerate(words):
+        for char in word:
+            if char not in dataWord[w]:
+                dataWord[w][char] = 1
+
+            else:
+                dataWord[w][char] += 1
+
+    print(dataWord)
