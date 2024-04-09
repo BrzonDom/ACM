@@ -332,7 +332,9 @@ if __name__ == "__main__":
 
         wordNum = int(InputStr_Lst.pop(0))
 
+        InWords = []
         Words = []
+
         strtChar = set()
         # strtIndx = {}
         # wordStrt = {}
@@ -341,7 +343,8 @@ if __name__ == "__main__":
 
         for w in range(wordNum):
 
-            Words.append(InputStr_Lst.pop(0).upper())
+            InWords.append(InputStr_Lst.pop(0))
+            Words.append(InWords[-1].upper())
             # strtIndx[Words[-1][0]] = []
             strtChar.add(Words[-1][0])
 
@@ -510,8 +513,8 @@ if __name__ == "__main__":
         #         print()
         # print()
 
-        for word in Words:
-            print(f"\t{word:7} : [{wordStrt[word][0] + 1}, {wordStrt[word][1] + 1}]")
+        for word in InWords:
+            print(f"\t{word:7} : [{wordStrt[word.upper()][0] + 1}, {wordStrt[word.upper()][1] + 1}]")
 
         print()
 
@@ -544,9 +547,9 @@ Cases: 1
 			 DAGBERT
 
 
-		W : [(1, 4), (2, 4), (5, 5)]
-		B : [(0, 1), (1, 2), (4, 0), (4, 5), (5, 3), (6, 4), (6, 10), (7, 8)]
 		D : [(0, 3), (1, 7), (2, 7), (4, 7), (6, 7)]
+		B : [(0, 1), (1, 2), (4, 0), (4, 5), (5, 3), (6, 4), (6, 10), (7, 8)]
+		W : [(1, 4), (2, 4), (5, 5)]
 
 
 		[1, 4] WALDORF (7)
@@ -595,10 +598,10 @@ Cases: 1
 	Found ( 0,-1) : [  6,   7] => [  6,   1]
 
 
-	WALDORF : [2, 5]
-	BAMBI   : [2, 3]
-	BETTY   : [1, 2]
-	DAGBERT : [7, 8]
+	Waldorf : [2, 5]
+	Bambi   : [2, 3]
+	Betty   : [1, 2]
+	Dagbert : [7, 8]
 
 
 Process finished with exit code 0
