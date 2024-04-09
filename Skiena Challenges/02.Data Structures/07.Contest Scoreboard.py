@@ -186,3 +186,64 @@ if __name__ == "__main__":
         #     print("\n")
 
         print("\n")
+
+"""__Output__"""
+"""
+Cases: 2
+
+	1. case
+
+		Input: ['3 1 11 C', '1 2 19 R', '1 2 21 C', '1 1 25 C']
+
+		Player: 1
+
+			Solved problems: [2, 1]
+			Time:            46
+			Penalty:         0
+			Total time:      46
+
+
+		Player: 3
+
+			Solved problems: [1]
+			Time:            11
+			Penalty:         0
+			Total time:      11
+
+
+
+
+	2. case
+
+		Input: ['1 2 10 I', '3 1 11 C', '1 2 19 R', '1 2 21 C', '2 2 24 C']
+
+		Player: 1
+
+			Solved problems: [2]
+			Time:            21
+			Penalty:         20
+			Total time:      41
+
+
+		Player: 2
+
+			Solved problems: [2]
+			Time:            24
+			Penalty:         0
+			Total time:      24
+
+
+		Player: 3
+
+			Solved problems: [1]
+			Time:            11
+			Penalty:         0
+			Total time:      11
+
+
+
+
+
+Process finished with exit code 0
+
+"""
