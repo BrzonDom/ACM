@@ -57,7 +57,22 @@ Where’s Waldorf
 """
 
 InputRaw_Str = """
-1
+2
+
+8 11
+abcDEFGhigg
+hEbkWalDork
+FtyAwaldORm
+FtsimrLqsrc
+byoArBeDeyv
+Klcbqwikomk
+strEBGadhrb
+yUiqlxcnBjf
+4
+Waldorf
+Bambi
+Betty
+Dagbert
 
 8 11
 abcDEFGhigg
