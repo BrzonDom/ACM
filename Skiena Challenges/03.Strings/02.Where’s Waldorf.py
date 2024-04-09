@@ -77,11 +77,7 @@ Dagbert
 
 InputRaw_Str = InputRaw_Str[1:-1]
 
-# print("Input:")
-# print(InputRaw_Str)
-
 InputStr_Lst = InputRaw_Str.split("\n")
-print(InputStr_Lst)
 
 caseNum = int(InputStr_Lst.pop(0))
 
@@ -93,3 +89,21 @@ for case in range(caseNum):
 
     InputStr_Lst.pop(0)
 
+    RowNum, ColNum = list(map(int, InputStr_Lst.pop(0).split()))
+
+    print(f"\t\tRows: {RowNum}")
+    print(f"\t\tCols: {ColNum}")
+    print()
+
+    grid = [["" for c in range(ColNum)] for r in range(RowNum)]
+
+    # print(grid)
+
+    for row in range(RowNum):
+        line = InputStr_Lst.pop(0)
+
+        for col in range(ColNum):
+
+            grid[row][col] = line[col]
+
+        print(grid[row])
