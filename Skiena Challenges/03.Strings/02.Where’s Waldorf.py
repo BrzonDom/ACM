@@ -76,9 +76,15 @@ Betty
 Dagbert
 """
 
-# def canFit(lenWord, rowNum, colNum, strRow, strCol):
-#
-#     return
+def canFit(lenWord, RowNum, ColNum, strRow, strCol):
+
+    bordRight = (strCol + lenWord - 1) < ColNum
+    bordDown = (strRow + lenWord - 1) < RowNum
+    bordLeft = (strCol - (lenWord - 1)) >= 0
+    bordUp = (strRow - (lenWord - 1)) >= 0
+
+    return bordRight, bordDown, bordLeft, bordUp
+
 
 InputRaw_Str = InputRaw_Str[1:-1]
 
@@ -157,20 +163,23 @@ if __name__ == "__main__":
 
                 print(f"\t\t[{strRow}, {strCol}] {word} ({len(word)})")
                 # print()
-                # print(f"\t\t\tTop: {bordTop}")
+                # print(f"\t\t\tTop: {up}")
 
-                bordRight = (strCol + len(word) - 1) < ColNum
-                bordDown = (strRow + len(word) - 1) < RowNum
-                bordLeft = (strCol - (len(word) - 1)) >= 0
-                bordTop = (strRow - (len(word) - 1)) >= 0
+                    # bordRight, bordDown, bordLeft, bordUp
+                right, down, left, up = canFit(len(word), RowNum, ColNum, strRow, strCol)
 
-                # print(f"\t\t\tRight: {bordRight}")
-                # print(f"\t\t\tDown: {bordDown}")
-                # print(f"\t\t\tLeft: {bordLeft}")
-                # print(f"\t\t\tTop: {bordTop}")
+                # right = (strCol + len(word) - 1) < ColNum
+                # down = (strRow + len(word) - 1) < RowNum
+                # left = (strCol - (len(word) - 1)) >= 0
+                # up = (strRow - (len(word) - 1)) >= 0
+
+                # print(f"\t\t\tRight: {right}")
+                # print(f"\t\t\tDown: {down}")
+                # print(f"\t\t\tLeft: {left}")
+                # print(f"\t\t\tTop: {up}")
                 # print()
 
-                if bordDown:
+                if down:
                     print(f"\t\t\t( 1, 0) : [{strRow + len(word) - 1:3}, {strCol:3}]")
 
                     for nxt, nxtChar in enumerate(word[1:]):
@@ -185,7 +194,7 @@ if __name__ == "__main__":
                         wordStrt[word] = [strRow, strCol]
                         break
 
-                    if bordRight and not found:
+                    if right and not found:
                         print(f"\t\t\t( 1, 1) : [{strRow + len(word) - 1:3}, {strCol + len(word) - 1:3}]")
 
                         for nxt, nxtChar in enumerate(word[1:]):
@@ -200,7 +209,7 @@ if __name__ == "__main__":
                             wordStrt[word] = [strRow, strCol]
                             break
 
-                if bordRight:
+                if right:
                     print(f"\t\t\t( 0, 1) : [{strRow:3}, {strCol + len(word) - 1:3}]")
 
                     for nxt, nxtChar in enumerate(word[1:]):
@@ -215,7 +224,7 @@ if __name__ == "__main__":
                         wordStrt[word] = [strRow, strCol]
                         break
 
-                    if bordTop:
+                    if up:
                         print(f"\t\t\t(-1, 1) : [{strRow - (len(word) - 1):3}, {strCol + len(word) - 1:3}]")
 
                         for nxt, nxtChar in enumerate(word[1:]):
@@ -230,7 +239,7 @@ if __name__ == "__main__":
                             wordStrt[word] = [strRow, strCol]
                             break
 
-                if bordTop:
+                if up:
                     print(f"\t\t\t(-1, 0) : [{strRow - (len(word) - 1):3}, {strCol:3}]")
 
                     for nxt, nxtChar in enumerate(word[1:]):
@@ -245,7 +254,7 @@ if __name__ == "__main__":
                         wordStrt[word] = [strRow, strCol]
                         break
 
-                    if bordLeft:
+                    if left:
                         print(f"\t\t\t(-1,-1) : [{strRow - (len(word) - 1):3}, {strCol - (len(word) - 1):3}]")
 
                         for nxt, nxtChar in enumerate(word[1:]):
@@ -260,7 +269,7 @@ if __name__ == "__main__":
                             wordStrt[word] = [strRow, strCol]
                             break
 
-                if bordLeft:
+                if left:
                     print(f"\t\t\t( 0,-1) : [{strRow:3}, {strCol - (len(word) - 1):3}]")
 
                     for nxt, nxtChar in enumerate(word[1:]):
@@ -275,7 +284,7 @@ if __name__ == "__main__":
                         wordStrt[word] = [strRow, strCol]
                         break
 
-                    if bordDown:
+                    if down:
                         print(f"\t\t\t( 1,-1) : [{strRow + len(word) - 1:3}, {strCol - (len(word) - 1):3}]")
 
                         for nxt, nxtChar in enumerate(word[1:]):
