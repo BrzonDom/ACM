@@ -44,6 +44,7 @@ InputRaw_Str = InputRaw_Str[1:-1]
 print("Input:")
 
 print(InputRaw_Str)
+print()
 
 InputStr_Lst = list(InputRaw_Str.split("\n"))
 
@@ -90,3 +91,75 @@ for words[0], words[1] in zip(InputStr_Lst[:-1:2], InputStr_Lst[1::2]):
 
     print("\t\tCommon characters:", commonChar)
     print("\n")
+
+"""__Output__"""
+"""
+Input:
+pretty
+women
+walking
+down
+the
+street
+
+['pretty', 'women', 'walking', 'down', 'the', 'street']
+
+	1. Word: pretty
+	2. Word: women
+
+			p : 1
+			r : 1
+			e : 1
+			t : 2
+			y : 1
+
+			w : 1
+			o : 1
+			m : 1
+			e : 1
+			n : 1
+
+
+		Common characters: ['e']
+
+
+	1. Word: walking
+	2. Word: down
+
+			w : 1
+			a : 1
+			l : 1
+			k : 1
+			i : 1
+			n : 1
+			g : 1
+
+			d : 1
+			o : 1
+			w : 1
+			n : 1
+
+
+		Common characters: ['w', 'n']
+
+
+	1. Word: the
+	2. Word: street
+
+			t : 1
+			h : 1
+			e : 1
+
+			s : 1
+			t : 2
+			r : 1
+			e : 2
+
+
+		Common characters: ['t', 'e']
+
+
+
+Process finished with exit code 0
+
+"""
