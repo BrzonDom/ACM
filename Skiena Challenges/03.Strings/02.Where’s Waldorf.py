@@ -77,5 +77,19 @@ Dagbert
 
 InputRaw_Str = InputRaw_Str[1:-1]
 
-print("Input:")
-print(InputRaw_Str)
+# print("Input:")
+# print(InputRaw_Str)
+
+InputStr_Lst = InputRaw_Str.split("\n")
+print(InputStr_Lst)
+
+caseNum = int(InputStr_Lst.pop(0))
+
+print(f"Cases: {caseNum}\n")
+
+for case in range(caseNum):
+
+    print(f"\t{case+1}. case\n")
+
+    InputStr_Lst.pop(0)
+
