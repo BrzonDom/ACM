@@ -98,6 +98,24 @@ def makeGrid(RowNum, ColNum):
     return Grid
 
 
+def getStart(RowNum, ColNum, Grid, strtChar):
+
+    strtIndx = {}
+
+    for char in strtChar:
+        strtIndx[char] = []
+
+    for row in range(RowNum):
+        for col in range(ColNum):
+
+            for char in strtChar:
+
+                if Grid[row][col] == char:
+                    strtIndx[char].append((row, col))
+
+    return strtIndx
+
+
 def canFit(lenWord, RowNum, ColNum, strRow, strCol):
 
     bordRight = (strCol + lenWord - 1) < ColNum
@@ -153,7 +171,7 @@ if __name__ == "__main__":
 
         Words = []
         strtChar = set()
-        strtIndx = {}
+        # strtIndx = {}
         wordStrt = {}
 
         print(f"\t\tWords: {wordNum}\n")
@@ -161,19 +179,21 @@ if __name__ == "__main__":
         for w in range(wordNum):
 
             Words.append(InputStr_Lst.pop(0).upper())
-            strtIndx[Words[-1][0]] = []
+            # strtIndx[Words[-1][0]] = []
             strtChar.add(Words[-1][0])
 
             print("\t\t\t", Words[-1])
         print("\n")
 
-        for row in range(RowNum):
-            for col in range(ColNum):
+        strtIndx = getStart(RowNum, ColNum, Grid, strtChar)
 
-                for char in strtChar:
-
-                    if Grid[row][col] == char:
-                        strtIndx[char].append((row, col))
+        # for row in range(RowNum):
+        #     for col in range(ColNum):
+        #
+        #         for char in strtChar:
+        #
+        #             if Grid[row][col] == char:
+        #                 strtIndx[char].append((row, col))
 
         for start in strtIndx:
             print(f"\t\t{start} : {strtIndx[start]}")
@@ -358,9 +378,9 @@ Cases: 1
 			 DAGBERT
 
 
+		D : [(0, 3), (1, 7), (2, 7), (4, 7), (6, 7)]
 		W : [(1, 4), (2, 4), (5, 5)]
 		B : [(0, 1), (1, 2), (4, 0), (4, 5), (5, 3), (6, 4), (6, 10), (7, 8)]
-		D : [(0, 3), (1, 7), (2, 7), (4, 7), (6, 7)]
 
 		[1, 4] WALDORF (7)
 			( 1, 0) : [  7,   4]
