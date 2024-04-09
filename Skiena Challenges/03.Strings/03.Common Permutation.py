@@ -68,4 +68,13 @@ for words[0], words[1] in zip(InputStr_Lst[:-1:2], InputStr_Lst[1::2]):
             else:
                 dataWord[w][char] += 1
 
-    print(dataWord)
+    for wrd in dataWord:
+        for data in dataWord[wrd]:
+            print(f"\t\t{data} : {dataWord[wrd][data]}")
+
+        print()
+    print()
+
+    print(len(dataWord[0]))
+    print(len(dataWord[1]))
+    print()
