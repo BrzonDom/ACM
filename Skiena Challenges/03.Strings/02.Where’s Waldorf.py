@@ -142,8 +142,44 @@ for case in range(caseNum):
         print(f"\t\t{start} : {strtIndx[start]}")
     print()
 
-    for word in Words:
-
-
+    # for word in Words:
 
     print()
+
+"""__Output__"""
+"""
+Cases: 1
+
+	1. case
+
+		Rows: 8
+		Cols: 11
+
+				1    2    3    4    5    6    7    8    9    10   11   
+			1 ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'G', 'G']
+			2 ['H', 'E', 'B', 'K', 'W', 'A', 'L', 'D', 'O', 'R', 'K']
+			3 ['F', 'T', 'Y', 'A', 'W', 'A', 'L', 'D', 'O', 'R', 'M']
+			4 ['F', 'T', 'S', 'I', 'M', 'R', 'L', 'Q', 'S', 'R', 'C']
+			5 ['B', 'Y', 'O', 'A', 'R', 'B', 'E', 'D', 'E', 'Y', 'V']
+			6 ['K', 'L', 'C', 'B', 'Q', 'W', 'I', 'K', 'O', 'M', 'K']
+			7 ['S', 'T', 'R', 'E', 'B', 'G', 'A', 'D', 'H', 'R', 'B']
+			8 ['Y', 'U', 'I', 'Q', 'L', 'X', 'C', 'N', 'B', 'J', 'F']
+
+
+		Words: 4
+
+			 WALDORF
+			 BAMBI
+			 BETTY
+			 DAGBERT
+
+
+		W : [(1, 4), (2, 4), (5, 5)]
+		B : [(0, 1), (1, 2), (4, 0), (4, 5), (5, 3), (6, 4), (6, 10), (7, 8)]
+		D : [(0, 3), (1, 7), (2, 7), (4, 7), (6, 7)]
+
+
+
+Process finished with exit code 0
+
+"""
