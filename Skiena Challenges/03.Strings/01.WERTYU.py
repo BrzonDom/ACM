@@ -53,3 +53,13 @@ for row in rows:
     for c, char in enumerate(row[1:]):
         print(f"\'{char}\': \'{row[c]}\'", end=", ")
     print()
+
+outputStr = ""
+
+for char in InputRaw_Str:
+    if char in decodeDict:
+        outputStr += decodeDict[char]
+    else:
+        outputStr += char
+
+print(outputStr)
