@@ -186,6 +186,7 @@ for case in range(caseNum):
 
                     for nxt, nxtChar in enumerate(word[1:]):
                         found = True
+
                         if nxtChar != Grid[strRow + nxt + 1][strCol + nxt + 1]:
                             found = False
                             break
@@ -196,18 +197,89 @@ for case in range(caseNum):
 
             if bordRight:
                 print(f"\t\t\t( 0, 1) : [{strRow:3}, {strCol + len(word) - 1:3}]")
+
+                for nxt, nxtChar in enumerate(word[1:]):
+                    found = True
+
+                    if nxtChar != Grid[strRow][strCol + nxt + 1]:
+                        found = False
+                        break
+
+                if found:
+                    print(f"\n\tFound ( 0, 1) : [{strRow:3}, {strCol:3}] => [{strRow:3}, {strCol + len(word) - 1:3}]\n")
+                    break
+
                 if bordTop:
                     print(f"\t\t\t(-1, 1) : [{strRow - (len(word) - 1):3}, {strCol + len(word) - 1:3}]")
+
+                    for nxt, nxtChar in enumerate(word[1:]):
+                        found = True
+
+                        if nxtChar != Grid[strRow - (nxt + 1)][strCol + nxt + 1]:
+                            found = False
+                            break
+
+                    if found:
+                        print(
+                            f"\n\tFound (-1, 1) : [{strRow:3}, {strCol:3}] => [{strRow - (len(word) - 1):3}, {strCol + len(word) - 1:3}]\n")
+                        break
+
             if bordTop:
                 print(f"\t\t\t(-1, 0) : [{strRow - (len(word) - 1):3}, {strCol:3}]")
+
+                for nxt, nxtChar in enumerate(word[1:]):
+                    found = True
+
+                    if nxtChar != Grid[strRow - (nxt + 1)][strCol]:
+                        found = False
+                        break
+
+                if found:
+                    print(f"\n\tFound (-1, 0) : [{strRow:3}, {strCol:3}] => [{strRow - (len(word) - 1):3}, {strCol:3}]\n")
+                    break
+
                 if bordLeft:
                     print(f"\t\t\t(-1,-1) : [{strRow - (len(word) - 1):3}, {strCol - (len(word) - 1):3}]")
+
+                    for nxt, nxtChar in enumerate(word[1:]):
+                        found = True
+
+                        if nxtChar != Grid[strRow - (nxt + 1)][strCol - (nxt + 1)]:
+                            found = False
+                            break
+
+                    if found:
+                        print(f"\n\tFound (-1,-1) : [{strRow:3}, {strCol:3}] => [{strRow - (len(word) - 1):3}, {strCol - (len(word) - 1):3}]\n")
+                        break
+
             if bordLeft:
                 print(f"\t\t\t( 0,-1) : [{strRow:3}, {strCol - (len(word) - 1):3}]")
+
+                for nxt, nxtChar in enumerate(word[1:]):
+                    found = True
+
+                    if nxtChar != Grid[strRow][strCol - (nxt + 1)]:
+                        found = False
+                        break
+
+                if found:
+                    print(f"\n\tFound ( 0,-1) : [{strRow:3}, {strCol:3}] => [{strRow:3}, {strCol - (len(word) - 1):3}]\n")
+                    break
+
                 if bordDown:
                     print(f"\t\t\t( 1,-1) : [{strRow + len(word) - 1:3}, {strCol - (len(word) - 1):3}]")
-            print()
 
+                    for nxt, nxtChar in enumerate(word[1:]):
+                        found = True
+
+                        if nxtChar != Grid[strRow + nxt + 1][strCol - (nxt + 1)]:
+                            found = False
+                            break
+
+                    if found:
+                        print(f"\n\tFound ( 1,-1) : [{strRow:3}, {strCol:3}] => [{strRow + len(word) - 1:3}, {strCol - (len(word) - 1):3}]\n")
+                        break
+            print()
 
     print()
 
@@ -285,6 +357,8 @@ Cases: 1
 			(-1, 0) : [  0,   7]
 			(-1,-1) : [  0,   1]
 			( 0,-1) : [  6,   1]
+
+	Found ( 0,-1) : [  6,   7] => [  6,   1]
 
 
 
