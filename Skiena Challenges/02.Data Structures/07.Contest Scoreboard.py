@@ -56,6 +56,7 @@ InputRaw_Str = """
 3 1 11 C
 1 2 19 R
 1 2 21 C
+2 2 24 C
 """
 
 InputRaw_Str = InputRaw_Str[1:-1]
@@ -66,6 +67,22 @@ InputRaw_Str = InputRaw_Str[1:-1]
 #         self.problem = problem
 #         self.time = time
 #         self.state = state
+
+
+def readQueue(InputLst):
+
+    Input = []
+
+    while InputLst:
+
+        if InputLst[0] != '\n' and InputLst[0] != '':
+            Input.append(InputLst.pop(0))
+
+        else:
+            return Input
+
+    return Input
+
 
 if __name__ == "__main__":
 
@@ -83,22 +100,22 @@ if __name__ == "__main__":
 
         InputLst.pop(0)
 
-        Input = []
+        Queue = readQueue(InputLst)
 
-        while InputLst:
+        # while InputLst:
+        #
+        #     if InputLst[0] != '\n' and InputLst[0] != '':
+        #         Input.append(InputLst.pop(0))
+        #
+        #     else:
+        #         break
 
-            if InputLst[0] != '\n' and InputLst[0] != '':
-                Input.append(InputLst.pop(0))
-
-            else:
-                break
-
-        print(f"\t\tInput: {Input}")
+        print(f"\t\tInput: {Queue}")
         print()
 
         stats = {}
 
-        for submit in Input:
+        for submit in Queue:
             submit_lst = list(submit.split())
 
             player = int(submit_lst[0])
