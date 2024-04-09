@@ -70,11 +70,23 @@ for words[0], words[1] in zip(InputStr_Lst[:-1:2], InputStr_Lst[1::2]):
 
     for wrd in dataWord:
         for data in dataWord[wrd]:
-            print(f"\t\t{data} : {dataWord[wrd][data]}")
+            print(f"\t\t\t{data} : {dataWord[wrd][data]}")
 
         print()
     print()
 
-    print(len(dataWord[0]))
-    print(len(dataWord[1]))
-    print()
+    commonChar = []
+
+    if len(dataWord[0]) <= len(dataWord[1]):
+
+        for char in dataWord[0]:
+            if char in dataWord[1]:
+                commonChar += min(dataWord[0][char], dataWord[1][char]) * [char]
+
+    else:
+        for char in dataWord[1]:
+            if char in dataWord[0]:
+                commonChar += min(dataWord[0][char], dataWord[1][char]) * [char]
+
+    print("\t\tCommon characters:", commonChar)
+    print("\n")
