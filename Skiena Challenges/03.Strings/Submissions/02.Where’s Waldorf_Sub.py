@@ -55,7 +55,7 @@ Where’s Waldorf
                 7 8
 
 """
-import numpy as np
+from sys import stdin
 
 InputRaw_Str = """
 1
@@ -87,7 +87,8 @@ def makeGrid(RowNum, ColNum):
     print()
 
     for row in range(RowNum):
-        line = InputStr_Lst.pop(0)
+        # line = InputStr_Lst.pop(0)
+        line = stdin.readline()
 
         for col in range(ColNum):
             Grid[row][col] = line[col].upper()
@@ -274,13 +275,14 @@ def findWord(Words, Grid, RowNum, ColNum, strtIndx):
     return wordStrt
 
 
-InputRaw_Str = InputRaw_Str[1:-1]
+# InputRaw_Str = InputRaw_Str[1:-1]
 
 if __name__ == "__main__":
 
     InputStr_Lst = InputRaw_Str.split("\n")
 
-    caseNum = int(InputStr_Lst.pop(0))
+    # caseNum = int(InputStr_Lst.pop(0))
+    caseNum = int(stdin.readline())
 
     print(f"Cases: {caseNum}\n")
 
@@ -288,9 +290,11 @@ if __name__ == "__main__":
 
         print(f"\t{case+1}. case\n")
 
-        InputStr_Lst.pop(0)
+        # InputStr_Lst.pop(0)
+        stdin.readline()
 
-        RowNum, ColNum = list(map(int, InputStr_Lst.pop(0).split()))
+        # RowNum, ColNum = list(map(int, InputStr_Lst.pop(0).split()))
+        RowNum, ColNum = list(map(int, stdin.readline().split()))
 
         print(f"\t\tRows: {RowNum}")
         print(f"\t\tCols: {ColNum}")
@@ -298,7 +302,8 @@ if __name__ == "__main__":
 
         Grid = makeGrid(RowNum, ColNum)
 
-        wordNum = int(InputStr_Lst.pop(0))
+        # wordNum = int(InputStr_Lst.pop(0))
+        wordNum = int(stdin.readline())
 
         Words = []
         strtChar = set()
@@ -307,7 +312,8 @@ if __name__ == "__main__":
 
         for w in range(wordNum):
 
-            Words.append(InputStr_Lst.pop(0).upper())
+            # Words.append(InputStr_Lst.pop(0).upper())
+            Words.append(stdin.readline().strip().upper())
             strtChar.add(Words[-1][0])
 
             print("\t\t\t", Words[-1])
