@@ -76,6 +76,10 @@ Betty
 Dagbert
 """
 
+# def canFit(lenWord, rowNum, colNum, strRow, strCol):
+#
+#     return
+
 InputRaw_Str = InputRaw_Str[1:-1]
 
 InputStr_Lst = InputRaw_Str.split("\n")
@@ -165,8 +169,31 @@ for case in range(caseNum):
 
             if bordDown:
                 print(f"\t\t\t( 1, 0) : [{strRow + len(word) - 1:3}, {strCol:3}]")
-                if bordRight:
+
+                for nxt, nxtChar in enumerate(word[1:]):
+                    found = True
+
+                    if nxtChar != Grid[strRow + nxt + 1][strCol]:
+                        found = False
+                        break
+
+                if found:
+                    print(f"\n\tFound ( 1, 0) : [{strRow:3}, {strCol:3}] => [{strRow + len(word) - 1:3}, {strCol:3}]\n")
+                    break
+
+                if bordRight and not found:
                     print(f"\t\t\t( 1, 1) : [{strRow + len(word) - 1:3}, {strCol + len(word) - 1:3}]")
+
+                    for nxt, nxtChar in enumerate(word[1:]):
+                        found = True
+                        if nxtChar != Grid[strRow + nxt + 1][strCol + nxt + 1]:
+                            found = False
+                            break
+
+                    if found:
+                        print(f"\n\tFound ( 1, 1) : [{strRow:3}, {strCol:3}] => [{strRow + len(word) - 1:3}, {strCol + len(word) - 1:3}]\n")
+                        break
+
             if bordRight:
                 print(f"\t\t\t( 0, 1) : [{strRow:3}, {strCol + len(word) - 1:3}]")
                 if bordTop:
@@ -219,12 +246,8 @@ Cases: 1
 		[1, 4] WALDORF (7)
 			( 1, 0) : [  7,   4]
 			( 1, 1) : [  7,  10]
-			( 0, 1) : [  1,  10]
 
-		[2, 4] WALDORF (7)
-			( 0, 1) : [  2,  10]
-
-		[5, 5] WALDORF (7)
+	Found ( 1, 1) : [  1,   4] => [  7,  10]
 
 		[0, 1] BAMBI (5)
 			( 1, 0) : [  4,   1]
@@ -234,85 +257,13 @@ Cases: 1
 		[1, 2] BAMBI (5)
 			( 1, 0) : [  5,   2]
 			( 1, 1) : [  5,   6]
-			( 0, 1) : [  1,   6]
 
-		[4, 0] BAMBI (5)
-			( 0, 1) : [  4,   4]
-			(-1, 1) : [  0,   4]
-			(-1, 0) : [  0,   0]
-
-		[4, 5] BAMBI (5)
-			( 0, 1) : [  4,   9]
-			(-1, 1) : [  0,   9]
-			(-1, 0) : [  0,   5]
-			(-1,-1) : [  0,   1]
-			( 0,-1) : [  4,   1]
-
-		[5, 3] BAMBI (5)
-			( 0, 1) : [  5,   7]
-			(-1, 1) : [  1,   7]
-			(-1, 0) : [  1,   3]
-
-		[6, 4] BAMBI (5)
-			( 0, 1) : [  6,   8]
-			(-1, 1) : [  2,   8]
-			(-1, 0) : [  2,   4]
-			(-1,-1) : [  2,   0]
-			( 0,-1) : [  6,   0]
-
-		[6, 10] BAMBI (5)
-			(-1, 0) : [  2,  10]
-			(-1,-1) : [  2,   6]
-			( 0,-1) : [  6,   6]
-
-		[7, 8] BAMBI (5)
-			(-1, 0) : [  3,   8]
-			(-1,-1) : [  3,   4]
-			( 0,-1) : [  7,   4]
+	Found ( 1, 1) : [  1,   2] => [  5,   6]
 
 		[0, 1] BETTY (5)
 			( 1, 0) : [  4,   1]
-			( 1, 1) : [  4,   5]
-			( 0, 1) : [  0,   5]
 
-		[1, 2] BETTY (5)
-			( 1, 0) : [  5,   2]
-			( 1, 1) : [  5,   6]
-			( 0, 1) : [  1,   6]
-
-		[4, 0] BETTY (5)
-			( 0, 1) : [  4,   4]
-			(-1, 1) : [  0,   4]
-			(-1, 0) : [  0,   0]
-
-		[4, 5] BETTY (5)
-			( 0, 1) : [  4,   9]
-			(-1, 1) : [  0,   9]
-			(-1, 0) : [  0,   5]
-			(-1,-1) : [  0,   1]
-			( 0,-1) : [  4,   1]
-
-		[5, 3] BETTY (5)
-			( 0, 1) : [  5,   7]
-			(-1, 1) : [  1,   7]
-			(-1, 0) : [  1,   3]
-
-		[6, 4] BETTY (5)
-			( 0, 1) : [  6,   8]
-			(-1, 1) : [  2,   8]
-			(-1, 0) : [  2,   4]
-			(-1,-1) : [  2,   0]
-			( 0,-1) : [  6,   0]
-
-		[6, 10] BETTY (5)
-			(-1, 0) : [  2,  10]
-			(-1,-1) : [  2,   6]
-			( 0,-1) : [  6,   6]
-
-		[7, 8] BETTY (5)
-			(-1, 0) : [  3,   8]
-			(-1,-1) : [  3,   4]
-			( 0,-1) : [  7,   4]
+	Found ( 1, 0) : [  0,   1] => [  4,   1]
 
 		[0, 3] DAGBERT (7)
 			( 1, 0) : [  6,   3]
