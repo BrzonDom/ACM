@@ -18,3 +18,8 @@ WERTYU
             =>  I AM FINE TODAY.
 
 """
+
+InputRaw_Str = "O S, GOMR YPFSU/"
+
+print(f"Input: {InputRaw_Str}")
+print()
