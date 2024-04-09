@@ -55,6 +55,7 @@ Where’s Waldorf
                 7 8
 
 """
+import numpy as np
 
 InputRaw_Str = """
 1
@@ -96,8 +97,11 @@ for case in range(caseNum):
     print()
 
     Grid = [["" for c in range(ColNum)] for r in range(RowNum)]
+    # Grid = np.empty((RowNum, ColNum))
 
-    # print(grid)
+    # print(Grid)
+
+    # quit()
 
     for row in range(RowNum):
         line = InputStr_Lst.pop(0)
@@ -112,12 +116,29 @@ for case in range(caseNum):
     wordNum = int(InputStr_Lst.pop(0))
 
     Words = []
+    strtChar = set()
+    strtIndx = {}
 
     print(f"\t\tWords: {wordNum}\n")
 
     for w in range(wordNum):
 
         Words.append(InputStr_Lst.pop(0).upper())
+        strtIndx[Words[-1][0]] = []
+        strtChar.add(Words[-1][0])
+
         print("\t\t\t", Words[-1])
     print("\n")
+
+    for row in range(RowNum):
+        for col in range(ColNum):
+
+            for char in strtChar:
+
+                if Grid[row][col] == char:
+                    strtIndx[char].append((row, col))
+
+    for start in strtIndx:
+        print(f"\t\t{start} : {strtIndx[start]}")
+
     print()
