@@ -18,6 +18,8 @@ WERTYU
             =>  I AM FINE TODAY.
 
 """
+import sys
+from sys import stdin
 
 InputStr = "O S, GOMR YPFSU/"
 
@@ -36,8 +38,13 @@ decodeDict = {'1': '`', '2': '1', '3': '2', '4': '3', '5': '4', '6': '5',
 
 if __name__ == "__main__":
 
-    print(f"Input: {InputStr}")
-    print()
+    InputStr = ""
+
+    for line in sys.stdin:
+        InputStr += line
+
+    # print(f"Input: {InputStr}")
+    # print()
 
     OutputStr = ""
 
@@ -47,8 +54,10 @@ if __name__ == "__main__":
         else:
             OutputStr += char
 
-    print(f"\tEncoded string: {InputStr}")
-    print(f"\tDecoded string: {OutputStr}")
+    # print(f"\tEncoded string: {InputStr}")
+    # print(f"\tDecoded string: {OutputStr}")
+
+    print(OutputStr)
     print()
 
 """__Output__"""
