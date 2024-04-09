@@ -136,27 +136,12 @@ def findWord(Words, Grid, RowNum, ColNum, strtIndx):
 
     for word in Words:
         for start in strtIndx[word[0]]:
-            # print(word, start)
 
             strRow, strCol = start
 
             print(f"\t\t[{strRow}, {strCol}] {word} ({len(word)})")
-            # print()
-            # print(f"\t\t\tTop: {up}")
 
-            # bordRight, bordDown, bordLeft, bordUp
             right, down, left, up = canFit(len(word), RowNum, ColNum, strRow, strCol)
-
-            # right = (strCol + len(word) - 1) < ColNum
-            # down = (strRow + len(word) - 1) < RowNum
-            # left = (strCol - (len(word) - 1)) >= 0
-            # up = (strRow - (len(word) - 1)) >= 0
-
-            # print(f"\t\t\tRight: {right}")
-            # print(f"\t\t\tDown: {down}")
-            # print(f"\t\t\tLeft: {left}")
-            # print(f"\t\t\tTop: {up}")
-            # print()
 
             if down:
                 print(f"\t\t\t( 1, 0) : [{strRow + len(word) - 1:3}, {strCol:3}]")
@@ -313,36 +298,16 @@ if __name__ == "__main__":
 
         Grid = makeGrid(RowNum, ColNum)
 
-        # Grid = [["" for c in range(ColNum)] for r in range(RowNum)]
-        #
-        # print("\t\t\t\t", end="")
-        # for col in range(ColNum):
-        #     print(f"{col:<5}", end="")
-        # print()
-        #
-        # for row in range(RowNum):
-        #     line = InputStr_Lst.pop(0)
-        #
-        #     for col in range(ColNum):
-        #
-        #         Grid[row][col] = line[col].upper()
-        #
-        #     print(f"\t\t\t{row}", Grid[row])
-        # print("\n")
-
         wordNum = int(InputStr_Lst.pop(0))
 
         Words = []
         strtChar = set()
-        # strtIndx = {}
-        # wordStrt = {}
 
         print(f"\t\tWords: {wordNum}\n")
 
         for w in range(wordNum):
 
             Words.append(InputStr_Lst.pop(0).upper())
-            # strtIndx[Words[-1][0]] = []
             strtChar.add(Words[-1][0])
 
             print("\t\t\t", Words[-1])
@@ -350,165 +315,7 @@ if __name__ == "__main__":
 
         strtIndx = getStart(RowNum, ColNum, Grid, strtChar)
 
-        # for row in range(RowNum):
-        #     for col in range(ColNum):
-        #
-        #         for char in strtChar:
-        #
-        #             if Grid[row][col] == char:
-        #                 strtIndx[char].append((row, col))
-
-        # for strt in strtIndx:
-        #     print(f"\t\t{strt} : {strtIndx[strt]}")
-        # print()
-
         wordStrt = findWord(Words, Grid, RowNum, ColNum, strtIndx)
-
-        # for word in Words:
-        #     for start in strtIndx[word[0]]:
-        #         # print(word, start)
-        #
-        #         strRow, strCol = start
-        #
-        #         print(f"\t\t[{strRow}, {strCol}] {word} ({len(word)})")
-        #         # print()
-        #         # print(f"\t\t\tTop: {up}")
-        #
-        #             # bordRight, bordDown, bordLeft, bordUp
-        #         right, down, left, up = canFit(len(word), RowNum, ColNum, strRow, strCol)
-        #
-        #         # right = (strCol + len(word) - 1) < ColNum
-        #         # down = (strRow + len(word) - 1) < RowNum
-        #         # left = (strCol - (len(word) - 1)) >= 0
-        #         # up = (strRow - (len(word) - 1)) >= 0
-        #
-        #         # print(f"\t\t\tRight: {right}")
-        #         # print(f"\t\t\tDown: {down}")
-        #         # print(f"\t\t\tLeft: {left}")
-        #         # print(f"\t\t\tTop: {up}")
-        #         # print()
-        #
-        #         if down:
-        #             print(f"\t\t\t( 1, 0) : [{strRow + len(word) - 1:3}, {strCol:3}]")
-        #
-        #             for nxt, nxtChar in enumerate(word[1:]):
-        #                 found = True
-        #
-        #                 if nxtChar != Grid[strRow + nxt + 1][strCol]:
-        #                     found = False
-        #                     break
-        #
-        #             if found:
-        #                 print(f"\n\tFound ( 1, 0) : [{strRow:3}, {strCol:3}] => [{strRow + len(word) - 1:3}, {strCol:3}]\n")
-        #                 wordStrt[word] = [strRow, strCol]
-        #                 break
-        #
-        #             if right and not found:
-        #                 print(f"\t\t\t( 1, 1) : [{strRow + len(word) - 1:3}, {strCol + len(word) - 1:3}]")
-        #
-        #                 for nxt, nxtChar in enumerate(word[1:]):
-        #                     found = True
-        #
-        #                     if nxtChar != Grid[strRow + nxt + 1][strCol + nxt + 1]:
-        #                         found = False
-        #                         break
-        #
-        #                 if found:
-        #                     print(f"\n\tFound ( 1, 1) : [{strRow:3}, {strCol:3}] => [{strRow + len(word) - 1:3}, {strCol + len(word) - 1:3}]\n")
-        #                     wordStrt[word] = [strRow, strCol]
-        #                     break
-        #
-        #         if right:
-        #             print(f"\t\t\t( 0, 1) : [{strRow:3}, {strCol + len(word) - 1:3}]")
-        #
-        #             for nxt, nxtChar in enumerate(word[1:]):
-        #                 found = True
-        #
-        #                 if nxtChar != Grid[strRow][strCol + nxt + 1]:
-        #                     found = False
-        #                     break
-        #
-        #             if found:
-        #                 print(f"\n\tFound ( 0, 1) : [{strRow:3}, {strCol:3}] => [{strRow:3}, {strCol + len(word) - 1:3}]\n")
-        #                 wordStrt[word] = [strRow, strCol]
-        #                 break
-        #
-        #             if up:
-        #                 print(f"\t\t\t(-1, 1) : [{strRow - (len(word) - 1):3}, {strCol + len(word) - 1:3}]")
-        #
-        #                 for nxt, nxtChar in enumerate(word[1:]):
-        #                     found = True
-        #
-        #                     if nxtChar != Grid[strRow - (nxt + 1)][strCol + nxt + 1]:
-        #                         found = False
-        #                         break
-        #
-        #                 if found:
-        #                     print(f"\n\tFound (-1, 1) : [{strRow:3}, {strCol:3}] => [{strRow - (len(word) - 1):3}, {strCol + len(word) - 1:3}]\n")
-        #                     wordStrt[word] = [strRow, strCol]
-        #                     break
-        #
-        #         if up:
-        #             print(f"\t\t\t(-1, 0) : [{strRow - (len(word) - 1):3}, {strCol:3}]")
-        #
-        #             for nxt, nxtChar in enumerate(word[1:]):
-        #                 found = True
-        #
-        #                 if nxtChar != Grid[strRow - (nxt + 1)][strCol]:
-        #                     found = False
-        #                     break
-        #
-        #             if found:
-        #                 print(f"\n\tFound (-1, 0) : [{strRow:3}, {strCol:3}] => [{strRow - (len(word) - 1):3}, {strCol:3}]\n")
-        #                 wordStrt[word] = [strRow, strCol]
-        #                 break
-        #
-        #             if left:
-        #                 print(f"\t\t\t(-1,-1) : [{strRow - (len(word) - 1):3}, {strCol - (len(word) - 1):3}]")
-        #
-        #                 for nxt, nxtChar in enumerate(word[1:]):
-        #                     found = True
-        #
-        #                     if nxtChar != Grid[strRow - (nxt + 1)][strCol - (nxt + 1)]:
-        #                         found = False
-        #                         break
-        #
-        #                 if found:
-        #                     print(f"\n\tFound (-1,-1) : [{strRow:3}, {strCol:3}] => [{strRow - (len(word) - 1):3}, {strCol - (len(word) - 1):3}]\n")
-        #                     wordStrt[word] = [strRow, strCol]
-        #                     break
-        #
-        #         if left:
-        #             print(f"\t\t\t( 0,-1) : [{strRow:3}, {strCol - (len(word) - 1):3}]")
-        #
-        #             for nxt, nxtChar in enumerate(word[1:]):
-        #                 found = True
-        #
-        #                 if nxtChar != Grid[strRow][strCol - (nxt + 1)]:
-        #                     found = False
-        #                     break
-        #
-        #             if found:
-        #                 print(f"\n\tFound ( 0,-1) : [{strRow:3}, {strCol:3}] => [{strRow:3}, {strCol - (len(word) - 1):3}]\n")
-        #                 wordStrt[word] = [strRow, strCol]
-        #                 break
-        #
-        #             if down:
-        #                 print(f"\t\t\t( 1,-1) : [{strRow + len(word) - 1:3}, {strCol - (len(word) - 1):3}]")
-        #
-        #                 for nxt, nxtChar in enumerate(word[1:]):
-        #                     found = True
-        #
-        #                     if nxtChar != Grid[strRow + nxt + 1][strCol - (nxt + 1)]:
-        #                         found = False
-        #                         break
-        #
-        #                 if found:
-        #                     print(f"\n\tFound ( 1,-1) : [{strRow:3}, {strCol:3}] => [{strRow + len(word) - 1:3}, {strCol - (len(word) - 1):3}]\n")
-        #                     wordStrt[word] = [strRow, strCol]
-        #                     break
-        #         print()
-        # print()
 
         for word in Words:
             print(f"\t{word:7} : [{wordStrt[word][0] + 1}, {wordStrt[word][1] + 1}]")
