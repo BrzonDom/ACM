@@ -95,7 +95,7 @@ for case in range(caseNum):
     print(f"\t\tCols: {ColNum}")
     print()
 
-    grid = [["" for c in range(ColNum)] for r in range(RowNum)]
+    Grid = [["" for c in range(ColNum)] for r in range(RowNum)]
 
     # print(grid)
 
@@ -104,6 +104,19 @@ for case in range(caseNum):
 
         for col in range(ColNum):
 
-            grid[row][col] = line[col]
+            Grid[row][col] = line[col]
 
-        print(grid[row])
+        print("\t\t\t", Grid[row])
+    print("\n")
+
+    wordNum = int(InputStr_Lst.pop(0))
+
+    Words = []
+
+    print(f"\t\tWords: {wordNum}\n")
+
+    for w in range(wordNum):
+
+        Words.append(InputStr_Lst.pop(0))
+        print("\t\t\t", Words[-1])
+    print()
