@@ -305,6 +305,7 @@ if __name__ == "__main__":
         # wordNum = int(InputStr_Lst.pop(0))
         wordNum = int(stdin.readline())
 
+        InWords = []
         Words = []
         strtChar = set()
 
@@ -313,7 +314,8 @@ if __name__ == "__main__":
         for w in range(wordNum):
 
             # Words.append(InputStr_Lst.pop(0).upper())
-            Words.append(stdin.readline().strip().upper())
+            InWords.append(stdin.readline().strip())
+            Words.append(InWords[-1].upper())
             strtChar.add(Words[-1][0])
 
             print("\t\t\t", Words[-1])
@@ -323,8 +325,8 @@ if __name__ == "__main__":
 
         wordStrt = findWord(Words, Grid, RowNum, ColNum, strtIndx)
 
-        for word in Words:
-            print(f"\t{word:7} : [{wordStrt[word][0] + 1}, {wordStrt[word][1] + 1}]")
+        for word in InWords:
+            print(f"\t{word:7} : [{wordStrt[word.upper()][0] + 1}, {wordStrt[word.upper()][1] + 1}]")
 
         print()
 
