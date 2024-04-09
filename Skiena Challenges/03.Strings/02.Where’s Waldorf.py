@@ -122,6 +122,7 @@ for case in range(caseNum):
     Words = []
     strtChar = set()
     strtIndx = {}
+    wordStrt = {}
 
     print(f"\t\tWords: {wordNum}\n")
 
@@ -179,6 +180,7 @@ for case in range(caseNum):
 
                 if found:
                     print(f"\n\tFound ( 1, 0) : [{strRow:3}, {strCol:3}] => [{strRow + len(word) - 1:3}, {strCol:3}]\n")
+                    wordStrt[word] = [strRow, strCol]
                     break
 
                 if bordRight and not found:
@@ -193,6 +195,7 @@ for case in range(caseNum):
 
                     if found:
                         print(f"\n\tFound ( 1, 1) : [{strRow:3}, {strCol:3}] => [{strRow + len(word) - 1:3}, {strCol + len(word) - 1:3}]\n")
+                        wordStrt[word] = [strRow, strCol]
                         break
 
             if bordRight:
@@ -207,6 +210,7 @@ for case in range(caseNum):
 
                 if found:
                     print(f"\n\tFound ( 0, 1) : [{strRow:3}, {strCol:3}] => [{strRow:3}, {strCol + len(word) - 1:3}]\n")
+                    wordStrt[word] = [strRow, strCol]
                     break
 
                 if bordTop:
@@ -220,8 +224,8 @@ for case in range(caseNum):
                             break
 
                     if found:
-                        print(
-                            f"\n\tFound (-1, 1) : [{strRow:3}, {strCol:3}] => [{strRow - (len(word) - 1):3}, {strCol + len(word) - 1:3}]\n")
+                        print(f"\n\tFound (-1, 1) : [{strRow:3}, {strCol:3}] => [{strRow - (len(word) - 1):3}, {strCol + len(word) - 1:3}]\n")
+                        wordStrt[word] = [strRow, strCol]
                         break
 
             if bordTop:
@@ -236,6 +240,7 @@ for case in range(caseNum):
 
                 if found:
                     print(f"\n\tFound (-1, 0) : [{strRow:3}, {strCol:3}] => [{strRow - (len(word) - 1):3}, {strCol:3}]\n")
+                    wordStrt[word] = [strRow, strCol]
                     break
 
                 if bordLeft:
@@ -250,6 +255,7 @@ for case in range(caseNum):
 
                     if found:
                         print(f"\n\tFound (-1,-1) : [{strRow:3}, {strCol:3}] => [{strRow - (len(word) - 1):3}, {strCol - (len(word) - 1):3}]\n")
+                        wordStrt[word] = [strRow, strCol]
                         break
 
             if bordLeft:
@@ -264,6 +270,7 @@ for case in range(caseNum):
 
                 if found:
                     print(f"\n\tFound ( 0,-1) : [{strRow:3}, {strCol:3}] => [{strRow:3}, {strCol - (len(word) - 1):3}]\n")
+                    wordStrt[word] = [strRow, strCol]
                     break
 
                 if bordDown:
@@ -278,8 +285,13 @@ for case in range(caseNum):
 
                     if found:
                         print(f"\n\tFound ( 1,-1) : [{strRow:3}, {strCol:3}] => [{strRow + len(word) - 1:3}, {strCol - (len(word) - 1):3}]\n")
+                        wordStrt[word] = [strRow, strCol]
                         break
             print()
+    print()
+
+    for word in Words:
+        print(f"\t{word:7} : [{wordStrt[word][0] + 1}, {wordStrt[word][1] + 1}]")
 
     print()
 
@@ -360,6 +372,11 @@ Cases: 1
 
 	Found ( 0,-1) : [  6,   7] => [  6,   1]
 
+
+	WALDORF : [2, 5]
+	BAMBI   : [2, 3]
+	BETTY   : [1, 2]
+	DAGBERT : [7, 8]
 
 
 Process finished with exit code 0
