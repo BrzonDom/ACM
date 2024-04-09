@@ -55,7 +55,6 @@ Where’s Waldorf
                 7 8
 
 """
-from sys import stdin
 
 InputRaw_Str = """
 1
@@ -75,16 +74,16 @@ Bambi
 Betty
 Dagbert
 """
-
+from sys import stdin
 
 def makeGrid(RowNum, ColNum):
 
     Grid = [["" for c in range(ColNum)] for r in range(RowNum)]
 
-    print("\t\t\t\t", end="")
-    for col in range(ColNum):
-        print(f"{col:<5}", end="")
-    print()
+    # print("\t\t\t\t", end="")
+    # for col in range(ColNum):
+    #     print(f"{col:<5}", end="")
+    # print()
 
     for row in range(RowNum):
         # line = InputStr_Lst.pop(0)
@@ -93,8 +92,8 @@ def makeGrid(RowNum, ColNum):
         for col in range(ColNum):
             Grid[row][col] = line[col].upper()
 
-        print(f"\t\t\t{row}", Grid[row])
-    print("\n")
+    #     print(f"\t\t\t{row}", Grid[row])
+    # print("\n")
 
     return Grid
 
@@ -114,9 +113,9 @@ def getStart(RowNum, ColNum, Grid, strtChar):
                 if Grid[row][col] == char:
                     strtIndx[char].append((row, col))
 
-    for strt in strtIndx:
-        print(f"\t\t{strt} : {strtIndx[strt]}")
-    print("\n")
+    # for strt in strtIndx:
+    #     print(f"\t\t{strt} : {strtIndx[strt]}")
+    # print("\n")
 
     return strtIndx
 
@@ -140,12 +139,12 @@ def findWord(Words, Grid, RowNum, ColNum, strtIndx):
 
             strRow, strCol = start
 
-            print(f"\t\t[{strRow}, {strCol}] {word} ({len(word)})")
+            # print(f"\t\t[{strRow}, {strCol}] {word} ({len(word)})")
 
             right, down, left, up = canFit(len(word), RowNum, ColNum, strRow, strCol)
 
             if down:
-                print(f"\t\t\t( 1, 0) : [{strRow + len(word) - 1:3}, {strCol:3}]")
+                # print(f"\t\t\t( 1, 0) : [{strRow + len(word) - 1:3}, {strCol:3}]")
 
                 for nxt, nxtChar in enumerate(word[1:]):
                     found = True
@@ -155,12 +154,12 @@ def findWord(Words, Grid, RowNum, ColNum, strtIndx):
                         break
 
                 if found:
-                    print(f"\n\tFound ( 1, 0) : [{strRow:3}, {strCol:3}] => [{strRow + len(word) - 1:3}, {strCol:3}]\n")
+                    # print(f"\n\tFound ( 1, 0) : [{strRow:3}, {strCol:3}] => [{strRow + len(word) - 1:3}, {strCol:3}]\n")
                     wordStrt[word] = [strRow, strCol]
                     break
 
                 if right and not found:
-                    print(f"\t\t\t( 1, 1) : [{strRow + len(word) - 1:3}, {strCol + len(word) - 1:3}]")
+                    # print(f"\t\t\t( 1, 1) : [{strRow + len(word) - 1:3}, {strCol + len(word) - 1:3}]")
 
                     for nxt, nxtChar in enumerate(word[1:]):
                         found = True
@@ -170,13 +169,12 @@ def findWord(Words, Grid, RowNum, ColNum, strtIndx):
                             break
 
                     if found:
-                        print(
-                            f"\n\tFound ( 1, 1) : [{strRow:3}, {strCol:3}] => [{strRow + len(word) - 1:3}, {strCol + len(word) - 1:3}]\n")
+                        # print(f"\n\tFound ( 1, 1) : [{strRow:3}, {strCol:3}] => [{strRow + len(word) - 1:3}, {strCol + len(word) - 1:3}]\n")
                         wordStrt[word] = [strRow, strCol]
                         break
 
             if right:
-                print(f"\t\t\t( 0, 1) : [{strRow:3}, {strCol + len(word) - 1:3}]")
+                # print(f"\t\t\t( 0, 1) : [{strRow:3}, {strCol + len(word) - 1:3}]")
 
                 for nxt, nxtChar in enumerate(word[1:]):
                     found = True
@@ -186,12 +184,12 @@ def findWord(Words, Grid, RowNum, ColNum, strtIndx):
                         break
 
                 if found:
-                    print(f"\n\tFound ( 0, 1) : [{strRow:3}, {strCol:3}] => [{strRow:3}, {strCol + len(word) - 1:3}]\n")
+                    # print(f"\n\tFound ( 0, 1) : [{strRow:3}, {strCol:3}] => [{strRow:3}, {strCol + len(word) - 1:3}]\n")
                     wordStrt[word] = [strRow, strCol]
                     break
 
                 if up:
-                    print(f"\t\t\t(-1, 1) : [{strRow - (len(word) - 1):3}, {strCol + len(word) - 1:3}]")
+                    # print(f"\t\t\t(-1, 1) : [{strRow - (len(word) - 1):3}, {strCol + len(word) - 1:3}]")
 
                     for nxt, nxtChar in enumerate(word[1:]):
                         found = True
@@ -201,13 +199,12 @@ def findWord(Words, Grid, RowNum, ColNum, strtIndx):
                             break
 
                     if found:
-                        print(
-                            f"\n\tFound (-1, 1) : [{strRow:3}, {strCol:3}] => [{strRow - (len(word) - 1):3}, {strCol + len(word) - 1:3}]\n")
+                        # print(f"\n\tFound (-1, 1) : [{strRow:3}, {strCol:3}] => [{strRow - (len(word) - 1):3}, {strCol + len(word) - 1:3}]\n")
                         wordStrt[word] = [strRow, strCol]
                         break
 
             if up:
-                print(f"\t\t\t(-1, 0) : [{strRow - (len(word) - 1):3}, {strCol:3}]")
+                # print(f"\t\t\t(-1, 0) : [{strRow - (len(word) - 1):3}, {strCol:3}]")
 
                 for nxt, nxtChar in enumerate(word[1:]):
                     found = True
@@ -217,13 +214,12 @@ def findWord(Words, Grid, RowNum, ColNum, strtIndx):
                         break
 
                 if found:
-                    print(
-                        f"\n\tFound (-1, 0) : [{strRow:3}, {strCol:3}] => [{strRow - (len(word) - 1):3}, {strCol:3}]\n")
+                    # print(f"\n\tFound (-1, 0) : [{strRow:3}, {strCol:3}] => [{strRow - (len(word) - 1):3}, {strCol:3}]\n")
                     wordStrt[word] = [strRow, strCol]
                     break
 
                 if left:
-                    print(f"\t\t\t(-1,-1) : [{strRow - (len(word) - 1):3}, {strCol - (len(word) - 1):3}]")
+                    # print(f"\t\t\t(-1,-1) : [{strRow - (len(word) - 1):3}, {strCol - (len(word) - 1):3}]")
 
                     for nxt, nxtChar in enumerate(word[1:]):
                         found = True
@@ -233,13 +229,12 @@ def findWord(Words, Grid, RowNum, ColNum, strtIndx):
                             break
 
                     if found:
-                        print(
-                            f"\n\tFound (-1,-1) : [{strRow:3}, {strCol:3}] => [{strRow - (len(word) - 1):3}, {strCol - (len(word) - 1):3}]\n")
+                        # print(f"\n\tFound (-1,-1) : [{strRow:3}, {strCol:3}] => [{strRow - (len(word) - 1):3}, {strCol - (len(word) - 1):3}]\n")
                         wordStrt[word] = [strRow, strCol]
                         break
 
             if left:
-                print(f"\t\t\t( 0,-1) : [{strRow:3}, {strCol - (len(word) - 1):3}]")
+                # print(f"\t\t\t( 0,-1) : [{strRow:3}, {strCol - (len(word) - 1):3}]")
 
                 for nxt, nxtChar in enumerate(word[1:]):
                     found = True
@@ -249,13 +244,12 @@ def findWord(Words, Grid, RowNum, ColNum, strtIndx):
                         break
 
                 if found:
-                    print(
-                        f"\n\tFound ( 0,-1) : [{strRow:3}, {strCol:3}] => [{strRow:3}, {strCol - (len(word) - 1):3}]\n")
+                    # print(f"\n\tFound ( 0,-1) : [{strRow:3}, {strCol:3}] => [{strRow:3}, {strCol - (len(word) - 1):3}]\n")
                     wordStrt[word] = [strRow, strCol]
                     break
 
                 if down:
-                    print(f"\t\t\t( 1,-1) : [{strRow + len(word) - 1:3}, {strCol - (len(word) - 1):3}]")
+                    # print(f"\t\t\t( 1,-1) : [{strRow + len(word) - 1:3}, {strCol - (len(word) - 1):3}]")
 
                     for nxt, nxtChar in enumerate(word[1:]):
                         found = True
@@ -265,51 +259,42 @@ def findWord(Words, Grid, RowNum, ColNum, strtIndx):
                             break
 
                     if found:
-                        print(
-                            f"\n\tFound ( 1,-1) : [{strRow:3}, {strCol:3}] => [{strRow + len(word) - 1:3}, {strCol - (len(word) - 1):3}]\n")
+                        # print(f"\n\tFound ( 1,-1) : [{strRow:3}, {strCol:3}] => [{strRow + len(word) - 1:3}, {strCol - (len(word) - 1):3}]\n")
                         wordStrt[word] = [strRow, strCol]
                         break
-            print()
-    print()
+    #         print()
+    # print()
 
     return wordStrt
 
 
-# InputRaw_Str = InputRaw_Str[1:-1]
-
 if __name__ == "__main__":
 
-    InputStr_Lst = InputRaw_Str.split("\n")
-
-    # caseNum = int(InputStr_Lst.pop(0))
     caseNum = int(stdin.readline())
 
-    print(f"Cases: {caseNum}\n")
+    # print(f"Cases: {caseNum}\n")
 
     for case in range(caseNum):
 
-        print(f"\t{case+1}. case\n")
+        # print(f"\t{case+1}. case\n")
 
-        # InputStr_Lst.pop(0)
         stdin.readline()
 
-        # RowNum, ColNum = list(map(int, InputStr_Lst.pop(0).split()))
         RowNum, ColNum = list(map(int, stdin.readline().split()))
 
-        print(f"\t\tRows: {RowNum}")
-        print(f"\t\tCols: {ColNum}")
-        print()
+        # print(f"\t\tRows: {RowNum}")
+        # print(f"\t\tCols: {ColNum}")
+        # print()
 
         Grid = makeGrid(RowNum, ColNum)
 
-        # wordNum = int(InputStr_Lst.pop(0))
         wordNum = int(stdin.readline())
 
         InWords = []
         Words = []
         strtChar = set()
 
-        print(f"\t\tWords: {wordNum}\n")
+        # print(f"\t\tWords: {wordNum}\n")
 
         for w in range(wordNum):
 
@@ -318,17 +303,20 @@ if __name__ == "__main__":
             Words.append(InWords[-1].upper())
             strtChar.add(Words[-1][0])
 
-            print("\t\t\t", Words[-1])
-        print("\n")
+        #     print("\t\t\t", Words[-1])
+        # print("\n")
 
         strtIndx = getStart(RowNum, ColNum, Grid, strtChar)
 
         wordStrt = findWord(Words, Grid, RowNum, ColNum, strtIndx)
 
         for word in InWords:
-            print(f"\t{word:7} : [{wordStrt[word.upper()][0] + 1}, {wordStrt[word.upper()][1] + 1}]")
+            # print(f"\t{word:7} : [{wordStrt[word.upper()][0] + 1}, {wordStrt[word.upper()][1] + 1}]")
+            print(wordStrt[word.upper()][0] + 1, wordStrt[word.upper()][1] + 1)
 
-        print()
+        if case < caseNum-1:
+            print()
+
 
 
 """__Output__"""
