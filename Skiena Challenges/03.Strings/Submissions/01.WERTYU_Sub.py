@@ -39,26 +39,6 @@ if __name__ == "__main__":
     print(f"Input: {InputStr}")
     print()
 
-    """
-    row1 = "`1234567890-="
-    row2 = "QWERTYUIOP[]\\"
-    row3 = "ASDFGHJKL;'"
-    row4 = "ZXCVBNM,./"
-
-    rows = [row1, row2, row3, row4]
-
-    for r, row in enumerate(rows):
-        print(f"{r+1}.Row ({len(row)}): {row}")
-    print()
-
-    for row in rows:
-        for c, char in enumerate(row[1:]):
-            print(f"\'{char}\': \'{row[c]}\'", end=", ")
-        print()
-    # """
-
-    # print(f"\tEncoded string: {InputStr}")
-
     OutputStr = ""
 
     for char in InputStr:
