@@ -48,3 +48,10 @@ print(InputRaw_Str)
 InputStr_Lst = list(InputRaw_Str.split("\n"))
 
 print(InputStr_Lst)
+print()
+
+words = ["", ""]
+
+for words[0], words[1] in zip(InputStr_Lst[:-1:2], InputStr_Lst[1::2]):
+    print("\t", words[0], words[1])
+
