@@ -29,3 +29,22 @@ Common Permutation
                 et
 
 """
+
+InputRaw_Str = """
+pretty
+women
+walking
+down
+the
+street
+"""
+
+InputRaw_Str = InputRaw_Str[1:-1]
+
+print("Input:")
+
+print(InputRaw_Str)
+
+InputStr_Lst = list(InputRaw_Str.split("\n"))
+
+print(InputStr_Lst)
