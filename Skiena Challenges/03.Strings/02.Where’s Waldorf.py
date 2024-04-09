@@ -76,6 +76,28 @@ Betty
 Dagbert
 """
 
+
+def makeGrid(RowNum, ColNum):
+
+    Grid = [["" for c in range(ColNum)] for r in range(RowNum)]
+
+    print("\t\t\t\t", end="")
+    for col in range(ColNum):
+        print(f"{col:<5}", end="")
+    print()
+
+    for row in range(RowNum):
+        line = InputStr_Lst.pop(0)
+
+        for col in range(ColNum):
+            Grid[row][col] = line[col].upper()
+
+        print(f"\t\t\t{row}", Grid[row])
+    print("\n")
+
+    return Grid
+
+
 def canFit(lenWord, RowNum, ColNum, strRow, strCol):
 
     bordRight = (strCol + lenWord - 1) < ColNum
@@ -108,22 +130,24 @@ if __name__ == "__main__":
         print(f"\t\tCols: {ColNum}")
         print()
 
-        Grid = [["" for c in range(ColNum)] for r in range(RowNum)]
+        Grid = makeGrid(RowNum, ColNum)
 
-        print("\t\t\t\t", end="")
-        for col in range(ColNum):
-            print(f"{col:<5}", end="")
-        print()
-
-        for row in range(RowNum):
-            line = InputStr_Lst.pop(0)
-
-            for col in range(ColNum):
-
-                Grid[row][col] = line[col].upper()
-
-            print(f"\t\t\t{row}", Grid[row])
-        print("\n")
+        # Grid = [["" for c in range(ColNum)] for r in range(RowNum)]
+        #
+        # print("\t\t\t\t", end="")
+        # for col in range(ColNum):
+        #     print(f"{col:<5}", end="")
+        # print()
+        #
+        # for row in range(RowNum):
+        #     line = InputStr_Lst.pop(0)
+        #
+        #     for col in range(ColNum):
+        #
+        #         Grid[row][col] = line[col].upper()
+        #
+        #     print(f"\t\t\t{row}", Grid[row])
+        # print("\n")
 
         wordNum = int(InputStr_Lst.pop(0))
 
