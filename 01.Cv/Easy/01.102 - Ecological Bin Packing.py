@@ -59,3 +59,10 @@ InputRaw_Str = InputRaw_Str[1:-1]
 
 print("Input:")
 print(InputRaw_Str)
+print()
+
+InputStr_Lst = InputRaw_Str.split("\n")
+
+for i, InputStr in enumerate(InputStr_Lst):
+    print(f"\t{i+1}.Input line: {InputStr}")
+    print()
