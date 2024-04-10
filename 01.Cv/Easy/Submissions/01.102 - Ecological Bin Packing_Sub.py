@@ -128,9 +128,9 @@ if __name__ == "__main__":
                   'G' : 1, 1 : 'G',
                   'C' : 2, 2 : 'C' }
 
-    convFullCol = {'B' : 'Brown',
-                   'G' : 'Green',
-                   'C' : 'Clear'}
+    # convFullCol = {'B' : 'Brown',
+    #                'G' : 'Green',
+    #                'C' : 'Clear'}
 
     # inCnt = 0
 
