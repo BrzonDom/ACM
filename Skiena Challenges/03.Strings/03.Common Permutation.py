@@ -55,6 +55,20 @@ hollow
 """
 
 
+def getLetters(word):
+
+    dataWord = {}
+
+    for char in word:
+        if char not in dataWord:
+            dataWord[char] = 1
+
+        else:
+            dataWord[char] += 1
+
+    return dataWord
+
+
 InputRaw_Str = InputRaw_Str[1:-1]
 
 # print("Input:")
@@ -86,12 +100,15 @@ if __name__ == "__main__":
         # print(dataWord)
 
         for w, word in enumerate(words):
-            for char in word:
-                if char not in dataWord[w]:
-                    dataWord[w][char] = 1
+            dataWord[w] = getLetters(word)
 
-                else:
-                    dataWord[w][char] += 1
+        # for w, word in enumerate(words):
+        #     for char in word:
+        #         if char not in dataWord[w]:
+        #             dataWord[w][char] = 1
+        #
+        #         else:
+        #             dataWord[w][char] += 1
 
         for wrd in dataWord:
             for data in dataWord[wrd]:
