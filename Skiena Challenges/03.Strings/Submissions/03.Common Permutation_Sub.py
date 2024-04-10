@@ -76,47 +76,57 @@ def findCommonStr(dataWord):
 
 if __name__ == "__main__":
 
-    InputLst = []
+    # InputLst = []
 
-    Input = stdin.readline()
-
-    while Input != '\n' and Input != '':
-
-        InputLst.append(Input.rstrip())
-        Input = stdin.readline()
-
-
-    # while True:
+    # Input = stdin.readline()
     #
-    #     try:
-    #         InputLst.append(input())
+    # while Input != '\n' and Input != '':
     #
-    #     except EOFError:
-    #         break
+    #     InputLst.append(Input.rstrip())
+    #     Input = stdin.readline()
 
-    words = ["", ""]
+    while True:
 
-    for words[0], words[1] in zip(InputLst[:-1:2], InputLst[1::2]):
+        InputLst = []
 
-        # print("\t1. Word:", words[0])
-        # print("\t2. Word:", words[1])
-        # print()
+        try:
 
-        dataWord = {0: {}, 1: {}}
-        # print(dataWord)
+            # wrd1 = input()
+            # InputLst.append(wrd1)
+            #
+            # wrd2 = input()
+            # InputLst.append(wrd2)
 
-        for w, word in enumerate(words):
-            dataWord[w] = getLetters(word)
+            InputLst.append(input())
+            InputLst.append(input())
 
-        # for wrd in dataWord:
-        #     for data in dataWord[wrd]:
-        #         print(f"\t\t\t{data} : {dataWord[wrd][data]}")
-        #
-        #     print()
-        # print()
+        except EOFError:
+            break
 
-        commonStr = findCommonStr(dataWord)
-        # print("\t\tCommon substring:", commonStr)
-        # print("\n")
+        words = ["", ""]
 
-        print(commonStr)
+        for words[0], words[1] in zip(InputLst[:-1:2], InputLst[1::2]):
+
+            # print("\t1. Word:", words[0])
+            # print("\t2. Word:", words[1])
+            # print()
+
+            dataWord = {0: {}, 1: {}}
+            # print(dataWord)
+
+            for w, word in enumerate(words):
+                dataWord[w] = getLetters(word)
+
+            # for wrd in dataWord:
+            #     for data in dataWord[wrd]:
+            #         print(f"\t\t\t{data} : {dataWord[wrd][data]}")
+            #
+            #     print()
+            # print()
+
+            commonStr = findCommonStr(dataWord)
+            # print("\t\tCommon substring:", commonStr)
+            # print("\n")
+
+            print(commonStr)
+
