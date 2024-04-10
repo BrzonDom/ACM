@@ -131,15 +131,26 @@ if __name__ == "__main__":
                    'G' : 'Green',
                    'C' : 'Clear'}
 
-    print("Input:")
-    print(InputRaw_Str)
-    print()
+    # print("Input:")
+    # print(InputRaw_Str)
+    # print()
+    #
+    # InputStr_Lst = InputRaw_Str.split("\n")
 
-    InputStr_Lst = InputRaw_Str.split("\n")
+    inCnt = 0
 
-    for i, InputStr in enumerate(InputStr_Lst):
+    while True:
 
-        print(f"\t{i+1}.Input line: {InputStr}")
+        try:
+            InputStr = input()
+
+        except EOFError:
+            break
+
+        inCnt += 1
+    # for i, InputStr in enumerate(InputStr_Lst):
+
+        print(f"\t{inCnt+1}.Input line: {InputStr}")
         print()
 
         binInLst = list(map(int, InputStr.split()))
@@ -225,8 +236,10 @@ if __name__ == "__main__":
 
         # print(f"\t\t\t{minPer}")
 
-        if i < len(InputStr_Lst) - 1:
-            print("\n")
+        # if inCnt < len(InputStr_Lst) - 1:
+        #     print("\n")
+
+        print("\n")
 
 
 """__Output__"""
