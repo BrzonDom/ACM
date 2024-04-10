@@ -111,5 +111,9 @@ if __name__ == "__main__":
                 if char in dataWord[0]:
                     commonChar += min(dataWord[0][char], dataWord[1][char]) * [char]
 
-        print(f"\t\tCommon characters: {commonChar}")
+        commonStr = ""
+        for char in commonChar:
+            commonStr += char
+
+        print(f"\t\tCommon characters: {commonChar} = {commonStr}")
         print("\n")
