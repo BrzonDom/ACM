@@ -38,7 +38,7 @@ down
 the
 street
 """
-
+from sys import stdin
 
 def getLetters(word):
 
@@ -74,18 +74,17 @@ def findCommonStr(dataWord):
     return ''.join(sorted(commonStr))
 
 
-from sys import stdin
-
 if __name__ == "__main__":
 
     InputLst = []
 
-    Input = input()
+    Input = stdin.readline()
 
     while Input != '\n' and Input != '':
 
-        InputLst.append(Input)
-        Input = input()
+        InputLst.append(Input.rstrip())
+        Input = stdin.readline()
+
 
     # while True:
     #
