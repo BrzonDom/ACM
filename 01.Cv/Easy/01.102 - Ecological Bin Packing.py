@@ -90,14 +90,14 @@ for i, InputStr in enumerate(InputStr_Lst):
 
     print("\t\tBins:")
     for b in range(3):
-        print(f"\t\t\t{b+1}.Bin: Tot: {sum(binData[b])}, [ {binData[b][0]:2}B, {binData[b][1]:2}G, {binData[b][2]:2}C ]")
+        print(f"\t\t\t{b+1}. Bin: Tot: {sum(binData[b]):2}, [ {binData[b][0]:2}B, {binData[b][1]:2}G, {binData[b][2]:2}C ]")
     print()
 
     for b in range(3):
         maxBot = max(binData[b])
         rstBot = sum(binData[b]) - maxBot
         maxCol = colorPos[binData[b].index(maxBot)]
-        print(f"\t\t\t{b+1}.Bin: Max: {maxBot}{maxCol}, Rest: {rstBot}")
+        print(f"\t\t\t{b+1}. Bin: Max: {maxBot}{maxCol}, Rest: {rstBot}")
     print()
 
     colorCnt = {'B' : binInLst[0] + binInLst[3] + binInLst[6],
@@ -113,15 +113,21 @@ for i, InputStr in enumerate(InputStr_Lst):
     print("\tPermutations:\n")
     for perm in permColo:
         print(f"\t\t{perm}")
-        print(f"\t\t\t1. {perm[0]}: {binData[0][convColBin[perm[0]]]}")
-        print(f"\t\t\t2. {perm[1]}: {binData[1][convColBin[perm[1]]]}")
-        print(f"\t\t\t3. {perm[2]}: {binData[1][convColBin[perm[2]]]}")
+        print(f"\t\t\t1. {perm[0]}: {binData[0][convColBin[perm[0]]]:2}, "
+                               f"R: {binData[0][convColBin[perm[1]]] + binData[0][convColBin[perm[2]]]:2}")
+
+        print(f"\t\t\t2. {perm[1]}: {binData[1][convColBin[perm[1]]]:2}, "
+                               f"R: {binData[1][convColBin[perm[0]]] + binData[1][convColBin[perm[2]]]:2}")
+
+        print(f"\t\t\t3. {perm[2]}: {binData[2][convColBin[perm[2]]]:2}, "
+                               f"R: {binData[2][convColBin[perm[0]]] + binData[2][convColBin[perm[1]]]:2}")
         print()
 
     print("\n")
 
 """__Output__"""
 """
+Input:
 1 2 3 4 5 6 7 8 9
 5 10 5 20 10 5 10 20 10
 
@@ -130,13 +136,13 @@ for i, InputStr in enumerate(InputStr_Lst):
 		[1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 		Bins:
-			1.Bin: Tot: 6, [  1B,  2G,  3C ]
-			2.Bin: Tot: 15, [  4B,  5G,  6C ]
-			3.Bin: Tot: 24, [  7B,  8G,  9C ]
+			1. Bin: Tot:  6, [  1B,  2G,  3C ]
+			2. Bin: Tot: 15, [  4B,  5G,  6C ]
+			3. Bin: Tot: 24, [  7B,  8G,  9C ]
 
-			1.Bin: Max: 3C, Rest: 3
-			2.Bin: Max: 6C, Rest: 9
-			3.Bin: Max: 9C, Rest: 15
+			1. Bin: Max: 3C, Rest: 3
+			2. Bin: Max: 6C, Rest: 9
+			3. Bin: Max: 9C, Rest: 15
 
 		Bottles:
 			Brown: 12
@@ -146,34 +152,34 @@ for i, InputStr in enumerate(InputStr_Lst):
 	Permutations:
 
 		BCG
-			1. B: 1
-			2. C: 6
-			3. G: 5
+			1. B:  1, R:  5
+			2. C:  6, R:  9
+			3. G:  8, R: 16
 
 		BGC
-			1. B: 1
-			2. G: 5
-			3. C: 6
+			1. B:  1, R:  5
+			2. G:  5, R: 10
+			3. C:  9, R: 15
 
 		CBG
-			1. C: 3
-			2. B: 4
-			3. G: 5
+			1. C:  3, R:  3
+			2. B:  4, R: 11
+			3. G:  8, R: 16
 
 		CGB
-			1. C: 3
-			2. G: 5
-			3. B: 4
+			1. C:  3, R:  3
+			2. G:  5, R: 10
+			3. B:  7, R: 17
 
 		GBC
-			1. G: 2
-			2. B: 4
-			3. C: 6
+			1. G:  2, R:  4
+			2. B:  4, R: 11
+			3. C:  9, R: 15
 
 		GCB
-			1. G: 2
-			2. C: 6
-			3. B: 4
+			1. G:  2, R:  4
+			2. C:  6, R:  9
+			3. B:  7, R: 17
 
 
 
@@ -182,13 +188,13 @@ for i, InputStr in enumerate(InputStr_Lst):
 		[5, 10, 5, 20, 10, 5, 10, 20, 10]
 
 		Bins:
-			1.Bin: Tot: 20, [  5B, 10G,  5C ]
-			2.Bin: Tot: 35, [ 20B, 10G,  5C ]
-			3.Bin: Tot: 40, [ 10B, 20G, 10C ]
+			1. Bin: Tot: 20, [  5B, 10G,  5C ]
+			2. Bin: Tot: 35, [ 20B, 10G,  5C ]
+			3. Bin: Tot: 40, [ 10B, 20G, 10C ]
 
-			1.Bin: Max: 10G, Rest: 10
-			2.Bin: Max: 20B, Rest: 15
-			3.Bin: Max: 20G, Rest: 20
+			1. Bin: Max: 10G, Rest: 10
+			2. Bin: Max: 20B, Rest: 15
+			3. Bin: Max: 20G, Rest: 20
 
 		Bottles:
 			Brown: 35
@@ -198,34 +204,34 @@ for i, InputStr in enumerate(InputStr_Lst):
 	Permutations:
 
 		BCG
-			1. B: 5
-			2. C: 5
-			3. G: 10
+			1. B:  5, R: 15
+			2. C:  5, R: 30
+			3. G: 20, R: 20
 
 		BGC
-			1. B: 5
-			2. G: 10
-			3. C: 5
+			1. B:  5, R: 15
+			2. G: 10, R: 25
+			3. C: 10, R: 30
 
 		CBG
-			1. C: 5
-			2. B: 20
-			3. G: 10
+			1. C:  5, R: 15
+			2. B: 20, R: 15
+			3. G: 20, R: 20
 
 		CGB
-			1. C: 5
-			2. G: 10
-			3. B: 20
+			1. C:  5, R: 15
+			2. G: 10, R: 25
+			3. B: 10, R: 30
 
 		GBC
-			1. G: 10
-			2. B: 20
-			3. C: 5
+			1. G: 10, R: 10
+			2. B: 20, R: 15
+			3. C: 10, R: 30
 
 		GCB
-			1. G: 10
-			2. C: 5
-			3. B: 20
+			1. G: 10, R: 10
+			2. C:  5, R: 30
+			3. B: 10, R: 30
 
 
 
