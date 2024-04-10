@@ -49,3 +49,13 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=3&pag
                 CBG 50
 
 """
+
+InputRaw_Str ="""
+1 2 3 4 5 6 7 8 9
+5 10 5 20 10 5 10 20 10
+"""
+
+InputRaw_Str = InputRaw_Str[1:-1]
+
+print("Input:")
+print(InputRaw_Str)
