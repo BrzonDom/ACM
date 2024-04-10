@@ -159,36 +159,18 @@ if __name__ == "__main__":
 
         binInLst = list(map(int, InputStr.split()))
 
-        # print(f"\t\t{binInLst}")
-        # print()
-
         binData = {0 : binInLst[0:3],
                    1 : binInLst[3:6],
                    2 : binInLst[6:9]}
 
-        # binData[0] = binInLst[0:3]
-        # binData[1] = binInLst[3:6]
-        # binData[2] = binInLst[6:9]
+        binPref = {0 : None,
+                   1 : None,
+                   2 : None}
 
         print("\t\tBins:")
         showBinInf(binData)
 
         showBinAddInf(binData)
-
-        # colorPos = ['B', 'G', 'C',
-        #             "Brown", "Green", "Clear"]
-
-        # print("\t\tBins:")
-        # for b in range(3):
-        #     print(f"\t\t\t{b+1}. Bin: Tot: {sum(binData[b]):2}, [ {binData[b][0]:2}B, {binData[b][1]:2}G, {binData[b][2]:2}C ]")
-        # print()
-
-        # for b in range(3):
-        #     maxBot = max(binData[b])
-        #     rstBot = sum(binData[b]) - maxBot
-        #     maxCol = colorPos[binData[b].index(maxBot)]
-        #     print(f"\t\t\t{b+1}. Bin: Max: {maxBot}{maxCol}, Rest: {rstBot}")
-        # print()
 
         colorCnt = {'B' : binInLst[0] + binInLst[3] + binInLst[6],
                     'G' : binInLst[1] + binInLst[4] + binInLst[7],
@@ -197,46 +179,45 @@ if __name__ == "__main__":
         print("\t\tBottles:")
         showBttlInf(colorCnt)
 
-        # print("\t\tBottles:")
-        # print(f"\t\t\tBrown: {colorCnt['B']}")
-        # print(f"\t\t\tGreen: {colorCnt['G']}")
-        # print(f"\t\t\tClear: {colorCnt['C']}")
-        # print()
+        for bn in binData:
+            print(f"\t\t{binData[bn]}")
 
-        print("\t\tPermutations:\n")
-        minPer, minTot = findPrmt(permColo, binData)
 
-        # minTot = sum(colorCnt.values())
-        # minPer = ""
-        #
-        # print("\t\tPermutations:\n")
-        # for perm in permColo:
-        #     print(f"\t\t\t{perm}")
-        #
-        #     totCnt = 0
-        #
-        #     for bn, col in enumerate(perm):
-        #         cntCol = binData[bn][convColBin[col]]
-        #         cntRst = sum(binData[bn]) - cntCol
-        #
-        #         print(f"\t\t\t\t{bn+1}. {col}: {cntCol:2},\tR: {cntRst:2}")
-        #
-        #         totCnt += cntRst
-        #
-        #     if totCnt < minTot:
-        #         minTot = totCnt
-        #         minPer = perm
-        #
-        #     print(f"\t\t\t\t\t\tTotal: {totCnt}")
-        #     print()
-        # print()
+            if len(set(binData[bn])) == 3:
+                # maxPrf = max(binData[bn])
+                # minPrf = min(binData[bn])
+                bttlSrt = sorted(binData[bn], reverse=True)
 
-        print(f"\t\tFound permutation: {minPer}")
-        print(f"\t\t\t\t\tTotal: {minTot}")
+                maxPrf = binData[bn].index(bttlSrt[0])
+                midPrf = binData[bn].index(bttlSrt[1])
+
+                # maxPrf = convColBin[binData[bn].index(bttlSrt[0])]
+                # midPrf = convColBin[binData[bn].index(bttlSrt[1])]
+
+                binPref[bn] = [convColBin[maxPrf], convColBin[midPrf]]
+
+            elif len(set(binData[bn])) == 2:
+
+                maxPrf = binData[bn].index(max(binData[bn]))
+                binPref[bn] = [convColBin[maxPrf]]
+
+            else:
+                continue
+
+            print(f"\t\t\tPref.: {binPref[bn]}")
+            print()
         print()
 
-        for bn, col in enumerate(minPer):
-            print(f"\t\t\t{bn+1}. {convFullCol[col]} [{col}]: {binData[bn][convColBin[col]]:2}")
+
+        # print("\t\tPermutations:\n")
+        # minPer, minTot = findPrmt(permColo, binData)
+        #
+        # print(f"\t\tFound permutation: {minPer}")
+        # print(f"\t\t\t\t\tTotal: {minTot}")
+        # print()
+        #
+        # for bn, col in enumerate(minPer):
+        #     print(f"\t\t\t{bn+1}. {convFullCol[col]} [{col}]: {binData[bn][convColBin[col]]:2}")
 
         # print(f"\t\t\t{minPer}")
 
@@ -266,51 +247,16 @@ Input:
 			Green: 15
 			Clear: 18
 
-		Permutations:
+		[1, 2, 3]
+			Pref.: ['C', 'G']
 
-			BCG
-				1. B:  1,	R:  5 [  3C,  3G ]
-				2. C:  6,	R:  9 [  4B,  4G ]
-				3. G:  8,	R: 16 [  7B,  7C ]
-						Total: 30
+		[4, 5, 6]
+			Pref.: ['C', 'G']
 
-			BGC
-				1. B:  1,	R:  5 [  2G,  2C ]
-				2. G:  5,	R: 10 [  4B,  4C ]
-				3. C:  9,	R: 15 [  7B,  7G ]
-						Total: 30
-
-			CBG
-				1. C:  3,	R:  3 [  1B,  1G ]
-				2. B:  4,	R: 11 [  6C,  6G ]
-				3. G:  8,	R: 16 [  9C,  9B ]
-						Total: 30
-
-			CGB
-				1. C:  3,	R:  3 [  2G,  2B ]
-				2. G:  5,	R: 10 [  6C,  6B ]
-				3. B:  7,	R: 17 [  9C,  9G ]
-						Total: 30
-
-			GBC
-				1. G:  2,	R:  4 [  1B,  1C ]
-				2. B:  4,	R: 11 [  5G,  5C ]
-				3. C:  9,	R: 15 [  8G,  8B ]
-						Total: 30
-
-			GCB
-				1. G:  2,	R:  4 [  3C,  3B ]
-				2. C:  6,	R:  9 [  5G,  5B ]
-				3. B:  7,	R: 17 [  8G,  8C ]
-						Total: 30
+		[7, 8, 9]
+			Pref.: ['C', 'G']
 
 
-		Found permutation: BCG
-					Total: 30
-
-			1. Brown [B]:  1
-			2. Clear [C]:  6
-			3. Green [G]:  8
 
 
 	2.Input line: 5 10 5 20 10 5 10 20 10
@@ -329,51 +275,16 @@ Input:
 			Green: 40
 			Clear: 20
 
-		Permutations:
+		[5, 10, 5]
+			Pref.: ['G']
 
-			BCG
-				1. B:  5,	R: 15 [  5C,  5G ]
-				2. C:  5,	R: 30 [ 20B, 20G ]
-				3. G: 20,	R: 20 [ 10B, 10C ]
-						Total: 65
+		[20, 10, 5]
+			Pref.: ['B', 'G']
 
-			BGC
-				1. B:  5,	R: 15 [ 10G, 10C ]
-				2. G: 10,	R: 25 [ 20B, 20C ]
-				3. C: 10,	R: 30 [ 10B, 10G ]
-						Total: 70
-
-			CBG
-				1. C:  5,	R: 15 [  5B,  5G ]
-				2. B: 20,	R: 15 [  5C,  5G ]
-				3. G: 20,	R: 20 [ 10C, 10B ]
-						Total: 50
-
-			CGB
-				1. C:  5,	R: 15 [ 10G, 10B ]
-				2. G: 10,	R: 25 [  5C,  5B ]
-				3. B: 10,	R: 30 [ 10C, 10G ]
-						Total: 70
-
-			GBC
-				1. G: 10,	R: 10 [  5B,  5C ]
-				2. B: 20,	R: 15 [ 10G, 10C ]
-				3. C: 10,	R: 30 [ 20G, 20B ]
-						Total: 55
-
-			GCB
-				1. G: 10,	R: 10 [  5C,  5B ]
-				2. C:  5,	R: 30 [ 10G, 10B ]
-				3. B: 10,	R: 30 [ 20G, 20C ]
-						Total: 70
+		[10, 20, 10]
+			Pref.: ['G']
 
 
-		Found permutation: CBG
-					Total: 50
-
-			1. Clear [C]:  5
-			2. Brown [B]: 20
-			3. Green [G]: 20
 
 Process finished with exit code 0
 
