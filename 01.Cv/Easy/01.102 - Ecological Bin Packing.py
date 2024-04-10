@@ -57,102 +57,104 @@ InputRaw_Str ="""
 
 InputRaw_Str = InputRaw_Str[1:-1]
 
-print("Input:")
-print(InputRaw_Str)
-print()
+if __name__ == "__main__":
 
-permColo = ['BCG', 'BGC', 'CBG', 'CGB', 'GBC', 'GCB']
-
-convColBin = {'B' : 0, 0 : 'B',
-              'G' : 1, 1 : 'G',
-              'C' : 2, 2 : 'C' }
-
-convFullCol = {'B' : 'Brown',
-               'G' : 'Green',
-               'C' : 'Clear'}
-
-InputStr_Lst = InputRaw_Str.split("\n")
-
-for i, InputStr in enumerate(InputStr_Lst):
-    print(f"\t{i+1}.Input line: {InputStr}")
+    print("Input:")
+    print(InputRaw_Str)
     print()
 
-    binInLst = list(map(int, InputStr.split()))
-    print(f"\t\t{binInLst}")
-    print()
+    permColo = ['BCG', 'BGC', 'CBG', 'CGB', 'GBC', 'GCB']
 
-    binData = {}
-    binData[0] = binInLst[0:3]
-    binData[1] = binInLst[3:6]
-    binData[2] = binInLst[6:9]
+    convColBin = {'B' : 0, 0 : 'B',
+                  'G' : 1, 1 : 'G',
+                  'C' : 2, 2 : 'C' }
 
-    # print(f"\t\t{binData}")
-    # print()
+    convFullCol = {'B' : 'Brown',
+                   'G' : 'Green',
+                   'C' : 'Clear'}
 
-    colorPos = ['B', 'G', 'C',
-                "Brown", "Green", "Clear"]
+    InputStr_Lst = InputRaw_Str.split("\n")
 
-    print("\t\tBins:")
-    for b in range(3):
-        print(f"\t\t\t{b+1}. Bin: Tot: {sum(binData[b]):2}, [ {binData[b][0]:2}B, {binData[b][1]:2}G, {binData[b][2]:2}C ]")
-    print()
-
-    for b in range(3):
-        maxBot = max(binData[b])
-        rstBot = sum(binData[b]) - maxBot
-        maxCol = colorPos[binData[b].index(maxBot)]
-        print(f"\t\t\t{b+1}. Bin: Max: {maxBot}{maxCol}, Rest: {rstBot}")
-    print()
-
-    colorCnt = {'B' : binInLst[0] + binInLst[3] + binInLst[6],
-                'G' : binInLst[1] + binInLst[4] + binInLst[7],
-                'C' : binInLst[2] + binInLst[5] + binInLst[8] }
-
-    print("\t\tBottles:")
-    print(f"\t\t\tBrown: {colorCnt['B']}")
-    print(f"\t\t\tGreen: {colorCnt['G']}")
-    print(f"\t\t\tClear: {colorCnt['C']}")
-    print()
-
-    # minTot = colorCnt['B'] + colorCnt['G'] + colorCnt['C']
-    minTot = sum(colorCnt.values())
-    minPer = ""
-
-    # print(minTot)
-
-    print("\t\tPermutations:\n")
-    for perm in permColo:
-        print(f"\t\t\t{perm}")
-
-        totCnt = 0
-
-        for bn, col in enumerate(perm):
-            cntCol = binData[bn][convColBin[col]]
-            cntRst = sum(binData[bn]) - cntCol
-
-            print(f"\t\t\t\t{bn+1}. {col}: {cntCol:2},\tR: {cntRst:2}")
-
-            totCnt += cntRst
-
-        if totCnt < minTot:
-            minTot = totCnt
-            minPer = perm
-
-        print(f"\t\t\t\t\t\tTotal: {totCnt}")
+    for i, InputStr in enumerate(InputStr_Lst):
+        print(f"\t{i+1}.Input line: {InputStr}")
         print()
-    print()
 
-    print(f"\t\tFound permutation: {minPer}")
-    print(f"\t\t\t\t\tTotal: {minTot}")
-    print()
+        binInLst = list(map(int, InputStr.split()))
+        print(f"\t\t{binInLst}")
+        print()
 
-    for bn, col in enumerate(minPer):
-        print(f"\t\t\t{bn+1}. {convFullCol[col]} [{col}]: {binData[bn][convColBin[col]]:2}")
+        binData = {}
+        binData[0] = binInLst[0:3]
+        binData[1] = binInLst[3:6]
+        binData[2] = binInLst[6:9]
 
-    # print(f"\t\t\t{minPer}")
+        # print(f"\t\t{binData}")
+        # print()
 
-    if i < len(InputStr_Lst) - 1:
-        print("\n")
+        colorPos = ['B', 'G', 'C',
+                    "Brown", "Green", "Clear"]
+
+        print("\t\tBins:")
+        for b in range(3):
+            print(f"\t\t\t{b+1}. Bin: Tot: {sum(binData[b]):2}, [ {binData[b][0]:2}B, {binData[b][1]:2}G, {binData[b][2]:2}C ]")
+        print()
+
+        for b in range(3):
+            maxBot = max(binData[b])
+            rstBot = sum(binData[b]) - maxBot
+            maxCol = colorPos[binData[b].index(maxBot)]
+            print(f"\t\t\t{b+1}. Bin: Max: {maxBot}{maxCol}, Rest: {rstBot}")
+        print()
+
+        colorCnt = {'B' : binInLst[0] + binInLst[3] + binInLst[6],
+                    'G' : binInLst[1] + binInLst[4] + binInLst[7],
+                    'C' : binInLst[2] + binInLst[5] + binInLst[8] }
+
+        print("\t\tBottles:")
+        print(f"\t\t\tBrown: {colorCnt['B']}")
+        print(f"\t\t\tGreen: {colorCnt['G']}")
+        print(f"\t\t\tClear: {colorCnt['C']}")
+        print()
+
+        # minTot = colorCnt['B'] + colorCnt['G'] + colorCnt['C']
+        minTot = sum(colorCnt.values())
+        minPer = ""
+
+        # print(minTot)
+
+        print("\t\tPermutations:\n")
+        for perm in permColo:
+            print(f"\t\t\t{perm}")
+
+            totCnt = 0
+
+            for bn, col in enumerate(perm):
+                cntCol = binData[bn][convColBin[col]]
+                cntRst = sum(binData[bn]) - cntCol
+
+                print(f"\t\t\t\t{bn+1}. {col}: {cntCol:2},\tR: {cntRst:2}")
+
+                totCnt += cntRst
+
+            if totCnt < minTot:
+                minTot = totCnt
+                minPer = perm
+
+            print(f"\t\t\t\t\t\tTotal: {totCnt}")
+            print()
+        print()
+
+        print(f"\t\tFound permutation: {minPer}")
+        print(f"\t\t\t\t\tTotal: {minTot}")
+        print()
+
+        for bn, col in enumerate(minPer):
+            print(f"\t\t\t{bn+1}. {convFullCol[col]} [{col}]: {binData[bn][convColBin[col]]:2}")
+
+        # print(f"\t\t\t{minPer}")
+
+        if i < len(InputStr_Lst) - 1:
+            print("\n")
 
 
 """__Output__"""
