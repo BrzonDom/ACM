@@ -51,13 +51,16 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=3&pag
 """
 
 
-def prntBin(binData):
+def showBinInf(binData):
 
-    print("\t\tBins:")
+    # print("\t\tBins:")
     for b in range(3):
         print(f"\t\t\t{b + 1}. Bin: Tot: {sum(binData[b]):2}, "
               f"[ {binData[b][0]:2}B, {binData[b][1]:2}G, {binData[b][2]:2}C ]")
     print()
+
+
+def showBinAddInf(binData):
 
     colorPos = ['B', 'G', 'C',
                 "Brown", "Green", "Clear"]
@@ -69,6 +72,16 @@ def prntBin(binData):
 
         print(f"\t\t\t{b + 1}. Bin: Max: {maxBot}{maxCol}, Rest: {rstBot}")
     print()
+
+
+def showBttlInf(colorCnt):
+
+    # print("\t\tBottles:")
+    print(f"\t\t\tBrown: {colorCnt['B']}")
+    print(f"\t\t\tGreen: {colorCnt['G']}")
+    print(f"\t\t\tClear: {colorCnt['C']}")
+    print()
+
 
 
 InputRaw_Str ="""
@@ -114,7 +127,10 @@ if __name__ == "__main__":
         # binData[1] = binInLst[3:6]
         # binData[2] = binInLst[6:9]
 
-        prntBin(binData)
+        print("\t\tBins:")
+        showBinInf(binData)
+
+        showBinAddInf(binData)
 
         # colorPos = ['B', 'G', 'C',
         #             "Brown", "Green", "Clear"]
@@ -136,16 +152,16 @@ if __name__ == "__main__":
                     'C' : binInLst[2] + binInLst[5] + binInLst[8] }
 
         print("\t\tBottles:")
-        print(f"\t\t\tBrown: {colorCnt['B']}")
-        print(f"\t\t\tGreen: {colorCnt['G']}")
-        print(f"\t\t\tClear: {colorCnt['C']}")
-        print()
+        showBttlInf(colorCnt)
 
-        # minTot = colorCnt['B'] + colorCnt['G'] + colorCnt['C']
+        # print("\t\tBottles:")
+        # print(f"\t\t\tBrown: {colorCnt['B']}")
+        # print(f"\t\t\tGreen: {colorCnt['G']}")
+        # print(f"\t\t\tClear: {colorCnt['C']}")
+        # print()
+
         minTot = sum(colorCnt.values())
         minPer = ""
-
-        # print(minTot)
 
         print("\t\tPermutations:\n")
         for perm in permColo:
