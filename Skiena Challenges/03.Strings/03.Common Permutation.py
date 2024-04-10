@@ -30,6 +30,15 @@ Common Permutation
 
 """
 
+# InputRaw_Str = """
+# pretty
+# women
+# walking
+# down
+# the
+# street
+# """
+
 InputRaw_Str = """
 pretty
 women
@@ -37,7 +46,14 @@ walking
 down
 the
 street
+banana
+bandana
+apple
+pineapple
+hello
+hollow
 """
+
 
 InputRaw_Str = InputRaw_Str[1:-1]
 
@@ -104,8 +120,14 @@ walking
 down
 the
 street
+banana
+bandana
+apple
+pineapple
+hello
+hollow
 
-['pretty', 'women', 'walking', 'down', 'the', 'street']
+['pretty', 'women', 'walking', 'down', 'the', 'street', 'banana', 'bandana', 'apple', 'pineapple', 'hello', 'hollow']
 
 	1. Word: pretty
 	2. Word: women
@@ -160,6 +182,58 @@ street
 
 
 		Common characters: ['t', 'e']
+
+
+	1. Word: banana
+	2. Word: bandana
+
+			b : 1
+			a : 3
+			n : 2
+
+			b : 1
+			a : 3
+			n : 2
+			d : 1
+
+
+		Common characters: ['b', 'a', 'a', 'a', 'n', 'n']
+
+
+	1. Word: apple
+	2. Word: pineapple
+
+			a : 1
+			p : 2
+			l : 1
+			e : 1
+
+			p : 3
+			i : 1
+			n : 1
+			e : 2
+			a : 1
+			l : 1
+
+
+		Common characters: ['a', 'p', 'p', 'l', 'e']
+
+
+	1. Word: hello
+	2. Word: hollow
+
+			h : 1
+			e : 1
+			l : 2
+			o : 1
+
+			h : 1
+			o : 2
+			l : 2
+			w : 1
+
+
+		Common characters: ['h', 'l', 'l', 'o']
 
 
 
