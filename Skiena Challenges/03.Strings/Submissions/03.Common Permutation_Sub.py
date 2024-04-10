@@ -99,21 +99,26 @@ if __name__ == "__main__":
         print()
 
         commonChar = []
+        commonStr = ""
 
         if len(dataWord[0]) <= len(dataWord[1]):
 
             for char in dataWord[0]:
                 if char in dataWord[1]:
                     commonChar += min(dataWord[0][char], dataWord[1][char]) * [char]
+                    commonStr += min(dataWord[0][char], dataWord[1][char]) * char
 
         else:
             for char in dataWord[1]:
                 if char in dataWord[0]:
                     commonChar += min(dataWord[0][char], dataWord[1][char]) * [char]
+                    commonStr += min(dataWord[0][char], dataWord[1][char]) * char
 
-        commonStr = ""
-        for char in commonChar:
-            commonStr += char
+        # commonStr = ""
+        # for char in commonChar:
+        #     commonStr += char
 
-        print(f"\t\tCommon characters: {commonChar} = {commonStr}")
+        # print(f"\t\tCommon characters: {commonChar} = {commonStr}")
+        print(f"\t\tCommon characters: {commonChar}")
+        print(f"\t\tCommon subseq.: {commonStr}")
         print("\n")
