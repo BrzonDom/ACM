@@ -95,19 +95,23 @@ if __name__ == "__main__":
         print()
 
         commonChar = []
+        commonStr = ""
 
         if len(dataWord[0]) <= len(dataWord[1]):
 
             for char in dataWord[0]:
                 if char in dataWord[1]:
                     commonChar += min(dataWord[0][char], dataWord[1][char]) * [char]
+                    commonStr += min(dataWord[0][char], dataWord[1][char]) * char
 
         else:
             for char in dataWord[1]:
                 if char in dataWord[0]:
                     commonChar += min(dataWord[0][char], dataWord[1][char]) * [char]
+                    commonStr += min(dataWord[0][char], dataWord[1][char]) * char
 
         print("\t\tCommon characters:", commonChar)
+        print("\t\tCommon substring:", commonStr)
         print("\n")
 
 
@@ -146,6 +150,7 @@ hollow
 
 
 		Common characters: ['e']
+		Common substring: e
 
 
 	1. Word: walking
@@ -166,6 +171,7 @@ hollow
 
 
 		Common characters: ['w', 'n']
+		Common substring: wn
 
 
 	1. Word: the
@@ -182,6 +188,7 @@ hollow
 
 
 		Common characters: ['t', 'e']
+		Common substring: te
 
 
 	1. Word: banana
@@ -198,6 +205,7 @@ hollow
 
 
 		Common characters: ['b', 'a', 'a', 'a', 'n', 'n']
+		Common substring: baaann
 
 
 	1. Word: apple
@@ -217,6 +225,7 @@ hollow
 
 
 		Common characters: ['a', 'p', 'p', 'l', 'e']
+		Common substring: apple
 
 
 	1. Word: hello
@@ -234,6 +243,7 @@ hollow
 
 
 		Common characters: ['h', 'l', 'l', 'o']
+		Common substring: hllo
 
 
 
