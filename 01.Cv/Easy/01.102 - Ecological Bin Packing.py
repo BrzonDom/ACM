@@ -50,6 +50,16 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=3&pag
 
 """
 
+
+def prntBin(binData):
+
+    print("\t\tBins:")
+    for b in range(3):
+        print(
+            f"\t\t\t{b + 1}. Bin: Tot: {sum(binData[b]):2}, [ {binData[b][0]:2}B, {binData[b][1]:2}G, {binData[b][2]:2}C ]")
+    print()
+
+
 InputRaw_Str ="""
 1 2 3 4 5 6 7 8 9
 5 10 5 20 10 5 10 20 10
@@ -58,10 +68,6 @@ InputRaw_Str ="""
 InputRaw_Str = InputRaw_Str[1:-1]
 
 if __name__ == "__main__":
-
-    print("Input:")
-    print(InputRaw_Str)
-    print()
 
     permColo = ['BCG', 'BGC', 'CBG', 'CGB', 'GBC', 'GCB']
 
@@ -73,9 +79,14 @@ if __name__ == "__main__":
                    'G' : 'Green',
                    'C' : 'Clear'}
 
+    print("Input:")
+    print(InputRaw_Str)
+    print()
+
     InputStr_Lst = InputRaw_Str.split("\n")
 
     for i, InputStr in enumerate(InputStr_Lst):
+
         print(f"\t{i+1}.Input line: {InputStr}")
         print()
 
@@ -83,21 +94,23 @@ if __name__ == "__main__":
         print(f"\t\t{binInLst}")
         print()
 
-        binData = {}
-        binData[0] = binInLst[0:3]
-        binData[1] = binInLst[3:6]
-        binData[2] = binInLst[6:9]
+        binData = {0 : binInLst[0:3],
+                   1 : binInLst[3:6],
+                   2 : binInLst[6:9]}
 
-        # print(f"\t\t{binData}")
-        # print()
+        # binData[0] = binInLst[0:3]
+        # binData[1] = binInLst[3:6]
+        # binData[2] = binInLst[6:9]
 
         colorPos = ['B', 'G', 'C',
                     "Brown", "Green", "Clear"]
 
-        print("\t\tBins:")
-        for b in range(3):
-            print(f"\t\t\t{b+1}. Bin: Tot: {sum(binData[b]):2}, [ {binData[b][0]:2}B, {binData[b][1]:2}G, {binData[b][2]:2}C ]")
-        print()
+        prntBin(binData)
+
+        # print("\t\tBins:")
+        # for b in range(3):
+        #     print(f"\t\t\t{b+1}. Bin: Tot: {sum(binData[b]):2}, [ {binData[b][0]:2}B, {binData[b][1]:2}G, {binData[b][2]:2}C ]")
+        # print()
 
         for b in range(3):
             maxBot = max(binData[b])
