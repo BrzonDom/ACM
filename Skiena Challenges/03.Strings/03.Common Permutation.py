@@ -110,6 +110,26 @@ def getCommonStr(commonChar):
     return commonStr
 
 
+def findCommonStr(dataWord):
+
+    commonStr = ""
+
+    if len(dataWord[0]) <= len(dataWord[1]):
+
+        for char in dataWord[0]:
+            if char in dataWord[1]:
+                # commonChar += min(dataWord[0][char], dataWord[1][char]) * [char]
+                commonStr += min(dataWord[0][char], dataWord[1][char]) * char
+
+    else:
+        for char in dataWord[1]:
+            if char in dataWord[0]:
+                # commonChar += min(dataWord[0][char], dataWord[1][char]) * [char]
+                commonStr += min(dataWord[0][char], dataWord[1][char]) * char
+
+    return ''.join(sorted(commonStr))
+
+
 InputRaw_Str = InputRaw_Str[1:-1]
 
 # print("Input:")
@@ -151,7 +171,7 @@ if __name__ == "__main__":
         #         else:
         #             dataWord[w][char] += 1
 
-        prntLetters(dataWord)
+        # prntLetters(dataWord)
 
         # for wrd in dataWord:
         #     for data in dataWord[wrd]:
@@ -189,6 +209,10 @@ if __name__ == "__main__":
         #     commonStr += char
 
         print("\t\tCommon substring:", commonStr)
+        print()
+
+        commonStr = findCommonStr(dataWord)
+        print("\t\tCommon substring:", commonStr)
         print("\n")
 
 
@@ -215,113 +239,54 @@ Input:
 	1. Word: pretty
 	2. Word: women
 
-			p : 1
-			r : 1
-			e : 1
-			t : 2
-			y : 1
-
-			w : 1
-			o : 1
-			m : 1
-			e : 1
-			n : 1
-
-
 		Common characters: ['e']
+		Common substring: e
+
 		Common substring: e
 
 
 	1. Word: walking
 	2. Word: down
 
-			w : 1
-			a : 1
-			l : 1
-			k : 1
-			i : 1
-			n : 1
-			g : 1
-
-			d : 1
-			o : 1
-			w : 1
-			n : 1
-
-
 		Common characters: ['n', 'w']
+		Common substring: nw
+
 		Common substring: nw
 
 
 	1. Word: the
 	2. Word: street
 
-			t : 1
-			h : 1
-			e : 1
-
-			s : 1
-			t : 2
-			r : 1
-			e : 2
-
-
 		Common characters: ['e', 't']
+		Common substring: et
+
 		Common substring: et
 
 
 	1. Word: banana
 	2. Word: bandana
 
-			b : 1
-			a : 3
-			n : 2
-
-			b : 1
-			a : 3
-			n : 2
-			d : 1
-
-
 		Common characters: ['a', 'a', 'a', 'b', 'n', 'n']
+		Common substring: aaabnn
+
 		Common substring: aaabnn
 
 
 	1. Word: apple
 	2. Word: pineapple
 
-			a : 1
-			p : 2
-			l : 1
-			e : 1
-
-			p : 3
-			i : 1
-			n : 1
-			e : 2
-			a : 1
-			l : 1
-
-
 		Common characters: ['a', 'e', 'l', 'p', 'p']
+		Common substring: aelpp
+
 		Common substring: aelpp
 
 
 	1. Word: hello
 	2. Word: hollow
 
-			h : 1
-			e : 1
-			l : 2
-			o : 1
-
-			h : 1
-			o : 2
-			l : 2
-			w : 1
-
-
 		Common characters: ['h', 'l', 'l', 'o']
+		Common substring: hllo
+
 		Common substring: hllo
 
 
