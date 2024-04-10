@@ -89,7 +89,7 @@ def findPrmt(permColo, binData):
     minPer = ""
 
     for perm in permColo:
-        print(f"\t\t\t{perm}")
+        # print(f"\t\t\t{perm}")
 
         totCnt = 0
 
@@ -97,7 +97,7 @@ def findPrmt(permColo, binData):
             cntCol = binData[bn][convColBin[col]]
             cntRst = sum(binData[bn]) - cntCol
 
-            print(f"\t\t\t\t{bn + 1}. {col}: {cntCol:2},\tR: {cntRst:2}")
+            # print(f"\t\t\t\t{bn + 1}. {col}: {cntCol:2},\tR: {cntRst:2}")
 
             totCnt += cntRst
 
@@ -105,9 +105,9 @@ def findPrmt(permColo, binData):
             minTot = totCnt
             minPer = perm
 
-        print(f"\t\t\t\t\t\tTotal: {totCnt}")
-        print()
-    print()
+    #     print(f"\t\t\t\t\t\tTotal: {totCnt}")
+    #     print()
+    # print()
 
     return minPer, minTot
 
@@ -143,8 +143,8 @@ if __name__ == "__main__":
 
         inCnt += 1
 
-        print(f"\t{inCnt+1}.Input line: {InputStr}")
-        print()
+        # print(f"\t{inCnt+1}.Input line: {InputStr}")
+        # print()
 
         binInLst = list(map(int, InputStr.split()))
 
@@ -152,19 +152,19 @@ if __name__ == "__main__":
                    1 : binInLst[3:6],
                    2 : binInLst[6:9]}
 
-        print("\t\tBins:")
-        showBinInf(binData)
+        # print("\t\tBins:")
+        # showBinInf(binData)
 
-        showBinAddInf(binData)
+        # showBinAddInf(binData)
 
         colorCnt = {'B' : binInLst[0] + binInLst[3] + binInLst[6],
                     'G' : binInLst[1] + binInLst[4] + binInLst[7],
                     'C' : binInLst[2] + binInLst[5] + binInLst[8] }
 
-        print("\t\tBottles:")
-        showBttlInf(colorCnt)
+        # print("\t\tBottles:")
+        # showBttlInf(colorCnt)
 
-        print("\t\tPermutations:\n")
+        # print("\t\tPermutations:\n")
         minPer, minTot = findPrmt(permColo, binData)
 
         print(f"\t\tFound permutation: {minPer}")
