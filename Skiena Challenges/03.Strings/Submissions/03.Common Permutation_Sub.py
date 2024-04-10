@@ -46,48 +46,51 @@ print("Input:")
 print(InputRaw_Str)
 print()
 
-InputStr_Lst = list(InputRaw_Str.split("\n"))
 
-print(InputStr_Lst)
-print()
+if __name__ == "__main__":
 
-words = ["", ""]
+    InputStr_Lst = list(InputRaw_Str.split("\n"))
 
-for words[0], words[1] in zip(InputStr_Lst[:-1:2], InputStr_Lst[1::2]):
-    print("\t1. Word:", words[0])
-    print("\t2. Word:", words[1])
+    print(InputStr_Lst)
     print()
 
-    dataWord = {0: {}, 1: {}}
-    # print(dataWord)
+    words = ["", ""]
 
-    for w, word in enumerate(words):
-        for char in word:
-            if char not in dataWord[w]:
-                dataWord[w][char] = 1
-
-            else:
-                dataWord[w][char] += 1
-
-    for wrd in dataWord:
-        for data in dataWord[wrd]:
-            print(f"\t\t\t{data} : {dataWord[wrd][data]}")
-
+    for words[0], words[1] in zip(InputStr_Lst[:-1:2], InputStr_Lst[1::2]):
+        print("\t1. Word:", words[0])
+        print("\t2. Word:", words[1])
         print()
-    print()
 
-    commonChar = []
+        dataWord = {0: {}, 1: {}}
+        # print(dataWord)
 
-    if len(dataWord[0]) <= len(dataWord[1]):
+        for w, word in enumerate(words):
+            for char in word:
+                if char not in dataWord[w]:
+                    dataWord[w][char] = 1
 
-        for char in dataWord[0]:
-            if char in dataWord[1]:
-                commonChar += min(dataWord[0][char], dataWord[1][char]) * [char]
+                else:
+                    dataWord[w][char] += 1
 
-    else:
-        for char in dataWord[1]:
-            if char in dataWord[0]:
-                commonChar += min(dataWord[0][char], dataWord[1][char]) * [char]
+        for wrd in dataWord:
+            for data in dataWord[wrd]:
+                print(f"\t\t\t{data} : {dataWord[wrd][data]}")
 
-    print("\t\tCommon characters:", commonChar)
-    print("\n")
+            print()
+        print()
+
+        commonChar = []
+
+        if len(dataWord[0]) <= len(dataWord[1]):
+
+            for char in dataWord[0]:
+                if char in dataWord[1]:
+                    commonChar += min(dataWord[0][char], dataWord[1][char]) * [char]
+
+        else:
+            for char in dataWord[1]:
+                if char in dataWord[0]:
+                    commonChar += min(dataWord[0][char], dataWord[1][char]) * [char]
+
+        print("\t\tCommon characters:", commonChar)
+        print("\n")
