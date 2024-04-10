@@ -79,7 +79,7 @@ def prntLetters(dataWord):
     print()
 
 
-def findCommon(dataWord):
+def findCommonChar(dataWord):
 
     commonChar = []
 
@@ -98,6 +98,16 @@ def findCommon(dataWord):
 
     commonChar.sort()
     return commonChar
+
+
+def getCommonStr(commonChar):
+
+    commonStr = ""
+
+    for char in commonChar:
+        commonStr += char
+
+    return commonStr
 
 
 InputRaw_Str = InputRaw_Str[1:-1]
@@ -150,7 +160,7 @@ if __name__ == "__main__":
         #     print()
         # print()
 
-        commonChar = findCommon(dataWord)
+        commonChar = findCommonChar(dataWord)
 
         # if len(dataWord[0]) <= len(dataWord[1]):
         #
@@ -169,11 +179,14 @@ if __name__ == "__main__":
 
         # print("\t\tCommon unsorted characters: ", commonChar)
         # print("\t\tCommon sorted characters:   ", sorted(commonChar))
+
         print("\t\tCommon characters:", commonChar)
 
-        commonStr = ""
-        for char in commonChar:
-            commonStr += char
+        commonStr = getCommonStr(commonChar)
+
+        # commonStr = ""
+        # for char in commonChar:
+        #     commonStr += char
 
         print("\t\tCommon substring:", commonStr)
         print("\n")
