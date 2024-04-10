@@ -57,14 +57,20 @@ hollow
 
 InputRaw_Str = InputRaw_Str[1:-1]
 
-print("Input:")
-
-print(InputRaw_Str)
-print()
+# print("Input:")
+# print(InputRaw_Str)
+# print()
 
 if __name__ == "__main__":
 
     InputStr_Lst = list(InputRaw_Str.split("\n"))
+
+    print("Input:")
+    print("\t\t\"")
+
+    for inLine in InputStr_Lst:
+        print("\t\t", inLine)
+    print("\t\t\"\n")
 
     print(InputStr_Lst)
     print()
@@ -95,7 +101,6 @@ if __name__ == "__main__":
         print()
 
         commonChar = []
-        commonStr = ""
 
         if len(dataWord[0]) <= len(dataWord[1]):
 
@@ -110,10 +115,14 @@ if __name__ == "__main__":
                     commonChar += min(dataWord[0][char], dataWord[1][char]) * [char]
                     # commonStr += min(dataWord[0][char], dataWord[1][char]) * char
 
-        print("\t\tCommon unsorted characters: ", commonChar)
-        print("\t\tCommon sorted characters:   ", sorted(commonChar))
+        commonChar.sort()
 
-        for char in sorted(commonChar):
+        # print("\t\tCommon unsorted characters: ", commonChar)
+        # print("\t\tCommon sorted characters:   ", sorted(commonChar))
+        print("\t\tCommon characters:", commonChar)
+
+        commonStr = ""
+        for char in commonChar:
             commonStr += char
 
         print("\t\tCommon substring:", commonStr)
@@ -123,18 +132,20 @@ if __name__ == "__main__":
 """__Output__"""
 """
 Input:
-pretty
-women
-walking
-down
-the
-street
-banana
-bandana
-apple
-pineapple
-hello
-hollow
+		"
+		 pretty
+		 women
+		 walking
+		 down
+		 the
+		 street
+		 banana
+		 bandana
+		 apple
+		 pineapple
+		 hello
+		 hollow
+		"
 
 ['pretty', 'women', 'walking', 'down', 'the', 'street', 'banana', 'bandana', 'apple', 'pineapple', 'hello', 'hollow']
 
@@ -154,8 +165,7 @@ hollow
 			n : 1
 
 
-		Common unsorted characters:  ['e']
-		Common sorted characters:    ['e']
+		Common characters: ['e']
 		Common substring: e
 
 
@@ -176,8 +186,7 @@ hollow
 			n : 1
 
 
-		Common unsorted characters:  ['w', 'n']
-		Common sorted characters:    ['n', 'w']
+		Common characters: ['n', 'w']
 		Common substring: nw
 
 
@@ -194,8 +203,7 @@ hollow
 			e : 2
 
 
-		Common unsorted characters:  ['t', 'e']
-		Common sorted characters:    ['e', 't']
+		Common characters: ['e', 't']
 		Common substring: et
 
 
@@ -212,8 +220,7 @@ hollow
 			d : 1
 
 
-		Common unsorted characters:  ['b', 'a', 'a', 'a', 'n', 'n']
-		Common sorted characters:    ['a', 'a', 'a', 'b', 'n', 'n']
+		Common characters: ['a', 'a', 'a', 'b', 'n', 'n']
 		Common substring: aaabnn
 
 
@@ -233,8 +240,7 @@ hollow
 			l : 1
 
 
-		Common unsorted characters:  ['a', 'p', 'p', 'l', 'e']
-		Common sorted characters:    ['a', 'e', 'l', 'p', 'p']
+		Common characters: ['a', 'e', 'l', 'p', 'p']
 		Common substring: aelpp
 
 
@@ -252,8 +258,7 @@ hollow
 			w : 1
 
 
-		Common unsorted characters:  ['h', 'l', 'l', 'o']
-		Common sorted characters:    ['h', 'l', 'l', 'o']
+		Common characters: ['h', 'l', 'l', 'o']
 		Common substring: hllo
 
 
