@@ -131,12 +131,6 @@ if __name__ == "__main__":
                    'G' : 'Green',
                    'C' : 'Clear'}
 
-    # print("Input:")
-    # print(InputRaw_Str)
-    # print()
-    #
-    # InputStr_Lst = InputRaw_Str.split("\n")
-
     inCnt = 0
 
     while True:
@@ -148,43 +142,20 @@ if __name__ == "__main__":
             break
 
         inCnt += 1
-    # for i, InputStr in enumerate(InputStr_Lst):
 
         print(f"\t{inCnt+1}.Input line: {InputStr}")
         print()
 
         binInLst = list(map(int, InputStr.split()))
 
-        # print(f"\t\t{binInLst}")
-        # print()
-
         binData = {0 : binInLst[0:3],
                    1 : binInLst[3:6],
                    2 : binInLst[6:9]}
-
-        # binData[0] = binInLst[0:3]
-        # binData[1] = binInLst[3:6]
-        # binData[2] = binInLst[6:9]
 
         print("\t\tBins:")
         showBinInf(binData)
 
         showBinAddInf(binData)
-
-        # colorPos = ['B', 'G', 'C',
-        #             "Brown", "Green", "Clear"]
-
-        # print("\t\tBins:")
-        # for b in range(3):
-        #     print(f"\t\t\t{b+1}. Bin: Tot: {sum(binData[b]):2}, [ {binData[b][0]:2}B, {binData[b][1]:2}G, {binData[b][2]:2}C ]")
-        # print()
-
-        # for b in range(3):
-        #     maxBot = max(binData[b])
-        #     rstBot = sum(binData[b]) - maxBot
-        #     maxCol = colorPos[binData[b].index(maxBot)]
-        #     print(f"\t\t\t{b+1}. Bin: Max: {maxBot}{maxCol}, Rest: {rstBot}")
-        # print()
 
         colorCnt = {'B' : binInLst[0] + binInLst[3] + binInLst[6],
                     'G' : binInLst[1] + binInLst[4] + binInLst[7],
@@ -193,39 +164,8 @@ if __name__ == "__main__":
         print("\t\tBottles:")
         showBttlInf(colorCnt)
 
-        # print("\t\tBottles:")
-        # print(f"\t\t\tBrown: {colorCnt['B']}")
-        # print(f"\t\t\tGreen: {colorCnt['G']}")
-        # print(f"\t\t\tClear: {colorCnt['C']}")
-        # print()
-
         print("\t\tPermutations:\n")
         minPer, minTot = findPrmt(permColo, binData)
-
-        # minTot = sum(colorCnt.values())
-        # minPer = ""
-        #
-        # print("\t\tPermutations:\n")
-        # for perm in permColo:
-        #     print(f"\t\t\t{perm}")
-        #
-        #     totCnt = 0
-        #
-        #     for bn, col in enumerate(perm):
-        #         cntCol = binData[bn][convColBin[col]]
-        #         cntRst = sum(binData[bn]) - cntCol
-        #
-        #         print(f"\t\t\t\t{bn+1}. {col}: {cntCol:2},\tR: {cntRst:2}")
-        #
-        #         totCnt += cntRst
-        #
-        #     if totCnt < minTot:
-        #         minTot = totCnt
-        #         minPer = perm
-        #
-        #     print(f"\t\t\t\t\t\tTotal: {totCnt}")
-        #     print()
-        # print()
 
         print(f"\t\tFound permutation: {minPer}")
         print(f"\t\t\t\t\tTotal: {minTot}")
@@ -234,145 +174,4 @@ if __name__ == "__main__":
         for bn, col in enumerate(minPer):
             print(f"\t\t\t{bn+1}. {convFullCol[col]} [{col}]: {binData[bn][convColBin[col]]:2}")
 
-        # print(f"\t\t\t{minPer}")
-
-        # if inCnt < len(InputStr_Lst) - 1:
-        #     print("\n")
-
         print("\n")
-
-
-"""__Output__"""
-"""
-Input:
-1 2 3 4 5 6 7 8 9
-5 10 5 20 10 5 10 20 10
-
-	1.Input line: 1 2 3 4 5 6 7 8 9
-
-		Bins:
-			1. Bin: Tot:  6, [  1B,  2G,  3C ]
-			2. Bin: Tot: 15, [  4B,  5G,  6C ]
-			3. Bin: Tot: 24, [  7B,  8G,  9C ]
-
-			1. Bin: Max: 3C, Rest: 3
-			2. Bin: Max: 6C, Rest: 9
-			3. Bin: Max: 9C, Rest: 15
-
-		Bottles:
-			Brown: 12
-			Green: 15
-			Clear: 18
-
-		Permutations:
-
-			BCG
-				1. B:  1,	R:  5
-				2. C:  6,	R:  9
-				3. G:  8,	R: 16
-						Total: 30
-
-			BGC
-				1. B:  1,	R:  5
-				2. G:  5,	R: 10
-				3. C:  9,	R: 15
-						Total: 30
-
-			CBG
-				1. C:  3,	R:  3
-				2. B:  4,	R: 11
-				3. G:  8,	R: 16
-						Total: 30
-
-			CGB
-				1. C:  3,	R:  3
-				2. G:  5,	R: 10
-				3. B:  7,	R: 17
-						Total: 30
-
-			GBC
-				1. G:  2,	R:  4
-				2. B:  4,	R: 11
-				3. C:  9,	R: 15
-						Total: 30
-
-			GCB
-				1. G:  2,	R:  4
-				2. C:  6,	R:  9
-				3. B:  7,	R: 17
-						Total: 30
-
-
-		Found permutation: BCG
-					Total: 30
-
-			1. Brown [B]:  1
-			2. Clear [C]:  6
-			3. Green [G]:  8
-
-
-	2.Input line: 5 10 5 20 10 5 10 20 10
-
-		Bins:
-			1. Bin: Tot: 20, [  5B, 10G,  5C ]
-			2. Bin: Tot: 35, [ 20B, 10G,  5C ]
-			3. Bin: Tot: 40, [ 10B, 20G, 10C ]
-
-			1. Bin: Max: 10G, Rest: 10
-			2. Bin: Max: 20B, Rest: 15
-			3. Bin: Max: 20G, Rest: 20
-
-		Bottles:
-			Brown: 35
-			Green: 40
-			Clear: 20
-
-		Permutations:
-
-			BCG
-				1. B:  5,	R: 15
-				2. C:  5,	R: 30
-				3. G: 20,	R: 20
-						Total: 65
-
-			BGC
-				1. B:  5,	R: 15
-				2. G: 10,	R: 25
-				3. C: 10,	R: 30
-						Total: 70
-
-			CBG
-				1. C:  5,	R: 15
-				2. B: 20,	R: 15
-				3. G: 20,	R: 20
-						Total: 50
-
-			CGB
-				1. C:  5,	R: 15
-				2. G: 10,	R: 25
-				3. B: 10,	R: 30
-						Total: 70
-
-			GBC
-				1. G: 10,	R: 10
-				2. B: 20,	R: 15
-				3. C: 10,	R: 30
-						Total: 55
-
-			GCB
-				1. G: 10,	R: 10
-				2. C:  5,	R: 30
-				3. B: 10,	R: 30
-						Total: 70
-
-
-		Found permutation: CBG
-					Total: 50
-
-			1. Clear [C]:  5
-			2. Brown [B]: 20
-			3. Green [G]: 20
-
-Process finished with exit code 0
-
-"""
