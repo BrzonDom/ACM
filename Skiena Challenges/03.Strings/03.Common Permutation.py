@@ -102,15 +102,20 @@ if __name__ == "__main__":
             for char in dataWord[0]:
                 if char in dataWord[1]:
                     commonChar += min(dataWord[0][char], dataWord[1][char]) * [char]
-                    commonStr += min(dataWord[0][char], dataWord[1][char]) * char
+                    # commonStr += min(dataWord[0][char], dataWord[1][char]) * char
 
         else:
             for char in dataWord[1]:
                 if char in dataWord[0]:
                     commonChar += min(dataWord[0][char], dataWord[1][char]) * [char]
-                    commonStr += min(dataWord[0][char], dataWord[1][char]) * char
+                    # commonStr += min(dataWord[0][char], dataWord[1][char]) * char
 
-        print("\t\tCommon characters:", commonChar)
+        print("\t\tCommon unsorted characters: ", commonChar)
+        print("\t\tCommon sorted characters:   ", sorted(commonChar))
+
+        for char in sorted(commonChar):
+            commonStr += char
+
         print("\t\tCommon substring:", commonStr)
         print("\n")
 
@@ -149,7 +154,8 @@ hollow
 			n : 1
 
 
-		Common characters: ['e']
+		Common unsorted characters:  ['e']
+		Common sorted characters:    ['e']
 		Common substring: e
 
 
@@ -170,8 +176,9 @@ hollow
 			n : 1
 
 
-		Common characters: ['w', 'n']
-		Common substring: wn
+		Common unsorted characters:  ['w', 'n']
+		Common sorted characters:    ['n', 'w']
+		Common substring: nw
 
 
 	1. Word: the
@@ -187,8 +194,9 @@ hollow
 			e : 2
 
 
-		Common characters: ['t', 'e']
-		Common substring: te
+		Common unsorted characters:  ['t', 'e']
+		Common sorted characters:    ['e', 't']
+		Common substring: et
 
 
 	1. Word: banana
@@ -204,8 +212,9 @@ hollow
 			d : 1
 
 
-		Common characters: ['b', 'a', 'a', 'a', 'n', 'n']
-		Common substring: baaann
+		Common unsorted characters:  ['b', 'a', 'a', 'a', 'n', 'n']
+		Common sorted characters:    ['a', 'a', 'a', 'b', 'n', 'n']
+		Common substring: aaabnn
 
 
 	1. Word: apple
@@ -224,8 +233,9 @@ hollow
 			l : 1
 
 
-		Common characters: ['a', 'p', 'p', 'l', 'e']
-		Common substring: apple
+		Common unsorted characters:  ['a', 'p', 'p', 'l', 'e']
+		Common sorted characters:    ['a', 'e', 'l', 'p', 'p']
+		Common substring: aelpp
 
 
 	1. Word: hello
@@ -242,7 +252,8 @@ hollow
 			w : 1
 
 
-		Common characters: ['h', 'l', 'l', 'o']
+		Common unsorted characters:  ['h', 'l', 'l', 'o']
+		Common sorted characters:    ['h', 'l', 'l', 'o']
 		Common substring: hllo
 
 
