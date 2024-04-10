@@ -51,6 +51,14 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=3&pag
 """
 
 
+InputRaw_Str ="""
+1 2 3 4 5 6 7 8 9
+5 10 5 20 10 5 10 20 10
+"""
+
+InputRaw_Str = InputRaw_Str[1:-1]
+
+
 def showBinInf(binData):
 
     # print("\t\tBins:")
@@ -112,13 +120,6 @@ def findPrmt(permColo, binData):
     return minPer, minTot
 
 
-InputRaw_Str ="""
-1 2 3 4 5 6 7 8 9
-5 10 5 20 10 5 10 20 10
-"""
-
-InputRaw_Str = InputRaw_Str[1:-1]
-
 if __name__ == "__main__":
 
     permColo = ['BCG', 'BGC', 'CBG', 'CGB', 'GBC', 'GCB']
@@ -131,7 +132,7 @@ if __name__ == "__main__":
                    'G' : 'Green',
                    'C' : 'Clear'}
 
-    inCnt = 0
+    # inCnt = 0
 
     while True:
 
@@ -141,7 +142,7 @@ if __name__ == "__main__":
         except EOFError:
             break
 
-        inCnt += 1
+        # inCnt += 1
 
         # print(f"\t{inCnt+1}.Input line: {InputStr}")
         # print()
@@ -167,11 +168,13 @@ if __name__ == "__main__":
         # print("\t\tPermutations:\n")
         minPer, minTot = findPrmt(permColo, binData)
 
-        print(f"\t\tFound permutation: {minPer}")
-        print(f"\t\t\t\t\tTotal: {minTot}")
-        print()
+        # print(f"\t\tFound permutation: {minPer}")
+        # print(f"\t\t\t\t\tTotal: {minTot}")
+        # print()
+        #
+        # for bn, col in enumerate(minPer):
+        #     print(f"\t\t\t{bn+1}. {convFullCol[col]} [{col}]: {binData[bn][convColBin[col]]:2}")
+        #
+        # print("\n")
 
-        for bn, col in enumerate(minPer):
-            print(f"\t\t\t{bn+1}. {convFullCol[col]} [{col}]: {binData[bn][convColBin[col]]:2}")
-
-        print("\n")
+        print(f"{minPer} {minTot}")
