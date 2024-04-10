@@ -97,7 +97,12 @@ def findPrmt(permColo, binData):
             cntCol = binData[bn][convColBin[col]]
             cntRst = sum(binData[bn]) - cntCol
 
-            print(f"\t\t\t\t{bn + 1}. {col}: {cntCol:2},\tR: {cntRst:2}")
+            rstCol = list(perm)
+            rstCol.remove(col)
+            rstCnt = [binData[bn][convColBin[rstCol[0]]], binData[bn][convColBin[rstCol[0]]]]
+
+            print(f"\t\t\t\t{bn + 1}. {col}: {cntCol:2},\t"
+                  f"R: {cntRst:2} [ {rstCnt[0]:2}{rstCol[0]}, {rstCnt[1]:2}{rstCol[1]} ]")
 
             totCnt += cntRst
 
@@ -116,6 +121,16 @@ InputRaw_Str ="""
 1 2 3 4 5 6 7 8 9
 5 10 5 20 10 5 10 20 10
 """
+
+# from itertools import permutations
+#
+# tstPer = permutations([0, 1, 2], 3)
+#
+# for p, per in enumerate(tstPer):
+#     print((p+1), list(per))
+#
+# quit()
+
 
 InputRaw_Str = InputRaw_Str[1:-1]
 
@@ -254,39 +269,39 @@ Input:
 		Permutations:
 
 			BCG
-				1. B:  1,	R:  5
-				2. C:  6,	R:  9
-				3. G:  8,	R: 16
+				1. B:  1,	R:  5 [  3C,  3G ]
+				2. C:  6,	R:  9 [  4B,  4G ]
+				3. G:  8,	R: 16 [  7B,  7C ]
 						Total: 30
 
 			BGC
-				1. B:  1,	R:  5
-				2. G:  5,	R: 10
-				3. C:  9,	R: 15
+				1. B:  1,	R:  5 [  2G,  2C ]
+				2. G:  5,	R: 10 [  4B,  4C ]
+				3. C:  9,	R: 15 [  7B,  7G ]
 						Total: 30
 
 			CBG
-				1. C:  3,	R:  3
-				2. B:  4,	R: 11
-				3. G:  8,	R: 16
+				1. C:  3,	R:  3 [  1B,  1G ]
+				2. B:  4,	R: 11 [  6C,  6G ]
+				3. G:  8,	R: 16 [  9C,  9B ]
 						Total: 30
 
 			CGB
-				1. C:  3,	R:  3
-				2. G:  5,	R: 10
-				3. B:  7,	R: 17
+				1. C:  3,	R:  3 [  2G,  2B ]
+				2. G:  5,	R: 10 [  6C,  6B ]
+				3. B:  7,	R: 17 [  9C,  9G ]
 						Total: 30
 
 			GBC
-				1. G:  2,	R:  4
-				2. B:  4,	R: 11
-				3. C:  9,	R: 15
+				1. G:  2,	R:  4 [  1B,  1C ]
+				2. B:  4,	R: 11 [  5G,  5C ]
+				3. C:  9,	R: 15 [  8G,  8B ]
 						Total: 30
 
 			GCB
-				1. G:  2,	R:  4
-				2. C:  6,	R:  9
-				3. B:  7,	R: 17
+				1. G:  2,	R:  4 [  3C,  3B ]
+				2. C:  6,	R:  9 [  5G,  5B ]
+				3. B:  7,	R: 17 [  8G,  8C ]
 						Total: 30
 
 
@@ -317,39 +332,39 @@ Input:
 		Permutations:
 
 			BCG
-				1. B:  5,	R: 15
-				2. C:  5,	R: 30
-				3. G: 20,	R: 20
+				1. B:  5,	R: 15 [  5C,  5G ]
+				2. C:  5,	R: 30 [ 20B, 20G ]
+				3. G: 20,	R: 20 [ 10B, 10C ]
 						Total: 65
 
 			BGC
-				1. B:  5,	R: 15
-				2. G: 10,	R: 25
-				3. C: 10,	R: 30
+				1. B:  5,	R: 15 [ 10G, 10C ]
+				2. G: 10,	R: 25 [ 20B, 20C ]
+				3. C: 10,	R: 30 [ 10B, 10G ]
 						Total: 70
 
 			CBG
-				1. C:  5,	R: 15
-				2. B: 20,	R: 15
-				3. G: 20,	R: 20
+				1. C:  5,	R: 15 [  5B,  5G ]
+				2. B: 20,	R: 15 [  5C,  5G ]
+				3. G: 20,	R: 20 [ 10C, 10B ]
 						Total: 50
 
 			CGB
-				1. C:  5,	R: 15
-				2. G: 10,	R: 25
-				3. B: 10,	R: 30
+				1. C:  5,	R: 15 [ 10G, 10B ]
+				2. G: 10,	R: 25 [  5C,  5B ]
+				3. B: 10,	R: 30 [ 10C, 10G ]
 						Total: 70
 
 			GBC
-				1. G: 10,	R: 10
-				2. B: 20,	R: 15
-				3. C: 10,	R: 30
+				1. G: 10,	R: 10 [  5B,  5C ]
+				2. B: 20,	R: 15 [ 10G, 10C ]
+				3. C: 10,	R: 30 [ 20G, 20B ]
 						Total: 55
 
 			GCB
-				1. G: 10,	R: 10
-				2. C:  5,	R: 30
-				3. B: 10,	R: 30
+				1. G: 10,	R: 10 [  5C,  5B ]
+				2. C:  5,	R: 30 [ 10G, 10B ]
+				3. B: 10,	R: 30 [ 20G, 20C ]
 						Total: 70
 
 
