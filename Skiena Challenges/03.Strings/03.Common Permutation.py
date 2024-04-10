@@ -69,6 +69,16 @@ def getLetters(word):
     return dataWord
 
 
+def prntLetters(dataWord):
+
+    for wrd in dataWord:
+        for data in dataWord[wrd]:
+            print(f"\t\t\t{data} : {dataWord[wrd][data]}")
+
+        print()
+    print()
+
+
 InputRaw_Str = InputRaw_Str[1:-1]
 
 # print("Input:")
@@ -110,12 +120,14 @@ if __name__ == "__main__":
         #         else:
         #             dataWord[w][char] += 1
 
-        for wrd in dataWord:
-            for data in dataWord[wrd]:
-                print(f"\t\t\t{data} : {dataWord[wrd][data]}")
+        prntLetters(dataWord)
 
-            print()
-        print()
+        # for wrd in dataWord:
+        #     for data in dataWord[wrd]:
+        #         print(f"\t\t\t{data} : {dataWord[wrd][data]}")
+        #
+        #     print()
+        # print()
 
         commonChar = []
 
