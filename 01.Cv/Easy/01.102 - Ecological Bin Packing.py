@@ -50,6 +50,20 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=3&pag
 
 """
 
+# from itertools import permutations
+#
+# color = "BCG"
+#
+# permColo = permutations("BCG", 3)
+#
+# print("[", end="")
+# for perm in permColo:
+#     print("\"", end="")
+#     for p in perm:
+#         print(p, end="")
+#     print("\"",end=", ")
+# print()
+
 InputRaw_Str ="""
 1 2 3 4 5 6 7 8 9
 5 10 5 20 10 5 10 20 10
@@ -60,6 +74,13 @@ InputRaw_Str = InputRaw_Str[1:-1]
 print("Input:")
 print(InputRaw_Str)
 print()
+
+permColo = ['BCG', 'BGC', 'CBG', 'CGB', 'GBC', 'GCB']
+
+# print(permColo)
+# permColo.sort()
+# print(permColo)
+# print()
 
 InputStr_Lst = InputRaw_Str.split("\n")
 
