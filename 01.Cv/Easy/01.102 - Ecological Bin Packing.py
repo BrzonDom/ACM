@@ -113,17 +113,32 @@ for i, InputStr in enumerate(InputStr_Lst):
     print("\tPermutations:\n")
     for perm in permColo:
         print(f"\t\t{perm}")
-        print(f"\t\t\t1. {perm[0]}: {binData[0][convColBin[perm[0]]]:2}, "
-                               f"R: {binData[0][convColBin[perm[1]]] + binData[0][convColBin[perm[2]]]:2}")
 
-        print(f"\t\t\t2. {perm[1]}: {binData[1][convColBin[perm[1]]]:2}, "
-                               f"R: {binData[1][convColBin[perm[0]]] + binData[1][convColBin[perm[2]]]:2}")
+        totCnt = 0
 
-        print(f"\t\t\t3. {perm[2]}: {binData[2][convColBin[perm[2]]]:2}, "
-                               f"R: {binData[2][convColBin[perm[0]]] + binData[2][convColBin[perm[1]]]:2}")
+        for bn, col in enumerate(perm):
+            cntCol = binData[bn][convColBin[col]]
+            cntRst = sum(binData[bn]) - cntCol
+
+            print(f"\t\t\t{bn+1}. {col}: {cntCol:2},\tR: {cntRst:2}")
+
+            totCnt += cntRst
+
+        print(f"\t\t\t\t\tTotal: {totCnt}")
+
+
+        # print(f"\t\t\t1. {perm[0]}: {binData[0][convColBin[perm[0]]]:2}, "
+        #                        f"R: {binData[0][convColBin[perm[1]]] + binData[0][convColBin[perm[2]]]:2}")
+        #
+        # print(f"\t\t\t2. {perm[1]}: {binData[1][convColBin[perm[1]]]:2}, "
+        #                        f"R: {binData[1][convColBin[perm[0]]] + binData[1][convColBin[perm[2]]]:2}")
+        #
+        # print(f"\t\t\t3. {perm[2]}: {binData[2][convColBin[perm[2]]]:2}, "
+        #                        f"R: {binData[2][convColBin[perm[0]]] + binData[2][convColBin[perm[1]]]:2}")
         print()
 
     print("\n")
+
 
 """__Output__"""
 """
@@ -152,34 +167,40 @@ Input:
 	Permutations:
 
 		BCG
-			1. B:  1, R:  5
-			2. C:  6, R:  9
-			3. G:  8, R: 16
+			1. B:  1,	R:  5
+			2. C:  6,	R:  9
+			3. G:  8,	R: 16
+					Total: 30
 
 		BGC
-			1. B:  1, R:  5
-			2. G:  5, R: 10
-			3. C:  9, R: 15
+			1. B:  1,	R:  5
+			2. G:  5,	R: 10
+			3. C:  9,	R: 15
+					Total: 30
 
 		CBG
-			1. C:  3, R:  3
-			2. B:  4, R: 11
-			3. G:  8, R: 16
+			1. C:  3,	R:  3
+			2. B:  4,	R: 11
+			3. G:  8,	R: 16
+					Total: 30
 
 		CGB
-			1. C:  3, R:  3
-			2. G:  5, R: 10
-			3. B:  7, R: 17
+			1. C:  3,	R:  3
+			2. G:  5,	R: 10
+			3. B:  7,	R: 17
+					Total: 30
 
 		GBC
-			1. G:  2, R:  4
-			2. B:  4, R: 11
-			3. C:  9, R: 15
+			1. G:  2,	R:  4
+			2. B:  4,	R: 11
+			3. C:  9,	R: 15
+					Total: 30
 
 		GCB
-			1. G:  2, R:  4
-			2. C:  6, R:  9
-			3. B:  7, R: 17
+			1. G:  2,	R:  4
+			2. C:  6,	R:  9
+			3. B:  7,	R: 17
+					Total: 30
 
 
 
@@ -204,34 +225,40 @@ Input:
 	Permutations:
 
 		BCG
-			1. B:  5, R: 15
-			2. C:  5, R: 30
-			3. G: 20, R: 20
+			1. B:  5,	R: 15
+			2. C:  5,	R: 30
+			3. G: 20,	R: 20
+					Total: 65
 
 		BGC
-			1. B:  5, R: 15
-			2. G: 10, R: 25
-			3. C: 10, R: 30
+			1. B:  5,	R: 15
+			2. G: 10,	R: 25
+			3. C: 10,	R: 30
+					Total: 70
 
 		CBG
-			1. C:  5, R: 15
-			2. B: 20, R: 15
-			3. G: 20, R: 20
+			1. C:  5,	R: 15
+			2. B: 20,	R: 15
+			3. G: 20,	R: 20
+					Total: 50
 
 		CGB
-			1. C:  5, R: 15
-			2. G: 10, R: 25
-			3. B: 10, R: 30
+			1. C:  5,	R: 15
+			2. G: 10,	R: 25
+			3. B: 10,	R: 30
+					Total: 70
 
 		GBC
-			1. G: 10, R: 10
-			2. B: 20, R: 15
-			3. C: 10, R: 30
+			1. G: 10,	R: 10
+			2. B: 20,	R: 15
+			3. C: 10,	R: 30
+					Total: 55
 
 		GCB
-			1. G: 10, R: 10
-			2. C:  5, R: 30
-			3. B: 10, R: 30
+			1. G: 10,	R: 10
+			2. C:  5,	R: 30
+			3. B: 10,	R: 30
+					Total: 70
 
 
 
