@@ -66,3 +66,15 @@ InputStr_Lst = InputRaw_Str.split("\n")
 for i, InputStr in enumerate(InputStr_Lst):
     print(f"\t{i+1}.Input line: {InputStr}")
     print()
+
+    binInLst = list(map(int, InputStr.split()))
+    print(f"\t\t{binInLst}")
+    print()
+
+    binData = {}
+    binData[0] = binInLst[0:3]
+    binData[1] = binInLst[3:6]
+    binData[2] = binInLst[6:9]
+
+    print(f"\t\t{binData}")
+    print("\n")
