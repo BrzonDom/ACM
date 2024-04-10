@@ -79,9 +79,19 @@ for i, InputStr in enumerate(InputStr_Lst):
     # print(f"\t\t{binData}")
     # print()
 
+    colorPos = ['B', 'G', 'C',
+                "Brown", "Green", "Clear"]
+
     print("\t\tBins:")
     for b in range(3):
-        print(f"\t\t\t{b+1}.Bin: {binData[b][0]:2}B, {binData[b][1]:2}G, {binData[b][2]:2}C")
+        print(f"\t\t\t{b+1}.Bin: Tot: {sum(binData[b])}, [ {binData[b][0]:2}B, {binData[b][1]:2}G, {binData[b][2]:2}C ]")
+    print()
+
+    for b in range(3):
+        maxBot = max(binData[b])
+        rstBot = sum(binData[b]) - maxBot
+        maxCol = colorPos[binData[b].index(maxBot)]
+        print(f"\t\t\t{b+1}.Bin: Max: {maxBot}{maxCol}, Rest: {rstBot}")
     print()
 
     colorCnt = {'B' : binInLst[0] + binInLst[3] + binInLst[6],
