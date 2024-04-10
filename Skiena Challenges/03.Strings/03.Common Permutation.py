@@ -163,53 +163,16 @@ if __name__ == "__main__":
         for w, word in enumerate(words):
             dataWord[w] = getLetters(word)
 
-        # for w, word in enumerate(words):
-        #     for char in word:
-        #         if char not in dataWord[w]:
-        #             dataWord[w][char] = 1
-        #
-        #         else:
-        #             dataWord[w][char] += 1
+        prntLetters(dataWord)
 
-        # prntLetters(dataWord)
-
-        # for wrd in dataWord:
-        #     for data in dataWord[wrd]:
-        #         print(f"\t\t\t{data} : {dataWord[wrd][data]}")
+        # commonChar = findCommonChar(dataWord)
         #
-        #     print()
+        # print("\t\tCommon characters:", commonChar)
+        #
+        # commonStr = getCommonStr(commonChar)
+        #
+        # print("\t\tCommon substring:", commonStr)
         # print()
-
-        commonChar = findCommonChar(dataWord)
-
-        # if len(dataWord[0]) <= len(dataWord[1]):
-        #
-        #     for char in dataWord[0]:
-        #         if char in dataWord[1]:
-        #             commonChar += min(dataWord[0][char], dataWord[1][char]) * [char]
-        #             # commonStr += min(dataWord[0][char], dataWord[1][char]) * char
-        #
-        # else:
-        #     for char in dataWord[1]:
-        #         if char in dataWord[0]:
-        #             commonChar += min(dataWord[0][char], dataWord[1][char]) * [char]
-        #             # commonStr += min(dataWord[0][char], dataWord[1][char]) * char
-        #
-        # commonChar.sort()
-
-        # print("\t\tCommon unsorted characters: ", commonChar)
-        # print("\t\tCommon sorted characters:   ", sorted(commonChar))
-
-        print("\t\tCommon characters:", commonChar)
-
-        commonStr = getCommonStr(commonChar)
-
-        # commonStr = ""
-        # for char in commonChar:
-        #     commonStr += char
-
-        print("\t\tCommon substring:", commonStr)
-        print()
 
         commonStr = findCommonStr(dataWord)
         print("\t\tCommon substring:", commonStr)
@@ -239,8 +202,18 @@ Input:
 	1. Word: pretty
 	2. Word: women
 
-		Common characters: ['e']
-		Common substring: e
+			p : 1
+			r : 1
+			e : 1
+			t : 2
+			y : 1
+
+			w : 1
+			o : 1
+			m : 1
+			e : 1
+			n : 1
+
 
 		Common substring: e
 
@@ -248,8 +221,19 @@ Input:
 	1. Word: walking
 	2. Word: down
 
-		Common characters: ['n', 'w']
-		Common substring: nw
+			w : 1
+			a : 1
+			l : 1
+			k : 1
+			i : 1
+			n : 1
+			g : 1
+
+			d : 1
+			o : 1
+			w : 1
+			n : 1
+
 
 		Common substring: nw
 
@@ -257,8 +241,15 @@ Input:
 	1. Word: the
 	2. Word: street
 
-		Common characters: ['e', 't']
-		Common substring: et
+			t : 1
+			h : 1
+			e : 1
+
+			s : 1
+			t : 2
+			r : 1
+			e : 2
+
 
 		Common substring: et
 
@@ -266,8 +257,15 @@ Input:
 	1. Word: banana
 	2. Word: bandana
 
-		Common characters: ['a', 'a', 'a', 'b', 'n', 'n']
-		Common substring: aaabnn
+			b : 1
+			a : 3
+			n : 2
+
+			b : 1
+			a : 3
+			n : 2
+			d : 1
+
 
 		Common substring: aaabnn
 
@@ -275,8 +273,18 @@ Input:
 	1. Word: apple
 	2. Word: pineapple
 
-		Common characters: ['a', 'e', 'l', 'p', 'p']
-		Common substring: aelpp
+			a : 1
+			p : 2
+			l : 1
+			e : 1
+
+			p : 3
+			i : 1
+			n : 1
+			e : 2
+			a : 1
+			l : 1
+
 
 		Common substring: aelpp
 
@@ -284,8 +292,16 @@ Input:
 	1. Word: hello
 	2. Word: hollow
 
-		Common characters: ['h', 'l', 'l', 'o']
-		Common substring: hllo
+			h : 1
+			e : 1
+			l : 2
+			o : 1
+
+			h : 1
+			o : 2
+			l : 2
+			w : 1
+
 
 		Common substring: hllo
 
