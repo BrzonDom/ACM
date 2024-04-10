@@ -50,20 +50,6 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=3&pag
 
 """
 
-# from itertools import permutations
-#
-# color = "BCG"
-#
-# permColo = permutations("BCG", 3)
-#
-# print("[", end="")
-# for perm in permColo:
-#     print("\"", end="")
-#     for p in perm:
-#         print(p, end="")
-#     print("\"",end=", ")
-# print()
-
 InputRaw_Str ="""
 1 2 3 4 5 6 7 8 9
 5 10 5 20 10 5 10 20 10
@@ -77,10 +63,9 @@ print()
 
 permColo = ['BCG', 'BGC', 'CBG', 'CGB', 'GBC', 'GCB']
 
-# print(permColo)
-# permColo.sort()
-# print(permColo)
-# print()
+convColBin = {'B' : 0, 0 : 'B',
+              'G' : 1, 1 : 'G',
+              'C' : 2, 2 : 'C' }
 
 InputStr_Lst = InputRaw_Str.split("\n")
 
@@ -123,5 +108,128 @@ for i, InputStr in enumerate(InputStr_Lst):
     print(f"\t\t\tBrown: {colorCnt['B']}")
     print(f"\t\t\tGreen: {colorCnt['G']}")
     print(f"\t\t\tClear: {colorCnt['C']}")
+    print()
+
+    print("\tPermutations:\n")
+    for perm in permColo:
+        print(f"\t\t{perm}")
+        print(f"\t\t\t1. {perm[0]}: {binData[0][convColBin[perm[0]]]}")
+        print(f"\t\t\t2. {perm[1]}: {binData[1][convColBin[perm[1]]]}")
+        print(f"\t\t\t3. {perm[2]}: {binData[1][convColBin[perm[2]]]}")
+        print()
 
     print("\n")
+
+"""__Output__"""
+"""
+1 2 3 4 5 6 7 8 9
+5 10 5 20 10 5 10 20 10
+
+	1.Input line: 1 2 3 4 5 6 7 8 9
+
+		[1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+		Bins:
+			1.Bin: Tot: 6, [  1B,  2G,  3C ]
+			2.Bin: Tot: 15, [  4B,  5G,  6C ]
+			3.Bin: Tot: 24, [  7B,  8G,  9C ]
+
+			1.Bin: Max: 3C, Rest: 3
+			2.Bin: Max: 6C, Rest: 9
+			3.Bin: Max: 9C, Rest: 15
+
+		Bottles:
+			Brown: 12
+			Green: 15
+			Clear: 18
+
+	Permutations:
+
+		BCG
+			1. B: 1
+			2. C: 6
+			3. G: 5
+
+		BGC
+			1. B: 1
+			2. G: 5
+			3. C: 6
+
+		CBG
+			1. C: 3
+			2. B: 4
+			3. G: 5
+
+		CGB
+			1. C: 3
+			2. G: 5
+			3. B: 4
+
+		GBC
+			1. G: 2
+			2. B: 4
+			3. C: 6
+
+		GCB
+			1. G: 2
+			2. C: 6
+			3. B: 4
+
+
+
+	2.Input line: 5 10 5 20 10 5 10 20 10
+
+		[5, 10, 5, 20, 10, 5, 10, 20, 10]
+
+		Bins:
+			1.Bin: Tot: 20, [  5B, 10G,  5C ]
+			2.Bin: Tot: 35, [ 20B, 10G,  5C ]
+			3.Bin: Tot: 40, [ 10B, 20G, 10C ]
+
+			1.Bin: Max: 10G, Rest: 10
+			2.Bin: Max: 20B, Rest: 15
+			3.Bin: Max: 20G, Rest: 20
+
+		Bottles:
+			Brown: 35
+			Green: 40
+			Clear: 20
+
+	Permutations:
+
+		BCG
+			1. B: 5
+			2. C: 5
+			3. G: 10
+
+		BGC
+			1. B: 5
+			2. G: 10
+			3. C: 5
+
+		CBG
+			1. C: 5
+			2. B: 20
+			3. G: 10
+
+		CGB
+			1. C: 5
+			2. G: 10
+			3. B: 20
+
+		GBC
+			1. G: 10
+			2. B: 20
+			3. C: 5
+
+		GCB
+			1. G: 10
+			2. C: 5
+			3. B: 20
+
+
+
+
+Process finished with exit code 0
+
+"""
