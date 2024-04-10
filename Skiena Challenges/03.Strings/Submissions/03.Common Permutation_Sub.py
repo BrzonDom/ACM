@@ -39,24 +39,43 @@ the
 street
 """
 
-InputRaw_Str = InputRaw_Str[1:-1]
+# InputRaw_Str = InputRaw_Str[1:-1]
+#
+# print("Input:")
+#
+# print(InputRaw_Str)
+# print()
 
-print("Input:")
-
-print(InputRaw_Str)
-print()
-
+from sys import stdin
 
 if __name__ == "__main__":
 
-    InputStr_Lst = list(InputRaw_Str.split("\n"))
+    # InputStr_Lst = list(InputRaw_Str.split("\n"))
+    #
+    # print(InputStr_Lst)
+    # print()
 
-    print(InputStr_Lst)
-    print()
+    InputLst = []
+
+    Input = input()
+
+    while Input != '\n' and Input != '':
+
+        InputLst.append(Input)
+        Input = input()
+
+    # while True:
+    #
+    #     try:
+    #         InputLst.append(input())
+    #
+    #     except EOFError:
+    #         break
 
     words = ["", ""]
 
-    for words[0], words[1] in zip(InputStr_Lst[:-1:2], InputStr_Lst[1::2]):
+    for words[0], words[1] in zip(InputLst[:-1:2], InputLst[1::2]):
+
         print("\t1. Word:", words[0])
         print("\t2. Word:", words[1])
         print()
@@ -92,5 +111,5 @@ if __name__ == "__main__":
                 if char in dataWord[0]:
                     commonChar += min(dataWord[0][char], dataWord[1][char]) * [char]
 
-        print("\t\tCommon characters:", commonChar)
+        print(f"\t\tCommon characters: {commonChar}")
         print("\n")
