@@ -79,6 +79,27 @@ def prntLetters(dataWord):
     print()
 
 
+def findCommon(dataWord):
+
+    commonChar = []
+
+    if len(dataWord[0]) <= len(dataWord[1]):
+
+        for char in dataWord[0]:
+            if char in dataWord[1]:
+                commonChar += min(dataWord[0][char], dataWord[1][char]) * [char]
+                # commonStr += min(dataWord[0][char], dataWord[1][char]) * char
+
+    else:
+        for char in dataWord[1]:
+            if char in dataWord[0]:
+                commonChar += min(dataWord[0][char], dataWord[1][char]) * [char]
+                # commonStr += min(dataWord[0][char], dataWord[1][char]) * char
+
+    commonChar.sort()
+    return commonChar
+
+
 InputRaw_Str = InputRaw_Str[1:-1]
 
 # print("Input:")
@@ -129,22 +150,22 @@ if __name__ == "__main__":
         #     print()
         # print()
 
-        commonChar = []
+        commonChar = findCommon(dataWord)
 
-        if len(dataWord[0]) <= len(dataWord[1]):
-
-            for char in dataWord[0]:
-                if char in dataWord[1]:
-                    commonChar += min(dataWord[0][char], dataWord[1][char]) * [char]
-                    # commonStr += min(dataWord[0][char], dataWord[1][char]) * char
-
-        else:
-            for char in dataWord[1]:
-                if char in dataWord[0]:
-                    commonChar += min(dataWord[0][char], dataWord[1][char]) * [char]
-                    # commonStr += min(dataWord[0][char], dataWord[1][char]) * char
-
-        commonChar.sort()
+        # if len(dataWord[0]) <= len(dataWord[1]):
+        #
+        #     for char in dataWord[0]:
+        #         if char in dataWord[1]:
+        #             commonChar += min(dataWord[0][char], dataWord[1][char]) * [char]
+        #             # commonStr += min(dataWord[0][char], dataWord[1][char]) * char
+        #
+        # else:
+        #     for char in dataWord[1]:
+        #         if char in dataWord[0]:
+        #             commonChar += min(dataWord[0][char], dataWord[1][char]) * [char]
+        #             # commonStr += min(dataWord[0][char], dataWord[1][char]) * char
+        #
+        # commonChar.sort()
 
         # print("\t\tCommon unsorted characters: ", commonChar)
         # print("\t\tCommon sorted characters:   ", sorted(commonChar))
