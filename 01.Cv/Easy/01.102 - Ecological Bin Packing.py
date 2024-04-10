@@ -76,5 +76,21 @@ for i, InputStr in enumerate(InputStr_Lst):
     binData[1] = binInLst[3:6]
     binData[2] = binInLst[6:9]
 
-    print(f"\t\t{binData}")
+    # print(f"\t\t{binData}")
+    # print()
+
+    print("\t\tBins:")
+    for b in range(3):
+        print(f"\t\t\t{b+1}.Bin: {binData[b][0]:2}B, {binData[b][1]:2}G, {binData[b][2]:2}C")
+    print()
+
+    colorCnt = {'B' : binInLst[0] + binInLst[3] + binInLst[6],
+                'G' : binInLst[1] + binInLst[4] + binInLst[7],
+                'C' : binInLst[2] + binInLst[5] + binInLst[8] }
+
+    print("\t\tBottles:")
+    print(f"\t\t\tBrown: {colorCnt['B']}")
+    print(f"\t\t\tGreen: {colorCnt['G']}")
+    print(f"\t\t\tClear: {colorCnt['C']}")
+
     print("\n")
