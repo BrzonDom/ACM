@@ -83,6 +83,34 @@ def showBttlInf(colorCnt):
     print()
 
 
+def findPrmt(permColo, binData):
+
+    minTot = sum(binData[0] + binData[1] + binData[2])
+    minPer = ""
+
+    for perm in permColo:
+        print(f"\t\t\t{perm}")
+
+        totCnt = 0
+
+        for bn, col in enumerate(perm):
+            cntCol = binData[bn][convColBin[col]]
+            cntRst = sum(binData[bn]) - cntCol
+
+            print(f"\t\t\t\t{bn + 1}. {col}: {cntCol:2},\tR: {cntRst:2}")
+
+            totCnt += cntRst
+
+        if totCnt < minTot:
+            minTot = totCnt
+            minPer = perm
+
+        print(f"\t\t\t\t\t\tTotal: {totCnt}")
+        print()
+    print()
+
+    return minPer, minTot
+
 
 InputRaw_Str ="""
 1 2 3 4 5 6 7 8 9
@@ -116,8 +144,8 @@ if __name__ == "__main__":
 
         binInLst = list(map(int, InputStr.split()))
 
-        print(f"\t\t{binInLst}")
-        print()
+        # print(f"\t\t{binInLst}")
+        # print()
 
         binData = {0 : binInLst[0:3],
                    1 : binInLst[3:6],
@@ -160,30 +188,33 @@ if __name__ == "__main__":
         # print(f"\t\t\tClear: {colorCnt['C']}")
         # print()
 
-        minTot = sum(colorCnt.values())
-        minPer = ""
-
         print("\t\tPermutations:\n")
-        for perm in permColo:
-            print(f"\t\t\t{perm}")
+        minPer, minTot = findPrmt(permColo, binData)
 
-            totCnt = 0
-
-            for bn, col in enumerate(perm):
-                cntCol = binData[bn][convColBin[col]]
-                cntRst = sum(binData[bn]) - cntCol
-
-                print(f"\t\t\t\t{bn+1}. {col}: {cntCol:2},\tR: {cntRst:2}")
-
-                totCnt += cntRst
-
-            if totCnt < minTot:
-                minTot = totCnt
-                minPer = perm
-
-            print(f"\t\t\t\t\t\tTotal: {totCnt}")
-            print()
-        print()
+        # minTot = sum(colorCnt.values())
+        # minPer = ""
+        #
+        # print("\t\tPermutations:\n")
+        # for perm in permColo:
+        #     print(f"\t\t\t{perm}")
+        #
+        #     totCnt = 0
+        #
+        #     for bn, col in enumerate(perm):
+        #         cntCol = binData[bn][convColBin[col]]
+        #         cntRst = sum(binData[bn]) - cntCol
+        #
+        #         print(f"\t\t\t\t{bn+1}. {col}: {cntCol:2},\tR: {cntRst:2}")
+        #
+        #         totCnt += cntRst
+        #
+        #     if totCnt < minTot:
+        #         minTot = totCnt
+        #         minPer = perm
+        #
+        #     print(f"\t\t\t\t\t\tTotal: {totCnt}")
+        #     print()
+        # print()
 
         print(f"\t\tFound permutation: {minPer}")
         print(f"\t\t\t\t\tTotal: {minTot}")
@@ -205,8 +236,6 @@ Input:
 5 10 5 20 10 5 10 20 10
 
 	1.Input line: 1 2 3 4 5 6 7 8 9
-
-		[1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 		Bins:
 			1. Bin: Tot:  6, [  1B,  2G,  3C ]
@@ -270,8 +299,6 @@ Input:
 
 
 	2.Input line: 5 10 5 20 10 5 10 20 10
-
-		[5, 10, 5, 20, 10, 5, 10, 20, 10]
 
 		Bins:
 			1. Bin: Tot: 20, [  5B, 10G,  5C ]
