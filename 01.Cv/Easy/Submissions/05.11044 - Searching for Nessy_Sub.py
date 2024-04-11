@@ -65,13 +65,19 @@ if __name__ == "__main__":
     print(f"Input: {InputStr_Lst}")
     print()
 
-    caseNum = int(InputStr_Lst[0])
+    # caseNum = int(InputStr_Lst[0])
+    caseNum = int(input())
+
     inputLst = [list(map(int, line.split())) for line in InputStr_Lst[1:]]
 
     print(f"Num. of cases: {caseNum}")
     print()
 
-    for case, gridDim in enumerate(inputLst):
+    # for case, gridDim in enumerate(inputLst):
+    for case in range(caseNum):
+
+        gridDim = list(map(int, input().split()))
+
         print(f"\t{case+1}. Case")
         print()
 
@@ -97,7 +103,7 @@ if __name__ == "__main__":
 
         print(f"\t\tSonars: {sonCnt}")
 
-        if case < len(inputLst) - 1:
+        if case < caseNum - 1:
             print("\n")
 
 
