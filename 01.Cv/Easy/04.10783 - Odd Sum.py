@@ -24,3 +24,17 @@ https://onlinejudge.org/index.php?option=onlinejudge&Itemid=8&page=show_problem&
                 Case 2: 8
 
 """
+
+InputRaw_Str = """
+2
+1
+5
+3
+5
+"""
+
+InputRaw_Str = InputRaw_Str[1:-1]
+
+print("Input:")
+
+print(InputRaw_Str)
