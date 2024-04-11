@@ -25,18 +25,18 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=30&pa
 
 if __name__ == '__main__':
 
-    InputRaw_Str = """
-4 1 4 2 3
-5 1 4 2 -1 6
-"""
-
-    InputRaw_Str = InputRaw_Str[1:-1]
-
-    print("Input:")
-    print(InputRaw_Str)
-    print()
-
-    InputStr_Lst = InputRaw_Str.split("\n")
+#     InputRaw_Str = """
+# 4 1 4 2 3
+# 5 1 4 2 -1 6
+# """
+#
+#     InputRaw_Str = InputRaw_Str[1:-1]
+#
+#     print("Input:")
+#     print(InputRaw_Str)
+#     print()
+#
+#     InputStr_Lst = InputRaw_Str.split("\n")
 
     # for inCnt, InputStr in enumerate(InputStr_Lst):
     #
@@ -56,8 +56,8 @@ if __name__ == '__main__':
 
         lenSeq, seq = Input[0], Input[1:]
 
-        print(f"\t{inCnt}. Sequence: {seq}")
-        print(f"\t\t Lenght: {lenSeq}\n")
+        # print(f"\t{inCnt}. Sequence: {seq}")
+        # print(f"\t\t Lenght: {lenSeq}\n")
 
         jolly = set()
 
@@ -68,7 +68,7 @@ if __name__ == '__main__':
         for nxt in seq[1:]:
             abVal = abs(prev - nxt)
 
-            print(f"\t\t\t|{prev} - {nxt}| = {abVal}")
+            # print(f"\t\t\t|{prev} - {nxt}| = {abVal}")
 
             if abVal in jolly or abVal <= 0 or abVal >= lenSeq:
                 isJolly = False
@@ -79,50 +79,18 @@ if __name__ == '__main__':
 
             prev = nxt
 
-        print()
-        print(f"\t\t\t{jolly}\n")
+        # print()
+        # print(f"\t\t\t{jolly}\n")
 
         if isJolly:
-            print(f"\t\tSequence is Jolly")
+            # print(f"\t\tSequence is Jolly")
+            print("Jolly")
 
         else:
-            print("\t\tSequence is Not Jolly")
+            # print("\t\tSequence is Not Jolly")
+            print("Not jolly")
 
-        print("\n")
+        # print("\n")
 
         # if inCnt < len(InputStr_Lst) - 1:
         #     print("\n")
-
-
-"""__Output__"""
-"""
-Input:
-4 1 4 2 3
-5 1 4 2 -1 6
-
-	1. Sequence: [1, 4, 2, 3]
-		 Lenght: 4
-
-			|1 - 4| = 3
-			|4 - 2| = 2
-			|2 - 3| = 1
-
-			{1, 2, 3}
-
-		Sequence is Jolly
-
-
-	2. Sequence: [1, 4, 2, -1, 6]
-		 Lenght: 5
-
-			|1 - 4| = 3
-			|4 - 2| = 2
-			|2 - -1| = 3
-
-			{2, 3}
-
-		Sequence is Not Jolly
-
-Process finished with exit code 0
-
-"""
