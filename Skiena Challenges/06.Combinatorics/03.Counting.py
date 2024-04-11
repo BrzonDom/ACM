@@ -1,3 +1,4 @@
+
 """
 
 Counting
@@ -35,7 +36,7 @@ Counting
 
 """
 import copy
-from itertools import combinations
+import itertools
 
 
 InputRaw_Str = """
@@ -131,6 +132,16 @@ for dig in range(maxDig - 1, minDig - 1, -1):
                 digSetDict[dig] += [newDigSet]
 
     print(f"\t\t\t{dig:2}: {digSetDict[dig]}")
+
+    # for digSet in digSetDict[dig]:
+    #
+    #     setComb = list(itertools.product(digSet, repeat=dig))
+    #
+    #     print("\t\t\t", end="\t")
+    #
+    #     for comb in setComb:
+    #         print(comb, end=" ")
+    #     print()
 
 
 """__Output__"""

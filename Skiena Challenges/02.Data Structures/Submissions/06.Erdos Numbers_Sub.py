@@ -81,7 +81,7 @@ def extractAuth(Papers):
     for paper in Papers:
 
         """     Extract string of authors     """
-        authStr = paper.split(":")[0]
+        authStr = paper.split(":")[0].strip()
 
         """     Split string of authors into a list   """
         authLst = authStr.split(", ")

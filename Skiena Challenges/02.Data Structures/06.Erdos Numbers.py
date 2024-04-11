@@ -52,6 +52,7 @@ Jablonski, T., Hsueh, Z.: Selfstabilizing data structures
 Smith, M.N.
 Hsueh, Z.
 Chen, X.
+
 """
 
 
@@ -180,7 +181,7 @@ def authPrint(Authors):
 
 
 def workPrint(Works):
-    #
+
     print("\tWorks:")
     for work in Works:
         print(f"\t\t{work}")
@@ -215,8 +216,6 @@ def valuePrint(Names):
             print(f"\t\t{auth:{maxAthLen}} : {ErdoVal_Dict[auth]} [{ErdoCon_Dict[auth]}]")
 
     print("\n")
-
-
 
 
 # ScenNum, PaperNameCnt, PapersNames = Input_Str.split("\n", 3)[1:]

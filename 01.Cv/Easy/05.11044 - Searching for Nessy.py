@@ -42,10 +42,6 @@ InputOrg_Str = """
 
 InputOrg_Str = InputOrg_Str[1:-1]
 
-# print("Input:")
-# print(InputOrg_Str)
-# print()
-
 InputStr_Lst = InputOrg_Str.split("\n")
 
 print(f"Input: {InputStr_Lst}")
@@ -66,5 +62,44 @@ for case, gridDim in enumerate(inputLst):
 
     print(f"\t\tRows: {rowGrd}")
     print(f"\t\tCols: {colGrd}")
+    print()
+
+    print(f"\t\t\tFree squares: {rowGrd-2} * {colGrd-2} = {(rowGrd-2) * (colGrd-2)}")
 
     print("\n")
+
+
+"""__Output__"""
+"""
+Input: ['3', '6 6', '7 7', '9 13']
+
+Num. of cases: 3
+
+	1. Case
+
+		Rows: 6
+		Cols: 6
+
+			Free squares: 4 * 4 = 16
+
+
+	2. Case
+
+		Rows: 7
+		Cols: 7
+
+			Free squares: 5 * 5 = 25
+
+
+	3. Case
+
+		Rows: 9
+		Cols: 13
+
+			Free squares: 7 * 11 = 77
+
+
+
+Process finished with exit code 0
+
+"""
