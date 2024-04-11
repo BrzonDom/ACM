@@ -42,19 +42,19 @@ if __name__ == '__main__':
     #
     #     Input = list(map(int, InputStr.split()))
 
-    inCnt = 0
+    # inCnt = 0
 
     while True:
 
         try:
-            Input = list(map(int, input().split()))
+            inSeq = list(map(int, input().split()))
 
         except EOFError:
             break
 
-        inCnt += 1
+        # inCnt += 1
 
-        lenSeq, seq = Input[0], Input[1:]
+        lenSeq, seq = inSeq[0], inSeq[1:]
 
         # print(f"\t{inCnt}. Sequence: {seq}")
         # print(f"\t\t Lenght: {lenSeq}\n")
@@ -90,7 +90,7 @@ if __name__ == '__main__':
             # print("\t\tSequence is Not Jolly")
             print("Not jolly")
 
-        # print("\n")
+            # print("\n")
 
-        # if inCnt < len(InputStr_Lst) - 1:
-        #     print("\n")
+            # if inCnt < len(InputStr_Lst) - 1:
+            #     print("\n")
