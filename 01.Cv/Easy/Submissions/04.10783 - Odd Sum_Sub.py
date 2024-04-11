@@ -25,6 +25,8 @@ https://onlinejudge.org/index.php?option=onlinejudge&Itemid=8&page=show_problem&
 
 """
 
+"""29374710 	10783 	Odd Sum 	Accepted 	PYTH3 	0.020 	2024-04-11 13:34:52"""
+
 if __name__ == '__main__':
 
 #     InputRaw_Str = """
