@@ -50,6 +50,7 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=3&pag
 
 """
 
+"""29372490 	102 	Ecological Bin Packing 	Accepted 	PYTH3 	0.980 	2024-04-10 13:57:46"""
 
 InputRaw_Str ="""
 1 2 3 4 5 6 7 8 9
