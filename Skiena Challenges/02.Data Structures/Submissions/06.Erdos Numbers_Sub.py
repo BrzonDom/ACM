@@ -59,7 +59,6 @@ Jablonski, T., Hsueh, Z.: Selfstabilizing data structures
 Martin, G.
 Hsueh, Z.
 Jablonski, T.
-
 """
 from sys import stdin
 
@@ -163,4 +162,3 @@ if __name__ == "__main__":
 
             else:
                 print(f"{name} {valueData[name]}")
-
