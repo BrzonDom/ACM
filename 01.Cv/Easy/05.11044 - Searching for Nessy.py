@@ -64,7 +64,16 @@ for case, gridDim in enumerate(inputLst):
     print(f"\t\tCols: {colGrd}")
     print()
 
-    print(f"\t\t\tFree squares: {rowGrd-2} * {colGrd-2} = {(rowGrd-2) * (colGrd-2)}")
+    print(f"\t\t\t\tFree squares: {rowGrd-2} * {colGrd-2} = {(rowGrd-2) * (colGrd-2)}")
+    print()
+
+    minRow = rowGrd // 3
+    minCol = colGrd // 3
+
+    print(f"\t\t\tRow sonars: {minRow}")
+    print(f"\t\t\tCol sonars: {minCol}")
+    print()
+    print(f"\t\tSonars: {minRow * minCol}")
 
     print("\n")
 
@@ -80,7 +89,12 @@ Num. of cases: 3
 		Rows: 6
 		Cols: 6
 
-			Free squares: 4 * 4 = 16
+				Free squares: 4 * 4 = 16
+
+			Row sonars: 2
+			Col sonars: 2
+
+		Sonars: 4
 
 
 	2. Case
@@ -88,7 +102,12 @@ Num. of cases: 3
 		Rows: 7
 		Cols: 7
 
-			Free squares: 5 * 5 = 25
+				Free squares: 5 * 5 = 25
+
+			Row sonars: 2
+			Col sonars: 2
+
+		Sonars: 4
 
 
 	3. Case
@@ -96,7 +115,12 @@ Num. of cases: 3
 		Rows: 9
 		Cols: 13
 
-			Free squares: 7 * 11 = 77
+				Free squares: 7 * 11 = 77
+
+			Row sonars: 3
+			Col sonars: 4
+
+		Sonars: 12
 
 
 
