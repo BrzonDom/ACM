@@ -33,14 +33,30 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=121&p
 
 """
 
+def countSonar(rowGrd, colGrd):
+
+    minRow = rowGrd // 3
+    minCol = colGrd // 3
+
+    print(f"\t\t\tRow sonars: {minRow}")
+    print(f"\t\t\tCol sonars: {minCol}")
+    print()
+
+    sonCnt = minRow * minCol
+
+    # print(f"\t\tSonars: {sonCnt}")
+
+    return sonCnt
+
+
 if __name__ == "__main__":
 
     InputOrg_Str = """
-    3
-    6 6
-    7 7
-    9 13
-    """
+3
+6 6
+7 7
+9 13
+"""
 
     InputOrg_Str = InputOrg_Str[1:-1]
 
@@ -69,13 +85,17 @@ if __name__ == "__main__":
         print(f"\t\t\t\tFree squares: {rowGrd-2} * {colGrd-2} = {(rowGrd-2) * (colGrd-2)}")
         print()
 
-        minRow = rowGrd // 3
-        minCol = colGrd // 3
+        # minRow = rowGrd // 3
+        # minCol = colGrd // 3
+        #
+        # print(f"\t\t\tRow sonars: {minRow}")
+        # print(f"\t\t\tCol sonars: {minCol}")
+        # print()
+        # print(f"\t\tSonars: {minRow * minCol}")
 
-        print(f"\t\t\tRow sonars: {minRow}")
-        print(f"\t\t\tCol sonars: {minCol}")
-        print()
-        print(f"\t\tSonars: {minRow * minCol}")
+        sonCnt = countSonar(rowGrd, colGrd)
+
+        print(f"\t\tSonars: {sonCnt}")
 
         if case < len(inputLst) - 1:
             print("\n")
