@@ -38,16 +38,25 @@ if __name__ == '__main__':
 
     InputStr_Lst = InputRaw_Str.split("\n")
 
-    for inCnt, InputStr in enumerate(InputStr_Lst):
+    # for inCnt, InputStr in enumerate(InputStr_Lst):
+    #
+    #     Input = list(map(int, InputStr.split()))
 
-        Input = list(map(int, InputStr.split()))
+    inCnt = 0
 
-        # print(f"\t{Input}")
-        # print()
+    while True:
+
+        try:
+            Input = list(map(int, input().split()))
+
+        except EOFError:
+            break
+
+        inCnt += 1
 
         lenSeq, seq = Input[0], Input[1:]
 
-        print(f"\t{inCnt+1}. Sequence: {seq}")
+        print(f"\t{inCnt}. Sequence: {seq}")
         print(f"\t\t Lenght: {lenSeq}\n")
 
         jolly = set()
@@ -79,8 +88,10 @@ if __name__ == '__main__':
         else:
             print("\t\tSequence is Not Jolly")
 
-        if inCnt < len(InputStr_Lst) - 1:
-            print("\n")
+        print("\n")
+
+        # if inCnt < len(InputStr_Lst) - 1:
+        #     print("\n")
 
 
 """__Output__"""
