@@ -65,6 +65,23 @@ for case in range(casesNum):
 
     print(f"\t\tRange min.: {rngMin}")
     print(f"\t\tRange max.: {rngMax}")
+    print()
+
+    if rngMin % 2 == 0:
+        oddMin = rngMin + 1
+    else:
+        oddMin = rngMin
+
+    oddMax = rngMax + 1
+
+    oddRange = []
+
+    for num in range(oddMin, oddMax, 2):
+        oddRange.append(num)
+
+    print(f"\t\tRange: {oddRange}")
+
+
     print("\n")
 
 
@@ -86,11 +103,15 @@ Num. of cases: 2
 		Range min.: 1
 		Range max.: 5
 
+		Range: [1, 3, 5]
+
 
 	2. Case
 
 		Range min.: 3
 		Range max.: 5
+
+		Range: [3, 5]
 
 
 
