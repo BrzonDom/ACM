@@ -32,3 +32,15 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=121&p
                 12
 
 """
+
+InputOrg_Str = """
+3
+6 6
+7 7
+9 13
+"""
+
+InputOrg_Str = InputOrg_Str[1:-1]
+
+print("Input:")
+print(InputOrg_Str)
