@@ -52,7 +52,6 @@ Jablonski, T., Hsueh, Z.: Selfstabilizing data structures
 Smith, M.N.
 Hsueh, Z.
 Chen, X.
-
 """
 
 
@@ -98,8 +97,6 @@ def paperExtract_Prt(Papers):
 
                 else:
                     Auth_Dict[auth] += [coAuth]
-
-        # for work in Auth_Lst:
 
         """     Add to set of works     """
         Works.add(Work_Str[1:])
@@ -174,6 +171,7 @@ def namePrint(Names):
 
 
 def authPrint(Authors):
+
     print("\tAuthors:")
     for auth in Authors:
         print(f"\t\t{auth}")
