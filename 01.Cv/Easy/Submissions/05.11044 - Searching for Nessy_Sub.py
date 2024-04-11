@@ -38,9 +38,9 @@ def countSonar(rowGrd, colGrd):
     minRow = rowGrd // 3
     minCol = colGrd // 3
 
-    print(f"\t\t\tRow sonars: {minRow}")
-    print(f"\t\t\tCol sonars: {minCol}")
-    print()
+    # print(f"\t\t\tRow sonars: {minRow}")
+    # print(f"\t\t\tCol sonars: {minCol}")
+    # print()
 
     sonCnt = minRow * minCol
 
@@ -70,26 +70,26 @@ if __name__ == "__main__":
 
     # inputLst = [list(map(int, line.split())) for line in InputStr_Lst[1:]]
 
-    print(f"Num. of cases: {caseNum}")
-    print()
+    # print(f"Num. of cases: {caseNum}")
+    # print()
 
     # for case, gridDim in enumerate(inputLst):
     for case in range(caseNum):
 
         gridDim = list(map(int, input().split()))
 
-        print(f"\t{case+1}. Case")
-        print()
+        # print(f"\t{case+1}. Case")
+        # print()
 
         rowGrd = gridDim[0]
         colGrd = gridDim[1]
 
-        print(f"\t\tRows: {rowGrd}")
-        print(f"\t\tCols: {colGrd}")
-        print()
-
-        print(f"\t\t\t\tFree squares: {rowGrd-2} * {colGrd-2} = {(rowGrd-2) * (colGrd-2)}")
-        print()
+        # print(f"\t\tRows: {rowGrd}")
+        # print(f"\t\tCols: {colGrd}")
+        # print()
+        #
+        # print(f"\t\t\t\tFree squares: {rowGrd-2} * {colGrd-2} = {(rowGrd-2) * (colGrd-2)}")
+        # print()
 
         # minRow = rowGrd // 3
         # minCol = colGrd // 3
@@ -101,7 +101,8 @@ if __name__ == "__main__":
 
         sonCnt = countSonar(rowGrd, colGrd)
 
-        print(f"\t\tSonars: {sonCnt}")
+        # print(f"\t\tSonars: {sonCnt}")
+        print(sonCnt)
 
-        if case < caseNum - 1:
-            print("\n")
+        # if case < caseNum - 1:
+        #     print("\n")
