@@ -51,24 +51,24 @@ def countSonar(rowGrd, colGrd):
 
 if __name__ == "__main__":
 
-    InputOrg_Str = """
-3
-6 6
-7 7
-9 13
-"""
-
-    InputOrg_Str = InputOrg_Str[1:-1]
-
-    InputStr_Lst = InputOrg_Str.split("\n")
-
-    print(f"Input: {InputStr_Lst}")
-    print()
+#     InputOrg_Str = """
+# 3
+# 6 6
+# 7 7
+# 9 13
+# """
+#
+#     InputOrg_Str = InputOrg_Str[1:-1]
+#
+#     InputStr_Lst = InputOrg_Str.split("\n")
+#
+#     print(f"Input: {InputStr_Lst}")
+#     print()
 
     # caseNum = int(InputStr_Lst[0])
     caseNum = int(input())
 
-    inputLst = [list(map(int, line.split())) for line in InputStr_Lst[1:]]
+    # inputLst = [list(map(int, line.split())) for line in InputStr_Lst[1:]]
 
     print(f"Num. of cases: {caseNum}")
     print()
@@ -105,52 +105,3 @@ if __name__ == "__main__":
 
         if case < caseNum - 1:
             print("\n")
-
-
-"""__Output__"""
-"""
-Input: ['3', '6 6', '7 7', '9 13']
-
-Num. of cases: 3
-
-	1. Case
-
-		Rows: 6
-		Cols: 6
-
-				Free squares: 4 * 4 = 16
-
-			Row sonars: 2
-			Col sonars: 2
-
-		Sonars: 4
-
-
-	2. Case
-
-		Rows: 7
-		Cols: 7
-
-				Free squares: 5 * 5 = 25
-
-			Row sonars: 2
-			Col sonars: 2
-
-		Sonars: 4
-
-
-	3. Case
-
-		Rows: 9
-		Cols: 13
-
-				Free squares: 7 * 11 = 77
-
-			Row sonars: 3
-			Col sonars: 4
-
-		Sonars: 12
-
-Process finished with exit code 0
-
-"""
