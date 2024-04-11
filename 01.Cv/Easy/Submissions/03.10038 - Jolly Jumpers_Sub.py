@@ -23,6 +23,8 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=30&pa
 
 """
 
+"""29374594 	10038 	Jolly Jumpers 	Accepted 	PYTH3 	0.030 	2024-04-11 13:08:18"""
+
 if __name__ == '__main__':
 
 #     InputRaw_Str = """
