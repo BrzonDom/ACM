@@ -47,7 +47,6 @@ for inCnt, InputStr in enumerate(InputStr_Lst):
 
     print(f"\t{inCnt+1}. Sequence: {seq}")
     print(f"\t\t Lenght: {lenSeq}\n")
-    print()
 
     jolly = set()
 
@@ -72,14 +71,6 @@ for inCnt, InputStr in enumerate(InputStr_Lst):
     print()
     print(f"\t\t\t{jolly}\n")
 
-    # isJolly = True
-    #
-    # for n in range(1, lenSeq):
-    #     if n not in jolly:
-    #
-    #         isJolly = False
-    #         break
-
     if isJolly:
         print(f"\t\tSequence is Jolly")
 
@@ -99,7 +90,6 @@ Input:
 	1. Sequence: [1, 4, 2, 3]
 		 Lenght: 4
 
-
 			|1 - 4| = 3
 			|4 - 2| = 2
 			|2 - 3| = 1
@@ -111,7 +101,6 @@ Input:
 
 	2. Sequence: [1, 4, 2, -1, 6]
 		 Lenght: 5
-
 
 			|1 - 4| = 3
 			|4 - 2| = 2
