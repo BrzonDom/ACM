@@ -56,8 +56,8 @@ if __name__ == '__main__':
     # casesNum = InputStr_Lst[0]
     casesNum = int(input())
 
-    print(f"Num. of cases: {casesNum}")
-    print()
+    # print(f"Num. of cases: {casesNum}")
+    # print()
 
     # inputLst = InputStr_Lst[1:]
 
@@ -68,12 +68,12 @@ if __name__ == '__main__':
         # rngMax = inputLst[case*2 + 1]
         rngMax = int(input())
 
-        print(f"\t{case+1}. Case")
-        print()
+        # print(f"\t{case+1}. Case")
+        # print()
 
-        print(f"\t\tRange min.: {rngMin}")
-        print(f"\t\tRange max.: {rngMax}")
-        print()
+        # print(f"\t\tRange min.: {rngMin}")
+        # print(f"\t\tRange max.: {rngMax}")
+        # print()
 
         if rngMin % 2 == 0:
             oddMin = rngMin + 1
@@ -82,13 +82,14 @@ if __name__ == '__main__':
 
         oddMax = rngMax + 1
 
-        print(f"\t\t\tParameters: [{oddMin}, {oddMax}, 2]")
-        print()
+        # print(f"\t\t\tParameters: [{oddMin}, {oddMax}, 2]")
+        # print()
 
         oddRange = [* range(oddMin, oddMax, 2)]
 
-        print(f"\t\tRange: {oddRange}")
-        print(f"\t\t  Sum:  {sum(oddRange)}")
+        # print(f"\t\tRange: {oddRange}")
+        # print(f"\t\t  Sum:  {sum(oddRange)}")
+        print(sum(oddRange))
 
-        if case < casesNum - 1:
-            print("\n")
+        # if case < casesNum - 1:
+        #     print("\n")
