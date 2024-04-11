@@ -43,11 +43,6 @@ if __name__ == '__main__':
 
     # InputRaw_Str = InputRaw_Str[1:-1]
 
-    # print("Input:")
-    #
-    # print(InputRaw_Str)
-    # print()
-
     # InputStr_Lst = list(map(int, InputRaw_Str.split("\n")))
 
     # print("Input:", InputStr_Lst)
@@ -89,7 +84,7 @@ if __name__ == '__main__':
 
         # print(f"\t\tRange: {oddRange}")
         # print(f"\t\t  Sum:  {sum(oddRange)}")
-        print(sum(oddRange))
+        print(f"Case {case+1}: {sum(oddRange)}")
 
         # if case < casesNum - 1:
         #     print("\n")
