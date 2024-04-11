@@ -53,7 +53,8 @@ if __name__ == '__main__':
     print("Input:", InputStr_Lst)
     print()
 
-    casesNum = InputStr_Lst[0]
+    # casesNum = InputStr_Lst[0]
+    casesNum = int(input())
 
     print(f"Num. of cases: {casesNum}")
     print()
@@ -62,8 +63,10 @@ if __name__ == '__main__':
 
     for case in range(casesNum):
 
-        rngMin = inputLst[case*2]
-        rngMax = inputLst[case*2 + 1]
+        # rngMin = inputLst[case*2]
+        rngMin = int(input())
+        # rngMax = inputLst[case*2 + 1]
+        rngMax = int(input())
 
         print(f"\t{case+1}. Case")
         print()
@@ -92,68 +95,3 @@ if __name__ == '__main__':
 
         if case < casesNum - 1:
             print("\n")
-
-
-"""__Output__"""
-"""
-Input: [5, 1, 5, 3, 5, 4, 12, 2, 5, 0, 7]
-
-Num. of cases: 5
-
-	1. Case
-
-		Range min.: 1
-		Range max.: 5
-
-			Parameters: [1, 6, 2]
-
-		Range: [1, 3, 5]
-		  Sum:  9
-
-
-	2. Case
-
-		Range min.: 3
-		Range max.: 5
-
-			Parameters: [3, 6, 2]
-
-		Range: [3, 5]
-		  Sum:  8
-
-
-	3. Case
-
-		Range min.: 4
-		Range max.: 12
-
-			Parameters: [5, 13, 2]
-
-		Range: [5, 7, 9, 11]
-		  Sum:  32
-
-
-	4. Case
-
-		Range min.: 2
-		Range max.: 5
-
-			Parameters: [3, 6, 2]
-
-		Range: [3, 5]
-		  Sum:  8
-
-
-	5. Case
-
-		Range min.: 0
-		Range max.: 7
-
-			Parameters: [1, 8, 2]
-
-		Range: [1, 3, 5, 7]
-		  Sum:  16
-
-Process finished with exit code 0
-
-"""
