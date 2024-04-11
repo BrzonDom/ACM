@@ -33,6 +33,9 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=121&p
 
 """
 
+"""29374767 	11044 	Searching for Nessy 	Accepted 	PYTH3 	0.020 	2024-04-11 13:59:17"""
+
+
 def countSonar(rowGrd, colGrd):
 
     minRow = rowGrd // 3
