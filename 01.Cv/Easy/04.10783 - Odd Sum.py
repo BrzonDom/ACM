@@ -45,6 +45,21 @@ InputStr_Lst = InputRaw_Str.split("\n")
 print(InputStr_Lst)
 print()
 
-casesNum = InputStr_Lst[0]
+casesNum = int(InputStr_Lst[0])
+
+print(f"Num. of cases: {casesNum}")
+print()
 
 inputLst = InputStr_Lst[1:]
+
+for case in range(casesNum):
+
+    rngMin = int(inputLst[case*2])
+    rngMax = int(inputLst[case*2 + 1])
+
+    print(f"\t{case+1}. Case")
+    print()
+
+    print(f"\t\tRange min.: {rngMin}")
+    print(f"\t\tRange max.: {rngMax}")
+    print("\n")
