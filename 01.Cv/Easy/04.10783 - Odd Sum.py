@@ -43,11 +43,6 @@ if __name__ == '__main__':
 
     InputRaw_Str = InputRaw_Str[1:-1]
 
-    # print("Input:")
-    #
-    # print(InputRaw_Str)
-    # print()
-
     InputStr_Lst = list(map(int, InputRaw_Str.split("\n")))
 
     print("Input:", InputStr_Lst)
@@ -83,9 +78,6 @@ if __name__ == '__main__':
         print()
 
         oddRange = [* range(oddMin, oddMax, 2)]
-
-        # for num in range(oddMin, oddMax, 2):
-        #     oddRange.append(num)
 
         print(f"\t\tRange: {oddRange}")
         print(f"\t\t  Sum:  {sum(oddRange)}")
