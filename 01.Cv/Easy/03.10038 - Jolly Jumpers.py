@@ -48,3 +48,42 @@ for inCnt, InputStr in enumerate(InputRaw_Lst):
     print(f"\t{inCnt+1}. Sequence: {seq}")
     print(f"\t\t Lenght: {lenSeq}\n")
     print()
+
+    jolly = set()
+
+    isJolly = True
+
+    prev = seq[0]
+
+    for nxt in seq[1:]:
+        abVal = abs(prev - nxt)
+
+        print(f"\t\t\t|{prev} - {nxt}| = {abVal}")
+
+        if abVal in jolly or abVal <= 0 or abVal >= lenSeq:
+            isJolly = False
+            break
+
+        else:
+            jolly.add(abVal)
+
+        prev = nxt
+
+    print()
+    print(f"\t\t\t{jolly}\n")
+
+    # isJolly = True
+    #
+    # for n in range(1, lenSeq):
+    #     if n not in jolly:
+    #
+    #         isJolly = False
+    #         break
+
+    if isJolly:
+        print(f"\t\tSequence is Jolly")
+
+    else:
+        print("\t\tSequence is Not Jolly")
+
+    print("\n")
