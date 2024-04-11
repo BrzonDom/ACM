@@ -42,40 +42,43 @@ InputOrg_Str = """
 
 InputOrg_Str = InputOrg_Str[1:-1]
 
-InputStr_Lst = InputOrg_Str.split("\n")
+if __name__ == "__main__":
 
-print(f"Input: {InputStr_Lst}")
-print()
+    InputStr_Lst = InputOrg_Str.split("\n")
 
-caseNum = int(InputStr_Lst[0])
-inputLst = [list(map(int, line.split())) for line in InputStr_Lst[1:]]
-
-print(f"Num. of cases: {caseNum}")
-print()
-
-for case, gridDim in enumerate(inputLst):
-    print(f"\t{case+1}. Case")
+    print(f"Input: {InputStr_Lst}")
     print()
 
-    rowGrd = gridDim[0]
-    colGrd = gridDim[1]
+    caseNum = int(InputStr_Lst[0])
+    inputLst = [list(map(int, line.split())) for line in InputStr_Lst[1:]]
 
-    print(f"\t\tRows: {rowGrd}")
-    print(f"\t\tCols: {colGrd}")
+    print(f"Num. of cases: {caseNum}")
     print()
 
-    print(f"\t\t\t\tFree squares: {rowGrd-2} * {colGrd-2} = {(rowGrd-2) * (colGrd-2)}")
-    print()
+    for case, gridDim in enumerate(inputLst):
+        print(f"\t{case+1}. Case")
+        print()
 
-    minRow = rowGrd // 3
-    minCol = colGrd // 3
+        rowGrd = gridDim[0]
+        colGrd = gridDim[1]
 
-    print(f"\t\t\tRow sonars: {minRow}")
-    print(f"\t\t\tCol sonars: {minCol}")
-    print()
-    print(f"\t\tSonars: {minRow * minCol}")
+        print(f"\t\tRows: {rowGrd}")
+        print(f"\t\tCols: {colGrd}")
+        print()
 
-    print("\n")
+        print(f"\t\t\t\tFree squares: {rowGrd-2} * {colGrd-2} = {(rowGrd-2) * (colGrd-2)}")
+        print()
+
+        minRow = rowGrd // 3
+        minCol = colGrd // 3
+
+        print(f"\t\t\tRow sonars: {minRow}")
+        print(f"\t\t\tCol sonars: {minCol}")
+        print()
+        print(f"\t\tSonars: {minRow * minCol}")
+
+        if case < len(inputLst) - 1:
+            print("\n")
 
 
 """__Output__"""
@@ -121,8 +124,6 @@ Num. of cases: 3
 			Col sonars: 4
 
 		Sonars: 12
-
-
 
 Process finished with exit code 0
 
