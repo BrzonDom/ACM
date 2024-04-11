@@ -34,9 +34,9 @@ print("Input:")
 print(InputRaw_Str)
 print()
 
-InputRaw_Lst = InputRaw_Str.split("\n")
+InputStr_Lst = InputRaw_Str.split("\n")
 
-for inCnt, InputStr in enumerate(InputRaw_Lst):
+for inCnt, InputStr in enumerate(InputStr_Lst):
 
     Input = list(map(int, InputStr.split()))
 
@@ -86,4 +86,41 @@ for inCnt, InputStr in enumerate(InputRaw_Lst):
     else:
         print("\t\tSequence is Not Jolly")
 
-    print("\n")
+    if inCnt < len(InputStr_Lst) - 1:
+        print("\n")
+
+
+"""__Output__"""
+"""
+Input:
+4 1 4 2 3
+5 1 4 2 -1 6
+
+	1. Sequence: [1, 4, 2, 3]
+		 Lenght: 4
+
+
+			|1 - 4| = 3
+			|4 - 2| = 2
+			|2 - 3| = 1
+
+			{1, 2, 3}
+
+		Sequence is Jolly
+
+
+	2. Sequence: [1, 4, 2, -1, 6]
+		 Lenght: 5
+
+
+			|1 - 4| = 3
+			|4 - 2| = 2
+			|2 - -1| = 3
+
+			{2, 3}
+
+		Sequence is Not Jolly
+
+Process finished with exit code 0
+
+"""
