@@ -74,15 +74,16 @@ for case in range(casesNum):
 
     oddMax = rngMax + 1
 
-    oddRange = []
+    oddRange = [*range(oddMin, oddMax, 2)]
 
-    for num in range(oddMin, oddMax, 2):
-        oddRange.append(num)
+    # for num in range(oddMin, oddMax, 2):
+    #     oddRange.append(num)
 
     print(f"\t\tRange: {oddRange}")
+    print(f"\t\t  Sum:  {sum(oddRange)}")
 
-
-    print("\n")
+    if case < casesNum - 1:
+        print("\n")
 
 
 """__Output__"""
@@ -104,6 +105,7 @@ Num. of cases: 2
 		Range max.: 5
 
 		Range: [1, 3, 5]
+		  Sum:  9
 
 
 	2. Case
@@ -112,8 +114,7 @@ Num. of cases: 2
 		Range max.: 5
 
 		Range: [3, 5]
-
-
+		  Sum:  8
 
 Process finished with exit code 0
 
