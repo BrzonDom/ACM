@@ -26,26 +26,31 @@ https://onlinejudge.org/index.php?option=onlinejudge&Itemid=8&page=show_problem&
 """
 
 InputRaw_Str = """
-2
+5
 1
 5
 3
 5
+4
+12
+2
+5
+0
+7
 """
 
 InputRaw_Str = InputRaw_Str[1:-1]
 
-print("Input:")
-
-print(InputRaw_Str)
-print()
+# print("Input:")
+#
+# print(InputRaw_Str)
+# print()
 
 InputStr_Lst = list(map(int, InputRaw_Str.split("\n")))
 
-print(InputStr_Lst)
+print("Input:", InputStr_Lst)
 print()
 
-# casesNum = int(InputStr_Lst[0])
 casesNum = InputStr_Lst[0]
 
 print(f"Num. of cases: {casesNum}")
@@ -55,8 +60,6 @@ inputLst = InputStr_Lst[1:]
 
 for case in range(casesNum):
 
-    # rngMin = int(inputLst[case*2])
-    # rngMax = int(inputLst[case*2 + 1])
     rngMin = inputLst[case*2]
     rngMax = inputLst[case*2 + 1]
 
@@ -74,7 +77,10 @@ for case in range(casesNum):
 
     oddMax = rngMax + 1
 
-    oddRange = [*range(oddMin, oddMax, 2)]
+    print(f"\t\t\tParameters: [{oddMin}, {oddMax}, 2]")
+    print()
+
+    oddRange = [* range(oddMin, oddMax, 2)]
 
     # for num in range(oddMin, oddMax, 2):
     #     oddRange.append(num)
@@ -88,21 +94,16 @@ for case in range(casesNum):
 
 """__Output__"""
 """
-Input:
-2
-1
-5
-3
-5
+Input: [5, 1, 5, 3, 5, 4, 12, 2, 5, 0, 7]
 
-[2, 1, 5, 3, 5]
-
-Num. of cases: 2
+Num. of cases: 5
 
 	1. Case
 
 		Range min.: 1
 		Range max.: 5
+
+			Parameters: [1, 6, 2]
 
 		Range: [1, 3, 5]
 		  Sum:  9
@@ -113,8 +114,43 @@ Num. of cases: 2
 		Range min.: 3
 		Range max.: 5
 
+			Parameters: [3, 6, 2]
+
 		Range: [3, 5]
 		  Sum:  8
+
+
+	3. Case
+
+		Range min.: 4
+		Range max.: 12
+
+			Parameters: [5, 13, 2]
+
+		Range: [5, 7, 9, 11]
+		  Sum:  32
+
+
+	4. Case
+
+		Range min.: 2
+		Range max.: 5
+
+			Parameters: [3, 6, 2]
+
+		Range: [3, 5]
+		  Sum:  8
+
+
+	5. Case
+
+		Range min.: 0
+		Range max.: 7
+
+			Parameters: [1, 8, 2]
+
+		Range: [1, 3, 5, 7]
+		  Sum:  16
 
 Process finished with exit code 0
 
