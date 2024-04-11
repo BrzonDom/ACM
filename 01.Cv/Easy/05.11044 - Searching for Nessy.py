@@ -42,11 +42,14 @@ InputOrg_Str = """
 
 InputOrg_Str = InputOrg_Str[1:-1]
 
-print("Input:")
-print(InputOrg_Str)
-print()
+# print("Input:")
+# print(InputOrg_Str)
+# print()
 
 InputStr_Lst = InputOrg_Str.split("\n")
+
+print(f"Input: {InputStr_Lst}")
+print()
 
 caseNum = int(InputStr_Lst[0])
 inputLst = [list(map(int, line.split())) for line in InputStr_Lst[1:]]
@@ -54,5 +57,14 @@ inputLst = [list(map(int, line.split())) for line in InputStr_Lst[1:]]
 print(f"Num. of cases: {caseNum}")
 print()
 
-print(inputLst)
+for case, gridDim in enumerate(inputLst):
+    print(f"\t{case+1}. Case")
+    print()
 
+    rowGrd = gridDim[0]
+    colGrd = gridDim[1]
+
+    print(f"\t\tRows: {rowGrd}")
+    print(f"\t\tCols: {colGrd}")
+
+    print("\n")
