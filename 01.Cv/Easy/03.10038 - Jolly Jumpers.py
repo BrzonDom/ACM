@@ -23,62 +23,64 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=30&pa
 
 """
 
-InputRaw_Str = """
+if __name__ == '__main__':
+
+    InputRaw_Str = """
 4 1 4 2 3
 5 1 4 2 -1 6
 """
 
-InputRaw_Str = InputRaw_Str[1:-1]
+    InputRaw_Str = InputRaw_Str[1:-1]
 
-print("Input:")
-print(InputRaw_Str)
-print()
+    print("Input:")
+    print(InputRaw_Str)
+    print()
 
-InputStr_Lst = InputRaw_Str.split("\n")
+    InputStr_Lst = InputRaw_Str.split("\n")
 
-for inCnt, InputStr in enumerate(InputStr_Lst):
+    for inCnt, InputStr in enumerate(InputStr_Lst):
 
-    Input = list(map(int, InputStr.split()))
+        Input = list(map(int, InputStr.split()))
 
-    # print(f"\t{Input}")
-    # print()
+        # print(f"\t{Input}")
+        # print()
 
-    lenSeq, seq = Input[0], Input[1:]
+        lenSeq, seq = Input[0], Input[1:]
 
-    print(f"\t{inCnt+1}. Sequence: {seq}")
-    print(f"\t\t Lenght: {lenSeq}\n")
+        print(f"\t{inCnt+1}. Sequence: {seq}")
+        print(f"\t\t Lenght: {lenSeq}\n")
 
-    jolly = set()
+        jolly = set()
 
-    isJolly = True
+        isJolly = True
 
-    prev = seq[0]
+        prev = seq[0]
 
-    for nxt in seq[1:]:
-        abVal = abs(prev - nxt)
+        for nxt in seq[1:]:
+            abVal = abs(prev - nxt)
 
-        print(f"\t\t\t|{prev} - {nxt}| = {abVal}")
+            print(f"\t\t\t|{prev} - {nxt}| = {abVal}")
 
-        if abVal in jolly or abVal <= 0 or abVal >= lenSeq:
-            isJolly = False
-            break
+            if abVal in jolly or abVal <= 0 or abVal >= lenSeq:
+                isJolly = False
+                break
+
+            else:
+                jolly.add(abVal)
+
+            prev = nxt
+
+        print()
+        print(f"\t\t\t{jolly}\n")
+
+        if isJolly:
+            print(f"\t\tSequence is Jolly")
 
         else:
-            jolly.add(abVal)
+            print("\t\tSequence is Not Jolly")
 
-        prev = nxt
-
-    print()
-    print(f"\t\t\t{jolly}\n")
-
-    if isJolly:
-        print(f"\t\tSequence is Jolly")
-
-    else:
-        print("\t\tSequence is Not Jolly")
-
-    if inCnt < len(InputStr_Lst) - 1:
-        print("\n")
+        if inCnt < len(InputStr_Lst) - 1:
+            print("\n")
 
 
 """__Output__"""
