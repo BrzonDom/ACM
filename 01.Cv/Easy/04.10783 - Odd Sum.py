@@ -40,12 +40,13 @@ print("Input:")
 print(InputRaw_Str)
 print()
 
-InputStr_Lst = InputRaw_Str.split("\n")
+InputStr_Lst = list(map(int, InputRaw_Str.split("\n")))
 
 print(InputStr_Lst)
 print()
 
-casesNum = int(InputStr_Lst[0])
+# casesNum = int(InputStr_Lst[0])
+casesNum = InputStr_Lst[0]
 
 print(f"Num. of cases: {casesNum}")
 print()
@@ -54,8 +55,10 @@ inputLst = InputStr_Lst[1:]
 
 for case in range(casesNum):
 
-    rngMin = int(inputLst[case*2])
-    rngMax = int(inputLst[case*2 + 1])
+    # rngMin = int(inputLst[case*2])
+    # rngMax = int(inputLst[case*2 + 1])
+    rngMin = inputLst[case*2]
+    rngMax = inputLst[case*2 + 1]
 
     print(f"\t{case+1}. Case")
     print()
@@ -63,3 +66,34 @@ for case in range(casesNum):
     print(f"\t\tRange min.: {rngMin}")
     print(f"\t\tRange max.: {rngMax}")
     print("\n")
+
+
+"""__Output__"""
+"""
+Input:
+2
+1
+5
+3
+5
+
+[2, 1, 5, 3, 5]
+
+Num. of cases: 2
+
+	1. Case
+
+		Range min.: 1
+		Range max.: 5
+
+
+	2. Case
+
+		Range min.: 3
+		Range max.: 5
+
+
+
+Process finished with exit code 0
+
+"""
