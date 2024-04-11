@@ -38,3 +38,13 @@ InputRaw_Str = InputRaw_Str[1:-1]
 print("Input:")
 
 print(InputRaw_Str)
+print()
+
+InputStr_Lst = InputRaw_Str.split("\n")
+
+print(InputStr_Lst)
+print()
+
+casesNum = InputStr_Lst[0]
+
+inputLst = InputStr_Lst[1:]
