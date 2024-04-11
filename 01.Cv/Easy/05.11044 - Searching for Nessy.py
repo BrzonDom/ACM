@@ -33,16 +33,16 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=121&p
 
 """
 
-InputOrg_Str = """
-3
-6 6
-7 7
-9 13
-"""
-
-InputOrg_Str = InputOrg_Str[1:-1]
-
 if __name__ == "__main__":
+
+    InputOrg_Str = """
+    3
+    6 6
+    7 7
+    9 13
+    """
+
+    InputOrg_Str = InputOrg_Str[1:-1]
 
     InputStr_Lst = InputOrg_Str.split("\n")
 
