@@ -30,7 +30,21 @@ InputRaw_Str = """
 
 InputRaw_Str = InputRaw_Str[1:-1]
 
-InputRaw_Lst = InputRaw_Str.split("\n")
-
 print("Input:")
 print(InputRaw_Str)
+print()
+
+InputRaw_Lst = InputRaw_Str.split("\n")
+
+for inCnt, InputStr in enumerate(InputRaw_Lst):
+
+    Input = list(map(int, InputStr.split()))
+
+    # print(f"\t{Input}")
+    # print()
+
+    lenSeq, seq = Input[0], Input[1:]
+
+    print(f"\t{inCnt+1}. Sequence: {seq}")
+    print(f"\t\t Lenght: {lenSeq}\n")
+    print()
