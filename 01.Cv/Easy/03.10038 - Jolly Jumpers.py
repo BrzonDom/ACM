@@ -22,3 +22,15 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=30&pa
                 Jolly
 
 """
+
+InputRaw_Str = """
+4 1 4 2 3
+5 1 4 2 -1 6
+"""
+
+InputRaw_Str = InputRaw_Str[1:-1]
+
+InputRaw_Lst = InputRaw_Str.split("\n")
+
+print("Input:")
+print(InputRaw_Str)
