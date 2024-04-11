@@ -25,7 +25,9 @@ https://onlinejudge.org/index.php?option=onlinejudge&Itemid=8&page=show_problem&
 
 """
 
-InputRaw_Str = """
+if __name__ == '__main__':
+
+    InputRaw_Str = """
 5
 1
 5
@@ -39,57 +41,57 @@ InputRaw_Str = """
 7
 """
 
-InputRaw_Str = InputRaw_Str[1:-1]
+    InputRaw_Str = InputRaw_Str[1:-1]
 
-# print("Input:")
-#
-# print(InputRaw_Str)
-# print()
+    # print("Input:")
+    #
+    # print(InputRaw_Str)
+    # print()
 
-InputStr_Lst = list(map(int, InputRaw_Str.split("\n")))
+    InputStr_Lst = list(map(int, InputRaw_Str.split("\n")))
 
-print("Input:", InputStr_Lst)
-print()
-
-casesNum = InputStr_Lst[0]
-
-print(f"Num. of cases: {casesNum}")
-print()
-
-inputLst = InputStr_Lst[1:]
-
-for case in range(casesNum):
-
-    rngMin = inputLst[case*2]
-    rngMax = inputLst[case*2 + 1]
-
-    print(f"\t{case+1}. Case")
+    print("Input:", InputStr_Lst)
     print()
 
-    print(f"\t\tRange min.: {rngMin}")
-    print(f"\t\tRange max.: {rngMax}")
+    casesNum = InputStr_Lst[0]
+
+    print(f"Num. of cases: {casesNum}")
     print()
 
-    if rngMin % 2 == 0:
-        oddMin = rngMin + 1
-    else:
-        oddMin = rngMin
+    inputLst = InputStr_Lst[1:]
 
-    oddMax = rngMax + 1
+    for case in range(casesNum):
 
-    print(f"\t\t\tParameters: [{oddMin}, {oddMax}, 2]")
-    print()
+        rngMin = inputLst[case*2]
+        rngMax = inputLst[case*2 + 1]
 
-    oddRange = [* range(oddMin, oddMax, 2)]
+        print(f"\t{case+1}. Case")
+        print()
 
-    # for num in range(oddMin, oddMax, 2):
-    #     oddRange.append(num)
+        print(f"\t\tRange min.: {rngMin}")
+        print(f"\t\tRange max.: {rngMax}")
+        print()
 
-    print(f"\t\tRange: {oddRange}")
-    print(f"\t\t  Sum:  {sum(oddRange)}")
+        if rngMin % 2 == 0:
+            oddMin = rngMin + 1
+        else:
+            oddMin = rngMin
 
-    if case < casesNum - 1:
-        print("\n")
+        oddMax = rngMax + 1
+
+        print(f"\t\t\tParameters: [{oddMin}, {oddMax}, 2]")
+        print()
+
+        oddRange = [* range(oddMin, oddMax, 2)]
+
+        # for num in range(oddMin, oddMax, 2):
+        #     oddRange.append(num)
+
+        print(f"\t\tRange: {oddRange}")
+        print(f"\t\t  Sum:  {sum(oddRange)}")
+
+        if case < casesNum - 1:
+            print("\n")
 
 
 """__Output__"""
