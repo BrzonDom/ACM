@@ -27,31 +27,31 @@ https://onlinejudge.org/index.php?option=onlinejudge&Itemid=8&page=show_problem&
 
 if __name__ == '__main__':
 
-    InputRaw_Str = """
-5
-1
-5
-3
-5
-4
-12
-2
-5
-0
-7
-"""
+#     InputRaw_Str = """
+# 5
+# 1
+# 5
+# 3
+# 5
+# 4
+# 12
+# 2
+# 5
+# 0
+# 7
+# """
 
-    InputRaw_Str = InputRaw_Str[1:-1]
+    # InputRaw_Str = InputRaw_Str[1:-1]
 
     # print("Input:")
     #
     # print(InputRaw_Str)
     # print()
 
-    InputStr_Lst = list(map(int, InputRaw_Str.split("\n")))
+    # InputStr_Lst = list(map(int, InputRaw_Str.split("\n")))
 
-    print("Input:", InputStr_Lst)
-    print()
+    # print("Input:", InputStr_Lst)
+    # print()
 
     # casesNum = InputStr_Lst[0]
     casesNum = int(input())
@@ -59,7 +59,7 @@ if __name__ == '__main__':
     print(f"Num. of cases: {casesNum}")
     print()
 
-    inputLst = InputStr_Lst[1:]
+    # inputLst = InputStr_Lst[1:]
 
     for case in range(casesNum):
 
@@ -86,9 +86,6 @@ if __name__ == '__main__':
         print()
 
         oddRange = [* range(oddMin, oddMax, 2)]
-
-        # for num in range(oddMin, oddMax, 2):
-        #     oddRange.append(num)
 
         print(f"\t\tRange: {oddRange}")
         print(f"\t\t  Sum:  {sum(oddRange)}")
