@@ -44,3 +44,15 @@ InputOrg_Str = InputOrg_Str[1:-1]
 
 print("Input:")
 print(InputOrg_Str)
+print()
+
+InputStr_Lst = InputOrg_Str.split("\n")
+
+caseNum = int(InputStr_Lst[0])
+inputLst = [list(map(int, line.split())) for line in InputStr_Lst[1:]]
+
+print(f"Num. of cases: {caseNum}")
+print()
+
+print(inputLst)
+
