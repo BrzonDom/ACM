@@ -72,3 +72,14 @@ InputRaw_Str = InputRaw_Str[1:-1]
 
 print("Input:")
 print(InputRaw_Str)
+print()
+
+InputStr_Lst = InputRaw_Str.split("\n")
+print(InputStr_Lst)
+
+inputLst = []
+for line in InputStr_Lst:
+    inputLst += list(map(int, line.split()))
+# inputLst += list(map(int, line.split())) for line in InputStr_Lst[:2]
+
+print(inputLst)
