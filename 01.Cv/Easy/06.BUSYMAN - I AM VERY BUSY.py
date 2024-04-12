@@ -30,13 +30,11 @@ https://www.spoj.com/problems/BUSYMAN/
         3 9
         2 8
         6 9
-
         4
         1 7
         5 8
         7 8
         1 8
-
         6
         7 9
         0 10
@@ -49,3 +47,28 @@ https://www.spoj.com/problems/BUSYMAN/
                 3
 
 """
+
+InputRaw_Str = """
+3
+3
+3 9
+2 8
+6 9
+4
+1 7
+5 8
+7 8
+1 8
+6
+7 9
+0 10
+4 5
+8 9
+4 10
+5 7
+"""
+
+InputRaw_Str = InputRaw_Str[1:-1]
+
+print("Input:")
+print(InputRaw_Str)
