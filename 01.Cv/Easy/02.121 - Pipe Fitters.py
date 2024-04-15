@@ -39,3 +39,23 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=3&pag
                 126 skew
 
 """
+
+InputRaw_Str = """
+3 3
+2.9 10
+2.9 10.5
+11 11
+"""
+
+InputRaw_Str = InputRaw_Str[1:-1]
+
+print("Input:")
+print(InputRaw_Str)
+print()
+
+InputStr_Lst = InputRaw_Str.split("\n")
+
+for i, line in enumerate(InputStr_Lst):
+    print(f"\t{i+1}. Input:")
+    print(f"\t\t{line}")
+    print()
