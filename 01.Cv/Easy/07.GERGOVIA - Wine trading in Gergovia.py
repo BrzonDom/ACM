@@ -15,8 +15,8 @@ https://www.spoj.com/problems/GERGOVIA/
     Input:
             The input consists of several test cases.
         Each test case starts with the number of inhabitants N (2 ≤ N ≤ 100000).
-        The following line contains n integers ai (-1000 ≤ ai ≤ 1000).
-        If a_i ≥ 0, it means that the inhabitant living in the i^th house wants to buy ai bottles of wine.
+        The following line contains n integers a_i (-1000 ≤ a_i ≤ 1000).
+        If a_i ≥ 0, it means that the inhabitant living in the i^th house wants to buy a_i bottles of wine.
         If a_i < 0, he wants to sell -a_i bottles of wine.
         You may assume that the numbers a_i sum up to 0.
         The last test case is followed by a line containing 0.
@@ -36,6 +36,7 @@ https://www.spoj.com/problems/GERGOVIA/
                 9000
 
 """
+import copy
 
 InputRaw_Str = """
 5
@@ -49,3 +50,29 @@ InputRaw_Str = InputRaw_Str[1:-1]
 
 print("Input:")
 print(InputRaw_Str)
+print()
+
+InputStr_Lst = InputRaw_Str.split("\n")
+InputOrg_Lst = copy.deepcopy(InputStr_Lst)
+
+# for pplNum in InputStr_Lst:
+
+pplNum = int(InputStr_Lst.pop(0))
+caseCnt = 1
+
+while pplNum != 0:
+
+    print(f"\t{caseCnt}. Case")
+    print()
+
+    print(f"\t\tNum. of people: {pplNum}")
+    print()
+
+    BuySell = list(map(int, InputStr_Lst.pop(0).split()))
+
+    print(f"\t\tBuy Sell list: {BuySell}")
+    print("\n")
+
+    pplNum = int(InputStr_Lst.pop(0))
+    caseCnt += 1
+
