@@ -55,24 +55,29 @@ print()
 InputStr_Lst = InputRaw_Str.split("\n")
 InputOrg_Lst = copy.deepcopy(InputStr_Lst)
 
-# for pplNum in InputStr_Lst:
+# for hsNum in InputStr_Lst:
 
-pplNum = int(InputStr_Lst.pop(0))
+hsNum = int(InputStr_Lst.pop(0))
 caseCnt = 1
 
-while pplNum != 0:
+while hsNum != 0:
 
     print(f"\t{caseCnt}. Case")
     print()
 
-    print(f"\t\tNum. of people: {pplNum}")
-    print()
+    print(f"\t\tNum. of people: {hsNum}")
+    # print()
 
     BuySell = list(map(int, InputStr_Lst.pop(0).split()))
 
     print(f"\t\tBuy Sell list: {BuySell}")
+    print()
+
+    for h, hs in enumerate(BuySell):
+        print(f"\t\t{BuySell[:h]} [{hs}] {BuySell[h+1:]}")
+
     print("\n")
 
-    pplNum = int(InputStr_Lst.pop(0))
+    hsNum = int(InputStr_Lst.pop(0))
     caseCnt += 1
 
