@@ -73,11 +73,54 @@ while hsNum != 0:
     print(f"\t\tBuy Sell list: {BuySell}")
     print()
 
-    for h, hs in enumerate(BuySell):
-        print(f"\t\t{BuySell[:h]} [{hs}] {BuySell[h+1:]}")
+    for h, hs in enumerate(BuySell[1:-1]):
+        print(f"\t\t{BuySell[:h+1]} [{hs}] {BuySell[h+2:]}")
+        print(f"\t\t\t({sum(BuySell[:h + 1])}) [{hs}] ({sum(BuySell[h + 2:])})")
 
     print("\n")
 
     hsNum = int(InputStr_Lst.pop(0))
     caseCnt += 1
 
+
+"""__Output__"""
+"""
+Input:
+5
+5 -4 1 -3 1
+6
+-1000 -1000 -1000 1000 1000 1000
+0
+
+	1. Case
+
+		Num. of people: 5
+		Buy Sell list: [5, -4, 1, -3, 1]
+
+		[5] [-4] [1, -3, 1]
+			(5) [-4] (-1)
+		[5, -4] [1] [-3, 1]
+			(1) [1] (-2)
+		[5, -4, 1] [-3] [1]
+			(2) [-3] (1)
+
+
+	2. Case
+
+		Num. of people: 6
+		Buy Sell list: [-1000, -1000, -1000, 1000, 1000, 1000]
+
+		[-1000] [-1000] [-1000, 1000, 1000, 1000]
+			(-1000) [-1000] (2000)
+		[-1000, -1000] [-1000] [1000, 1000, 1000]
+			(-2000) [-1000] (3000)
+		[-1000, -1000, -1000] [1000] [1000, 1000]
+			(-3000) [1000] (2000)
+		[-1000, -1000, -1000, 1000] [1000] [1000]
+			(-2000) [1000] (1000)
+
+
+
+Process finished with exit code 0
+
+"""
