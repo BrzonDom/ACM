@@ -57,4 +57,12 @@ for lineInf, lineHtls in zip(InputStr_Lst[::2], InputStr_Lst[1::2]):
 
     Htls = list(map(int, lineHtls.split()))
     print(f"\t\tHotels: {Htls}")
+    print()
+
+    for sH, strHtl in enumerate(Htls):
+
+        for eH, endHtl in enumerate(Htls[sH:]):
+
+            print(f"\t\t\t{Htls[sH:sH+eH+1]}")
+
     print("\n")
