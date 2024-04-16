@@ -37,3 +37,24 @@ InputRaw_Str = InputRaw_Str[1:-1]
 
 print("Input:")
 print(InputRaw_Str)
+print()
+
+InputStr_Lst = InputRaw_Str.split("\n")
+
+# print(InputStr_Lst)
+
+caseCnt = 1
+
+for lineInf, lineHtls in zip(InputStr_Lst[::2], InputStr_Lst[1::2]):
+
+    print(f"\t{caseCnt}. Case")
+    print()
+
+    htlNum, mnyNum = list(map(int, lineInf.split()))
+    print(f"\t\tNum. of hotels: {htlNum}")
+    print(f"\t\tNum. of money:  {mnyNum}")
+    print()
+
+    Htls = list(map(int, lineHtls.split()))
+    print(f"\t\tHotels: {Htls}")
+    print("\n")
