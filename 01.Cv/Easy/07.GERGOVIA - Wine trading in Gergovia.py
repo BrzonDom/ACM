@@ -36,3 +36,16 @@ https://www.spoj.com/problems/GERGOVIA/
                 9000
 
 """
+
+InputRaw_Str = """
+5
+5 -4 1 -3 1
+6
+-1000 -1000 -1000 1000 1000 1000
+0
+"""
+
+InputRaw_Str = InputRaw_Str[1:-1]
+
+print("Input:")
+print(InputRaw_Str)
