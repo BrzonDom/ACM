@@ -58,6 +58,25 @@ def shftHsPrnt(BuySell):
     print()
 
 
+def sumHsPrnt(BuySell):
+
+    for h, hs in enumerate(BuySell[1:-1]):
+        print(f"\t\t\t({sum(BuySell[:h + 1])}) [{hs}] ({sum(BuySell[h + 2:])})", end="\t")
+
+        if sum(BuySell[:h + 1]) > sum(BuySell[h + 2:]):
+            print("=> Move right")
+
+        elif sum(BuySell[:h + 1]) < sum(BuySell[h + 2:]):
+            print("<= Move left")
+
+        elif hs == 0:
+            print("== Move none")
+
+        else:
+            print("<> Move both")
+    print()
+
+
 if __name__ == "__main__":
 
     print("Input:")
@@ -88,21 +107,23 @@ if __name__ == "__main__":
         #     print(f"\t\t{BuySell[:h+1]} [{hs}] {BuySell[h+2:]}")
         # print()
 
-        for h, hs in enumerate(BuySell[1:-1]):
-            print(f"\t\t\t({sum(BuySell[:h + 1])}) [{hs}] ({sum(BuySell[h + 2:])})", end="\t")
+        sumHsPrnt(BuySell)
 
-            if sum(BuySell[:h + 1]) > sum(BuySell[h + 2:]):
-                print("=> Move right")
-
-            elif sum(BuySell[:h + 1]) < sum(BuySell[h + 2:]):
-                print("<= Move left")
-
-            elif hs == 0:
-                print("== Move none")
-
-            else:
-                print("<> Move both")
-        print()
+        # for h, hs in enumerate(BuySell[1:-1]):
+        #     print(f"\t\t\t({sum(BuySell[:h + 1])}) [{hs}] ({sum(BuySell[h + 2:])})", end="\t")
+        #
+        #     if sum(BuySell[:h + 1]) > sum(BuySell[h + 2:]):
+        #         print("=> Move right")
+        #
+        #     elif sum(BuySell[:h + 1]) < sum(BuySell[h + 2:]):
+        #         print("<= Move left")
+        #
+        #     elif hs == 0:
+        #         print("== Move none")
+        #
+        #     else:
+        #         print("<> Move both")
+        # print()
 
         cntMvs = 0
 
