@@ -82,26 +82,35 @@ print()
 InputOrg_Lst = copy.deepcopy(InputStr_Lst)
 
 caseNum = int(InputStr_Lst.pop(0))
-rd = 1
 
 for case in range(caseNum):
 
     actNum = int(InputStr_Lst.pop(0))
 
     print(f"\tAct. num.: {actNum}")
+    print()
 
-    Actvts = []
+    actTimes = []
 
     for act in range(actNum):
 
-        Actvts.append(tuple(map(int, InputStr_Lst.pop(0).split())))
-        print(f"\t\t{Actvts[-1]}")
+        actTimes.append(tuple(map(int, InputStr_Lst.pop(0).split())))
+        print(f"\t\t{act+1}. {actTimes[-1]}")
 
     print()
 
-# inputLst = []
-# for line in InputStr_Lst:
-#     inputLst += list(map(int, line.split()))
-# # inputLst += list(map(int, line.split())) for line in InputStr_Lst[:2]
-#
-# print(inputLst)
+    actFree = {}
+
+    for curTm in actTimes:
+
+        actFree[str(curTm)] = []
+
+        for nxtTm in actTimes:
+
+            if curTm == nxtTm:
+                continue
+
+            elif nxtTm[0] >= curTm[1] or nxtTm[1] <= curTm[0]:
+
+                actFree[str(curTm)] += [str(nxtTm)]
+
