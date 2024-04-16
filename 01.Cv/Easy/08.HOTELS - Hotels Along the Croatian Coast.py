@@ -35,6 +35,21 @@ InputRaw_Str = """
 
 InputRaw_Str = InputRaw_Str[1:-1]
 
+
+def infExtrc(lineInf, lineHtls):
+
+    htlNum, mnyNum = list(map(int, lineInf.split()))
+    print(f"\t\tNum. of hotels: {htlNum}")
+    print(f"\t\tNum. of money:  {mnyNum}")
+    print()
+
+    Htls = list(map(int, lineHtls.split()))
+    print(f"\t\tHotels: {Htls}")
+    print()
+
+    return htlNum, mnyNum, Htls
+
+
 if __name__ == "__main__":
 
     print("Input:")
@@ -54,14 +69,16 @@ if __name__ == "__main__":
 
         caseCnt += 1
 
-        htlNum, mnyNum = list(map(int, lineInf.split()))
-        print(f"\t\tNum. of hotels: {htlNum}")
-        print(f"\t\tNum. of money:  {mnyNum}")
-        print()
+        htlNum, mnyNum, Htls = infExtrc(lineInf, lineHtls)
 
-        Htls = list(map(int, lineHtls.split()))
-        print(f"\t\tHotels: {Htls}")
-        print()
+        # htlNum, mnyNum = list(map(int, lineInf.split()))
+        # print(f"\t\tNum. of hotels: {htlNum}")
+        # print(f"\t\tNum. of money:  {mnyNum}")
+        # print()
+        #
+        # Htls = list(map(int, lineHtls.split()))
+        # print(f"\t\tHotels: {Htls}")
+        # print()
 
         mnyMax = 0
         htlMax = []
