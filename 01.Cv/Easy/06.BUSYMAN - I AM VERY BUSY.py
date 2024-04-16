@@ -76,8 +76,8 @@ print(InputRaw_Str)
 print()
 
 InputStr_Lst = InputRaw_Str.split("\n")
-print(InputStr_Lst)
-print()
+# print(InputStr_Lst)
+# print()
 
 InputOrg_Lst = copy.deepcopy(InputStr_Lst)
 
@@ -99,11 +99,13 @@ for case in range(caseNum):
 
     print()
 
-    actFree = {}
+    freeAct = {}
+    freeCnt = {}
 
     for curTm in actTimes:
 
-        actFree[str(curTm)] = {0 : 0, 1 : []}
+        freeAct[str(curTm)] = []
+        freeCnt[str(curTm)] = 1
 
         for nxtTm in actTimes:
 
@@ -112,10 +114,14 @@ for case in range(caseNum):
 
             elif nxtTm[0] >= curTm[1] or nxtTm[1] <= curTm[0]:
 
-                actFree[str(curTm)][0] += 1
-                actFree[str(curTm)][1] += [str(nxtTm)]
+                freeCnt[str(curTm)] += 1
+                freeAct[str(curTm)] += [str(nxtTm)]
 
-        print(f"\t\t\t{str(curTm):8} [{actFree[str(curTm)][0]}] : {actFree[str(curTm)][1]}")
+                # actFree[str(curTm)][0] += 1
+                # actFree[str(curTm)][1] += [str(nxtTm)]
+
+        # print(f"\t\t\t{str(curTm):8} [{actFree[str(curTm)][0]}] : {actFree[str(curTm)][1]}")
+        print(f"\t\t\t{str(curTm):8} [{freeCnt[str(curTm)]}] : {freeAct[str(curTm)]}")
 
     print("\n")
 
@@ -141,17 +147,15 @@ Input:
 4 10
 5 7
 
-['3', '3', '3 9', '2 8', '6 9', '4', '1 7', '5 8', '7 8', '1 8', '6', '7 9', '0 10', '4 5', '8 9', '4 10', '5 7']
-
 	Act. num.: 3
 
 		1. (3, 9)
 		2. (2, 8)
 		3. (6, 9)
 
-			(3, 9)   [0] : []
-			(2, 8)   [0] : []
-			(6, 9)   [0] : []
+			(3, 9)   [1] : []
+			(2, 8)   [1] : []
+			(6, 9)   [1] : []
 
 
 	Act. num.: 4
@@ -161,10 +165,10 @@ Input:
 		3. (7, 8)
 		4. (1, 8)
 
-			(1, 7)   [1] : ['(7, 8)']
-			(5, 8)   [0] : []
-			(7, 8)   [1] : ['(1, 7)']
-			(1, 8)   [0] : []
+			(1, 7)   [2] : ['(7, 8)']
+			(5, 8)   [1] : []
+			(7, 8)   [2] : ['(1, 7)']
+			(1, 8)   [1] : []
 
 
 	Act. num.: 6
@@ -176,12 +180,12 @@ Input:
 		5. (4, 10)
 		6. (5, 7)
 
-			(7, 9)   [2] : ['(4, 5)', '(5, 7)']
-			(0, 10)  [0] : []
-			(4, 5)   [3] : ['(7, 9)', '(8, 9)', '(5, 7)']
-			(8, 9)   [2] : ['(4, 5)', '(5, 7)']
-			(4, 10)  [0] : []
-			(5, 7)   [3] : ['(7, 9)', '(4, 5)', '(8, 9)']
+			(7, 9)   [3] : ['(4, 5)', '(5, 7)']
+			(0, 10)  [1] : []
+			(4, 5)   [4] : ['(7, 9)', '(8, 9)', '(5, 7)']
+			(8, 9)   [3] : ['(4, 5)', '(5, 7)']
+			(4, 10)  [1] : []
+			(5, 7)   [4] : ['(7, 9)', '(4, 5)', '(8, 9)']
 
 
 
