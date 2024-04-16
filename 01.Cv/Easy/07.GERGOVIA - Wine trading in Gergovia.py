@@ -50,96 +50,98 @@ InputRaw_Str = """
 
 InputRaw_Str = InputRaw_Str[1:-1]
 
-print("Input:")
-print(InputRaw_Str)
-print()
+if __name__ == "__main__":
 
-InputStr_Lst = InputRaw_Str.split("\n")
-InputOrg_Lst = copy.deepcopy(InputStr_Lst)
-
-# for hsNum in InputStr_Lst:
-
-hsNum = int(InputStr_Lst.pop(0))
-caseCnt = 1
-
-while hsNum != 0:
-
-    print(f"\t{caseCnt}. Case")
+    print("Input:")
+    print(InputRaw_Str)
     print()
 
-    print(f"\t\tNum. of people: {hsNum}")
-    # print()
+    InputStr_Lst = InputRaw_Str.split("\n")
+    InputOrg_Lst = copy.deepcopy(InputStr_Lst)
 
-    BuySell = list(map(int, InputStr_Lst.pop(0).split()))
-
-    print(f"\t\tBuy Sell list: {BuySell}")
-    print()
-
-    for h, hs in enumerate(BuySell[1:-1]):
-        print(f"\t\t{BuySell[:h+1]} [{hs}] {BuySell[h+2:]}")
-    print()
-
-    for h, hs in enumerate(BuySell[1:-1]):
-        print(f"\t\t\t({sum(BuySell[:h + 1])}) [{hs}] ({sum(BuySell[h + 2:])})", end="\t")
-
-        if sum(BuySell[:h + 1]) > sum(BuySell[h + 2:]):
-            print("=> Move right")
-
-        elif sum(BuySell[:h + 1]) < sum(BuySell[h + 2:]):
-            print("<= Move left")
-
-        elif hs == 0:
-            print("== Move none")
-
-        else:
-            print("<> Move both")
-    print()
-
-    # print("\t\t", BuySell)
-    # print(all(hs == 0 for hs in BuySell))
-
-    cntMvs = 0
-
-    while not all(hs == 0 for hs in BuySell):
-
-        for h, hs in enumerate(BuySell):
-
-            if hs > 0:
-
-                lftHs = sum(BuySell[:h])
-                rgtHs = sum(BuySell[h+1:])
-
-                if lftHs > rgtHs:
-                    move = min(-rgtHs, hs)
-
-                    BuySell[h] -= move
-                    BuySell[h+1] += move
-                    cntMvs += move
-
-                elif lftHs < rgtHs:
-                    move = min(-lftHs, hs)
-
-                    BuySell[h] -= move
-                    BuySell[h-1] += move
-                    cntMvs += move
-
-                else:
-                    move = hs // 2
-
-                    BuySell[h] -= 2 * move
-                    BuySell[h-1] += move
-                    BuySell[h+1] += move
-                    cntMvs += 2 * move
-
-                print(f"\t\t{BuySell}")
-        print()
-
-    print(f"\t\tNeeded moves: {cntMvs}")
-
-    print("\n")
+    # for hsNum in InputStr_Lst:
 
     hsNum = int(InputStr_Lst.pop(0))
-    caseCnt += 1
+    caseCnt = 1
+
+    while hsNum != 0:
+
+        print(f"\t{caseCnt}. Case")
+        print()
+
+        print(f"\t\tNum. of people: {hsNum}")
+        # print()
+
+        BuySell = list(map(int, InputStr_Lst.pop(0).split()))
+
+        print(f"\t\tBuy Sell list: {BuySell}")
+        print()
+
+        for h, hs in enumerate(BuySell[1:-1]):
+            print(f"\t\t{BuySell[:h+1]} [{hs}] {BuySell[h+2:]}")
+        print()
+
+        for h, hs in enumerate(BuySell[1:-1]):
+            print(f"\t\t\t({sum(BuySell[:h + 1])}) [{hs}] ({sum(BuySell[h + 2:])})", end="\t")
+
+            if sum(BuySell[:h + 1]) > sum(BuySell[h + 2:]):
+                print("=> Move right")
+
+            elif sum(BuySell[:h + 1]) < sum(BuySell[h + 2:]):
+                print("<= Move left")
+
+            elif hs == 0:
+                print("== Move none")
+
+            else:
+                print("<> Move both")
+        print()
+
+        # print("\t\t", BuySell)
+        # print(all(hs == 0 for hs in BuySell))
+
+        cntMvs = 0
+
+        while not all(hs == 0 for hs in BuySell):
+
+            for h, hs in enumerate(BuySell):
+
+                if hs > 0:
+
+                    lftHs = sum(BuySell[:h])
+                    rgtHs = sum(BuySell[h+1:])
+
+                    if lftHs > rgtHs:
+                        move = min(-rgtHs, hs)
+
+                        BuySell[h] -= move
+                        BuySell[h+1] += move
+                        cntMvs += move
+
+                    elif lftHs < rgtHs:
+                        move = min(-lftHs, hs)
+
+                        BuySell[h] -= move
+                        BuySell[h-1] += move
+                        cntMvs += move
+
+                    else:
+                        move = hs // 2
+
+                        BuySell[h] -= 2 * move
+                        BuySell[h-1] += move
+                        BuySell[h+1] += move
+                        cntMvs += 2 * move
+
+                    print(f"\t\t{BuySell}")
+            print()
+
+        print(f"\t\tNeeded moves: {cntMvs}")
+
+        print("\n")
+
+        hsNum = int(InputStr_Lst.pop(0))
+        caseCnt += 1
 
 
 """__Output__"""
