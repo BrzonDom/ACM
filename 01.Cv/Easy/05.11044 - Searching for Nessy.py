@@ -49,16 +49,17 @@ def countSonar(rowGrd, colGrd):
     return sonCnt
 
 
-if __name__ == "__main__":
-
-    InputOrg_Str = """
+InputOrg_Str = """
 3
 6 6
 7 7
 9 13
 """
 
-    InputOrg_Str = InputOrg_Str[1:-1]
+InputOrg_Str = InputOrg_Str[1:-1]
+
+
+if __name__ == "__main__":
 
     InputStr_Lst = InputOrg_Str.split("\n")
 
