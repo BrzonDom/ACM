@@ -93,6 +93,41 @@ while hsNum != 0:
 
         else:
             print("<> Move both")
+    print()
+
+    # print("\t\t", BuySell)
+    # print(all(hs == 0 for hs in BuySell))
+
+    while not all(hs == 0 for hs in BuySell):
+
+        for h, hs in enumerate(BuySell):
+
+            if hs > 0:
+
+                lftHs = sum(BuySell[:h])
+                rgtHs = sum(BuySell[h+1:])
+
+                if lftHs > rgtHs:
+                    move = min(-rgtHs, hs)
+
+                    BuySell[h] -= move
+                    BuySell[h+1] += move
+
+                elif lftHs < rgtHs:
+                    move = min(-lftHs, hs)
+
+                    BuySell[h] -= move
+                    BuySell[h-1] += move
+
+                else:
+                    move = hs // 2
+
+                    BuySell[h] -= 2 * move
+                    BuySell[h-1] += move
+                    BuySell[h+1] += move
+
+                print("\t\t", BuySell)
+        print()
 
     print("\n")
 
@@ -124,6 +159,12 @@ Input:
 			(1) [1] (-2)	=> Move right
 			(2) [-3] (1)	=> Move right
 
+		 [0, 1, 1, -3, 1]
+		 [0, 0, 2, -3, 1]
+		 [0, 0, 0, -1, 1]
+		 [0, 0, 0, 0, 0]
+
+
 
 	2. Case
 
@@ -139,6 +180,21 @@ Input:
 			(-2000) [-1000] (3000)	<= Move left
 			(-3000) [1000] (2000)	<= Move left
 			(-2000) [1000] (1000)	<= Move left
+
+		 [-1000, -1000, 0, 0, 1000, 1000]
+		 [-1000, -1000, 0, 1000, 0, 1000]
+		 [-1000, -1000, 0, 1000, 1000, 0]
+
+		 [-1000, -1000, 1000, 0, 1000, 0]
+		 [-1000, -1000, 1000, 1000, 0, 0]
+
+		 [-1000, 0, 0, 1000, 0, 0]
+		 [-1000, 0, 1000, 0, 0, 0]
+
+		 [-1000, 1000, 0, 0, 0, 0]
+
+		 [0, 0, 0, 0, 0, 0]
+
 
 
 	3. Case
@@ -157,6 +213,13 @@ Input:
 			(2) [-3] (1)	=> Move right
 			(-1) [2] (-1)	<> Move both
 			(1) [-5] (4)	<= Move left
+
+		 [0, 1, 1, -3, 2, -5, 4]
+		 [0, 0, 2, -3, 2, -5, 4]
+		 [0, 0, 0, -1, 2, -5, 4]
+		 [0, 0, 0, 0, 0, -4, 4]
+		 [0, 0, 0, 0, 0, 0, 0]
+
 
 
 
