@@ -50,6 +50,8 @@ for lineInf, lineHtls in zip(InputStr_Lst[::2], InputStr_Lst[1::2]):
     print(f"\t{caseCnt}. Case")
     print()
 
+    caseCnt += 1
+
     htlNum, mnyNum = list(map(int, lineInf.split()))
     print(f"\t\tNum. of hotels: {htlNum}")
     print(f"\t\tNum. of money:  {mnyNum}")
@@ -60,6 +62,7 @@ for lineInf, lineHtls in zip(InputStr_Lst[::2], InputStr_Lst[1::2]):
     print()
 
     mnyMax = 0
+    htlMax = []
 
     for sH, strHtl in enumerate(Htls):
 
@@ -70,6 +73,7 @@ for lineInf, lineHtls in zip(InputStr_Lst[::2], InputStr_Lst[1::2]):
 
             elif sum(Htls[sH:sH+eH+1]) > mnyMax:
                 mnyMax = sum(Htls[sH:sH+eH+1])
+                htlMax = Htls[sH:sH+eH+1]
 
             print(f"\t\t\t{Htls[sH:sH + eH + 1]} ({sum(Htls[sH:sH + eH + 1])})")
 
@@ -78,6 +82,7 @@ for lineInf, lineHtls in zip(InputStr_Lst[::2], InputStr_Lst[1::2]):
     print()
 
     print(f"\t\tMax money: {mnyMax}")
+    print(f"\t\tMax hotels: {htlMax}")
 
     print("\n")
 
@@ -109,9 +114,10 @@ Input:
 			[3, 4, 5] (12)
 
 		Max money: 12
+		Max hotels: [3, 4, 5]
 
 
-	1. Case
+	2. Case
 
 		Num. of hotels: 4
 		Num. of money:  9
@@ -125,6 +131,7 @@ Input:
 			[6] (6)
 
 		Max money: 8
+		Max hotels: [3, 5]
 
 
 
