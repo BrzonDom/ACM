@@ -50,6 +50,14 @@ InputRaw_Str = """
 
 InputRaw_Str = InputRaw_Str[1:-1]
 
+
+def shftHsPrnt(BuySell):
+
+    for h, hs in enumerate(BuySell[1:-1]):
+        print(f"\t\t{BuySell[:h + 1]} [{hs}] {BuySell[h + 2:]}")
+    print()
+
+
 if __name__ == "__main__":
 
     print("Input:")
@@ -58,8 +66,6 @@ if __name__ == "__main__":
 
     InputStr_Lst = InputRaw_Str.split("\n")
     InputOrg_Lst = copy.deepcopy(InputStr_Lst)
-
-    # for hsNum in InputStr_Lst:
 
     hsNum = int(InputStr_Lst.pop(0))
     caseCnt = 1
@@ -70,16 +76,17 @@ if __name__ == "__main__":
         print()
 
         print(f"\t\tNum. of people: {hsNum}")
-        # print()
 
         BuySell = list(map(int, InputStr_Lst.pop(0).split()))
 
         print(f"\t\tBuy Sell list: {BuySell}")
         print()
 
-        for h, hs in enumerate(BuySell[1:-1]):
-            print(f"\t\t{BuySell[:h+1]} [{hs}] {BuySell[h+2:]}")
-        print()
+        shftHsPrnt(BuySell)
+
+        # for h, hs in enumerate(BuySell[1:-1]):
+        #     print(f"\t\t{BuySell[:h+1]} [{hs}] {BuySell[h+2:]}")
+        # print()
 
         for h, hs in enumerate(BuySell[1:-1]):
             print(f"\t\t\t({sum(BuySell[:h + 1])}) [{hs}] ({sum(BuySell[h + 2:])})", end="\t")
@@ -96,9 +103,6 @@ if __name__ == "__main__":
             else:
                 print("<> Move both")
         print()
-
-        # print("\t\t", BuySell)
-        # print(all(hs == 0 for hs in BuySell))
 
         cntMvs = 0
 
