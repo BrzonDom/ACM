@@ -59,11 +59,25 @@ for lineInf, lineHtls in zip(InputStr_Lst[::2], InputStr_Lst[1::2]):
     print(f"\t\tHotels: {Htls}")
     print()
 
+    mnyMax = 0
+
     for sH, strHtl in enumerate(Htls):
 
         for eH, endHtl in enumerate(Htls[sH:]):
 
-            print(f"\t\t\t{Htls[sH:sH+eH+1]} ({sum(Htls[sH:sH+eH+1])})")
+            if sum(Htls[sH:sH+eH+1]) > mnyNum:
+                break
+
+            elif sum(Htls[sH:sH+eH+1]) > mnyMax:
+                mnyMax = sum(Htls[sH:sH+eH+1])
+
+            print(f"\t\t\t{Htls[sH:sH + eH + 1]} ({sum(Htls[sH:sH + eH + 1])})")
+
+        if mnyMax == mnyNum:
+            break
+    print()
+
+    print(f"\t\tMax money: {mnyMax}")
 
     print("\n")
 
@@ -87,17 +101,14 @@ Input:
 			[2, 1] (3)
 			[2, 1, 3] (6)
 			[2, 1, 3, 4] (10)
-			[2, 1, 3, 4, 5] (15)
 			[1] (1)
 			[1, 3] (4)
 			[1, 3, 4] (8)
-			[1, 3, 4, 5] (13)
 			[3] (3)
 			[3, 4] (7)
 			[3, 4, 5] (12)
-			[4] (4)
-			[4, 5] (9)
-			[5] (5)
+
+		Max money: 12
 
 
 	1. Case
@@ -108,15 +119,12 @@ Input:
 		Hotels: [7, 3, 5, 6]
 
 			[7] (7)
-			[7, 3] (10)
-			[7, 3, 5] (15)
-			[7, 3, 5, 6] (21)
 			[3] (3)
 			[3, 5] (8)
-			[3, 5, 6] (14)
 			[5] (5)
-			[5, 6] (11)
 			[6] (6)
+
+		Max money: 8
 
 
 
