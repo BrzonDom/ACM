@@ -50,6 +50,30 @@ def infExtrc(lineInf, lineHtls):
     return htlNum, mnyNum, Htls
 
 
+def fndMaxMny(Htls, mnyNum):
+    mnyMax = 0
+    htlMax = []
+
+    for sH, strHtl in enumerate(Htls):
+
+        for eH, endHtl in enumerate(Htls[sH:]):
+
+            if sum(Htls[sH:sH + eH + 1]) > mnyNum:
+                break
+
+            elif sum(Htls[sH:sH + eH + 1]) > mnyMax:
+                mnyMax = sum(Htls[sH:sH + eH + 1])
+                htlMax = Htls[sH:sH + eH + 1]
+
+            print(f"\t\t\t{Htls[sH:sH + eH + 1]} ({sum(Htls[sH:sH + eH + 1])})")
+
+        if mnyMax == mnyNum:
+            break
+    print()
+
+    return mnyMax, htlMax
+
+
 if __name__ == "__main__":
 
     print("Input:")
@@ -80,25 +104,27 @@ if __name__ == "__main__":
         # print(f"\t\tHotels: {Htls}")
         # print()
 
-        mnyMax = 0
-        htlMax = []
+        mnyMax, htlMax = fndMaxMny(Htls, mnyNum)
 
-        for sH, strHtl in enumerate(Htls):
-
-            for eH, endHtl in enumerate(Htls[sH:]):
-
-                if sum(Htls[sH:sH+eH+1]) > mnyNum:
-                    break
-
-                elif sum(Htls[sH:sH+eH+1]) > mnyMax:
-                    mnyMax = sum(Htls[sH:sH+eH+1])
-                    htlMax = Htls[sH:sH+eH+1]
-
-                print(f"\t\t\t{Htls[sH:sH + eH + 1]} ({sum(Htls[sH:sH + eH + 1])})")
-
-            if mnyMax == mnyNum:
-                break
-        print()
+        # mnyMax = 0
+        # htlMax = []
+        #
+        # for sH, strHtl in enumerate(Htls):
+        #
+        #     for eH, endHtl in enumerate(Htls[sH:]):
+        #
+        #         if sum(Htls[sH:sH+eH+1]) > mnyNum:
+        #             break
+        #
+        #         elif sum(Htls[sH:sH+eH+1]) > mnyMax:
+        #             mnyMax = sum(Htls[sH:sH+eH+1])
+        #             htlMax = Htls[sH:sH+eH+1]
+        #
+        #         print(f"\t\t\t{Htls[sH:sH + eH + 1]} ({sum(Htls[sH:sH + eH + 1])})")
+        #
+        #     if mnyMax == mnyNum:
+        #         break
+        # print()
 
         print(f"\t\tMax money: {mnyMax}")
         print(f"\t\tMax hotels: {htlMax}")
