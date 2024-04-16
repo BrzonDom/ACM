@@ -47,6 +47,7 @@ https://www.spoj.com/problems/BUSYMAN/
                 3
 
 """
+import copy
 
 InputRaw_Str = """
 3
@@ -76,10 +77,31 @@ print()
 
 InputStr_Lst = InputRaw_Str.split("\n")
 print(InputStr_Lst)
+print()
 
-inputLst = []
-for line in InputStr_Lst:
-    inputLst += list(map(int, line.split()))
-# inputLst += list(map(int, line.split())) for line in InputStr_Lst[:2]
+InputOrg_Lst = copy.deepcopy(InputStr_Lst)
 
-print(inputLst)
+caseNum = int(InputStr_Lst.pop(0))
+rd = 1
+
+for case in range(caseNum):
+
+    actNum = int(InputStr_Lst.pop(0))
+
+    print(f"\tAct. num.: {actNum}")
+
+    Actvts = []
+
+    for act in range(actNum):
+
+        Actvts.append(tuple(map(int, InputStr_Lst.pop(0).split())))
+        print(f"\t\t{Actvts[-1]}")
+
+    print()
+
+# inputLst = []
+# for line in InputStr_Lst:
+#     inputLst += list(map(int, line.split()))
+# # inputLst += list(map(int, line.split())) for line in InputStr_Lst[:2]
+#
+# print(inputLst)
