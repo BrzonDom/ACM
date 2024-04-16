@@ -25,3 +25,15 @@ https://www.spoj.com/problems/HOTELS/
                 8
 
 """
+
+InputRaw_Str = """
+5 12
+2 1 3 4 5
+4 9
+7 3 5 6
+"""
+
+InputRaw_Str = InputRaw_Str[1:-1]
+
+print("Input:")
+print(InputRaw_Str)
