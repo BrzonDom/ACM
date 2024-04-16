@@ -80,8 +80,10 @@ if __name__ == '__main__':
     A = [12, 3, 18, 24, 0, 5, -2]
     aux = A.copy()
 
+    print(f"Unsorted input: {A}\n")
+
     # sort list `A` using auxiliary list `aux`
     mergesort(A, aux, 0, len(A) - 1)
 
     if isSorted(A):
-        print(A)
+        print(f"Sorted output:  {A}")
