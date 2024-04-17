@@ -37,3 +37,18 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=114&p
             =>  4
 
 """
+
+InputRaw_Str = """
+1
+4 5
+1
+2 2
+3 3 5
+4
+"""
+
+InputRaw_Str = InputRaw_Str[1:-1]
+
+print("Input:")
+print(InputRaw_Str)
+print()
