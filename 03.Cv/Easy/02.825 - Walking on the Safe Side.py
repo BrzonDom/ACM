@@ -86,8 +86,13 @@ for case in range(caseNum):
 
     city = [[1 for c in range(strCol)] for r in range(strRow)]
 
-    for strt in city:
-        print(f"\t\t{strt}")
+    for row in cross:
+        for col in cross[row]:
+
+            city[row-1][col-1] = 0
+
+    for row in city:
+        print(f"\t\t{row}")
     print()
 
 
@@ -113,8 +118,8 @@ Input:
 		4.Street: []
 
 		[1, 1, 1, 1, 1]
-		[1, 1, 1, 1, 1]
-		[1, 1, 1, 1, 1]
+		[1, 0, 1, 1, 1]
+		[1, 1, 0, 1, 0]
 		[1, 1, 1, 1, 1]
 
 
