@@ -82,8 +82,6 @@ if __name__ == "__main__":
 
     InputStr_Lst = InputRaw_Str.split("\n")
 
-    # print(InputStr_Lst)
-
     caseCnt = 1
 
     for lineInf, lineHtls in zip(InputStr_Lst[::2], InputStr_Lst[1::2]):
@@ -95,36 +93,7 @@ if __name__ == "__main__":
 
         htlNum, mnyNum, Htls = infExtrc(lineInf, lineHtls)
 
-        # htlNum, mnyNum = list(map(int, lineInf.split()))
-        # print(f"\t\tNum. of hotels: {htlNum}")
-        # print(f"\t\tNum. of money:  {mnyNum}")
-        # print()
-        #
-        # Htls = list(map(int, lineHtls.split()))
-        # print(f"\t\tHotels: {Htls}")
-        # print()
-
         mnyMax, htlMax = fndMaxMny(Htls, mnyNum)
-
-        # mnyMax = 0
-        # htlMax = []
-        #
-        # for sH, strHtl in enumerate(Htls):
-        #
-        #     for eH, endHtl in enumerate(Htls[sH:]):
-        #
-        #         if sum(Htls[sH:sH+eH+1]) > mnyNum:
-        #             break
-        #
-        #         elif sum(Htls[sH:sH+eH+1]) > mnyMax:
-        #             mnyMax = sum(Htls[sH:sH+eH+1])
-        #             htlMax = Htls[sH:sH+eH+1]
-        #
-        #         print(f"\t\t\t{Htls[sH:sH + eH + 1]} ({sum(Htls[sH:sH + eH + 1])})")
-        #
-        #     if mnyMax == mnyNum:
-        #         break
-        # print()
 
         print(f"\t\tMax money: {mnyMax}")
         print(f"\t\tMax hotels: {htlMax}")
