@@ -29,6 +29,7 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=114&p
 
     Sample:
         1
+
         4 5
         1
         2 2
@@ -40,6 +41,7 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=114&p
 
 InputRaw_Str = """
 1
+
 4 5
 1
 2 2
@@ -51,4 +53,15 @@ InputRaw_Str = InputRaw_Str[1:-1]
 
 print("Input:")
 print(InputRaw_Str)
+print()
+
+InputLines = InputRaw_Str.split("\n")
+# print(InputLines)
+
+caseNum = int(InputLines.pop(0))
+InputLines.pop(0)
+
+# print(InputLines)
+
+print(f"\tCases: {caseNum}")
 print()
