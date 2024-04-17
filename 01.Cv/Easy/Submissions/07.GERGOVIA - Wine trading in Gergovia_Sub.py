@@ -50,34 +50,7 @@ InputRaw_Str = """
 
 InputRaw_Str = InputRaw_Str[1:-1]
 
-
-def shftHsPrnt(BuySell):
-
-    for h, hs in enumerate(BuySell[1:-1]):
-        print(f"\t\t{BuySell[:h + 1]} [{hs}] {BuySell[h + 2:]}")
-    print()
-
-
-def sumHsPrnt(BuySell):
-
-    for h, hs in enumerate(BuySell[1:-1]):
-        print(f"\t\t\t({sum(BuySell[:h + 1])}) [{hs}] ({sum(BuySell[h + 2:])})", end="\t")
-
-        if sum(BuySell[:h + 1]) > sum(BuySell[h + 2:]):
-            print("=> Move right")
-
-        elif sum(BuySell[:h + 1]) < sum(BuySell[h + 2:]):
-            print("<= Move left")
-
-        elif hs == 0:
-            print("== Move none")
-
-        else:
-            print("<> Move both")
-    print()
-
-
-def mvsHsPrnt(BuySell):
+def mvsHsFnd(BuySell):
 
     cntMvs = 0
 
@@ -112,9 +85,6 @@ def mvsHsPrnt(BuySell):
                     BuySell[h + 1] += move
                     cntMvs += 2 * move
 
-        #         print(f"\t\t{BuySell}")
-        # print()
-
     return cntMvs
 
 
@@ -137,19 +107,12 @@ if __name__ == "__main__":
         BuySell = list(map(int, input().split()))
         print()
 
-        # print(f"\t{caseCnt}. Case")
-        # print()
-
         print(f"\tNum. of people: {hsNum}")
 
         print(f"\tBuy Sell list: {BuySell}")
         print()
 
-        # shftHsPrnt(BuySell)
-
-        # sumHsPrnt(BuySell)
-
-        cntMvs = mvsHsPrnt(BuySell)
+        cntMvs = mvsHsFnd(BuySell)
 
         print(f"\t\tNeeded moves: {cntMvs}")
 
