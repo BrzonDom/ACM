@@ -68,19 +68,26 @@ for case in range(caseNum):
 
     InputLines.pop(0)
 
-    strEW, strNS = list(map(int, InputLines.pop(0).split()))
+    strRow, strCol = list(map(int, InputLines.pop(0).split()))
 
-    print(f"\t\tEast-West:   {strEW}")
-    print(f"\t\tNorth-South: {strNS}")
+    print(f"\t\tEast-West:   {strRow}")
+    print(f"\t\tNorth-South: {strCol}")
     print()
 
     cross = {}
 
-    for s in range(strEW):
+    for row in range(strRow):
         strt = list(map(int, InputLines.pop(0).split()))
 
-        cross[s+1] = strt[1:]
-        print(f"\t\t{s+1}.Street: {strt[1:]}")
+        cross[row+1] = strt[1:]
+
+        print(f"\t\t{row+1}.Street: {strt[1:]}")
+    print()
+
+    city = [[1 for c in range(strCol)] for r in range(strRow)]
+
+    for strt in city:
+        print(f"\t\t{strt}")
     print()
 
 
@@ -104,6 +111,11 @@ Input:
 		2.Street: [2]
 		3.Street: [3, 5]
 		4.Street: []
+
+		[1, 1, 1, 1, 1]
+		[1, 1, 1, 1, 1]
+		[1, 1, 1, 1, 1]
+		[1, 1, 1, 1, 1]
 
 
 Process finished with exit code 0
