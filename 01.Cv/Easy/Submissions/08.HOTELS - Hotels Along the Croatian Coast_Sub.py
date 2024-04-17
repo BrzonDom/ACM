@@ -89,12 +89,16 @@ if __name__ == "__main__":
 
     lineInf = input()
     lineHtls = input()
+    print()
+    print("Input:")
+    print(f"\t{lineInf}")
+    print(f"\t{lineHtls}")
+    print()
 
     htlNum, mnyNum, Htls = infExtrc(lineInf, lineHtls)
 
     mnyMax, htlMax = fndMaxMny(Htls, mnyNum)
 
-    print(f"\t\tMax money: {mnyMax}")
-    print(f"\t\tMax hotels: {htlMax}")
+    print(f"\tMax money: {mnyMax}")
+    print(f"\tMax hotels: {htlMax}")
 
-    print("\n")
