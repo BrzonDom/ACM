@@ -112,17 +112,17 @@ def mvsHsPrnt(BuySell):
                     BuySell[h + 1] += move
                     cntMvs += 2 * move
 
-                print(f"\t\t{BuySell}")
-        print()
+        #         print(f"\t\t{BuySell}")
+        # print()
 
     return cntMvs
 
 
 if __name__ == "__main__":
 
-    print("Input:")
-    print(InputRaw_Str)
-    print()
+    # print("Input:")
+    # print(InputRaw_Str)
+    # print()
 
     InputStr_Lst = InputRaw_Str.split("\n")
     InputOrg_Lst = copy.deepcopy(InputStr_Lst)
@@ -137,17 +137,17 @@ if __name__ == "__main__":
         BuySell = list(map(int, input().split()))
         print()
 
-        print(f"\t{caseCnt}. Case")
+        # print(f"\t{caseCnt}. Case")
+        # print()
+
+        print(f"\tNum. of people: {hsNum}")
+
+        print(f"\tBuy Sell list: {BuySell}")
         print()
 
-        print(f"\t\tNum. of people: {hsNum}")
+        # shftHsPrnt(BuySell)
 
-        print(f"\t\tBuy Sell list: {BuySell}")
-        print()
-
-        shftHsPrnt(BuySell)
-
-        sumHsPrnt(BuySell)
+        # sumHsPrnt(BuySell)
 
         cntMvs = mvsHsPrnt(BuySell)
 
