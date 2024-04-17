@@ -59,8 +59,6 @@ InputLines = InputRaw_Str.split("\n")
 # print(InputLines)
 
 caseNum = int(InputLines.pop(0))
-InputLines.pop(0)
-
 # print(InputLines)
 
 print(f"\tCases: {caseNum}")
@@ -68,11 +66,46 @@ print()
 
 for case in range(caseNum):
 
+    InputLines.pop(0)
+
     strEW, strNS = list(map(int, InputLines.pop(0).split()))
 
-    cross = []
+    print(f"\t\tEast-West:   {strEW}")
+    print(f"\t\tNorth-South: {strNS}")
+    print()
 
-    for str in range(strEW):
-        cross.append(list(map(int, InputLines.pop(0).split()))[1:])
+    cross = {}
 
-    print(cross)
+    for s in range(strEW):
+        strt = list(map(int, InputLines.pop(0).split()))
+
+        cross[s+1] = strt[1:]
+        print(f"\t\t{s+1}.Street: {strt[1:]}")
+    print()
+
+
+"""__Output__"""
+"""
+Input:
+1
+
+4 5
+1
+2 2
+3 3 5
+4
+
+	Cases: 1
+
+		East-West:   4
+		North-South: 5
+
+		1.Street: []
+		2.Street: [2]
+		3.Street: [3, 5]
+		4.Street: []
+
+
+Process finished with exit code 0
+
+"""
