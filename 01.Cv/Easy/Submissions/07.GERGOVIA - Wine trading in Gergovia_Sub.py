@@ -94,10 +94,6 @@ if __name__ == "__main__":
     # print(InputRaw_Str)
     # print()
 
-    InputStr_Lst = InputRaw_Str.split("\n")
-    InputOrg_Lst = copy.deepcopy(InputStr_Lst)
-
-    # hsNum = int(InputStr_Lst.pop(0))
     hsNum = int(input())
 
     caseCnt = 1
@@ -119,7 +115,6 @@ if __name__ == "__main__":
 
         print(cntMvs)
 
-        # hsNum = int(InputStr_Lst.pop(0))
         hsNum = int(input())
 
         caseCnt += 1
