@@ -65,3 +65,14 @@ InputLines.pop(0)
 
 print(f"\tCases: {caseNum}")
 print()
+
+for case in range(caseNum):
+
+    strEW, strNS = list(map(int, InputLines.pop(0).split()))
+
+    cross = []
+
+    for str in range(strEW):
+        cross.append(list(map(int, InputLines.pop(0).split()))[1:])
+
+    print(cross)
