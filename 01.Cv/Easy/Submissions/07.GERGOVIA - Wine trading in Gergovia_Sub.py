@@ -105,18 +105,19 @@ if __name__ == "__main__":
     while hsNum != 0:
 
         BuySell = list(map(int, input().split()))
-        print()
-
-        print(f"\tNum. of people: {hsNum}")
-
-        print(f"\tBuy Sell list: {BuySell}")
-        print()
+        # print()
+        #
+        # print(f"\tNum. of people: {hsNum}")
+        #
+        # print(f"\tBuy Sell list: {BuySell}")
+        # print()
 
         cntMvs = mvsHsFnd(BuySell)
 
-        print(f"\t\tNeeded moves: {cntMvs}")
+        # print(f"\t\tNeeded moves: {cntMvs}")
+        # print("\n")
 
-        print("\n")
+        print(cntMvs)
 
         # hsNum = int(InputStr_Lst.pop(0))
         hsNum = int(input())
