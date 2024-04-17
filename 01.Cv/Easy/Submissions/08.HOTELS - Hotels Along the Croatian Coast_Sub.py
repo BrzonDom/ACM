@@ -77,9 +77,9 @@ def fndMaxMny(Htls, mnyNum):
 
 if __name__ == "__main__":
 
-    print("Input:")
-    print(InputRaw_Str)
-    print()
+    # print("Input:")
+    # print(InputRaw_Str)
+    # print()
 
     InputStr_Lst = InputRaw_Str.split("\n")
 
@@ -90,16 +90,19 @@ if __name__ == "__main__":
 
     lineInf = input()
     lineHtls = input()
-    print()
-    print("Input:")
-    print(f"\t{lineInf}")
-    print(f"\t{lineHtls}")
-    print()
+
+    # print()
+    # print("Input:")
+    # print(f"\t{lineInf}")
+    # print(f"\t{lineHtls}")
+    # print()
 
     htlNum, mnyNum, Htls = infExtrc(lineInf, lineHtls)
 
     mnyMax, htlMax = fndMaxMny(Htls, mnyNum)
 
-    print(f"\tMax money: {mnyMax}")
-    print(f"\tMax hotels: {htlMax}")
+    # print(f"\tMax money: {mnyMax}")
+    # print(f"\tMax hotels: {htlMax}")
+
+    print(mnyMax)
 
