@@ -39,18 +39,19 @@ InputRaw_Str = InputRaw_Str[1:-1]
 def infExtrc(lineInf, lineHtls):
 
     htlNum, mnyNum = list(map(int, lineInf.split()))
-    print(f"\t\tNum. of hotels: {htlNum}")
-    print(f"\t\tNum. of money:  {mnyNum}")
-    print()
+    # print(f"\t\tNum. of hotels: {htlNum}")
+    # print(f"\t\tNum. of money:  {mnyNum}")
+    # print()
 
     Htls = list(map(int, lineHtls.split()))
-    print(f"\t\tHotels: {Htls}")
-    print()
+    # print(f"\t\tHotels: {Htls}")
+    # print()
 
     return htlNum, mnyNum, Htls
 
 
 def fndMaxMny(Htls, mnyNum):
+
     mnyMax = 0
     htlMax = []
 
@@ -65,11 +66,11 @@ def fndMaxMny(Htls, mnyNum):
                 mnyMax = sum(Htls[sH:sH + eH + 1])
                 htlMax = Htls[sH:sH + eH + 1]
 
-            print(f"\t\t\t{Htls[sH:sH + eH + 1]} ({sum(Htls[sH:sH + eH + 1])})")
+            # print(f"\t\t\t{Htls[sH:sH + eH + 1]} ({sum(Htls[sH:sH + eH + 1])})")
 
         if mnyMax == mnyNum:
             break
-    print()
+    # print()
 
     return mnyMax, htlMax
 
