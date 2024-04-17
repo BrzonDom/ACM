@@ -127,7 +127,9 @@ if __name__ == "__main__":
     InputStr_Lst = InputRaw_Str.split("\n")
     InputOrg_Lst = copy.deepcopy(InputStr_Lst)
 
-    hsNum = int(InputStr_Lst.pop(0))
+    # hsNum = int(InputStr_Lst.pop(0))
+    hsNum = int(input())
+
     caseCnt = 1
 
     while hsNum != 0:
@@ -137,7 +139,7 @@ if __name__ == "__main__":
 
         print(f"\t\tNum. of people: {hsNum}")
 
-        BuySell = list(map(int, InputStr_Lst.pop(0).split()))
+        BuySell = list(map(int, input().split()))
 
         print(f"\t\tBuy Sell list: {BuySell}")
         print()
@@ -152,7 +154,9 @@ if __name__ == "__main__":
 
         print("\n")
 
-        hsNum = int(InputStr_Lst.pop(0))
+        # hsNum = int(InputStr_Lst.pop(0))
+        hsNum = int(input())
+
         caseCnt += 1
 
 
