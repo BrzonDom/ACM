@@ -92,9 +92,20 @@ for case in range(caseNum):
     print(f"\t\t\tDim: {dim}")
     print()
 
-    row, col = dim[0], dim[1]
+    rowDim, colDim = dim[0], dim[1]
 
-    for r in range(row):
-        print(f"\t\t\t{InputLines.pop(0)}")
+    slope = []
+
+    for r in range(rowDim):
+
+        rowStr = InputLines.pop(0)
+        print(f"\t\t\t{rowStr}")
+
+        row = list(map(int, rowStr.split()))
+        slope.append(row)
+    print()
+
+    for row in slope:
+        print(f"\t\t\t{row}")
 
     print("\n")
