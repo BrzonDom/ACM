@@ -76,3 +76,25 @@ InputLines = InputRaw_Str.split("\n")
 caseNum = int(InputLines.pop(0))
 
 print(f"\tCases: {caseNum}")
+print()
+
+for case in range(caseNum):
+
+    print(f"\t\tCase: {case+1}")
+    print()
+
+    infLine = InputLines.pop(0)
+
+    name = infLine.split()[0]
+    dim = list(map(int, infLine.split()[1:]))
+
+    print(f"\t\t\tName: {name}")
+    print(f"\t\t\tDim: {dim}")
+    print()
+
+    row, col = dim[0], dim[1]
+
+    for r in range(row):
+        print(f"\t\t\t{InputLines.pop(0)}")
+
+    print("\n")
