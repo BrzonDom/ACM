@@ -117,11 +117,6 @@ def findPrmt(permColo, binData):
     return minPer, minTot
 
 
-InputRaw_Str ="""
-1 2 3 4 5 6 7 8 9
-5 10 5 20 10 5 10 20 10
-"""
-
 # from itertools import permutations
 #
 # tstPer = permutations([0, 1, 2], 3)
@@ -132,9 +127,14 @@ InputRaw_Str ="""
 # quit()
 
 
-InputRaw_Str = InputRaw_Str[1:-1]
-
 if __name__ == "__main__":
+
+    InputRaw_Str = """
+1 2 3 4 5 6 7 8 9
+5 10 5 20 10 5 10 20 10
+"""
+
+    InputRaw_Str = InputRaw_Str[1:-1]
 
     permColo = ['BCG', 'BGC', 'CBG', 'CGB', 'GBC', 'GCB']
 
