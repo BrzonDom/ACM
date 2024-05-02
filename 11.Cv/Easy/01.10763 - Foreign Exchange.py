@@ -83,3 +83,23 @@ InputRaw_Str = InputRaw_Str[1:-1]
 
 print("Input:")
 print(InputRaw_Str)
+print()
+
+InputLines = InputRaw_Str.split("\n")
+
+caseNum = int(InputLines.pop(0))
+
+while caseNum != 0:
+    print(f"\tCases: {caseNum}")
+    print()
+
+    Cases = []
+
+    for cs in range(caseNum):
+        case = (list(map(int, InputLines.pop(0).split())))
+        print(f"\t\t{case}")
+        Cases.append(case)
+    print("\n")
+
+    caseNum = int(InputLines.pop(0))
+
