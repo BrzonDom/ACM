@@ -52,3 +52,34 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=315&p
                 NO
 
 """
+
+InputRaw_Str = """
+10
+1 2
+2 1
+3 4
+4 3
+100 200
+200 100
+57 2
+2 57
+1 2
+2 1
+10
+1 2
+3 4
+5 6
+7 8
+9 10
+11 12
+13 14
+15 16
+17 18
+19 20
+0
+"""
+
+InputRaw_Str = InputRaw_Str[1:-1]
+
+print("Input:")
+print(InputRaw_Str)
