@@ -133,7 +133,36 @@ def dataExtract(InputLines):
     return Maze, mzStrt, inMaze
 
 
-# def fillMaze(Maze, mzStrt, inMaze):
+def fillMaze(Maze, mzStrt, inMaze):
+    stackFill = [mzStrt]
+
+    while len(stackFill) > 0:
+
+        curPos = stackFill.pop(0)
+        curR = curPos[0]
+        curC = curPos[1]
+
+        Maze[curR][curC] = '#'
+
+        if (curR + 1) in inMaze:
+            if (curC) <= inMaze[curR + 1]:
+                if Maze[curR + 1][curC] == ' ':
+                    stackFill.append([curR + 1, curC])
+
+        if (curR - 1) in inMaze:
+            if (curC) <= inMaze[curR - 1]:
+                if Maze[curR - 1][curC] == ' ':
+                    stackFill.append([curR - 1, curC])
+
+        if (curC + 1) <= inMaze[curR]:
+            if Maze[curR][curC + 1] == ' ':
+                stackFill.append([curR, curC + 1])
+
+        if (curC - 1) <= inMaze[curR]:
+            if Maze[curR][curC - 1] == ' ':
+                stackFill.append([curR, curC - 1])
+
+    return Maze
 
 
 InputRaw_Str = """
@@ -207,33 +236,35 @@ if __name__ == '__main__':
         #     print(f"\t\t\t\t[{r:<2} {inMaze[r]:2}] : {row}")
         # print()
 
-        stackFill = [mzStrt]
+        Maze = fillMaze(Maze, mzStrt, inMaze)
 
-        while len(stackFill) > 0:
-
-            curPos = stackFill.pop(0)
-            curR = curPos[0]
-            curC = curPos[1]
-
-            Maze[curR][curC] = '#'
-
-            if (curR+1) in inMaze:
-                if (curC) <= inMaze[curR+1]:
-                    if Maze[curR+1][curC] == ' ':
-                        stackFill.append([curR+1, curC])
-
-            if (curR-1) in inMaze:
-                if (curC) <= inMaze[curR-1]:
-                    if Maze[curR-1][curC] == ' ':
-                        stackFill.append([curR-1, curC])
-
-            if (curC+1) <= inMaze[curR]:
-                if Maze[curR][curC+1] == ' ':
-                    stackFill.append([curR, curC+1])
-
-            if (curC-1) <= inMaze[curR]:
-                if Maze[curR][curC-1] == ' ':
-                    stackFill.append([curR, curC-1])
+        # stackFill = [mzStrt]
+        #
+        # while len(stackFill) > 0:
+        #
+        #     curPos = stackFill.pop(0)
+        #     curR = curPos[0]
+        #     curC = curPos[1]
+        #
+        #     Maze[curR][curC] = '#'
+        #
+        #     if (curR+1) in inMaze:
+        #         if (curC) <= inMaze[curR+1]:
+        #             if Maze[curR+1][curC] == ' ':
+        #                 stackFill.append([curR+1, curC])
+        #
+        #     if (curR-1) in inMaze:
+        #         if (curC) <= inMaze[curR-1]:
+        #             if Maze[curR-1][curC] == ' ':
+        #                 stackFill.append([curR-1, curC])
+        #
+        #     if (curC+1) <= inMaze[curR]:
+        #         if Maze[curR][curC+1] == ' ':
+        #             stackFill.append([curR, curC+1])
+        #
+        #     if (curC-1) <= inMaze[curR]:
+        #         if Maze[curR][curC-1] == ' ':
+        #             stackFill.append([curR, curC-1])
 
         for r, row in enumerate(Maze):
             print(f"\t\t\t", end="")
