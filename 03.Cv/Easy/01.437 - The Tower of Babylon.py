@@ -123,7 +123,31 @@ while blckNum > 0:
 
         print()
     print()
+    print(f"\tSides: {Sides}")
+    print()
 
     caseCnt += 1
     blckNum = int(InputLines.pop(0))
+
+    for sd in Sides:
+        print(f"\t\tSide: {sd}")
+        print(f"\t\tPossible sides:")
+
+        posSides = []
+
+        for nxtSd in Sides:
+            if nxtSd[0] < sd[0] and nxtSd[1] < sd[1]:
+                print(f"\t\t\t{nxtSd}")
+
+                posSides.append(nxtSd)
+        print()
+
+        # for posSd in posSides:
+        #     print(f"\t\t\tpos: {posSd}")
+            # print(f"\t\t\tTower:  {[sd, posSd]}")
+            # print(f"\t\t\tHeight: {sd[2] + posSd[2]}")
+            # print(f"\t\t\tSides:  {[s for s in posSides if s != posSd]}")
+            # print()
+        print()
+
 
