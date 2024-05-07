@@ -91,8 +91,12 @@ print()
 InputLines = InputRaw_Str.split("\n")
 
 blckNum = int(InputLines.pop(0))
+caseCnt = 1
 
 while blckNum > 0:
+
+    print(f"\tCase: {caseCnt}")
+    print()
 
     Blocks = []
 
@@ -101,8 +105,9 @@ while blckNum > 0:
         blck = list(map(int, InputLines.pop(0).split()))
         Blocks.append(blck)
 
-        print(f"\t\t\t{b+1}.: {blck}")
-    print()
+        print(f"\t\t{b+1}. {blck}")
+    print("\n")
 
+    caseCnt += 1
     blckNum = int(InputLines.pop(0))
 
