@@ -138,12 +138,22 @@ for case in range(caseNum):
     print()
 
     mazeLine = InputLines.pop(0)
+    mzStrt = [0,0]
+    mzCnt = 0
     Maze = []
 
     while '_' not in mazeLine:
         Maze.append(mazeLine)
         print(f"\t\t\t{mazeLine}")
 
+        if '*' in mazeLine:
+            mzStrt[0] = mzCnt
+            mzStrt[1] = mazeLine.index('*')
+
         mazeLine = InputLines.pop(0)
+        mzCnt += 1
+    print()
+
+    print(f"\t\tStart: {mzStrt}")
 
     print("\n")
