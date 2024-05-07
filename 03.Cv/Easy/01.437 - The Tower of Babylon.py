@@ -100,7 +100,7 @@ while blckNum > 0:
     print()
 
     Blocks = []
-    Sides = {}
+    Sides = []
 
     for b in range(blckNum):
 
@@ -110,24 +110,19 @@ while blckNum > 0:
 
         print(f"\t\t{b+1}. {blck}")
 
-        Sides[str(blck)] = set(permutations(blck, 3))
-        print(f"\t\t\t{Sides[str(blck)]}")
+        curSides = list(set(permutations(blck, 3)))
+        Sides += curSides
+
+        print(f"\t\t\t{curSides}")
 
         # for side in Sides[str(blck)]:
         #     # print(f"\t\t\t{b+1}. {side}")
         #     print(f"\t\t\t\tSurface: {side[0]} * {side[1]} = {side[0] * side[1]}")
         #     print(f"\t\t\t\tHeight:  {side[2]}")
         #     print()
+
         print()
-
     print()
-
-    # for b, blck in enumerate(Blocks):
-    #     print(f"\t\t{b+1}. {blck}")
-    #
-    #     for side in [[blck[0], blck[1]], [blck[1], blck[2]], [blck[2], blck[0]]]:
-    #         print(f"\t\t\t{side}: {side[0] * side[1]}")
-    #     print()
 
     caseCnt += 1
     blckNum = int(InputLines.pop(0))
