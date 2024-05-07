@@ -107,6 +107,32 @@ def dataProcess(InputRaw_Str):
     return InputLines, caseNum
 
 
+def dataExtract(InputLines):
+
+    mazeLine = InputLines.pop(0)
+    mzStrt = [0, 0]
+    mzCnt = 0
+    Maze = []
+
+    inMaze = {}
+
+    while '_' not in mazeLine:
+        Maze.append(list(mazeLine))
+        print(f"\t\t\t{mazeLine}")
+
+        inMaze[mzCnt] = len(mazeLine)
+
+        if '*' in mazeLine:
+            mzStrt[0] = mzCnt
+            mzStrt[1] = mazeLine.index('*')
+
+        mazeLine = InputLines.pop(0)
+        mzCnt += 1
+    print()
+
+    return Maze, mzStrt, inMaze
+
+
 InputRaw_Str = """
 2
 XXXXXXXXX
@@ -148,34 +174,36 @@ if __name__ == '__main__':
         print(f"\t\tCase: {case+1}")
         print()
 
-        mazeLine = InputLines.pop(0)
-        mzStrt = [0, 0]
-        mzCnt = 0
-        Maze = []
+        Maze, mzStrt, inMaze = dataExtract(InputLines)
 
-        inMaze = {}
+        # mazeLine = InputLines.pop(0)
+        # mzStrt = [0, 0]
+        # mzCnt = 0
+        # Maze = []
+        #
+        # inMaze = {}
+        #
+        # while '_' not in mazeLine:
+        #     Maze.append(list(mazeLine))
+        #     print(f"\t\t\t{mazeLine}")
+        #
+        #     inMaze[mzCnt] = len(mazeLine)
+        #
+        #     if '*' in mazeLine:
+        #         mzStrt[0] = mzCnt
+        #         mzStrt[1] = mazeLine.index('*')
+        #
+        #     mazeLine = InputLines.pop(0)
+        #     mzCnt += 1
+        # print()
 
-        while '_' not in mazeLine:
-            Maze.append(list(mazeLine))
-            print(f"\t\t\t{mazeLine}")
-
-            inMaze[mzCnt] = len(mazeLine)
-
-            if '*' in mazeLine:
-                mzStrt[0] = mzCnt
-                mzStrt[1] = mazeLine.index('*')
-
-            mazeLine = InputLines.pop(0)
-            mzCnt += 1
-        print()
-
-        print(f"\t\tStart: {mzStrt}")
+        print(f"\t\t\tStart: {mzStrt}")
         print()
 
         stackFill = [mzStrt]
 
         for r, row in enumerate(Maze):
-            print(f"\t\t\t[{r:<2} {inMaze[r]:2}] : {row}")
+            print(f"\t\t\t\t[{r:<2} {inMaze[r]:2}] : {row}")
         print()
 
         while len(stackFill) > 0:
