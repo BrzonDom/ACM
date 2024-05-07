@@ -110,8 +110,8 @@ while blckNum > 0:
 
         print(f"\t\t{b+1}. {blck}")
 
-        SideComb = set(permutations(blck, 3))
-        print(f"\t\t\t{SideComb}")
+        Sides[str(blck)] = set(permutations(blck, 3))
+        print(f"\t\t\t{Sides[str(blck)]}")
 
         # for side in Sides[str(blck)]:
         #     # print(f"\t\t\t{b+1}. {side}")
