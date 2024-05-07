@@ -211,3 +211,90 @@ if __name__ == '__main__':
             print()
 
         print("\n")
+
+
+"""__Output__"""
+"""
+Input:
+2
+XXXXXXXXX
+X   X   X
+X   *   X
+X   X   X
+XXXXXXXXX
+X   X
+X   X
+X   X
+XXXXX
+_____
+XXXXX
+X   X
+X * X
+X   X
+XXXXX
+_____
+
+	Cases: 2
+
+		Case: 1
+
+			XXXXXXXXX
+			X   X   X
+			X   *   X
+			X   X   X
+			XXXXXXXXX
+			X   X
+			X   X
+			X   X
+			XXXXX
+
+		Start: [2, 4]
+
+			[0   9] : ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X']
+			[1   9] : ['X', ' ', ' ', ' ', 'X', ' ', ' ', ' ', 'X']
+			[2   9] : ['X', ' ', ' ', ' ', '*', ' ', ' ', ' ', 'X']
+			[3   9] : ['X', ' ', ' ', ' ', 'X', ' ', ' ', ' ', 'X']
+			[4   9] : ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X']
+			[5   5] : ['X', ' ', ' ', ' ', 'X']
+			[6   5] : ['X', ' ', ' ', ' ', 'X']
+			[7   5] : ['X', ' ', ' ', ' ', 'X']
+			[8   5] : ['X', 'X', 'X', 'X', 'X']
+
+			XXXXXXXXX
+			X###X###X
+			X#######X
+			X###X###X
+			XXXXXXXXX
+			X   X
+			X   X
+			X   X
+			XXXXX
+
+
+		Case: 2
+
+			XXXXX
+			X   X
+			X * X
+			X   X
+			XXXXX
+
+		Start: [2, 2]
+
+			[0   5] : ['X', 'X', 'X', 'X', 'X']
+			[1   5] : ['X', ' ', ' ', ' ', 'X']
+			[2   5] : ['X', ' ', '*', ' ', 'X']
+			[3   5] : ['X', ' ', ' ', ' ', 'X']
+			[4   5] : ['X', 'X', 'X', 'X', 'X']
+
+			XXXXX
+			X###X
+			X###X
+			X###X
+			XXXXX
+
+
+
+Process finished with exit code 0
+
+"""
