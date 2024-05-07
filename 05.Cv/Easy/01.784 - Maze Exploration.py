@@ -99,6 +99,14 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=667&p
 
 """
 
+def dataProcess(InputRaw_Str):
+
+    InputLines = InputRaw_Str.split("\n")
+    caseNum = int(InputLines.pop(0))
+
+    return InputLines, caseNum
+
+
 InputRaw_Str = """
 2
 XXXXXXXXX
@@ -127,9 +135,10 @@ if __name__ == '__main__':
     print(InputRaw_Str)
     print()
 
-    InputLines = InputRaw_Str.split("\n")
+    InputLines, caseNum = dataProcess(InputRaw_Str)
 
-    caseNum = int(InputLines.pop(0))
+    # InputLines = InputRaw_Str.split("\n")
+    # caseNum = int(InputLines.pop(0))
 
     print(f"\tCases: {caseNum}")
     print()
@@ -163,11 +172,6 @@ if __name__ == '__main__':
         print(f"\t\tStart: {mzStrt}")
         print()
 
-        # print(type(mzStrt[0]))
-        # print(type(mzStrt[1]))
-
-        # quit()
-        # print(Maze)
         stackFill = [mzStrt]
 
         for r, row in enumerate(Maze):
