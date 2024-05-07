@@ -86,3 +86,23 @@ InputRaw_Str = InputRaw_Str[1:-1]
 
 print("Input:")
 print(InputRaw_Str)
+print()
+
+InputLines = InputRaw_Str.split("\n")
+
+blckNum = int(InputLines.pop(0))
+
+while blckNum > 0:
+
+    Blocks = []
+
+    for b in range(blckNum):
+
+        blck = list(map(int, InputLines.pop(0).split()))
+        Blocks.append(blck)
+
+        print(f"\t\t\t{b+1}.: {blck}")
+    print()
+
+    blckNum = int(InputLines.pop(0))
+
