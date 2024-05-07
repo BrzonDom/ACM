@@ -123,3 +123,11 @@ InputRaw_Str = InputRaw_Str[1:-1]
 
 print("Input:")
 print(InputRaw_Str)
+print()
+
+InputLines = InputRaw_Str.split("\n")
+
+caseNum = int(InputLines.pop(0))
+
+print(f"\tCases: {caseNum}")
+print()
