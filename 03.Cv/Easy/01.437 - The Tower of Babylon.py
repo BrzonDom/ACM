@@ -106,7 +106,14 @@ while blckNum > 0:
         Blocks.append(blck)
 
         print(f"\t\t{b+1}. {blck}")
-    print("\n")
+    print()
+
+    for b, blck in enumerate(Blocks):
+        print(f"\t\t{b+1}. {blck}")
+
+        for side in [[blck[0], blck[1]], [blck[1], blck[2]], [blck[2], blck[0]]]:
+            print(f"\t\t\t{side}: {side[0] * side[1]}")
+        print()
 
     caseCnt += 1
     blckNum = int(InputLines.pop(0))
