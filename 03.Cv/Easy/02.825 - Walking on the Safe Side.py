@@ -51,49 +51,51 @@ InputRaw_Str = """
 
 InputRaw_Str = InputRaw_Str[1:-1]
 
-print("Input:")
-print(InputRaw_Str)
-print()
+if __name__ == '__main__':
 
-InputLines = InputRaw_Str.split("\n")
-# print(InputLines)
-
-caseNum = int(InputLines.pop(0))
-# print(InputLines)
-
-print(f"\tCases: {caseNum}")
-print()
-
-for case in range(caseNum):
-
-    InputLines.pop(0)
-
-    strRow, strCol = list(map(int, InputLines.pop(0).split()))
-
-    print(f"\t\tEast-West:   {strRow}")
-    print(f"\t\tNorth-South: {strCol}")
+    print("Input:")
+    print(InputRaw_Str)
     print()
 
-    cross = {}
+    InputLines = InputRaw_Str.split("\n")
+    # print(InputLines)
 
-    for row in range(strRow):
-        strt = list(map(int, InputLines.pop(0).split()))
+    caseNum = int(InputLines.pop(0))
+    # print(InputLines)
 
-        cross[row+1] = strt[1:]
-
-        print(f"\t\t{row+1}.Street: {strt[1:]}")
+    print(f"\tCases: {caseNum}")
     print()
 
-    city = [[1 for c in range(strCol)] for r in range(strRow)]
+    for case in range(caseNum):
 
-    for row in cross:
-        for col in cross[row]:
+        InputLines.pop(0)
 
-            city[row-1][col-1] = 0
+        strRow, strCol = list(map(int, InputLines.pop(0).split()))
 
-    for row in city:
-        print(f"\t\t{row}")
-    print()
+        print(f"\t\tEast-West:   {strRow}")
+        print(f"\t\tNorth-South: {strCol}")
+        print()
+
+        cross = {}
+
+        for row in range(strRow):
+            strt = list(map(int, InputLines.pop(0).split()))
+
+            cross[row+1] = strt[1:]
+
+            print(f"\t\t{row+1}.Street: {strt[1:]}")
+        print()
+
+        city = [[1 for c in range(strCol)] for r in range(strRow)]
+
+        for row in cross:
+            for col in cross[row]:
+
+                city[row-1][col-1] = 0
+
+        for row in city:
+            print(f"\t\t{row}")
+        print()
 
 
 """__Output__"""
