@@ -161,19 +161,47 @@ for case in range(caseNum):
     print(f"\t\tStart: {mzStrt}")
     print()
 
+    # print(type(mzStrt[0]))
+    # print(type(mzStrt[1]))
+
+    # quit()
     # print(Maze)
-    stackFill = mzStrt
+    stackFill = [mzStrt]
 
     for r, row in enumerate(Maze):
         print(f"\t\t\t[{r:<2} {inMaze[r]:2}] : {row}")
     print()
 
-    # while len(stackFill) > 0:
-    #
-    #     curR = stackFill[0]
-    #     curC = stackFill[1]
-    #
-    #     Maze[curR][curC] = '#'
+    while len(stackFill) > 0:
 
+        curPos = stackFill.pop(0)
+        curR = curPos[0]
+        curC = curPos[1]
+
+        Maze[curR][curC] = '#'
+
+        if (curR+1) in inMaze:
+            if (curC) <= inMaze[curR+1]:
+                if Maze[curR+1][curC] == ' ':
+                    stackFill.append([curR+1, curC])
+
+        if (curR-1) in inMaze:
+            if (curC) <= inMaze[curR-1]:
+                if Maze[curR-1][curC] == ' ':
+                    stackFill.append([curR-1, curC])
+
+        if (curC+1) <= inMaze[curR]:
+            if Maze[curR][curC+1] == ' ':
+                stackFill.append([curR, curC+1])
+
+        if (curC-1) <= inMaze[curR]:
+            if Maze[curR][curC-1] == ' ':
+                stackFill.append([curR, curC-1])
+
+    for r, row in enumerate(Maze):
+        print(f"\t\t\t", end="")
+        for col in row:
+            print(col, end="")
+        print()
 
     print("\n")
