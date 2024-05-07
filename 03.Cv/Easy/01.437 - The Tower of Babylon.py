@@ -58,6 +58,7 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=6&pag
                 Case 4: maximum height = 342
 
 """
+from itertools import permutations
 
 InputRaw_Str = """
 1
@@ -105,15 +106,18 @@ while blckNum > 0:
 
         blck = list(map(int, InputLines.pop(0).split()))
         Blocks.append(blck)
-        Sides[str(blck)] = [[blck[0], blck[1], blck[2]], [blck[1], blck[2], blck[0]], [blck[2], blck[0], blck[1]]]
+        # Sides[str(blck)] = [[blck[0], blck[1], blck[2]], [blck[1], blck[2], blck[0]], [blck[2], blck[0], blck[1]]]
 
         print(f"\t\t{b+1}. {blck}")
 
-        for side in Sides[str(blck)]:
-            # print(f"\t\t\t{b+1}. {side}")
-            print(f"\t\t\t\tSurface: {side[0]} * {side[1]} = {side[0] * side[1]}")
-            print(f"\t\t\t\tHeight:  {side[2]}")
-            print()
+        SideComb = set(permutations(blck, 3))
+        print(f"\t\t\t{SideComb}")
+
+        # for side in Sides[str(blck)]:
+        #     # print(f"\t\t\t{b+1}. {side}")
+        #     print(f"\t\t\t\tSurface: {side[0]} * {side[1]} = {side[0] * side[1]}")
+        #     print(f"\t\t\t\tHeight:  {side[2]}")
+        #     print()
         print()
 
     print()
