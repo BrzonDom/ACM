@@ -121,87 +121,89 @@ _____
 
 InputRaw_Str = InputRaw_Str[1:-1]
 
-print("Input:")
-print(InputRaw_Str)
-print()
+if __name__ == '__main__':
 
-InputLines = InputRaw_Str.split("\n")
-
-caseNum = int(InputLines.pop(0))
-
-print(f"\tCases: {caseNum}")
-print()
-
-for case in range(caseNum):
-
-    print(f"\t\tCase: {case+1}")
+    print("Input:")
+    print(InputRaw_Str)
     print()
 
-    mazeLine = InputLines.pop(0)
-    mzStrt = [0, 0]
-    mzCnt = 0
-    Maze = []
+    InputLines = InputRaw_Str.split("\n")
 
-    inMaze = {}
+    caseNum = int(InputLines.pop(0))
 
-    while '_' not in mazeLine:
-        Maze.append(list(mazeLine))
-        print(f"\t\t\t{mazeLine}")
-
-        inMaze[mzCnt] = len(mazeLine)
-
-        if '*' in mazeLine:
-            mzStrt[0] = mzCnt
-            mzStrt[1] = mazeLine.index('*')
-
-        mazeLine = InputLines.pop(0)
-        mzCnt += 1
+    print(f"\tCases: {caseNum}")
     print()
 
-    print(f"\t\tStart: {mzStrt}")
-    print()
+    for case in range(caseNum):
 
-    # print(type(mzStrt[0]))
-    # print(type(mzStrt[1]))
-
-    # quit()
-    # print(Maze)
-    stackFill = [mzStrt]
-
-    for r, row in enumerate(Maze):
-        print(f"\t\t\t[{r:<2} {inMaze[r]:2}] : {row}")
-    print()
-
-    while len(stackFill) > 0:
-
-        curPos = stackFill.pop(0)
-        curR = curPos[0]
-        curC = curPos[1]
-
-        Maze[curR][curC] = '#'
-
-        if (curR+1) in inMaze:
-            if (curC) <= inMaze[curR+1]:
-                if Maze[curR+1][curC] == ' ':
-                    stackFill.append([curR+1, curC])
-
-        if (curR-1) in inMaze:
-            if (curC) <= inMaze[curR-1]:
-                if Maze[curR-1][curC] == ' ':
-                    stackFill.append([curR-1, curC])
-
-        if (curC+1) <= inMaze[curR]:
-            if Maze[curR][curC+1] == ' ':
-                stackFill.append([curR, curC+1])
-
-        if (curC-1) <= inMaze[curR]:
-            if Maze[curR][curC-1] == ' ':
-                stackFill.append([curR, curC-1])
-
-    for r, row in enumerate(Maze):
-        print(f"\t\t\t", end="")
-        for col in row:
-            print(col, end="")
+        print(f"\t\tCase: {case+1}")
         print()
 
-    print("\n")
+        mazeLine = InputLines.pop(0)
+        mzStrt = [0, 0]
+        mzCnt = 0
+        Maze = []
+
+        inMaze = {}
+
+        while '_' not in mazeLine:
+            Maze.append(list(mazeLine))
+            print(f"\t\t\t{mazeLine}")
+
+            inMaze[mzCnt] = len(mazeLine)
+
+            if '*' in mazeLine:
+                mzStrt[0] = mzCnt
+                mzStrt[1] = mazeLine.index('*')
+
+            mazeLine = InputLines.pop(0)
+            mzCnt += 1
+        print()
+
+        print(f"\t\tStart: {mzStrt}")
+        print()
+
+        # print(type(mzStrt[0]))
+        # print(type(mzStrt[1]))
+
+        # quit()
+        # print(Maze)
+        stackFill = [mzStrt]
+
+        for r, row in enumerate(Maze):
+            print(f"\t\t\t[{r:<2} {inMaze[r]:2}] : {row}")
+        print()
+
+        while len(stackFill) > 0:
+
+            curPos = stackFill.pop(0)
+            curR = curPos[0]
+            curC = curPos[1]
+
+            Maze[curR][curC] = '#'
+
+            if (curR+1) in inMaze:
+                if (curC) <= inMaze[curR+1]:
+                    if Maze[curR+1][curC] == ' ':
+                        stackFill.append([curR+1, curC])
+
+            if (curR-1) in inMaze:
+                if (curC) <= inMaze[curR-1]:
+                    if Maze[curR-1][curC] == ' ':
+                        stackFill.append([curR-1, curC])
+
+            if (curC+1) <= inMaze[curR]:
+                if Maze[curR][curC+1] == ' ':
+                    stackFill.append([curR, curC+1])
+
+            if (curC-1) <= inMaze[curR]:
+                if Maze[curR][curC-1] == ' ':
+                    stackFill.append([curR, curC-1])
+
+        for r, row in enumerate(Maze):
+            print(f"\t\t\t", end="")
+            for col in row:
+                print(col, end="")
+            print()
+
+        print("\n")
