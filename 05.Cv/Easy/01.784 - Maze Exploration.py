@@ -98,3 +98,28 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=667&p
                 _____
 
 """
+
+InputRaw_Str = """
+2
+XXXXXXXXX
+X   X   X
+X   *   X
+X   X   X
+XXXXXXXXX
+X   X
+X   X
+X   X
+XXXXX
+_____
+XXXXX
+X   X
+X * X
+X   X
+XXXXX
+_____
+"""
+
+InputRaw_Str = InputRaw_Str[1:-1]
+
+print("Input:")
+print(InputRaw_Str)
