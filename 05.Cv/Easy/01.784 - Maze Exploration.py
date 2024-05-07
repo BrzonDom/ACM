@@ -133,6 +133,9 @@ def dataExtract(InputLines):
     return Maze, mzStrt, inMaze
 
 
+# def fillMaze(Maze, mzStrt, inMaze):
+
+
 InputRaw_Str = """
 2
 XXXXXXXXX
@@ -200,11 +203,11 @@ if __name__ == '__main__':
         print(f"\t\t\tStart: {mzStrt}")
         print()
 
-        stackFill = [mzStrt]
+        # for r, row in enumerate(Maze):
+        #     print(f"\t\t\t\t[{r:<2} {inMaze[r]:2}] : {row}")
+        # print()
 
-        for r, row in enumerate(Maze):
-            print(f"\t\t\t\t[{r:<2} {inMaze[r]:2}] : {row}")
-        print()
+        stackFill = [mzStrt]
 
         while len(stackFill) > 0:
 
@@ -238,7 +241,8 @@ if __name__ == '__main__':
                 print(col, end="")
             print()
 
-        print("\n")
+        if (case+1) < caseNum:
+            print("\n")
 
 
 """__Output__"""
@@ -278,16 +282,6 @@ _____
 
 			Start: [2, 4]
 
-				[0   9] : ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X']
-				[1   9] : ['X', ' ', ' ', ' ', 'X', ' ', ' ', ' ', 'X']
-				[2   9] : ['X', ' ', ' ', ' ', '*', ' ', ' ', ' ', 'X']
-				[3   9] : ['X', ' ', ' ', ' ', 'X', ' ', ' ', ' ', 'X']
-				[4   9] : ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X']
-				[5   5] : ['X', ' ', ' ', ' ', 'X']
-				[6   5] : ['X', ' ', ' ', ' ', 'X']
-				[7   5] : ['X', ' ', ' ', ' ', 'X']
-				[8   5] : ['X', 'X', 'X', 'X', 'X']
-
 			XXXXXXXXX
 			X###X###X
 			X#######X
@@ -309,19 +303,11 @@ _____
 
 			Start: [2, 2]
 
-				[0   5] : ['X', 'X', 'X', 'X', 'X']
-				[1   5] : ['X', ' ', ' ', ' ', 'X']
-				[2   5] : ['X', ' ', '*', ' ', 'X']
-				[3   5] : ['X', ' ', ' ', ' ', 'X']
-				[4   5] : ['X', 'X', 'X', 'X', 'X']
-
 			XXXXX
 			X###X
 			X###X
 			X###X
 			XXXXX
-
-
 
 Process finished with exit code 0
 
