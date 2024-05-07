@@ -54,7 +54,7 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=667&p
             2. The rest of the file contains the mazes.
 
         The lines of the input file can be of different length. The text which represents a maze is terminated
-        by a separation line full of underscores (` '). There are at most 30 lines and at most 80 characters in a
+        by a separation line full of underscores ('_'). There are at most 30 lines and at most 80 characters in a
         line for each maze. The program reads the mazes from the standard input
 
     Output:
@@ -131,3 +131,19 @@ caseNum = int(InputLines.pop(0))
 
 print(f"\tCases: {caseNum}")
 print()
+
+for case in range(caseNum):
+
+    print(f"\t\tCase: {case+1}")
+    print()
+
+    mazeLine = InputLines.pop(0)
+    Maze = []
+
+    while '_' not in mazeLine:
+        Maze.append(mazeLine)
+        print(f"\t\t\t{mazeLine}")
+
+        mazeLine = InputLines.pop(0)
+
+    print("\n")
