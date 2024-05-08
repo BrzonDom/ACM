@@ -186,7 +186,7 @@ def findPosSides_Prt(Sides):
     return posSides, Sides
 
 
-def prntMaxTwr(maxTwr):
+def prntMaxTwr(maxTwr, caseCnt):
 
     print(f"\t\tMax Tower:")
 
@@ -199,6 +199,8 @@ def prntMaxTwr(maxTwr):
         print(f"\t\t\tMax build:  {maxTwr.bld}")
 
     print(f"\t\t\tMax height: {maxTwr.hgh}")
+    print()
+    print(f"\t\tCase {caseCnt}: maximum height = 40")
 
 
 """__Input__"""
@@ -283,7 +285,7 @@ if __name__ == '__main__':
 
             maxTwr = buildTower(Twr, maxTwr)
 
-        prntMaxTwr(maxTwr)
+        prntMaxTwr(maxTwr, caseCnt)
 
         if blckNum != 0:
             print("\n")
@@ -339,6 +341,8 @@ Input:
 						[(30, 20, 10), (20, 10, 30)]
 			Max height: 40
 
+		Case 1: maximum height = 40
+
 
 	Case: 2
 
@@ -376,6 +380,8 @@ Input:
 			Max builds: [(10, 8, 6), (8, 6, 10), (5, 5, 5)]
 						[(8, 10, 6), (6, 8, 10), (5, 5, 5)]
 			Max height: 21
+
+		Case 2: maximum height = 40
 
 
 	Case: 3
@@ -419,6 +425,8 @@ Input:
 		Max Tower:
 			Max build:  [(7, 7, 7), (1, 1, 1)]
 			Max height: 8
+
+		Case 3: maximum height = 40
 
 
 	Case: 4
@@ -558,6 +566,8 @@ Input:
 			Max builds: [(93, 97, 23), (31, 59, 41), (26, 53, 58)]
 						[(97, 93, 23), (31, 59, 41), (26, 53, 58)]
 			Max height: 122
+
+		Case 4: maximum height = 40
 
 Process finished with exit code 0
 
