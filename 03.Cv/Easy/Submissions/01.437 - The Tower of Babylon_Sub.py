@@ -60,6 +60,110 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=6&pag
 """
 from itertools import permutations
 
+
+"""
+def extractBlocks_Prt(blckNum):
+
+    Blocks = []
+
+    for b in range(blckNum):
+
+        InLine = input()
+
+        blck = list(map(int, InLine.split()))
+        Blocks.append(blck)
+
+        print(f"\t\t{b + 1}. {blck}")
+    print()
+
+    blckNum = int(input())
+
+    return Blocks, blckNum
+
+
+def prntBlocks(Blocks):
+
+    print("\t\tBlocks:")
+
+    for b, blck in enumerate(Blocks):
+
+        print(f"\t\t\t{b + 1}. {blck}")
+    print()
+    
+
+def prntSides(Sides):
+
+    print(f"\t\tSides:\n\t\t\t", end="")
+
+    for s, sd in enumerate(Sides):
+        print(sd, end=" ")
+
+        if (s + 1) % 5 == 0 and (s + 1) != len(Sides):
+            print("\n\t\t\t", end="")
+    print("\n")
+
+
+def prntSidesPosNum(Sides, posSides):
+
+    for sd in Sides:
+
+        if len(posSides[str(sd)]) == 0:
+            break
+
+        print(f"\t\t\t{sd} : {len(posSides[str(sd)])}")
+    print()
+
+
+def findPosSides_Prt(Sides):
+
+    posSides = {}
+
+    for sd in Sides:
+        print(f"\t\t\tSide: {sd} ")
+
+        posSides[str(sd)] = []
+
+        for nxtSd in Sides:
+            if nxtSd[0] < sd[0] and nxtSd[1] < sd[1]:
+                posSides[str(sd)] += [nxtSd]
+
+        if posSides[str(sd)]:
+            print(f"\t\t\t\tNum. of pos. sides: {len(posSides[str(sd)])}")
+            print("\t\t\t\t\t", end="")
+
+            for s, psSd in enumerate(posSides[str(sd)]):
+                print(psSd, end=" ")
+
+                if (s + 1) % 5 == 0 and (s + 1) != len(posSides[str(sd)]):
+                    print("\n\t\t\t\t\t", end="")
+            print("\n")
+        else:
+            print()
+    print()
+
+    Sides.sort(key=lambda key: len(posSides[str(key)]), reverse=True)
+
+    return posSides, Sides
+
+
+def prntMaxTwr(maxTwr, caseCnt):
+
+    print(f"\t\tMax Tower:")
+
+    if type(maxTwr.bld[0]) == list:
+        print(f"\t\t\tMax builds: {maxTwr.bld[0]}")
+
+        for maxBld in maxTwr.bld[1:]:
+            print(f"\t\t\t\t\t\t{maxBld}")
+    else:
+        print(f"\t\t\tMax build:  {maxTwr.bld}")
+
+    print(f"\t\t\tMax height: {maxTwr.hgh}")
+    print()
+    print(f"\t\tCase {caseCnt}: maximum height = {maxTwr.hgh}")
+"""
+
+
 class Tower:
     def __init__(self, bld, sds, hgh):
         self.bld = bld
@@ -133,25 +237,6 @@ def extractBlocks(blckNum):
     return Blocks, blckNum
 
 
-def extractBlocks_Prt(blckNum):
-
-    Blocks = []
-
-    for b in range(blckNum):
-
-        InLine = input()
-
-        blck = list(map(int, InLine.split()))
-        Blocks.append(blck)
-
-        print(f"\t\t{b + 1}. {blck}")
-    print()
-
-    blckNum = int(input())
-
-    return Blocks, blckNum
-
-
 def extractSides(Blocks):
 
     Sides = []
@@ -160,39 +245,6 @@ def extractSides(Blocks):
         Sides += list(set(permutations(blck, 3)))
 
     return Sides
-
-
-def prntBlocks(Blocks):
-
-    print("\t\tBlocks:")
-
-    for b, blck in enumerate(Blocks):
-
-        print(f"\t\t\t{b + 1}. {blck}")
-    print()
-
-
-def prntSides(Sides):
-
-    print(f"\t\tSides:\n\t\t\t", end="")
-
-    for s, sd in enumerate(Sides):
-        print(sd, end=" ")
-
-        if (s + 1) % 5 == 0 and (s + 1) != len(Sides):
-            print("\n\t\t\t", end="")
-    print("\n")
-
-
-def prntSidesPosNum(Sides, posSides):
-
-    for sd in Sides:
-
-        if len(posSides[str(sd)]) == 0:
-            break
-
-        print(f"\t\t\t{sd} : {len(posSides[str(sd)])}")
-    print()
 
 
 def findPosSides(Sides):
@@ -211,54 +263,6 @@ def findPosSides(Sides):
 
     return posSides, Sides
 
-
-def findPosSides_Prt(Sides):
-
-    posSides = {}
-
-    for sd in Sides:
-        print(f"\t\t\tSide: {sd} ")
-
-        posSides[str(sd)] = []
-
-        for nxtSd in Sides:
-            if nxtSd[0] < sd[0] and nxtSd[1] < sd[1]:
-                posSides[str(sd)] += [nxtSd]
-
-        if posSides[str(sd)]:
-            print(f"\t\t\t\tNum. of pos. sides: {len(posSides[str(sd)])}")
-            print("\t\t\t\t\t", end="")
-
-            for s, psSd in enumerate(posSides[str(sd)]):
-                print(psSd, end=" ")
-
-                if (s + 1) % 5 == 0 and (s + 1) != len(posSides[str(sd)]):
-                    print("\n\t\t\t\t\t", end="")
-            print("\n")
-        else:
-            print()
-    print()
-
-    Sides.sort(key=lambda key: len(posSides[str(key)]), reverse=True)
-
-    return posSides, Sides
-
-
-def prntMaxTwr(maxTwr, caseCnt):
-
-    print(f"\t\tMax Tower:")
-
-    if type(maxTwr.bld[0]) == list:
-        print(f"\t\t\tMax builds: {maxTwr.bld[0]}")
-
-        for maxBld in maxTwr.bld[1:]:
-            print(f"\t\t\t\t\t\t{maxBld}")
-    else:
-        print(f"\t\t\tMax build:  {maxTwr.bld}")
-
-    print(f"\t\t\tMax height: {maxTwr.hgh}")
-    print()
-    print(f"\t\tCase {caseCnt}: maximum height = {maxTwr.hgh}")
 
 
 """__Input__"""
@@ -289,9 +293,9 @@ InputStr = InputRaw_Str[1:-1]
 
 if __name__ == '__main__':
 
-    print("Input:")
-    print(InputStr)
-    print()
+    # print("Input:")
+    # print(InputStr)
+    # print()
 
     InputLines = InputStr.split("\n")
 
@@ -309,8 +313,12 @@ if __name__ == '__main__':
 
         Sides = extractSides(Blocks)
 
+        # prntSides(Sides)
+
         # posSides, Sides = findPosSides_Prt(Sides)
         posSides, Sides = findPosSides(Sides)
+
+        # prntSidesPosNum(Sides, posSides)
 
         maxTwr = Tower([], Sides, 0)
 
@@ -330,10 +338,5 @@ if __name__ == '__main__':
             maxTwr = buildTower(Twr, maxTwr)
 
         # prntMaxTwr(maxTwr, caseCnt)
-
-        # print(f"\tCase {caseCnt}: maximum height = {maxTwr.hgh}")
-        #
-        # if caseCnt != len(BlockLst):
-        #     print()
 
         print(f"Case {caseCnt}: maximum height = {maxTwr.hgh}")
