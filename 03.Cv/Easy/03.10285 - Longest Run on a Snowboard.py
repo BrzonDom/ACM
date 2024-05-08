@@ -101,10 +101,28 @@ if __name__ == '__main__':
         for r in range(rowDim):
 
             rowStr = InputLines.pop(0)
-            print(f"\t\t\t{rowStr}")
+            # print(f"\t\t\t{rowStr}")
 
             row = list(map(int, rowStr.split()))
             slope.append(row)
+        # print()
+
+        strHgh = 0
+        strCrd = []
+
+        for r in range(rowDim):
+            print(f"\t\t\t\t", end="")
+            for c in range(colDim):
+                print(f"{slope[r][c]:2}", end=" ")
+
+                if slope[r][c] > strHgh:
+                    strHgh = slope[r][c]
+                    strCrd = [r, c]
+            print()
         print()
+
+        print(f"\t\t\tStart: {strCrd}")
+        print()
+
 
         print("\n")
