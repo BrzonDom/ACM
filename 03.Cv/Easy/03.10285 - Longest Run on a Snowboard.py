@@ -67,45 +67,44 @@ Spiral 5 5
 
 InputRaw_Str = InputRaw_Str[1:-1]
 
-print("Input:")
-print(InputRaw_Str)
-print()
+if __name__ == '__main__':
 
-InputLines = InputRaw_Str.split("\n")
-
-caseNum = int(InputLines.pop(0))
-
-print(f"\tCases: {caseNum}")
-print()
-
-for case in range(caseNum):
-
-    print(f"\t\tCase: {case+1}")
+    print("Input:")
+    print(InputRaw_Str)
     print()
 
-    infLine = InputLines.pop(0)
+    InputLines = InputRaw_Str.split("\n")
 
-    name = infLine.split()[0]
-    dim = list(map(int, infLine.split()[1:]))
+    caseNum = int(InputLines.pop(0))
 
-    print(f"\t\t\tName: {name}")
-    print(f"\t\t\tDim: {dim}")
+    print(f"\tCases: {caseNum}")
     print()
 
-    rowDim, colDim = dim[0], dim[1]
+    for case in range(caseNum):
 
-    slope = []
+        print(f"\t\tCase: {case+1}")
+        print()
 
-    for r in range(rowDim):
+        infLine = InputLines.pop(0)
 
-        rowStr = InputLines.pop(0)
-        print(f"\t\t\t{rowStr}")
+        name = infLine.split()[0]
+        dim = list(map(int, infLine.split()[1:]))
 
-        row = list(map(int, rowStr.split()))
-        slope.append(row)
-    print()
+        print(f"\t\t\tName: {name}")
+        print(f"\t\t\tDim: {dim}")
+        print()
 
-    for row in slope:
-        print(f"\t\t\t{row}")
+        rowDim, colDim = dim[0], dim[1]
 
-    print("\n")
+        slope = []
+
+        for r in range(rowDim):
+
+            rowStr = InputLines.pop(0)
+            print(f"\t\t\t{rowStr}")
+
+            row = list(map(int, rowStr.split()))
+            slope.append(row)
+        print()
+
+        print("\n")
