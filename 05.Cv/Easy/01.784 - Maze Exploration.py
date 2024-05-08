@@ -114,13 +114,13 @@ def dataExtract_Prt(InputLines):
     mzCnt = 0
     Maze = []
 
-    inMaze = {}
+    dimMaze = {}
 
     while '_' not in mazeLine:
         Maze.append(list(mazeLine))
         print(f"\t\t\t{mazeLine}")
 
-        inMaze[mzCnt] = len(mazeLine)
+        dimMaze[mzCnt] = len(mazeLine)
 
         if '*' in mazeLine:
             mzStrt[0] = mzCnt
@@ -132,11 +132,14 @@ def dataExtract_Prt(InputLines):
 
     sepLine = mazeLine
 
-    return Maze, mzStrt, inMaze, sepLine
+    return Maze, mzStrt, dimMaze, sepLine
 
 
-def fillMaze(Maze, mzStrt, inMaze):
+def fillMaze(Maze, mzStrt, dimMaze):
+
     stackFill = [mzStrt]
+    filled = set()
+    filled.add((mzStrt[0], mzStrt[1]))
 
     while len(stackFill) > 0:
 
@@ -146,24 +149,31 @@ def fillMaze(Maze, mzStrt, inMaze):
 
         Maze[curR][curC] = '#'
 
-        if (curR + 1) in inMaze:
-            if (curC) <= inMaze[curR + 1]:
-                if Maze[curR + 1][curC] == ' ':
-                    stackFill.append([curR + 1, curC])
+        if (curR + 1, curC) not in filled:
+            if (curR + 1) in dimMaze:
+                if (curC) <= dimMaze[curR + 1]:
+                    if Maze[curR + 1][curC] == ' ':
+                        stackFill.append([curR + 1, curC])
+                        filled.add((curR + 1, curC))
 
-        if (curR - 1) in inMaze:
-            if (curC) <= inMaze[curR - 1]:
-                if Maze[curR - 1][curC] == ' ':
-                    stackFill.append([curR - 1, curC])
+        if (curR - 1, curC) not in filled:
+            if (curR - 1) in dimMaze:
+                if (curC) <= dimMaze[curR - 1]:
+                    if Maze[curR - 1][curC] == ' ':
+                        stackFill.append([curR - 1, curC])
+                        filled.add((curR - 1, curC))
 
-        if (curC + 1) <= inMaze[curR]:
-            if Maze[curR][curC + 1] == ' ':
-                stackFill.append([curR, curC + 1])
+        if (curR, curC + 1) not in filled:
+            if (curC + 1) <= dimMaze[curR]:
+                if Maze[curR][curC + 1] == ' ':
+                    stackFill.append([curR, curC + 1])
+                    filled.add((curR, curC + 1))
 
-        if (curC - 1) <= inMaze[curR]:
-            if Maze[curR][curC - 1] == ' ':
-                stackFill.append([curR, curC - 1])
-
+        if (curR, curC - 1) not in filled:
+            if (curC - 1) <= dimMaze[curR]:
+                if Maze[curR][curC - 1] == ' ':
+                    stackFill.append([curR, curC - 1])
+                    filled.add((curR, curC - 1))
     return Maze
 
 
