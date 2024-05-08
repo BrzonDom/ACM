@@ -331,7 +331,9 @@ if __name__ == '__main__':
 
         # prntMaxTwr(maxTwr, caseCnt)
 
-        print(f"\tCase {caseCnt}: maximum height = {maxTwr.hgh}")
+        # print(f"\tCase {caseCnt}: maximum height = {maxTwr.hgh}")
+        #
+        # if caseCnt != len(BlockLst):
+        #     print()
 
-        if caseCnt != len(BlockLst):
-            print()
+        print(f"Case {caseCnt}: maximum height = {maxTwr.hgh}")
