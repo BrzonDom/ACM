@@ -84,18 +84,6 @@ def buildTower(Twr, maxTwr):
 
         maxTwr = checkMaxTwr(Twr, maxTwr)
 
-        # if Twr.hgh > maxTwr.hgh:
-        #     maxTwr.bld = Twr.bld
-        #     maxTwr.sds = Twr.sds
-        #     maxTwr.hgh = Twr.hgh
-        #
-        # elif Twr.hgh == maxTwr.hgh:
-        #     if type(maxTwr.bld[0]) == list:
-        #         maxTwr.bld += [Twr.bld]
-        #
-        #     else:
-        #         maxTwr.bld = [maxTwr.bld] + [Twr.bld]
-
         return maxTwr
 
 
@@ -198,6 +186,21 @@ def findPosSides_Prt(Sides):
     return posSides
 
 
+def prntMaxTwr(maxTwr):
+
+    print(f"\t\tMax Tower:")
+
+    if type(maxTwr.bld[0]) == list:
+        print(f"\t\t\tMax builds: {maxTwr.bld[0]}")
+
+        for maxBld in maxTwr.bld[1:]:
+            print(f"\t\t\t\t\t\t{maxBld}")
+    else:
+        print(f"\t\t\tMax build:  {maxTwr.bld}")
+
+    print(f"\t\t\tMax height: {maxTwr.hgh}")
+
+
 """__Input__"""
 InputRaw_Str = """
 1
@@ -263,16 +266,6 @@ if __name__ == '__main__':
 
         # prntSidesPosNum(Sides, posSides)
 
-        # Sides.sort(key=lambda key: len(posSides[str(key)]), reverse=True)
-        #
-        # for sd in Sides:
-        #
-        #     if len(posSides[str(sd)]) == 0:
-        #         break
-        #
-        #     print(f"\t\t\t{sd} : {len(posSides[str(sd)])}")
-        # print()
-
         maxTwr = Tower([], Sides, 0)
 
         Sides.sort(key=lambda key: len(posSides[str(key)]), reverse=True)
@@ -289,23 +282,13 @@ if __name__ == '__main__':
 
             maxTwr = checkMaxTwr(Twr, maxTwr)
 
-            # if Twr.hgh > maxTwr.hgh:
-            #     maxTwr.bld = Twr.bld
-            #     maxTwr.sds = Twr.sds
-            #     maxTwr.hgh = Twr.hgh
-            #
-            # elif Twr.hgh == maxTwr.hgh:
-            #     if type(maxTwr.bld[0]) == list:
-            #         maxTwr.bld += [Twr.bld]
-            #
-            #     else:
-            #         maxTwr.bld = [maxTwr.bld] + [Twr.bld]
-
             maxTwr = buildTower(Twr, maxTwr)
 
-        print(f"\t\tMax Tower:")
-        print(f"\t\t\tMax build:  {maxTwr.bld}")
-        print(f"\t\t\tMax height: {maxTwr.hgh}")
+        prntMaxTwr(maxTwr)
+
+        # print(f"\t\tMax Tower:")
+        # print(f"\t\t\tMax build:  {maxTwr.bld}")
+        # print(f"\t\t\tMax height: {maxTwr.hgh}")
 
         if blckNum != 0:
             print("\n")
@@ -361,7 +344,8 @@ Input:
 
 
 		Max Tower:
-			Max build:  [[(20, 30, 10), (10, 20, 30)], [(30, 20, 10), (20, 10, 30)]]
+			Max builds: [(20, 30, 10), (10, 20, 30)]
+						[(30, 20, 10), (20, 10, 30)]
 			Max height: 40
 
 
@@ -402,7 +386,8 @@ Input:
 
 
 		Max Tower:
-			Max build:  [[(10, 8, 6), (8, 6, 10), (5, 5, 5)], [(8, 10, 6), (6, 8, 10), (5, 5, 5)]]
+			Max builds: [(10, 8, 6), (8, 6, 10), (5, 5, 5)]
+						[(8, 10, 6), (6, 8, 10), (5, 5, 5)]
 			Max height: 21
 
 
@@ -595,7 +580,8 @@ Input:
 
 
 		Max Tower:
-			Max build:  [[(93, 97, 23), (31, 59, 41), (26, 53, 58)], [(97, 93, 23), (31, 59, 41), (26, 53, 58)]]
+			Max builds: [(93, 97, 23), (31, 59, 41), (26, 53, 58)]
+						[(97, 93, 23), (31, 59, 41), (26, 53, 58)]
 			Max height: 122
 
 Process finished with exit code 0
