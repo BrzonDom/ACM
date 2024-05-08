@@ -108,7 +108,7 @@ def dataProcess(InputRaw_Str):
     return InputLines, caseNum
 
 
-def dataExtract(MazeLines):
+def dataExtract_Prt(MazeLines):
 
     mzStrt = [0, 0]
     mzCnt = 0
@@ -130,6 +130,29 @@ def dataExtract(MazeLines):
     print()
 
     return Maze, mzStrt, inMaze
+
+
+def dataExtract(MazeLines):
+
+    mzStrt = [0, 0]
+    mzCnt = 0
+    Maze = []
+
+    inMaze = {}
+
+    for mzLine in MazeLines:
+        Maze.append(list(mzLine))
+
+        inMaze[mzCnt] = len(mzLine)
+
+        if '*' in mzLine:
+            mzStrt[0] = mzCnt
+            mzStrt[1] = mzLine.index('*')
+
+        mzCnt += 1
+
+    return Maze, mzStrt, inMaze
+
 
 def dataSplit(caseNum):
 
@@ -238,72 +261,3 @@ if __name__ == '__main__':
 
         if (case+1) < caseNum:
             print("\n")
-
-
-"""__Output__"""
-"""
-Input:
-2
-XXXXXXXXX
-X   X   X
-X   *   X
-X   X   X
-XXXXXXXXX
-X   X
-X   X
-X   X
-XXXXX
-_____
-XXXXX
-X   X
-X * X
-X   X
-XXXXX
-_____
-
-	Case: 1
-
-			XXXXXXXXX
-			X   X   X
-			X   *   X
-			X   X   X
-			XXXXXXXXX
-			X   X
-			X   X
-			X   X
-			XXXXX
-
-		Start: [2, 4]
-
-		XXXXXXXXX
-		X###X###X
-		X#######X
-		X###X###X
-		XXXXXXXXX
-		X   X
-		X   X
-		X   X
-		XXXXX
-		_____
-
-
-	Case: 2
-
-			XXXXX
-			X   X
-			X * X
-			X   X
-			XXXXX
-
-		Start: [2, 2]
-
-		XXXXX
-		X###X
-		X###X
-		X###X
-		XXXXX
-		_____
-
-Process finished with exit code 0
-
-"""
