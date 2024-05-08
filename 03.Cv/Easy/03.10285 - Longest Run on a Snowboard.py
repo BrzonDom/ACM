@@ -44,6 +44,27 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=14&pa
                 Spiral: 25
 """
 
+
+def findPath(curPos, dim, strt, slope, dstnc):
+
+    cRw, cCl = curPos[0], curPos[1]
+    rwDm, clDm = dim[0], dim[1]
+    sRw, sCl = strt[0], strt[1]
+
+    mvs = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+
+    for mvR, mvC in mvs:
+        nRw, nCl = cRw + mvR, cCl + mvC
+        nxtPos = [nRw, nCl]
+
+        if 0 <= nRw < rwDm and 0 <= nCl < clDm and slope[nRw][nCl] < slope[cRw][cCl]:
+
+            if (dstnc+1) > path[str(strt)]:
+                path[str(strt)] = (dstnc+1)
+
+            findPath(nxtPos, dim, strt, slope, dstnc+1)
+
+
 InputRaw_Str = """
 2
 Feldberg 10 5
@@ -124,5 +145,15 @@ if __name__ == '__main__':
         print(f"\t\t\tStart: {strCrd}")
         print()
 
+        path = {}
 
-        print("\n")
+        for r in range(rowDim):
+            for c in range(colDim):
+                path[str((r, c))] = 0
+
+                findPath([r, c], dim, (r, c), slope, 0)
+
+                print(f"\t\t\t{[r, c]}: {path[str((r, c))]}")
+
+        if (case+1) < caseNum:
+            print("\n")
