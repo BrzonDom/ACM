@@ -145,6 +145,8 @@ def prntSides(Sides):
 
 def prntSidesPosNum(Sides, posSides):
 
+    print(f"\t\tPossible sides:")
+
     for sd in Sides:
 
         if len(posSides[str(sd)]) == 0:
@@ -181,6 +183,23 @@ def findPosSides_Prt(Sides):
         else:
             print()
     print()
+
+    Sides.sort(key=lambda key: len(posSides[str(key)]), reverse=True)
+
+    return posSides, Sides
+
+
+def findPosSides(Sides):
+
+    posSides = {}
+
+    for sd in Sides:
+
+        posSides[str(sd)] = []
+
+        for nxtSd in Sides:
+            if nxtSd[0] < sd[0] and nxtSd[1] < sd[1]:
+                posSides[str(sd)] += [nxtSd]
 
     Sides.sort(key=lambda key: len(posSides[str(key)]), reverse=True)
 
@@ -229,19 +248,93 @@ InputRaw_Str = """
 """
 
 InputTst_Str = """
-7
-1 1 1
-2 2 2
-3 3 3
-4 4 4
-5 5 5
-6 6 6
-7 7 7
+5
+31 41 59
+26 53 58
+97 93 23
+84 62 64
+33 83 27
+20
+10 19 18
+18 19 22
+23 33 34
+19 21 22
+32 32 31
+10 90 10
+10 80 10
+22 22 29
+29 28 27
+26 25 24
+19 80  1
+22 21 31
+29 28 55
+58 42 39
+48 78 32
+2   2 90
+3  99 33
+54 44 44
+57 13 33
+10 29 80
+5
+1  1  1
+1  2  1
+1  3  1
+1  4  1 
+1  5  1
+5
+2  3 100
+3  4 200
+4  6  50
+6  8 100
+5  5  75
+1
+80 90 100
+6
+15 19 3
+44 33 21
+88 33 57
+31 29 20
+99 88 1
+52 26 5
+2
+100 100 100
+102  98 100
+10
+1 2 3
+4 5 6
+7 8 9
+10 11 12
+13 14 15
+16 17 18
+19 20 21
+22 23 24
+25 26 27
+28 29 30
+8
+10 16 1
+5  8  2
+20 32 2
+10 16 2
+16 10 2
+32 20 2
+8  5  2
+16 10 1
 0
 """
 
-InputStr = InputRaw_Str[1:-1]
+InputPartTst_Str = """
+5
+31 41 59
+26 53 58
+97 93 23
+84 62 64
+33 83 27
+0
+"""
+
+# InputStr = InputRaw_Str[1:-1]
 # InputStr = InputTst_Str[1:-1]
+InputStr = InputPartTst_Str[1:-1]
 
 if __name__ == '__main__':
 
@@ -266,8 +359,9 @@ if __name__ == '__main__':
         # prntSides(Sides)
 
         posSides, Sides = findPosSides_Prt(Sides)
+        # posSides, Sides = findPosSides(Sides)
 
-        # prntSidesPosNum(Sides, posSides)
+        prntSidesPosNum(Sides, posSides)
 
         maxTwr = Tower([], Sides, 0)
 
