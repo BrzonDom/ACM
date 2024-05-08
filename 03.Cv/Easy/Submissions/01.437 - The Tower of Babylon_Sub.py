@@ -142,6 +142,23 @@ def findPosSides_Prt(Sides):
     Sides.sort(key=lambda key: len(posSides[str(key)]), reverse=True)
 
     return posSides, Sides
+    
+
+def sortPosSides_Prt(posSides):
+
+    for orgSd in posSides:
+        print(f"\t\tSide: {orgSd}")
+        print(f"\t\t\tUnsorted: {posSides[orgSd]}")
+
+        posSds = posSides[orgSd]
+        posSds.sort(key=lambda key: len(posSides[str(key)]), reverse=True)
+
+        posSides[orgSd] = posSds
+
+        print(f"\t\t\tSorted:   {posSides[orgSd]}")
+        print()
+
+    return posSides
 
 
 def prntMaxTwr(maxTwr, caseCnt):
@@ -264,6 +281,18 @@ def findPosSides(Sides):
     return posSides, Sides
 
 
+def sortPosSides(posSides):
+
+    for orgSd in posSides:
+
+        posSds = posSides[orgSd]
+        posSds.sort(key=lambda key: len(posSides[str(key)]), reverse=True)
+
+        posSides[orgSd] = posSds
+
+    return posSides
+
+
 
 """__Input__"""
 InputRaw_Str = """
@@ -317,6 +346,8 @@ if __name__ == '__main__':
 
         # posSides, Sides = findPosSides_Prt(Sides)
         posSides, Sides = findPosSides(Sides)
+
+        posSides = sortPosSides(posSides)
 
         # prntSidesPosNum(Sides, posSides)
 
