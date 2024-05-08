@@ -107,7 +107,7 @@ def dataProcess(InputRaw_Str):
     return InputLines, caseNum
 
 
-def dataExtract(InputLines):
+def dataExtract_Prt(InputLines):
 
     mazeLine = InputLines.pop(0)
     mzStrt = [0, 0]
@@ -206,7 +206,7 @@ if __name__ == '__main__':
         print(f"\t\tCase: {case+1}")
         print()
 
-        Maze, mzStrt, inMaze = dataExtract(InputLines)
+        Maze, mzStrt, inMaze = dataExtract_Prt(InputLines)
 
         print(f"\t\t\tStart: {mzStrt}")
         print()
