@@ -242,13 +242,13 @@ if __name__ == '__main__':
 
     for case, MazeLines in enumerate(MazeLst):
 
-        print(f"\tCase: {case+1}")
-        print()
+        # print(f"\tCase: {case+1}")
+        # print()
 
         Maze, mzStrt, inMaze = dataExtract(MazeLines)
 
-        print(f"\t\tStart: {mzStrt}")
-        print()
+        # print(f"\t\tStart: {mzStrt}")
+        # print()
 
         solMaze = fillMaze(Maze, mzStrt, inMaze)
 
