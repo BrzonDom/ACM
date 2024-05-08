@@ -104,6 +104,21 @@ def checkMaxTwr(Twr, maxTwr):
     return maxTwr
 
 
+def extractData():
+
+    blckNum = int(input())
+    caseCnt = 0
+
+    BlckLst = []
+
+    while blckNum != 0:
+
+        Blocks, blckNum = extractBlocks_Prt(blckNum)
+        BlckLst.append(Blocks)
+
+    return BlckLst
+
+
 # def extractBlocks_Prt(InputLines, blckNum):
 def extractBlocks_Prt(blckNum):
 
@@ -254,19 +269,19 @@ if __name__ == '__main__':
 
     InputLines = InputStr.split("\n")
 
-    # blckNum = int(InputLines.pop(0))
-    blckNum = int(input())
+    BlockLst = extractData()
 
     caseCnt = 0
 
-    while blckNum > 0:
+    # while blckNum > 0:
+    for Blocks in BlockLst:
 
         caseCnt += 1
         print(f"\tCase: {caseCnt}")
         print()
 
         # Blocks, blckNum = extractBlocks_Prt(InputLines, blckNum)
-        Blocks, blckNum = extractBlocks_Prt(blckNum)
+        # Blocks, blckNum = extractBlocks_Prt(blckNum)
 
         Sides = extractSides(Blocks)
 
@@ -295,37 +310,35 @@ if __name__ == '__main__':
 
         prntMaxTwr(maxTwr, caseCnt)
 
-        if blckNum != 0:
+        # if blckNum != 0:
+        #     print("\n")
+
+        if caseCnt != len(BlockLst):
             print("\n")
 
 
 """__Output__"""
 """
-Input:
-1
-10 20 30
-2
-6 8 10
-5 5 5
-7
-1 1 1
-2 2 2
-3 3 3
-4 4 4
-5 5 5
-6 6 6
-7 7 7
-5
-31 41 59
-26 53 58
-97 93 23
-84 62 64
-33 83 27
-0
+		1. [10, 20, 30]
+
+		1. [6, 8, 10]
+		2. [5, 5, 5]
+
+		1. [1, 1, 1]
+		2. [2, 2, 2]
+		3. [3, 3, 3]
+		4. [4, 4, 4]
+		5. [5, 5, 5]
+		6. [6, 6, 6]
+		7. [7, 7, 7]
+
+		1. [31, 41, 59]
+		2. [26, 53, 58]
+		3. [97, 93, 23]
+		4. [84, 62, 64]
+		5. [33, 83, 27]
 
 	Case: 1
-
-		1. [10, 20, 30]
 
 			Side: (10, 30, 20) 
 
@@ -353,9 +366,6 @@ Input:
 
 
 	Case: 2
-
-		1. [6, 8, 10]
-		2. [5, 5, 5]
 
 			Side: (6, 8, 10) 
 				Num. of pos. sides: 1
@@ -394,14 +404,6 @@ Input:
 
 	Case: 3
 
-		1. [1, 1, 1]
-		2. [2, 2, 2]
-		3. [3, 3, 3]
-		4. [4, 4, 4]
-		5. [5, 5, 5]
-		6. [6, 6, 6]
-		7. [7, 7, 7]
-
 			Side: (1, 1, 1) 
 
 			Side: (2, 2, 2) 
@@ -438,12 +440,6 @@ Input:
 
 
 	Case: 4
-
-		1. [31, 41, 59]
-		2. [26, 53, 58]
-		3. [97, 93, 23]
-		4. [84, 62, 64]
-		5. [33, 83, 27]
 
 			Side: (31, 59, 41) 
 				Num. of pos. sides: 3
