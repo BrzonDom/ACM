@@ -81,7 +81,6 @@ def buildTower(Twr, maxTwr):
             return buildTower(nxtTwr, maxTwr)
 
     else:
-
         maxTwr = checkMaxTwr(Twr, maxTwr)
 
         return maxTwr
@@ -259,7 +258,7 @@ def prntMaxTwr(maxTwr, caseCnt):
 
     print(f"\t\t\tMax height: {maxTwr.hgh}")
     print()
-    print(f"\t\tCase {caseCnt}: maximum height = 40")
+    print(f"\t\tCase {caseCnt}: maximum height = {maxTwr.hgh}")
 
 
 """__Input__"""
@@ -286,20 +285,7 @@ InputRaw_Str = """
 0
 """
 
-InputTst_Str = """
-7
-1 1 1
-2 2 2
-3 3 3
-4 4 4
-5 5 5
-6 6 6
-7 7 7
-0
-"""
-
 InputStr = InputRaw_Str[1:-1]
-# InputStr = InputTst_Str[1:-1]
 
 if __name__ == '__main__':
 
@@ -313,17 +299,13 @@ if __name__ == '__main__':
 
     caseCnt = 0
 
-    # while blckNum > 0:
     for Blocks in BlockLst:
 
         caseCnt += 1
-        print(f"\tCase: {caseCnt}")
-        print()
+        # print(f"\tCase: {caseCnt}")
+        # print()
 
-        prntBlocks(Blocks)
-
-        # Blocks, blckNum = extractBlocks_Prt(InputLines, blckNum)
-        # Blocks, blckNum = extractBlocks_Prt(blckNum)
+        # prntBlocks(Blocks)
 
         Sides = extractSides(Blocks)
 
@@ -347,78 +329,9 @@ if __name__ == '__main__':
 
             maxTwr = buildTower(Twr, maxTwr)
 
-        prntMaxTwr(maxTwr, caseCnt)
+        # prntMaxTwr(maxTwr, caseCnt)
 
-        # if blckNum != 0:
-        #     print("\n")
+        print(f"\tCase {caseCnt}: maximum height = {maxTwr.hgh}")
 
         if caseCnt != len(BlockLst):
-            print("\n")
-
-
-"""__Output__"""
-"""
-	Case: 1
-
-		Blocks:
-			1. [10, 20, 30]
-
-		Max Tower:
-			Max builds: [(20, 30, 10), (10, 20, 30)]
-						[(30, 20, 10), (20, 10, 30)]
-			Max height: 40
-
-		Case 1: maximum height = 40
-
-
-	Case: 2
-
-		Blocks:
-			1. [6, 8, 10]
-			2. [5, 5, 5]
-
-		Max Tower:
-			Max builds: [(10, 8, 6), (8, 6, 10), (5, 5, 5)]
-						[(8, 10, 6), (6, 8, 10), (5, 5, 5)]
-			Max height: 21
-
-		Case 2: maximum height = 40
-
-
-	Case: 3
-
-		Blocks:
-			1. [1, 1, 1]
-			2. [2, 2, 2]
-			3. [3, 3, 3]
-			4. [4, 4, 4]
-			5. [5, 5, 5]
-			6. [6, 6, 6]
-			7. [7, 7, 7]
-
-		Max Tower:
-			Max build:  [(7, 7, 7), (1, 1, 1)]
-			Max height: 8
-
-		Case 3: maximum height = 40
-
-
-	Case: 4
-
-		Blocks:
-			1. [31, 41, 59]
-			2. [26, 53, 58]
-			3. [97, 93, 23]
-			4. [84, 62, 64]
-			5. [33, 83, 27]
-
-		Max Tower:
-			Max builds: [(93, 97, 23), (31, 59, 41), (26, 53, 58)]
-						[(97, 93, 23), (31, 59, 41), (26, 53, 58)]
-			Max height: 122
-
-		Case 4: maximum height = 40
-
-Process finished with exit code 0
-
-"""
+            print()
