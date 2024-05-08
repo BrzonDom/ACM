@@ -105,6 +105,7 @@ def checkMaxTwr(Twr, maxTwr):
 
 def extractBlocks_Prt(InputLines, blckNum):
 
+    print("\t\tBlocks:")
     Blocks = []
 
     for b in range(blckNum):
@@ -112,7 +113,7 @@ def extractBlocks_Prt(InputLines, blckNum):
         blck = list(map(int, InputLines.pop(0).split()))
         Blocks.append(blck)
 
-        print(f"\t\t{b + 1}. {blck}")
+        print(f"\t\t\t{b + 1}. {blck}")
     print()
 
     blckNum = int(InputLines.pop(0))
@@ -155,6 +156,7 @@ def prntSidesPosNum(Sides, posSides):
 
 def findPosSides_Prt(Sides):
 
+    print(f"\t\tPossible sides:")
     posSides = {}
 
     for sd in Sides:
@@ -316,8 +318,10 @@ Input:
 
 	Case: 1
 
-		1. [10, 20, 30]
+		Blocks:
+			1. [10, 20, 30]
 
+		Possible sides:
 			Side: (10, 30, 20) 
 
 			Side: (20, 30, 10) 
@@ -345,9 +349,11 @@ Input:
 
 	Case: 2
 
-		1. [6, 8, 10]
-		2. [5, 5, 5]
+		Blocks:
+			1. [6, 8, 10]
+			2. [5, 5, 5]
 
+		Possible sides:
 			Side: (6, 8, 10) 
 				Num. of pos. sides: 1
 					(5, 5, 5) 
@@ -385,14 +391,16 @@ Input:
 
 	Case: 3
 
-		1. [1, 1, 1]
-		2. [2, 2, 2]
-		3. [3, 3, 3]
-		4. [4, 4, 4]
-		5. [5, 5, 5]
-		6. [6, 6, 6]
-		7. [7, 7, 7]
+		Blocks:
+			1. [1, 1, 1]
+			2. [2, 2, 2]
+			3. [3, 3, 3]
+			4. [4, 4, 4]
+			5. [5, 5, 5]
+			6. [6, 6, 6]
+			7. [7, 7, 7]
 
+		Possible sides:
 			Side: (1, 1, 1) 
 
 			Side: (2, 2, 2) 
@@ -430,12 +438,14 @@ Input:
 
 	Case: 4
 
-		1. [31, 41, 59]
-		2. [26, 53, 58]
-		3. [97, 93, 23]
-		4. [84, 62, 64]
-		5. [33, 83, 27]
+		Blocks:
+			1. [31, 41, 59]
+			2. [26, 53, 58]
+			3. [97, 93, 23]
+			4. [84, 62, 64]
+			5. [33, 83, 27]
 
+		Possible sides:
 			Side: (31, 59, 41) 
 				Num. of pos. sides: 3
 					(26, 53, 58) (26, 58, 53) (27, 33, 83) 
