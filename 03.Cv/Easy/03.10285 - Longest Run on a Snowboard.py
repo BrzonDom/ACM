@@ -155,6 +155,8 @@ if __name__ == '__main__':
 
                 # print(f"\t\t\t{[r, c]}: {path[str((r, c))]}")
 
+        maxDstnc = 0
+
         print(f"\t\t\tDistances:")
         for r in range(rowDim):
             print(f"\t\t\t\t", end="")
@@ -162,7 +164,13 @@ if __name__ == '__main__':
 
                 path[str((r, c))] += 1
                 print(f"{path[str((r, c))]:2}", end=" ")
+
+                if path[str((r, c))] > maxDstnc:
+                    maxDstnc = path[str((r, c))]
             print()
+        print()
+
+        print(f"\t\t\tMax distance: {maxDstnc}")
 
         if (case+1) < caseNum:
             print("\n")
@@ -222,6 +230,8 @@ Spiral 5 5
 				 2  1  4  1  2 
 				 1  2  3  4  1 
 
+			Max distance: 7
+
 
 		Case: 2
 
@@ -242,6 +252,8 @@ Spiral 5 5
 				15 24 25 20  7 
 				14 23 22 21  8 
 				13 12 11 10  9 
+
+			Max distance: 25
 
 Process finished with exit code 0
 
