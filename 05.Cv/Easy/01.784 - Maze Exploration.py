@@ -206,14 +206,14 @@ if __name__ == '__main__':
         print(f"\t\tCase: {case+1}")
         print()
 
-        Maze, mzStrt, inMaze = dataExtract_Prt(InputLines)
+        orgMaze, mzStrt, inMaze = dataExtract_Prt(InputLines)
 
         print(f"\t\t\tStart: {mzStrt}")
         print()
 
-        Maze = fillMaze(Maze, mzStrt, inMaze)
+        solMaze = fillMaze(orgMaze, mzStrt, inMaze)
 
-        for r, row in enumerate(Maze):
+        for r, row in enumerate(solMaze):
             print(f"\t\t\t", end="")
             for col in row:
                 print(col, end="")
