@@ -60,6 +60,13 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=6&pag
 """
 from itertools import permutations
 
+class Tower:
+    def __init__(self, twr, sds, mxH):
+        self.twr = twr
+        self.sds = sds
+        self.mxH = mxH
+
+
 InputRaw_Str = """
 1
 10 20 30
@@ -131,16 +138,17 @@ while blckNum > 0:
 
     for sd in Sides:
         print(f"\t\tSide: {sd}")
-        print(f"\t\tPossible sides:")
+        # print(f"\t\tPossible sides:")
+        print()
 
         posSides = []
 
         for nxtSd in Sides:
             if nxtSd[0] < sd[0] and nxtSd[1] < sd[1]:
-                print(f"\t\t\t{nxtSd}")
+                # print(f"\t\t\t{nxtSd}")
 
                 posSides.append(nxtSd)
-        print()
+        # print()
 
         # for posSd in posSides:
         #     print(f"\t\t\tpos: {posSd}")
@@ -148,6 +156,13 @@ while blckNum > 0:
             # print(f"\t\t\tHeight: {sd[2] + posSd[2]}")
             # print(f"\t\t\tSides:  {[s for s in posSides if s != posSd]}")
             # print()
-        print()
+        # print()
 
+        for posSd in posSides:
+            nxtTwr = Tower([sd, posSd], posSides, sd[2] + posSd[2])
+
+            print(f"\t\t\tTower: {nxtTwr.twr}")
+            print(f"\t\t\tHeiht: {nxtTwr.mxH}")
+            print(f"\t\t\tSides: {nxtTwr.sds}")
+            print()
 
