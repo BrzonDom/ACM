@@ -154,11 +154,11 @@ def dataExtract(Maze):
     mzStrt = [0, 0]
     mzCnt = 0
 
-    inMaze = {}
+    dimMaze = {}
 
     for mzLine in Maze:
 
-        inMaze[mzCnt] = len(mzLine)
+        dimMaze[mzCnt] = len(mzLine)
 
         if '*' in mzLine:
             mzStrt[0] = mzCnt
@@ -166,7 +166,7 @@ def dataExtract(Maze):
 
         mzCnt += 1
 
-    return mzStrt, inMaze
+    return mzStrt, dimMaze
 
 
 def fillMaze(Maze, mzStrt, inMaze):
@@ -245,9 +245,9 @@ if __name__ == '__main__':
 
     for case, Maze in enumerate(MazeLst):
 
-        mzStrt, inMaze = dataExtract(Maze)
+        mzStrt, dimMaze = dataExtract(Maze)
 
-        solMaze = fillMaze(Maze, mzStrt, inMaze)
+        solMaze = fillMaze(Maze, mzStrt, dimMaze)
 
         for row in solMaze:
             for col in row:
