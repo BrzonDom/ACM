@@ -92,77 +92,79 @@ InputRaw_Str = """
 
 InputRaw_Str = InputRaw_Str[1:-1]
 
-print("Input:")
-print(InputRaw_Str)
-print()
+if __name__ == '__main__':
 
-InputLines = InputRaw_Str.split("\n")
-
-blckNum = int(InputLines.pop(0))
-caseCnt = 1
-
-while blckNum > 0:
-
-    print(f"\tCase: {caseCnt}")
+    print("Input:")
+    print(InputRaw_Str)
     print()
 
-    Blocks = []
-    Sides = []
+    InputLines = InputRaw_Str.split("\n")
 
-    for b in range(blckNum):
-
-        blck = list(map(int, InputLines.pop(0).split()))
-        Blocks.append(blck)
-        # Sides[str(blck)] = [[blck[0], blck[1], blck[2]], [blck[1], blck[2], blck[0]], [blck[2], blck[0], blck[1]]]
-
-        print(f"\t\t{b+1}. {blck}")
-
-        curSides = list(set(permutations(blck, 3)))
-        Sides += curSides
-
-        print(f"\t\t\t{curSides}")
-
-        # for side in Sides[str(blck)]:
-        #     # print(f"\t\t\t{b+1}. {side}")
-        #     print(f"\t\t\t\tSurface: {side[0]} * {side[1]} = {side[0] * side[1]}")
-        #     print(f"\t\t\t\tHeight:  {side[2]}")
-        #     print()
-
-        print()
-    print()
-    print(f"\tSides: {Sides}")
-    print()
-
-    caseCnt += 1
     blckNum = int(InputLines.pop(0))
+    caseCnt = 1
 
-    for sd in Sides:
-        print(f"\t\tSide: {sd}")
-        # print(f"\t\tPossible sides:")
+    while blckNum > 0:
+
+        print(f"\tCase: {caseCnt}")
         print()
 
-        posSides = []
+        Blocks = []
+        Sides = []
 
-        for nxtSd in Sides:
-            if nxtSd[0] < sd[0] and nxtSd[1] < sd[1]:
-                # print(f"\t\t\t{nxtSd}")
+        for b in range(blckNum):
 
-                posSides.append(nxtSd)
-        # print()
+            blck = list(map(int, InputLines.pop(0).split()))
+            Blocks.append(blck)
+            # Sides[str(blck)] = [[blck[0], blck[1], blck[2]], [blck[1], blck[2], blck[0]], [blck[2], blck[0], blck[1]]]
 
-        # for posSd in posSides:
-        #     print(f"\t\t\tpos: {posSd}")
-            # print(f"\t\t\tTower:  {[sd, posSd]}")
-            # print(f"\t\t\tHeight: {sd[2] + posSd[2]}")
-            # print(f"\t\t\tSides:  {[s for s in posSides if s != posSd]}")
-            # print()
-        # print()
+            print(f"\t\t{b+1}. {blck}")
 
-        for posSd in posSides:
-            nxtTwr = Tower([sd, posSd], posSides, sd[2] + posSd[2])
+            curSides = list(set(permutations(blck, 3)))
+            Sides += curSides
 
-            print(f"\t\t\tTower: {nxtTwr.twr}")
-            print(f"\t\t\tHeiht: {nxtTwr.mxH}")
-            print(f"\t\t\tSides: {nxtTwr.sds}")
+            print(f"\t\t\t{curSides}")
+
+            # for side in Sides[str(blck)]:
+            #     # print(f"\t\t\t{b+1}. {side}")
+            #     print(f"\t\t\t\tSurface: {side[0]} * {side[1]} = {side[0] * side[1]}")
+            #     print(f"\t\t\t\tHeight:  {side[2]}")
+            #     print()
+
             print()
+        print()
+        print(f"\tSides: {Sides}")
+        print()
+
+        caseCnt += 1
+        blckNum = int(InputLines.pop(0))
+
+        for sd in Sides:
+            print(f"\t\tSide: {sd}")
+            # print(f"\t\tPossible sides:")
+            print()
+
+            posSides = []
+
+            for nxtSd in Sides:
+                if nxtSd[0] < sd[0] and nxtSd[1] < sd[1]:
+                    # print(f"\t\t\t{nxtSd}")
+
+                    posSides.append(nxtSd)
+            # print()
+
+            # for posSd in posSides:
+            #     print(f"\t\t\tpos: {posSd}")
+                # print(f"\t\t\tTower:  {[sd, posSd]}")
+                # print(f"\t\t\tHeight: {sd[2] + posSd[2]}")
+                # print(f"\t\t\tSides:  {[s for s in posSides if s != posSd]}")
+                # print()
+            # print()
+
+            for posSd in posSides:
+                nxtTwr = Tower([sd, posSd], posSides, sd[2] + posSd[2])
+
+                print(f"\t\t\tTower: {nxtTwr.twr}")
+                print(f"\t\t\tHeiht: {nxtTwr.mxH}")
+                print(f"\t\t\tSides: {nxtTwr.sds}")
+                print()
 
