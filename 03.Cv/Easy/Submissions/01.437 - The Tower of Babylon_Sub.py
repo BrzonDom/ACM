@@ -191,7 +191,15 @@ class Tower:
 def buildTower(Twr, maxTwr):
 
     if Twr.sds:
+
+        usedSds = set()
+
         for sd in Twr.sds:
+
+            if sd in usedSds:
+                continue
+
+            usedSds.update(posSides[str(sd)])
 
             nxtBld = Twr.bld + [sd]
             nxtSds = posSides[str(sd)]
@@ -199,7 +207,7 @@ def buildTower(Twr, maxTwr):
 
             nxtTwr = Tower(nxtBld, nxtSds, nxtHgh)
 
-            return buildTower(nxtTwr, maxTwr)
+            buildTower(nxtTwr, maxTwr)
 
     else:
         maxTwr = checkMaxTwr(Twr, maxTwr)
@@ -207,7 +215,7 @@ def buildTower(Twr, maxTwr):
         return maxTwr
 
 
-def checkMaxTwr(Twr, maxTwr):
+def checkAllMaxTwr(Twr, maxTwr):
 
     if Twr.hgh > maxTwr.hgh:
         maxTwr.bld = Twr.bld
@@ -220,6 +228,16 @@ def checkMaxTwr(Twr, maxTwr):
 
         else:
             maxTwr.bld = [maxTwr.bld] + [Twr.bld]
+
+    return maxTwr
+
+
+def checkMaxTwr(Twr, maxTwr):
+
+    if Twr.hgh > maxTwr.hgh:
+        maxTwr.bld = Twr.bld
+        maxTwr.sds = Twr.sds
+        maxTwr.hgh = Twr.hgh
 
     return maxTwr
 
@@ -366,7 +384,7 @@ if __name__ == '__main__':
 
             maxTwr = checkMaxTwr(Twr, maxTwr)
 
-            maxTwr = buildTower(Twr, maxTwr)
+            buildTower(Twr, maxTwr)
 
         # prntMaxTwr(maxTwr, caseCnt)
 
