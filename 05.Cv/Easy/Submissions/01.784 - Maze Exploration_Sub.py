@@ -170,7 +170,10 @@ def dataExtract(Maze):
 
 
 def fillMaze(Maze, mzStrt, inMaze):
+
     stackFill = [mzStrt]
+    filled = set()
+    filled.add((mzStrt[0], mzStrt[1]))
 
     while len(stackFill) > 0:
 
@@ -180,24 +183,31 @@ def fillMaze(Maze, mzStrt, inMaze):
 
         Maze[curR][curC] = '#'
 
-        if (curR + 1) in inMaze:
-            if (curC) <= inMaze[curR + 1]:
-                if Maze[curR + 1][curC] == ' ':
-                    stackFill.append([curR + 1, curC])
+        if (curR + 1, curC) not in filled:
+            if (curR + 1) in dimMaze:
+                if (curC) <= dimMaze[curR + 1]:
+                    if Maze[curR + 1][curC] == ' ':
+                        stackFill.append([curR + 1, curC])
+                        filled.add((curR + 1, curC))
 
-        if (curR - 1) in inMaze:
-            if (curC) <= inMaze[curR - 1]:
-                if Maze[curR - 1][curC] == ' ':
-                    stackFill.append([curR - 1, curC])
+        if (curR - 1, curC) not in filled:
+            if (curR - 1) in dimMaze:
+                if (curC) <= dimMaze[curR - 1]:
+                    if Maze[curR - 1][curC] == ' ':
+                        stackFill.append([curR - 1, curC])
+                        filled.add((curR - 1, curC))
 
-        if (curC + 1) <= inMaze[curR]:
-            if Maze[curR][curC + 1] == ' ':
-                stackFill.append([curR, curC + 1])
+        if (curR, curC + 1) not in filled:
+            if (curC + 1) <= dimMaze[curR]:
+                if Maze[curR][curC + 1] == ' ':
+                    stackFill.append([curR, curC + 1])
+                    filled.add((curR, curC + 1))
 
-        if (curC - 1) <= inMaze[curR]:
-            if Maze[curR][curC - 1] == ' ':
-                stackFill.append([curR, curC - 1])
-
+        if (curR, curC - 1) not in filled:
+            if (curC - 1) <= dimMaze[curR]:
+                if Maze[curR][curC - 1] == ' ':
+                    stackFill.append([curR, curC - 1])
+                    filled.add((curR, curC - 1))
     return Maze
 
 
