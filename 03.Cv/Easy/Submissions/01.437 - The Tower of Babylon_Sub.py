@@ -58,8 +58,6 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=6&pag
                 Case 4: maximum height = 342
 
 """
-from itertools import permutations
-
 
 """
 def extractBlocks_Prt(blckNum):
@@ -162,6 +160,8 @@ def prntMaxTwr(maxTwr, caseCnt):
     print()
     print(f"\t\tCase {caseCnt}: maximum height = {maxTwr.hgh}")
 """
+
+from itertools import permutations
 
 
 class Tower:
@@ -297,7 +297,7 @@ if __name__ == '__main__':
     # print(InputStr)
     # print()
 
-    InputLines = InputStr.split("\n")
+    # InputLines = InputStr.split("\n")
 
     BlockLst = extractData()
 
