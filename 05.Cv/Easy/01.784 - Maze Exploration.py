@@ -99,6 +99,7 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=667&p
 
 """
 
+
 def dataProcess(InputRaw_Str):
 
     InputLines = InputRaw_Str.split("\n")
@@ -174,6 +175,7 @@ def fillMaze(Maze, mzStrt, dimMaze):
                 if Maze[curR][curC - 1] == ' ':
                     stackFill.append([curR, curC - 1])
                     filled.add((curR, curC - 1))
+
     return Maze
 
 
