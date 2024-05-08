@@ -252,12 +252,19 @@ if __name__ == '__main__':
 
         solMaze = fillMaze(Maze, mzStrt, inMaze)
 
-        for r, row in enumerate(solMaze):
-            print(f"\t\t", end="")
+        # for r, row in enumerate(solMaze):
+        #     print(f"\t\t", end="")
+        #     for col in row:
+        #         print(col, end="")
+        #     print()
+        # print(f"\t\t{sepLst[case]}")
+
+        for row in solMaze:
             for col in row:
                 print(col, end="")
             print()
-        print(f"\t\t{sepLst[case]}")
 
-        if (case+1) < caseNum:
-            print("\n")
+        print(sepLst[case])
+
+        # if (case+1) < caseNum:
+        #     print("\n")
