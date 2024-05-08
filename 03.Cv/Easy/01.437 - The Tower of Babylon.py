@@ -115,14 +115,11 @@ if __name__ == '__main__':
 
             blck = list(map(int, InputLines.pop(0).split()))
             Blocks.append(blck)
-            # Sides[str(blck)] = [[blck[0], blck[1], blck[2]], [blck[1], blck[2], blck[0]], [blck[2], blck[0], blck[1]]]
 
             print(f"\t\t{b+1}. {blck}")
 
             curSides = list(set(permutations(blck, 3)))
             Sides += curSides
-
-            # print(f"\t\t\t{curSides}")
 
             # for side in Sides[str(blck)]:
             #     # print(f"\t\t\t{b+1}. {side}")
@@ -132,23 +129,21 @@ if __name__ == '__main__':
 
         print()
 
+        caseCnt += 1
+        blckNum = int(InputLines.pop(0))
+
         print(f"\t\tSides:\n\t\t\t", end="")
         for s, sd in enumerate(Sides):
             print(sd, end=" ")
 
-            if (s+1) % 5 == 0:
+            if (s+1) % 5 == 0 and (s+1) != len(Sides):
                 print("\n\t\t\t", end="")
         print("\n")
-
-        caseCnt += 1
-        blckNum = int(InputLines.pop(0))
 
         posSides = {}
 
         for sd in Sides:
-            print(f"\t\tSide: {sd}")
-            print()
-
+            print(f"\t\t\tSide: {sd}")
             # print(f"\t\t\tPossible sides:")
             # print()
 
@@ -162,14 +157,6 @@ if __name__ == '__main__':
             # print()
 
             # for posSd in posSides:
-            #     print(f"\t\t\tpos: {posSd}")
-                # print(f"\t\t\tTower:  {[sd, posSd]}")
-                # print(f"\t\t\tHeight: {sd[2] + posSd[2]}")
-                # print(f"\t\t\tSides:  {[s for s in posSides if s != posSd]}")
-                # print()
-            # print()
-
-            # for posSd in posSides:
             #     nxtTwr = Tower([sd, posSd], posSides, sd[2] + posSd[2])
             #
             #     print(f"\t\t\tTower: {nxtTwr.twr}")
@@ -177,15 +164,18 @@ if __name__ == '__main__':
             #     print(f"\t\t\tSides: {nxtTwr.sds}")
             #     print()
 
-            print(f"\t\t\tPossible sides:\n\t\t\t\t", end="")
+            # print(f"\t\t\tPossible sides:\n\t\t\t\t", end="")
 
-            for s, psSd in enumerate(posSides[str(sd)]):
+            if posSides[str(sd)]:
+                print("\t\t\t\t", end="")
+                for s, psSd in enumerate(posSides[str(sd)]):
+                    print(psSd, end=" ")
 
-                print(psSd, end=" ")
-
-                if (s+1) % 5 == 0:
-                    print("\n\t\t\t\t", end="")
-            print("\n")
+                    if (s+1) % 5 == 0 and (s+1) != len(posSides[str(sd)]):
+                        print("\n\t\t\t\t", end="")
+                print("\n")
+            else:
+                print()
 
         print()
 
@@ -221,34 +211,18 @@ Input:
 			(10, 30, 20) (20, 30, 10) (20, 10, 30) (10, 20, 30) (30, 10, 20) 
 			(30, 20, 10) 
 
-		Side: (10, 30, 20)
+			Side: (10, 30, 20)
 
-			Possible sides:
-				
-
-		Side: (20, 30, 10)
-
-			Possible sides:
+			Side: (20, 30, 10)
 				(10, 20, 30) 
 
-		Side: (20, 10, 30)
+			Side: (20, 10, 30)
 
-			Possible sides:
-				
+			Side: (10, 20, 30)
 
-		Side: (10, 20, 30)
+			Side: (30, 10, 20)
 
-			Possible sides:
-				
-
-		Side: (30, 10, 20)
-
-			Possible sides:
-				
-
-		Side: (30, 20, 10)
-
-			Possible sides:
+			Side: (30, 20, 10)
 				(20, 10, 30) 
 
 
@@ -261,40 +235,25 @@ Input:
 			(6, 8, 10) (10, 6, 8) (8, 6, 10) (10, 8, 6) (6, 10, 8) 
 			(8, 10, 6) (5, 5, 5) 
 
-		Side: (6, 8, 10)
-
-			Possible sides:
+			Side: (6, 8, 10)
 				(5, 5, 5) 
 
-		Side: (10, 6, 8)
-
-			Possible sides:
+			Side: (10, 6, 8)
 				(5, 5, 5) 
 
-		Side: (8, 6, 10)
-
-			Possible sides:
+			Side: (8, 6, 10)
 				(5, 5, 5) 
 
-		Side: (10, 8, 6)
-
-			Possible sides:
+			Side: (10, 8, 6)
 				(8, 6, 10) (5, 5, 5) 
 
-		Side: (6, 10, 8)
-
-			Possible sides:
+			Side: (6, 10, 8)
 				(5, 5, 5) 
 
-		Side: (8, 10, 6)
-
-			Possible sides:
+			Side: (8, 10, 6)
 				(6, 8, 10) (5, 5, 5) 
 
-		Side: (5, 5, 5)
-
-			Possible sides:
-				
+			Side: (5, 5, 5)
 
 
 	Case: 3
@@ -311,40 +270,24 @@ Input:
 			(1, 1, 1) (2, 2, 2) (3, 3, 3) (4, 4, 4) (5, 5, 5) 
 			(6, 6, 6) (7, 7, 7) 
 
-		Side: (1, 1, 1)
+			Side: (1, 1, 1)
 
-			Possible sides:
-				
-
-		Side: (2, 2, 2)
-
-			Possible sides:
+			Side: (2, 2, 2)
 				(1, 1, 1) 
 
-		Side: (3, 3, 3)
-
-			Possible sides:
+			Side: (3, 3, 3)
 				(1, 1, 1) (2, 2, 2) 
 
-		Side: (4, 4, 4)
-
-			Possible sides:
+			Side: (4, 4, 4)
 				(1, 1, 1) (2, 2, 2) (3, 3, 3) 
 
-		Side: (5, 5, 5)
-
-			Possible sides:
+			Side: (5, 5, 5)
 				(1, 1, 1) (2, 2, 2) (3, 3, 3) (4, 4, 4) 
 
-		Side: (6, 6, 6)
-
-			Possible sides:
+			Side: (6, 6, 6)
 				(1, 1, 1) (2, 2, 2) (3, 3, 3) (4, 4, 4) (5, 5, 5) 
-				
 
-		Side: (7, 7, 7)
-
-			Possible sides:
+			Side: (7, 7, 7)
 				(1, 1, 1) (2, 2, 2) (3, 3, 3) (4, 4, 4) (5, 5, 5) 
 				(6, 6, 6) 
 
@@ -364,189 +307,110 @@ Input:
 			(23, 93, 97) (97, 23, 93) (23, 97, 93) (84, 64, 62) (64, 62, 84) 
 			(62, 84, 64) (62, 64, 84) (64, 84, 62) (84, 62, 64) (83, 27, 33) 
 			(83, 33, 27) (33, 27, 83) (33, 83, 27) (27, 83, 33) (27, 33, 83) 
-			
 
-		Side: (31, 59, 41)
-
-			Possible sides:
+			Side: (31, 59, 41)
 				(26, 53, 58) (26, 58, 53) (27, 33, 83) 
 
-		Side: (59, 31, 41)
-
-			Possible sides:
+			Side: (59, 31, 41)
 				(58, 26, 53) (53, 26, 58) (33, 27, 83) 
 
-		Side: (59, 41, 31)
-
-			Possible sides:
+			Side: (59, 41, 31)
 				(41, 31, 59) (58, 26, 53) (53, 26, 58) (33, 27, 83) (27, 33, 83) 
-				
 
-		Side: (41, 59, 31)
-
-			Possible sides:
+			Side: (41, 59, 31)
 				(31, 41, 59) (26, 53, 58) (26, 58, 53) (33, 27, 83) (27, 33, 83) 
-				
 
-		Side: (31, 41, 59)
-
-			Possible sides:
+			Side: (31, 41, 59)
 				(27, 33, 83) 
 
-		Side: (41, 31, 59)
-
-			Possible sides:
+			Side: (41, 31, 59)
 				(33, 27, 83) 
 
-		Side: (58, 26, 53)
+			Side: (58, 26, 53)
 
-			Possible sides:
-				
-
-		Side: (58, 53, 26)
-
-			Possible sides:
+			Side: (58, 53, 26)
 				(31, 41, 59) (41, 31, 59) (53, 26, 58) (33, 27, 83) (27, 33, 83) 
-				
 
-		Side: (26, 53, 58)
+			Side: (26, 53, 58)
 
-			Possible sides:
-				
-
-		Side: (53, 58, 26)
-
-			Possible sides:
+			Side: (53, 58, 26)
 				(31, 41, 59) (41, 31, 59) (26, 53, 58) (33, 27, 83) (27, 33, 83) 
-				
 
-		Side: (26, 58, 53)
+			Side: (26, 58, 53)
 
-			Possible sides:
-				
+			Side: (53, 26, 58)
 
-		Side: (53, 26, 58)
+			Side: (93, 23, 97)
 
-			Possible sides:
-				
-
-		Side: (93, 23, 97)
-
-			Possible sides:
-				
-
-		Side: (93, 97, 23)
-
-			Possible sides:
+			Side: (93, 97, 23)
 				(31, 59, 41) (59, 31, 41) (59, 41, 31) (41, 59, 31) (31, 41, 59) 
 				(41, 31, 59) (58, 26, 53) (58, 53, 26) (26, 53, 58) (53, 58, 26) 
 				(26, 58, 53) (53, 26, 58) (23, 93, 97) (84, 64, 62) (64, 62, 84) 
 				(62, 84, 64) (62, 64, 84) (64, 84, 62) (84, 62, 64) (83, 27, 33) 
 				(83, 33, 27) (33, 27, 83) (33, 83, 27) (27, 83, 33) (27, 33, 83) 
-				
 
-		Side: (97, 93, 23)
-
-			Possible sides:
+			Side: (97, 93, 23)
 				(31, 59, 41) (59, 31, 41) (59, 41, 31) (41, 59, 31) (31, 41, 59) 
 				(41, 31, 59) (58, 26, 53) (58, 53, 26) (26, 53, 58) (53, 58, 26) 
 				(26, 58, 53) (53, 26, 58) (93, 23, 97) (84, 64, 62) (64, 62, 84) 
 				(62, 84, 64) (62, 64, 84) (64, 84, 62) (84, 62, 64) (83, 27, 33) 
 				(83, 33, 27) (33, 27, 83) (33, 83, 27) (27, 83, 33) (27, 33, 83) 
-				
 
-		Side: (23, 93, 97)
+			Side: (23, 93, 97)
 
-			Possible sides:
-				
+			Side: (97, 23, 93)
 
-		Side: (97, 23, 93)
+			Side: (23, 97, 93)
 
-			Possible sides:
-				
-
-		Side: (23, 97, 93)
-
-			Possible sides:
-				
-
-		Side: (84, 64, 62)
-
-			Possible sides:
+			Side: (84, 64, 62)
 				(31, 59, 41) (59, 31, 41) (59, 41, 31) (41, 59, 31) (31, 41, 59) 
 				(41, 31, 59) (58, 26, 53) (58, 53, 26) (26, 53, 58) (53, 58, 26) 
 				(26, 58, 53) (53, 26, 58) (64, 62, 84) (83, 27, 33) (83, 33, 27) 
 				(33, 27, 83) (27, 33, 83) 
 
-		Side: (64, 62, 84)
-
-			Possible sides:
+			Side: (64, 62, 84)
 				(31, 59, 41) (59, 31, 41) (59, 41, 31) (41, 59, 31) (31, 41, 59) 
 				(41, 31, 59) (58, 26, 53) (58, 53, 26) (26, 53, 58) (53, 58, 26) 
 				(26, 58, 53) (53, 26, 58) (33, 27, 83) (27, 33, 83) 
 
-		Side: (62, 84, 64)
-
-			Possible sides:
+			Side: (62, 84, 64)
 				(31, 59, 41) (59, 31, 41) (59, 41, 31) (41, 59, 31) (31, 41, 59) 
 				(41, 31, 59) (58, 26, 53) (58, 53, 26) (26, 53, 58) (53, 58, 26) 
 				(26, 58, 53) (53, 26, 58) (33, 27, 83) (33, 83, 27) (27, 83, 33) 
 				(27, 33, 83) 
 
-		Side: (62, 64, 84)
-
-			Possible sides:
+			Side: (62, 64, 84)
 				(31, 59, 41) (59, 31, 41) (59, 41, 31) (41, 59, 31) (31, 41, 59) 
 				(41, 31, 59) (58, 26, 53) (58, 53, 26) (26, 53, 58) (53, 58, 26) 
 				(26, 58, 53) (53, 26, 58) (33, 27, 83) (27, 33, 83) 
 
-		Side: (64, 84, 62)
-
-			Possible sides:
+			Side: (64, 84, 62)
 				(31, 59, 41) (59, 31, 41) (59, 41, 31) (41, 59, 31) (31, 41, 59) 
 				(41, 31, 59) (58, 26, 53) (58, 53, 26) (26, 53, 58) (53, 58, 26) 
 				(26, 58, 53) (53, 26, 58) (62, 64, 84) (33, 27, 83) (33, 83, 27) 
 				(27, 83, 33) (27, 33, 83) 
 
-		Side: (84, 62, 64)
-
-			Possible sides:
+			Side: (84, 62, 64)
 				(31, 59, 41) (59, 31, 41) (59, 41, 31) (41, 59, 31) (31, 41, 59) 
 				(41, 31, 59) (58, 26, 53) (58, 53, 26) (26, 53, 58) (53, 58, 26) 
 				(26, 58, 53) (53, 26, 58) (83, 27, 33) (83, 33, 27) (33, 27, 83) 
 				(27, 33, 83) 
 
-		Side: (83, 27, 33)
-
-			Possible sides:
+			Side: (83, 27, 33)
 				(58, 26, 53) (53, 26, 58) 
 
-		Side: (83, 33, 27)
-
-			Possible sides:
+			Side: (83, 33, 27)
 				(59, 31, 41) (41, 31, 59) (58, 26, 53) (53, 26, 58) (33, 27, 83) 
-				
 
-		Side: (33, 27, 83)
+			Side: (33, 27, 83)
 
-			Possible sides:
-				
-
-		Side: (33, 83, 27)
-
-			Possible sides:
+			Side: (33, 83, 27)
 				(31, 59, 41) (31, 41, 59) (26, 53, 58) (26, 58, 53) (27, 33, 83) 
-				
 
-		Side: (27, 83, 33)
-
-			Possible sides:
+			Side: (27, 83, 33)
 				(26, 53, 58) (26, 58, 53) 
 
-		Side: (27, 33, 83)
-
-			Possible sides:
-				
+			Side: (27, 33, 83)
 
 
 
