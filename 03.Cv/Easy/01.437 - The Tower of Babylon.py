@@ -389,19 +389,6 @@ if __name__ == '__main__':
 """__Output__"""
 """
 Input:
-1
-10 20 30
-2
-6 8 10
-5 5 5
-7
-1 1 1
-2 2 2
-3 3 3
-4 4 4
-5 5 5
-6 6 6
-7 7 7
 5
 31 41 59
 26 53 58
@@ -411,126 +398,6 @@ Input:
 0
 
 	Case: 1
-
-		Blocks:
-			1. [10, 20, 30]
-
-		Possible sides:
-			Side: (10, 30, 20) 
-
-			Side: (20, 30, 10) 
-				Num. of pos. sides: 1
-					(10, 20, 30) 
-
-			Side: (20, 10, 30) 
-
-			Side: (10, 20, 30) 
-
-			Side: (30, 10, 20) 
-
-			Side: (30, 20, 10) 
-				Num. of pos. sides: 1
-					(20, 10, 30) 
-
-
-		Max Tower:
-			Max builds: [(20, 30, 10), (10, 20, 30)]
-						[(30, 20, 10), (20, 10, 30)]
-			Max height: 40
-
-		Case 1: maximum height = 40
-
-
-	Case: 2
-
-		Blocks:
-			1. [6, 8, 10]
-			2. [5, 5, 5]
-
-		Possible sides:
-			Side: (6, 8, 10) 
-				Num. of pos. sides: 1
-					(5, 5, 5) 
-
-			Side: (10, 6, 8) 
-				Num. of pos. sides: 1
-					(5, 5, 5) 
-
-			Side: (8, 6, 10) 
-				Num. of pos. sides: 1
-					(5, 5, 5) 
-
-			Side: (10, 8, 6) 
-				Num. of pos. sides: 2
-					(8, 6, 10) (5, 5, 5) 
-
-			Side: (6, 10, 8) 
-				Num. of pos. sides: 1
-					(5, 5, 5) 
-
-			Side: (8, 10, 6) 
-				Num. of pos. sides: 2
-					(6, 8, 10) (5, 5, 5) 
-
-			Side: (5, 5, 5) 
-
-
-		Max Tower:
-			Max builds: [(10, 8, 6), (8, 6, 10), (5, 5, 5)]
-						[(8, 10, 6), (6, 8, 10), (5, 5, 5)]
-			Max height: 21
-
-		Case 2: maximum height = 21
-
-
-	Case: 3
-
-		Blocks:
-			1. [1, 1, 1]
-			2. [2, 2, 2]
-			3. [3, 3, 3]
-			4. [4, 4, 4]
-			5. [5, 5, 5]
-			6. [6, 6, 6]
-			7. [7, 7, 7]
-
-		Possible sides:
-			Side: (1, 1, 1) 
-
-			Side: (2, 2, 2) 
-				Num. of pos. sides: 1
-					(1, 1, 1) 
-
-			Side: (3, 3, 3) 
-				Num. of pos. sides: 2
-					(1, 1, 1) (2, 2, 2) 
-
-			Side: (4, 4, 4) 
-				Num. of pos. sides: 3
-					(1, 1, 1) (2, 2, 2) (3, 3, 3) 
-
-			Side: (5, 5, 5) 
-				Num. of pos. sides: 4
-					(1, 1, 1) (2, 2, 2) (3, 3, 3) (4, 4, 4) 
-
-			Side: (6, 6, 6) 
-				Num. of pos. sides: 5
-					(1, 1, 1) (2, 2, 2) (3, 3, 3) (4, 4, 4) (5, 5, 5) 
-
-			Side: (7, 7, 7) 
-				Num. of pos. sides: 6
-					(1, 1, 1) (2, 2, 2) (3, 3, 3) (4, 4, 4) (5, 5, 5) 
-					(6, 6, 6) 
-
-
-		Max Tower:
-			Max build:  [(7, 7, 7), (1, 1, 1)]
-			Max height: 8
-
-		Case 3: maximum height = 8
-
-
-	Case: 4
 
 		Blocks:
 			1. [31, 41, 59]
@@ -665,12 +532,34 @@ Input:
 			Side: (27, 33, 83) 
 
 
+		Possible sides:
+			(93, 97, 23) : 25
+			(97, 93, 23) : 25
+			(84, 64, 62) : 17
+			(64, 84, 62) : 17
+			(62, 84, 64) : 16
+			(84, 62, 64) : 16
+			(64, 62, 84) : 14
+			(62, 64, 84) : 14
+			(59, 41, 31) : 5
+			(41, 59, 31) : 5
+			(58, 53, 26) : 5
+			(53, 58, 26) : 5
+			(83, 33, 27) : 5
+			(33, 83, 27) : 5
+			(31, 59, 41) : 3
+			(59, 31, 41) : 3
+			(83, 27, 33) : 2
+			(27, 83, 33) : 2
+			(31, 41, 59) : 1
+			(41, 31, 59) : 1
+
 		Max Tower:
 			Max builds: [(93, 97, 23), (31, 59, 41), (26, 53, 58)]
 						[(97, 93, 23), (31, 59, 41), (26, 53, 58)]
 			Max height: 122
 
-		Case 4: maximum height = 122
+		Case 1: maximum height = 122
 
 Process finished with exit code 0
 
