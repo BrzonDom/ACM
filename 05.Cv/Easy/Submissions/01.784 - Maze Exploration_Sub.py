@@ -125,6 +125,28 @@ def dataExtract_Prt(MazeLines):
     return Maze, mzStrt, inMaze
 """
 
+InputRaw_Str = """
+2
+XXXXXXXXX
+X   X   X
+X   *   X
+X   X   X
+XXXXXXXXX
+X   X
+X   X
+X   X
+XXXXX
+_____
+XXXXX
+X   X
+X * X
+X   X
+XXXXX
+_____
+"""
+
+InputRaw_Str = InputRaw_Str[1:-1]
+
 
 def dataSplit(caseNum):
 
@@ -210,28 +232,6 @@ def fillMaze(Maze, mzStrt, inMaze):
                     filled.add((curR, curC - 1))
     return Maze
 
-
-InputRaw_Str = """
-2
-XXXXXXXXX
-X   X   X
-X   *   X
-X   X   X
-XXXXXXXXX
-X   X
-X   X
-X   X
-XXXXX
-_____
-XXXXX
-X   X
-X * X
-X   X
-XXXXX
-_____
-"""
-
-InputRaw_Str = InputRaw_Str[1:-1]
 
 if __name__ == '__main__':
 
