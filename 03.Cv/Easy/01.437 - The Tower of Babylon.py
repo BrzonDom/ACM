@@ -81,7 +81,6 @@ def buildTower(Twr, maxTwr):
             return buildTower(nxtTwr, maxTwr)
 
     else:
-
         maxTwr = checkMaxTwr(Twr, maxTwr)
 
         return maxTwr
@@ -200,7 +199,7 @@ def prntMaxTwr(maxTwr, caseCnt):
 
     print(f"\t\t\tMax height: {maxTwr.hgh}")
     print()
-    print(f"\t\tCase {caseCnt}: maximum height = 40")
+    print(f"\t\tCase {caseCnt}: maximum height = {maxTwr.hgh}")
 
 
 """__Input__"""
@@ -381,7 +380,7 @@ Input:
 						[(8, 10, 6), (6, 8, 10), (5, 5, 5)]
 			Max height: 21
 
-		Case 2: maximum height = 40
+		Case 2: maximum height = 21
 
 
 	Case: 3
@@ -426,7 +425,7 @@ Input:
 			Max build:  [(7, 7, 7), (1, 1, 1)]
 			Max height: 8
 
-		Case 3: maximum height = 40
+		Case 3: maximum height = 8
 
 
 	Case: 4
@@ -567,7 +566,7 @@ Input:
 						[(97, 93, 23), (31, 59, 41), (26, 53, 58)]
 			Max height: 122
 
-		Case 4: maximum height = 40
+		Case 4: maximum height = 122
 
 Process finished with exit code 0
 
