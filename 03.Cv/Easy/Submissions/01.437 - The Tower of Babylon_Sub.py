@@ -104,19 +104,23 @@ def checkMaxTwr(Twr, maxTwr):
     return maxTwr
 
 
-def extractBlocks_Prt(InputLines, blckNum):
+# def extractBlocks_Prt(InputLines, blckNum):
+def extractBlocks_Prt(blckNum):
 
     Blocks = []
 
     for b in range(blckNum):
 
-        blck = list(map(int, InputLines.pop(0).split()))
+        InLine = input()
+
+        # blck = list(map(int, InputLines.pop(0).split()))
+        blck = list(map(int, InLine.split()))
         Blocks.append(blck)
 
         print(f"\t\t{b + 1}. {blck}")
     print()
 
-    blckNum = int(InputLines.pop(0))
+    blckNum = int(input())
 
     return Blocks, blckNum
 
@@ -250,7 +254,9 @@ if __name__ == '__main__':
 
     InputLines = InputStr.split("\n")
 
-    blckNum = int(InputLines.pop(0))
+    # blckNum = int(InputLines.pop(0))
+    blckNum = int(input())
+
     caseCnt = 0
 
     while blckNum > 0:
@@ -259,7 +265,9 @@ if __name__ == '__main__':
         print(f"\tCase: {caseCnt}")
         print()
 
-        Blocks, blckNum = extractBlocks_Prt(InputLines, blckNum)
+        # Blocks, blckNum = extractBlocks_Prt(InputLines, blckNum)
+        Blocks, blckNum = extractBlocks_Prt(blckNum)
+
         Sides = extractSides(Blocks)
 
         # prntSides(Sides)
