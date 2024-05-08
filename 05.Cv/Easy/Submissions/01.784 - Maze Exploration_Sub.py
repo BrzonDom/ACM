@@ -99,6 +99,7 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=667&p
 
 """
 
+
 def dataProcess(InputRaw_Str):
 
     InputLines = InputRaw_Str.split("\n")
@@ -131,6 +132,23 @@ def dataExtract(InputLines):
     print()
 
     return Maze, mzStrt, inMaze
+
+def dataSplit(caseNum):
+
+    MazeLst = []
+
+    for case in range(caseNum):
+
+        Maze = []
+        InLine = input()
+
+        while '_' not in InLine:
+            Maze.append(InLine)
+            InLine = input()
+
+        MazeLst.append(Maze)
+
+    return MazeLst
 
 
 def fillMaze(Maze, mzStrt, inMaze):
@@ -193,7 +211,22 @@ if __name__ == '__main__':
     print(InputRaw_Str)
     print()
 
-    InputLines, caseNum = dataProcess(InputRaw_Str)
+    caseNum = int(input())
+
+    MazeLst = dataSplit(caseNum)
+
+    for mzCnt, Maze in enumerate(MazeLst):
+
+        print(f"\tCase: {mzCnt+1}")
+        print()
+
+        for row in Maze:
+            print(f"\t\t{row}")
+        print("\n")
+
+    quit()
+
+    # InputLines, caseNum = dataProcess(InputRaw_Str)
 
     # InputLines = InputRaw_Str.split("\n")
     # caseNum = int(InputLines.pop(0))
