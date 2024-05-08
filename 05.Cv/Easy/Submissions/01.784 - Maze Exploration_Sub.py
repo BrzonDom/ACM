@@ -137,14 +137,15 @@ def dataSplit(caseNum):
 
     for case in range(caseNum):
 
-        Maze = []
+        MazeLines = []
         InLine = input()
 
         while '_' not in InLine:
-            Maze.append(InLine)
+
+            MazeLines.append(InLine)
             InLine = input()
 
-        MazeLst.append(Maze)
+        MazeLst.append(MazeLines)
 
     return MazeLst
 
@@ -218,13 +219,17 @@ if __name__ == '__main__':
         print(f"\tCase: {mzCnt+1}")
         print()
 
-        print(MazeLines)
+        # print(MazeLines)
 
-        # for row in Maze:
+        # for row in MazeLines:
         #     print(f"\t\t{row}")
         # print("\n")
 
         Maze, mzStrt, inMaze = dataExtract(MazeLines)
+
+        print(f"\t\tMazeLines: {MazeLines}")
+        print(f"\t\tMaze:      {Maze}")
+        print()
 
         print(f"\t\t\tStart: {mzStrt}")
         print()
@@ -282,9 +287,7 @@ X   X
 XXXXX
 _____
 
-	Cases: 2
-
-		Case: 1
+	Case: 1
 
 			XXXXXXXXX
 			X   X   X
@@ -296,20 +299,12 @@ _____
 			X   X
 			XXXXX
 
+		MazeLines: ['XXXXXXXXX', 'X   X   X', 'X   *   X', 'X   X   X', 'XXXXXXXXX', 'X   X', 'X   X', 'X   X', 'XXXXX']
+		Maze:      [['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'], ['X', ' ', ' ', ' ', 'X', ' ', ' ', ' ', 'X'], ['X', ' ', ' ', ' ', '*', ' ', ' ', ' ', 'X'], ['X', ' ', ' ', ' ', 'X', ' ', ' ', ' ', 'X'], ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'], ['X', ' ', ' ', ' ', 'X'], ['X', ' ', ' ', ' ', 'X'], ['X', ' ', ' ', ' ', 'X'], ['X', 'X', 'X', 'X', 'X']]
+
 			Start: [2, 4]
 
-			XXXXXXXXX
-			X###X###X
-			X#######X
-			X###X###X
-			XXXXXXXXX
-			X   X
-			X   X
-			X   X
-			XXXXX
-
-
-		Case: 2
+	Case: 2
 
 			XXXXX
 			X   X
@@ -317,13 +312,11 @@ _____
 			X   X
 			XXXXX
 
+		MazeLines: ['XXXXX', 'X   X', 'X * X', 'X   X', 'XXXXX']
+		Maze:      [['X', 'X', 'X', 'X', 'X'], ['X', ' ', ' ', ' ', 'X'], ['X', ' ', '*', ' ', 'X'], ['X', ' ', ' ', ' ', 'X'], ['X', 'X', 'X', 'X', 'X']]
+
 			Start: [2, 2]
 
-			XXXXX
-			X###X
-			X###X
-			X###X
-			XXXXX
 
 Process finished with exit code 0
 
