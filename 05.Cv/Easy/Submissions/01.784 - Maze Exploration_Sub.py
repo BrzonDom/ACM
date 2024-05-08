@@ -214,9 +214,9 @@ if __name__ == '__main__':
 
     MazeLst = dataSplit(caseNum)
 
-    for mzCnt, MazeLines in enumerate(MazeLst):
+    for case, MazeLines in enumerate(MazeLst):
 
-        print(f"\tCase: {mzCnt+1}")
+        print(f"\tCase: {case+1}")
         print()
 
         # print(MazeLines)
@@ -234,29 +234,9 @@ if __name__ == '__main__':
         print(f"\t\t\tStart: {mzStrt}")
         print()
 
-    quit()
+        solMaze = fillMaze(Maze, mzStrt, inMaze)
 
-    # InputLines, caseNum = dataProcess(InputRaw_Str)
-
-    # InputLines = InputRaw_Str.split("\n")
-    # caseNum = int(InputLines.pop(0))
-
-    print(f"\tCases: {caseNum}")
-    print()
-
-    for case in range(caseNum):
-
-        print(f"\t\tCase: {case+1}")
-        print()
-
-        Maze, mzStrt, inMaze = dataExtract(InputLines)
-
-        print(f"\t\t\tStart: {mzStrt}")
-        print()
-
-        Maze = fillMaze(Maze, mzStrt, inMaze)
-
-        for r, row in enumerate(Maze):
+        for r, row in enumerate(solMaze):
             print(f"\t\t\t", end="")
             for col in row:
                 print(col, end="")
@@ -304,6 +284,17 @@ _____
 
 			Start: [2, 4]
 
+			XXXXXXXXX
+			X###X###X
+			X#######X
+			X###X###X
+			XXXXXXXXX
+			X   X
+			X   X
+			X   X
+			XXXXX
+
+
 	Case: 2
 
 			XXXXX
@@ -317,6 +308,11 @@ _____
 
 			Start: [2, 2]
 
+			XXXXX
+			X###X
+			X###X
+			X###X
+			XXXXX
 
 Process finished with exit code 0
 
