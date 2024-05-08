@@ -108,26 +108,24 @@ def dataProcess(InputRaw_Str):
     return InputLines, caseNum
 
 
-def dataExtract(InputLines):
+def dataExtract(MazeLines):
 
-    mazeLine = InputLines.pop(0)
     mzStrt = [0, 0]
     mzCnt = 0
     Maze = []
 
     inMaze = {}
 
-    while '_' not in mazeLine:
-        Maze.append(list(mazeLine))
-        print(f"\t\t\t{mazeLine}")
+    for mzLine in MazeLines:
+        Maze.append(list(mzLine))
+        print(f"\t\t\t{mzLine}")
 
-        inMaze[mzCnt] = len(mazeLine)
+        inMaze[mzCnt] = len(mzLine)
 
-        if '*' in mazeLine:
+        if '*' in mzLine:
             mzStrt[0] = mzCnt
-            mzStrt[1] = mazeLine.index('*')
+            mzStrt[1] = mzLine.index('*')
 
-        mazeLine = InputLines.pop(0)
         mzCnt += 1
     print()
 
@@ -215,14 +213,21 @@ if __name__ == '__main__':
 
     MazeLst = dataSplit(caseNum)
 
-    for mzCnt, Maze in enumerate(MazeLst):
+    for mzCnt, MazeLines in enumerate(MazeLst):
 
         print(f"\tCase: {mzCnt+1}")
         print()
 
-        for row in Maze:
-            print(f"\t\t{row}")
-        print("\n")
+        print(MazeLines)
+
+        # for row in Maze:
+        #     print(f"\t\t{row}")
+        # print("\n")
+
+        Maze, mzStrt, inMaze = dataExtract(MazeLines)
+
+        print(f"\t\t\tStart: {mzStrt}")
+        print()
 
     quit()
 
