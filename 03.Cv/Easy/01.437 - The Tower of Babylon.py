@@ -115,6 +115,16 @@ def extractBlocks_Prt(InputLines):
     return Blocks
 
 
+def extractSides(Blocks):
+
+    Sides = []
+
+    for blck in Blocks:
+        Sides += list(set(permutations(blck, 3)))
+
+    return Sides
+
+
 def findPosSides_Prt(Sides):
 
     posSides = {}
@@ -198,37 +208,27 @@ if __name__ == '__main__':
         print(f"\tCase: {caseCnt}")
         print()
 
-        # Blocks = []
-        # Sides = []
+        Blocks = extractBlocks_Prt(InputLines)
 
+        # Blocks = []
+        #
         # for b in range(blckNum):
         #
         #     blck = list(map(int, InputLines.pop(0).split()))
         #     Blocks.append(blck)
         #
         #     print(f"\t\t{b+1}. {blck}")
-        #
-        #     curSides = list(set(permutations(blck, 3)))
-        #     Sides += curSides
         # print()
-
-        Blocks = []
-
-        for b in range(blckNum):
-
-            blck = list(map(int, InputLines.pop(0).split()))
-            Blocks.append(blck)
-
-            print(f"\t\t{b+1}. {blck}")
-        print()
 
         caseCnt += 1
         blckNum = int(InputLines.pop(0))
 
-        Sides = []
+        Sides = extractSides(Blocks)
 
-        for blck in Blocks:
-            Sides += list(set(permutations(blck, 3)))
+        # Sides = []
+        #
+        # for blck in Blocks:
+        #     Sides += list(set(permutations(blck, 3)))
 
         print(f"\t\tSides:\n\t\t\t", end="")
 
