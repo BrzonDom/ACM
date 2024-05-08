@@ -61,10 +61,31 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=6&pag
 from itertools import permutations
 
 class Tower:
-    def __init__(self, twr, sds, mxH):
-        self.twr = twr
+    def __init__(self, bld, sds, hgh):
+        self.bld = bld
         self.sds = sds
-        self.mxH = mxH
+        self.hgh = hgh
+
+
+def buildTower(Twr):
+
+    for sd in Twr.sds:
+
+        nxtBld = Twr.bld + [sd]
+        nxtSds = posSides[str(sd)]
+        nxtHgh = Twr.hgh + sd[2]
+
+        nxtTwr = Tower(nxtBld, nxtSds, nxtHgh)
+
+        if nxtSds:
+            buildTower(nxtTwr)
+
+        else:
+            print(f"\t\tTower:  {nxtBld}")
+            print(f"\t\tHeight: {nxtHgh}")
+            print()
+
+            return nxtTwr
 
 
 InputRaw_Str = """
@@ -159,9 +180,9 @@ if __name__ == '__main__':
             # for posSd in posSides:
             #     nxtTwr = Tower([sd, posSd], posSides, sd[2] + posSd[2])
             #
-            #     print(f"\t\t\tTower: {nxtTwr.twr}")
-            #     print(f"\t\t\tHeiht: {nxtTwr.mxH}")
-            #     print(f"\t\t\tSides: {nxtTwr.sds}")
+            #     print(f"\t\t\tTower:  {nxtTwr.bld}")
+            #     print(f"\t\t\tHeight: {nxtTwr.hgh}")
+            #     print(f"\t\t\tSides:  {nxtTwr.sds}")
             #     print()
 
             # print(f"\t\t\tPossible sides:\n\t\t\t\t", end="")
@@ -177,7 +198,17 @@ if __name__ == '__main__':
             else:
                 print()
 
-        print()
+        print("\n")
+
+        for sd in Sides:
+
+            Twr = Tower([sd], posSides[str(sd)], sd[2])
+            buildTower(Twr)
+
+
+        if blckNum != 0:
+            print()
+
 
 """__Output__"""
 """
