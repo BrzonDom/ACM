@@ -100,14 +100,6 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=667&p
 """
 
 
-def dataProcess(InputRaw_Str):
-
-    InputLines = InputRaw_Str.split("\n")
-    caseNum = int(InputLines.pop(0))
-
-    return InputLines, caseNum
-
-
 def dataExtract_Prt(MazeLines):
 
     mzStrt = [0, 0]
@@ -242,22 +234,9 @@ if __name__ == '__main__':
 
     for case, MazeLines in enumerate(MazeLst):
 
-        # print(f"\tCase: {case+1}")
-        # print()
-
         Maze, mzStrt, inMaze = dataExtract(MazeLines)
 
-        # print(f"\t\tStart: {mzStrt}")
-        # print()
-
         solMaze = fillMaze(Maze, mzStrt, inMaze)
-
-        # for r, row in enumerate(solMaze):
-        #     print(f"\t\t", end="")
-        #     for col in row:
-        #         print(col, end="")
-        #     print()
-        # print(f"\t\t{sepLst[case]}")
 
         for row in solMaze:
             for col in row:
@@ -265,6 +244,3 @@ if __name__ == '__main__':
             print()
 
         print(sepLst[case])
-
-        # if (case+1) < caseNum:
-        #     print("\n")
