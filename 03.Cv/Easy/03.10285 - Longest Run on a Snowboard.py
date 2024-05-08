@@ -159,6 +159,8 @@ if __name__ == '__main__':
         for r in range(rowDim):
             print(f"\t\t\t\t", end="")
             for c in range(colDim):
+
+                path[str((r, c))] += 1
                 print(f"{path[str((r, c))]:2}", end=" ")
             print()
 
@@ -209,16 +211,16 @@ Spiral 5 5
 			Start: [6, 0]
 
 			Distances:
-				 4  0  2  3  4 
-				 3  4  1  2  3 
-				 2  1  0  3  4 
-				 4  3  4  1  0 
-				 1  2  3  6  5 
-				 0  1  2  3  4 
-				 3  0  3  0  5 
-				 2  1  4  1  0 
-				 1  0  3  0  1 
-				 0  1  2  3  0 
+				 5  1  3  4  5 
+				 4  5  2  3  4 
+				 3  2  1  4  5 
+				 5  4  5  2  1 
+				 2  3  4  7  6 
+				 1  2  3  4  5 
+				 4  1  4  1  6 
+				 3  2  5  2  1 
+				 2  1  4  1  2 
+				 1  2  3  4  1 
 
 
 		Case: 2
@@ -235,11 +237,11 @@ Spiral 5 5
 			Start: [2, 2]
 
 			Distances:
-				 0  1  2  3  4 
-				15 16 17 18  5 
-				14 23 24 19  6 
-				13 22 21 20  7 
-				12 11 10  9  8 
+				 1  2  3  4  5 
+				16 17 18 19  6 
+				15 24 25 20  7 
+				14 23 22 21  8 
+				13 12 11 10  9 
 
 Process finished with exit code 0
 
