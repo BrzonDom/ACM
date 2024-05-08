@@ -126,26 +126,6 @@ def dataExtract_Prt(MazeLines):
 """
 
 
-def dataExtract(Maze):
-
-    mzStrt = [0, 0]
-    mzCnt = 0
-
-    inMaze = {}
-
-    for mzLine in Maze:
-
-        inMaze[mzCnt] = len(mzLine)
-
-        if '*' in mzLine:
-            mzStrt[0] = mzCnt
-            mzStrt[1] = mzLine.index('*')
-
-        mzCnt += 1
-
-    return mzStrt, inMaze
-
-
 def dataSplit(caseNum):
 
     MazeLst = []
@@ -167,6 +147,26 @@ def dataSplit(caseNum):
         sepLst.append(InLine)
 
     return MazeLst, sepLst
+
+
+def dataExtract(Maze):
+
+    mzStrt = [0, 0]
+    mzCnt = 0
+
+    inMaze = {}
+
+    for mzLine in Maze:
+
+        inMaze[mzCnt] = len(mzLine)
+
+        if '*' in mzLine:
+            mzStrt[0] = mzCnt
+            mzStrt[1] = mzLine.index('*')
+
+        mzCnt += 1
+
+    return mzStrt, inMaze
 
 
 def fillMaze(Maze, mzStrt, inMaze):
