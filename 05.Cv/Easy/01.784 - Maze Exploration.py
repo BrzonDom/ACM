@@ -130,7 +130,9 @@ def dataExtract_Prt(InputLines):
         mzCnt += 1
     print()
 
-    return Maze, mzStrt, inMaze
+    sepLine = mazeLine
+
+    return Maze, mzStrt, inMaze, sepLine
 
 
 def fillMaze(Maze, mzStrt, inMaze):
@@ -206,7 +208,7 @@ if __name__ == '__main__':
         print(f"\t\tCase: {case+1}")
         print()
 
-        Maze, mzStrt, inMaze = dataExtract_Prt(InputLines)
+        Maze, mzStrt, inMaze, sepLine = dataExtract_Prt(InputLines)
 
         print(f"\t\t\tStart: {mzStrt}")
         print()
@@ -218,6 +220,8 @@ if __name__ == '__main__':
             for col in row:
                 print(col, end="")
             print()
+
+        print(f"\t\t\t{sepLine}")
 
         if (case+1) < caseNum:
             print("\n")
@@ -269,6 +273,7 @@ _____
 			X   X
 			X   X
 			XXXXX
+			_____
 
 
 		Case: 2
@@ -286,6 +291,7 @@ _____
 			X###X
 			X###X
 			XXXXX
+			_____
 
 Process finished with exit code 0
 
