@@ -187,15 +187,85 @@ XXXXX
 _____
 """
 
+InputTst_Str = """
+7
+AAAAAAAAA 
+A   A   A
+A * A   A
+A   A   A
+AAAAAAAAA
+_________
+BBBBB   BBBBB
+B   B   B   B
+B * B   B   B
+B   B   B   B
+BBBBB   BBBBB
+_________
+CCCCCCCCCCCCC
+C   C   C   C
+C * C   C   C
+C   C   C   C
+CC CCCCCCC CC
+C   C   C   C
+C           C
+C   C   C   C
+CC CCCCCCC CC
+C   C   C   C
+C   C   C   C
+C   C   C   C
+CCCCCCCCCCCCC
+_____________
+AXXXBXXXCXXXDXXXEXXXFXXXG   
+X   X   X   X   X   X   X
+X *     X   X           X
+X   X   X   X   X   X   X
+XXXXXX XXXXXXXXXXXXXXX XX
+X   X   X   X   X   X   X
+X   X                   X 
+X   X   X   X   X   X   X
+HXXXIXXXJXXXKXXXLXXXMXXXX
+_________________________
+XXXXX
+X  XX
+X*XXX
+X   X
+X X X
+X XX
+X X
+X X
+XXX
+__
+XXX
+X X
+X*X
+XX
+____
+AXXXBXXXCXXXDXXXEXXXFXXXG   
+X   X   X   X   X   X   X
+X *     X   X           X
+X   X   X   X   X   X   X
+XXXXXX XXXXXXXXXXXXXXX XX
+X   X   X   X   X   X   X
+X   X                   X 
+X   X   X   X   X   X   X
+HXXXIXXXJXXXKXXXLXXXMXXXX
+_
+"""
+
 InputRaw_Str = InputRaw_Str[1:-1]
+InputTst_Str = InputTst_Str[1:-1]
+
+InputLst_Str = [InputRaw_Str, InputTst_Str]
+
+InputStr = InputLst_Str[1]
 
 if __name__ == '__main__':
 
     print("Input:")
-    print(InputRaw_Str)
+    print(InputStr)
     print()
 
-    InputLines, caseNum = dataProcess(InputRaw_Str)
+    InputLines, caseNum = dataProcess(InputStr)
 
     # InputLines = InputRaw_Str.split("\n")
     # caseNum = int(InputLines.pop(0))
@@ -215,7 +285,7 @@ if __name__ == '__main__':
 
         solMaze = fillMaze(Maze, mzStrt, inMaze)
 
-        for r, row in enumerate(solMaze):
+        for row in solMaze:
             print(f"\t\t\t", end="")
             for col in row:
                 print(col, end="")
@@ -230,68 +300,233 @@ if __name__ == '__main__':
 """__Output__"""
 """
 Input:
-2
-XXXXXXXXX
-X   X   X
-X   *   X
-X   X   X
-XXXXXXXXX
-X   X
-X   X
-X   X
+7
+AAAAAAAAA 
+A   A   A
+A * A   A
+A   A   A
+AAAAAAAAA
+_________
+BBBBB   BBBBB
+B   B   B   B
+B * B   B   B
+B   B   B   B
+BBBBB   BBBBB
+_________
+CCCCCCCCCCCCC
+C   C   C   C
+C * C   C   C
+C   C   C   C
+CC CCCCCCC CC
+C   C   C   C
+C           C
+C   C   C   C
+CC CCCCCCC CC
+C   C   C   C
+C   C   C   C
+C   C   C   C
+CCCCCCCCCCCCC
+_____________
+AXXXBXXXCXXXDXXXEXXXFXXXG   
+X   X   X   X   X   X   X
+X *     X   X           X
+X   X   X   X   X   X   X
+XXXXXX XXXXXXXXXXXXXXX XX
+X   X   X   X   X   X   X
+X   X                   X 
+X   X   X   X   X   X   X
+HXXXIXXXJXXXKXXXLXXXMXXXX
+_________________________
 XXXXX
-_____
-XXXXX
+X  XX
+X*XXX
 X   X
-X * X
-X   X
-XXXXX
-_____
+X X X
+X XX
+X X
+X X
+XXX
+__
+XXX
+X X
+X*X
+XX
+____
+AXXXBXXXCXXXDXXXEXXXFXXXG   
+X   X   X   X   X   X   X
+X *     X   X           X
+X   X   X   X   X   X   X
+XXXXXX XXXXXXXXXXXXXXX XX
+X   X   X   X   X   X   X
+X   X                   X 
+X   X   X   X   X   X   X
+HXXXIXXXJXXXKXXXLXXXMXXXX
+_
 
-	Cases: 2
+	Cases: 7
 
 		Case: 1
 
-			XXXXXXXXX
-			X   X   X
-			X   *   X
-			X   X   X
-			XXXXXXXXX
-			X   X
-			X   X
-			X   X
-			XXXXX
+			AAAAAAAAA 
+			A   A   A
+			A * A   A
+			A   A   A
+			AAAAAAAAA
 
-			Start: [2, 4]
+			Start: [2, 2]
 
-			XXXXXXXXX
-			X###X###X
-			X#######X
-			X###X###X
-			XXXXXXXXX
-			X   X
-			X   X
-			X   X
-			XXXXX
-			_____
+			AAAAAAAAA 
+			A###A   A
+			A###A   A
+			A###A   A
+			AAAAAAAAA
+			_________
 
 
 		Case: 2
 
-			XXXXX
-			X   X
-			X * X
-			X   X
-			XXXXX
+			BBBBB   BBBBB
+			B   B   B   B
+			B * B   B   B
+			B   B   B   B
+			BBBBB   BBBBB
 
 			Start: [2, 2]
 
+			BBBBB   BBBBB
+			B###B   B   B
+			B###B   B   B
+			B###B   B   B
+			BBBBB   BBBBB
+			_________
+
+
+		Case: 3
+
+			CCCCCCCCCCCCC
+			C   C   C   C
+			C * C   C   C
+			C   C   C   C
+			CC CCCCCCC CC
+			C   C   C   C
+			C           C
+			C   C   C   C
+			CC CCCCCCC CC
+			C   C   C   C
+			C   C   C   C
+			C   C   C   C
+			CCCCCCCCCCCCC
+
+			Start: [2, 2]
+
+			CCCCCCCCCCCCC
+			C###C   C###C
+			C###C   C###C
+			C###C   C###C
+			CC#CCCCCCC#CC
+			C###C###C###C
+			C###########C
+			C###C###C###C
+			CC#CCCCCCC#CC
+			C###C   C###C
+			C###C   C###C
+			C###C   C###C
+			CCCCCCCCCCCCC
+			_____________
+
+
+		Case: 4
+
+			AXXXBXXXCXXXDXXXEXXXFXXXG   
+			X   X   X   X   X   X   X
+			X *     X   X           X
+			X   X   X   X   X   X   X
+			XXXXXX XXXXXXXXXXXXXXX XX
+			X   X   X   X   X   X   X
+			X   X                   X 
+			X   X   X   X   X   X   X
+			HXXXIXXXJXXXKXXXLXXXMXXXX
+
+			Start: [2, 2]
+
+			AXXXBXXXCXXXDXXXEXXXFXXXG   
+			X###X###X   X###X###X###X
+			X#######X   X###########X
+			X###X###X   X###X###X###X
+			XXXXXX#XXXXXXXXXXXXXXX#XX
+			X   X###X###X###X###X###X
+			X   X###################X 
+			X   X###X###X###X###X###X
+			HXXXIXXXJXXXKXXXLXXXMXXXX
+			_________________________
+
+
+		Case: 5
+
 			XXXXX
-			X###X
-			X###X
-			X###X
+			X  XX
+			X*XXX
+			X   X
+			X X X
+			X XX
+			X X
+			X X
+			XXX
+
+			Start: [2, 1]
+
 			XXXXX
-			_____
+			X##XX
+			X#XXX
+			X###X
+			X#X#X
+			X#XX
+			X#X
+			X#X
+			XXX
+			__
+
+
+		Case: 6
+
+			XXX
+			X X
+			X*X
+			XX
+
+			Start: [2, 1]
+
+			XXX
+			X#X
+			X#X
+			XX
+			____
+
+
+		Case: 7
+
+			AXXXBXXXCXXXDXXXEXXXFXXXG   
+			X   X   X   X   X   X   X
+			X *     X   X           X
+			X   X   X   X   X   X   X
+			XXXXXX XXXXXXXXXXXXXXX XX
+			X   X   X   X   X   X   X
+			X   X                   X 
+			X   X   X   X   X   X   X
+			HXXXIXXXJXXXKXXXLXXXMXXXX
+
+			Start: [2, 2]
+
+			AXXXBXXXCXXXDXXXEXXXFXXXG   
+			X###X###X   X###X###X###X
+			X#######X   X###########X
+			X###X###X   X###X###X###X
+			XXXXXX#XXXXXXXXXXXXXXX#XX
+			X   X###X###X###X###X###X
+			X   X###################X 
+			X   X###X###X###X###X###X
+			HXXXIXXXJXXXKXXXLXXXMXXXX
+			_
 
 Process finished with exit code 0
 
