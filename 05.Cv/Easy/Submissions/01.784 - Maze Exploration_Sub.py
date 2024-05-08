@@ -99,6 +99,8 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=667&p
 
 """
 
+"""29455230 	784 	Maze Exploration 	Accepted 	PYTH3 	1.260 	2024-05-08 15:39:41"""
+
 
 """
 def dataExtract_Prt(MazeLines):
@@ -230,14 +232,15 @@ def fillMaze(Maze, mzStrt, inMaze):
                 if Maze[curR][curC - 1] == ' ':
                     stackFill.append([curR, curC - 1])
                     filled.add((curR, curC - 1))
+
     return Maze
 
 
 if __name__ == '__main__':
 
-    print("Input:")
-    print(InputRaw_Str)
-    print()
+    # print("Input:")
+    # print(InputRaw_Str)
+    # print()
 
     caseNum = int(input())
 
