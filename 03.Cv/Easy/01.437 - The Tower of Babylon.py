@@ -100,7 +100,7 @@ def buildTower(Twr, maxTwr):
         return maxTwr
 
 
-def extractBlocks_Prt(InputLines):
+def extractBlocks_Prt(InputLines, blckNum):
 
     Blocks = []
 
@@ -112,7 +112,9 @@ def extractBlocks_Prt(InputLines):
         print(f"\t\t{b + 1}. {blck}")
     print()
 
-    return Blocks
+    blckNum = int(InputLines.pop(0))
+
+    return Blocks, blckNum
 
 
 def extractSides(Blocks):
@@ -124,6 +126,17 @@ def extractSides(Blocks):
 
     return Sides
 
+
+def prntAllSides(Sides):
+
+    print(f"\t\tSides:\n\t\t\t", end="")
+
+    for s, sd in enumerate(Sides):
+        print(sd, end=" ")
+
+        if (s + 1) % 5 == 0 and (s + 1) != len(Sides):
+            print("\n\t\t\t", end="")
+    print("\n")
 
 def findPosSides_Prt(Sides):
 
@@ -141,6 +154,7 @@ def findPosSides_Prt(Sides):
         if posSides[str(sd)]:
             print(f"\t\t\t\tNum. of pos. sides: {len(posSides[str(sd)])}")
             print("\t\t\t\t", end="")
+
             for s, psSd in enumerate(posSides[str(sd)]):
                 print(psSd, end=" ")
 
@@ -201,43 +215,27 @@ if __name__ == '__main__':
     InputLines = InputStr.split("\n")
 
     blckNum = int(InputLines.pop(0))
-    caseCnt = 1
+    caseCnt = 0
 
     while blckNum > 0:
 
+        caseCnt += 1
         print(f"\tCase: {caseCnt}")
         print()
 
-        Blocks = extractBlocks_Prt(InputLines)
-
-        # Blocks = []
-        #
-        # for b in range(blckNum):
-        #
-        #     blck = list(map(int, InputLines.pop(0).split()))
-        #     Blocks.append(blck)
-        #
-        #     print(f"\t\t{b+1}. {blck}")
-        # print()
-
-        caseCnt += 1
-        blckNum = int(InputLines.pop(0))
-
+        Blocks, blckNum = extractBlocks_Prt(InputLines, blckNum)
         Sides = extractSides(Blocks)
 
-        # Sides = []
+        prntAllSides(Sides)
+
+        # print(f"\t\tSides:\n\t\t\t", end="")
         #
-        # for blck in Blocks:
-        #     Sides += list(set(permutations(blck, 3)))
-
-        print(f"\t\tSides:\n\t\t\t", end="")
-
-        for s, sd in enumerate(Sides):
-            print(sd, end=" ")
-
-            if (s+1) % 5 == 0 and (s+1) != len(Sides):
-                print("\n\t\t\t", end="")
-        print("\n")
+        # for s, sd in enumerate(Sides):
+        #     print(sd, end=" ")
+        #
+        #     if (s+1) % 5 == 0 and (s+1) != len(Sides):
+        #         print("\n\t\t\t", end="")
+        # print("\n")
 
         posSides = findPosSides_Prt(Sides)
 
