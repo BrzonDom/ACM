@@ -145,8 +145,6 @@ def prntSides(Sides):
 
 def prntSidesPosNum(Sides, posSides):
 
-    Sides.sort(key=lambda key: len(posSides[str(key)]), reverse=True)
-
     for sd in Sides:
 
         if len(posSides[str(sd)]) == 0:
@@ -183,7 +181,9 @@ def findPosSides_Prt(Sides):
             print()
     print()
 
-    return posSides
+    Sides.sort(key=lambda key: len(posSides[str(key)]), reverse=True)
+
+    return posSides, Sides
 
 
 def prntMaxTwr(maxTwr):
@@ -260,15 +260,14 @@ if __name__ == '__main__':
         Blocks, blckNum = extractBlocks_Prt(InputLines, blckNum)
         Sides = extractSides(Blocks)
 
-        prntSides(Sides)
+        # prntSides(Sides)
 
-        posSides = findPosSides_Prt(Sides)
+        posSides, Sides = findPosSides_Prt(Sides)
 
         # prntSidesPosNum(Sides, posSides)
 
         maxTwr = Tower([], Sides, 0)
 
-        Sides.sort(key=lambda key: len(posSides[str(key)]), reverse=True)
         usedSides = set()
 
         for sd in Sides:
@@ -285,10 +284,6 @@ if __name__ == '__main__':
             maxTwr = buildTower(Twr, maxTwr)
 
         prntMaxTwr(maxTwr)
-
-        # print(f"\t\tMax Tower:")
-        # print(f"\t\t\tMax build:  {maxTwr.bld}")
-        # print(f"\t\t\tMax height: {maxTwr.hgh}")
 
         if blckNum != 0:
             print("\n")
@@ -322,10 +317,6 @@ Input:
 
 		1. [10, 20, 30]
 
-		Sides:
-			(10, 30, 20) (20, 30, 10) (20, 10, 30) (10, 20, 30) (30, 10, 20) 
-			(30, 20, 10) 
-
 			Side: (10, 30, 20) 
 
 			Side: (20, 30, 10) 
@@ -353,10 +344,6 @@ Input:
 
 		1. [6, 8, 10]
 		2. [5, 5, 5]
-
-		Sides:
-			(6, 8, 10) (10, 6, 8) (8, 6, 10) (10, 8, 6) (6, 10, 8) 
-			(8, 10, 6) (5, 5, 5) 
 
 			Side: (6, 8, 10) 
 				Num. of pos. sides: 1
@@ -401,10 +388,6 @@ Input:
 		6. [6, 6, 6]
 		7. [7, 7, 7]
 
-		Sides:
-			(1, 1, 1) (2, 2, 2) (3, 3, 3) (4, 4, 4) (5, 5, 5) 
-			(6, 6, 6) (7, 7, 7) 
-
 			Side: (1, 1, 1) 
 
 			Side: (2, 2, 2) 
@@ -445,14 +428,6 @@ Input:
 		3. [97, 93, 23]
 		4. [84, 62, 64]
 		5. [33, 83, 27]
-
-		Sides:
-			(31, 59, 41) (59, 31, 41) (59, 41, 31) (41, 59, 31) (31, 41, 59) 
-			(41, 31, 59) (58, 26, 53) (58, 53, 26) (26, 53, 58) (53, 58, 26) 
-			(26, 58, 53) (53, 26, 58) (93, 23, 97) (93, 97, 23) (97, 93, 23) 
-			(23, 93, 97) (97, 23, 93) (23, 97, 93) (84, 64, 62) (64, 62, 84) 
-			(62, 84, 64) (62, 64, 84) (64, 84, 62) (84, 62, 64) (83, 27, 33) 
-			(83, 33, 27) (33, 27, 83) (33, 83, 27) (27, 83, 33) (27, 33, 83) 
 
 			Side: (31, 59, 41) 
 				Num. of pos. sides: 3
