@@ -81,23 +81,39 @@ def buildTower(Twr, maxTwr):
             buildTower(nxtTwr, maxTwr)
 
     else:
-        # print(f"\t\tTower:  {Twr.bld}")
-        # print(f"\t\tHeight: {Twr.hgh}")
-        # print()
 
-        if Twr.hgh > maxTwr.hgh:
-            maxTwr.bld = Twr.bld
-            maxTwr.sds = Twr.sds
-            maxTwr.hgh = Twr.hgh
+        maxTwr = checkMaxTwr(Twr, maxTwr)
 
-        elif Twr.hgh == maxTwr.hgh:
-            if type(maxTwr.bld[0]) == list:
-                maxTwr.bld += [Twr.bld]
-
-            else:
-                maxTwr.bld = [maxTwr.bld] + [Twr.bld]
+        # if Twr.hgh > maxTwr.hgh:
+        #     maxTwr.bld = Twr.bld
+        #     maxTwr.sds = Twr.sds
+        #     maxTwr.hgh = Twr.hgh
+        #
+        # elif Twr.hgh == maxTwr.hgh:
+        #     if type(maxTwr.bld[0]) == list:
+        #         maxTwr.bld += [Twr.bld]
+        #
+        #     else:
+        #         maxTwr.bld = [maxTwr.bld] + [Twr.bld]
 
         return maxTwr
+
+
+def checkMaxTwr(Twr, maxTwr):
+
+    if Twr.hgh > maxTwr.hgh:
+        maxTwr.bld = Twr.bld
+        maxTwr.sds = Twr.sds
+        maxTwr.hgh = Twr.hgh
+
+    elif Twr.hgh == maxTwr.hgh:
+        if type(maxTwr.bld[0]) == list:
+            maxTwr.bld += [Twr.bld]
+
+        else:
+            maxTwr.bld = [maxTwr.bld] + [Twr.bld]
+
+    return maxTwr
 
 
 def extractBlocks_Prt(InputLines, blckNum):
@@ -245,7 +261,7 @@ if __name__ == '__main__':
 
         posSides = findPosSides_Prt(Sides)
 
-        prntSidesPosNum(Sides, posSides)
+        # prntSidesPosNum(Sides, posSides)
 
         # Sides.sort(key=lambda key: len(posSides[str(key)]), reverse=True)
         #
@@ -258,6 +274,8 @@ if __name__ == '__main__':
         # print()
 
         maxTwr = Tower([], Sides, 0)
+
+        Sides.sort(key=lambda key: len(posSides[str(key)]), reverse=True)
         usedSides = set()
 
         for sd in Sides:
@@ -269,17 +287,19 @@ if __name__ == '__main__':
 
             Twr = Tower([sd], posSides[str(sd)], sd[2])
 
-            if Twr.hgh > maxTwr.hgh:
-                maxTwr.bld = Twr.bld
-                maxTwr.sds = Twr.sds
-                maxTwr.hgh = Twr.hgh
+            maxTwr = checkMaxTwr(Twr, maxTwr)
 
-            elif Twr.hgh == maxTwr.hgh:
-                if type(maxTwr.bld[0]) == list:
-                    maxTwr.bld += [Twr.bld]
-
-                else:
-                    maxTwr.bld = [maxTwr.bld] + [Twr.bld]
+            # if Twr.hgh > maxTwr.hgh:
+            #     maxTwr.bld = Twr.bld
+            #     maxTwr.sds = Twr.sds
+            #     maxTwr.hgh = Twr.hgh
+            #
+            # elif Twr.hgh == maxTwr.hgh:
+            #     if type(maxTwr.bld[0]) == list:
+            #         maxTwr.bld += [Twr.bld]
+            #
+            #     else:
+            #         maxTwr.bld = [maxTwr.bld] + [Twr.bld]
 
             buildTower(Twr, maxTwr)
 
@@ -340,9 +360,6 @@ Input:
 					(20, 10, 30) 
 
 
-			(20, 30, 10) : 1
-			(30, 20, 10) : 1
-
 		Max Tower:
 			Max build:  [[(20, 30, 10), (10, 20, 30)], [(30, 20, 10), (20, 10, 30)]]
 			Max height: 40
@@ -383,13 +400,6 @@ Input:
 
 			Side: (5, 5, 5) 
 
-
-			(10, 8, 6) : 2
-			(8, 10, 6) : 2
-			(6, 8, 10) : 1
-			(10, 6, 8) : 1
-			(8, 6, 10) : 1
-			(6, 10, 8) : 1
 
 		Max Tower:
 			Max build:  [[(10, 8, 6), (8, 6, 10), (5, 5, 5)], [(8, 10, 6), (6, 8, 10), (5, 5, 5)]]
@@ -437,13 +447,6 @@ Input:
 					(1, 1, 1) (2, 2, 2) (3, 3, 3) (4, 4, 4) (5, 5, 5) 
 					(6, 6, 6) 
 
-
-			(7, 7, 7) : 6
-			(6, 6, 6) : 5
-			(5, 5, 5) : 4
-			(4, 4, 4) : 3
-			(3, 3, 3) : 2
-			(2, 2, 2) : 1
 
 		Max Tower:
 			Max build:  [(7, 7, 7), (6, 6, 6), (5, 5, 5), (4, 4, 4), (3, 3, 3), (2, 2, 2), (1, 1, 1)]
@@ -590,27 +593,6 @@ Input:
 
 			Side: (27, 33, 83) 
 
-
-			(93, 97, 23) : 25
-			(97, 93, 23) : 25
-			(84, 64, 62) : 17
-			(64, 84, 62) : 17
-			(62, 84, 64) : 16
-			(84, 62, 64) : 16
-			(64, 62, 84) : 14
-			(62, 64, 84) : 14
-			(59, 41, 31) : 5
-			(41, 59, 31) : 5
-			(58, 53, 26) : 5
-			(53, 58, 26) : 5
-			(83, 33, 27) : 5
-			(33, 83, 27) : 5
-			(31, 59, 41) : 3
-			(59, 31, 41) : 3
-			(83, 27, 33) : 2
-			(27, 83, 33) : 2
-			(31, 41, 59) : 1
-			(41, 31, 59) : 1
 
 		Max Tower:
 			Max build:  [[(93, 97, 23), (84, 64, 62), (64, 62, 84), (59, 41, 31), (41, 31, 59), (33, 27, 83)], [(93, 97, 23), (84, 64, 62), (64, 62, 84), (41, 59, 31), (31, 41, 59), (27, 33, 83)], [(93, 97, 23), (64, 84, 62), (62, 64, 84), (59, 41, 31), (41, 31, 59), (33, 27, 83)], [(93, 97, 23), (64, 84, 62), (62, 64, 84), (41, 59, 31), (31, 41, 59), (27, 33, 83)], [(97, 93, 23), (84, 64, 62), (64, 62, 84), (59, 41, 31), (41, 31, 59), (33, 27, 83)], [(97, 93, 23), (84, 64, 62), (64, 62, 84), (41, 59, 31), (31, 41, 59), (27, 33, 83)], [(97, 93, 23), (64, 84, 62), (62, 64, 84), (59, 41, 31), (41, 31, 59), (33, 27, 83)], [(97, 93, 23), (64, 84, 62), (62, 64, 84), (41, 59, 31), (31, 41, 59), (27, 33, 83)]]
