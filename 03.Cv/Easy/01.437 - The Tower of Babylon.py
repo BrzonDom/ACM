@@ -67,7 +67,7 @@ class Tower:
         self.hgh = hgh
 
 
-def buildTower(Twr):
+def buildTower(Twr, maxTwr):
 
     if Twr.sds:
         for sd in Twr.sds:
@@ -78,14 +78,26 @@ def buildTower(Twr):
 
             nxtTwr = Tower(nxtBld, nxtSds, nxtHgh)
 
-            buildTower(nxtTwr)
+            buildTower(nxtTwr, maxTwr)
 
     else:
-        print(f"\t\tTower:  {Twr.bld}")
-        print(f"\t\tHeight: {Twr.hgh}")
-        print()
+        # print(f"\t\tTower:  {Twr.bld}")
+        # print(f"\t\tHeight: {Twr.hgh}")
+        # print()
 
-        return Twr
+        if Twr.hgh > maxTwr.hgh:
+            maxTwr.bld = Twr.bld
+            maxTwr.sds = Twr.sds
+            maxTwr.hgh = Twr.hgh
+
+        elif Twr.hgh == maxTwr.hgh:
+            if type(maxTwr.bld[0]) == list:
+                maxTwr.bld += [Twr.bld]
+
+            else:
+                maxTwr.bld = [maxTwr.bld] + [Twr.bld]
+
+        return maxTwr
 
 
 InputRaw_Str = """
@@ -211,13 +223,31 @@ if __name__ == '__main__':
             else:
                 print()
 
-        print("\n")
+        print()
+
+        maxTwr = Tower([], Sides, 0)
 
         for sd in Sides:
 
             Twr = Tower([sd], posSides[str(sd)], sd[2])
-            buildTower(Twr)
 
+            if Twr.hgh > maxTwr.hgh:
+                maxTwr.bld = Twr.bld
+                maxTwr.sds = Twr.sds
+                maxTwr.hgh = Twr.hgh
+
+            elif Twr.hgh == maxTwr.hgh:
+                if type(maxTwr.bld[0]) == list:
+                    maxTwr.bld += [Twr.bld]
+
+                else:
+                    maxTwr.bld = [maxTwr.bld] + [Twr.bld]
+
+            buildTower(Twr, maxTwr)
+
+        print(f"\t\tMax Tower:")
+        print(f"\t\t\tMax build:  {maxTwr.bld}")
+        print(f"\t\t\tMax height: {maxTwr.hgh}")
 
         if blckNum != 0:
             print()
