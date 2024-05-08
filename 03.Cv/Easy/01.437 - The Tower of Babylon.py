@@ -70,7 +70,15 @@ class Tower:
 def buildTower(Twr, maxTwr):
 
     if Twr.sds:
+
+        usedSds = set()
+
         for sd in Twr.sds:
+
+            if sd in usedSds:
+                continue
+
+            usedSds.update(posSides[str(sd)])
 
             nxtBld = Twr.bld + [sd]
             nxtSds = posSides[str(sd)]
@@ -206,25 +214,24 @@ def findPosSides(Sides):
     return posSides, Sides
 
 
-def sortPosSides_Prt(Sides, posSides):
-
+def sortPosSides_Prt(posSides):
 
     for orgSd in posSides:
-        print(f"\tSide: {orgSd}")
-        print(f"\t\tUnsorted: {posSides[orgSd]}")
+        print(f"\t\tSide: {orgSd}")
+        print(f"\t\t\tUnsorted: {posSides[orgSd]}")
 
         posSds = posSides[orgSd]
         posSds.sort(key=lambda key: len(posSides[str(key)]), reverse=True)
 
         posSides[orgSd] = posSds
 
-        print(f"\t\tSorted:   {posSides[orgSd]}")
+        print(f"\t\t\tSorted:   {posSides[orgSd]}")
         print()
 
     return posSides
 
 
-def sortPosSides(Sides, posSides):
+def sortPosSides(posSides):
 
     for orgSd in posSides:
 
@@ -371,8 +378,8 @@ InputPartTst_Str = """
 """
 
 # InputStr = InputRaw_Str[1:-1]
-# InputStr = InputTst_Str[1:-1]
-InputStr = InputPartTst_Str[1:-1]
+InputStr = InputTst_Str[1:-1]
+# InputStr = InputPartTst_Str[1:-1]
 
 if __name__ == '__main__':
 
@@ -396,12 +403,13 @@ if __name__ == '__main__':
 
         # prntSides(Sides)
 
-        posSides, Sides = findPosSides_Prt(Sides)
-        # posSides, Sides = findPosSides(Sides)
+        # posSides, Sides = findPosSides_Prt(Sides)
+        posSides, Sides = findPosSides(Sides)
 
         # prntSidesPosNum(Sides, posSides)
 
-        posSides = sortPosSides_Prt(Sides, posSides)
+        # posSides = sortPosSides_Prt(posSides)
+        posSides = sortPosSides(posSides)
 
         maxTwr = Tower([], Sides, 0)
 
