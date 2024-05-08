@@ -100,6 +100,35 @@ def buildTower(Twr, maxTwr):
         return maxTwr
 
 
+def findPosSides_Prt(Sides):
+
+    posSides = {}
+
+    for sd in Sides:
+        print(f"\t\t\tSide: {sd} ")
+
+        posSides[str(sd)] = []
+
+        for nxtSd in Sides:
+            if nxtSd[0] < sd[0] and nxtSd[1] < sd[1]:
+                posSides[str(sd)] += [nxtSd]
+
+        if posSides[str(sd)]:
+            print(f"\t\t\t\tNum. of pos. sides: {len(posSides[str(sd)])}")
+            print("\t\t\t\t", end="")
+            for s, psSd in enumerate(posSides[str(sd)]):
+                print(psSd, end=" ")
+
+                if (s + 1) % 5 == 0 and (s + 1) != len(posSides[str(sd)]):
+                    print("\n\t\t\t\t", end="")
+            print("\n")
+        else:
+            print()
+    print()
+
+    return posSides
+
+
 InputRaw_Str = """
 1
 10 20 30
@@ -179,30 +208,32 @@ if __name__ == '__main__':
                 print("\n\t\t\t", end="")
         print("\n")
 
-        posSides = {}
+        posSides = findPosSides_Prt(Sides)
 
-        for sd in Sides:
-            print(f"\t\t\tSide: {sd} ")
-
-            posSides[str(sd)] = []
-
-            for nxtSd in Sides:
-                if nxtSd[0] < sd[0] and nxtSd[1] < sd[1]:
-
-                    posSides[str(sd)] += [nxtSd]
-
-            if posSides[str(sd)]:
-                print(f"\t\t\t\tNum. of pos. sides: {len(posSides[str(sd)])}")
-                print("\t\t\t\t", end="")
-                for s, psSd in enumerate(posSides[str(sd)]):
-                    print(psSd, end=" ")
-
-                    if (s+1) % 5 == 0 and (s+1) != len(posSides[str(sd)]):
-                        print("\n\t\t\t\t", end="")
-                print("\n")
-            else:
-                print()
-        print()
+        # posSides = {}
+        #
+        # for sd in Sides:
+        #     print(f"\t\t\tSide: {sd} ")
+        #
+        #     posSides[str(sd)] = []
+        #
+        #     for nxtSd in Sides:
+        #         if nxtSd[0] < sd[0] and nxtSd[1] < sd[1]:
+        #
+        #             posSides[str(sd)] += [nxtSd]
+        #
+        #     if posSides[str(sd)]:
+        #         print(f"\t\t\t\tNum. of pos. sides: {len(posSides[str(sd)])}")
+        #         print("\t\t\t\t", end="")
+        #         for s, psSd in enumerate(posSides[str(sd)]):
+        #             print(psSd, end=" ")
+        #
+        #             if (s+1) % 5 == 0 and (s+1) != len(posSides[str(sd)]):
+        #                 print("\n\t\t\t\t", end="")
+        #         print("\n")
+        #     else:
+        #         print()
+        # print()
 
         Sides.sort(key=lambda key: len(posSides[str(key)]), reverse=True)
 
