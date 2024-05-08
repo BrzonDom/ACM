@@ -134,10 +134,12 @@ def dataExtract(MazeLines):
 def dataSplit(caseNum):
 
     MazeLst = []
+    sepLst = []
 
     for case in range(caseNum):
 
         MazeLines = []
+
         InLine = input()
 
         while '_' not in InLine:
@@ -146,8 +148,9 @@ def dataSplit(caseNum):
             InLine = input()
 
         MazeLst.append(MazeLines)
+        sepLst.append(InLine)
 
-    return MazeLst
+    return MazeLst, sepLst
 
 
 def fillMaze(Maze, mzStrt, inMaze):
@@ -212,35 +215,26 @@ if __name__ == '__main__':
 
     caseNum = int(input())
 
-    MazeLst = dataSplit(caseNum)
+    MazeLst, sepLst = dataSplit(caseNum)
 
     for case, MazeLines in enumerate(MazeLst):
 
         print(f"\tCase: {case+1}")
         print()
 
-        # print(MazeLines)
-
-        # for row in MazeLines:
-        #     print(f"\t\t{row}")
-        # print("\n")
-
         Maze, mzStrt, inMaze = dataExtract(MazeLines)
 
-        print(f"\t\tMazeLines: {MazeLines}")
-        print(f"\t\tMaze:      {Maze}")
-        print()
-
-        print(f"\t\t\tStart: {mzStrt}")
+        print(f"\t\tStart: {mzStrt}")
         print()
 
         solMaze = fillMaze(Maze, mzStrt, inMaze)
 
         for r, row in enumerate(solMaze):
-            print(f"\t\t\t", end="")
+            print(f"\t\t", end="")
             for col in row:
                 print(col, end="")
             print()
+        print(f"\t\t{sepLst[case]}")
 
         if (case+1) < caseNum:
             print("\n")
@@ -279,20 +273,18 @@ _____
 			X   X
 			XXXXX
 
-		MazeLines: ['XXXXXXXXX', 'X   X   X', 'X   *   X', 'X   X   X', 'XXXXXXXXX', 'X   X', 'X   X', 'X   X', 'XXXXX']
-		Maze:      [['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'], ['X', ' ', ' ', ' ', 'X', ' ', ' ', ' ', 'X'], ['X', ' ', ' ', ' ', '*', ' ', ' ', ' ', 'X'], ['X', ' ', ' ', ' ', 'X', ' ', ' ', ' ', 'X'], ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'], ['X', ' ', ' ', ' ', 'X'], ['X', ' ', ' ', ' ', 'X'], ['X', ' ', ' ', ' ', 'X'], ['X', 'X', 'X', 'X', 'X']]
+		Start: [2, 4]
 
-			Start: [2, 4]
-
-			XXXXXXXXX
-			X###X###X
-			X#######X
-			X###X###X
-			XXXXXXXXX
-			X   X
-			X   X
-			X   X
-			XXXXX
+		XXXXXXXXX
+		X###X###X
+		X#######X
+		X###X###X
+		XXXXXXXXX
+		X   X
+		X   X
+		X   X
+		XXXXX
+		_____
 
 
 	Case: 2
@@ -303,16 +295,14 @@ _____
 			X   X
 			XXXXX
 
-		MazeLines: ['XXXXX', 'X   X', 'X * X', 'X   X', 'XXXXX']
-		Maze:      [['X', 'X', 'X', 'X', 'X'], ['X', ' ', ' ', ' ', 'X'], ['X', ' ', '*', ' ', 'X'], ['X', ' ', ' ', ' ', 'X'], ['X', 'X', 'X', 'X', 'X']]
+		Start: [2, 2]
 
-			Start: [2, 2]
-
-			XXXXX
-			X###X
-			X###X
-			X###X
-			XXXXX
+		XXXXX
+		X###X
+		X###X
+		X###X
+		XXXXX
+		_____
 
 Process finished with exit code 0
 
