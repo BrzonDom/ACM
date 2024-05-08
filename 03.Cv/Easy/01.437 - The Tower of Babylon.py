@@ -140,6 +140,20 @@ def extractBlocks_Prt(InputLines, blckNum):
     return Blocks, blckNum
 
 
+def extractBlocks(blckNum):
+
+    Blocks = []
+
+    for b in range(blckNum):
+
+        blck = list(map(int, InputLines.pop(0).split()))
+        Blocks.append(blck)
+
+    blckNum = int(InputLines.pop(0))
+
+    return Blocks, blckNum
+
+
 def extractSides(Blocks):
 
     Sides = []
@@ -401,15 +415,23 @@ if __name__ == '__main__':
     InputLines = InputStr.split("\n")
 
     blckNum = int(InputLines.pop(0))
+
+    BlockLst = []
+
+    while blckNum != 0:
+
+        Blocks, blckNum = extractBlocks(blckNum)
+        BlockLst.append(Blocks)
+
     caseCnt = 0
 
-    while blckNum > 0:
+    for Blocks in BlockLst:
 
         caseCnt += 1
         print(f"\tCase: {caseCnt}")
         print()
 
-        Blocks, blckNum = extractBlocks_Prt(InputLines, blckNum)
+        # Blocks, blckNum = extractBlocks_Prt(InputLines, blckNum)
         Sides = extractSides(Blocks)
 
         # prntSides(Sides)
@@ -441,7 +463,7 @@ if __name__ == '__main__':
 
         prntMaxTwr(maxTwr, caseCnt)
 
-        if blckNum != 0:
+        if caseCnt != len(BlockLst):
             print("\n")
 
 
@@ -523,13 +545,6 @@ Input:
 
 	Case: 1
 
-		Blocks:
-			1. [31, 41, 59]
-			2. [26, 53, 58]
-			3. [97, 93, 23]
-			4. [84, 62, 64]
-			5. [33, 83, 27]
-
 		Max Tower:
 			Max build:  [(93, 97, 23), (84, 64, 62), (64, 62, 84), (59, 41, 31), (41, 31, 59), (33, 27, 83)]
 			Max height: 342
@@ -538,28 +553,6 @@ Input:
 
 
 	Case: 2
-
-		Blocks:
-			1. [10, 19, 18]
-			2. [18, 19, 22]
-			3. [23, 33, 34]
-			4. [19, 21, 22]
-			5. [32, 32, 31]
-			6. [10, 90, 10]
-			7. [10, 80, 10]
-			8. [22, 22, 29]
-			9. [29, 28, 27]
-			10. [26, 25, 24]
-			11. [19, 80, 1]
-			12. [22, 21, 31]
-			13. [29, 28, 55]
-			14. [58, 42, 39]
-			15. [48, 78, 32]
-			16. [2, 2, 90]
-			17. [3, 99, 33]
-			18. [54, 44, 44]
-			19. [57, 13, 33]
-			20. [10, 29, 80]
 
 		Max Tower:
 			Max build:  [(78, 48, 32), (44, 44, 54), (39, 42, 58), (33, 34, 23), (32, 31, 32), (29, 28, 55), (28, 27, 29), (26, 25, 24), (25, 24, 26), (22, 21, 31), (21, 19, 22), (19, 18, 22), (10, 10, 90), (2, 2, 90)]
@@ -570,13 +563,6 @@ Input:
 
 	Case: 3
 
-		Blocks:
-			1. [1, 1, 1]
-			2. [1, 2, 1]
-			3. [1, 3, 1]
-			4. [1, 4, 1]
-			5. [1, 5, 1]
-
 		Max Tower:
 			Max build:  [(1, 1, 5)]
 			Max height: 5
@@ -585,13 +571,6 @@ Input:
 
 
 	Case: 4
-
-		Blocks:
-			1. [2, 3, 100]
-			2. [3, 4, 200]
-			3. [4, 6, 50]
-			4. [6, 8, 100]
-			5. [5, 5, 75]
 
 		Max Tower:
 			Max build:  [(8, 100, 6), (6, 8, 100), (5, 5, 75), (4, 3, 200), (3, 2, 100)]
@@ -602,9 +581,6 @@ Input:
 
 	Case: 5
 
-		Blocks:
-			1. [80, 90, 100]
-
 		Max Tower:
 			Max build:  [(90, 100, 80), (80, 90, 100)]
 			Max height: 180
@@ -613,14 +589,6 @@ Input:
 
 
 	Case: 6
-
-		Blocks:
-			1. [15, 19, 3]
-			2. [44, 33, 21]
-			3. [88, 33, 57]
-			4. [31, 29, 20]
-			5. [99, 88, 1]
-			6. [52, 26, 5]
 
 		Max Tower:
 			Max build:  [(99, 88, 1), (88, 57, 33), (57, 33, 88), (52, 26, 5), (33, 21, 44), (29, 20, 31), (26, 5, 52), (15, 3, 19)]
@@ -631,10 +599,6 @@ Input:
 
 	Case: 7
 
-		Blocks:
-			1. [100, 100, 100]
-			2. [102, 98, 100]
-
 		Max Tower:
 			Max build:  [(100, 102, 98), (98, 100, 102)]
 			Max height: 200
@@ -644,18 +608,6 @@ Input:
 
 	Case: 8
 
-		Blocks:
-			1. [1, 2, 3]
-			2. [4, 5, 6]
-			3. [7, 8, 9]
-			4. [10, 11, 12]
-			5. [13, 14, 15]
-			6. [16, 17, 18]
-			7. [19, 20, 21]
-			8. [22, 23, 24]
-			9. [25, 26, 27]
-			10. [28, 29, 30]
-
 		Max Tower:
 			Max build:  [(30, 29, 28), (29, 28, 30), (27, 26, 25), (26, 25, 27), (23, 24, 22), (22, 23, 24), (21, 20, 19), (20, 19, 21), (18, 17, 16), (17, 16, 18), (14, 15, 13), (13, 14, 15), (11, 12, 10), (10, 11, 12), (9, 8, 7), (8, 7, 9), (5, 6, 4), (4, 5, 6), (3, 2, 1), (2, 1, 3)]
 			Max height: 310
@@ -664,16 +616,6 @@ Input:
 
 
 	Case: 9
-
-		Blocks:
-			1. [10, 16, 1]
-			2. [5, 8, 2]
-			3. [20, 32, 2]
-			4. [10, 16, 2]
-			5. [16, 10, 2]
-			6. [32, 20, 2]
-			7. [8, 5, 2]
-			8. [16, 10, 1]
 
 		Max Tower:
 			Max build:  [(32, 20, 2), (20, 2, 32), (10, 1, 16)]
