@@ -113,10 +113,27 @@ def extractData():
 
     while blckNum != 0:
 
-        Blocks, blckNum = extractBlocks_Prt(blckNum)
+        Blocks, blckNum = extractBlocks(blckNum)
         BlckLst.append(Blocks)
 
     return BlckLst
+
+
+def extractBlocks(blckNum):
+
+    Blocks = []
+
+    for b in range(blckNum):
+
+        InLine = input()
+
+        # blck = list(map(int, InputLines.pop(0).split()))
+        blck = list(map(int, InLine.split()))
+        Blocks.append(blck)
+
+    blckNum = int(input())
+
+    return Blocks, blckNum
 
 
 # def extractBlocks_Prt(InputLines, blckNum):
@@ -148,6 +165,16 @@ def extractSides(Blocks):
         Sides += list(set(permutations(blck, 3)))
 
     return Sides
+
+
+def prntBlocks(Blocks):
+
+    print("\t\tBlocks:")
+
+    for b, blck in enumerate(Blocks):
+
+        print(f"\t\t\t{b + 1}. {blck}")
+    print()
 
 
 def prntSides(Sides):
@@ -280,6 +307,8 @@ if __name__ == '__main__':
         print(f"\tCase: {caseCnt}")
         print()
 
+        prntBlocks(Blocks)
+
         # Blocks, blckNum = extractBlocks_Prt(InputLines, blckNum)
         # Blocks, blckNum = extractBlocks_Prt(blckNum)
 
@@ -319,26 +348,10 @@ if __name__ == '__main__':
 
 """__Output__"""
 """
-		1. [10, 20, 30]
-
-		1. [6, 8, 10]
-		2. [5, 5, 5]
-
-		1. [1, 1, 1]
-		2. [2, 2, 2]
-		3. [3, 3, 3]
-		4. [4, 4, 4]
-		5. [5, 5, 5]
-		6. [6, 6, 6]
-		7. [7, 7, 7]
-
-		1. [31, 41, 59]
-		2. [26, 53, 58]
-		3. [97, 93, 23]
-		4. [84, 62, 64]
-		5. [33, 83, 27]
-
 	Case: 1
+
+		Blocks:
+			1. [10, 20, 30]
 
 			Side: (10, 30, 20) 
 
@@ -366,6 +379,10 @@ if __name__ == '__main__':
 
 
 	Case: 2
+
+		Blocks:
+			1. [6, 8, 10]
+			2. [5, 5, 5]
 
 			Side: (6, 8, 10) 
 				Num. of pos. sides: 1
@@ -404,6 +421,15 @@ if __name__ == '__main__':
 
 	Case: 3
 
+		Blocks:
+			1. [1, 1, 1]
+			2. [2, 2, 2]
+			3. [3, 3, 3]
+			4. [4, 4, 4]
+			5. [5, 5, 5]
+			6. [6, 6, 6]
+			7. [7, 7, 7]
+
 			Side: (1, 1, 1) 
 
 			Side: (2, 2, 2) 
@@ -440,6 +466,13 @@ if __name__ == '__main__':
 
 
 	Case: 4
+
+		Blocks:
+			1. [31, 41, 59]
+			2. [26, 53, 58]
+			3. [97, 93, 23]
+			4. [84, 62, 64]
+			5. [33, 83, 27]
 
 			Side: (31, 59, 41) 
 				Num. of pos. sides: 3
