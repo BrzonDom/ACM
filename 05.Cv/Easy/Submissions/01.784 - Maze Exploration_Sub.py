@@ -100,6 +100,7 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=667&p
 """
 
 
+"""
 def dataExtract_Prt(MazeLines):
 
     mzStrt = [0, 0]
@@ -122,6 +123,7 @@ def dataExtract_Prt(MazeLines):
     print()
 
     return Maze, mzStrt, inMaze
+"""
 
 
 def dataExtract(MazeLines):
