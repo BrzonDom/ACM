@@ -53,6 +53,8 @@ def findPath(curPos, dim, strt, slope, dstnc):
 
     mvs = [(1, 0), (0, 1), (-1, 0), (0, -1)]
 
+    maxDstnc = 0
+
     for mvR, mvC in mvs:
         nRw, nCl = cRw + mvR, cCl + mvC
         nxtPos = [nRw, nCl]
@@ -62,7 +64,9 @@ def findPath(curPos, dim, strt, slope, dstnc):
             if (dstnc+1) > path[str(strt)]:
                 path[str(strt)] = (dstnc+1)
 
-            findPath(nxtPos, dim, strt, slope, dstnc+1)
+            maxDstnc = max(maxDstnc, findPath(nxtPos, dim, strt, slope, dstnc+1))
+
+    return maxDstnc
 
 
 InputRaw_Str = """
