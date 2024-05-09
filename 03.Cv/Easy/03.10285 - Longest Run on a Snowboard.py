@@ -140,14 +140,14 @@ if __name__ == '__main__':
             for c in range(colDim):
                 print(f"{slope[r][c]:2}", end=" ")
 
-                if slope[r][c] > strHgh:
-                    strHgh = slope[r][c]
-                    strCrd = [r, c]
+                # if slope[r][c] > strHgh:
+                #     strHgh = slope[r][c]
+                #     strCrd = [r, c]
             print()
         print()
 
-        print(f"\t\t\tStart: {strCrd}")
-        print()
+        # print(f"\t\t\tStart: {strCrd}")
+        # print()
 
         path = {}
 
@@ -161,9 +161,9 @@ if __name__ == '__main__':
 
         maxDstnc = 0
 
-        print(f"\t\t\tDistances:")
+        print(f"\t\t\t\tDistances:")
         for r in range(rowDim):
-            print(f"\t\t\t\t", end="")
+            print(f"\t\t\t\t\t", end="")
             for c in range(colDim):
 
                 path[str((r, c))] += 1
@@ -220,19 +220,17 @@ Spiral 5 5
 				74  0 62 38 96 
 				37 54 55 82 38 
 
-			Start: [6, 0]
-
-			Distances:
-				 5  1  3  4  5 
-				 4  5  2  3  4 
-				 3  2  1  4  5 
-				 5  4  5  2  1 
-				 2  3  4  7  6 
-				 1  2  3  4  5 
-				 4  1  4  1  6 
-				 3  2  5  2  1 
-				 2  1  4  1  2 
-				 1  2  3  4  1 
+				Distances:
+					 5  1  3  4  5 
+					 4  5  2  3  4 
+					 3  2  1  4  5 
+					 5  4  5  2  1 
+					 2  3  4  7  6 
+					 1  2  3  4  5 
+					 4  1  4  1  6 
+					 3  2  5  2  1 
+					 2  1  4  1  2 
+					 1  2  3  4  1 
 
 			Max distance: 7
 
@@ -248,14 +246,12 @@ Spiral 5 5
 				14 23 22 21  8 
 				13 12 11 10  9 
 
-			Start: [2, 2]
-
-			Distances:
-				 1  2  3  4  5 
-				16 17 18 19  6 
-				15 24 25 20  7 
-				14 23 22 21  8 
-				13 12 11 10  9 
+				Distances:
+					 1  2  3  4  5 
+					16 17 18 19  6 
+					15 24 25 20  7 
+					14 23 22 21  8 
+					13 12 11 10  9 
 
 			Max distance: 25
 
