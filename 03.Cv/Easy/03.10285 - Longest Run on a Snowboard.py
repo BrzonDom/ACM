@@ -51,6 +51,9 @@ def findPath(curPos, dim, strt, slope, dstnc):
     rwDm, clDm = dim[0], dim[1]
     sRw, sCl = strt[0], strt[1]
 
+    if path[str((cRw, cCl))] != -1:
+        return path[str((cRw, cCl))]
+
     mvs = [(1, 0), (0, 1), (-1, 0), (0, -1)]
 
     maxDstnc = 0
@@ -65,6 +68,8 @@ def findPath(curPos, dim, strt, slope, dstnc):
                 path[str(strt)] = (dstnc+1)
 
             maxDstnc = max(maxDstnc, findPath(nxtPos, dim, strt, slope, dstnc+1))
+
+    path[str((cRw, cCl))] = maxDstnc
 
     return maxDstnc
 
@@ -132,13 +137,17 @@ if __name__ == '__main__':
             slope.append(row)
         # print()
 
-        strHgh = 0
-        strCrd = []
+        # strHgh = 0
+        # strCrd = []
+
+        path = {}
 
         for r in range(rowDim):
             print(f"\t\t\t\t", end="")
             for c in range(colDim):
                 print(f"{slope[r][c]:2}", end=" ")
+
+                path[str((r, c))] = -1
 
                 # if slope[r][c] > strHgh:
                 #     strHgh = slope[r][c]
@@ -149,11 +158,8 @@ if __name__ == '__main__':
         # print(f"\t\t\tStart: {strCrd}")
         # print()
 
-        path = {}
-
         for r in range(rowDim):
             for c in range(colDim):
-                path[str((r, c))] = 0
 
                 findPath([r, c], dim, (r, c), slope, 0)
 
