@@ -137,6 +137,29 @@ InputRaw_Lst = [InputOrg_Raw, InputTst1_Raw, InputTst2_Raw]
 
 InputRaw = InputRaw_Lst[2]
 
+
+def fndPath(pos, dim, city, path):
+
+    cRw, cCl = pos[0], pos[1]
+    rwDm, clDm = dim[0], dim[1]
+
+    path.append([cRw, cCl])
+
+    if [cRw, cCl] == [rwDm - 1, clDm - 1]:
+        return path
+
+    mvs = [[1, 0], [0, 1], [-1, 0], [0, -1]]
+
+    for mvR, mvC in mvs:
+        nRw = cRw + mvR
+        nCl = cCl + mvC
+        nPos = [nRw, nCl]
+
+        if 0 <= nRw < rwDm and 0 <= nCl < clDm and nPos not in path and city[nRw][nCl]:
+
+            return fndPath(nPos, dim, city, path)
+
+
 if __name__ == '__main__':
 
     print("Input:")
@@ -187,30 +210,37 @@ if __name__ == '__main__':
             print(f"\t\t\t\t  {row}")
         print()
 
-        walkQue = [[0, 0]]
-        vstd = set()
-        path = {}
+        # fndPath(pos, dim, city, path)
+        path = fndPath([0, 0], [dimRow, dimCol], city, [])
 
-        mvs = [(1, 0), (0, 1), (-1, 0), (0, -1)]
-        dstnc = 0
+        print(f"\t\t\tDistance: {len(path)}")
+        print(f"\t\t\tPath: {path}")
+        print()
 
-        while len(walkQue) > 0:
-
-            cPos = walkQue.pop(0)
-            cRw, cCl = cPos[0], cPos[1]
-
-            vstd.add((cRw, cCl))
-            dstnc += 1
-
-            if cPos == [dimRow-1, dimCol-1]:
-                break
-
-            for mRw, mCl in mvs:
-                nRw, nCl = cRw + mRw, cCl + mCl
-                nPos = [nRw, nCl]
-
-                if 0 <= nRw < dimRow and 0 <= nCl < dimCol and (nRw, nCl) not in vstd and city[nRw][nCl]:
-                    walkQue.append(nPos)
+        # walkQue = [[0, 0]]
+        # vstd = set()
+        # path = {}
+        #
+        # mvs = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+        # dstnc = 0
+        #
+        # while len(walkQue) > 0:
+        #
+        #     cPos = walkQue.pop(0)
+        #     cRw, cCl = cPos[0], cPos[1]
+        #
+        #     vstd.add((cRw, cCl))
+        #     dstnc += 1
+        #
+        #     if cPos == [dimRow-1, dimCol-1]:
+        #         break
+        #
+        #     for mRw, mCl in mvs:
+        #         nRw, nCl = cRw + mRw, cCl + mCl
+        #         nPos = [nRw, nCl]
+        #
+        #         if 0 <= nRw < dimRow and 0 <= nCl < dimCol and (nRw, nCl) not in vstd and city[nRw][nCl]:
+        #             walkQue.append(nPos)
 
         if (case+1) < caseNum:
             print()
@@ -252,6 +282,10 @@ Input:
 				  [1, 1, 0, 1, 0]
 				  [1, 1, 1, 1, 1]
 
+			Distance: 8
+			Path: [[0, 0], [1, 0], [2, 0], [3, 0], [3, 1], [3, 2], [3, 3], [3, 4]]
+
+
 		Case: 2
 
 			East-West:   8
@@ -271,6 +305,10 @@ Input:
 				  [1, 0, 1, 1, 1, 1, 0, 1]
 				  [1, 1, 1, 1, 1, 1, 1, 0]
 				  [1, 1, 1, 1, 1, 1, 1, 1]
+
+			Distance: 17
+			Path: [[0, 0], [1, 0], [2, 0], [2, 1], [3, 1], [4, 1], [4, 0], [5, 0], [6, 0], [7, 0], [7, 1], [7, 2], [7, 3], [7, 4], [7, 5], [7, 6], [7, 7]]
+
 
 Process finished with exit code 0
 
