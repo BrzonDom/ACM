@@ -45,72 +45,6 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=14&pa
 """
 
 
-def findPath(curPos, dim, slopeMat, dstncMat):
-
-    cRw, cCl = curPos[0], curPos[1]
-    rwDm, clDm = dim[0], dim[1]
-
-    if dstncMat[cRw][cCl]:
-        return dstncMat[cRw][cCl]
-
-    mvs = [(1, 0), (0, 1), (-1, 0), (0, -1)]
-
-    maxDstnc = 1
-
-    for mvR, mvC in mvs:
-        nRw, nCl = cRw + mvR, cCl + mvC
-        nxtPos = [nRw, nCl]
-
-        if canGo(curPos, nxtPos, dim, slopeMat):
-
-            dstnc = 1 + findPath(nxtPos, dim, slopeMat, dstncMat)
-
-            maxDstnc = max(dstnc, maxDstnc)
-
-    dstncMat[cRw][cCl] = maxDstnc
-
-    return maxDstnc
-
-
-def canGo(curPos, nxtPos, dim, slopeMat):
-
-    cRw, cCl = curPos[0], curPos[1]
-    nRw, nCl = nxtPos[0], nxtPos[1]
-    rwDm, clDm = dim[0], dim[1]
-
-    return 0 <= nRw < rwDm and 0 <= nCl < clDm and slopeMat[nRw][nCl] < slopeMat[cRw][cCl]
-
-
-def dataExtract(InLines):
-
-    caseNum = int(InLines.pop(0))
-
-    lstName = []
-    lstDim = []
-    lstSlopeMat = []
-
-    for case in range(caseNum):
-
-        infLine = InLines.pop(0)
-
-        name = infLine.split()[0]
-        dim = list(map(int, infLine.split()[1:]))
-        slopeMat = []
-
-        for _ in range(dim[0]):
-
-            lineStr = InLines.pop(0)
-            line = list(map(int, lineStr.split()))
-
-            slopeMat.append(line)
-
-        lstName.append(name)
-        lstDim.append(dim)
-        lstSlopeMat.append(slopeMat)
-
-    return caseNum, lstName, lstDim, lstSlopeMat
-
-
 InputOrg_Raw = """
 2
 Feldberg 10 5
@@ -236,6 +170,73 @@ InputOrg_Raw = InputOrg_Raw[1:-1]
 InputTst_Raw = InputTst_Raw[1:-1]
 
 InputRaw_Lst = [InputOrg_Raw, InputTst_Raw]
+
+
+def findPath(curPos, dim, slopeMat, dstncMat):
+
+    cRw, cCl = curPos[0], curPos[1]
+    rwDm, clDm = dim[0], dim[1]
+
+    if dstncMat[cRw][cCl]:
+        return dstncMat[cRw][cCl]
+
+    mvs = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+
+    maxDstnc = 1
+
+    for mvR, mvC in mvs:
+        nRw, nCl = cRw + mvR, cCl + mvC
+        nxtPos = [nRw, nCl]
+
+        if canGo(curPos, nxtPos, dim, slopeMat):
+
+            dstnc = 1 + findPath(nxtPos, dim, slopeMat, dstncMat)
+
+            maxDstnc = max(dstnc, maxDstnc)
+
+    dstncMat[cRw][cCl] = maxDstnc
+
+    return maxDstnc
+
+
+def canGo(curPos, nxtPos, dim, slopeMat):
+
+    cRw, cCl = curPos[0], curPos[1]
+    nRw, nCl = nxtPos[0], nxtPos[1]
+    rwDm, clDm = dim[0], dim[1]
+
+    return 0 <= nRw < rwDm and 0 <= nCl < clDm and slopeMat[nRw][nCl] < slopeMat[cRw][cCl]
+
+
+def dataExtract(InLines):
+
+    caseNum = int(InLines.pop(0))
+
+    lstName = []
+    lstDim = []
+    lstSlopeMat = []
+
+    for case in range(caseNum):
+
+        infLine = InLines.pop(0)
+
+        name = infLine.split()[0]
+        dim = list(map(int, infLine.split()[1:]))
+        slopeMat = []
+
+        for _ in range(dim[0]):
+
+            lineStr = InLines.pop(0)
+            line = list(map(int, lineStr.split()))
+
+            slopeMat.append(line)
+
+        lstName.append(name)
+        lstDim.append(dim)
+        lstSlopeMat.append(slopeMat)
+
+    return caseNum, lstName, lstDim, lstSlopeMat
+
 
 InputRaw = InputRaw_Lst[0]
 
