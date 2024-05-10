@@ -49,7 +49,7 @@ InputOrg_Raw = """
 4
 """
 
-InputTst_Raw = """
+InputTst1_Raw = """
 8
 
 1 1
@@ -109,12 +109,33 @@ InputTst_Raw = """
 
 """
 
+InputTst2_Raw = """
+2
+
+4 5
+1
+2 2
+3 3 5
+4
+
+8 8
+1
+2
+3 5
+4 1 4
+5 3 6
+6 2 7
+7 8
+8
+"""
+
 InputOrg_Raw = InputOrg_Raw[1:-1]
-InputTst_Raw = InputTst_Raw[1:-1]
+InputTst1_Raw = InputTst1_Raw[1:-1]
+InputTst2_Raw = InputTst2_Raw[1:-1]
 
-InputRaw_Lst = [InputOrg_Raw, InputTst_Raw]
+InputRaw_Lst = [InputOrg_Raw, InputTst1_Raw, InputTst2_Raw]
 
-InputRaw = InputRaw_Lst[1]
+InputRaw = InputRaw_Lst[2]
 
 if __name__ == '__main__':
 
@@ -135,10 +156,13 @@ if __name__ == '__main__':
 
         InputLines.pop(0)
 
+        print(f"\t\tCase: {case+1}")
+        print()
+
         strRow, strCol = list(map(int, InputLines.pop(0).split()))
 
-        print(f"\t\tEast-West:   {strRow}")
-        print(f"\t\tNorth-South: {strCol}")
+        print(f"\t\t\tEast-West:   {strRow}")
+        print(f"\t\t\tNorth-South: {strCol}")
         print()
 
         cross = {}
@@ -148,7 +172,8 @@ if __name__ == '__main__':
 
             cross[row+1] = strt[1:]
 
-            print(f"\t\t{row+1}.Street: {strt[1:]}")
+            if strt[1:]:
+                print(f"\t\t\t\t{row+1}.Street: {strt[1:]}")
         print()
 
         city = [[1 for c in range(strCol)] for r in range(strRow)]
@@ -159,48 +184,19 @@ if __name__ == '__main__':
                 city[row-1][col-1] = 0
 
         for row in city:
-            print(f"\t\t{row}")
+            print(f"\t\t\t\t  {row}")
         print()
 
 
 """__Output__"""
 """
 Input:
-8
-
-1 1
-1
-
-1 8
-1
-
-1 8
-1 4
-
-8 1
-1
 2
-3
-4
-5
-6
-7
-8
 
-8 1
+4 5
 1
-2
-3
-4 1
-5
-6
-7
-8
-
-4 4
-1
-2
-3
+2 2
+3 3 5
 4
 
 8 8
@@ -213,136 +209,40 @@ Input:
 7 8
 8
 
-8 8
-1
-2 6
-3 2
-4 5
-5 1
-6 3
-7 5 8
-8 5
+	Cases: 2
 
+		Case: 1
 
-	Cases: 8
+			East-West:   4
+			North-South: 5
 
-		East-West:   1
-		North-South: 1
+				2.Street: [2]
+				3.Street: [3, 5]
 
-		1.Street: []
+				  [1, 1, 1, 1, 1]
+				  [1, 0, 1, 1, 1]
+				  [1, 1, 0, 1, 0]
+				  [1, 1, 1, 1, 1]
 
-		[1]
+		Case: 2
 
-		East-West:   1
-		North-South: 8
+			East-West:   8
+			North-South: 8
 
-		1.Street: []
+				3.Street: [5]
+				4.Street: [1, 4]
+				5.Street: [3, 6]
+				6.Street: [2, 7]
+				7.Street: [8]
 
-		[1, 1, 1, 1, 1, 1, 1, 1]
-
-		East-West:   1
-		North-South: 8
-
-		1.Street: [4]
-
-		[1, 1, 1, 0, 1, 1, 1, 1]
-
-		East-West:   8
-		North-South: 1
-
-		1.Street: []
-		2.Street: []
-		3.Street: []
-		4.Street: []
-		5.Street: []
-		6.Street: []
-		7.Street: []
-		8.Street: []
-
-		[1]
-		[1]
-		[1]
-		[1]
-		[1]
-		[1]
-		[1]
-		[1]
-
-		East-West:   8
-		North-South: 1
-
-		1.Street: []
-		2.Street: []
-		3.Street: []
-		4.Street: [1]
-		5.Street: []
-		6.Street: []
-		7.Street: []
-		8.Street: []
-
-		[1]
-		[1]
-		[1]
-		[0]
-		[1]
-		[1]
-		[1]
-		[1]
-
-		East-West:   4
-		North-South: 4
-
-		1.Street: []
-		2.Street: []
-		3.Street: []
-		4.Street: []
-
-		[1, 1, 1, 1]
-		[1, 1, 1, 1]
-		[1, 1, 1, 1]
-		[1, 1, 1, 1]
-
-		East-West:   8
-		North-South: 8
-
-		1.Street: []
-		2.Street: []
-		3.Street: [5]
-		4.Street: [1, 4]
-		5.Street: [3, 6]
-		6.Street: [2, 7]
-		7.Street: [8]
-		8.Street: []
-
-		[1, 1, 1, 1, 1, 1, 1, 1]
-		[1, 1, 1, 1, 1, 1, 1, 1]
-		[1, 1, 1, 1, 0, 1, 1, 1]
-		[0, 1, 1, 0, 1, 1, 1, 1]
-		[1, 1, 0, 1, 1, 0, 1, 1]
-		[1, 0, 1, 1, 1, 1, 0, 1]
-		[1, 1, 1, 1, 1, 1, 1, 0]
-		[1, 1, 1, 1, 1, 1, 1, 1]
-
-		East-West:   8
-		North-South: 8
-
-		1.Street: []
-		2.Street: [6]
-		3.Street: [2]
-		4.Street: [5]
-		5.Street: [1]
-		6.Street: [3]
-		7.Street: [5, 8]
-		8.Street: [5]
-
-		[1, 1, 1, 1, 1, 1, 1, 1]
-		[1, 1, 1, 1, 1, 0, 1, 1]
-		[1, 0, 1, 1, 1, 1, 1, 1]
-		[1, 1, 1, 1, 0, 1, 1, 1]
-		[0, 1, 1, 1, 1, 1, 1, 1]
-		[1, 1, 0, 1, 1, 1, 1, 1]
-		[1, 1, 1, 1, 0, 1, 1, 0]
-		[1, 1, 1, 1, 0, 1, 1, 1]
+				  [1, 1, 1, 1, 1, 1, 1, 1]
+				  [1, 1, 1, 1, 1, 1, 1, 1]
+				  [1, 1, 1, 1, 0, 1, 1, 1]
+				  [0, 1, 1, 0, 1, 1, 1, 1]
+				  [1, 1, 0, 1, 1, 0, 1, 1]
+				  [1, 0, 1, 1, 1, 1, 0, 1]
+				  [1, 1, 1, 1, 1, 1, 1, 0]
+				  [1, 1, 1, 1, 1, 1, 1, 1]
 
 
 Process finished with exit code 0
