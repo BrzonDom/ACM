@@ -61,13 +61,22 @@ def findPath(curPos, dim, slopeMat, dstncMat):
         nRw, nCl = cRw + mvR, cCl + mvC
         nxtPos = [nRw, nCl]
 
-        if 0 <= nRw < rwDm and 0 <= nCl < clDm and slopeMat[nRw][nCl] < slopeMat[cRw][cCl]:
+        if canGo(curPos, nxtPos, dim, slopeMat):
 
             maxDstnc = max(maxDstnc, 1 + findPath(nxtPos, dim, slopeMat, dstncMat))
 
     dstncMat[cRw][cCl] = maxDstnc
 
     return maxDstnc
+
+
+def canGo(curPos, nxtPos, dim, slopeMat):
+
+    cRw, cCl = curPos[0], curPos[1]
+    nRw, nCl = nxtPos[0], nxtPos[1]
+    rwDm, clDm = dim[0], dim[1]
+
+    return 0 <= nRw < rwDm and 0 <= nCl < clDm and slopeMat[nRw][nCl] < slopeMat[cRw][cCl]
 
 
 InputRaw_Str = """
