@@ -157,7 +157,7 @@ def fndPath_Rec(cWlk, dim, city):
 
         return cWlk
 
-    mvs = [[1, 0], [0, 1], [-1, 0], [0, -1]]
+    mvs = [(1, 0), (0, 1), (-1, 0), (0, -1)]
 
     for mvR, mvC in mvs:
         nRw = cRw + mvR
@@ -166,11 +166,10 @@ def fndPath_Rec(cWlk, dim, city):
 
         if 0 <= nRw < rwDm and 0 <= nCl < clDm and nPos not in cWlk.pth and city[nRw][nCl]:
 
-            nDstnc = cWlk.dst + 1
-            nVstd = cWlk.pth
-            nVstd.append(nPos)
+            nDst = cWlk.dst + 1
+            nPth = cWlk.pth + [nPos]
 
-            nWlk = Walk(nPos, nDstnc, nVstd, cWlk)
+            nWlk = Walk(nPos, nDst, nPth, cWlk)
 
             return fndPath_Rec(nWlk, dim, city)
 
@@ -180,19 +179,23 @@ def findPath_Iter(dim, city):
     rwDm, clDm = dim[0], dim[1]
 
     minDstnc = 0
-
     dstncDtAll = {(0, 0): 0}
 
-    pathQue = [(0, 0)]
+        # Walk(self, pos, dstnc, pth, prv)
+    strWlk = Walk((0, 0), 0, [(0, 0)], None)
 
-    while pathQue:
+    queuWlk = [[strWlk], []]
 
-        cPos = pathQue.pop(0)
+    while queuWlk[0]:
+
+        cWlk = queuWlk[0].pop(0)
+
+        cPos = cWlk.pos
         cRw, cCl = cPos[0], cPos[1]
 
         if (cRw, cCl) == (rwDm - 1, clDm - 1):
 
-            return dstncDtAll[cPos], dstncDtAll
+            return cWlk
 
         else:
             mvs = [(1, 0), (0, 1), (-1, 0), (0, -1)]
@@ -202,12 +205,17 @@ def findPath_Iter(dim, city):
                 nCl = cCl + mvC
                 nPos = (nRw, nCl)
 
-                if 0 <= nRw < rwDm and 0 <= nCl < clDm and nPos not in dstncDtAll and city[nRw][nCl]:
+                if 0 <= nRw < rwDm and 0 <= nCl < clDm and nPos not in cWlk.pth and city[nRw][nCl]:
 
-                    dstncDtAll[nPos] = dstncDtAll[cPos] + 1
+                    nDst = cWlk.dst + 1
+                    nPth = cWlk.pth + [nPos]
 
-                    pathQue.append(nPos)
+                    nWlk = Walk(nPos, nDst, nPth, cWlk)
 
+                    queuWlk[1].append(nWlk)
+
+        if not queuWlk[0]:
+            queuWlk = [queuWlk[1], []]
 
 
 if __name__ == '__main__':
@@ -284,14 +292,17 @@ if __name__ == '__main__':
         print("\t\t\tFind path iteratively:")
         print()
 
-        endDstnc, pthAll = findPath_Iter((dimRow, dimCol), city)
+            # findPath_Iter(dim, city)
+        endWlk = findPath_Iter((dimRow, dimCol), city)
 
-        print(f"\t\t\t\tDistance: {endDstnc}")
-        print()
-        print(f"\t\t\t\tPath:")
+        print(f"\t\t\t\tDistance: {endWlk.dst}")
+        print("\t\t\t\tPath:", end="\n\t\t\t\t\t")
 
-        for pth in pthAll:
-            print(f"\t\t\t\t\t{pth}: {pthAll[pth]}")
+        for p, pth in enumerate(endWlk.pth):
+            print(pth, end=" ")
+
+            if (p+1) % 5 == 0 and (p+1) != endWlk.dst:
+                print("\n\t\t\t\t\t", end="")
         print()
 
         if (case+1) < caseNum:
@@ -344,26 +355,9 @@ Input:
 			Find path iteratively:
 
 				Distance: 7
-
 				Path:
-					(0, 0): 0
-					(1, 0): 1
-					(0, 1): 1
-					(2, 0): 2
-					(0, 2): 2
-					(3, 0): 3
-					(2, 1): 3
-					(1, 2): 3
-					(0, 3): 3
-					(3, 1): 4
-					(1, 3): 4
-					(0, 4): 4
-					(3, 2): 5
-					(2, 3): 5
-					(1, 4): 5
-					(3, 3): 6
-					(3, 4): 7
-
+					(0, 0) (1, 0) (2, 0) (3, 0) (3, 1) 
+					(3, 2) (3, 3) (3, 4) 
 
 		Case: 2
 
@@ -397,65 +391,11 @@ Input:
 			Find path iteratively:
 
 				Distance: 16
-
 				Path:
-					(0, 0): 0
-					(1, 0): 1
-					(0, 1): 1
-					(2, 0): 2
-					(1, 1): 2
-					(0, 2): 2
-					(2, 1): 3
-					(1, 2): 3
-					(0, 3): 3
-					(3, 1): 4
-					(2, 2): 4
-					(1, 3): 4
-					(0, 4): 4
-					(4, 1): 5
-					(3, 2): 5
-					(2, 3): 5
-					(1, 4): 5
-					(0, 5): 5
-					(4, 0): 6
-					(1, 5): 6
-					(0, 6): 6
-					(5, 0): 7
-					(2, 5): 7
-					(1, 6): 7
-					(0, 7): 7
-					(6, 0): 8
-					(3, 5): 8
-					(2, 6): 8
-					(1, 7): 8
-					(7, 0): 9
-					(6, 1): 9
-					(3, 6): 9
-					(3, 4): 9
-					(2, 7): 9
-					(7, 1): 10
-					(6, 2): 10
-					(4, 6): 10
-					(3, 7): 10
-					(4, 4): 10
-					(7, 2): 11
-					(6, 3): 11
-					(5, 2): 11
-					(4, 7): 11
-					(5, 4): 11
-					(4, 3): 11
-					(7, 3): 12
-					(6, 4): 12
-					(5, 3): 12
-					(5, 7): 12
-					(5, 5): 12
-					(7, 4): 13
-					(6, 5): 13
-					(7, 5): 14
-					(6, 6): 14
-					(7, 6): 15
-					(7, 7): 16
-
+					(0, 0) (1, 0) (2, 0) (2, 1) (3, 1) 
+					(4, 1) (4, 0) (5, 0) (6, 0) (7, 0) 
+					(7, 1) (7, 2) (7, 3) (7, 4) (7, 5) 
+					(7, 6) (7, 7) 
 
 Process finished with exit code 0
 
