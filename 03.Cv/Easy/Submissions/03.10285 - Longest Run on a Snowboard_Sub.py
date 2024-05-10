@@ -69,6 +69,9 @@ Spiral 5 5
 InputOrg_Raw = InputOrg_Raw[1:-1]
 InputRaw_Lst = [InputOrg_Raw]
 
+InputRaw = InputRaw_Lst[0]
+
+
 def fndPath(curPos, dim, slopeMat, dstncMat):
 
     cRw, cCl = curPos[0], curPos[1]
@@ -175,130 +178,47 @@ def prntSlope(dim, slopeMat, indnt):
     print()
 
 
-InputRaw = InputRaw_Lst[0]
-
-
 if __name__ == '__main__':
 
-    print("Input:")
-    print(InputOrg_Raw)
-    print()
+    # print("Input:")
+    # print(InputOrg_Raw)
+    # print()
 
     InLines = InputRaw.split("\n")
 
     caseNum, lstName, lstDim, lstSlopeMat = dataExtract(InLines)
 
-    print(f"\tCases: {caseNum}")
-    print()
+    # print(f"\tCases: {caseNum}")
+    # print()
 
     for case in range(caseNum):
 
         name = lstName[case]
         dim = lstDim[case]
 
-        prntInf(case, name, dim, 3)
+        # prntInf(case, name, dim, 3)
 
         rowDim, colDim = dim[0], dim[1]
 
         slopeMat = lstSlopeMat[case]
         dstncMat = [[0] * colDim for _ in range(rowDim)]
 
-        print(f"\t\t\t  Slope:")
-        prntSlope(dim, slopeMat, 4)
+        # print(f"\t\t\t  Slope:")
+        # prntSlope(dim, slopeMat, 4)
 
         for r in range(rowDim):
             for c in range(colDim):
 
                 fndPath([r, c], dim, slopeMat, dstncMat)
 
-        print(f"\t\t\t\t  Distances:")
-        prntSlope(dim, dstncMat, 5)
+        # print(f"\t\t\t\t  Distances:")
+        # prntSlope(dim, dstncMat, 5)
 
         maxDstnc = getMax(dim, dstncMat)
 
-        print(f"\t\t\tMax distance: {maxDstnc}")
+        # print(f"\t\t\tMax distance: {maxDstnc}")
+        print(f"{name}: {maxDstnc}")
 
-        if (case+1) < caseNum:
-            print("\n")
+        # if (case+1) < caseNum:
+        #     print("\n")
 
-
-"""__Output__"""
-"""
-Input:
-2
-Feldberg 10 5
-56 14 51 58 88
-26 94 24 39 41
-24 16 8 51 51
-76 72 77 43 10
-38 50 59 84 81
-5 23 37 71 77
-96 10 93 53 82
-94 15 96 69 9
-74 0 62 38 96
-37 54 55 82 38
-Spiral 5 5
-1 2 3 4 5
-16 17 18 19 6
-15 24 25 20 7
-14 23 22 21 8
-13 12 11 10 9
-
-	Cases: 2
-
-		Case: 1
-
-			Name: Feldberg
-			Dim: [10, 5]
-
-			  Slope:
-				56 14 51 58 88 
-				26 94 24 39 41 
-				24 16  8 51 51 
-				76 72 77 43 10 
-				38 50 59 84 81 
-				 5 23 37 71 77 
-				96 10 93 53 82 
-				94 15 96 69  9 
-				74  0 62 38 96 
-				37 54 55 82 38 
-
-				  Distances:
-					 5  1  3  4  5 
-					 4  5  2  3  4 
-					 3  2  1  4  5 
-					 5  4  5  2  1 
-					 2  3  4  7  6 
-					 1  2  3  4  5 
-					 4  1  4  1  6 
-					 3  2  5  2  1 
-					 2  1  4  1  2 
-					 1  2  3  4  1 
-
-			Max distance: 7
-
-
-		Case: 2
-
-			Name: Spiral
-			Dim: [5, 5]
-
-			  Slope:
-				 1  2  3  4  5 
-				16 17 18 19  6 
-				15 24 25 20  7 
-				14 23 22 21  8 
-				13 12 11 10  9 
-
-				  Distances:
-					 1  2  3  4  5 
-					16 17 18 19  6 
-					15 24 25 20  7 
-					14 23 22 21  8 
-					13 12 11 10  9 
-
-			Max distance: 25
-
-Process finished with exit code 0
-
-"""
