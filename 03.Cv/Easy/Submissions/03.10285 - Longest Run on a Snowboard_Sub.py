@@ -44,6 +44,8 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=14&pa
                 Spiral: 25
 """
 
+"""29459204 	10285 	Longest Run on a Snowboard 	Accepted 	PYTH3 	0.620 	2024-05-10 03:42:42"""
+
 
 InputOrg_Raw = """
 2
