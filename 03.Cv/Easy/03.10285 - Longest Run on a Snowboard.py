@@ -55,7 +55,7 @@ def findPath(curPos, dim, slopeMat, dstncMat):
 
     mvs = [(1, 0), (0, 1), (-1, 0), (0, -1)]
 
-    maxDstnc = 0
+    maxDstnc = 1
 
     for mvR, mvC in mvs:
         nRw, nCl = cRw + mvR, cCl + mvC
@@ -63,7 +63,9 @@ def findPath(curPos, dim, slopeMat, dstncMat):
 
         if canGo(curPos, nxtPos, dim, slopeMat):
 
-            maxDstnc = max(maxDstnc, 1 + findPath(nxtPos, dim, slopeMat, dstncMat))
+            dstnc = 1 + findPath(nxtPos, dim, slopeMat, dstncMat)
+
+            maxDstnc = max(dstnc, maxDstnc)
 
     dstncMat[cRw][cCl] = maxDstnc
 
@@ -137,35 +139,22 @@ if __name__ == '__main__':
         for r in range(rowDim):
 
             rowStr = InputLines.pop(0)
-            # print(f"\t\t\t{rowStr}")
 
             row = list(map(int, rowStr.split()))
             slopeMat.append(row)
-        # print()
-
-        # strHgh = 0
-        # strCrd = []
 
         for r in range(rowDim):
             print(f"\t\t\t\t", end="")
             for c in range(colDim):
                 print(f"{slopeMat[r][c]:2}", end=" ")
 
-                # if slopeMat[r][c] > strHgh:
-                #     strHgh = slopeMat[r][c]
-                #     strCrd = [r, c]
             print()
         print()
-
-        # print(f"\t\t\tStart: {strCrd}")
-        # print()
 
         for r in range(rowDim):
             for c in range(colDim):
 
                 findPath([r, c], dim, slopeMat, dstncMat)
-
-                # print(f"\t\t\t{[r, c]}: {path[str((r, c))]}")
 
         maxDstnc = 0
 
@@ -174,11 +163,10 @@ if __name__ == '__main__':
             print(f"\t\t\t\t\t", end="")
             for c in range(colDim):
 
-                dstncMat[r][c] += 1
                 print(f"{dstncMat[r][c]:2}", end=" ")
 
-                if dstncMat[r][c] > maxDstnc:
-                    maxDstnc = dstncMat[r][c]
+                maxDstnc = max(dstncMat[r][c], maxDstnc)
+
             print()
         print()
 
