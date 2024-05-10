@@ -45,6 +45,30 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=14&pa
 """
 
 
+InputOrg_Raw = """
+2
+Feldberg 10 5
+56 14 51 58 88
+26 94 24 39 41
+24 16 8 51 51
+76 72 77 43 10
+38 50 59 84 81
+5 23 37 71 77
+96 10 93 53 82
+94 15 96 69 9
+74 0 62 38 96
+37 54 55 82 38
+Spiral 5 5
+1 2 3 4 5
+16 17 18 19 6
+15 24 25 20 7
+14 23 22 21 8
+13 12 11 10 9
+"""
+
+InputOrg_Raw = InputOrg_Raw[1:-1]
+InputRaw_Lst = [InputOrg_Raw]
+
 def findPath(curPos, dim, slopeMat, dstncMat):
 
     cRw, cCl = curPos[0], curPos[1]
@@ -81,38 +105,48 @@ def canGo(curPos, nxtPos, dim, slopeMat):
     return 0 <= nRw < rwDm and 0 <= nCl < clDm and slopeMat[nRw][nCl] < slopeMat[cRw][cCl]
 
 
-InputRaw_Str = """
-2
-Feldberg 10 5
-56 14 51 58 88
-26 94 24 39 41
-24 16 8 51 51
-76 72 77 43 10
-38 50 59 84 81
-5 23 37 71 77
-96 10 93 53 82
-94 15 96 69 9
-74 0 62 38 96
-37 54 55 82 38
-Spiral 5 5
-1 2 3 4 5
-16 17 18 19 6
-15 24 25 20 7
-14 23 22 21 8
-13 12 11 10 9
-"""
+def dataExtract(InLines):
 
-InputRaw_Str = InputRaw_Str[1:-1]
+    caseNum = int(InLines.pop(0))
+
+    lstName = []
+    lstDim = []
+    lstSlopeMat = []
+
+    for case in range(caseNum):
+
+        infLine = InLines.pop(0)
+
+        name = infLine.split()[0]
+        dim = list(map(int, infLine.split()[1:]))
+        slopeMat = []
+
+        for _ in range(dim[0]):
+
+            lineStr = InLines.pop(0)
+            line = list(map(int, lineStr.split()))
+
+            slopeMat.append(line)
+
+        lstName.append(name)
+        lstDim.append(dim)
+        lstSlopeMat.append(slopeMat)
+
+    return caseNum, lstName, lstDim, lstSlopeMat
+
+
+InputRaw = InputRaw_Lst[0]
+
 
 if __name__ == '__main__':
 
     print("Input:")
-    print(InputRaw_Str)
+    print(InputOrg_Raw)
     print()
 
-    InputLines = InputRaw_Str.split("\n")
+    InLines = InputRaw.split("\n")
 
-    caseNum = int(InputLines.pop(0))
+    caseNum, lstName, lstDim, lstSlopeMat = dataExtract(InLines)
 
     print(f"\tCases: {caseNum}")
     print()
@@ -122,10 +156,8 @@ if __name__ == '__main__':
         print(f"\t\tCase: {case+1}")
         print()
 
-        infLine = InputLines.pop(0)
-
-        name = infLine.split()[0]
-        dim = list(map(int, infLine.split()[1:]))
+        name = lstName[case]
+        dim = lstDim[case]
 
         print(f"\t\t\tName: {name}")
         print(f"\t\t\tDim: {dim}")
@@ -133,15 +165,8 @@ if __name__ == '__main__':
 
         rowDim, colDim = dim[0], dim[1]
 
-        slopeMat = []
+        slopeMat = lstSlopeMat[case]
         dstncMat = [[0] * colDim for _ in range(rowDim)]
-
-        for r in range(rowDim):
-
-            rowStr = InputLines.pop(0)
-
-            row = list(map(int, rowStr.split()))
-            slopeMat.append(row)
 
         for r in range(rowDim):
             print(f"\t\t\t\t", end="")
