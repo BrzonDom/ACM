@@ -172,7 +172,7 @@ InputTst_Raw = InputTst_Raw[1:-1]
 InputRaw_Lst = [InputOrg_Raw, InputTst_Raw]
 
 
-def findPath(curPos, dim, slopeMat, dstncMat):
+def fndPath(curPos, dim, slopeMat, dstncMat):
 
     cRw, cCl = curPos[0], curPos[1]
     rwDm, clDm = dim[0], dim[1]
@@ -190,7 +190,7 @@ def findPath(curPos, dim, slopeMat, dstncMat):
 
         if canGo(curPos, nxtPos, dim, slopeMat):
 
-            dstnc = 1 + findPath(nxtPos, dim, slopeMat, dstncMat)
+            dstnc = 1 + fndPath(nxtPos, dim, slopeMat, dstncMat)
 
             maxDstnc = max(dstnc, maxDstnc)
 
@@ -238,6 +238,21 @@ def dataExtract(InLines):
     return caseNum, lstName, lstDim, lstSlopeMat
 
 
+def prntSlope(dim, slopeMat, indnt):
+
+    rowDim, colDim = dim[0], dim[1]
+    indntStr = "\t" * indnt
+
+    for r in range(rowDim):
+        print(indntStr, end="")
+
+        for c in range(colDim):
+            print(f"{slopeMat[r][c]:2}", end=" ")
+
+        print()
+    print()
+
+
 InputRaw = InputRaw_Lst[0]
 
 if __name__ == '__main__':
@@ -272,18 +287,20 @@ if __name__ == '__main__':
         slopeMat = lstSlopeMat[case]
         dstncMat = [[0] * colDim for _ in range(rowDim)]
 
+        prntSlope(dim, slopeMat, 4)
+
+        # for r in range(rowDim):
+        #     print(f"\t\t\t\t", end="")
+        #     for c in range(colDim):
+        #         print(f"{slopeMat[r][c]:2}", end=" ")
+        #
+        #     print()
+        # print()
+
         for r in range(rowDim):
-            print(f"\t\t\t\t", end="")
-            for c in range(colDim):
-                print(f"{slopeMat[r][c]:2}", end=" ")
-
-            print()
-        print()
-
-        for r in range(rowDim):
             for c in range(colDim):
 
-                findPath([r, c], dim, slopeMat, dstncMat)
+                fndPath([r, c], dim, slopeMat, dstncMat)
 
         maxDstnc = 0
 
