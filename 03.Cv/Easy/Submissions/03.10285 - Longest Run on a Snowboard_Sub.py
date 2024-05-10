@@ -71,6 +71,33 @@ InputRaw_Lst = [InputOrg_Raw]
 
 InputRaw = InputRaw_Lst[0]
 
+def prntInf(case, name, dim, indnt):
+
+    print("\t" * (indnt-1) + f"Case: {case + 1}")
+    print()
+
+    print("\t" * (indnt) + f"Name: {name}")
+    print("\t" * (indnt) + f"Dim: {dim}")
+    print()
+
+
+def prntSlope(dim, slopeMat, indnt):
+
+    rowDim, colDim = dim[0], dim[1]
+    indntStr = "\t" * indnt
+
+    for r in range(rowDim):
+        print(indntStr, end="")
+
+        for c in range(colDim):
+            print(f"{slopeMat[r][c]:2}", end=" ")
+
+        print()
+    print()
+
+
+"""__Code__"""
+
 
 def fndPath(curPos, dim, slopeMat, dstncMat):
 
@@ -151,31 +178,6 @@ def getMax(dim, dstncMat):
             maxDstnc = max(dstncMat[r][c], maxDstnc)
 
     return maxDstnc
-
-
-def prntInf(case, name, dim, indnt):
-
-    print("\t" * (indnt-1) + f"Case: {case + 1}")
-    print()
-
-    print("\t" * (indnt) + f"Name: {name}")
-    print("\t" * (indnt) + f"Dim: {dim}")
-    print()
-
-
-def prntSlope(dim, slopeMat, indnt):
-
-    rowDim, colDim = dim[0], dim[1]
-    indntStr = "\t" * indnt
-
-    for r in range(rowDim):
-        print(indntStr, end="")
-
-        for c in range(colDim):
-            print(f"{slopeMat[r][c]:2}", end=" ")
-
-        print()
-    print()
 
 
 if __name__ == '__main__':
