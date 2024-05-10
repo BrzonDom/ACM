@@ -154,6 +154,8 @@ def fndPath_Rec(cWlk, dim, city):
     rwDm, clDm = dim[0], dim[1]
 
     if [cRw, cCl] == [rwDm - 1, clDm - 1]:
+        cWlk.dstnc += 1
+
         return cWlk
 
     mvs = [[1, 0], [0, 1], [-1, 0], [0, -1]]
@@ -165,9 +167,9 @@ def fndPath_Rec(cWlk, dim, city):
 
         if 0 <= nRw < rwDm and 0 <= nCl < clDm and nPos not in cWlk.vstd and city[nRw][nCl]:
 
-            nDstnc = cWlk.dstnc
+            nDstnc = cWlk.dstnc + 1
             nVstd = cWlk.vstd
-            nVstd.add(nPos)
+            nVstd.append(nPos)
 
             nWlk = Walk(nPos, nDstnc, nVstd, cWlk)
 
@@ -225,13 +227,20 @@ if __name__ == '__main__':
         print()
 
             # Walk(self, pos, dstnc, vstd, prvWlk)
-        strWlk = Walk((0, 0), 0, set(), None)
+        strWlk = Walk((0, 0), 0, [(0, 0)], None)
 
             # fndPath_Rec(cWlk, dim, city)
         endWlk = fndPath_Rec(strWlk, (dimRow, dimCol), city)
 
         print(f"\t\t\tDistance: {endWlk.dstnc}")
-        print(f"\t\t\tPath: {endWlk.vstd}")
+        print("\t\t\tPath:", end="\n\t\t\t\t")
+
+        for p, pth in enumerate(endWlk.vstd):
+            print(pth, end=" ")
+
+            if (p+1) % 5 == 0 and (p+1) != endWlk.dstnc:
+                print("\n\t\t\t\t", end="")
+        print()
 
         # for path in minPaths:
         #     print(f"\t\t\t\t{path}")
@@ -277,8 +286,10 @@ Input:
 				  [1, 1, 0, 1, 0]
 				  [1, 1, 1, 1, 1]
 
-			Distance: 0
-			Path: {(3, 4), (3, 1), (2, 0), (3, 0), (3, 3), (1, 0), (3, 2)}
+			Distance: 8
+			Path:
+				(0, 0) (1, 0) (2, 0) (3, 0) (3, 1) 
+				(3, 2) (3, 3) (3, 4) 
 
 		Case: 2
 
@@ -300,8 +311,12 @@ Input:
 				  [1, 1, 1, 1, 1, 1, 1, 0]
 				  [1, 1, 1, 1, 1, 1, 1, 1]
 
-			Distance: 0
-			Path: {(7, 4), (4, 0), (7, 1), (2, 1), (7, 7), (3, 1), (7, 0), (2, 0), (7, 3), (7, 6), (5, 0), (7, 2), (6, 0), (1, 0), (7, 5), (4, 1)}
+			Distance: 17
+			Path:
+				(0, 0) (1, 0) (2, 0) (2, 1) (3, 1) 
+				(4, 1) (4, 0) (5, 0) (6, 0) (7, 0) 
+				(7, 1) (7, 2) (7, 3) (7, 4) (7, 5) 
+				(7, 6) (7, 7) 
 
 Process finished with exit code 0
 
