@@ -39,7 +39,7 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=114&p
 
 """
 
-InputRaw_Str = """
+InputOrg_Raw = """
 1
 
 4 5
@@ -49,15 +49,80 @@ InputRaw_Str = """
 4
 """
 
-InputRaw_Str = InputRaw_Str[1:-1]
+InputTst_Raw = """
+8
+
+1 1
+1
+
+1 8
+1
+
+1 8
+1 4
+
+8 1
+1
+2
+3
+4
+5
+6
+7
+8
+
+8 1
+1
+2
+3
+4 1
+5
+6
+7
+8
+
+4 4
+1
+2
+3
+4
+
+8 8
+1
+2
+3 5
+4 1 4
+5 3 6
+6 2 7
+7 8
+8
+
+8 8
+1
+2 6
+3 2
+4 5
+5 1
+6 3
+7 5 8
+8 5
+
+"""
+
+InputOrg_Raw = InputOrg_Raw[1:-1]
+InputTst_Raw = InputTst_Raw[1:-1]
+
+InputRaw_Lst = [InputOrg_Raw, InputTst_Raw]
+
+InputRaw = InputRaw_Lst[1]
 
 if __name__ == '__main__':
 
     print("Input:")
-    print(InputRaw_Str)
+    print(InputRaw)
     print()
 
-    InputLines = InputRaw_Str.split("\n")
+    InputLines = InputRaw.split("\n")
     # print(InputLines)
 
     caseNum = int(InputLines.pop(0))
@@ -101,28 +166,183 @@ if __name__ == '__main__':
 """__Output__"""
 """
 Input:
+8
+
+1 1
 1
 
-4 5
+1 8
 1
-2 2
-3 3 5
+
+1 8
+1 4
+
+8 1
+1
+2
+3
+4
+5
+6
+7
+8
+
+8 1
+1
+2
+3
+4 1
+5
+6
+7
+8
+
+4 4
+1
+2
+3
 4
 
-	Cases: 1
+8 8
+1
+2
+3 5
+4 1 4
+5 3 6
+6 2 7
+7 8
+8
 
-		East-West:   4
-		North-South: 5
+8 8
+1
+2 6
+3 2
+4 5
+5 1
+6 3
+7 5 8
+8 5
+
+
+	Cases: 8
+
+		East-West:   1
+		North-South: 1
 
 		1.Street: []
-		2.Street: [2]
-		3.Street: [3, 5]
+
+		[1]
+
+		East-West:   1
+		North-South: 8
+
+		1.Street: []
+
+		[1, 1, 1, 1, 1, 1, 1, 1]
+
+		East-West:   1
+		North-South: 8
+
+		1.Street: [4]
+
+		[1, 1, 1, 0, 1, 1, 1, 1]
+
+		East-West:   8
+		North-South: 1
+
+		1.Street: []
+		2.Street: []
+		3.Street: []
+		4.Street: []
+		5.Street: []
+		6.Street: []
+		7.Street: []
+		8.Street: []
+
+		[1]
+		[1]
+		[1]
+		[1]
+		[1]
+		[1]
+		[1]
+		[1]
+
+		East-West:   8
+		North-South: 1
+
+		1.Street: []
+		2.Street: []
+		3.Street: []
+		4.Street: [1]
+		5.Street: []
+		6.Street: []
+		7.Street: []
+		8.Street: []
+
+		[1]
+		[1]
+		[1]
+		[0]
+		[1]
+		[1]
+		[1]
+		[1]
+
+		East-West:   4
+		North-South: 4
+
+		1.Street: []
+		2.Street: []
+		3.Street: []
 		4.Street: []
 
-		[1, 1, 1, 1, 1]
-		[1, 0, 1, 1, 1]
-		[1, 1, 0, 1, 0]
-		[1, 1, 1, 1, 1]
+		[1, 1, 1, 1]
+		[1, 1, 1, 1]
+		[1, 1, 1, 1]
+		[1, 1, 1, 1]
+
+		East-West:   8
+		North-South: 8
+
+		1.Street: []
+		2.Street: []
+		3.Street: [5]
+		4.Street: [1, 4]
+		5.Street: [3, 6]
+		6.Street: [2, 7]
+		7.Street: [8]
+		8.Street: []
+
+		[1, 1, 1, 1, 1, 1, 1, 1]
+		[1, 1, 1, 1, 1, 1, 1, 1]
+		[1, 1, 1, 1, 0, 1, 1, 1]
+		[0, 1, 1, 0, 1, 1, 1, 1]
+		[1, 1, 0, 1, 1, 0, 1, 1]
+		[1, 0, 1, 1, 1, 1, 0, 1]
+		[1, 1, 1, 1, 1, 1, 1, 0]
+		[1, 1, 1, 1, 1, 1, 1, 1]
+
+		East-West:   8
+		North-South: 8
+
+		1.Street: []
+		2.Street: [6]
+		3.Street: [2]
+		4.Street: [5]
+		5.Street: [1]
+		6.Street: [3]
+		7.Street: [5, 8]
+		8.Street: [5]
+
+		[1, 1, 1, 1, 1, 1, 1, 1]
+		[1, 1, 1, 1, 1, 0, 1, 1]
+		[1, 0, 1, 1, 1, 1, 1, 1]
+		[1, 1, 1, 1, 0, 1, 1, 1]
+		[0, 1, 1, 1, 1, 1, 1, 1]
+		[1, 1, 0, 1, 1, 1, 1, 1]
+		[1, 1, 1, 1, 0, 1, 1, 0]
+		[1, 1, 1, 1, 0, 1, 1, 1]
 
 
 Process finished with exit code 0
