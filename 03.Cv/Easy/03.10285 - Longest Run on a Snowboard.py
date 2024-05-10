@@ -302,16 +302,17 @@ if __name__ == '__main__':
         maxDstnc = 0
 
         print(f"\t\t\t\tDistances:")
-        for r in range(rowDim):
-            print(f"\t\t\t\t\t", end="")
-            for c in range(colDim):
+        prntSlope(dim, dstncMat, 5)
 
-                print(f"{dstncMat[r][c]:2}", end=" ")
+        for r in range(rowDim):
+            # print(f"\t\t\t\t\t", end="")
+            for c in range(colDim):
+                # print(f"{dstncMat[r][c]:2}", end=" ")
 
                 maxDstnc = max(dstncMat[r][c], maxDstnc)
 
-            print()
-        print()
+        #     print()
+        # print()
 
         print(f"\t\t\tMax distance: {maxDstnc}")
 
