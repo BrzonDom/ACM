@@ -243,7 +243,7 @@ InputRaw = InputRaw_Lst[0]
 if __name__ == '__main__':
 
     print("Input:")
-    print(InputOrg_Raw)
+    print(InputRaw)
     print()
 
     OutputLst = []
