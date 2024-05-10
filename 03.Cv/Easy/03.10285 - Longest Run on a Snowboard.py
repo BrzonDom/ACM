@@ -238,6 +238,20 @@ def dataExtract(InLines):
     return caseNum, lstName, lstDim, lstSlopeMat
 
 
+def getMax(dim, dstncMat):
+
+    rowDim, colDim = dim[0], dim[1]
+
+    maxDstnc = 0
+
+    for r in range(rowDim):
+        for c in range(colDim):
+
+            maxDstnc = max(dstncMat[r][c], maxDstnc)
+
+    return maxDstnc
+
+
 def prntInf(case, name, dim, indnt):
 
     print("\t" * (indnt-1) + f"Case: {case + 1}")
@@ -292,6 +306,7 @@ if __name__ == '__main__':
         slopeMat = lstSlopeMat[case]
         dstncMat = [[0] * colDim for _ in range(rowDim)]
 
+        print(f"\t\t\t  Slope:")
         prntSlope(dim, slopeMat, 4)
 
         for r in range(rowDim):
@@ -299,20 +314,10 @@ if __name__ == '__main__':
 
                 fndPath([r, c], dim, slopeMat, dstncMat)
 
-        maxDstnc = 0
-
-        print(f"\t\t\t\tDistances:")
+        print(f"\t\t\t\t  Distances:")
         prntSlope(dim, dstncMat, 5)
 
-        for r in range(rowDim):
-            # print(f"\t\t\t\t\t", end="")
-            for c in range(colDim):
-                # print(f"{dstncMat[r][c]:2}", end=" ")
-
-                maxDstnc = max(dstncMat[r][c], maxDstnc)
-
-        #     print()
-        # print()
+        maxDstnc = getMax(dim, dstncMat)
 
         print(f"\t\t\tMax distance: {maxDstnc}")
 
@@ -357,6 +362,7 @@ Spiral 5 5
 			Name: Feldberg
 			Dim: [10, 5]
 
+			  Slope:
 				56 14 51 58 88 
 				26 94 24 39 41 
 				24 16  8 51 51 
@@ -368,7 +374,7 @@ Spiral 5 5
 				74  0 62 38 96 
 				37 54 55 82 38 
 
-				Distances:
+				  Distances:
 					 5  1  3  4  5 
 					 4  5  2  3  4 
 					 3  2  1  4  5 
@@ -388,13 +394,14 @@ Spiral 5 5
 			Name: Spiral
 			Dim: [5, 5]
 
+			  Slope:
 				 1  2  3  4  5 
 				16 17 18 19  6 
 				15 24 25 20  7 
 				14 23 22 21  8 
 				13 12 11 10  9 
 
-				Distances:
+				  Distances:
 					 1  2  3  4  5 
 					16 17 18 19  6 
 					15 24 25 20  7 
