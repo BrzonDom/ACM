@@ -139,11 +139,11 @@ InputRaw = InputRaw_Lst[2]
 
 
 class Walk:
-    def __init__(self, pos, dstnc, vstd, prvWlk):
+    def __init__(self, pos, dstnc, pth, prv):
         self.pos = pos
-        self.dstnc = dstnc
-        self.vstd = vstd
-        self.prvWlk = prvWlk
+        self.dst = dstnc
+        self.pth = pth
+        self.prv = prv
 
 
 def fndPath_Rec(cWlk, dim, city):
@@ -153,8 +153,7 @@ def fndPath_Rec(cWlk, dim, city):
 
     rwDm, clDm = dim[0], dim[1]
 
-    if [cRw, cCl] == [rwDm - 1, clDm - 1]:
-        cWlk.dstnc += 1
+    if cPos == (rwDm - 1, clDm - 1):
 
         return cWlk
 
@@ -165,10 +164,10 @@ def fndPath_Rec(cWlk, dim, city):
         nCl = cCl + mvC
         nPos = (nRw, nCl)
 
-        if 0 <= nRw < rwDm and 0 <= nCl < clDm and nPos not in cWlk.vstd and city[nRw][nCl]:
+        if 0 <= nRw < rwDm and 0 <= nCl < clDm and nPos not in cWlk.pth and city[nRw][nCl]:
 
-            nDstnc = cWlk.dstnc + 1
-            nVstd = cWlk.vstd
+            nDstnc = cWlk.dst + 1
+            nVstd = cWlk.pth
             nVstd.append(nPos)
 
             nWlk = Walk(nPos, nDstnc, nVstd, cWlk)
@@ -182,8 +181,7 @@ def findPath_Iter(dim, city):
 
     minDstnc = 0
 
-    vstdAll = {(0, 0)}
-    dstncAll = {(0, 0): 0}
+    dstncDtAll = {(0, 0): 0}
 
     pathQue = [(0, 0)]
 
@@ -194,7 +192,7 @@ def findPath_Iter(dim, city):
 
         if (cRw, cCl) == (rwDm - 1, clDm - 1):
 
-            return dstncAll[cPos] + 1
+            return dstncDtAll[cPos], dstncDtAll
 
         else:
             mvs = [(1, 0), (0, 1), (-1, 0), (0, -1)]
@@ -204,10 +202,9 @@ def findPath_Iter(dim, city):
                 nCl = cCl + mvC
                 nPos = (nRw, nCl)
 
-                if 0 <= nRw < rwDm and 0 <= nCl < clDm and nPos not in vstdAll and city[nRw][nCl]:
+                if 0 <= nRw < rwDm and 0 <= nCl < clDm and nPos not in dstncDtAll and city[nRw][nCl]:
 
-                    vstdAll.add(nPos)
-                    dstncAll[nPos] = dstncAll[cPos] + 1
+                    dstncDtAll[nPos] = dstncDtAll[cPos] + 1
 
                     pathQue.append(nPos)
 
@@ -236,6 +233,7 @@ if __name__ == '__main__':
         print()
 
         dimRow, dimCol = list(map(int, InputLines.pop(0).split()))
+        dim = (dimRow, dimCol)
 
         print(f"\t\t\tEast-West:   {dimRow}")
         print(f"\t\t\tNorth-South: {dimCol}")
@@ -267,28 +265,33 @@ if __name__ == '__main__':
         print("\t\t\tFind path recursively:")
         print()
 
-            # Walk(self, pos, dstnc, vstd, prvWlk)
+            # Walk(self, pos, dstnc, pth, prv)
         strWlk = Walk((0, 0), 0, [(0, 0)], None)
 
             # fndPath_Rec(cWlk, dim, city)
         endWlk = fndPath_Rec(strWlk, (dimRow, dimCol), city)
 
-        print(f"\t\t\t\tDistance: {endWlk.dstnc}")
+        print(f"\t\t\t\tDistance: {endWlk.dst}")
         print("\t\t\t\tPath:", end="\n\t\t\t\t\t")
 
-        for p, pth in enumerate(endWlk.vstd):
+        for p, pth in enumerate(endWlk.pth):
             print(pth, end=" ")
 
-            if (p+1) % 5 == 0 and (p+1) != endWlk.dstnc:
+            if (p+1) % 5 == 0 and (p+1) != endWlk.dst:
                 print("\n\t\t\t\t\t", end="")
         print("\n")
 
         print("\t\t\tFind path iteratively:")
         print()
 
-        endDstnc = findPath_Iter((dimRow, dimCol), city)
+        endDstnc, pthAll = findPath_Iter((dimRow, dimCol), city)
 
         print(f"\t\t\t\tDistance: {endDstnc}")
+        print()
+        print(f"\t\t\t\tPath:")
+
+        for pth in pthAll:
+            print(f"\t\t\t\t\t{pth}: {pthAll[pth]}")
         print()
 
         if (case+1) < caseNum:
@@ -333,14 +336,33 @@ Input:
 
 			Find path recursively:
 
-				Distance: 8
+				Distance: 7
 				Path:
 					(0, 0) (1, 0) (2, 0) (3, 0) (3, 1) 
 					(3, 2) (3, 3) (3, 4) 
 
 			Find path iteratively:
 
-				Distance: 8
+				Distance: 7
+
+				Path:
+					(0, 0): 0
+					(1, 0): 1
+					(0, 1): 1
+					(2, 0): 2
+					(0, 2): 2
+					(3, 0): 3
+					(2, 1): 3
+					(1, 2): 3
+					(0, 3): 3
+					(3, 1): 4
+					(1, 3): 4
+					(0, 4): 4
+					(3, 2): 5
+					(2, 3): 5
+					(1, 4): 5
+					(3, 3): 6
+					(3, 4): 7
 
 
 		Case: 2
@@ -365,7 +387,7 @@ Input:
 
 			Find path recursively:
 
-				Distance: 17
+				Distance: 16
 				Path:
 					(0, 0) (1, 0) (2, 0) (2, 1) (3, 1) 
 					(4, 1) (4, 0) (5, 0) (6, 0) (7, 0) 
@@ -374,7 +396,65 @@ Input:
 
 			Find path iteratively:
 
-				Distance: 17
+				Distance: 16
+
+				Path:
+					(0, 0): 0
+					(1, 0): 1
+					(0, 1): 1
+					(2, 0): 2
+					(1, 1): 2
+					(0, 2): 2
+					(2, 1): 3
+					(1, 2): 3
+					(0, 3): 3
+					(3, 1): 4
+					(2, 2): 4
+					(1, 3): 4
+					(0, 4): 4
+					(4, 1): 5
+					(3, 2): 5
+					(2, 3): 5
+					(1, 4): 5
+					(0, 5): 5
+					(4, 0): 6
+					(1, 5): 6
+					(0, 6): 6
+					(5, 0): 7
+					(2, 5): 7
+					(1, 6): 7
+					(0, 7): 7
+					(6, 0): 8
+					(3, 5): 8
+					(2, 6): 8
+					(1, 7): 8
+					(7, 0): 9
+					(6, 1): 9
+					(3, 6): 9
+					(3, 4): 9
+					(2, 7): 9
+					(7, 1): 10
+					(6, 2): 10
+					(4, 6): 10
+					(3, 7): 10
+					(4, 4): 10
+					(7, 2): 11
+					(6, 3): 11
+					(5, 2): 11
+					(4, 7): 11
+					(5, 4): 11
+					(4, 3): 11
+					(7, 3): 12
+					(6, 4): 12
+					(5, 3): 12
+					(5, 7): 12
+					(5, 5): 12
+					(7, 4): 13
+					(6, 5): 13
+					(7, 5): 14
+					(6, 6): 14
+					(7, 6): 15
+					(7, 7): 16
 
 
 Process finished with exit code 0
