@@ -159,15 +159,15 @@ if __name__ == '__main__':
         print(f"\t\tCase: {case+1}")
         print()
 
-        strRow, strCol = list(map(int, InputLines.pop(0).split()))
+        dimRow, dimCol = list(map(int, InputLines.pop(0).split()))
 
-        print(f"\t\t\tEast-West:   {strRow}")
-        print(f"\t\t\tNorth-South: {strCol}")
+        print(f"\t\t\tEast-West:   {dimRow}")
+        print(f"\t\t\tNorth-South: {dimCol}")
         print()
 
         cross = {}
 
-        for row in range(strRow):
+        for row in range(dimRow):
             strt = list(map(int, InputLines.pop(0).split()))
 
             cross[row+1] = strt[1:]
@@ -176,7 +176,7 @@ if __name__ == '__main__':
                 print(f"\t\t\t\t{row+1}.Street: {strt[1:]}")
         print()
 
-        city = [[1 for c in range(strCol)] for r in range(strRow)]
+        city = [[1 for c in range(dimCol)] for r in range(dimRow)]
 
         for row in cross:
             for col in cross[row]:
@@ -186,6 +186,34 @@ if __name__ == '__main__':
         for row in city:
             print(f"\t\t\t\t  {row}")
         print()
+
+        walkQue = [[0, 0]]
+        vstd = set()
+        path = {}
+
+        mvs = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+        dstnc = 0
+
+        while len(walkQue) > 0:
+
+            cPos = walkQue.pop(0)
+            cRw, cCl = cPos[0], cPos[1]
+
+            vstd.add((cRw, cCl))
+            dstnc += 1
+
+            if cPos == [dimRow-1, dimCol-1]:
+                break
+
+            for mRw, mCl in mvs:
+                nRw, nCl = cRw + mRw, cCl + mCl
+                nPos = [nRw, nCl]
+
+                if 0 <= nRw < dimRow and 0 <= nCl < dimCol and (nRw, nCl) not in vstd and city[nRw][nCl]:
+                    walkQue.append(nPos)
+
+        if (case+1) < caseNum:
+            print()
 
 
 """__Output__"""
@@ -243,7 +271,6 @@ Input:
 				  [1, 0, 1, 1, 1, 1, 0, 1]
 				  [1, 1, 1, 1, 1, 1, 1, 0]
 				  [1, 1, 1, 1, 1, 1, 1, 1]
-
 
 Process finished with exit code 0
 
