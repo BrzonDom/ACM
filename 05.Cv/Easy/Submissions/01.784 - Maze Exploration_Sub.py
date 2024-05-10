@@ -102,7 +102,29 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=667&p
 """29455230 	784 	Maze Exploration 	Accepted 	PYTH3 	1.260 	2024-05-08 15:39:41"""
 
 
+InputRaw_Str = """
+2
+XXXXXXXXX
+X   X   X
+X   *   X
+X   X   X
+XXXXXXXXX
+X   X
+X   X
+X   X
+XXXXX
+_____
+XXXXX
+X   X
+X * X
+X   X
+XXXXX
+_____
 """
+
+InputRaw_Str = InputRaw_Str[1:-1]
+
+
 def dataExtract_Prt(MazeLines):
 
     mzStrt = [0, 0]
@@ -125,29 +147,9 @@ def dataExtract_Prt(MazeLines):
     print()
 
     return Maze, mzStrt, inMaze
-"""
 
-InputRaw_Str = """
-2
-XXXXXXXXX
-X   X   X
-X   *   X
-X   X   X
-XXXXXXXXX
-X   X
-X   X
-X   X
-XXXXX
-_____
-XXXXX
-X   X
-X * X
-X   X
-XXXXX
-_____
-"""
 
-InputRaw_Str = InputRaw_Str[1:-1]
+"""__Code__"""
 
 
 def dataSplit(caseNum):
