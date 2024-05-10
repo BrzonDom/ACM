@@ -176,6 +176,43 @@ def fndPath_Rec(cWlk, dim, city):
             return fndPath_Rec(nWlk, dim, city)
 
 
+def findPath_Iter(dim, city):
+
+    rwDm, clDm = dim[0], dim[1]
+
+    minDstnc = 0
+
+    vstdAll = {(0, 0)}
+    dstncAll = {(0, 0): 0}
+
+    pathQue = [(0, 0)]
+
+    while pathQue:
+
+        cPos = pathQue.pop(0)
+        cRw, cCl = cPos[0], cPos[1]
+
+        if (cRw, cCl) == (rwDm - 1, clDm - 1):
+
+            return dstncAll[cPos] + 1
+
+        else:
+            mvs = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+
+            for mvR, mvC in mvs:
+                nRw = cRw + mvR
+                nCl = cCl + mvC
+                nPos = (nRw, nCl)
+
+                if 0 <= nRw < rwDm and 0 <= nCl < clDm and nPos not in vstdAll and city[nRw][nCl]:
+
+                    vstdAll.add(nPos)
+                    dstncAll[nPos] = dstncAll[cPos] + 1
+
+                    pathQue.append(nPos)
+
+
+
 if __name__ == '__main__':
 
     print("Input:")
@@ -226,25 +263,33 @@ if __name__ == '__main__':
             print(f"\t\t\t\t  {row}")
         print()
 
+
+        print("\t\t\tFind path recursively:")
+        print()
+
             # Walk(self, pos, dstnc, vstd, prvWlk)
         strWlk = Walk((0, 0), 0, [(0, 0)], None)
 
             # fndPath_Rec(cWlk, dim, city)
         endWlk = fndPath_Rec(strWlk, (dimRow, dimCol), city)
 
-        print(f"\t\t\tDistance: {endWlk.dstnc}")
-        print("\t\t\tPath:", end="\n\t\t\t\t")
+        print(f"\t\t\t\tDistance: {endWlk.dstnc}")
+        print("\t\t\t\tPath:", end="\n\t\t\t\t\t")
 
         for p, pth in enumerate(endWlk.vstd):
             print(pth, end=" ")
 
             if (p+1) % 5 == 0 and (p+1) != endWlk.dstnc:
-                print("\n\t\t\t\t", end="")
+                print("\n\t\t\t\t\t", end="")
+        print("\n")
+
+        print("\t\t\tFind path iteratively:")
         print()
 
-        # for path in minPaths:
-        #     print(f"\t\t\t\t{path}")
-        # print()
+        endDstnc = findPath_Iter((dimRow, dimCol), city)
+
+        print(f"\t\t\t\tDistance: {endDstnc}")
+        print()
 
         if (case+1) < caseNum:
             print()
@@ -286,10 +331,17 @@ Input:
 				  [1, 1, 0, 1, 0]
 				  [1, 1, 1, 1, 1]
 
-			Distance: 8
-			Path:
-				(0, 0) (1, 0) (2, 0) (3, 0) (3, 1) 
-				(3, 2) (3, 3) (3, 4) 
+			Find path recursively:
+
+				Distance: 8
+				Path:
+					(0, 0) (1, 0) (2, 0) (3, 0) (3, 1) 
+					(3, 2) (3, 3) (3, 4) 
+
+			Find path iteratively:
+
+				Distance: 8
+
 
 		Case: 2
 
@@ -311,12 +363,19 @@ Input:
 				  [1, 1, 1, 1, 1, 1, 1, 0]
 				  [1, 1, 1, 1, 1, 1, 1, 1]
 
-			Distance: 17
-			Path:
-				(0, 0) (1, 0) (2, 0) (2, 1) (3, 1) 
-				(4, 1) (4, 0) (5, 0) (6, 0) (7, 0) 
-				(7, 1) (7, 2) (7, 3) (7, 4) (7, 5) 
-				(7, 6) (7, 7) 
+			Find path recursively:
+
+				Distance: 17
+				Path:
+					(0, 0) (1, 0) (2, 0) (2, 1) (3, 1) 
+					(4, 1) (4, 0) (5, 0) (6, 0) (7, 0) 
+					(7, 1) (7, 2) (7, 3) (7, 4) (7, 5) 
+					(7, 6) (7, 7) 
+
+			Find path iteratively:
+
+				Distance: 17
+
 
 Process finished with exit code 0
 
