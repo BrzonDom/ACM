@@ -81,6 +81,36 @@ def canGo(curPos, nxtPos, dim, slopeMat):
     return 0 <= nRw < rwDm and 0 <= nCl < clDm and slopeMat[nRw][nCl] < slopeMat[cRw][cCl]
 
 
+def dataExtract(InLines):
+
+    caseNum = int(InLines.pop(0))
+
+    lstName = []
+    lstDim = []
+    lstSlopeMat = []
+
+    for case in range(caseNum):
+
+        infLine = InLines.pop(0)
+
+        name = infLine.split()[0]
+        dim = list(map(int, infLine.split()[1:]))
+        slopeMat = []
+
+        for _ in range(dim[0]):
+
+            lineStr = InLines.pop(0)
+            line = list(map(int, lineStr.split()))
+
+            slopeMat.append(line)
+
+        lstName.append(name)
+        lstDim.append(dim)
+        lstSlopeMat.append(slopeMat)
+
+    return caseNum, lstName, lstDim, lstSlopeMat
+
+
 InputOrg_Raw = """
 2
 Feldberg 10 5
@@ -217,9 +247,9 @@ if __name__ == '__main__':
 
     OutputLst = []
 
-    InputLines = InputRaw.split("\n")
+    InLines = InputRaw.split("\n")
 
-    caseNum = int(InputLines.pop(0))
+    caseNum, lstName, lstDim, lstSlopeMat = dataExtract(InLines)
 
     print(f"\tCases: {caseNum}")
     print()
@@ -229,10 +259,8 @@ if __name__ == '__main__':
         print(f"\t\tCase: {case+1}")
         print()
 
-        infLine = InputLines.pop(0)
-
-        name = infLine.split()[0]
-        dim = list(map(int, infLine.split()[1:]))
+        name = lstName[case]
+        dim = lstDim[case]
 
         print(f"\t\t\tName: {name}")
         print(f"\t\t\tDim: {dim}")
@@ -240,15 +268,8 @@ if __name__ == '__main__':
 
         rowDim, colDim = dim[0], dim[1]
 
-        slopeMat = []
+        slopeMat = lstSlopeMat[case]
         dstncMat = [[0] * colDim for _ in range(rowDim)]
-
-        for r in range(rowDim):
-
-            rowStr = InputLines.pop(0)
-
-            row = list(map(int, rowStr.split()))
-            slopeMat.append(row)
 
         for r in range(rowDim):
             print(f"\t\t\t\t", end="")
