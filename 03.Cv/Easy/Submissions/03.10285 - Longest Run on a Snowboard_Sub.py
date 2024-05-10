@@ -45,24 +45,40 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=14&pa
 """
 
 
-def findPath(curPos, dim, strt, slope, dstnc):
+def findPath(curPos, dim, slopeMat, dstncMat):
 
     cRw, cCl = curPos[0], curPos[1]
     rwDm, clDm = dim[0], dim[1]
-    sRw, sCl = strt[0], strt[1]
+
+    if dstncMat[cRw][cCl]:
+        return dstncMat[cRw][cCl]
 
     mvs = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+
+    maxDstnc = 1
 
     for mvR, mvC in mvs:
         nRw, nCl = cRw + mvR, cCl + mvC
         nxtPos = [nRw, nCl]
 
-        if 0 <= nRw < rwDm and 0 <= nCl < clDm and slope[nRw][nCl] < slope[cRw][cCl]:
+        if canGo(curPos, nxtPos, dim, slopeMat):
 
-            if (dstnc+1) > path[str(strt)]:
-                path[str(strt)] = (dstnc+1)
+            dstnc = 1 + findPath(nxtPos, dim, slopeMat, dstncMat)
 
-            findPath(nxtPos, dim, strt, slope, dstnc+1)
+            maxDstnc = max(dstnc, maxDstnc)
+
+    dstncMat[cRw][cCl] = maxDstnc
+
+    return maxDstnc
+
+
+def canGo(curPos, nxtPos, dim, slopeMat):
+
+    cRw, cCl = curPos[0], curPos[1]
+    nRw, nCl = nxtPos[0], nxtPos[1]
+    rwDm, clDm = dim[0], dim[1]
+
+    return 0 <= nRw < rwDm and 0 <= nCl < clDm and slopeMat[nRw][nCl] < slopeMat[cRw][cCl]
 
 
 InputRaw_Str = """
@@ -117,56 +133,40 @@ if __name__ == '__main__':
 
         rowDim, colDim = dim[0], dim[1]
 
-        slope = []
+        slopeMat = []
+        dstncMat = [[0] * colDim for _ in range(rowDim)]
 
         for r in range(rowDim):
 
             rowStr = InputLines.pop(0)
-            # print(f"\t\t\t{rowStr}")
 
             row = list(map(int, rowStr.split()))
-            slope.append(row)
-        # print()
-
-        strHgh = 0
-        strCrd = []
+            slopeMat.append(row)
 
         for r in range(rowDim):
             print(f"\t\t\t\t", end="")
             for c in range(colDim):
-                print(f"{slope[r][c]:2}", end=" ")
+                print(f"{slopeMat[r][c]:2}", end=" ")
 
-                if slope[r][c] > strHgh:
-                    strHgh = slope[r][c]
-                    strCrd = [r, c]
             print()
         print()
 
-        print(f"\t\t\tStart: {strCrd}")
-        print()
-
-        path = {}
-
         for r in range(rowDim):
             for c in range(colDim):
-                path[str((r, c))] = 0
 
-                findPath([r, c], dim, (r, c), slope, 0)
-
-                # print(f"\t\t\t{[r, c]}: {path[str((r, c))]}")
+                findPath([r, c], dim, slopeMat, dstncMat)
 
         maxDstnc = 0
 
-        print(f"\t\t\tDistances:")
+        print(f"\t\t\t\tDistances:")
         for r in range(rowDim):
-            print(f"\t\t\t\t", end="")
+            print(f"\t\t\t\t\t", end="")
             for c in range(colDim):
 
-                path[str((r, c))] += 1
-                print(f"{path[str((r, c))]:2}", end=" ")
+                print(f"{dstncMat[r][c]:2}", end=" ")
 
-                if path[str((r, c))] > maxDstnc:
-                    maxDstnc = path[str((r, c))]
+                maxDstnc = max(dstncMat[r][c], maxDstnc)
+
             print()
         print()
 
@@ -216,19 +216,17 @@ Spiral 5 5
 				74  0 62 38 96 
 				37 54 55 82 38 
 
-			Start: [6, 0]
-
-			Distances:
-				 5  1  3  4  5 
-				 4  5  2  3  4 
-				 3  2  1  4  5 
-				 5  4  5  2  1 
-				 2  3  4  7  6 
-				 1  2  3  4  5 
-				 4  1  4  1  6 
-				 3  2  5  2  1 
-				 2  1  4  1  2 
-				 1  2  3  4  1 
+				Distances:
+					 5  1  3  4  5 
+					 4  5  2  3  4 
+					 3  2  1  4  5 
+					 5  4  5  2  1 
+					 2  3  4  7  6 
+					 1  2  3  4  5 
+					 4  1  4  1  6 
+					 3  2  5  2  1 
+					 2  1  4  1  2 
+					 1  2  3  4  1 
 
 			Max distance: 7
 
@@ -244,14 +242,12 @@ Spiral 5 5
 				14 23 22 21  8 
 				13 12 11 10  9 
 
-			Start: [2, 2]
-
-			Distances:
-				 1  2  3  4  5 
-				16 17 18 19  6 
-				15 24 25 20  7 
-				14 23 22 21  8 
-				13 12 11 10  9 
+				Distances:
+					 1  2  3  4  5 
+					16 17 18 19  6 
+					15 24 25 20  7 
+					14 23 22 21  8 
+					13 12 11 10  9 
 
 			Max distance: 25
 
