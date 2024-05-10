@@ -238,6 +238,16 @@ def dataExtract(InLines):
     return caseNum, lstName, lstDim, lstSlopeMat
 
 
+def prntInf(case, name, dim, indnt):
+
+    print("\t" * (indnt-1) + f"Case: {case + 1}")
+    print()
+
+    print("\t" * (indnt) + f"Name: {name}")
+    print("\t" * (indnt) + f"Dim: {dim}")
+    print()
+
+
 def prntSlope(dim, slopeMat, indnt):
 
     rowDim, colDim = dim[0], dim[1]
@@ -272,15 +282,10 @@ if __name__ == '__main__':
 
     for case in range(caseNum):
 
-        print(f"\t\tCase: {case+1}")
-        print()
-
         name = lstName[case]
         dim = lstDim[case]
 
-        print(f"\t\t\tName: {name}")
-        print(f"\t\t\tDim: {dim}")
-        print()
+        prntInf(case, name, dim, 3)
 
         rowDim, colDim = dim[0], dim[1]
 
@@ -288,14 +293,6 @@ if __name__ == '__main__':
         dstncMat = [[0] * colDim for _ in range(rowDim)]
 
         prntSlope(dim, slopeMat, 4)
-
-        # for r in range(rowDim):
-        #     print(f"\t\t\t\t", end="")
-        #     for c in range(colDim):
-        #         print(f"{slopeMat[r][c]:2}", end=" ")
-        #
-        #     print()
-        # print()
 
         for r in range(rowDim):
             for c in range(colDim):
@@ -328,6 +325,7 @@ if __name__ == '__main__':
 
     for out in OutputLst:
         print(out)
+
 
 """__Output__"""
 """
