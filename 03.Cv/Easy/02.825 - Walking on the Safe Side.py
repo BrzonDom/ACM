@@ -138,36 +138,40 @@ InputRaw_Lst = [InputOrg_Raw, InputTst1_Raw, InputTst2_Raw]
 InputRaw = InputRaw_Lst[2]
 
 
-def fndPath(pos, dim, city, path):
+class Walk:
+    def __init__(self, pos, dstnc, vstd, prvWlk):
+        self.pos = pos
+        self.dstnc = dstnc
+        self.vstd = vstd
+        self.prvWlk = prvWlk
 
-    cRw, cCl = pos[0], pos[1]
+
+def fndPath_Rec(cWlk, dim, city):
+
+    cPos = cWlk.pos
+    cRw, cCl = cPos[0], cPos[1]
+
     rwDm, clDm = dim[0], dim[1]
 
-    path.append([cRw, cCl])
+    if [cRw, cCl] == [rwDm - 1, clDm - 1]:
+        return cWlk
 
-    global minDstnc
-    global minPaths
+    mvs = [[1, 0], [0, 1], [-1, 0], [0, -1]]
 
-    if minDstnc and len(path) > minDstnc:
+    for mvR, mvC in mvs:
+        nRw = cRw + mvR
+        nCl = cCl + mvC
+        nPos = (nRw, nCl)
 
-        return
+        if 0 <= nRw < rwDm and 0 <= nCl < clDm and nPos not in cWlk.vstd and city[nRw][nCl]:
 
-    elif [cRw, cCl] == [rwDm - 1, clDm - 1]:
+            nDstnc = cWlk.dstnc
+            nVstd = cWlk.vstd
+            nVstd.add(nPos)
 
-        minDstnc = len(path)
-        minPaths.append(path)
+            nWlk = Walk(nPos, nDstnc, nVstd, cWlk)
 
-    else:
-        mvs = [[1, 0], [0, 1], [-1, 0], [0, -1]]
-
-        for mvR, mvC in mvs:
-            nRw = cRw + mvR
-            nCl = cCl + mvC
-            nPos = [nRw, nCl]
-
-            if 0 <= nRw < rwDm and 0 <= nCl < clDm and nPos not in path and city[nRw][nCl]:
-
-                fndPath(nPos, dim, city, path)
+            return fndPath_Rec(nWlk, dim, city)
 
 
 if __name__ == '__main__':
@@ -220,19 +224,18 @@ if __name__ == '__main__':
             print(f"\t\t\t\t  {row}")
         print()
 
-        minDstnc = 0
-        minPaths = []
+            # Walk(self, pos, dstnc, vstd, prvWlk)
+        strWlk = Walk((0, 0), 0, set(), None)
 
-        # fndPath(pos, dim, city, path)
-        fndPath([0, 0], [dimRow, dimCol], city, [])
+            # fndPath_Rec(cWlk, dim, city)
+        endWlk = fndPath_Rec(strWlk, (dimRow, dimCol), city)
 
-        print(f"\t\t\tDistance: {minDstnc}")
-        print(f"\t\t\tPath:")
+        print(f"\t\t\tDistance: {endWlk.dstnc}")
+        print(f"\t\t\tPath: {endWlk.vstd}")
 
-        for path in minPaths:
-            print(f"\t\t\t\t{path}")
-
-        print()
+        # for path in minPaths:
+        #     print(f"\t\t\t\t{path}")
+        # print()
 
         if (case+1) < caseNum:
             print()
@@ -274,10 +277,8 @@ Input:
 				  [1, 1, 0, 1, 0]
 				  [1, 1, 1, 1, 1]
 
-			Distance: 8
-			Path:
-				[[0, 0], [1, 0], [2, 0], [3, 0], [3, 1], [3, 2], [3, 3], [3, 4], [2, 3], [2, 1], [0, 1]]
-
+			Distance: 0
+			Path: {(3, 4), (3, 1), (2, 0), (3, 0), (3, 3), (1, 0), (3, 2)}
 
 		Case: 2
 
@@ -299,10 +300,8 @@ Input:
 				  [1, 1, 1, 1, 1, 1, 1, 0]
 				  [1, 1, 1, 1, 1, 1, 1, 1]
 
-			Distance: 17
-			Path:
-				[[0, 0], [1, 0], [2, 0], [2, 1], [3, 1], [4, 1], [4, 0], [5, 0], [6, 0], [7, 0], [7, 1], [7, 2], [7, 3], [7, 4], [7, 5], [7, 6], [7, 7], [6, 6], [6, 5], [6, 4], [6, 3], [6, 2], [6, 1], [3, 2], [2, 2], [1, 1], [0, 1]]
-
+			Distance: 0
+			Path: {(7, 4), (4, 0), (7, 1), (2, 1), (7, 7), (3, 1), (7, 0), (2, 0), (7, 3), (7, 6), (5, 0), (7, 2), (6, 0), (1, 0), (7, 5), (4, 1)}
 
 Process finished with exit code 0
 
