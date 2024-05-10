@@ -135,7 +135,7 @@ def canGo(curPos, nxtPos, dim, slopeMat):
     return 0 <= nRw < rwDm and 0 <= nCl < clDm and slopeMat[nRw][nCl] < slopeMat[cRw][cCl]
 
 
-def dataExtract(InLines):
+def dataExtract():
 
     # caseNum = int(InLines.pop(0))
     caseNum = int(input())
@@ -186,9 +186,9 @@ if __name__ == '__main__':
     # print(InputOrg_Raw)
     # print()
 
-    InLines = InputRaw.split("\n")
+    # InLines = InputRaw.split("\n")
 
-    caseNum, lstName, lstDim, lstSlopeMat = dataExtract(InLines)
+    caseNum, lstName, lstDim, lstSlopeMat = dataExtract()
 
     # print(f"\tCases: {caseNum}")
     # print()
