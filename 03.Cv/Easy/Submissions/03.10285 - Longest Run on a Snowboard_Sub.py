@@ -107,7 +107,8 @@ def canGo(curPos, nxtPos, dim, slopeMat):
 
 def dataExtract(InLines):
 
-    caseNum = int(InLines.pop(0))
+    # caseNum = int(InLines.pop(0))
+    caseNum = int(input())
 
     lstName = []
     lstDim = []
@@ -115,7 +116,7 @@ def dataExtract(InLines):
 
     for case in range(caseNum):
 
-        infLine = InLines.pop(0)
+        infLine = input()
 
         name = infLine.split()[0]
         dim = list(map(int, infLine.split()[1:]))
@@ -123,7 +124,7 @@ def dataExtract(InLines):
 
         for _ in range(dim[0]):
 
-            lineStr = InLines.pop(0)
+            lineStr = input()
             line = list(map(int, lineStr.split()))
 
             slopeMat.append(line)
