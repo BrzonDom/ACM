@@ -24,3 +24,15 @@ https://onlinejudge.org/index.php?option=onlinejudge&page=show_problem&problem=9
                 -1
 
 """
+
+InputOrg_Raw = """
+3
+1
+10
+123456789
+"""
+
+InputOrg_Raw = InputOrg_Raw[1:-1]
+
+print("Input:")
+print(InputOrg_Raw)
