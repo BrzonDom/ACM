@@ -34,21 +34,48 @@ InputOrg_Raw = """
 
 InputOrg_Raw = InputOrg_Raw[1:-1]
 
-print("Input:")
-print(InputOrg_Raw)
-print()
+if __name__ == '__main__':
 
-InputLines = InputOrg_Raw.split("\n")
-
-caseNum = int(InputLines.pop(0))
-print(f"\tCases: {caseNum}")
-print()
-
-
-numLst = list(map(int, InputLines))
-
-for cs, num in enumerate(numLst):
-
-    print(f"\t\t{cs+1}.Case")
-    print(f"\t\t\tNum.: {num}")
+    print("Input:")
+    print(InputOrg_Raw)
     print()
+
+    InputLines = InputOrg_Raw.split("\n")
+
+    caseNum = int(InputLines.pop(0))
+    print(f"\tCases: {caseNum}")
+    print()
+
+
+    numLst = list(map(int, InputLines))
+
+    for cs, num in enumerate(numLst):
+
+        print(f"\t\t{cs+1}.Case")
+        print(f"\t\t\tNum.: {num}")
+        print()
+
+
+"""__Output__"""
+"""
+Input:
+3
+1
+10
+123456789
+
+	Cases: 3
+
+		1.Case
+			Num.: 1
+
+		2.Case
+			Num.: 10
+
+		3.Case
+			Num.: 123456789
+
+
+Process finished with exit code 0
+
+"""
