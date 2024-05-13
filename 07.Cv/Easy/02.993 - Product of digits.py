@@ -36,3 +36,19 @@ InputOrg_Raw = InputOrg_Raw[1:-1]
 
 print("Input:")
 print(InputOrg_Raw)
+print()
+
+InputLines = InputOrg_Raw.split("\n")
+
+caseNum = int(InputLines.pop(0))
+print(f"\tCases: {caseNum}")
+print()
+
+
+numLst = list(map(int, InputLines))
+
+for cs, num in enumerate(numLst):
+
+    print(f"\t\t{cs+1}.Case")
+    print(f"\t\t\tNum.: {num}")
+    print()
