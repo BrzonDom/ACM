@@ -60,3 +60,28 @@ for cs in range(caseNum):
     print(f"\t\t\t1.Num: {nums[0]}")
     print(f"\t\t\t2.Num: {nums[1]}")
     print()
+
+
+"""__Output__"""
+"""
+Input:
+2
+1 2
+3 4
+
+	Cases: 2
+
+		1. Case
+
+			1.Num: 1
+			2.Num: 2
+
+		2. Case
+
+			1.Num: 3
+			2.Num: 4
+
+
+Process finished with exit code 0
+
+"""
