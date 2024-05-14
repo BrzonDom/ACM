@@ -117,10 +117,13 @@ if __name__ == '__main__':
         print()
 
         if num == 1:
-            print("\t\t\tDigits: ", end="")
-            for dg in dgts[::-1]:
-                print(dg, end="")
-            print()
+            dgts.sort()
+            resDgts = int(''.join(map(str, dgts)))
+
+            print(f"\t\t\tDigits: {resDgts}")
+            # for dg in dgts[::-1]:
+            #     print(dg, end="")
+            # print()
 
         else:
             print("\t\t\tNo digits found")
