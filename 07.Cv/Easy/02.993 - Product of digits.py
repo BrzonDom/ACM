@@ -55,11 +55,20 @@ if __name__ == '__main__':
         print(f"\t\t\tNum.: {num}")
         print()
 
+        dgts = []
+
         for p in range(9, 1, -1):
             while num % p == 0:
-
                 print(f"\t\t\t\t{num} = {p} * {num // p}")
+
                 num = num // p
+                dgts.append(p)
+        print()
+
+        print("\t\t\tDigits: ", end="")
+        for dg in dgts[::-1]:
+            print(dg, end="")
+        print()
 
         if (cs+1) < caseNum:
             print("\n")
@@ -79,6 +88,8 @@ Input:
 			Num.: 1
 
 
+			Digits: 
+
 
 		2.Case
 			Num.: 10
@@ -86,11 +97,15 @@ Input:
 				10 = 5 * 2
 				2 = 2 * 1
 
+			Digits: 25
+
 
 		3.Case
 			Num.: 123456789
 
 				123456789 = 9 * 13717421
+
+			Digits: 9
 
 Process finished with exit code 0
 
