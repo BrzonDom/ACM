@@ -9,7 +9,7 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=189&p
     output a pair of numbers whose GCD is the first number and LCM is the second number.
 
     Input:
-            The first line of input will consist of a positive integer T . T denotes the number of cases. Each of the
+            The first line of input will consist of a positive integer T. T denotes the number of cases. Each of the
         next T lines will contain two positive integer, G and L.
 
     Output:
@@ -83,8 +83,11 @@ if __name__ == '__main__':
         print(f"\t\t\t2.Num: {nums[1]}")
         print()
 
-        print(f"\t\t\t\tGCD: {math.gcd(nums[0], nums[1])}")
-        print(f"\t\t\t\tLCM: {math.lcm(nums[0], nums[1])}")
+        gcd = math.gcd(nums[0], nums[1])
+        lcm = math.lcm(nums[0], nums[1])
+
+        print(f"\t\t\t\tGCD: {gcd}")
+        print(f"\t\t\t\tLCM: {lcm}")
 
         if (cs+1) < len(caseLst):
             print("\n")
