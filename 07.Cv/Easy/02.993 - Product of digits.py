@@ -56,22 +56,26 @@ if __name__ == '__main__':
 
         dgts = []
 
-        for p in range(9, 1, -1):
-            while num % p == 0:
-                print(f"\t\t\t\t{num} = {p} * {num // p}")
+        if 1 <= num <= 9:
+            print(f"\t\t\t\t{num} = {num} * 1")
 
-                num = num // p
-                dgts.append(p)
+            dgts.append(num)
+            num = 1
+        else:
+            for p in range(9, 1, -1):
+                while num % p == 0:
+                    print(f"\t\t\t\t{num} = {p} * {num // p}")
+
+                    num = num // p
+                    dgts.append(p)
         print()
 
         if num == 1:
             print("\t\t\tDigits: ", end="")
-            if dgts:
-                for dg in dgts[::-1]:
-                    print(dg, end="")
-                print()
-            else:
-                print("1")
+            for dg in dgts[::-1]:
+                print(dg, end="")
+            print()
+
         else:
             print("\t\t\tNo digits found")
 
@@ -92,6 +96,7 @@ Input:
 		1.Case
 			Num.: 1
 
+				1 = 1 * 1
 
 			Digits: 1
 
