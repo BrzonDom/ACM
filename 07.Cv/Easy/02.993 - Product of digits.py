@@ -78,19 +78,33 @@ def dataExtract(InputRaw):
     return caseNum, numLst
 
 
+def fndDgts(num):
+    if num < 10:
+        return num
+
+    dgts = []
+
+    for d in range(9, 1, -1):
+        while num % d == 0:
+            print(f"\t\t\t\t{num} = {d} * {num // d}")
+
+            num = num // d
+            dgts.append(d)
+    print()
+
+    if num > 1:
+        return -1
+
+    dgts.sort()
+
+    return int(''.join(map(str, dgts)))
+
+
 if __name__ == '__main__':
 
     print("Input:")
     print(InputRaw)
     print()
-
-    # InputLines = InputRaw.split("\n")
-    #
-    # caseNum = int(InputLines.pop(0))
-    # print(f"\tCases: {caseNum}")
-    # print()
-    #
-    # numLst = list(map(int, InputLines))
 
     caseNum, numLst = dataExtract(InputRaw)
 
@@ -100,33 +114,38 @@ if __name__ == '__main__':
         print(f"\t\t\tNum.: {num}")
         print()
 
-        dgts = []
+        # dgts = []
+        #
+        # if num < 10:
+        #     print(f"\t\t\t\t{num} = {num} * 1")
+        #
+        #     dgts.append(num)
+        #     num = 1
+        # else:
+        #     for p in range(9, 1, -1):
+        #         while num % p == 0:
+        #             print(f"\t\t\t\t{num} = {p} * {num // p}")
+        #
+        #             num = num // p
+        #             dgts.append(p)
+        # print()
 
-        if num < 10:
-            print(f"\t\t\t\t{num} = {num} * 1")
+        resDgts = fndDgts(num)
 
-            dgts.append(num)
-            num = 1
-        else:
-            for p in range(9, 1, -1):
-                while num % p == 0:
-                    print(f"\t\t\t\t{num} = {p} * {num // p}")
-
-                    num = num // p
-                    dgts.append(p)
-        print()
-
-        if num == 1:
-            dgts.sort()
-            resDgts = int(''.join(map(str, dgts)))
-
+        if resDgts != -1:
             print(f"\t\t\tDigits: {resDgts}")
-            # for dg in dgts[::-1]:
-            #     print(dg, end="")
-            # print()
 
         else:
             print("\t\t\tNo digits found")
+
+        # if num == 1:
+        #     dgts.sort()
+        #     resDgts = int(''.join(map(str, dgts)))
+        #
+        #     print(f"\t\t\tDigits: {resDgts}")
+        #
+        # else:
+        #     print("\t\t\tNo digits found")
 
         if (cs+1) < caseNum:
             print("\n")
@@ -162,15 +181,11 @@ Input:
 		1.Case
 			Num.: 0
 
-				0 = 0 * 1
-
 			Digits: 0
 
 
 		2.Case
 			Num.: 1
-
-				1 = 1 * 1
 
 			Digits: 1
 
@@ -178,23 +193,17 @@ Input:
 		3.Case
 			Num.: 2
 
-				2 = 2 * 1
-
 			Digits: 2
 
 
 		4.Case
 			Num.: 7
 
-				7 = 7 * 1
-
 			Digits: 7
 
 
 		5.Case
 			Num.: 9
-
-				9 = 9 * 1
 
 			Digits: 9
 
