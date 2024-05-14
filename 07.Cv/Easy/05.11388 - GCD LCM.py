@@ -52,8 +52,11 @@ print()
 for cs in range(caseNum):
 
     inLine = InputLines.pop(0)
+    nums = list(map(int, inLine.split()))
 
     print(f"\t\t{cs+1}. Case")
     print()
-    print(f"\t\t\t{inLine}")
+    # print(f"\t\t\t{inLine}")
+    print(f"\t\t\t1.Num: {nums[0]}")
+    print(f"\t\t\t2.Num: {nums[1]}")
     print()
