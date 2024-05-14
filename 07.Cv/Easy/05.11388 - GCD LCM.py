@@ -42,6 +42,9 @@ InputRaw_Lst = [InputOrg_Raw]
 
 InputRaw = InputRaw_Lst[0]
 
+import math
+
+
 def dataExtract_Prt(InputRaw):
 
     InputLines = InputRaw.split("\n")
@@ -78,6 +81,10 @@ if __name__ == '__main__':
 
         print(f"\t\t\t1.Num: {nums[0]}")
         print(f"\t\t\t2.Num: {nums[1]}")
+        print()
+
+        print(f"\t\t\t\tGCD: {math.gcd(nums[0], nums[1])}")
+        print(f"\t\t\t\tLCM: {math.lcm(nums[0], nums[1])}")
 
         if (cs+1) < len(caseLst):
             print("\n")
@@ -97,11 +104,17 @@ Input:
 			1.Num: 1
 			2.Num: 2
 
+				GCD: 1
+				LCM: 2
+
 
 		2. Case
 
 			1.Num: 3
 			2.Num: 4
+
+				GCD: 1
+				LCM: 12
 
 Process finished with exit code 0
 
