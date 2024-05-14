@@ -25,6 +25,8 @@ https://onlinejudge.org/index.php?option=onlinejudge&page=show_problem&problem=9
 
 """
 
+"""29474193 	993 	Product of digits 	Accepted 	PYTH3 	0.010 	2024-05-14 20:53:04"""
+
 InputOrg_Raw = """
 3
 1
@@ -63,7 +65,7 @@ InputRaw_Lst = [InputOrg_Raw, InputDbg_Raw]
 
 InputRaw = InputRaw_Lst[1]
 
-
+"""
 def dataExtract_Prt():
 
     caseNum = int(input())
@@ -100,7 +102,9 @@ def fndDgts_Prt(num):
     dgts.sort()
 
     return int(''.join(map(str, dgts)))
+"""
 
+"""__Code__"""
 
 def dataExtract():
 
