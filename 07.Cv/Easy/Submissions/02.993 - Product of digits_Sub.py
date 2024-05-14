@@ -114,27 +114,50 @@ def dataExtract():
     return numLst
 
 
+def fndDgts(num):
+    if num < 10:
+        return num
+
+    dgts = []
+
+    for d in range(9, 1, -1):
+        while num % d == 0:
+            # print(f"\t\t\t\t{num} = {d} * {num // d}")
+
+            num = num // d
+            dgts.append(d)
+    # if dgts:
+    #     print()
+
+    if num > 1:
+        return -1
+
+    dgts.sort()
+
+    return int(''.join(map(str, dgts)))
+
+
 if __name__ == '__main__':
 
-    print("Input:")
-    print(InputRaw)
-    print()
+    # print("Input:")
+    # print(InputRaw)
+    # print()
 
     numLst = dataExtract()
 
     for cs, num in enumerate(numLst):
 
-        print(f"\t\t{cs+1}.Case")
-        print(f"\t\t\tNum.: {num}")
+        print(f"\t{cs+1}.Case")
+        print(f"\t\tNum.: {num}")
         print()
 
-        resDgts = fndDgts_Prt(num)
+        resDgts = fndDgts(num)
 
         if resDgts != -1:
-            print(f"\t\t\tDigits: {resDgts}")
+            print(f"\t\tDigits: {resDgts}")
 
         else:
-            print("\t\t\tNo digits found")
+            print("\t\tNo digits found")
 
         if (cs+1) < len(numLst):
             print("\n")
