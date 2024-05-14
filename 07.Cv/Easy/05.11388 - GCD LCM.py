@@ -59,7 +59,7 @@ for cs in range(caseNum):
     # print(f"\t\t\t{inLine}")
     print(f"\t\t\t1.Num: {nums[0]}")
     print(f"\t\t\t2.Num: {nums[1]}")
-    print()
+    print("\n")
 
 
 """__Output__"""
@@ -76,10 +76,12 @@ Input:
 			1.Num: 1
 			2.Num: 2
 
+
 		2. Case
 
 			1.Num: 3
 			2.Num: 4
+
 
 
 Process finished with exit code 0
