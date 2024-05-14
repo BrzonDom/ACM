@@ -111,7 +111,7 @@ def dataExtract():
     for _ in range(caseNum):
         numLst.append(int(input()))
 
-    return caseNum, numLst
+    return numLst
 
 
 if __name__ == '__main__':
@@ -120,7 +120,7 @@ if __name__ == '__main__':
     print(InputRaw)
     print()
 
-    caseNum, numLst = dataExtract()
+    numLst = dataExtract()
 
     for cs, num in enumerate(numLst):
 
@@ -136,6 +136,6 @@ if __name__ == '__main__':
         else:
             print("\t\t\tNo digits found")
 
-        if (cs+1) < caseNum:
+        if (cs+1) < len(numLst):
             print("\n")
 
