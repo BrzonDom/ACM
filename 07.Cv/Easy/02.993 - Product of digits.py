@@ -46,7 +46,6 @@ if __name__ == '__main__':
     print(f"\tCases: {caseNum}")
     print()
 
-
     numLst = list(map(int, InputLines))
 
     for cs, num in enumerate(numLst):
@@ -65,10 +64,13 @@ if __name__ == '__main__':
                 dgts.append(p)
         print()
 
-        print("\t\t\tDigits: ", end="")
-        for dg in dgts[::-1]:
-            print(dg, end="")
-        print()
+        if num == 1:
+            print("\t\t\tDigits: ", end="")
+            for dg in dgts[::-1]:
+                print(dg, end="")
+            print()
+        else:
+            print("\t\t\tNo digits found")
 
         if (cs+1) < caseNum:
             print("\n")
@@ -105,7 +107,7 @@ Input:
 
 				123456789 = 9 * 13717421
 
-			Digits: 9
+			No digits found
 
 Process finished with exit code 0
 
