@@ -68,12 +68,18 @@ def dataExtract(InputRaw):
 
     InputLines = InputRaw.split("\n")
 
-    caseNum = int(InputLines.pop(0))
+    # caseNum = int(InputLines.pop(0))
+    caseNum = int(input())
 
     print(f"\tCases: {caseNum}")
     print()
 
-    numLst = list(map(int, InputLines))
+    numLst = []
+
+    for _ in range(caseNum):
+        numLst.append(int(input()))
+
+    # numLst = list(map(int, InputLines))
 
     return caseNum, numLst
 
