@@ -63,19 +63,36 @@ InputRaw_Lst = [InputOrg_Raw, InputDbg_Raw]
 
 InputRaw = InputRaw_Lst[1]
 
+
+def dataExtract(InputRaw):
+
+    InputLines = InputRaw.split("\n")
+
+    caseNum = int(InputLines.pop(0))
+
+    print(f"\tCases: {caseNum}")
+    print()
+
+    numLst = list(map(int, InputLines))
+
+    return caseNum, numLst
+
+
 if __name__ == '__main__':
 
     print("Input:")
     print(InputRaw)
     print()
 
-    InputLines = InputRaw.split("\n")
+    # InputLines = InputRaw.split("\n")
+    #
+    # caseNum = int(InputLines.pop(0))
+    # print(f"\tCases: {caseNum}")
+    # print()
+    #
+    # numLst = list(map(int, InputLines))
 
-    caseNum = int(InputLines.pop(0))
-    print(f"\tCases: {caseNum}")
-    print()
-
-    numLst = list(map(int, InputLines))
+    caseNum, numLst = dataExtract(InputRaw)
 
     for cs, num in enumerate(numLst):
 
