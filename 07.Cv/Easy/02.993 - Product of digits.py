@@ -78,7 +78,7 @@ def dataExtract(InputRaw):
     return caseNum, numLst
 
 
-def fndDgts(num):
+def fndDgts_Prt(num):
     if num < 10:
         return num
 
@@ -90,7 +90,8 @@ def fndDgts(num):
 
             num = num // d
             dgts.append(d)
-    print()
+    if dgts:
+        print()
 
     if num > 1:
         return -1
@@ -114,38 +115,13 @@ if __name__ == '__main__':
         print(f"\t\t\tNum.: {num}")
         print()
 
-        # dgts = []
-        #
-        # if num < 10:
-        #     print(f"\t\t\t\t{num} = {num} * 1")
-        #
-        #     dgts.append(num)
-        #     num = 1
-        # else:
-        #     for p in range(9, 1, -1):
-        #         while num % p == 0:
-        #             print(f"\t\t\t\t{num} = {p} * {num // p}")
-        #
-        #             num = num // p
-        #             dgts.append(p)
-        # print()
-
-        resDgts = fndDgts(num)
+        resDgts = fndDgts_Prt(num)
 
         if resDgts != -1:
             print(f"\t\t\tDigits: {resDgts}")
 
         else:
             print("\t\t\tNo digits found")
-
-        # if num == 1:
-        #     dgts.sort()
-        #     resDgts = int(''.join(map(str, dgts)))
-        #
-        #     print(f"\t\t\tDigits: {resDgts}")
-        #
-        # else:
-        #     print("\t\t\tNo digits found")
 
         if (cs+1) < caseNum:
             print("\n")
@@ -276,7 +252,6 @@ Input:
 		12.Case
 			Num.: 643
 
-
 			No digits found
 
 
@@ -291,13 +266,11 @@ Input:
 		14.Case
 			Num.: 19
 
-
 			No digits found
 
 
 		15.Case
 			Num.: 23
-
 
 			No digits found
 
@@ -340,7 +313,6 @@ Input:
 
 		19.Case
 			Num.: 430467221
-
 
 			No digits found
 
