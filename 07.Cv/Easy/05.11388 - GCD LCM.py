@@ -38,27 +38,64 @@ InputOrg_Raw = """
 
 InputOrg_Raw = InputOrg_Raw[1:-1]
 
+InputRaw_Lst = [InputOrg_Raw]
+
+InputRaw = InputRaw_Lst[0]
+
+def dataExtract(InputRaw):
+
+    InputLines = InputRaw.split("\n")
+
+    caseNum = int(InputLines.pop(0))
+
+    print(f"\tCases: {caseNum}")
+    print()
+
+    caseLst = []
+
+    for cs in range(caseNum):
+
+        inLine = InputLines.pop(0)
+        nums = list(map(int, inLine.split()))
+
+        caseLst.append(nums)
+
+    return caseLst
+
+
 print("Input:")
-print(InputOrg_Raw)
+print(InputRaw)
 print()
 
-InputLines = InputOrg_Raw.split("\n")
+# InputLines = InputRaw.split("\n")
+#
+# caseNum = int(InputLines.pop(0))
+#
+# print(f"\tCases: {caseNum}")
+# print()
 
-caseNum = int(InputLines.pop(0))
+caseLst = dataExtract(InputRaw)
 
-print(f"\tCases: {caseNum}")
-print()
-
-for cs in range(caseNum):
-
-    inLine = InputLines.pop(0)
-    nums = list(map(int, inLine.split()))
+for cs, nums in enumerate(caseLst):
 
     print(f"\t\t{cs+1}. Case")
     print()
-    # print(f"\t\t\t{inLine}")
+
     print(f"\t\t\t1.Num: {nums[0]}")
     print(f"\t\t\t2.Num: {nums[1]}")
+
+
+# for cs in range(caseNum):
+#
+#     inLine = InputLines.pop(0)
+#     nums = list(map(int, inLine.split()))
+#
+#     print(f"\t\t{cs+1}. Case")
+#     print()
+#     # print(f"\t\t\t{inLine}")
+#     print(f"\t\t\t1.Num: {nums[0]}")
+#     print(f"\t\t\t2.Num: {nums[1]}")
+
     print("\n")
 
 
