@@ -55,6 +55,13 @@ if __name__ == '__main__':
         print(f"\t\t\tNum.: {num}")
         print()
 
+        for p in [9, 8, 7, 6, 5, 4, 3, 2]:
+            while num % p == 0:
+
+                print(f"\t\t\t\t{num} = {p} * {num // p}")
+                num = num // p
+        print()
+
 
 """__Output__"""
 """
@@ -69,11 +76,17 @@ Input:
 		1.Case
 			Num.: 1
 
+
 		2.Case
 			Num.: 10
 
+				10 = 5 * 2
+				2 = 2 * 1
+
 		3.Case
 			Num.: 123456789
+
+				123456789 = 9 * 13717421
 
 
 Process finished with exit code 0
