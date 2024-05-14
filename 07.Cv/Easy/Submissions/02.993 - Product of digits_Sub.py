@@ -27,44 +27,6 @@ https://onlinejudge.org/index.php?option=onlinejudge&page=show_problem&problem=9
 
 """29474193 	993 	Product of digits 	Accepted 	PYTH3 	0.010 	2024-05-14 20:53:04"""
 
-InputOrg_Raw = """
-3
-1
-10
-123456789
-"""
-
-InputDbg_Raw = """
-20
-0
-1
-2
-7
-9
-10
-48
-96
-18
-100000000
-7523475
-643
-156236
-19
-23
-6746
-59049
-387420489
-430467221
-373248
-"""
-
-InputOrg_Raw = InputOrg_Raw[1:-1]
-InputDbg_Raw = InputDbg_Raw[1:-1]
-
-InputRaw_Lst = [InputOrg_Raw, InputDbg_Raw]
-
-InputRaw = InputRaw_Lst[1]
-
 """
 def dataExtract_Prt():
 
