@@ -79,7 +79,8 @@ if __name__ == '__main__':
         print(f"\t\t\t1.Num: {nums[0]}")
         print(f"\t\t\t2.Num: {nums[1]}")
 
-        print("\n")
+        if (cs+1) < len(caseLst):
+            print("\n")
 
 
 """__Output__"""
@@ -101,8 +102,6 @@ Input:
 
 			1.Num: 3
 			2.Num: 4
-
-
 
 Process finished with exit code 0
 
