@@ -40,3 +40,20 @@ InputOrg_Raw = InputOrg_Raw[1:-1]
 
 print("Input:")
 print(InputOrg_Raw)
+print()
+
+InputLines = InputOrg_Raw.split("\n")
+
+caseNum = int(InputLines.pop(0))
+
+print(f"\tCases: {caseNum}")
+print()
+
+for cs in range(caseNum):
+
+    inLine = InputLines.pop(0)
+
+    print(f"\t\t{cs+1}. Case")
+    print()
+    print(f"\t\t\t{inLine}")
+    print()
