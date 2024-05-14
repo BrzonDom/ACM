@@ -66,9 +66,12 @@ if __name__ == '__main__':
 
         if num == 1:
             print("\t\t\tDigits: ", end="")
-            for dg in dgts[::-1]:
-                print(dg, end="")
-            print()
+            if dgts:
+                for dg in dgts[::-1]:
+                    print(dg, end="")
+                print()
+            else:
+                print("1")
         else:
             print("\t\t\tNo digits found")
 
@@ -90,7 +93,7 @@ Input:
 			Num.: 1
 
 
-			Digits: 
+			Digits: 1
 
 
 		2.Case
