@@ -102,7 +102,7 @@ if __name__ == '__main__':
 
         dgts = []
 
-        if 0 <= num <= 9:
+        if num < 10:
             print(f"\t\t\t\t{num} = {num} * 1")
 
             dgts.append(num)
