@@ -29,3 +29,14 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=189&p
                 -1
 
 """
+
+InputOrg_Raw = """
+2
+1 2
+3 4
+"""
+
+InputOrg_Raw = InputOrg_Raw[1:-1]
+
+print("Input:")
+print(InputOrg_Raw)
