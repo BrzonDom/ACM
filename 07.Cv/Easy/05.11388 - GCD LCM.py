@@ -42,7 +42,7 @@ InputRaw_Lst = [InputOrg_Raw]
 
 InputRaw = InputRaw_Lst[0]
 
-def dataExtract(InputRaw):
+def dataExtract_Prt(InputRaw):
 
     InputLines = InputRaw.split("\n")
 
@@ -63,40 +63,23 @@ def dataExtract(InputRaw):
     return caseLst
 
 
-print("Input:")
-print(InputRaw)
-print()
+if __name__ == '__main__':
 
-# InputLines = InputRaw.split("\n")
-#
-# caseNum = int(InputLines.pop(0))
-#
-# print(f"\tCases: {caseNum}")
-# print()
-
-caseLst = dataExtract(InputRaw)
-
-for cs, nums in enumerate(caseLst):
-
-    print(f"\t\t{cs+1}. Case")
+    print("Input:")
+    print(InputRaw)
     print()
 
-    print(f"\t\t\t1.Num: {nums[0]}")
-    print(f"\t\t\t2.Num: {nums[1]}")
+    caseLst = dataExtract_Prt(InputRaw)
 
+    for cs, nums in enumerate(caseLst):
 
-# for cs in range(caseNum):
-#
-#     inLine = InputLines.pop(0)
-#     nums = list(map(int, inLine.split()))
-#
-#     print(f"\t\t{cs+1}. Case")
-#     print()
-#     # print(f"\t\t\t{inLine}")
-#     print(f"\t\t\t1.Num: {nums[0]}")
-#     print(f"\t\t\t2.Num: {nums[1]}")
+        print(f"\t\t{cs+1}. Case")
+        print()
 
-    print("\n")
+        print(f"\t\t\t1.Num: {nums[0]}")
+        print(f"\t\t\t2.Num: {nums[1]}")
+
+        print("\n")
 
 
 """__Output__"""
