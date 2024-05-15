@@ -83,7 +83,6 @@ if __name__ == '__main__':
     num = int(InLines.pop(0))
     case = 1
 
-    primNumLst = [2]
     primNumData = {2: [2]}
     maxPrim = 3
 
@@ -92,18 +91,6 @@ if __name__ == '__main__':
         print(f"\t{case}.Case")
         print()
         print(f"\t\tNum.: {num}")
-        print()
-
-        for curNum in range(maxPrim, num+1):
-            for primNum in primNumLst:
-
-                if curNum % primNum == 0:
-                    break
-
-                if primNum == primNumLst[-1]:
-                    primNumLst.append(curNum)
-
-        print(f"\t\tAll Prime Num.: {primNumLst}")
         print()
 
         for curNum in range(maxPrim, num+1):
@@ -147,8 +134,6 @@ Input:
 
 		Num.: 8
 
-		All Prime Num.: [2, 3, 5, 7]
-
 		Prime Num.: [2, 3, 5, 7]
 
 			8 = 3 + 5
@@ -157,8 +142,6 @@ Input:
 	2.Case
 
 		Num.: 20
-
-		All Prime Num.: [2, 3, 5, 7, 11, 13, 17, 19]
 
 		Prime Num.: [2, 3, 5, 7, 11, 13, 17, 19]
 
@@ -169,8 +152,6 @@ Input:
 
 		Num.: 42
 
-		All Prime Num.: [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41]
-
 		Prime Num.: [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41]
 
 			42 = 5 + 37
@@ -180,5 +161,4 @@ Input:
 
 
 Process finished with exit code 0
-
 """
