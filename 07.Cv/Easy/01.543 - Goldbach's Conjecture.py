@@ -128,7 +128,12 @@ if __name__ == '__main__':
         #         print(f"\t\t\t{num} = {primNum} + {restNum}")
         # print()
 
-        for indx in range(2, num):
+        if num % 2 == 0:
+            prmLen = num // 2 + 1
+        else:
+            prmLen = num // 2 + 2
+
+        for indx in range(2, prmLen):
             if PrmTable[indx] and PrmTable[num - indx]:
                 print(f"\t\t\t{num} = {indx} + {num - indx}")
         print()
@@ -155,7 +160,6 @@ Input:
 		Prime List:  [2, 3, 5, 7]
 
 			8 = 3 + 5
-			8 = 5 + 3
 
 
 	2.Case
@@ -166,8 +170,6 @@ Input:
 
 			20 = 3 + 17
 			20 = 7 + 13
-			20 = 13 + 7
-			20 = 17 + 3
 
 
 	3.Case
@@ -180,10 +182,6 @@ Input:
 			42 = 11 + 31
 			42 = 13 + 29
 			42 = 19 + 23
-			42 = 23 + 19
-			42 = 29 + 13
-			42 = 31 + 11
-			42 = 37 + 5
 
 
 Process finished with exit code 0
