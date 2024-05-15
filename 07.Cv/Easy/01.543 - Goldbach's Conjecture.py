@@ -65,7 +65,8 @@ if __name__ == '__main__':
     case = 1
 
     primNumLst = [2]
-    maxPrim = 2
+    primNumData = {2: [2]}
+    maxPrim = 3
 
     while num:
 
@@ -75,10 +76,8 @@ if __name__ == '__main__':
         print()
 
         for curNum in range(maxPrim, num+1):
-            if curNum > maxPrim:
-                maxPrim = curNum
-
             for primNum in primNumLst:
+
                 if curNum % primNum == 0:
                     break
 
@@ -87,6 +86,14 @@ if __name__ == '__main__':
 
         print(f"\t\tPrime Num.: {primNumLst}")
         print()
+
+        for curNum in range(maxPrim, num+1):
+
+            # if curNum not in primNumData:
+            primNumData[curNum] = primNumData[curNum-1] + [curNum]
+
+
+        maxPrim = max(num, maxPrim) + 1
 
         num = int(InLines.pop(0))
         case += 1
