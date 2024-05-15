@@ -119,8 +119,6 @@ InputRaw_Lst = [InputOrg_Raw, InputDbg_Raw, InputTst_Raw]
 
 InputRaw = InputRaw_Lst[2]
 
-import math
-
 
 def dataExtract_Prt(InputRaw):
 
@@ -153,8 +151,6 @@ if __name__ == '__main__':
 
     caseNum = int(input())
 
-    outputLst = []
-
     # for cs, nums in enumerate(caseLst):
     for cs in range(caseNum):
 
@@ -170,18 +166,10 @@ if __name__ == '__main__':
 
         if nums[1] % nums[0] == 0:
             print(f"\t\t\tRes.: {nums[0]} {nums[1]}")
-            outputLst.append(f"{nums[0]} {nums[1]}")
 
         else:
             print(f"\t\t\tNo result")
-            outputLst.append("-1")
 
         # if (cs+1) < len(caseLst):
         if (cs+1) < caseNum:
             print("\n")
-
-    print("\n")
-    print("__Output__:\n")
-
-    for out in outputLst:
-        print(out)
