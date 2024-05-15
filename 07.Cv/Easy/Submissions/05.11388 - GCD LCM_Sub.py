@@ -30,6 +30,10 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=189&p
 
 """
 
+
+"""29475826 	11388 	GCD LCM 	Accepted 	PYTH3 	0.030 	2024-05-15 11:01:04"""
+
+
 InputOrg_Raw = """
 2
 1 2
