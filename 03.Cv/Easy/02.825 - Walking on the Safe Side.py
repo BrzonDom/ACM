@@ -129,13 +129,49 @@ InputTst2_Raw = """
 8
 """
 
+# InputTst3_Raw = """
+# 2
+#
+# 5 5
+# 1
+# 2 2 3 4
+# 3
+# 4 2 3 4
+# 5
+#
+# 7 5
+# 1
+# 2 2 3 4
+# 3
+# 4 2 4
+# 5 4
+# 6 2 4
+# 7
+# """
+
+InputTst3_Raw = """
+1
+
+8 8
+1
+2
+3 5
+4 1 4
+5 3 6
+6 2 7
+7 8
+8
+"""
+
+
 InputOrg_Raw = InputOrg_Raw[1:-1]
 InputTst1_Raw = InputTst1_Raw[1:-1]
 InputTst2_Raw = InputTst2_Raw[1:-1]
+InputTst3_Raw = InputTst3_Raw[1:-1]
 
-InputRaw_Lst = [InputOrg_Raw, InputTst1_Raw, InputTst2_Raw]
+InputRaw_Lst = [InputOrg_Raw, InputTst1_Raw, InputTst2_Raw, InputTst3_Raw]
 
-InputRaw = InputRaw_Lst[2]
+InputRaw = InputRaw_Lst[3]
 
 
 class Walk:
