@@ -25,7 +25,9 @@ https://onlinejudge.org/index.php?option=onlinejudge&page=show_problem&problem=9
 
 """
 
+
 """29474193 	993 	Product of digits 	Accepted 	PYTH3 	0.010 	2024-05-14 20:53:04"""
+
 
 """
 def dataExtract_Prt():
