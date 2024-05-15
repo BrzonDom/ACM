@@ -296,7 +296,7 @@ class Walk:
         self.prv = prv
 
 
-def dataExtract(InputLines):
+def dataExtract():
 
     # InputLines.pop(0)
     input()
@@ -398,7 +398,7 @@ if __name__ == '__main__':
     #
     #     city = infCase[1]
 
-    InputLines = InputRaw.split("\n")
+    # InputLines = InputRaw.split("\n")
 
     # caseNum = int(InputLines.pop(0))
     caseNum = int(input())
@@ -410,7 +410,7 @@ if __name__ == '__main__':
 
         # print(f"\t\t{case+1}.Case")
 
-        dim, city = dataExtract(InputLines)
+        dim, city = dataExtract()
 
         dimRow, dimCol = dim[0], dim[1]
 
