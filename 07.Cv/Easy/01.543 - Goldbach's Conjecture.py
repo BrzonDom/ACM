@@ -30,7 +30,7 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=188&p
             For each test case, print one line of the form n = a + b, where a and b are odd primes. Numbers and
         operators should be separated by exactly one blank like in the sample output below. If there is more
         than one pair of odd primes adding up to n, choose the pair where the difference b − a is maximized.
-        If there is no such pair, print a line saying ‘Goldbach's conjecture is wrong.’
+        If there is no such pair, print a line saying "Goldbach's conjecture is wrong."
 
 
     Sample:
@@ -43,3 +43,15 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=188&p
                 42 = 5 + 37
 
 """
+
+InputOrg_Raw = """
+8
+20
+42
+0
+"""
+
+InputOrg_Raw = InputOrg_Raw[1:-1]
+
+print("Input:")
+print(InputOrg_Raw)
