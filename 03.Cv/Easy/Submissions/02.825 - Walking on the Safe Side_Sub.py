@@ -457,7 +457,7 @@ if __name__ == '__main__':
 
         if allEndWlk:
             print(pathNum)
-            print()
+
 
             # print(f"\t\t\t\tDistance: {minDstnc}")
             # print(f"\t\t\t\tPaths: {len(allEndWlk)}")
@@ -465,7 +465,7 @@ if __name__ == '__main__':
             # print()
         else:
             print(0)
-            print()
+
 
             # print(f"\t\t\t\tNo path found")
             # print()
@@ -482,8 +482,8 @@ if __name__ == '__main__':
         #             print("\n\t\t\t\t\t", end="")
         #     print()
 
-        # if (case+1) < caseNum:
-        #     print()
+        if (case+1) < caseNum:
+            print()
 
 
 """__Output__"""
