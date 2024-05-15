@@ -131,20 +131,21 @@ if __name__ == '__main__':
                 primeLst.append(indx)
 
         print(f"\t\tPrime List:  {primeLst}")
+        print()
 
         # for indx, primBl in enumerate(primeTable):
         #     if primBl:
         #         print(f"{indx}, ", end="")
         # print("\n")
 
-        # lenPrim = len(primNumData[num])
-        #
-        # for primNum in primNumData[num][:(lenPrim+1) // 2 + 1]:
-        #     restNum = num - primNum
-        #
-        #     if restNum in primNumData[num]:
-        #         print(f"\t\t\t{num} = {primNum} + {restNum}")
-        # print()
+        lenPrim = len(primeLst)
+
+        for primNum in primeLst[:(lenPrim+1) // 2 + 1]:
+            restNum = num - primNum
+
+            if restNum in primeLst:
+                print(f"\t\t\t{num} = {primNum} + {restNum}")
+        print()
 
         # maxPrim = max(num, maxPrim) + 1
 
@@ -165,16 +166,30 @@ Input:
 		Num.: 8
 
 		Prime List:  [2, 3, 5, 7]
+
+			8 = 3 + 5
+			8 = 5 + 3
+
 	2.Case
 
 		Num.: 20
 
 		Prime List:  [2, 3, 5, 7, 11, 13, 17, 19]
+
+			20 = 3 + 17
+			20 = 7 + 13
+
 	3.Case
 
 		Num.: 42
 
 		Prime List:  [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41]
+
+			42 = 5 + 37
+			42 = 11 + 31
+			42 = 13 + 29
+			42 = 19 + 23
+
 
 Process finished with exit code 0
 
