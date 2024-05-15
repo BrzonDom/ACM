@@ -1426,48 +1426,27 @@ if __name__ == '__main__':
 
         # print(f"\t{case}.Case")
         # print()
-        print(f"\t\tNum.: {num}")
-        print()
-
-        # PrmLst = []
-        #
-        # for indx, PrmBl in enumerate(PrmTable[:num+1]):
-        #     if PrmBl:
-        #         PrmLst.append(indx)
-        #
-        # print(f"\t\tPrime List:  {PrmLst}")
-        # print()
-
-        # GldCnjctr = 0
-        #
-        # if num % 2 == 0:
-        #     prmLen = num // 2 + 1
-        # else:
-        #     prmLen = num // 2 + 2
-        #
-        # for indx in range(2, prmLen):
-        #     if PrmTable[indx] and PrmTable[num - indx]:
-        #
-        #         if not GldCnjctr:
-        #             GldCnjctr = (indx, num - indx)
-        #
-        #         print(f"\t\t\t{num} = {indx} + {num - indx}")
+        # print(f"\t\tNum.: {num}")
         # print()
 
         GldCnjctr, GldLst = fndGldComb_Prt(num)
 
         if GldCnjctr:
-            print(f"\t\t\tResult Goldbach Conjecture:")
-            print(f"\t\t\t\t{num} = {GldCnjctr[0]} + {GldCnjctr[1]}")
+            print(f"{num} = {GldCnjctr[0]} + {GldCnjctr[1]}")
+
+            # print(f"\t\t\tResult Goldbach Conjecture:")
+            # print(f"\t\t\t\t{num} = {GldCnjctr[0]} + {GldCnjctr[1]}")
         else:
-            print(f"\t\t\tGoldbach's conjecture is wrong.")
-        print()
+            print("Goldbach's conjecture is wrong.")
+
+            # print(f"\t\t\tGoldbach's conjecture is wrong.")
+        # print()
 
         # num = int(InLines.pop(0))
         num = int(input())
 
         case += 1
 
-        if num:
-            print()
+        # if num:
+        #     print()
 
