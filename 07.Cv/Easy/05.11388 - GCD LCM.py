@@ -88,6 +88,12 @@ if __name__ == '__main__':
 
         print(f"\t\t\t\tGCD: {gcd}")
         print(f"\t\t\t\tLCM: {lcm}")
+        print()
+
+        if lcm % gcd == 0:
+            print(f"\t\t\tRes.: {gcd}, {lcm}")
+        else:
+            print(f"\t\t\tNo result")
 
         if (cs+1) < len(caseLst):
             print("\n")
@@ -110,6 +116,8 @@ Input:
 				GCD: 1
 				LCM: 2
 
+			Res.: 1, 2
+
 
 		2. Case
 
@@ -118,6 +126,8 @@ Input:
 
 				GCD: 1
 				LCM: 12
+
+			Res.: 1, 12
 
 Process finished with exit code 0
 
