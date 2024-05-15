@@ -39,6 +39,8 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=114&p
 
 """
 
+"""29475751 	825 	Walking on the Safe Side 	Accepted 	PYTH3 	0.050 	2024-05-15 10:03:50"""
+
 InputOrg_Raw = """
 1
 
