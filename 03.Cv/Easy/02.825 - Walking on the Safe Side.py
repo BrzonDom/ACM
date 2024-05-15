@@ -267,7 +267,7 @@ def findPath_Iter(dim, city):
 
     rwDm, clDm = dim[0], dim[1]
 
-    minDstnc = 0
+    maxDstnc = (rwDm-1) + (clDm-1)
 
         # Walk(self, pos, dstnc, pth, prv)
     strWlk = Walk((0, 0), 0, [(0, 0)], None)
@@ -277,6 +277,9 @@ def findPath_Iter(dim, city):
     while queuWlk[0]:
 
         cWlk = queuWlk[0].pop(0)
+
+        if cWlk.dst > maxDstnc:
+            return False
 
         cPos = cWlk.pos
         cRw, cCl = cPos[0], cPos[1]
@@ -296,7 +299,7 @@ def findPath_Iter(dim, city):
                 if (cRw, cCl) == (rwDm - 1, clDm - 1):
                     allWlk.append(cWlk)
 
-            return minDstnc, allWlk
+            return allWlk
 
         else:
             mvs = [(1, 0), (0, 1)]
@@ -318,7 +321,7 @@ def findPath_Iter(dim, city):
         if not queuWlk[0]:
             queuWlk = [queuWlk[1], []]
 
-    return minDstnc, False
+    return False
 
 
 if __name__ == '__main__':
@@ -399,10 +402,18 @@ if __name__ == '__main__':
         #     # findPathAll_Iter(dim, city)
         # minDstnc, allEndWlk = findPathAll_Iter((dimRow, dimCol), city)
 
-        minDstnc, allEndWlk = findPath_Iter((dimRow, dimCol), city)
+        # if allEndWlk:
+        #     print(f"\t\t\t\tDistance: {minDstnc}")
+        #     print(f"\t\t\t\tPaths: {len(allEndWlk)}")
+        #     print()
+        # else:
+        #     print(f"\t\t\t\tNo path found")
+        #     print()
+
+        allEndWlk = findPath_Iter((dimRow, dimCol), city)
 
         if allEndWlk:
-            print(f"\t\t\t\tDistance: {minDstnc}")
+            # print(f"\t\t\t\tDistance: {minDstnc}")
             print(f"\t\t\t\tPaths: {len(allEndWlk)}")
             print()
         else:
@@ -498,7 +509,6 @@ Input:
 
 			Find path iteratively:
 
-				Distance: 0
 				Paths: 1
 
 
@@ -512,7 +522,6 @@ Input:
 
 			Find path iteratively:
 
-				Distance: 7
 				Paths: 1
 
 
@@ -546,7 +555,6 @@ Input:
 
 			Find path iteratively:
 
-				Distance: 7
 				Paths: 1
 
 
@@ -583,7 +591,6 @@ Input:
 
 			Find path iteratively:
 
-				Distance: 6
 				Paths: 20
 
 
@@ -624,7 +631,6 @@ Input:
 
 			Find path iteratively:
 
-				Distance: 14
 				Paths: 233
 
 
