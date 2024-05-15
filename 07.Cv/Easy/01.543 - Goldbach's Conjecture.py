@@ -55,3 +55,19 @@ InputOrg_Raw = InputOrg_Raw[1:-1]
 
 print("Input:")
 print(InputOrg_Raw)
+print()
+
+InLines = InputOrg_Raw.split("\n")
+
+num = int(InLines.pop(0))
+case = 1
+
+while num:
+    print(f"\t{case}.Case")
+    print()
+    print(f"\t\tNum.: {num}")
+    print()
+
+    num = int(InLines.pop(0))
+    case += 1
+
