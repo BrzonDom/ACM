@@ -411,18 +411,6 @@ if __name__ == '__main__':
         print(f"\t\t\tNorth-South: {dimCol}")
         print()
 
-        # city = [[1 for c in range(dimCol)] for r in range(dimRow)]
-        #
-        # for row in range(dimRow):
-        #     strt = list(map(int, InputLines.pop(0).split()))
-        #
-        #     for col in strt[1:]:
-        #         city[row][col-1] = 0
-
-            # if strt[1:]:
-            #     print(f"\t\t\t\t{row+1}.Street: {strt[1:]}")
-        # print()
-
         prntCity(city)
 
         # print("\t\t\tFind path recursively:")
@@ -480,8 +468,8 @@ if __name__ == '__main__':
         #             print("\n\t\t\t\t\t", end="")
         #     print()
 
-        # if (case+1) < len(caseLst):
         if (case+1) < caseNum:
+        # if (case + 1) < len(caseLst):
             print()
 
 
