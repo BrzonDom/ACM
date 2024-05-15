@@ -1398,12 +1398,14 @@ def fndGldComb_Prt(num):
     for indx in range(2, prmLen):
         if PrmTable[indx] and PrmTable[num - indx]:
 
-            if not GldCnjctr:
-                GldCnjctr = (indx, num - indx)
+            return (indx, num - indx)
+
+            # if not GldCnjctr:
+            #     GldCnjctr = (indx, num - indx)
 
             # print(f"\t\t\t{num} = {indx} + {num - indx}")
 
-            GldLst.append((indx, num - indx))
+            # GldLst.append((indx, num - indx))
     # print()
 
     return GldCnjctr, GldLst
@@ -1432,7 +1434,7 @@ if __name__ == '__main__':
         # print(f"\t\tNum.: {num}")
         # print()
 
-        GldCnjctr, GldLst = fndGldComb_Prt(num)
+        GldCnjctr = fndGldComb_Prt(num)
 
         if GldCnjctr:
             print(f"{num} = {GldCnjctr[0]} + {GldCnjctr[1]}")
