@@ -194,16 +194,19 @@ def dataAllExtract_Prt(InputRaw):
 
 def dataExtract(InputLines):
 
-    InputLines.pop(0)
+    # InputLines.pop(0)
+    input()
 
-    dimLine = InputLines.pop(0)
+    # dimLine = InputLines.pop(0)
+    dimLine = input()
     dimRow, dimCol = list(map(int, dimLine.split()))
 
     city = [[1 for c in range(dimCol)] for r in range(dimRow)]
 
     for row in range(dimRow):
 
-        strt = list(map(int, InputLines.pop(0).split()))
+        # strt = list(map(int, InputLines.pop(0).split()))
+        strt = list(map(int, input().split()))
 
         for col in strt[1:]:
             city[row][col - 1] = 0
@@ -394,7 +397,9 @@ if __name__ == '__main__':
 
     InputLines = InputRaw.split("\n")
 
-    caseNum = int(InputLines.pop(0))
+    # caseNum = int(InputLines.pop(0))
+    caseNum = int(input())
+
     print(f"\tCases: {caseNum}")
     print()
 
