@@ -162,6 +162,21 @@ class Walk:
         self.prv = prv
 
 
+def prntCity(city):
+    # ⬜⬛
+
+    print("\t\t\tCity:", end="")
+
+    for row in city:
+        print(f"\n\t\t\t\t", end="")
+        for col in row:
+            if col:
+                print("⬜", end="")
+            else:
+                print("⬛", end="")
+    print("\n")
+
+
 def fndPathAll_Rec(cWlk, dim, city):
 
     cPos = cWlk.pos
@@ -296,10 +311,11 @@ if __name__ == '__main__':
 
                 city[row-1][col-1] = 0
 
-        for row in city:
-            print(f"\t\t\t\t  {row}")
-        print()
+        # for row in city:
+        #     print(f"\t\t\t\t  {row}")
+        # print()
 
+        prntCity(city)
 
         # print("\t\t\tFind path recursively:")
         # print()
@@ -418,7 +434,8 @@ Input:
 			East-West:   1
 			North-South: 1
 
-				  [1]
+			City:
+				⬜
 
 			Find path iteratively:
 
@@ -431,7 +448,8 @@ Input:
 			East-West:   1
 			North-South: 8
 
-				  [1, 1, 1, 1, 1, 1, 1, 1]
+			City:
+				⬜⬜⬜⬜⬜⬜⬜⬜
 
 			Find path iteratively:
 
@@ -444,7 +462,8 @@ Input:
 			East-West:   1
 			North-South: 8
 
-				  [1, 1, 1, 0, 1, 1, 1, 1]
+			City:
+				⬜⬜⬜⬛⬜⬜⬜⬜
 
 			Find path iteratively:
 
@@ -456,14 +475,15 @@ Input:
 			East-West:   8
 			North-South: 1
 
-				  [1]
-				  [1]
-				  [1]
-				  [1]
-				  [1]
-				  [1]
-				  [1]
-				  [1]
+			City:
+				⬜
+				⬜
+				⬜
+				⬜
+				⬜
+				⬜
+				⬜
+				⬜
 
 			Find path iteratively:
 
@@ -476,14 +496,15 @@ Input:
 			East-West:   8
 			North-South: 1
 
-				  [1]
-				  [1]
-				  [1]
-				  [0]
-				  [1]
-				  [1]
-				  [1]
-				  [1]
+			City:
+				⬜
+				⬜
+				⬜
+				⬛
+				⬜
+				⬜
+				⬜
+				⬜
 
 			Find path iteratively:
 
@@ -495,10 +516,11 @@ Input:
 			East-West:   4
 			North-South: 4
 
-				  [1, 1, 1, 1]
-				  [1, 1, 1, 1]
-				  [1, 1, 1, 1]
-				  [1, 1, 1, 1]
+			City:
+				⬜⬜⬜⬜
+				⬜⬜⬜⬜
+				⬜⬜⬜⬜
+				⬜⬜⬜⬜
 
 			Find path iteratively:
 
@@ -511,14 +533,15 @@ Input:
 			East-West:   8
 			North-South: 8
 
-				  [1, 1, 1, 1, 1, 1, 1, 1]
-				  [1, 1, 1, 1, 1, 1, 1, 1]
-				  [1, 1, 1, 1, 0, 1, 1, 1]
-				  [0, 1, 1, 0, 1, 1, 1, 1]
-				  [1, 1, 0, 1, 1, 0, 1, 1]
-				  [1, 0, 1, 1, 1, 1, 0, 1]
-				  [1, 1, 1, 1, 1, 1, 1, 0]
-				  [1, 1, 1, 1, 1, 1, 1, 1]
+			City:
+				⬜⬜⬜⬜⬜⬜⬜⬜
+				⬜⬜⬜⬜⬜⬜⬜⬜
+				⬜⬜⬜⬜⬛⬜⬜⬜
+				⬛⬜⬜⬛⬜⬜⬜⬜
+				⬜⬜⬛⬜⬜⬛⬜⬜
+				⬜⬛⬜⬜⬜⬜⬛⬜
+				⬜⬜⬜⬜⬜⬜⬜⬛
+				⬜⬜⬜⬜⬜⬜⬜⬜
 
 			Find path iteratively:
 
@@ -531,14 +554,15 @@ Input:
 			East-West:   8
 			North-South: 8
 
-				  [1, 1, 1, 1, 1, 1, 1, 1]
-				  [1, 1, 1, 1, 1, 0, 1, 1]
-				  [1, 0, 1, 1, 1, 1, 1, 1]
-				  [1, 1, 1, 1, 0, 1, 1, 1]
-				  [0, 1, 1, 1, 1, 1, 1, 1]
-				  [1, 1, 0, 1, 1, 1, 1, 1]
-				  [1, 1, 1, 1, 0, 1, 1, 0]
-				  [1, 1, 1, 1, 0, 1, 1, 1]
+			City:
+				⬜⬜⬜⬜⬜⬜⬜⬜
+				⬜⬜⬜⬜⬜⬛⬜⬜
+				⬜⬛⬜⬜⬜⬜⬜⬜
+				⬜⬜⬜⬜⬛⬜⬜⬜
+				⬛⬜⬜⬜⬜⬜⬜⬜
+				⬜⬜⬛⬜⬜⬜⬜⬜
+				⬜⬜⬜⬜⬛⬜⬜⬛
+				⬜⬜⬜⬜⬛⬜⬜⬜
 
 			Find path iteratively:
 
