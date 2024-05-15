@@ -97,6 +97,9 @@ if __name__ == '__main__':
 
     InLines = InputRaw.split("\n")
 
+    maxInNum = 1_000_000
+    PrmTable = fndPrimeTable(maxInNum)
+
     num = int(InLines.pop(0))
     case = 1
 
@@ -107,11 +110,9 @@ if __name__ == '__main__':
         print(f"\t\tNum.: {num}")
         print()
 
-        PrmTable = fndPrimeTable(num)
-
         PrmLst = []
 
-        for indx, PrmBl in enumerate(PrmTable):
+        for indx, PrmBl in enumerate(PrmTable[:num+1]):
             if PrmBl:
                 PrmLst.append(indx)
 
