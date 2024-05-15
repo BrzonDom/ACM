@@ -36,9 +36,67 @@ InputOrg_Raw = """
 3 4
 """
 
-InputOrg_Raw = InputOrg_Raw[1:-1]
+InputDbg_Raw = """
+53
+2 2
+3 4
+5 6
+2 5
+2 4
+6 9
+1 6
+4 8
+2 2
+3 4
+5 6
+2 5
+2 4
+1 5
+12 100
+4 26
+9 12
+10 20
+3 5
+6 9
+4 8
+4 8
+2 8
+5 10
+10 15
+6 56
+7 89
+6 98
+3 18
+8 9
+7 70
+3 12
+1 280
+8 9
+7 70
+3 12
+3 99
+200 300
+150 123
+125 25000
+13 56
+13 39
+8 40
+3 54
+1 2
+3 4
+6 10
+2 359096
+12 4
+3 9
+12 1260
+55 5224
+5424 23131231
+"""
 
-InputRaw_Lst = [InputOrg_Raw]
+InputOrg_Raw = InputOrg_Raw[1:-1]
+InputDbg_Raw = InputDbg_Raw[1:-1]
+
+InputRaw_Lst = [InputOrg_Raw, InputDbg_Raw]
 
 InputRaw = InputRaw_Lst[0]
 
@@ -74,6 +132,8 @@ if __name__ == '__main__':
 
     caseLst = dataExtract_Prt(InputRaw)
 
+    outputLst = []
+
     for cs, nums in enumerate(caseLst):
 
         print(f"\t\t{cs+1}. Case")
@@ -92,11 +152,20 @@ if __name__ == '__main__':
 
         if lcm % gcd == 0:
             print(f"\t\t\tRes.: {gcd}, {lcm}")
+            outputLst.append(f"{gcd} {lcm}")
+
         else:
             print(f"\t\t\tNo result")
+            outputLst.append("-1")
 
         if (cs+1) < len(caseLst):
             print("\n")
+
+    print("\n")
+    print("__Output__:\n")
+
+    for out in outputLst:
+        print(out)
 
 
 """__Output__"""
@@ -128,6 +197,12 @@ Input:
 				LCM: 12
 
 			Res.: 1, 12
+
+
+__Output__:
+
+1 2
+1 12
 
 Process finished with exit code 0
 
