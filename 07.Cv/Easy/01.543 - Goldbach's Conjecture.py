@@ -128,6 +128,8 @@ if __name__ == '__main__':
         #         print(f"\t\t\t{num} = {primNum} + {restNum}")
         # print()
 
+        GldCnjctr = 0
+
         if num % 2 == 0:
             prmLen = num // 2 + 1
         else:
@@ -135,7 +137,15 @@ if __name__ == '__main__':
 
         for indx in range(2, prmLen):
             if PrmTable[indx] and PrmTable[num - indx]:
+
+                if not GldCnjctr:
+                    GldCnjctr = (indx, num - indx)
+
                 print(f"\t\t\t{num} = {indx} + {num - indx}")
+        print()
+
+        print(f"\t\t\tResult Goldbach Conjecture:")
+        print(f"\t\t\t\t{num} = {GldCnjctr[0]} + {GldCnjctr[1]}")
         print()
 
         num = int(InLines.pop(0))
@@ -161,6 +171,9 @@ Input:
 
 			8 = 3 + 5
 
+			Result Goldbach Conjecture:
+				8 = 3 + 5
+
 
 	2.Case
 
@@ -170,6 +183,9 @@ Input:
 
 			20 = 3 + 17
 			20 = 7 + 13
+
+			Result Goldbach Conjecture:
+				20 = 3 + 17
 
 
 	3.Case
@@ -182,6 +198,9 @@ Input:
 			42 = 11 + 31
 			42 = 13 + 29
 			42 = 19 + 23
+
+			Result Goldbach Conjecture:
+				42 = 5 + 37
 
 
 Process finished with exit code 0
