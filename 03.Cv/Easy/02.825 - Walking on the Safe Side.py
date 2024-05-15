@@ -208,6 +208,25 @@ def dataAllExtract_Prt(InputRaw):
     return caseLst
 
 
+def dataExtract(InputLines):
+
+    InputLines.pop(0)
+
+    dimLine = InputLines.pop(0)
+    dimRow, dimCol = list(map(int, dimLine.split()))
+
+    city = [[1 for c in range(dimCol)] for r in range(dimRow)]
+
+    for row in range(dimRow):
+
+        strt = list(map(int, InputLines.pop(0).split()))
+
+        for col in strt[1:]:
+            city[row][col - 1] = 0
+
+    return (dimRow, dimCol), city
+
+
 def fndPathAll_Rec(cWlk, dim, city):
 
     cPos = cWlk.pos
@@ -361,35 +380,32 @@ if __name__ == '__main__':
     print(InputRaw)
     print()
 
-    # print(InputLines)
-
-    # caseNum = int(InputLines.pop(0))
-    # # print(InputLines)
+    # caseLst = dataAllExtract_Prt(InputRaw)
     #
-    # print(f"\tCases: {caseNum}")
-    # print()
+    # for case, infCase in enumerate(caseLst):
+    #
+    #     # print(f"\t{case+1}.Case")
+    #
+    #     dim = infCase[0]
+    #     dimRow, dimCol = dim[0], dim[1]
+    #
+    #     city = infCase[1]
 
-    caseLst = dataAllExtract_Prt(InputRaw)
+    InputLines = InputRaw.split("\n")
 
-    for case, infCase in enumerate(caseLst):
+    caseNum = int(InputLines.pop(0))
 
-        # print(f"\t{case+1}.Case")
+    print(f"\tCases: {caseNum}")
+    print()
 
-        dim = infCase[0]
-        dimRow, dimCol = dim[0], dim[1]
-
-        city = infCase[1]
-
-
-    # for case in range(caseNum):
-
-        # InputLines.pop(0)
+    for case in range(caseNum):
 
         print(f"\t\tCase: {case+1}")
         print()
 
-        # dimRow, dimCol = list(map(int, InputLines.pop(0).split()))
-        # dim = (dimRow, dimCol)
+        dim, city = dataExtract(InputLines)
+
+        dimRow, dimCol = dim[0], dim[1]
 
         print(f"\t\t\tEast-West:   {dimRow}")
         print(f"\t\t\tNorth-South: {dimCol}")
@@ -464,7 +480,8 @@ if __name__ == '__main__':
         #             print("\n\t\t\t\t\t", end="")
         #     print()
 
-        if (case+1) < len(caseLst):
+        # if (case+1) < len(caseLst):
+        if (case+1) < caseNum:
             print()
 
 
