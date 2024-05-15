@@ -285,9 +285,9 @@ if __name__ == '__main__':
 
             cross[row+1] = strt[1:]
 
-            if strt[1:]:
-                print(f"\t\t\t\t{row+1}.Street: {strt[1:]}")
-        print()
+            # if strt[1:]:
+            #     print(f"\t\t\t\t{row+1}.Street: {strt[1:]}")
+        # print()
 
         city = [[1 for c in range(dimCol)] for r in range(dimRow)]
 
@@ -328,6 +328,7 @@ if __name__ == '__main__':
 
         if allEndWlk:
             print(f"\t\t\t\tDistance: {minDstnc}")
+            print(f"\t\t\t\tPaths: {len(allEndWlk)}")
             print()
         else:
             print(f"\t\t\t\tNo path found")
@@ -417,12 +418,12 @@ Input:
 			East-West:   1
 			North-South: 1
 
-
 				  [1]
 
 			Find path iteratively:
 
 				Distance: 0
+				Paths: 1
 
 
 		Case: 2
@@ -430,20 +431,18 @@ Input:
 			East-West:   1
 			North-South: 8
 
-
 				  [1, 1, 1, 1, 1, 1, 1, 1]
 
 			Find path iteratively:
 
 				Distance: 7
+				Paths: 1
 
 
 		Case: 3
 
 			East-West:   1
 			North-South: 8
-
-				1.Street: [4]
 
 				  [1, 1, 1, 0, 1, 1, 1, 1]
 
@@ -457,7 +456,6 @@ Input:
 			East-West:   8
 			North-South: 1
 
-
 				  [1]
 				  [1]
 				  [1]
@@ -470,14 +468,13 @@ Input:
 			Find path iteratively:
 
 				Distance: 7
+				Paths: 1
 
 
 		Case: 5
 
 			East-West:   8
 			North-South: 1
-
-				4.Street: [1]
 
 				  [1]
 				  [1]
@@ -498,7 +495,6 @@ Input:
 			East-West:   4
 			North-South: 4
 
-
 				  [1, 1, 1, 1]
 				  [1, 1, 1, 1]
 				  [1, 1, 1, 1]
@@ -507,18 +503,13 @@ Input:
 			Find path iteratively:
 
 				Distance: 6
+				Paths: 20
 
 
 		Case: 7
 
 			East-West:   8
 			North-South: 8
-
-				3.Street: [5]
-				4.Street: [1, 4]
-				5.Street: [3, 6]
-				6.Street: [2, 7]
-				7.Street: [8]
 
 				  [1, 1, 1, 1, 1, 1, 1, 1]
 				  [1, 1, 1, 1, 1, 1, 1, 1]
@@ -532,20 +523,13 @@ Input:
 			Find path iteratively:
 
 				Distance: 16
+				Paths: 51
 
 
 		Case: 8
 
 			East-West:   8
 			North-South: 8
-
-				2.Street: [6]
-				3.Street: [2]
-				4.Street: [5]
-				5.Street: [1]
-				6.Street: [3]
-				7.Street: [5, 8]
-				8.Street: [5]
 
 				  [1, 1, 1, 1, 1, 1, 1, 1]
 				  [1, 1, 1, 1, 1, 0, 1, 1]
@@ -559,6 +543,7 @@ Input:
 			Find path iteratively:
 
 				Distance: 14
+				Paths: 233
 
 
 Process finished with exit code 0
