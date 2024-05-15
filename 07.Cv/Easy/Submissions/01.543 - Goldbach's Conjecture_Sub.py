@@ -1366,6 +1366,9 @@ InputRaw_Lst = [InputOrg_Raw, InputDbg_Raw, InputMor_Raw, InputTst_Raw]
 InputRaw = InputRaw_Lst[3]
 
 
+"""__Code__"""
+
+
 def fndPrimeTable(num):
 
     PrmTable = [False, False] + [True for i in range(2, num +1)]
@@ -1408,11 +1411,11 @@ def fndGldComb_Prt(num):
 
 if __name__ == '__main__':
 
-    print("Input:")
-    print(InputRaw)
-    print()
+    # print("Input:")
+    # print(InputRaw)
+    # print()
 
-    InLines = InputRaw.split("\n")
+    # InLines = InputRaw.split("\n")
 
     maxInNum = 1_000_000
     PrmTable = fndPrimeTable(maxInNum)
