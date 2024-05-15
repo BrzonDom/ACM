@@ -75,18 +75,18 @@ InputRaw = InputRaw_Lst[0]
 
 def fndPrimeTable(num):
 
-    primeTable = [False, False] + [True for i in range(2, num +1)]
+    PrmTable = [False, False] + [True for i in range(2, num +1)]
     prm = 2
 
     while (prm ** 2 <= num):
-        if primeTable[prm]:
+        if PrmTable[prm]:
 
             for indx in range(prm ** 2, num +1, prm):
-                primeTable[indx] = False
+                PrmTable[indx] = False
 
         prm += 1
 
-    return primeTable
+    return PrmTable
 
 
 if __name__ == '__main__':
@@ -122,28 +122,28 @@ if __name__ == '__main__':
         #
         # print(f"\t\tPrime Num.:   {primNumData[num]}")
 
-        primeTable = fndPrimeTable(num)
+        PrmTable = fndPrimeTable(num)
 
-        primeLst = []
+        PrmLst = []
 
-        for indx, primBl in enumerate(primeTable):
-            if primBl:
-                primeLst.append(indx)
+        for indx, PrmBl in enumerate(PrmTable):
+            if PrmBl:
+                PrmLst.append(indx)
 
-        print(f"\t\tPrime List:  {primeLst}")
+        print(f"\t\tPrime List:  {PrmLst}")
         print()
 
-        # for indx, primBl in enumerate(primeTable):
-        #     if primBl:
+        # for indx, PrmBl in enumerate(PrmTable):
+        #     if PrmBl:
         #         print(f"{indx}, ", end="")
         # print("\n")
 
-        lenPrim = len(primeLst)
+        lenPrim = len(PrmLst)
 
-        for primNum in primeLst[:(lenPrim+1) // 2 + 1]:
+        for primNum in PrmLst[:(lenPrim + 1) // 2 + 1]:
             restNum = num - primNum
 
-            if restNum in primeLst:
+            if restNum in PrmLst:
                 print(f"\t\t\t{num} = {primNum} + {restNum}")
         print()
 
@@ -151,6 +151,9 @@ if __name__ == '__main__':
 
         num = int(InLines.pop(0))
         case += 1
+
+        if num:
+            print()
 
 
 """__Output__"""
@@ -170,6 +173,7 @@ Input:
 			8 = 3 + 5
 			8 = 5 + 3
 
+
 	2.Case
 
 		Num.: 20
@@ -178,6 +182,7 @@ Input:
 
 			20 = 3 + 17
 			20 = 7 + 13
+
 
 	3.Case
 
