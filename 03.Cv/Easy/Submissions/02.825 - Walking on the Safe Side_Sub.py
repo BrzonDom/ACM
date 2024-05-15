@@ -400,23 +400,22 @@ if __name__ == '__main__':
     # caseNum = int(InputLines.pop(0))
     caseNum = int(input())
 
-    print(f"\tCases: {caseNum}")
-    print()
+    # print(f"\tCases: {caseNum}")
+    # print()
 
     for case in range(caseNum):
 
-        print(f"\t\t{case+1}.Case")
+        # print(f"\t\t{case+1}.Case")
 
         dim, city = dataExtract(InputLines)
 
         dimRow, dimCol = dim[0], dim[1]
 
+        # print(f"\t\t\tEast-West:   {dimRow}")
+        # print(f"\t\t\tNorth-South: {dimCol}")
+        # print()
 
-        print(f"\t\t\tEast-West:   {dimRow}")
-        print(f"\t\t\tNorth-South: {dimCol}")
-        print()
-
-        prntCity(city)
+        # prntCity(city)
 
         # print("\t\t\tFind path recursively:")
         # print()
@@ -437,8 +436,8 @@ if __name__ == '__main__':
         #         print("\n\t\t\t\t\t", end="")
         # print("\n")
 
-        print("\t\t\tFind path iteratively:")
-        print()
+        # print("\t\t\tFind path iteratively:")
+        # print()
 
         #     # findPathAll_Iter(dim, city)
         # minDstnc, allEndWlk = findPathAll_Iter((dimRow, dimCol), city)
@@ -454,13 +453,19 @@ if __name__ == '__main__':
         allEndWlk, pathNum = findPath_Iter((dimRow, dimCol), city)
 
         if allEndWlk:
+            print(pathNum)
+            print()
+
             # print(f"\t\t\t\tDistance: {minDstnc}")
             # print(f"\t\t\t\tPaths: {len(allEndWlk)}")
-            print(f"\t\t\t\tPaths: {pathNum}")
-            print()
+            # print(f"\t\t\t\tPaths: {pathNum}")
+            # print()
         else:
-            print(f"\t\t\t\tNo path found")
+            print(0)
             print()
+
+            # print(f"\t\t\t\tNo path found")
+            # print()
 
         # for eCnt, endWlk in enumerate(allEndWlk):
         #
@@ -474,8 +479,8 @@ if __name__ == '__main__':
         #             print("\n\t\t\t\t\t", end="")
         #     print()
 
-        if (case+1) < caseNum:
-            print()
+        # if (case+1) < caseNum:
+        #     print()
 
 
 """__Output__"""
