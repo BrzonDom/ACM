@@ -64,10 +64,22 @@ if __name__ == '__main__':
     num = int(InLines.pop(0))
     case = 1
 
+    primNumLst = [2]
+
     while num:
         print(f"\t{case}.Case")
         print()
         print(f"\t\tNum.: {num}")
+        print()
+
+        for curNum in range(2, num+1):
+            for primNum in primNumLst:
+                if curNum % primNum == 0:
+                    break
+                if primNum == primNumLst[-1]:
+                    primNumLst.append(curNum)
+
+        print(f"\t\tPrime Num.: {primNumLst}")
         print()
 
         num = int(InLines.pop(0))
@@ -86,13 +98,19 @@ Input:
 
 		Num.: 8
 
+		Prime Num.: [2, 3, 5, 7]
+
 	2.Case
 
 		Num.: 20
 
+		Prime Num.: [2, 3, 5, 7, 11, 13, 17, 19]
+
 	3.Case
 
 		Num.: 42
+
+		Prime Num.: [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41]
 
 
 Process finished with exit code 0
