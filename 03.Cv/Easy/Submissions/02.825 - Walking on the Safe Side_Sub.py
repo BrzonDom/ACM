@@ -143,7 +143,6 @@ InputTst3_Raw = """
 8
 """
 
-
 InputOrg_Raw = InputOrg_Raw[1:-1]
 InputTst1_Raw = InputTst1_Raw[1:-1]
 InputTst2_Raw = InputTst2_Raw[1:-1]
@@ -268,6 +267,7 @@ def findPath_Iter(dim, city):
     rwDm, clDm = dim[0], dim[1]
 
     maxDstnc = (rwDm-1) + (clDm-1)
+    pathCnt = 0
 
         # Walk(self, pos, dstnc, pth, prv)
     strWlk = Walk((0, 0), 0, [(0, 0)], None)
@@ -279,7 +279,7 @@ def findPath_Iter(dim, city):
         cWlk = queuWlk[0].pop(0)
 
         if cWlk.dst > maxDstnc:
-            return False
+            return False, pathCnt
 
         cPos = cWlk.pos
         cRw, cCl = cPos[0], cPos[1]
@@ -287,11 +287,12 @@ def findPath_Iter(dim, city):
         if (cRw, cCl) == (rwDm - 1, clDm - 1):
 
             allWlk = [cWlk]
-            minDstnc = cWlk.dst
+            pathCnt = 1
 
             while queuWlk[0]:
 
                 cWlk = queuWlk[0].pop(0)
+                pathCnt += 1
 
                 cPos = cWlk.pos
                 cRw, cCl = cPos[0], cPos[1]
@@ -299,7 +300,7 @@ def findPath_Iter(dim, city):
                 if (cRw, cCl) == (rwDm - 1, clDm - 1):
                     allWlk.append(cWlk)
 
-            return allWlk
+            return allWlk, pathCnt
 
         else:
             mvs = [(1, 0), (0, 1)]
@@ -321,7 +322,7 @@ def findPath_Iter(dim, city):
         if not queuWlk[0]:
             queuWlk = [queuWlk[1], []]
 
-    return False
+    return False, pathCnt
 
 
 if __name__ == '__main__':
@@ -410,11 +411,12 @@ if __name__ == '__main__':
         #     print(f"\t\t\t\tNo path found")
         #     print()
 
-        allEndWlk = findPath_Iter((dimRow, dimCol), city)
+        allEndWlk, pathNum = findPath_Iter((dimRow, dimCol), city)
 
         if allEndWlk:
             # print(f"\t\t\t\tDistance: {minDstnc}")
             print(f"\t\t\t\tPaths: {len(allEndWlk)}")
+            print(f"\t\t\t\tPaths: {pathNum}")
             print()
         else:
             print(f"\t\t\t\tNo path found")
@@ -510,6 +512,7 @@ Input:
 			Find path iteratively:
 
 				Paths: 1
+				Paths: 1
 
 
 		Case: 2
@@ -522,6 +525,7 @@ Input:
 
 			Find path iteratively:
 
+				Paths: 1
 				Paths: 1
 
 
@@ -555,6 +559,7 @@ Input:
 
 			Find path iteratively:
 
+				Paths: 1
 				Paths: 1
 
 
@@ -591,6 +596,7 @@ Input:
 
 			Find path iteratively:
 
+				Paths: 20
 				Paths: 20
 
 
@@ -631,6 +637,7 @@ Input:
 
 			Find path iteratively:
 
+				Paths: 233
 				Paths: 233
 
 
