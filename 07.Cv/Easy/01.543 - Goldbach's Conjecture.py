@@ -65,17 +65,23 @@ if __name__ == '__main__':
     case = 1
 
     primNumLst = [2]
+    maxPrim = 2
 
     while num:
+
         print(f"\t{case}.Case")
         print()
         print(f"\t\tNum.: {num}")
         print()
 
-        for curNum in range(2, num+1):
+        for curNum in range(maxPrim, num+1):
+            if curNum > maxPrim:
+                maxPrim = curNum
+
             for primNum in primNumLst:
                 if curNum % primNum == 0:
                     break
+
                 if primNum == primNumLst[-1]:
                     primNumLst.append(curNum)
 
