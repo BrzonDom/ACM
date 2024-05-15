@@ -100,27 +100,12 @@ if __name__ == '__main__':
     num = int(InLines.pop(0))
     case = 1
 
-    # primNumData = {2: [2]}
-    # maxPrim = 3
-
     while num:
 
         print(f"\t{case}.Case")
         print()
         print(f"\t\tNum.: {num}")
         print()
-
-        # for curNum in range(maxPrim, num+1):
-        #     for primNum in primNumData[curNum-1]:
-        #
-        #         if curNum % primNum == 0:
-        #             primNumData[curNum] = primNumData[curNum-1]
-        #             break
-        #
-        #         if primNum == primNumData[curNum-1][-1]:
-        #             primNumData[curNum] = primNumData[curNum-1] + [curNum]
-        #
-        # print(f"\t\tPrime Num.:   {primNumData[num]}")
 
         PrmTable = fndPrimeTable(num)
 
@@ -133,11 +118,6 @@ if __name__ == '__main__':
         print(f"\t\tPrime List:  {PrmLst}")
         print()
 
-        # for indx, PrmBl in enumerate(PrmTable):
-        #     if PrmBl:
-        #         print(f"{indx}, ", end="")
-        # print("\n")
-
         lenPrim = len(PrmLst)
 
         for primNum in PrmLst[:(lenPrim + 1) // 2 + 1]:
@@ -146,8 +126,6 @@ if __name__ == '__main__':
             if restNum in PrmLst:
                 print(f"\t\t\t{num} = {primNum} + {restNum}")
         print()
-
-        # maxPrim = max(num, maxPrim) + 1
 
         num = int(InLines.pop(0))
         case += 1
