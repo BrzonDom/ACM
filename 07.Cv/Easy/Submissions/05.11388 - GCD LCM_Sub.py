@@ -141,11 +141,14 @@ def dataExtract_Prt(InputRaw):
     return caseLst
 
 
+"""__CODE__"""
+
+
 if __name__ == '__main__':
 
-    print("Input:")
-    print(InputRaw)
-    print()
+    # print("Input:")
+    # print(InputRaw)
+    # print()
 
     # caseLst = dataExtract_Prt(InputRaw)
 
