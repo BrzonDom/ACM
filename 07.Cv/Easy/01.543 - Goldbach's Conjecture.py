@@ -53,21 +53,48 @@ InputOrg_Raw = """
 
 InputOrg_Raw = InputOrg_Raw[1:-1]
 
-print("Input:")
-print(InputOrg_Raw)
-print()
+if __name__ == '__main__':
 
-InLines = InputOrg_Raw.split("\n")
-
-num = int(InLines.pop(0))
-case = 1
-
-while num:
-    print(f"\t{case}.Case")
+    print("Input:")
+    print(InputOrg_Raw)
     print()
-    print(f"\t\tNum.: {num}")
-    print()
+
+    InLines = InputOrg_Raw.split("\n")
 
     num = int(InLines.pop(0))
-    case += 1
+    case = 1
 
+    while num:
+        print(f"\t{case}.Case")
+        print()
+        print(f"\t\tNum.: {num}")
+        print()
+
+        num = int(InLines.pop(0))
+        case += 1
+
+
+"""__Output__"""
+"""
+Input:
+8
+20
+42
+0
+
+	1.Case
+
+		Num.: 8
+
+	2.Case
+
+		Num.: 20
+
+	3.Case
+
+		Num.: 42
+
+
+Process finished with exit code 0
+
+"""
