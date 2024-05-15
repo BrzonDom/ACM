@@ -117,7 +117,7 @@ InputTst_Raw = InputTst_Raw[1:-1]
 
 InputRaw_Lst = [InputOrg_Raw, InputDbg_Raw, InputTst_Raw]
 
-InputRaw = InputRaw_Lst[1]
+InputRaw = InputRaw_Lst[2]
 
 import math
 
@@ -158,16 +158,16 @@ if __name__ == '__main__':
         print(f"\t\t{cs+1}. Case")
         print()
 
-        print(f"\t\t\t1.Num: {nums[0]}")
-        print(f"\t\t\t2.Num: {nums[1]}")
+        print(f"\t\t\t1.Num. (GCD): {nums[0]}")
+        print(f"\t\t\t2.Num. (LCM): {nums[1]}")
         print()
 
         gcd = math.gcd(nums[0], nums[1])
         lcm = math.lcm(nums[0], nums[1])
 
-        print(f"\t\t\t\tGCD: {gcd}")
-        print(f"\t\t\t\tLCM: {lcm}")
-        print()
+        # print(f"\t\t\t\tGCD: {gcd}")
+        # print(f"\t\t\t\tLCM: {lcm}")
+        # print()
 
         if nums[1] % nums[0] == 0:
             print(f"\t\t\tRes.: {nums[0]}, {nums[1]}")
@@ -210,174 +210,132 @@ Input:
 
 		1. Case
 
-			1.Num: 1
-			2.Num: 10
-
-				GCD: 1
-				LCM: 10
+			1.Num. (GCD): 1
+			2.Num. (LCM): 10
 
 			Res.: 1, 10
 
 
 		2. Case
 
-			1.Num: 1
-			2.Num: 23
-
-				GCD: 1
-				LCM: 23
+			1.Num. (GCD): 1
+			2.Num. (LCM): 23
 
 			Res.: 1, 23
 
 
 		3. Case
 
-			1.Num: 23
-			2.Num: 31
+			1.Num. (GCD): 23
+			2.Num. (LCM): 31
 
-				GCD: 1
-				LCM: 713
-
-			Res.: 1, 713
+			No result
 
 
 		4. Case
 
-			1.Num: 23
-			2.Num: 46
-
-				GCD: 23
-				LCM: 46
+			1.Num. (GCD): 23
+			2.Num. (LCM): 46
 
 			Res.: 23, 46
 
 
 		5. Case
 
-			1.Num: 23
-			2.Num: 4600
-
-				GCD: 23
-				LCM: 4600
+			1.Num. (GCD): 23
+			2.Num. (LCM): 4600
 
 			Res.: 23, 4600
 
 
 		6. Case
 
-			1.Num: 5
-			2.Num: 25
-
-				GCD: 5
-				LCM: 25
+			1.Num. (GCD): 5
+			2.Num. (LCM): 25
 
 			Res.: 5, 25
 
 
 		7. Case
 
-			1.Num: 5
-			2.Num: 26
+			1.Num. (GCD): 5
+			2.Num. (LCM): 26
 
-				GCD: 1
-				LCM: 130
-
-			Res.: 1, 130
+			No result
 
 
 		8. Case
 
-			1.Num: 78
-			2.Num: 39
+			1.Num. (GCD): 78
+			2.Num. (LCM): 39
 
-				GCD: 39
-				LCM: 78
-
-			Res.: 39, 78
+			No result
 
 
 		9. Case
 
-			1.Num: 40
-			2.Num: 50
+			1.Num. (GCD): 40
+			2.Num. (LCM): 50
 
-				GCD: 10
-				LCM: 200
-
-			Res.: 10, 200
+			No result
 
 
 		10. Case
 
-			1.Num: 40
-			2.Num: 5000
-
-				GCD: 40
-				LCM: 5000
+			1.Num. (GCD): 40
+			2.Num. (LCM): 5000
 
 			Res.: 40, 5000
 
 
 		11. Case
 
-			1.Num: 56
-			2.Num: 78
+			1.Num. (GCD): 56
+			2.Num. (LCM): 78
 
-				GCD: 2
-				LCM: 2184
-
-			Res.: 2, 2184
+			No result
 
 
 		12. Case
 
-			1.Num: 45
-			2.Num: 120
+			1.Num. (GCD): 45
+			2.Num. (LCM): 120
 
-				GCD: 15
-				LCM: 360
-
-			Res.: 15, 360
+			No result
 
 
 		13. Case
 
-			1.Num: 9
-			2.Num: 33
+			1.Num. (GCD): 9
+			2.Num. (LCM): 33
 
-				GCD: 3
-				LCM: 99
-
-			Res.: 3, 99
+			No result
 
 
 		14. Case
 
-			1.Num: 9
-			2.Num: 83
+			1.Num. (GCD): 9
+			2.Num. (LCM): 83
 
-				GCD: 1
-				LCM: 747
-
-			Res.: 1, 747
+			No result
 
 
 __Output__:
 
 1 10
 1 23
-1 713
+-1
 23 46
 23 4600
 5 25
-1 130
-39 78
-10 200
+-1
+-1
+-1
 40 5000
-2 2184
-15 360
-3 99
-1 747
+-1
+-1
+-1
+-1
 
 Process finished with exit code 0
 
