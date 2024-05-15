@@ -1425,7 +1425,7 @@ if __name__ == '__main__':
     # num = int(InLines.pop(0))
     num = int(input())
 
-    case = 1
+    # case = 1
 
     while num:
 
@@ -1450,7 +1450,7 @@ if __name__ == '__main__':
         # num = int(InLines.pop(0))
         num = int(input())
 
-        case += 1
+        # case += 1
 
         # if num:
         #     print()
