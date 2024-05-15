@@ -117,7 +117,7 @@ InputTst_Raw = InputTst_Raw[1:-1]
 
 InputRaw_Lst = [InputOrg_Raw, InputDbg_Raw, InputTst_Raw]
 
-InputRaw = InputRaw_Lst[2]
+InputRaw = InputRaw_Lst[1]
 
 import math
 
@@ -169,9 +169,9 @@ if __name__ == '__main__':
         print(f"\t\t\t\tLCM: {lcm}")
         print()
 
-        if lcm % gcd == 0:
-            print(f"\t\t\tRes.: {gcd}, {lcm}")
-            outputLst.append(f"{gcd} {lcm}")
+        if nums[1] % nums[0] == 0:
+            print(f"\t\t\tRes.: {nums[0]}, {nums[1]}")
+            outputLst.append(f"{nums[0]} {nums[1]}")
 
         else:
             print(f"\t\t\tNo result")
