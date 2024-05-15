@@ -154,8 +154,8 @@ if __name__ == '__main__':
     # for cs, nums in enumerate(caseLst):
     for cs in range(caseNum):
 
-        print(f"\t\t{cs+1}. Case")
-        print()
+        # print(f"\t\t{cs+1}. Case")
+        # print()
 
         numLine = input()
         nums = list(map(int, numLine.split()))
@@ -165,11 +165,15 @@ if __name__ == '__main__':
         # print()
 
         if nums[1] % nums[0] == 0:
-            print(f"\t\t\tRes.: {nums[0]} {nums[1]}")
+
+            # print(f"\t\t\tRes.: {nums[0]} {nums[1]}")
+            print(nums[0], nums[1])
 
         else:
-            print(f"\t\t\tNo result")
+
+            # print(f"\t\t\tNo result")
+            print(-1)
 
         # if (cs+1) < len(caseLst):
-        if (cs+1) < caseNum:
-            print("\n")
+        # if (cs+1) < caseNum:
+        #     print("\n")
