@@ -400,8 +400,7 @@ if __name__ == '__main__':
 
     for case in range(caseNum):
 
-        print(f"\t\tCase: {case+1}")
-        print()
+        print(f"\t\t{case+1}.Case")
 
         dim, city = dataExtract(InputLines)
 
@@ -535,8 +534,7 @@ Input:
 
 	Cases: 8
 
-		Case: 1
-
+		1.Case
 			East-West:   1
 			North-South: 1
 
@@ -548,8 +546,7 @@ Input:
 				Paths: 1
 
 
-		Case: 2
-
+		2.Case
 			East-West:   1
 			North-South: 8
 
@@ -561,8 +558,7 @@ Input:
 				Paths: 1
 
 
-		Case: 3
-
+		3.Case
 			East-West:   1
 			North-South: 8
 
@@ -574,8 +570,7 @@ Input:
 				No path found
 
 
-		Case: 4
-
+		4.Case
 			East-West:   8
 			North-South: 1
 
@@ -594,8 +589,7 @@ Input:
 				Paths: 1
 
 
-		Case: 5
-
+		5.Case
 			East-West:   8
 			North-South: 1
 
@@ -614,8 +608,7 @@ Input:
 				No path found
 
 
-		Case: 6
-
+		6.Case
 			East-West:   4
 			North-South: 4
 
@@ -630,8 +623,7 @@ Input:
 				Paths: 20
 
 
-		Case: 7
-
+		7.Case
 			East-West:   8
 			North-South: 8
 
@@ -650,8 +642,7 @@ Input:
 				No path found
 
 
-		Case: 8
-
+		8.Case
 			East-West:   8
 			North-South: 8
 
