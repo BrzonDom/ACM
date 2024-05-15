@@ -1398,10 +1398,10 @@ def fndGldComb_Prt(num):
             if not GldCnjctr:
                 GldCnjctr = (indx, num - indx)
 
-            print(f"\t\t\t{num} = {indx} + {num - indx}")
+            # print(f"\t\t\t{num} = {indx} + {num - indx}")
 
             GldLst.append((indx, num - indx))
-    print()
+    # print()
 
     return GldCnjctr, GldLst
 
@@ -1424,8 +1424,8 @@ if __name__ == '__main__':
 
     while num:
 
-        print(f"\t{case}.Case")
-        print()
+        # print(f"\t{case}.Case")
+        # print()
         print(f"\t\tNum.: {num}")
         print()
 
