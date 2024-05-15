@@ -48,20 +48,37 @@ InputOrg_Raw = """
 8
 20
 42
-22
-34
+0
+"""
+
+InputDbg_Raw = """
+999968
+6
+568
+43422
+989838
+46
+10
+999998
+748386
+8
 0
 """
 
 InputOrg_Raw = InputOrg_Raw[1:-1]
+InputDbg_Raw = InputDbg_Raw[1:-1]
+
+InputRaw_Lst = [InputOrg_Raw, InputDbg_Raw]
+
+InputRaw = InputRaw_Lst[0]
 
 if __name__ == '__main__':
 
     print("Input:")
-    print(InputOrg_Raw)
+    print(InputRaw)
     print()
 
-    InLines = InputOrg_Raw.split("\n")
+    InLines = InputRaw.split("\n")
 
     num = int(InLines.pop(0))
     case = 1
@@ -102,7 +119,9 @@ if __name__ == '__main__':
         print(f"\t\tPrime Num.: {primNumData[num]}")
         print()
 
-        for primNum in primNumData[num]:
+        lenPrim = len(primNumData[num])
+
+        for primNum in primNumData[num][:(lenPrim+1) // 2 + 1]:
             restNum = num - primNum
 
             if restNum in primNumData[num]:
@@ -122,8 +141,6 @@ Input:
 8
 20
 42
-22
-34
 0
 
 	1.Case
@@ -147,8 +164,6 @@ Input:
 
 			20 = 3 + 17
 			20 = 7 + 13
-			20 = 13 + 7
-			20 = 17 + 3
 
 	3.Case
 
@@ -162,40 +177,6 @@ Input:
 			42 = 11 + 31
 			42 = 13 + 29
 			42 = 19 + 23
-			42 = 23 + 19
-			42 = 29 + 13
-			42 = 31 + 11
-			42 = 37 + 5
-
-	4.Case
-
-		Num.: 22
-
-		All Prime Num.: [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41]
-
-		Prime Num.: [2, 3, 5, 7, 11, 13, 17, 19]
-
-			22 = 3 + 19
-			22 = 5 + 17
-			22 = 11 + 11
-			22 = 17 + 5
-			22 = 19 + 3
-
-	5.Case
-
-		Num.: 34
-
-		All Prime Num.: [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41]
-
-		Prime Num.: [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31]
-
-			34 = 3 + 31
-			34 = 5 + 29
-			34 = 11 + 23
-			34 = 17 + 17
-			34 = 23 + 11
-			34 = 29 + 5
-			34 = 31 + 3
 
 
 Process finished with exit code 0
