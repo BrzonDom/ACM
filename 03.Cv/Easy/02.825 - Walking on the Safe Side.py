@@ -210,7 +210,6 @@ def findPathAll_Iter(dim, city):
     rwDm, clDm = dim[0], dim[1]
 
     minDstnc = 0
-    dstncDtAll = {(0, 0): 0}
 
         # Walk(self, pos, dstnc, pth, prv)
     strWlk = Walk((0, 0), 0, [(0, 0)], None)
@@ -243,6 +242,64 @@ def findPathAll_Iter(dim, city):
 
         else:
             mvs = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+
+            for mvR, mvC in mvs:
+                nRw = cRw + mvR
+                nCl = cCl + mvC
+                nPos = (nRw, nCl)
+
+                if 0 <= nRw < rwDm and 0 <= nCl < clDm and nPos not in cWlk.pth and city[nRw][nCl]:
+
+                    nDst = cWlk.dst + 1
+                    nPth = cWlk.pth + [nPos]
+
+                    nWlk = Walk(nPos, nDst, nPth, cWlk)
+
+                    queuWlk[1].append(nWlk)
+
+        if not queuWlk[0]:
+            queuWlk = [queuWlk[1], []]
+
+    return minDstnc, False
+
+
+def findPath_Iter(dim, city):
+
+    rwDm, clDm = dim[0], dim[1]
+
+    minDstnc = 0
+
+        # Walk(self, pos, dstnc, pth, prv)
+    strWlk = Walk((0, 0), 0, [(0, 0)], None)
+
+    queuWlk = [[strWlk], []]
+
+    while queuWlk[0]:
+
+        cWlk = queuWlk[0].pop(0)
+
+        cPos = cWlk.pos
+        cRw, cCl = cPos[0], cPos[1]
+
+        if (cRw, cCl) == (rwDm - 1, clDm - 1):
+
+            allWlk = [cWlk]
+            minDstnc = cWlk.dst
+
+            while queuWlk[0]:
+
+                cWlk = queuWlk[0].pop(0)
+
+                cPos = cWlk.pos
+                cRw, cCl = cPos[0], cPos[1]
+
+                if (cRw, cCl) == (rwDm - 1, clDm - 1):
+                    allWlk.append(cWlk)
+
+            return minDstnc, allWlk
+
+        else:
+            mvs = [(1, 0), (0, 1)]
 
             for mvR, mvC in mvs:
                 nRw = cRw + mvR
@@ -339,8 +396,10 @@ if __name__ == '__main__':
         print("\t\t\tFind path iteratively:")
         print()
 
-            # findPathAll_Iter(dim, city)
-        minDstnc, allEndWlk = findPathAll_Iter((dimRow, dimCol), city)
+        #     # findPathAll_Iter(dim, city)
+        # minDstnc, allEndWlk = findPathAll_Iter((dimRow, dimCol), city)
+
+        minDstnc, allEndWlk = findPath_Iter((dimRow, dimCol), city)
 
         if allEndWlk:
             print(f"\t\t\t\tDistance: {minDstnc}")
@@ -545,8 +604,7 @@ Input:
 
 			Find path iteratively:
 
-				Distance: 16
-				Paths: 51
+				No path found
 
 
 		Case: 8
