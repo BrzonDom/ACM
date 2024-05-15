@@ -149,14 +149,20 @@ if __name__ == '__main__':
     print(InputRaw)
     print()
 
-    caseLst = dataExtract_Prt(InputRaw)
+    # caseLst = dataExtract_Prt(InputRaw)
+
+    caseNum = int(input())
 
     outputLst = []
 
-    for cs, nums in enumerate(caseLst):
+    # for cs, nums in enumerate(caseLst):
+    for cs in range(caseNum):
 
         print(f"\t\t{cs+1}. Case")
         print()
+
+        numLine = input()
+        nums = list(map(int, numLine.split()))
 
         print(f"\t\t\t1.Num. (GCD): {nums[0]}")
         print(f"\t\t\t2.Num. (LCM): {nums[1]}")
@@ -170,14 +176,15 @@ if __name__ == '__main__':
         # print()
 
         if nums[1] % nums[0] == 0:
-            print(f"\t\t\tRes.: {nums[0]}, {nums[1]}")
+            print(f"\t\t\tRes.: {nums[0]} {nums[1]}")
             outputLst.append(f"{nums[0]} {nums[1]}")
 
         else:
             print(f"\t\t\tNo result")
             outputLst.append("-1")
 
-        if (cs+1) < len(caseLst):
+        # if (cs+1) < len(caseLst):
+        if (cs+1) < caseNum:
             print("\n")
 
     print("\n")
