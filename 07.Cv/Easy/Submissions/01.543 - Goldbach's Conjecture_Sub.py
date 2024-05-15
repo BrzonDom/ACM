@@ -1417,7 +1417,9 @@ if __name__ == '__main__':
     maxInNum = 1_000_000
     PrmTable = fndPrimeTable(maxInNum)
 
-    num = int(InLines.pop(0))
+    # num = int(InLines.pop(0))
+    num = int(input())
+
     case = 1
 
     while num:
@@ -1461,176 +1463,11 @@ if __name__ == '__main__':
             print(f"\t\t\tGoldbach's conjecture is wrong.")
         print()
 
-        num = int(InLines.pop(0))
+        # num = int(InLines.pop(0))
+        num = int(input())
+
         case += 1
 
         if num:
             print()
 
-
-"""__Output__"""
-"""
-Input:
-8
-20
-34
-42
-28
-568
-306
-370
-52
-80
-0
-
-	1.Case
-
-		Num.: 8
-
-			8 = 3 + 5
-
-			Result Goldbach Conjecture:
-				8 = 3 + 5
-
-
-	2.Case
-
-		Num.: 20
-
-			20 = 3 + 17
-			20 = 7 + 13
-
-			Result Goldbach Conjecture:
-				20 = 3 + 17
-
-
-	3.Case
-
-		Num.: 34
-
-			34 = 3 + 31
-			34 = 5 + 29
-			34 = 11 + 23
-			34 = 17 + 17
-
-			Result Goldbach Conjecture:
-				34 = 3 + 31
-
-
-	4.Case
-
-		Num.: 42
-
-			42 = 5 + 37
-			42 = 11 + 31
-			42 = 13 + 29
-			42 = 19 + 23
-
-			Result Goldbach Conjecture:
-				42 = 5 + 37
-
-
-	5.Case
-
-		Num.: 28
-
-			28 = 5 + 23
-			28 = 11 + 17
-
-			Result Goldbach Conjecture:
-				28 = 5 + 23
-
-
-	6.Case
-
-		Num.: 568
-
-			568 = 5 + 563
-			568 = 11 + 557
-			568 = 47 + 521
-			568 = 59 + 509
-			568 = 89 + 479
-			568 = 101 + 467
-			568 = 107 + 461
-			568 = 137 + 431
-			568 = 149 + 419
-			568 = 167 + 401
-			568 = 179 + 389
-			568 = 251 + 317
-			568 = 257 + 311
-
-			Result Goldbach Conjecture:
-				568 = 5 + 563
-
-
-	7.Case
-
-		Num.: 306
-
-			306 = 13 + 293
-			306 = 23 + 283
-			306 = 29 + 277
-			306 = 37 + 269
-			306 = 43 + 263
-			306 = 67 + 239
-			306 = 73 + 233
-			306 = 79 + 227
-			306 = 83 + 223
-			306 = 107 + 199
-			306 = 109 + 197
-			306 = 113 + 193
-			306 = 127 + 179
-			306 = 139 + 167
-			306 = 149 + 157
-
-			Result Goldbach Conjecture:
-				306 = 13 + 293
-
-
-	8.Case
-
-		Num.: 370
-
-			370 = 3 + 367
-			370 = 11 + 359
-			370 = 17 + 353
-			370 = 23 + 347
-			370 = 53 + 317
-			370 = 59 + 311
-			370 = 89 + 281
-			370 = 101 + 269
-			370 = 107 + 263
-			370 = 113 + 257
-			370 = 131 + 239
-			370 = 137 + 233
-			370 = 173 + 197
-			370 = 179 + 191
-
-			Result Goldbach Conjecture:
-				370 = 3 + 367
-
-
-	9.Case
-
-		Num.: 52
-
-			52 = 5 + 47
-			52 = 11 + 41
-			52 = 23 + 29
-
-			Result Goldbach Conjecture:
-				52 = 5 + 47
-
-
-	10.Case
-
-		Num.: 80
-
-			80 = 7 + 73
-			80 = 13 + 67
-			80 = 19 + 61
-			80 = 37 + 43
-
-			Result Goldbach Conjecture:
-				80 = 7 + 73
-"""
