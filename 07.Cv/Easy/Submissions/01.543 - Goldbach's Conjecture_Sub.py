@@ -1382,6 +1382,30 @@ def fndPrimeTable(num):
     return PrmTable
 
 
+def fndGldComb_Prt(num):
+
+    GldCnjctr = 0
+    GldLst = []
+
+    if num % 2 == 0:
+        prmLen = num // 2 + 1
+    else:
+        prmLen = num // 2 + 2
+
+    for indx in range(2, prmLen):
+        if PrmTable[indx] and PrmTable[num - indx]:
+
+            if not GldCnjctr:
+                GldCnjctr = (indx, num - indx)
+
+            print(f"\t\t\t{num} = {indx} + {num - indx}")
+
+            GldLst.append((indx, num - indx))
+    print()
+
+    return GldCnjctr, GldLst
+
+
 if __name__ == '__main__':
 
     print("Input:")
@@ -1412,21 +1436,23 @@ if __name__ == '__main__':
         # print(f"\t\tPrime List:  {PrmLst}")
         # print()
 
-        GldCnjctr = 0
+        # GldCnjctr = 0
+        #
+        # if num % 2 == 0:
+        #     prmLen = num // 2 + 1
+        # else:
+        #     prmLen = num // 2 + 2
+        #
+        # for indx in range(2, prmLen):
+        #     if PrmTable[indx] and PrmTable[num - indx]:
+        #
+        #         if not GldCnjctr:
+        #             GldCnjctr = (indx, num - indx)
+        #
+        #         print(f"\t\t\t{num} = {indx} + {num - indx}")
+        # print()
 
-        if num % 2 == 0:
-            prmLen = num // 2 + 1
-        else:
-            prmLen = num // 2 + 2
-
-        for indx in range(2, prmLen):
-            if PrmTable[indx] and PrmTable[num - indx]:
-
-                if not GldCnjctr:
-                    GldCnjctr = (indx, num - indx)
-
-                print(f"\t\t\t{num} = {indx} + {num - indx}")
-        print()
+        GldCnjctr, GldLst = fndGldComb_Prt(num)
 
         if GldCnjctr:
             print(f"\t\t\tResult Goldbach Conjecture:")
