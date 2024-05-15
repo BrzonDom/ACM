@@ -44,6 +44,10 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=188&p
 
 """
 
+
+"""29476551 	543 	Goldbach's Conjecture 	Accepted 	PYTH3 	1.340 	2024-05-15 15:27:26"""
+
+
 InputOrg_Raw = """
 8
 20
