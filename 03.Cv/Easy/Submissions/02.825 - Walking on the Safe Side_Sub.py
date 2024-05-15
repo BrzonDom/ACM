@@ -39,7 +39,9 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=114&p
 
 """
 
+
 """29475751 	825 	Walking on the Safe Side 	Accepted 	PYTH3 	0.050 	2024-05-15 10:03:50"""
+
 
 InputOrg_Raw = """
 1
@@ -422,52 +424,22 @@ if __name__ == '__main__':
 
         # prntCity(city)
 
-        # print("\t\t\tFind path recursively:")
-        # print()
-        #
-        #     # Walk(self, pos, dstnc, pth, prv)
-        # strWlk = Walk((0, 0), 0, [(0, 0)], None)
-        #
-        #     # fndPathAll_Rec(cWlk, dim, city)
-        # endWlk = fndPathAll_Rec(strWlk, (dimRow, dimCol), city)
-        #
-        # print(f"\t\t\t\tDistance: {endWlk.dst}")
-        # print("\t\t\t\tPath:", end="\n\t\t\t\t\t")
-        #
-        # for p, pth in enumerate(endWlk.pth):
-        #     print(pth, end=" ")
-        #
-        #     if (p+1) % 5 == 0 and (p+1) != endWlk.dst:
-        #         print("\n\t\t\t\t\t", end="")
-        # print("\n")
-
         # print("\t\t\tFind path iteratively:")
         # print()
 
         #     # findPathAll_Iter(dim, city)
         # minDstnc, allEndWlk = findPathAll_Iter((dimRow, dimCol), city)
 
-        # if allEndWlk:
-        #     print(f"\t\t\t\tDistance: {minDstnc}")
-        #     print(f"\t\t\t\tPaths: {len(allEndWlk)}")
-        #     print()
-        # else:
-        #     print(f"\t\t\t\tNo path found")
-        #     print()
-
         allEndWlk, pathNum = findPath_Iter((dimRow, dimCol), city)
 
         if allEndWlk:
             print(pathNum)
 
-
-            # print(f"\t\t\t\tDistance: {minDstnc}")
             # print(f"\t\t\t\tPaths: {len(allEndWlk)}")
             # print(f"\t\t\t\tPaths: {pathNum}")
             # print()
         else:
             print(0)
-
 
             # print(f"\t\t\t\tNo path found")
             # print()
@@ -486,198 +458,3 @@ if __name__ == '__main__':
 
         if (case+1) < caseNum:
             print()
-
-
-"""__Output__"""
-"""
-Input:
-8
-
-1 1
-1
-
-1 8
-1
-
-1 8
-1 4
-
-8 1
-1
-2
-3
-4
-5
-6
-7
-8
-
-8 1
-1
-2
-3
-4 1
-5
-6
-7
-8
-
-4 4
-1
-2
-3
-4
-
-8 8
-1
-2
-3 5
-4 1 4
-5 3 6
-6 2 7
-7 8
-8
-
-8 8
-1
-2 6
-3 2
-4 5
-5 1
-6 3
-7 5 8
-8 5
-
-
-	Cases: 8
-
-		1.Case
-			East-West:   1
-			North-South: 1
-
-			City:
-				⬜
-
-			Find path iteratively:
-
-				Paths: 1
-
-
-		2.Case
-			East-West:   1
-			North-South: 8
-
-			City:
-				⬜⬜⬜⬜⬜⬜⬜⬜
-
-			Find path iteratively:
-
-				Paths: 1
-
-
-		3.Case
-			East-West:   1
-			North-South: 8
-
-			City:
-				⬜⬜⬜⬛⬜⬜⬜⬜
-
-			Find path iteratively:
-
-				No path found
-
-
-		4.Case
-			East-West:   8
-			North-South: 1
-
-			City:
-				⬜
-				⬜
-				⬜
-				⬜
-				⬜
-				⬜
-				⬜
-				⬜
-
-			Find path iteratively:
-
-				Paths: 1
-
-
-		5.Case
-			East-West:   8
-			North-South: 1
-
-			City:
-				⬜
-				⬜
-				⬜
-				⬛
-				⬜
-				⬜
-				⬜
-				⬜
-
-			Find path iteratively:
-
-				No path found
-
-
-		6.Case
-			East-West:   4
-			North-South: 4
-
-			City:
-				⬜⬜⬜⬜
-				⬜⬜⬜⬜
-				⬜⬜⬜⬜
-				⬜⬜⬜⬜
-
-			Find path iteratively:
-
-				Paths: 20
-
-
-		7.Case
-			East-West:   8
-			North-South: 8
-
-			City:
-				⬜⬜⬜⬜⬜⬜⬜⬜
-				⬜⬜⬜⬜⬜⬜⬜⬜
-				⬜⬜⬜⬜⬛⬜⬜⬜
-				⬛⬜⬜⬛⬜⬜⬜⬜
-				⬜⬜⬛⬜⬜⬛⬜⬜
-				⬜⬛⬜⬜⬜⬜⬛⬜
-				⬜⬜⬜⬜⬜⬜⬜⬛
-				⬜⬜⬜⬜⬜⬜⬜⬜
-
-			Find path iteratively:
-
-				No path found
-
-
-		8.Case
-			East-West:   8
-			North-South: 8
-
-			City:
-				⬜⬜⬜⬜⬜⬜⬜⬜
-				⬜⬜⬜⬜⬜⬛⬜⬜
-				⬜⬛⬜⬜⬜⬜⬜⬜
-				⬜⬜⬜⬜⬛⬜⬜⬜
-				⬛⬜⬜⬜⬜⬜⬜⬜
-				⬜⬜⬛⬜⬜⬜⬜⬜
-				⬜⬜⬜⬜⬛⬜⬜⬛
-				⬜⬜⬜⬜⬛⬜⬜⬜
-
-			Find path iteratively:
-
-				Paths: 233
-
-
-Process finished with exit code 0
-
-"""
