@@ -177,6 +177,37 @@ def prntCity(city):
     print("\n")
 
 
+def dataAllExtract_Prt(InputRaw):
+
+    InputLines = InputRaw.split("\n")
+
+    caseNum = int(InputLines.pop(0))
+
+    print(f"\tCases: {caseNum}")
+    print()
+
+    caseLst = []
+
+    for case in range(caseNum):
+        InputLines.pop(0)
+
+        dimLine = InputLines.pop(0)
+        dimRow, dimCol = list(map(int, dimLine.split()))
+
+        city = [[1 for c in range(dimCol)] for r in range(dimRow)]
+
+        for row in range(dimRow):
+
+            strt = list(map(int, InputLines.pop(0).split()))
+
+            for col in strt[1:]:
+                city[row][col-1] = 0
+
+        caseLst.append(((dimRow, dimCol), city))
+
+    return caseLst
+
+
 def fndPathAll_Rec(cWlk, dim, city):
 
     cPos = cWlk.pos
@@ -330,36 +361,47 @@ if __name__ == '__main__':
     print(InputRaw)
     print()
 
-    InputLines = InputRaw.split("\n")
     # print(InputLines)
 
-    caseNum = int(InputLines.pop(0))
-    # print(InputLines)
+    # caseNum = int(InputLines.pop(0))
+    # # print(InputLines)
+    #
+    # print(f"\tCases: {caseNum}")
+    # print()
 
-    print(f"\tCases: {caseNum}")
-    print()
+    caseLst = dataAllExtract_Prt(InputRaw)
 
-    for case in range(caseNum):
+    for case, infCase in enumerate(caseLst):
 
-        InputLines.pop(0)
+        # print(f"\t{case+1}.Case")
+
+        dim = infCase[0]
+        dimRow, dimCol = dim[0], dim[1]
+
+        city = infCase[1]
+
+
+    # for case in range(caseNum):
+
+        # InputLines.pop(0)
 
         print(f"\t\tCase: {case+1}")
         print()
 
-        dimRow, dimCol = list(map(int, InputLines.pop(0).split()))
-        dim = (dimRow, dimCol)
+        # dimRow, dimCol = list(map(int, InputLines.pop(0).split()))
+        # dim = (dimRow, dimCol)
 
         print(f"\t\t\tEast-West:   {dimRow}")
         print(f"\t\t\tNorth-South: {dimCol}")
         print()
 
-        city = [[1 for c in range(dimCol)] for r in range(dimRow)]
-
-        for row in range(dimRow):
-            strt = list(map(int, InputLines.pop(0).split()))
-
-            for col in strt[1:]:
-                city[row][col-1] = 0
+        # city = [[1 for c in range(dimCol)] for r in range(dimRow)]
+        #
+        # for row in range(dimRow):
+        #     strt = list(map(int, InputLines.pop(0).split()))
+        #
+        #     for col in strt[1:]:
+        #         city[row][col-1] = 0
 
             # if strt[1:]:
             #     print(f"\t\t\t\t{row+1}.Street: {strt[1:]}")
@@ -422,7 +464,7 @@ if __name__ == '__main__':
         #             print("\n\t\t\t\t\t", end="")
         #     print()
 
-        if (case+1) < caseNum:
+        if (case+1) < len(caseLst):
             print()
 
 
