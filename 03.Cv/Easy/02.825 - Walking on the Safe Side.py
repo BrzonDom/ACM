@@ -205,7 +205,7 @@ def dataAllExtract_Prt(InputRaw):
 
         caseLst.append(((dimRow, dimCol), city))
 
-    return caseLst
+    return caseNum, caseLst
 
 
 def dataExtract(InputLines):
@@ -380,7 +380,7 @@ if __name__ == '__main__':
     print(InputRaw)
     print()
 
-    # caseLst = dataAllExtract_Prt(InputRaw)
+    # caseNum, caseLst = dataAllExtract_Prt(InputRaw)
     #
     # for case, infCase in enumerate(caseLst):
     #
@@ -469,7 +469,6 @@ if __name__ == '__main__':
         #     print()
 
         if (case+1) < caseNum:
-        # if (case + 1) < len(caseLst):
             print()
 
 
