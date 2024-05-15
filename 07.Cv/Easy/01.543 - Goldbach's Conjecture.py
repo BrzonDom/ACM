@@ -1446,8 +1446,11 @@ if __name__ == '__main__':
                 print(f"\t\t\t{num} = {indx} + {num - indx}")
         print()
 
-        print(f"\t\t\tResult Goldbach Conjecture:")
-        print(f"\t\t\t\t{num} = {GldCnjctr[0]} + {GldCnjctr[1]}")
+        if GldCnjctr:
+            print(f"\t\t\tResult Goldbach Conjecture:")
+            print(f"\t\t\t\t{num} = {GldCnjctr[0]} + {GldCnjctr[1]}")
+        else:
+            print(f"\t\t\tGoldbach's conjecture is wrong.")
         print()
 
         num = int(InLines.pop(0))
