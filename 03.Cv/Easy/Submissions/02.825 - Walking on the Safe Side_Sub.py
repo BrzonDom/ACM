@@ -192,6 +192,25 @@ def dataAllExtract_Prt(InputRaw):
     return caseNum, caseLst
 
 
+def dataExtract(InputLines):
+
+    InputLines.pop(0)
+
+    dimLine = InputLines.pop(0)
+    dimRow, dimCol = list(map(int, dimLine.split()))
+
+    city = [[1 for c in range(dimCol)] for r in range(dimRow)]
+
+    for row in range(dimRow):
+
+        strt = list(map(int, InputLines.pop(0).split()))
+
+        for col in strt[1:]:
+            city[row][col - 1] = 0
+
+    return (dimRow, dimCol), city
+
+
 def prntCity(city):
     # ⬜⬛
 
@@ -362,32 +381,31 @@ if __name__ == '__main__':
     print(InputRaw)
     print()
 
-    caseNum, caseLst = dataAllExtract_Prt(InputRaw)
+    # caseNum, caseLst = dataAllExtract_Prt(InputRaw)
+    #
+    # for case, infCase in enumerate(caseLst):
+    #
+    #     print(f"\t\t{case+1}.Case")
+    #
+    #     dim = infCase[0]
+    #     dimRow, dimCol = dim[0], dim[1]
+    #
+    #     city = infCase[1]
 
-    for case, infCase in enumerate(caseLst):
+    InputLines = InputRaw.split("\n")
+
+    caseNum = int(InputLines.pop(0))
+    print(f"\tCases: {caseNum}")
+    print()
+
+    for case in range(caseNum):
 
         print(f"\t\t{case+1}.Case")
 
-        dim = infCase[0]
+        dim, city = dataExtract(InputLines)
+
         dimRow, dimCol = dim[0], dim[1]
 
-        city = infCase[1]
-
-    # InputLines = InputRaw.split("\n")
-    #
-    # caseNum = int(InputLines.pop(0))
-    # print(f"\tCases: {caseNum}")
-    # print()
-    #
-    # for case in range(caseNum):
-    #
-    #     InputLines.pop(0)
-    #
-    #     print(f"\t\tCase: {case+1}")
-    #     print()
-    #
-    #     dimRow, dimCol = list(map(int, InputLines.pop(0).split()))
-    #     dim = (dimRow, dimCol)
 
         print(f"\t\t\tEast-West:   {dimRow}")
         print(f"\t\t\tNorth-South: {dimCol}")
