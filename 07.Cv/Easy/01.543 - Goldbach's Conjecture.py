@@ -72,6 +72,23 @@ InputRaw_Lst = [InputOrg_Raw, InputDbg_Raw]
 
 InputRaw = InputRaw_Lst[0]
 
+
+def fndPrimeTable(num):
+
+    primeTable = [False, False] + [True for i in range(2, num+1)]
+    prm = 2
+
+    while (prm * prm <= num):
+        if primeTable[prm]:
+
+            for indx in range(prm * prm, num+1, prm):
+                primeTable[indx] = False
+
+        prm += 1
+
+    return primeTable
+
+
 if __name__ == '__main__':
 
     print("Input:")
@@ -104,7 +121,14 @@ if __name__ == '__main__':
                     primNumData[curNum] = primNumData[curNum-1] + [curNum]
 
         print(f"\t\tPrime Num.: {primNumData[num]}")
-        print()
+
+        primeTable = fndPrimeTable(num)
+
+        print(f"\t\tPrime Table.: ", end="")
+        for indx, primBl in enumerate(primeTable):
+            if primBl:
+                print(f"{indx}, ", end="")
+        print("\n")
 
         lenPrim = len(primNumData[num])
 
@@ -113,7 +137,6 @@ if __name__ == '__main__':
 
             if restNum in primNumData[num]:
                 print(f"\t\t\t{num} = {primNum} + {restNum}")
-
         print()
 
         maxPrim = max(num, maxPrim) + 1
@@ -135,6 +158,7 @@ Input:
 		Num.: 8
 
 		Prime Num.: [2, 3, 5, 7]
+		Prime Table.: 2, 3, 5, 7, 
 
 			8 = 3 + 5
 			8 = 5 + 3
@@ -144,6 +168,7 @@ Input:
 		Num.: 20
 
 		Prime Num.: [2, 3, 5, 7, 11, 13, 17, 19]
+		Prime Table.: 2, 3, 5, 7, 11, 13, 17, 19, 
 
 			20 = 3 + 17
 			20 = 7 + 13
@@ -153,6 +178,7 @@ Input:
 		Num.: 42
 
 		Prime Num.: [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41]
+		Prime Table.: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 
 
 			42 = 5 + 37
 			42 = 11 + 31
@@ -161,4 +187,5 @@ Input:
 
 
 Process finished with exit code 0
+
 """
