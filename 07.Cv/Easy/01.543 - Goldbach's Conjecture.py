@@ -102,6 +102,14 @@ if __name__ == '__main__':
         print(f"\t\tPrime Num.: {primNumData[num]}")
         print()
 
+        for primNum in primNumData[num]:
+            restNum = num - primNum
+
+            if restNum in primNumData[num]:
+                print(f"\t\t\t{num} = {primNum} + {restNum}")
+
+        print()
+
         maxPrim = max(num, maxPrim) + 1
 
         num = int(InLines.pop(0))
@@ -126,6 +134,9 @@ Input:
 
 		Prime Num.: [2, 3, 5, 7]
 
+			8 = 3 + 5
+			8 = 5 + 3
+
 	2.Case
 
 		Num.: 20
@@ -133,6 +144,11 @@ Input:
 		All Prime Num.: [2, 3, 5, 7, 11, 13, 17, 19]
 
 		Prime Num.: [2, 3, 5, 7, 11, 13, 17, 19]
+
+			20 = 3 + 17
+			20 = 7 + 13
+			20 = 13 + 7
+			20 = 17 + 3
 
 	3.Case
 
@@ -142,6 +158,15 @@ Input:
 
 		Prime Num.: [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41]
 
+			42 = 5 + 37
+			42 = 11 + 31
+			42 = 13 + 29
+			42 = 19 + 23
+			42 = 23 + 19
+			42 = 29 + 13
+			42 = 31 + 11
+			42 = 37 + 5
+
 	4.Case
 
 		Num.: 22
@@ -150,6 +175,12 @@ Input:
 
 		Prime Num.: [2, 3, 5, 7, 11, 13, 17, 19]
 
+			22 = 3 + 19
+			22 = 5 + 17
+			22 = 11 + 11
+			22 = 17 + 5
+			22 = 19 + 3
+
 	5.Case
 
 		Num.: 34
@@ -157,6 +188,14 @@ Input:
 		All Prime Num.: [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41]
 
 		Prime Num.: [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31]
+
+			34 = 3 + 31
+			34 = 5 + 29
+			34 = 11 + 23
+			34 = 17 + 17
+			34 = 23 + 11
+			34 = 29 + 5
+			34 = 31 + 3
 
 
 Process finished with exit code 0
