@@ -161,6 +161,37 @@ class Walk:
         self.prv = prv
 
 
+def dataAllExtract_Prt(InputRaw):
+
+    InputLines = InputRaw.split("\n")
+
+    caseNum = int(InputLines.pop(0))
+
+    print(f"\tCases: {caseNum}")
+    print()
+
+    caseLst = []
+
+    for case in range(caseNum):
+        InputLines.pop(0)
+
+        dimLine = InputLines.pop(0)
+        dimRow, dimCol = list(map(int, dimLine.split()))
+
+        city = [[1 for c in range(dimCol)] for r in range(dimRow)]
+
+        for row in range(dimRow):
+
+            strt = list(map(int, InputLines.pop(0).split()))
+
+            for col in strt[1:]:
+                city[row][col-1] = 0
+
+        caseLst.append(((dimRow, dimCol), city))
+
+    return caseNum, caseLst
+
+
 def prntCity(city):
     # ⬜⬛
 
@@ -331,50 +362,36 @@ if __name__ == '__main__':
     print(InputRaw)
     print()
 
-    InputLines = InputRaw.split("\n")
-    # print(InputLines)
+    caseNum, caseLst = dataAllExtract_Prt(InputRaw)
 
-    caseNum = int(InputLines.pop(0))
-    # print(InputLines)
+    for case, infCase in enumerate(caseLst):
 
-    print(f"\tCases: {caseNum}")
-    print()
+        print(f"\t\t{case+1}.Case")
 
-    for case in range(caseNum):
+        dim = infCase[0]
+        dimRow, dimCol = dim[0], dim[1]
 
-        InputLines.pop(0)
+        city = infCase[1]
 
-        print(f"\t\tCase: {case+1}")
-        print()
-
-        dimRow, dimCol = list(map(int, InputLines.pop(0).split()))
-        dim = (dimRow, dimCol)
+    # InputLines = InputRaw.split("\n")
+    #
+    # caseNum = int(InputLines.pop(0))
+    # print(f"\tCases: {caseNum}")
+    # print()
+    #
+    # for case in range(caseNum):
+    #
+    #     InputLines.pop(0)
+    #
+    #     print(f"\t\tCase: {case+1}")
+    #     print()
+    #
+    #     dimRow, dimCol = list(map(int, InputLines.pop(0).split()))
+    #     dim = (dimRow, dimCol)
 
         print(f"\t\t\tEast-West:   {dimRow}")
         print(f"\t\t\tNorth-South: {dimCol}")
         print()
-
-        cross = {}
-
-        for row in range(dimRow):
-            strt = list(map(int, InputLines.pop(0).split()))
-
-            cross[row+1] = strt[1:]
-
-            # if strt[1:]:
-            #     print(f"\t\t\t\t{row+1}.Street: {strt[1:]}")
-        # print()
-
-        city = [[1 for c in range(dimCol)] for r in range(dimRow)]
-
-        for row in cross:
-            for col in cross[row]:
-
-                city[row-1][col-1] = 0
-
-        # for row in city:
-        #     print(f"\t\t\t\t  {row}")
-        # print()
 
         prntCity(city)
 
@@ -415,7 +432,7 @@ if __name__ == '__main__':
 
         if allEndWlk:
             # print(f"\t\t\t\tDistance: {minDstnc}")
-            print(f"\t\t\t\tPaths: {len(allEndWlk)}")
+            # print(f"\t\t\t\tPaths: {len(allEndWlk)}")
             print(f"\t\t\t\tPaths: {pathNum}")
             print()
         else:
@@ -501,8 +518,7 @@ Input:
 
 	Cases: 8
 
-		Case: 1
-
+		1.Case
 			East-West:   1
 			North-South: 1
 
@@ -512,11 +528,9 @@ Input:
 			Find path iteratively:
 
 				Paths: 1
-				Paths: 1
 
 
-		Case: 2
-
+		2.Case
 			East-West:   1
 			North-South: 8
 
@@ -526,11 +540,9 @@ Input:
 			Find path iteratively:
 
 				Paths: 1
-				Paths: 1
 
 
-		Case: 3
-
+		3.Case
 			East-West:   1
 			North-South: 8
 
@@ -542,8 +554,7 @@ Input:
 				No path found
 
 
-		Case: 4
-
+		4.Case
 			East-West:   8
 			North-South: 1
 
@@ -560,11 +571,9 @@ Input:
 			Find path iteratively:
 
 				Paths: 1
-				Paths: 1
 
 
-		Case: 5
-
+		5.Case
 			East-West:   8
 			North-South: 1
 
@@ -583,8 +592,7 @@ Input:
 				No path found
 
 
-		Case: 6
-
+		6.Case
 			East-West:   4
 			North-South: 4
 
@@ -597,11 +605,9 @@ Input:
 			Find path iteratively:
 
 				Paths: 20
-				Paths: 20
 
 
-		Case: 7
-
+		7.Case
 			East-West:   8
 			North-South: 8
 
@@ -620,8 +626,7 @@ Input:
 				No path found
 
 
-		Case: 8
-
+		8.Case
 			East-West:   8
 			North-South: 8
 
@@ -637,7 +642,6 @@ Input:
 
 			Find path iteratively:
 
-				Paths: 233
 				Paths: 233
 
 
