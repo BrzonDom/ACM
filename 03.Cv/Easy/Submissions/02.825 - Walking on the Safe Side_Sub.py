@@ -153,14 +153,6 @@ InputRaw_Lst = [InputOrg_Raw, InputTst1_Raw, InputTst2_Raw, InputTst3_Raw]
 InputRaw = InputRaw_Lst[1]
 
 
-class Walk:
-    def __init__(self, pos, dstnc, pth, prv):
-        self.pos = pos
-        self.dst = dstnc
-        self.pth = pth
-        self.prv = prv
-
-
 def dataAllExtract_Prt(InputRaw):
 
     InputLines = InputRaw.split("\n")
@@ -190,28 +182,6 @@ def dataAllExtract_Prt(InputRaw):
         caseLst.append(((dimRow, dimCol), city))
 
     return caseNum, caseLst
-
-
-def dataExtract(InputLines):
-
-    # InputLines.pop(0)
-    input()
-
-    # dimLine = InputLines.pop(0)
-    dimLine = input()
-    dimRow, dimCol = list(map(int, dimLine.split()))
-
-    city = [[1 for c in range(dimCol)] for r in range(dimRow)]
-
-    for row in range(dimRow):
-
-        # strt = list(map(int, InputLines.pop(0).split()))
-        strt = list(map(int, input().split()))
-
-        for col in strt[1:]:
-            city[row][col - 1] = 0
-
-    return (dimRow, dimCol), city
 
 
 def prntCity(city):
@@ -315,6 +285,39 @@ def findPathAll_Iter(dim, city):
     return minDstnc, False
 
 
+"""__CODE__"""
+
+
+class Walk:
+    def __init__(self, pos, dstnc, pth, prv):
+        self.pos = pos
+        self.dst = dstnc
+        self.pth = pth
+        self.prv = prv
+
+
+def dataExtract(InputLines):
+
+    # InputLines.pop(0)
+    input()
+
+    # dimLine = InputLines.pop(0)
+    dimLine = input()
+    dimRow, dimCol = list(map(int, dimLine.split()))
+
+    city = [[1 for c in range(dimCol)] for r in range(dimRow)]
+
+    for row in range(dimRow):
+
+        # strt = list(map(int, InputLines.pop(0).split()))
+        strt = list(map(int, input().split()))
+
+        for col in strt[1:]:
+            city[row][col - 1] = 0
+
+    return (dimRow, dimCol), city
+
+
 def findPath_Iter(dim, city):
 
     rwDm, clDm = dim[0], dim[1]
@@ -380,9 +383,9 @@ def findPath_Iter(dim, city):
 
 if __name__ == '__main__':
 
-    print("Input:")
-    print(InputRaw)
-    print()
+    # print("Input:")
+    # print(InputRaw)
+    # print()
 
     # caseNum, caseLst = dataAllExtract_Prt(InputRaw)
     #
