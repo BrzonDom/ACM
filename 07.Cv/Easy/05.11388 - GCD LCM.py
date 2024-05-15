@@ -93,12 +93,31 @@ InputDbg_Raw = """
 5424 23131231
 """
 
+InputTst_Raw = """
+14
+1 10
+1 23
+23 31
+23 46
+23 4600
+5 25
+5 26
+78 39
+40 50
+40 5000
+56 78
+45 120
+9 33
+9 83
+"""
+
 InputOrg_Raw = InputOrg_Raw[1:-1]
 InputDbg_Raw = InputDbg_Raw[1:-1]
+InputTst_Raw = InputTst_Raw[1:-1]
 
-InputRaw_Lst = [InputOrg_Raw, InputDbg_Raw]
+InputRaw_Lst = [InputOrg_Raw, InputDbg_Raw, InputTst_Raw]
 
-InputRaw = InputRaw_Lst[0]
+InputRaw = InputRaw_Lst[2]
 
 import math
 
@@ -171,38 +190,194 @@ if __name__ == '__main__':
 """__Output__"""
 """
 Input:
-2
-1 2
-3 4
+14
+1 10
+1 23
+23 31
+23 46
+23 4600
+5 25
+5 26
+78 39
+40 50
+40 5000
+56 78
+45 120
+9 33
+9 83
 
-	Cases: 2
+	Cases: 14
 
 		1. Case
 
 			1.Num: 1
-			2.Num: 2
+			2.Num: 10
 
 				GCD: 1
-				LCM: 2
+				LCM: 10
 
-			Res.: 1, 2
+			Res.: 1, 10
 
 
 		2. Case
 
-			1.Num: 3
-			2.Num: 4
+			1.Num: 1
+			2.Num: 23
 
 				GCD: 1
-				LCM: 12
+				LCM: 23
 
-			Res.: 1, 12
+			Res.: 1, 23
+
+
+		3. Case
+
+			1.Num: 23
+			2.Num: 31
+
+				GCD: 1
+				LCM: 713
+
+			Res.: 1, 713
+
+
+		4. Case
+
+			1.Num: 23
+			2.Num: 46
+
+				GCD: 23
+				LCM: 46
+
+			Res.: 23, 46
+
+
+		5. Case
+
+			1.Num: 23
+			2.Num: 4600
+
+				GCD: 23
+				LCM: 4600
+
+			Res.: 23, 4600
+
+
+		6. Case
+
+			1.Num: 5
+			2.Num: 25
+
+				GCD: 5
+				LCM: 25
+
+			Res.: 5, 25
+
+
+		7. Case
+
+			1.Num: 5
+			2.Num: 26
+
+				GCD: 1
+				LCM: 130
+
+			Res.: 1, 130
+
+
+		8. Case
+
+			1.Num: 78
+			2.Num: 39
+
+				GCD: 39
+				LCM: 78
+
+			Res.: 39, 78
+
+
+		9. Case
+
+			1.Num: 40
+			2.Num: 50
+
+				GCD: 10
+				LCM: 200
+
+			Res.: 10, 200
+
+
+		10. Case
+
+			1.Num: 40
+			2.Num: 5000
+
+				GCD: 40
+				LCM: 5000
+
+			Res.: 40, 5000
+
+
+		11. Case
+
+			1.Num: 56
+			2.Num: 78
+
+				GCD: 2
+				LCM: 2184
+
+			Res.: 2, 2184
+
+
+		12. Case
+
+			1.Num: 45
+			2.Num: 120
+
+				GCD: 15
+				LCM: 360
+
+			Res.: 15, 360
+
+
+		13. Case
+
+			1.Num: 9
+			2.Num: 33
+
+				GCD: 3
+				LCM: 99
+
+			Res.: 3, 99
+
+
+		14. Case
+
+			1.Num: 9
+			2.Num: 83
+
+				GCD: 1
+				LCM: 747
+
+			Res.: 1, 747
 
 
 __Output__:
 
-1 2
-1 12
+1 10
+1 23
+1 713
+23 46
+23 4600
+5 25
+1 130
+39 78
+10 200
+40 5000
+2 2184
+15 360
+3 99
+1 747
 
 Process finished with exit code 0
 
