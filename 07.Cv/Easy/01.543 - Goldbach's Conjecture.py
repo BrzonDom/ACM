@@ -100,8 +100,8 @@ if __name__ == '__main__':
     num = int(InLines.pop(0))
     case = 1
 
-    primNumData = {2: [2]}
-    maxPrim = 3
+    # primNumData = {2: [2]}
+    # maxPrim = 3
 
     while num:
 
@@ -110,36 +110,43 @@ if __name__ == '__main__':
         print(f"\t\tNum.: {num}")
         print()
 
-        for curNum in range(maxPrim, num+1):
-            for primNum in primNumData[curNum-1]:
-
-                if curNum % primNum == 0:
-                    primNumData[curNum] = primNumData[curNum-1]
-                    break
-
-                if primNum == primNumData[curNum-1][-1]:
-                    primNumData[curNum] = primNumData[curNum-1] + [curNum]
-
-        print(f"\t\tPrime Num.:   {primNumData[num]}")
+        # for curNum in range(maxPrim, num+1):
+        #     for primNum in primNumData[curNum-1]:
+        #
+        #         if curNum % primNum == 0:
+        #             primNumData[curNum] = primNumData[curNum-1]
+        #             break
+        #
+        #         if primNum == primNumData[curNum-1][-1]:
+        #             primNumData[curNum] = primNumData[curNum-1] + [curNum]
+        #
+        # print(f"\t\tPrime Num.:   {primNumData[num]}")
 
         primeTable = fndPrimeTable(num)
 
-        print(f"\t\tPrime Table.:  ", end="")
+        primeLst = []
+
         for indx, primBl in enumerate(primeTable):
             if primBl:
-                print(f"{indx}, ", end="")
-        print("\n")
+                primeLst.append(indx)
 
-        lenPrim = len(primNumData[num])
+        print(f"\t\tPrime List:  {primeLst}")
 
-        for primNum in primNumData[num][:(lenPrim+1) // 2 + 1]:
-            restNum = num - primNum
+        # for indx, primBl in enumerate(primeTable):
+        #     if primBl:
+        #         print(f"{indx}, ", end="")
+        # print("\n")
 
-            if restNum in primNumData[num]:
-                print(f"\t\t\t{num} = {primNum} + {restNum}")
-        print()
+        # lenPrim = len(primNumData[num])
+        #
+        # for primNum in primNumData[num][:(lenPrim+1) // 2 + 1]:
+        #     restNum = num - primNum
+        #
+        #     if restNum in primNumData[num]:
+        #         print(f"\t\t\t{num} = {primNum} + {restNum}")
+        # print()
 
-        maxPrim = max(num, maxPrim) + 1
+        # maxPrim = max(num, maxPrim) + 1
 
         num = int(InLines.pop(0))
         case += 1
@@ -157,34 +164,17 @@ Input:
 
 		Num.: 8
 
-		Prime Num.:   [2, 3, 5, 7]
-		Prime Table.:  2, 3, 5, 7, 
-
-			8 = 3 + 5
-			8 = 5 + 3
-
+		Prime List:  [2, 3, 5, 7]
 	2.Case
 
 		Num.: 20
 
-		Prime Num.:   [2, 3, 5, 7, 11, 13, 17, 19]
-		Prime Table.:  2, 3, 5, 7, 11, 13, 17, 19, 
-
-			20 = 3 + 17
-			20 = 7 + 13
-
+		Prime List:  [2, 3, 5, 7, 11, 13, 17, 19]
 	3.Case
 
 		Num.: 42
 
-		Prime Num.:   [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41]
-		Prime Table.:  2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 
-
-			42 = 5 + 37
-			42 = 11 + 31
-			42 = 13 + 29
-			42 = 19 + 23
-
+		Prime List:  [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41]
 
 Process finished with exit code 0
 
