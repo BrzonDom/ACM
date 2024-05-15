@@ -48,6 +48,8 @@ InputOrg_Raw = """
 8
 20
 42
+22
+34
 0
 """
 
@@ -84,14 +86,21 @@ if __name__ == '__main__':
                 if primNum == primNumLst[-1]:
                     primNumLst.append(curNum)
 
-        print(f"\t\tPrime Num.: {primNumLst}")
+        print(f"\t\tAll Prime Num.: {primNumLst}")
         print()
 
         for curNum in range(maxPrim, num+1):
+            for primNum in primNumData[curNum-1]:
 
-            # if curNum not in primNumData:
-            primNumData[curNum] = primNumData[curNum-1] + [curNum]
+                if curNum % primNum == 0:
+                    primNumData[curNum] = primNumData[curNum-1]
+                    break
 
+                if primNum == primNumData[curNum-1][-1]:
+                    primNumData[curNum] = primNumData[curNum-1] + [curNum]
+
+        print(f"\t\tPrime Num.: {primNumData[num]}")
+        print()
 
         maxPrim = max(num, maxPrim) + 1
 
@@ -105,11 +114,15 @@ Input:
 8
 20
 42
+22
+34
 0
 
 	1.Case
 
 		Num.: 8
+
+		All Prime Num.: [2, 3, 5, 7]
 
 		Prime Num.: [2, 3, 5, 7]
 
@@ -117,13 +130,33 @@ Input:
 
 		Num.: 20
 
+		All Prime Num.: [2, 3, 5, 7, 11, 13, 17, 19]
+
 		Prime Num.: [2, 3, 5, 7, 11, 13, 17, 19]
 
 	3.Case
 
 		Num.: 42
 
+		All Prime Num.: [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41]
+
 		Prime Num.: [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41]
+
+	4.Case
+
+		Num.: 22
+
+		All Prime Num.: [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41]
+
+		Prime Num.: [2, 3, 5, 7, 11, 13, 17, 19]
+
+	5.Case
+
+		Num.: 34
+
+		All Prime Num.: [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41]
+
+		Prime Num.: [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31]
 
 
 Process finished with exit code 0
