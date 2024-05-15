@@ -162,15 +162,15 @@ if __name__ == '__main__':
         print(f"\t\t\t2.Num. (LCM): {nums[1]}")
         print()
 
-        gcd = math.gcd(nums[0], nums[1])
-        lcm = math.lcm(nums[0], nums[1])
+        # gcd = math.gcd(nums[0], nums[1])
+        # lcm = math.lcm(nums[0], nums[1])
 
         # print(f"\t\t\t\tGCD: {gcd}")
         # print(f"\t\t\t\tLCM: {lcm}")
         # print()
 
         if nums[1] % nums[0] == 0:
-            print(f"\t\t\tRes.: {nums[0]}, {nums[1]}")
+            print(f"\t\t\tRes.: {nums[0]} {nums[1]}")
             outputLst.append(f"{nums[0]} {nums[1]}")
 
         else:
@@ -213,7 +213,7 @@ Input:
 			1.Num. (GCD): 1
 			2.Num. (LCM): 10
 
-			Res.: 1, 10
+			Res.: 1 10
 
 
 		2. Case
@@ -221,7 +221,7 @@ Input:
 			1.Num. (GCD): 1
 			2.Num. (LCM): 23
 
-			Res.: 1, 23
+			Res.: 1 23
 
 
 		3. Case
@@ -237,7 +237,7 @@ Input:
 			1.Num. (GCD): 23
 			2.Num. (LCM): 46
 
-			Res.: 23, 46
+			Res.: 23 46
 
 
 		5. Case
@@ -245,7 +245,7 @@ Input:
 			1.Num. (GCD): 23
 			2.Num. (LCM): 4600
 
-			Res.: 23, 4600
+			Res.: 23 4600
 
 
 		6. Case
@@ -253,7 +253,7 @@ Input:
 			1.Num. (GCD): 5
 			2.Num. (LCM): 25
 
-			Res.: 5, 25
+			Res.: 5 25
 
 
 		7. Case
@@ -285,7 +285,7 @@ Input:
 			1.Num. (GCD): 40
 			2.Num. (LCM): 5000
 
-			Res.: 40, 5000
+			Res.: 40 5000
 
 
 		11. Case
