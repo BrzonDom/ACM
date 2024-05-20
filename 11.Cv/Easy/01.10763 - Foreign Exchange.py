@@ -53,7 +53,7 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=315&p
 
 """
 
-InputRaw_Str = """
+InputOrg_Raw = """
 10
 1 2
 2 1
@@ -79,91 +79,207 @@ InputRaw_Str = """
 0
 """
 
-InputRaw_Str = InputRaw_Str[1:-1]
+InputUVa_Raw = """
+4
+1 3
+2 4
+5 7
+14 8
+3
+1 2
+1 2
+2 1
+0
+"""
 
-print("Input:")
-print(InputRaw_Str)
-print()
+InputOrg_Raw = InputOrg_Raw[1:-1]
+InputUVa_Raw = InputUVa_Raw[1:-1]
 
-InputLines = InputRaw_Str.split("\n")
+InputRaw_Lst = [InputOrg_Raw, InputUVa_Raw]
 
-caseNum = int(InputLines.pop(0))
+InputRaw = InputRaw_Lst[0]
 
-while caseNum != 0:
+if __name__ == '__main__':
 
-    print(f"\tCases: {caseNum}")
+    print("Input:")
+    print(InputRaw)
     print()
 
-    Cases = []
+    InLines = InputRaw.split("\n")
 
-    DataTo = {}
-    DataFr = {}
+    caseNum = int(InLines.pop(0))
 
-    for cs in range(caseNum):
-        case = (list(map(int, InputLines.pop(0).split())))
-        print(f"\t\t{case}")
+    while caseNum != 0:
 
-        fr, to = case[0], case[1]
+        print(f"\tCases: {caseNum}")
+        print()
 
-        Cases.append(case)
+        Cases = []
 
-        if fr in DataFr:
-            DataFr[fr] += 1
-        else:
-            DataFr[fr] = 1
+        DataTo = {}
+        DataFr = {}
 
-        if to in DataTo:
-            DataTo[to] += 1
-        else:
-            DataTo[to] = 1
+        for cs in range(caseNum):
+            case = (list(map(int, InLines.pop(0).split())))
+            print(f"\t\t{case}")
 
-    print()
+            fr, to = case[0], case[1]
 
-    print("\t\tFrom/To Data:")
-    print()
+            Cases.append(case)
 
-    FrToKys = set(list(DataFr.keys()) + list(DataTo.keys()))
+            if fr in DataFr:
+                DataFr[fr] += 1
+            else:
+                DataFr[fr] = 1
 
-    for FrTo in FrToKys:
+            if to in DataTo:
+                DataTo[to] += 1
+            else:
+                DataTo[to] = 1
 
-        if FrTo in DataFr:
-            if FrTo in DataTo:
-                print(f"\t\t\t{FrTo:3}:  {DataFr[FrTo]:2}  |  {DataTo[FrTo]:2}")
+        print()
+
+        print("\t\tFrom/To Data:")
+        print()
+
+        FrToKys = set(list(DataFr.keys()) + list(DataTo.keys()))
+
+        for FrTo in FrToKys:
+
+            if FrTo in DataFr:
+                if FrTo in DataTo:
+                    print(f"\t\t\t{FrTo:3}:  {DataFr[FrTo]:2}  |  {DataTo[FrTo]:2}")
+
+                else:
+                    print(f"\t\t\t{FrTo:3}:  {DataFr[FrTo]:2}  |   0")
 
             else:
-                print(f"\t\t\t{FrTo:3}:  {DataFr[FrTo]:2}  |   0")
+                print(f"\t\t\t{FrTo:3}:   0  |  {DataTo[FrTo]:2}")
 
-        else:
-            print(f"\t\t\t{FrTo:3}:   0  |  {DataTo[FrTo]:2}")
+        print()
 
-    print()
+        NoPlace = False
 
-    NoPlace = False
+        for FrKys in DataFr.keys():
+            for Fr in range(DataFr[FrKys]):
 
-    for FrKys in DataFr.keys():
-        for Fr in range(DataFr[FrKys]):
+                if FrKys in DataTo:
+                    if DataTo[FrKys]:
+                        DataTo[FrKys] -= 1
 
-            if FrKys in DataTo:
-                if DataTo[FrKys]:
-                    DataTo[FrKys] -= 1
+                    else:
+                        NoPlace = True
+                        break
+
                 else:
                     NoPlace = True
                     break
 
-            else:
-                NoPlace = True
+            if NoPlace:
                 break
 
         if NoPlace:
-            break
+            print("\t\tNO, no all exchange places found")
+        else:
+            print("\t\tYES, yes all exchange places found")
 
-    if NoPlace:
-        print("\t\tNO")
-    else:
-        print("\t\tYES")
+        print("\n")
+
+        caseNum = int(InLines.pop(0))
+
+"""__Output__"""
+"""
+Input:
+10
+1 2
+2 1
+3 4
+4 3
+100 200
+200 100
+57 2
+2 57
+1 2
+2 1
+10
+1 2
+3 4
+5 6
+7 8
+9 10
+11 12
+13 14
+15 16
+17 18
+19 20
+0
+
+	Cases: 10
+
+		[1, 2]
+		[2, 1]
+		[3, 4]
+		[4, 3]
+		[100, 200]
+		[200, 100]
+		[57, 2]
+		[2, 57]
+		[1, 2]
+		[2, 1]
+
+		From/To Data:
+
+			  1:   2  |   2
+			  2:   3  |   3
+			  3:   1  |   1
+			100:   1  |   1
+			  4:   1  |   1
+			200:   1  |   1
+			 57:   1  |   1
+
+		YES, yes all exchange places found
 
 
-    print("\n")
+	Cases: 10
 
-    caseNum = int(InputLines.pop(0))
+		[1, 2]
+		[3, 4]
+		[5, 6]
+		[7, 8]
+		[9, 10]
+		[11, 12]
+		[13, 14]
+		[15, 16]
+		[17, 18]
+		[19, 20]
 
+		From/To Data:
+
+			  1:   1  |   0
+			  2:   0  |   1
+			  3:   1  |   0
+			  4:   0  |   1
+			  5:   1  |   0
+			  6:   0  |   1
+			  7:   1  |   0
+			  8:   0  |   1
+			  9:   1  |   0
+			 10:   0  |   1
+			 11:   1  |   0
+			 12:   0  |   1
+			 13:   1  |   0
+			 14:   0  |   1
+			 15:   1  |   0
+			 16:   0  |   1
+			 17:   1  |   0
+			 18:   0  |   1
+			 19:   1  |   0
+			 20:   0  |   1
+
+		NO, no all exchange places found
+
+
+
+Process finished with exit code 0
+
+"""
