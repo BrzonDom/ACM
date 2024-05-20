@@ -192,16 +192,6 @@ def inDataAllExtract(InputRaw):
             DataFr[fr] += 1
             DataTo[to] += 1
 
-            # if fr in DataFr:
-            #     DataFr[fr] += 1
-            # else:
-            #     DataFr[fr] = 1
-            #
-            # if to in DataTo:
-            #     DataTo[to] += 1
-            # else:
-            #     DataTo[to] = 1
-
             Candid.append((fr, to))
 
         AllCandid.append(Candid)
@@ -236,16 +226,6 @@ def inDataExtract_DataFrTo(InLines, candNum):
         DataFr[fr] += 1
         DataTo[to] += 1
 
-        # if fr in DataFr:
-        #     DataFr[fr] += 1
-        # else:
-        #     DataFr[fr] = 1
-        #
-        # if to in DataTo:
-        #     DataTo[to] += 1
-        # else:
-        #     DataTo[to] = 1
-
         Candid.append((fr, to))
 
     return Candid, DataFr, DataTo
@@ -276,26 +256,6 @@ def inDataExtract_DataFrToAll(InLines, candNum):
         DataAll[fr] += 1
         DataAll[to] -= 1
 
-        # if fr in DataFr:
-        #     DataFr[fr] += 1
-        # else:
-        #     DataFr[fr] = 1
-        #
-        # if to in DataTo:
-        #     DataTo[to] += 1
-        # else:
-        #     DataTo[to] = 1
-        #
-        # if fr in DataAll:
-        #     DataAll[fr] += 1
-        # else:
-        #     DataAll[fr] = 1
-        #
-        # if to in DataAll:
-        #     DataAll[to] -= 1
-        # else:
-        #     DataAll[to] = -1
-
         Candid.append((fr, to))
 
 
@@ -315,16 +275,6 @@ def inDataExtract_DataAll(InLines, candNum):
 
         DataAll[fr] += 1
         DataAll[to] -= 1
-
-        # if fr in DataAll:
-        #     DataAll[fr] += 1
-        # else:
-        #     DataAll[fr] = 1
-        #
-        # if to in DataAll:
-        #     DataAll[to] -= 1
-        # else:
-        #     DataAll[to] = -1
 
     return DataAll
 
