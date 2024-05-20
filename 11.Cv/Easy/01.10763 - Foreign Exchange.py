@@ -99,28 +99,84 @@ InputRaw_Lst = [InputOrg_Raw, InputUVa_Raw]
 
 InputRaw = InputRaw_Lst[0]
 
+
+def dataAllExtract_Prt(InputRaw):
+
+    InLines = InputRaw.split("\n")
+
+    candNum = int(InLines.pop(0))
+    caseCnt = 0
+
+    AllCandid = []
+
+    while candNum != 0:
+
+        caseCnt += 1
+        Candid = []
+
+        print(f"\tCases: {candNum}")
+        print()
+
+        for cnd in range(candNum):
+            cand = (list(map(int, InLines.pop(0).split())))
+
+            print(f"\t\t{cand}")
+
+            Candid.append(cand)
+
+        AllCandid.append(Candid)
+        candNum = int(InLines.pop(0))
+
+        print("\n")
+
+    return AllCandid, caseCnt
+
+
 if __name__ == '__main__':
 
     print("Input:")
     print(InputRaw)
     print()
 
-    InLines = InputRaw.split("\n")
+    AllCandid, caseNum = dataAllExtract_Prt(InputRaw)
 
-    caseNum = int(InLines.pop(0))
+    print(f"\tCases: {caseNum}")
+    print()
 
-    while caseNum != 0:
+    for caseCnt, Candid in enumerate(AllCandid):
 
-        print(f"\tCases: {caseNum}")
+        print(f"\t\t{caseCnt+1}. Case")
         print()
 
+        candNum = len(Candid)
+        print(f"\t\t\tCandid. num.: {candNum}")
+        print()
+
+        for cnd, cand in enumerate(Candid):
+            print(f"\t\t\t\t{cnd+1:2}. {cand}")
+
+        if (caseCnt+1) < caseNum:
+            print("\n")
+
+    quit()
+
+    InLines = InputRaw.split("\n")
+
+    candNum = int(InLines.pop(0))
+
+    while candNum != 0:
+
         Cases = []
+
+        print(f"\tCases: {candNum}")
+        print()
 
         DataTo = {}
         DataFr = {}
 
-        for cs in range(caseNum):
+        for cs in range(candNum):
             case = (list(map(int, InLines.pop(0).split())))
+
             print(f"\t\t{case}")
 
             fr, to = case[0], case[1]
@@ -185,7 +241,8 @@ if __name__ == '__main__':
 
         print("\n")
 
-        caseNum = int(InLines.pop(0))
+        candNum = int(InLines.pop(0))
+
 
 """__Output__"""
 """
@@ -227,18 +284,6 @@ Input:
 		[1, 2]
 		[2, 1]
 
-		From/To Data:
-
-			  1:   2  |   2
-			  2:   3  |   3
-			  3:   1  |   1
-			100:   1  |   1
-			  4:   1  |   1
-			200:   1  |   1
-			 57:   1  |   1
-
-		YES, yes all exchange places found
-
 
 	Cases: 10
 
@@ -253,32 +298,39 @@ Input:
 		[17, 18]
 		[19, 20]
 
-		From/To Data:
 
-			  1:   1  |   0
-			  2:   0  |   1
-			  3:   1  |   0
-			  4:   0  |   1
-			  5:   1  |   0
-			  6:   0  |   1
-			  7:   1  |   0
-			  8:   0  |   1
-			  9:   1  |   0
-			 10:   0  |   1
-			 11:   1  |   0
-			 12:   0  |   1
-			 13:   1  |   0
-			 14:   0  |   1
-			 15:   1  |   0
-			 16:   0  |   1
-			 17:   1  |   0
-			 18:   0  |   1
-			 19:   1  |   0
-			 20:   0  |   1
+	Cases: 2
 
-		NO, no all exchange places found
+		1. Case
+
+			Candid. num.: 10
+
+				 1. [1, 2]
+				 2. [2, 1]
+				 3. [3, 4]
+				 4. [4, 3]
+				 5. [100, 200]
+				 6. [200, 100]
+				 7. [57, 2]
+				 8. [2, 57]
+				 9. [1, 2]
+				10. [2, 1]
 
 
+		2. Case
+
+			Candid. num.: 10
+
+				 1. [1, 2]
+				 2. [3, 4]
+				 3. [5, 6]
+				 4. [7, 8]
+				 5. [9, 10]
+				 6. [11, 12]
+				 7. [13, 14]
+				 8. [15, 16]
+				 9. [17, 18]
+				10. [19, 20]
 
 Process finished with exit code 0
 
