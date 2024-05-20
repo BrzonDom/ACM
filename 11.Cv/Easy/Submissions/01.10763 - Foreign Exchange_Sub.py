@@ -136,6 +136,66 @@ def inDataAllRead(InputRaw):
     return AllCandid, caseCnt
 
 
+def inDataAllExtract(InputRaw):
+    """
+            Reads all the input data and sorts them
+        into a list of lists (AllCandid)
+            While extracting the data into dictionaries,
+        a list of dictionaries From (AllDataFr)
+        and a list of dictionaries To (AllDataTo)
+    """
+
+    InLines = InputRaw.split("\n")
+
+    candNum = int(InLines.pop(0))
+    caseCnt = 0
+
+    AllCandid = []
+    AllDataFr = []
+    AllDataTo = []
+
+    while candNum != 0:
+
+        caseCnt += 1
+        Candid = []
+
+        DataFr = {}
+        DataTo = {}
+
+        # print(f"\tCases: {candNum}")
+        # print()
+
+        for cnd in range(candNum):
+            cand = (list(map(int, InLines.pop(0).split())))
+
+            # print(f"\t\t{cand}")
+
+            Candid.append(cand)
+
+            fr, to = cand[0], cand[1]
+
+            if fr in DataFr:
+                DataFr[fr] += 1
+            else:
+                DataFr[fr] = 1
+
+            if to in DataTo:
+                DataTo[to] += 1
+            else:
+                DataTo[to] = 1
+
+        AllCandid.append(Candid)
+
+        AllDataFr.append(DataFr)
+        AllDataTo.append(DataTo)
+
+        candNum = int(InLines.pop(0))
+
+        # print("\n")
+
+    return AllCandid, caseCnt, AllDataFr, AllDataTo
+
+
 def inDataAllPrint(AllCandid, caseNum):
 
     print(f"\tCases: {caseNum}")
@@ -163,7 +223,7 @@ if __name__ == '__main__':
     print(InputRaw)
     print()
 
-    AllCandid, caseNum = inDataAllRead(InputRaw)
+    AllCandid, caseNum, AllDataFr, AllDataTo = inDataAllExtract(InputRaw)
 
     inDataAllPrint(AllCandid, caseNum)
 
