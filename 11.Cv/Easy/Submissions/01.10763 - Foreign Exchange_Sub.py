@@ -212,6 +212,40 @@ def inDataAllExtract(InputRaw):
     return AllCandid, caseCnt, AllDataFr, AllDataTo
 
 
+def inDataExtract(InLines, candNum):
+    """
+            Reads input data for a case and sorts
+        them into a list (Candid)
+            While extracting data into dictionaries,
+        a dictionary From (DataFr)
+        and a dictionary to (DataTo)
+    """
+
+    Candid = []
+
+    DataFr = {}
+    DataTo = {}
+
+    for cnd in range(candNum):
+        cand = (list(map(int, InLines.pop(0).split())))
+
+        Candid.append(cand)
+
+        fr, to = cand[0], cand[1]
+
+        if fr in DataFr:
+            DataFr[fr] += 1
+        else:
+            DataFr[fr] = 1
+
+        if to in DataTo:
+            DataTo[to] += 1
+        else:
+            DataTo[to] = 1
+
+    return Candid, DataFr, DataTo
+
+
 def inDataAllPrint(AllCandid, caseNum):
 
     print(f"\tCases: {caseNum}")
@@ -256,7 +290,8 @@ if __name__ == '__main__':
     while candNum != 0:
         print("\n")
 
-        Candid = inDataRead(InLines, candNum)
+        # Candid = inDataRead(InLines, candNum)
+        Candid, DataFr, DataTo = inDataExtract(InLines, candNum)
 
         print(f"\t\t{caseCnt}. Case")
         print()
