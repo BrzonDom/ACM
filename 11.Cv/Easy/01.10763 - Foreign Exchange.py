@@ -90,15 +90,33 @@ InputLines = InputRaw_Str.split("\n")
 caseNum = int(InputLines.pop(0))
 
 while caseNum != 0:
+
     print(f"\tCases: {caseNum}")
     print()
 
     Cases = []
 
+    DataTo = {}
+    DataFr = {}
+
     for cs in range(caseNum):
         case = (list(map(int, InputLines.pop(0).split())))
         print(f"\t\t{case}")
+
+        fr, to = case[0], case[1]
+
         Cases.append(case)
+
+        if fr in DataFr:
+            DataFr[fr] += 1
+        else:
+            DataFr[fr] = 1
+
+        if to in DataTo:
+            DataTo[to] += 1
+        else:
+            DataTo[to] = 1
+
     print("\n")
 
     caseNum = int(InputLines.pop(0))
