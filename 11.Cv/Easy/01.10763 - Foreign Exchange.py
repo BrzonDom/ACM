@@ -100,6 +100,9 @@ InputRaw_Lst = [InputOrg_Raw, InputUVa_Raw]
 InputRaw = InputRaw_Lst[0]
 
 
+from collections import defaultdict
+
+
 def inDataAllRead(InputRaw):
     """
             Reads all the input data and sorts them
@@ -175,8 +178,8 @@ def inDataAllExtract(InputRaw):
         caseCnt += 1
         Candid = []
 
-        DataFr = {}
-        DataTo = {}
+        DataFr = defaultdict(int)
+        DataTo = defaultdict(int)
 
         # print(f"\tCases: {candNum}")
         # print()
@@ -186,15 +189,18 @@ def inDataAllExtract(InputRaw):
 
             # print(f"\t\t{(fr, to)}")
 
-            if fr in DataFr:
-                DataFr[fr] += 1
-            else:
-                DataFr[fr] = 1
+            DataFr[fr] += 1
+            DataTo[to] += 1
 
-            if to in DataTo:
-                DataTo[to] += 1
-            else:
-                DataTo[to] = 1
+            # if fr in DataFr:
+            #     DataFr[fr] += 1
+            # else:
+            #     DataFr[fr] = 1
+            #
+            # if to in DataTo:
+            #     DataTo[to] += 1
+            # else:
+            #     DataTo[to] = 1
 
             Candid.append((fr, to))
 
@@ -221,21 +227,24 @@ def inDataExtract_DataFrTo(InLines, candNum):
 
     Candid = []
 
-    DataFr = {}
-    DataTo = {}
+    DataFr = defaultdict(int)
+    DataTo = defaultdict(int)
 
     for cnd in range(candNum):
         fr, to = map(int, InLines.pop(0).split())
 
-        if fr in DataFr:
-            DataFr[fr] += 1
-        else:
-            DataFr[fr] = 1
+        DataFr[fr] += 1
+        DataTo[to] += 1
 
-        if to in DataTo:
-            DataTo[to] += 1
-        else:
-            DataTo[to] = 1
+        # if fr in DataFr:
+        #     DataFr[fr] += 1
+        # else:
+        #     DataFr[fr] = 1
+        #
+        # if to in DataTo:
+        #     DataTo[to] += 1
+        # else:
+        #     DataTo[to] = 1
 
         Candid.append((fr, to))
 
@@ -254,32 +263,38 @@ def inDataExtract_DataFrToAll(InLines, candNum):
 
     Candid = []
 
-    DataFr = {}
-    DataTo = {}
-    DataAll = {}
+    DataFr = defaultdict(int)
+    DataTo = defaultdict(int)
+    DataAll = defaultdict(int)
 
     for cnd in range(candNum):
         fr, to = map(int, InLines.pop(0).split())
 
-        if fr in DataFr:
-            DataFr[fr] += 1
-        else:
-            DataFr[fr] = 1
+        DataFr[fr] += 1
+        DataTo[to] += 1
 
-        if to in DataTo:
-            DataTo[to] += 1
-        else:
-            DataTo[to] = 1
+        DataAll[fr] += 1
+        DataAll[to] -= 1
 
-        if fr in DataAll:
-            DataAll[fr] += 1
-        else:
-            DataAll[fr] = 1
-
-        if to in DataAll:
-            DataAll[to] -= 1
-        else:
-            DataAll[to] = -1
+        # if fr in DataFr:
+        #     DataFr[fr] += 1
+        # else:
+        #     DataFr[fr] = 1
+        #
+        # if to in DataTo:
+        #     DataTo[to] += 1
+        # else:
+        #     DataTo[to] = 1
+        #
+        # if fr in DataAll:
+        #     DataAll[fr] += 1
+        # else:
+        #     DataAll[fr] = 1
+        #
+        # if to in DataAll:
+        #     DataAll[to] -= 1
+        # else:
+        #     DataAll[to] = -1
 
         Candid.append((fr, to))
 
@@ -293,20 +308,23 @@ def inDataExtract_DataAll(InLines, candNum):
         extracts the into a single dictionary (DataAll)
     """
 
-    DataAll = {}
+    DataAll = defaultdict(int)
 
     for cnd in range(candNum):
         fr, to = map(int, InLines.pop(0).split())
 
-        if fr in DataAll:
-            DataAll[fr] += 1
-        else:
-            DataAll[fr] = 1
+        DataAll[fr] += 1
+        DataAll[to] -= 1
 
-        if to in DataAll:
-            DataAll[to] -= 1
-        else:
-            DataAll[to] = -1
+        # if fr in DataAll:
+        #     DataAll[fr] += 1
+        # else:
+        #     DataAll[fr] = 1
+        #
+        # if to in DataAll:
+        #     DataAll[to] -= 1
+        # else:
+        #     DataAll[to] = -1
 
     return DataAll
 
@@ -491,16 +509,16 @@ Input:
 
 			Candid. num.: 10
 
-				 1. [1, 2]
-				 2. [2, 1]
-				 3. [3, 4]
-				 4. [4, 3]
-				 5. [100, 200]
-				 6. [200, 100]
-				 7. [57, 2]
-				 8. [2, 57]
-				 9. [1, 2]
-				10. [2, 1]
+				 1. (1, 2)
+				 2. (2, 1)
+				 3. (3, 4)
+				 4. (4, 3)
+				 5. (100, 200)
+				 6. (200, 100)
+				 7. (57, 2)
+				 8. (2, 57)
+				 9. (1, 2)
+				10. (2, 1)
 
 				From/To Data:
 
@@ -519,16 +537,16 @@ Input:
 
 			Candid. num.: 10
 
-				 1. [1, 2]
-				 2. [3, 4]
-				 3. [5, 6]
-				 4. [7, 8]
-				 5. [9, 10]
-				 6. [11, 12]
-				 7. [13, 14]
-				 8. [15, 16]
-				 9. [17, 18]
-				10. [19, 20]
+				 1. (1, 2)
+				 2. (3, 4)
+				 3. (5, 6)
+				 4. (7, 8)
+				 5. (9, 10)
+				 6. (11, 12)
+				 7. (13, 14)
+				 8. (15, 16)
+				 9. (17, 18)
+				10. (19, 20)
 
 				From/To Data:
 
