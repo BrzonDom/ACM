@@ -100,7 +100,8 @@ InputRaw_Lst = [InputOrg_Raw, InputUVa_Raw]
 InputRaw = InputRaw_Lst[0]
 
 
-def dataAllExtract_Prt(InputRaw):
+def dataAllRead_Prt(InputRaw):
+    """     Reads all the data into a list of AllCandid   """
 
     InLines = InputRaw.split("\n")
 
@@ -132,13 +133,40 @@ def dataAllExtract_Prt(InputRaw):
     return AllCandid, caseCnt
 
 
-if __name__ == '__main__':
+def dataAllRead(InputRaw):
+    """     Reads all the data into a list of AllCandid   """
 
-    print("Input:")
-    print(InputRaw)
-    print()
+    InLines = InputRaw.split("\n")
 
-    AllCandid, caseNum = dataAllExtract_Prt(InputRaw)
+    candNum = int(InLines.pop(0))
+    caseCnt = 0
+
+    AllCandid = []
+
+    while candNum != 0:
+
+        caseCnt += 1
+        Candid = []
+
+        # print(f"\tCases: {candNum}")
+        # print()
+
+        for cnd in range(candNum):
+            cand = (list(map(int, InLines.pop(0).split())))
+
+            # print(f"\t\t{cand}")
+
+            Candid.append(cand)
+
+        AllCandid.append(Candid)
+        candNum = int(InLines.pop(0))
+
+        # print("\n")
+
+    return AllCandid, caseCnt
+
+
+def dataAllPrint(AllCandid, caseNum):
 
     print(f"\tCases: {caseNum}")
     print()
@@ -157,6 +185,35 @@ if __name__ == '__main__':
 
         if (caseCnt+1) < caseNum:
             print("\n")
+
+
+if __name__ == '__main__':
+
+    print("Input:")
+    print(InputRaw)
+    print()
+
+    AllCandid, caseNum = dataAllRead(InputRaw)
+
+    dataAllPrint(AllCandid, caseNum)
+
+    # print(f"\tCases: {caseNum}")
+    # print()
+    #
+    # for caseCnt, Candid in enumerate(AllCandid):
+    #
+    #     print(f"\t\t{caseCnt+1}. Case")
+    #     print()
+    #
+    #     candNum = len(Candid)
+    #     print(f"\t\t\tCandid. num.: {candNum}")
+    #     print()
+    #
+    #     for cnd, cand in enumerate(Candid):
+    #         print(f"\t\t\t\t{cnd+1:2}. {cand}")
+    #
+    #     if (caseCnt+1) < caseNum:
+    #         print("\n")
 
     quit()
 
@@ -270,34 +327,6 @@ Input:
 17 18
 19 20
 0
-
-	Cases: 10
-
-		[1, 2]
-		[2, 1]
-		[3, 4]
-		[4, 3]
-		[100, 200]
-		[200, 100]
-		[57, 2]
-		[2, 57]
-		[1, 2]
-		[2, 1]
-
-
-	Cases: 10
-
-		[1, 2]
-		[3, 4]
-		[5, 6]
-		[7, 8]
-		[9, 10]
-		[11, 12]
-		[13, 14]
-		[15, 16]
-		[17, 18]
-		[19, 20]
-
 
 	Cases: 2
 
