@@ -122,9 +122,9 @@ while caseNum != 0:
     print("\t\tFrom/To Data:")
     print()
 
-    FrToData = set(list(DataFr.keys()) + list(DataTo.keys()))
+    FrToKys = set(list(DataFr.keys()) + list(DataTo.keys()))
 
-    for FrTo in FrToData:
+    for FrTo in FrToKys:
 
         if FrTo in DataFr:
             if FrTo in DataTo:
@@ -135,6 +135,33 @@ while caseNum != 0:
 
         else:
             print(f"\t\t\t{FrTo:3}:   0  |  {DataTo[FrTo]:2}")
+
+    print()
+
+    NoPlace = False
+
+    for FrKys in DataFr.keys():
+        for Fr in range(DataFr[FrKys]):
+
+            if FrKys in DataTo:
+                if DataTo[FrKys]:
+                    DataTo[FrKys] -= 1
+                else:
+                    NoPlace = True
+                    break
+
+            else:
+                NoPlace = True
+                break
+
+        if NoPlace:
+            break
+
+    if NoPlace:
+        print("\t\tNO")
+    else:
+        print("\t\tYES")
+
 
     print("\n")
 
