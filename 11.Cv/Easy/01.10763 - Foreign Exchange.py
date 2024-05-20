@@ -212,13 +212,13 @@ def inDataAllExtract(InputRaw):
     return AllCandid, caseCnt, AllDataFr, AllDataTo
 
 
-def inDataExtract(InLines, candNum):
+def inDataExtract_DataFrTo(InLines, candNum):
     """
             Reads input data for a case and sorts
         them into a list (Candid)
             While extracting data into dictionaries,
         a dictionary From (DataFr)
-        and a dictionary to (DataTo)
+        and a dictionary To (DataTo)
     """
 
     Candid = []
@@ -244,6 +244,79 @@ def inDataExtract(InLines, candNum):
             DataTo[to] = 1
 
     return Candid, DataFr, DataTo
+
+
+def inDataExtract_DataFrToAll(InLines, candNum):
+    """
+            Reads input data for a case and sorts
+        them into a list (Candid)
+            While extracting data into dictionaries,
+        a dictionary From (DataFr),
+        a dictionary To (DataTo)
+        and a dictionary All (DataAll)
+    """
+
+    Candid = []
+
+    DataFr = {}
+    DataTo = {}
+    DataAll = {}
+
+    for cnd in range(candNum):
+        cand = tuple(map(int, InLines.pop(0).split()))
+
+        Candid.append(cand)
+
+        fr, to = cand[0], cand[1]
+
+        if fr in DataFr:
+            DataFr[fr] += 1
+        else:
+            DataFr[fr] = 1
+
+        if to in DataTo:
+            DataTo[to] += 1
+        else:
+            DataTo[to] = 1
+
+        if fr in DataAll:
+            DataAll[fr] += 1
+        else:
+            DataAll[fr] = 1
+
+        if to in DataAll:
+            DataAll[to] -= 1
+        else:
+            DataAll[to] = -1
+
+
+    return Candid, DataFr, DataTo, DataAll
+
+
+def inDataExtract_DataAll(InLines, candNum):
+    """
+            Reads input data for a case and
+        extracts the into a single dictionary (DataAll)
+    """
+
+    DataAll = {}
+
+    for cnd in range(candNum):
+        cand = tuple(map(int, input().split()))
+
+        fr, to = cand[0], cand[1]
+
+        if fr in DataAll:
+            DataAll[fr] += 1
+        else:
+            DataAll[fr] = 1
+
+        if to in DataAll:
+            DataAll[to] -= 1
+        else:
+            DataAll[to] = -1
+
+    return DataAll
 
 
 def inDataAllPrint(AllCandid, caseNum):
@@ -358,7 +431,7 @@ if __name__ == '__main__':
         print("\n")
 
         # Candid = inDataRead(InLines, candNum)
-        Candid, DataFr, DataTo = inDataExtract(InLines, candNum)
+        Candid, DataFr, DataTo, DataAll = inDataExtract_DataFrToAll(InLines, candNum)
 
         print(f"\t\t{caseCnt}. Case")
         print()
