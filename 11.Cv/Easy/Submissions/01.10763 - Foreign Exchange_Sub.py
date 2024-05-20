@@ -53,6 +53,10 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=315&p
 
 """
 
+
+"""29495547 	10763 	Foreign Exchange 	Accepted 	PYTH3 	0.540 	2024-05-20 22:26:02"""
+
+
 InputOrg_Raw = """
 10
 1 2
