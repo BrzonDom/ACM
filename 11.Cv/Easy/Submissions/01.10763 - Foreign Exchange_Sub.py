@@ -163,13 +163,6 @@ def extDataPrint(DataFr, DataTo):
             print(f"\t\t\t\t\t{FrTo:3}:   0  |  {DataTo[FrTo]:2}")
 
 
-"""__Code__"""
-
-
-import sys
-from collections import defaultdict
-
-
 def inDataExtract_DataFrTo_In(candNum):
     """
             Reads input data for a case and sorts
@@ -193,23 +186,6 @@ def inDataExtract_DataFrTo_In(candNum):
         Candid.append((fr, to))
 
     return Candid, DataFr, DataTo
-
-
-def inDataExtract_DataAll_In(candNum):
-    """
-            Reads input data for a case and
-        extracts the into a single dictionary (DataAll)
-    """
-
-    DataAll = defaultdict(int)
-
-    for cnd in range(candNum):
-        fr, to = map(int, sys.stdin.readline().split())
-
-        DataAll[fr] += 1
-        DataAll[to] -= 1
-
-    return DataAll
 
 
 def checkExchPlaces_DataFrToCnt(DataFr, DataTo):
@@ -258,6 +234,30 @@ def checkExchPlaces_DataFrToEqual(DataFr, DataTo):
             return NoPlace
 
     return NoPlace
+
+
+"""__Code__"""
+
+
+import sys
+from collections import defaultdict
+
+
+def inDataExtract_DataAll_In(candNum):
+    """
+            Reads input data for a case and
+        extracts the into a single dictionary (DataAll)
+    """
+
+    DataAll = defaultdict(int)
+
+    for cnd in range(candNum):
+        fr, to = map(int, sys.stdin.readline().split())
+
+        DataAll[fr] += 1
+        DataAll[to] -= 1
+
+    return DataAll
 
 
 def checkExchPlaces_DataAll(DataAll):
