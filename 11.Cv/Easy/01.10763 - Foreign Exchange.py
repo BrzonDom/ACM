@@ -209,6 +209,15 @@ def inDataAllPrint(AllCandid, caseNum):
             print("\n")
 
 
+def inDataPrint(Candid, candNum):
+
+    print(f"\t\t\tCandid. num.: {candNum}")
+    print()
+
+    for cnd, cand in enumerate(Candid):
+        print(f"\t\t\t\t{cnd + 1:2}. {cand}")
+
+
 def inDataAllExtract(InputRaw):
     """
             Reads all the input data and sorts them
@@ -273,11 +282,6 @@ if __name__ == '__main__':
 
     print("Input:")
     print(InputRaw)
-    # print()
-
-    # AllCandid, caseNum, AllDataFr, AllDataTo = inDataAllExtract(InputRaw)
-    #
-    # inDataAllPrint(AllCandid, caseNum)
 
     InLines = InputRaw.split("\n")
 
@@ -293,69 +297,19 @@ if __name__ == '__main__':
         print()
         caseCnt += 1
 
-        print(f"\t\t\tCandid. num.: {candNum}")
-        print()
-
-        for cnd, cand in enumerate(Candid):
-            print(f"\t\t\t\t{cnd + 1:2}. {cand}")
+        inDataPrint(Candid, candNum)
 
         candNum = int(InLines.pop(0))
 
-    """Code for inDataAllRead"""
+    """Code for inDataAllExtract"""
 
-    # AllCandid, caseNum = inDataAllRead(InputRaw)
+    # print("Input:")
+    # print(InputRaw)
+    # print()
     #
-    # # inDataAllPrint(AllCandid, caseNum)
+    # AllCandid, caseNum, AllDataFr, AllDataTo = inDataAllExtract(InputRaw)
     #
-    # for caseCnt, Candid in enumerate(AllCandid):
-    #
-    #     print(f"\t\t{caseCnt + 1}. Case")
-    #     print()
-    #
-    #     candNum = len(Candid)
-    #
-    #     print(f"\t\t\tCandid. num.: {candNum}")
-    #     print()
-    #
-    #     DataTo = {}
-    #     DataFr = {}
-    #
-    #     for cnd, cand in enumerate(Candid):
-    #         print(f"\t\t\t\t{cnd + 1:2}. {cand}")
-    #
-    #         fr, to = cand[0], cand[1]
-    #
-    #         if fr in DataFr:
-    #             DataFr[fr] += 1
-    #         else:
-    #             DataFr[fr] = 1
-    #
-    #         if to in DataTo:
-    #             DataTo[to] += 1
-    #         else:
-    #             DataTo[to] = 1
-    #
-    #     print()
-    #
-    #     print("\t\tFrom/To Data:")
-    #     print()
-    #
-    #     FrToKys = set(list(DataFr.keys()) + list(DataTo.keys()))
-    #
-    #     for FrTo in FrToKys:
-    #
-    #         if FrTo in DataFr:
-    #             if FrTo in DataTo:
-    #                 print(f"\t\t\t{FrTo:3}:  {DataFr[FrTo]:2}  |  {DataTo[FrTo]:2}")
-    #
-    #             else:
-    #                 print(f"\t\t\t{FrTo:3}:  {DataFr[FrTo]:2}  |   0")
-    #
-    #         else:
-    #             print(f"\t\t\t{FrTo:3}:   0  |  {DataTo[FrTo]:2}")
-    #
-    #     if (caseCnt + 1) < caseNum:
-    #         print("\n")
+    # inDataAllPrint(AllCandid, caseNum)
 
     """Org Driver Code"""
 
