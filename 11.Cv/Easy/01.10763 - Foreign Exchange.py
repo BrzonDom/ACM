@@ -296,7 +296,7 @@ def extDataPrint(DataFr, DataTo):
             print(f"\t\t\t\t\t{FrTo:3}:   0  |  {DataTo[FrTo]:2}")
 
 
-def checkExchPlaces(DataFr, DataTo):
+def checkExchPlaces_DataFrToCnt(DataFr, DataTo):
     """
             Check if there is place for all
         the exchange candidates
@@ -318,6 +318,28 @@ def checkExchPlaces(DataFr, DataTo):
             else:
                 NoPlace = True
                 return NoPlace
+
+    return NoPlace
+
+
+def checkExchPlaces_DataFrToEqual(DataFr, DataTo):
+    """
+            Checks if the places From equal to places To
+    """
+
+    NoPlace = False
+
+    for FrKys in DataFr.keys():
+
+        if FrKys in DataTo:
+            if DataFr[FrKys] == DataTo[FrKys]:
+                continue
+            else:
+                NoPlace = True
+                return NoPlace
+        else:
+            NoPlace = True
+            return NoPlace
 
     return NoPlace
 
@@ -348,7 +370,7 @@ if __name__ == '__main__':
         extDataPrint(DataFr, DataTo)
         print()
 
-        NoPlace = checkExchPlaces(DataFr, DataTo)
+        NoPlace = checkExchPlaces_DataFrToEqual(DataFr, DataTo)
 
         if NoPlace:
             print("\t\t\tNO, not enough exchange places found")
