@@ -115,7 +115,8 @@ def inDataExtract(InLines, candNum):
     DataTo = {}
 
     for cnd in range(candNum):
-        cand = (list(map(int, InLines.pop(0).split())))
+        # cand = (list(map(int, InLines.pop(0).split())))
+        cand = list(map(int, input().split()))
 
         Candid.append(cand)
 
@@ -196,7 +197,9 @@ if __name__ == '__main__':
 
     InLines = InputRaw.split("\n")
 
-    candNum = int(InLines.pop(0))
+    # candNum = int(InLines.pop(0))
+    candNum = int(input())
+
     caseCnt = 1
 
     while candNum != 0:
@@ -221,105 +224,5 @@ if __name__ == '__main__':
         else:
             print("\t\t\tYES, enough exchange places found")
 
-        candNum = int(InLines.pop(0))
-
-
-"""__Output__"""
-"""
-Input:
-10
-1 2
-2 1
-3 4
-4 3
-100 200
-200 100
-57 2
-2 57
-1 2
-2 1
-10
-1 2
-3 4
-5 6
-7 8
-9 10
-11 12
-13 14
-15 16
-17 18
-19 20
-0
-
-
-		1. Case
-
-			Candid. num.: 10
-
-				 1. [1, 2]
-				 2. [2, 1]
-				 3. [3, 4]
-				 4. [4, 3]
-				 5. [100, 200]
-				 6. [200, 100]
-				 7. [57, 2]
-				 8. [2, 57]
-				 9. [1, 2]
-				10. [2, 1]
-
-				From/To Data:
-
-					  1:   2  |   2
-					  2:   3  |   3
-					  3:   1  |   1
-					100:   1  |   1
-					  4:   1  |   1
-					200:   1  |   1
-					 57:   1  |   1
-
-			YES, enough exchange places found
-
-
-		2. Case
-
-			Candid. num.: 10
-
-				 1. [1, 2]
-				 2. [3, 4]
-				 3. [5, 6]
-				 4. [7, 8]
-				 5. [9, 10]
-				 6. [11, 12]
-				 7. [13, 14]
-				 8. [15, 16]
-				 9. [17, 18]
-				10. [19, 20]
-
-				From/To Data:
-
-					  1:   1  |   0
-					  2:   0  |   1
-					  3:   1  |   0
-					  4:   0  |   1
-					  5:   1  |   0
-					  6:   0  |   1
-					  7:   1  |   0
-					  8:   0  |   1
-					  9:   1  |   0
-					 10:   0  |   1
-					 11:   1  |   0
-					 12:   0  |   1
-					 13:   1  |   0
-					 14:   0  |   1
-					 15:   1  |   0
-					 16:   0  |   1
-					 17:   1  |   0
-					 18:   0  |   1
-					 19:   1  |   0
-					 20:   0  |   1
-
-			NO, not enough exchange places found
-
-Process finished with exit code 0
-
-"""
+        # candNum = int(InLines.pop(0))
+        candNum = int(input())
