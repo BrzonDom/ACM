@@ -134,6 +134,38 @@ def inDataExtract_Lst(InLines, candNum):
     return Candid, DataFr, DataTo
 
 
+def inDataPrint(Candid, candNum):
+
+    print(f"\t\t\tCandid. num.: {candNum}")
+    print()
+
+    for cnd, cand in enumerate(Candid):
+        print(f"\t\t\t\t{cnd + 1:2}. {cand}")
+
+
+def extDataPrint(DataFr, DataTo):
+
+    print("\t\t\t\tFrom/To Data:")
+    print()
+
+    FrToKys = set(list(DataFr.keys()) + list(DataTo.keys()))
+
+    for FrTo in FrToKys:
+
+        if FrTo in DataFr:
+            if FrTo in DataTo:
+                print(f"\t\t\t\t\t{FrTo:3}:  {DataFr[FrTo]:2}  |  {DataTo[FrTo]:2}")
+
+            else:
+                print(f"\t\t\t\t\t{FrTo:3}:  {DataFr[FrTo]:2}  |   0")
+
+        else:
+            print(f"\t\t\t\t\t{FrTo:3}:   0  |  {DataTo[FrTo]:2}")
+
+
+"""__Code__"""
+
+
 def inDataExtract_In(candNum):
     """
             Reads input data for a case and sorts
@@ -166,34 +198,6 @@ def inDataExtract_In(candNum):
             DataTo[to] = 1
 
     return Candid, DataFr, DataTo
-
-def inDataPrint(Candid, candNum):
-
-    print(f"\t\t\tCandid. num.: {candNum}")
-    print()
-
-    for cnd, cand in enumerate(Candid):
-        print(f"\t\t\t\t{cnd + 1:2}. {cand}")
-
-
-def extDataPrint(DataFr, DataTo):
-
-    print("\t\t\t\tFrom/To Data:")
-    print()
-
-    FrToKys = set(list(DataFr.keys()) + list(DataTo.keys()))
-
-    for FrTo in FrToKys:
-
-        if FrTo in DataFr:
-            if FrTo in DataTo:
-                print(f"\t\t\t\t\t{FrTo:3}:  {DataFr[FrTo]:2}  |  {DataTo[FrTo]:2}")
-
-            else:
-                print(f"\t\t\t\t\t{FrTo:3}:  {DataFr[FrTo]:2}  |   0")
-
-        else:
-            print(f"\t\t\t\t\t{FrTo:3}:   0  |  {DataTo[FrTo]:2}")
 
 
 def checkExchPlaces(DataFr, DataTo):
