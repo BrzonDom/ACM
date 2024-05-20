@@ -275,7 +275,6 @@ if __name__ == '__main__':
 
     # InLines = InputRaw.split("\n")
 
-    # candNum = int(InLines.pop(0))
     candNum = int(sys.stdin.readline())
 
     # caseCnt = 1
@@ -298,16 +297,25 @@ if __name__ == '__main__':
         # print()
 
         # NoPlace = checkExchPlaces_DataFrToCnt(DataFr, DataTo)
-        NoPlace = not checkExchPlaces_DataAll(DataAll)
 
-        if NoPlace:
-            # print("\t\t\tNO, not enough exchange places found")
+        # if NoPlace:
+        #     # print("\t\t\tNO, not enough exchange places found")
+        #
+        #     print("NO")
+        # else:
+        #     # print("\t\t\tYES, enough exchange places found")
+        #
+        #     print("YES")
 
-            print("NO")
-        else:
+        Place = checkExchPlaces_DataAll(DataAll)
+
+        if Place:
             # print("\t\t\tYES, enough exchange places found")
 
             print("YES")
+        else:
+            # print("\t\t\tNO, not enough exchange places found")
 
-        # candNum = int(InLines.pop(0))
+            print("NO")
+
         candNum = int(sys.stdin.readline())
