@@ -302,7 +302,7 @@ def inDataExtract_DataAll(InLines, candNum):
     DataAll = {}
 
     for cnd in range(candNum):
-        cand = tuple(map(int, input().split()))
+        cand = tuple(map(int, InLines.pop(0).split()))
 
         fr, to = cand[0], cand[1]
 
@@ -430,7 +430,6 @@ if __name__ == '__main__':
     while candNum != 0:
         print("\n")
 
-        # Candid = inDataRead(InLines, candNum)
         Candid, DataFr, DataTo, DataAll = inDataExtract_DataFrToAll(InLines, candNum)
 
         print(f"\t\t{caseCnt}. Case")
