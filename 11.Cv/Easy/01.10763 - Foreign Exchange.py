@@ -117,6 +117,25 @@ while caseNum != 0:
         else:
             DataTo[to] = 1
 
+    print()
+
+    print("\t\tFrom/To Data:")
+    print()
+
+    FrToData = set(list(DataFr.keys()) + list(DataTo.keys()))
+
+    for FrTo in FrToData:
+
+        if FrTo in DataFr:
+            if FrTo in DataTo:
+                print(f"\t\t\t{FrTo:3}:  {DataFr[FrTo]:2}  |  {DataTo[FrTo]:2}")
+
+            else:
+                print(f"\t\t\t{FrTo:3}:  {DataFr[FrTo]:2}  |   0")
+
+        else:
+            print(f"\t\t\t{FrTo:3}:   0  |  {DataTo[FrTo]:2}")
+
     print("\n")
 
     caseNum = int(InputLines.pop(0))
