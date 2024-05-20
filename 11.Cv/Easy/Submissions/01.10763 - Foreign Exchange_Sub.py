@@ -296,6 +296,32 @@ def extDataPrint(DataFr, DataTo):
             print(f"\t\t\t\t\t{FrTo:3}:   0  |  {DataTo[FrTo]:2}")
 
 
+def checkExchPlaces(DataFr, DataTo):
+    """
+            Check if there is place for all
+        the exchange candidates
+    """
+
+    NoPlace = False
+
+    for FrKys in DataFr.keys():
+        for Fr in range(DataFr[FrKys]):
+
+            if FrKys in DataTo:
+                if DataTo[FrKys]:
+                    DataTo[FrKys] -= 1
+
+                else:
+                    NoPlace = True
+                    return NoPlace
+
+            else:
+                NoPlace = True
+                return NoPlace
+
+    return NoPlace
+
+
 if __name__ == '__main__':
 
     print("Input:")
@@ -319,6 +345,14 @@ if __name__ == '__main__':
         print()
 
         extDataPrint(DataFr, DataTo)
+        print()
+
+        NoPlace = checkExchPlaces(DataFr, DataTo)
+
+        if NoPlace:
+            print("\t\t\tNO, not enough exchange places found")
+        else:
+            print("\t\t\tYES, enough exchange places found")
 
         candNum = int(InLines.pop(0))
 
@@ -376,6 +410,8 @@ Input:
 					200:   1  |   1
 					 57:   1  |   1
 
+			YES, enough exchange places found
+
 
 		2. Case
 
@@ -414,6 +450,8 @@ Input:
 					 18:   0  |   1
 					 19:   1  |   0
 					 20:   0  |   1
+
+			NO, not enough exchange places found
 
 Process finished with exit code 0
 
