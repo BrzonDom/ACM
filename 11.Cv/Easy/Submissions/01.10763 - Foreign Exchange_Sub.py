@@ -99,93 +99,69 @@ InputRaw_Lst = [InputOrg_Raw, InputUVa_Raw]
 
 InputRaw = InputRaw_Lst[0]
 
+
+def inDataAllRead(InputRaw):
+    """
+            Reads all the input data and sorts them
+        into a list of lists (AllCandid)
+    """
+
+    InLines = InputRaw.split("\n")
+
+    candNum = int(InLines.pop(0))
+    caseCnt = 0
+
+    AllCandid = []
+
+    while candNum != 0:
+
+        caseCnt += 1
+        Candid = []
+
+        # print(f"\tCases: {candNum}")
+        # print()
+
+        for cnd in range(candNum):
+            cand = (list(map(int, InLines.pop(0).split())))
+
+            # print(f"\t\t{cand}")
+
+            Candid.append(cand)
+
+        AllCandid.append(Candid)
+        candNum = int(InLines.pop(0))
+
+        # print("\n")
+
+    return AllCandid, caseCnt
+
+
 if __name__ == '__main__':
 
     print("Input:")
     print(InputRaw)
     print()
 
-    InLines = InputRaw.split("\n")
+    AllCandid, caseNum = inDataAllRead(InputRaw)
 
-    caseNum = int(InLines.pop(0))
+    print(f"\tCases: {caseNum}")
+    print()
 
-    while caseNum != 0:
+    for caseCnt, Candid in enumerate(AllCandid):
 
-        print(f"\tCases: {caseNum}")
+        print(f"\t\t{caseCnt+1}. Case")
         print()
 
-        Cases = []
-
-        DataTo = {}
-        DataFr = {}
-
-        for cs in range(caseNum):
-            case = (list(map(int, InLines.pop(0).split())))
-            print(f"\t\t{case}")
-
-            fr, to = case[0], case[1]
-
-            Cases.append(case)
-
-            if fr in DataFr:
-                DataFr[fr] += 1
-            else:
-                DataFr[fr] = 1
-
-            if to in DataTo:
-                DataTo[to] += 1
-            else:
-                DataTo[to] = 1
-
+        candNum = len(Candid)
+        print(f"\t\t\tCandid. num.: {candNum}")
         print()
 
-        print("\t\tFrom/To Data:")
-        print()
+        for cnd, cand in enumerate(Candid):
+            print(f"\t\t\t\t{cnd + 1:2}. {cand}")
 
-        FrToKys = set(list(DataFr.keys()) + list(DataTo.keys()))
+        if (caseCnt + 1) < caseNum:
+            print("\n")
 
-        for FrTo in FrToKys:
-
-            if FrTo in DataFr:
-                if FrTo in DataTo:
-                    print(f"\t\t\t{FrTo:3}:  {DataFr[FrTo]:2}  |  {DataTo[FrTo]:2}")
-
-                else:
-                    print(f"\t\t\t{FrTo:3}:  {DataFr[FrTo]:2}  |   0")
-
-            else:
-                print(f"\t\t\t{FrTo:3}:   0  |  {DataTo[FrTo]:2}")
-
-        print()
-
-        NoPlace = False
-
-        for FrKys in DataFr.keys():
-            for Fr in range(DataFr[FrKys]):
-
-                if FrKys in DataTo:
-                    if DataTo[FrKys]:
-                        DataTo[FrKys] -= 1
-
-                    else:
-                        NoPlace = True
-                        break
-
-                else:
-                    NoPlace = True
-                    break
-
-            if NoPlace:
-                break
-
-        if NoPlace:
-            print("\t\tNO, no all exchange places found")
-        else:
-            print("\t\tYES, yes all exchange places found")
-
-        print("\n")
-
-        caseNum = int(InLines.pop(0))
 
 """__Output__"""
 """
@@ -214,71 +190,38 @@ Input:
 19 20
 0
 
-	Cases: 10
+	Cases: 2
 
-		[1, 2]
-		[2, 1]
-		[3, 4]
-		[4, 3]
-		[100, 200]
-		[200, 100]
-		[57, 2]
-		[2, 57]
-		[1, 2]
-		[2, 1]
+		1. Case
 
-		From/To Data:
+			Candid. num.: 10
 
-			  1:   2  |   2
-			  2:   3  |   3
-			  3:   1  |   1
-			100:   1  |   1
-			  4:   1  |   1
-			200:   1  |   1
-			 57:   1  |   1
-
-		YES, yes all exchange places found
+				 1. [1, 2]
+				 2. [2, 1]
+				 3. [3, 4]
+				 4. [4, 3]
+				 5. [100, 200]
+				 6. [200, 100]
+				 7. [57, 2]
+				 8. [2, 57]
+				 9. [1, 2]
+				10. [2, 1]
 
 
-	Cases: 10
+		2. Case
 
-		[1, 2]
-		[3, 4]
-		[5, 6]
-		[7, 8]
-		[9, 10]
-		[11, 12]
-		[13, 14]
-		[15, 16]
-		[17, 18]
-		[19, 20]
+			Candid. num.: 10
 
-		From/To Data:
-
-			  1:   1  |   0
-			  2:   0  |   1
-			  3:   1  |   0
-			  4:   0  |   1
-			  5:   1  |   0
-			  6:   0  |   1
-			  7:   1  |   0
-			  8:   0  |   1
-			  9:   1  |   0
-			 10:   0  |   1
-			 11:   1  |   0
-			 12:   0  |   1
-			 13:   1  |   0
-			 14:   0  |   1
-			 15:   1  |   0
-			 16:   0  |   1
-			 17:   1  |   0
-			 18:   0  |   1
-			 19:   1  |   0
-			 20:   0  |   1
-
-		NO, no all exchange places found
-
-
+				 1. [1, 2]
+				 2. [3, 4]
+				 3. [5, 6]
+				 4. [7, 8]
+				 5. [9, 10]
+				 6. [11, 12]
+				 7. [13, 14]
+				 8. [15, 16]
+				 9. [17, 18]
+				10. [19, 20]
 
 Process finished with exit code 0
 
