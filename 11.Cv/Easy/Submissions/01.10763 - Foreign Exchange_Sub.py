@@ -166,6 +166,9 @@ def extDataPrint(DataFr, DataTo):
 """__Code__"""
 
 
+import sys
+
+
 def inDataExtract_DataFrTo_In(candNum):
     """
             Reads input data for a case and sorts
@@ -181,7 +184,7 @@ def inDataExtract_DataFrTo_In(candNum):
     DataTo = {}
 
     for cnd in range(candNum):
-        cand = list(map(int, input().split()))
+        cand = list(map(int, sys.stdin.readline().split()))
 
         Candid.append(cand)
 
@@ -209,7 +212,7 @@ def inDataExtract_DataAll_In(candNum):
     DataAll = {}
 
     for cnd in range(candNum):
-        cand = tuple(map(int, input().split()))
+        cand = tuple(map(int, sys.stdin.readline().split()))
 
         fr, to = cand[0], cand[1]
 
@@ -290,7 +293,7 @@ if __name__ == '__main__':
     InLines = InputRaw.split("\n")
 
     # candNum = int(InLines.pop(0))
-    candNum = int(input())
+    candNum = int(sys.stdin.readline())
 
     caseCnt = 1
 
@@ -324,4 +327,4 @@ if __name__ == '__main__':
             print("YES")
 
         # candNum = int(InLines.pop(0))
-        candNum = int(input())
+        candNum = int(sys.stdin.readline())
