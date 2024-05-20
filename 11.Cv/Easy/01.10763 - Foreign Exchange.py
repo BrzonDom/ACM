@@ -417,6 +417,14 @@ def checkExchPlaces_DataFrToEqual(DataFr, DataTo):
     return NoPlace
 
 
+def checkExchPlaces_DataAll(DataAll):
+    """
+            Checks if there are differences between From and To
+    """
+
+    return all(candid == 0 for candid in DataAll.values())
+
+
 if __name__ == '__main__':
 
     print("Input:")
@@ -442,13 +450,19 @@ if __name__ == '__main__':
         extDataPrint(DataFr, DataTo)
         print()
 
-        NoPlace = checkExchPlaces_DataFrToEqual(DataFr, DataTo)
+        # NoPlace = checkExchPlaces_DataFrToEqual(DataFr, DataTo)
+        #
+        # if NoPlace:
+        #     print("\t\t\tNO, not enough exchange places found")
+        # else:
+        #     print("\t\t\tYES, enough exchange places found")
 
-        if NoPlace:
-            print("\t\t\tNO, not enough exchange places found")
-        else:
+        Place = checkExchPlaces_DataAll(DataAll)
+
+        if Place:
             print("\t\t\tYES, enough exchange places found")
-
+        else:
+            print("\t\t\tNO, not enough exchange places found")
 
         candNum = int(InLines.pop(0))
 
