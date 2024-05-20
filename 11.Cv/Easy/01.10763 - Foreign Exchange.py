@@ -172,6 +172,22 @@ def inDataAllRead(InputRaw):
     return AllCandid, caseCnt
 
 
+def inDataRead(InLines, candNum):
+    """
+            Reads input data for a case and sorts
+        them into a list (Candid)
+    """
+
+    Candid = []
+
+    for cnd in range(candNum):
+        cand = (list(map(int, InLines.pop(0).split())))
+
+        Candid.append(cand)
+
+    return Candid
+
+
 def inDataAllPrint(AllCandid, caseNum):
 
     print(f"\tCases: {caseNum}")
@@ -253,17 +269,37 @@ def inDataAllExtract(InputRaw):
     return AllCandid, caseCnt, AllDataFr, AllDataTo
 
 
-
-
 if __name__ == '__main__':
 
     print("Input:")
     print(InputRaw)
-    print()
+    # print()
 
-    AllCandid, caseNum, AllDataFr, AllDataTo = inDataAllExtract(InputRaw)
+    # AllCandid, caseNum, AllDataFr, AllDataTo = inDataAllExtract(InputRaw)
+    #
+    # inDataAllPrint(AllCandid, caseNum)
 
-    inDataAllPrint(AllCandid, caseNum)
+    InLines = InputRaw.split("\n")
+
+    candNum = int(InLines.pop(0))
+    caseCnt = 1
+
+    while candNum != 0:
+        print("\n")
+
+        Candid = inDataRead(InLines, candNum)
+
+        print(f"\t\t{caseCnt}. Case")
+        print()
+        caseCnt += 1
+
+        print(f"\t\t\tCandid. num.: {candNum}")
+        print()
+
+        for cnd, cand in enumerate(Candid):
+            print(f"\t\t\t\t{cnd + 1:2}. {cand}")
+
+        candNum = int(InLines.pop(0))
 
     """Code for inDataAllRead"""
 
@@ -401,7 +437,6 @@ Input:
 19 20
 0
 
-	Cases: 2
 
 		1. Case
 
