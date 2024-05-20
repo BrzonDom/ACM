@@ -182,13 +182,9 @@ def inDataAllExtract(InputRaw):
         # print()
 
         for cnd in range(candNum):
-            cand = tuple(map(int, InLines.pop(0).split()))
+            fr, to = map(int, InLines.pop(0).split())
 
-            # print(f"\t\t{cand}")
-
-            Candid.append(cand)
-
-            fr, to = cand[0], cand[1]
+            # print(f"\t\t{(fr, to)}")
 
             if fr in DataFr:
                 DataFr[fr] += 1
@@ -199,6 +195,8 @@ def inDataAllExtract(InputRaw):
                 DataTo[to] += 1
             else:
                 DataTo[to] = 1
+
+            Candid.append((fr, to))
 
         AllCandid.append(Candid)
 
@@ -227,11 +225,7 @@ def inDataExtract_DataFrTo(InLines, candNum):
     DataTo = {}
 
     for cnd in range(candNum):
-        cand = tuple(map(int, InLines.pop(0).split()))
-
-        Candid.append(cand)
-
-        fr, to = cand[0], cand[1]
+        fr, to = map(int, InLines.pop(0).split())
 
         if fr in DataFr:
             DataFr[fr] += 1
@@ -242,6 +236,8 @@ def inDataExtract_DataFrTo(InLines, candNum):
             DataTo[to] += 1
         else:
             DataTo[to] = 1
+
+        Candid.append((fr, to))
 
     return Candid, DataFr, DataTo
 
@@ -263,11 +259,7 @@ def inDataExtract_DataFrToAll(InLines, candNum):
     DataAll = {}
 
     for cnd in range(candNum):
-        cand = tuple(map(int, InLines.pop(0).split()))
-
-        Candid.append(cand)
-
-        fr, to = cand[0], cand[1]
+        fr, to = map(int, InLines.pop(0).split())
 
         if fr in DataFr:
             DataFr[fr] += 1
@@ -289,6 +281,8 @@ def inDataExtract_DataFrToAll(InLines, candNum):
         else:
             DataAll[to] = -1
 
+        Candid.append((fr, to))
+
 
     return Candid, DataFr, DataTo, DataAll
 
@@ -302,9 +296,7 @@ def inDataExtract_DataAll(InLines, candNum):
     DataAll = {}
 
     for cnd in range(candNum):
-        cand = tuple(map(int, InLines.pop(0).split()))
-
-        fr, to = cand[0], cand[1]
+        fr, to = map(int, InLines.pop(0).split())
 
         if fr in DataAll:
             DataAll[fr] += 1
