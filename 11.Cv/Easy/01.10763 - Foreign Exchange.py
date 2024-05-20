@@ -122,7 +122,7 @@ def inDataAllRead(InputRaw):
         # print()
 
         for cnd in range(candNum):
-            cand = (list(map(int, InLines.pop(0).split())))
+            cand = tuple(map(int, InLines.pop(0).split()))
 
             # print(f"\t\t{cand}")
 
@@ -145,7 +145,7 @@ def inDataRead(InLines, candNum):
     Candid = []
 
     for cnd in range(candNum):
-        cand = (list(map(int, InLines.pop(0).split())))
+        cand = tuple(map(int, InLines.pop(0).split()))
 
         Candid.append(cand)
 
@@ -182,7 +182,7 @@ def inDataAllExtract(InputRaw):
         # print()
 
         for cnd in range(candNum):
-            cand = (list(map(int, InLines.pop(0).split())))
+            cand = tuple(map(int, InLines.pop(0).split()))
 
             # print(f"\t\t{cand}")
 
@@ -227,7 +227,7 @@ def inDataExtract(InLines, candNum):
     DataTo = {}
 
     for cnd in range(candNum):
-        cand = (list(map(int, InLines.pop(0).split())))
+        cand = tuple(map(int, InLines.pop(0).split()))
 
         Candid.append(cand)
 
@@ -357,16 +357,6 @@ if __name__ == '__main__':
 
 
         candNum = int(InLines.pop(0))
-
-    """Code for inDataAllExtract"""
-
-    # print("Input:")
-    # print(InputRaw)
-    # print()
-    #
-    # AllCandid, caseNum, AllDataFr, AllDataTo = inDataAllExtract(InputRaw)
-    #
-    # inDataAllPrint(AllCandid, caseNum)
 
 
 """__Output__"""
