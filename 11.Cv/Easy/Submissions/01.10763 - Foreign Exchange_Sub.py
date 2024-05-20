@@ -209,7 +209,7 @@ def inDataExtract_DataAll_In(candNum):
     DataAll = {}
 
     for cnd in range(candNum):
-        cand = tuple(map(int, InLines.pop(0).split()))
+        cand = tuple(map(int, input().split()))
 
         fr, to = cand[0], cand[1]
 
@@ -274,6 +274,14 @@ def checkExchPlaces_DataFrToEqual(DataFr, DataTo):
     return NoPlace
 
 
+def checkExchPlaces_DataAll(DataAll):
+    """
+            Checks if there are differences between From and To
+    """
+
+    return all(candid == 0 for candid in DataAll.values())
+
+
 if __name__ == '__main__':
 
     print("Input:")
@@ -289,9 +297,9 @@ if __name__ == '__main__':
     while candNum != 0:
         # print("\n")
 
-        Candid, DataFr, DataTo = inDataExtract_DataFrTo_In(candNum)
+        # Candid, DataFr, DataTo = inDataExtract_DataFrTo_In(candNum)
 
-        # DataAll = inDataExtract_DataAll_In(candNum)
+        DataAll = inDataExtract_DataAll_In(candNum)
 
         # print(f"\t\t{caseCnt}. Case")
         # print()
@@ -303,7 +311,8 @@ if __name__ == '__main__':
         # extDataPrint(DataFr, DataTo)
         # print()
 
-        NoPlace = checkExchPlaces_DataFrToCnt(DataFr, DataTo)
+        # NoPlace = checkExchPlaces_DataFrToCnt(DataFr, DataTo)
+        NoPlace = not checkExchPlaces_DataAll(DataAll)
 
         if NoPlace:
             # print("\t\t\tNO, not enough exchange places found")
