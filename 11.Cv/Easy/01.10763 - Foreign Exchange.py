@@ -100,7 +100,7 @@ InputRaw_Lst = [InputOrg_Raw, InputUVa_Raw]
 InputRaw = InputRaw_Lst[0]
 
 
-def dataAllRead_Prt(InputRaw):
+def inDataAllRead_Prt(InputRaw):
     """     Reads all the data into a list of AllCandid   """
 
     InLines = InputRaw.split("\n")
@@ -133,7 +133,7 @@ def dataAllRead_Prt(InputRaw):
     return AllCandid, caseCnt
 
 
-def dataAllRead(InputRaw):
+def inDataAllRead(InputRaw):
     """     Reads all the data into a list of AllCandid   """
 
     InLines = InputRaw.split("\n")
@@ -166,7 +166,7 @@ def dataAllRead(InputRaw):
     return AllCandid, caseCnt
 
 
-def dataAllPrint(AllCandid, caseNum):
+def inDataAllPrint(AllCandid, caseNum):
 
     print(f"\tCases: {caseNum}")
     print()
@@ -193,52 +193,27 @@ if __name__ == '__main__':
     print(InputRaw)
     print()
 
-    AllCandid, caseNum = dataAllRead(InputRaw)
+    AllCandid, caseNum = inDataAllRead(InputRaw)
 
-    dataAllPrint(AllCandid, caseNum)
+    # inDataAllPrint(AllCandid, caseNum)
 
-    # print(f"\tCases: {caseNum}")
-    # print()
-    #
-    # for caseCnt, Candid in enumerate(AllCandid):
-    #
-    #     print(f"\t\t{caseCnt+1}. Case")
-    #     print()
-    #
-    #     candNum = len(Candid)
-    #     print(f"\t\t\tCandid. num.: {candNum}")
-    #     print()
-    #
-    #     for cnd, cand in enumerate(Candid):
-    #         print(f"\t\t\t\t{cnd+1:2}. {cand}")
-    #
-    #     if (caseCnt+1) < caseNum:
-    #         print("\n")
+    for caseCnt, Candid in enumerate(AllCandid):
 
-    quit()
+        print(f"\t\t{caseCnt + 1}. Case")
+        print()
 
-    InLines = InputRaw.split("\n")
+        candNum = len(Candid)
 
-    candNum = int(InLines.pop(0))
-
-    while candNum != 0:
-
-        Cases = []
-
-        print(f"\tCases: {candNum}")
+        print(f"\t\t\tCandid. num.: {candNum}")
         print()
 
         DataTo = {}
         DataFr = {}
 
-        for cs in range(candNum):
-            case = (list(map(int, InLines.pop(0).split())))
+        for cnd, cand in enumerate(Candid):
+            print(f"\t\t\t\t{cnd + 1:2}. {cand}")
 
-            print(f"\t\t{case}")
-
-            fr, to = case[0], case[1]
-
-            Cases.append(case)
+            fr, to = cand[0], cand[1]
 
             if fr in DataFr:
                 DataFr[fr] += 1
@@ -269,36 +244,59 @@ if __name__ == '__main__':
             else:
                 print(f"\t\t\t{FrTo:3}:   0  |  {DataTo[FrTo]:2}")
 
-        print()
+        if (caseCnt + 1) < caseNum:
+            print("\n")
 
-        NoPlace = False
 
-        for FrKys in DataFr.keys():
-            for Fr in range(DataFr[FrKys]):
-
-                if FrKys in DataTo:
-                    if DataTo[FrKys]:
-                        DataTo[FrKys] -= 1
-
-                    else:
-                        NoPlace = True
-                        break
-
-                else:
-                    NoPlace = True
-                    break
-
-            if NoPlace:
-                break
-
-        if NoPlace:
-            print("\t\tNO, no all exchange places found")
-        else:
-            print("\t\tYES, yes all exchange places found")
-
-        print("\n")
-
-        candNum = int(InLines.pop(0))
+        # print()
+        #
+        # print("\t\tFrom/To Data:")
+        # print()
+        #
+        # FrToKys = set(list(DataFr.keys()) + list(DataTo.keys()))
+        #
+        # for FrTo in FrToKys:
+        #
+        #     if FrTo in DataFr:
+        #         if FrTo in DataTo:
+        #             print(f"\t\t\t{FrTo:3}:  {DataFr[FrTo]:2}  |  {DataTo[FrTo]:2}")
+        #
+        #         else:
+        #             print(f"\t\t\t{FrTo:3}:  {DataFr[FrTo]:2}  |   0")
+        #
+        #     else:
+        #         print(f"\t\t\t{FrTo:3}:   0  |  {DataTo[FrTo]:2}")
+        #
+        # print()
+        #
+        # NoPlace = False
+        #
+        # for FrKys in DataFr.keys():
+        #     for Fr in range(DataFr[FrKys]):
+        #
+        #         if FrKys in DataTo:
+        #             if DataTo[FrKys]:
+        #                 DataTo[FrKys] -= 1
+        #
+        #             else:
+        #                 NoPlace = True
+        #                 break
+        #
+        #         else:
+        #             NoPlace = True
+        #             break
+        #
+        #     if NoPlace:
+        #         break
+        #
+        # if NoPlace:
+        #     print("\t\tNO, no all exchange places found")
+        # else:
+        #     print("\t\tYES, yes all exchange places found")
+        #
+        # print("\n")
+        #
+        # candNum = int(InLines.pop(0))
 
 
 """__Output__"""
@@ -328,8 +326,6 @@ Input:
 19 20
 0
 
-	Cases: 2
-
 		1. Case
 
 			Candid. num.: 10
@@ -344,6 +340,16 @@ Input:
 				 8. [2, 57]
 				 9. [1, 2]
 				10. [2, 1]
+
+		From/To Data:
+
+			  1:   2  |   2
+			  2:   3  |   3
+			  3:   1  |   1
+			100:   1  |   1
+			  4:   1  |   1
+			200:   1  |   1
+			 57:   1  |   1
 
 
 		2. Case
@@ -360,6 +366,29 @@ Input:
 				 8. [15, 16]
 				 9. [17, 18]
 				10. [19, 20]
+
+		From/To Data:
+
+			  1:   1  |   0
+			  2:   0  |   1
+			  3:   1  |   0
+			  4:   0  |   1
+			  5:   1  |   0
+			  6:   0  |   1
+			  7:   1  |   0
+			  8:   0  |   1
+			  9:   1  |   0
+			 10:   0  |   1
+			 11:   1  |   0
+			 12:   0  |   1
+			 13:   1  |   0
+			 14:   0  |   1
+			 15:   1  |   0
+			 16:   0  |   1
+			 17:   1  |   0
+			 18:   0  |   1
+			 19:   1  |   0
+			 20:   0  |   1
 
 Process finished with exit code 0
 
