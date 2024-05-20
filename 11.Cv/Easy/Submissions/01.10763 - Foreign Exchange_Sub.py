@@ -235,26 +235,30 @@ if __name__ == '__main__':
     caseCnt = 1
 
     while candNum != 0:
-        print("\n")
+        # print("\n")
 
         Candid, DataFr, DataTo = inDataExtract_In(candNum)
 
-        print(f"\t\t{caseCnt}. Case")
-        print()
+        # print(f"\t\t{caseCnt}. Case")
+        # print()
         caseCnt += 1
 
-        inDataPrint(Candid, candNum)
-        print()
+        # inDataPrint(Candid, candNum)
+        # print()
 
-        extDataPrint(DataFr, DataTo)
-        print()
+        # extDataPrint(DataFr, DataTo)
+        # print()
 
         NoPlace = checkExchPlaces(DataFr, DataTo)
 
         if NoPlace:
-            print("\t\t\tNO, not enough exchange places found")
+            # print("\t\t\tNO, not enough exchange places found")
+
+            print("NO")
         else:
-            print("\t\t\tYES, enough exchange places found")
+            # print("\t\t\tYES, enough exchange places found")
+
+            print("YES")
 
         # candNum = int(InLines.pop(0))
         candNum = int(input())
