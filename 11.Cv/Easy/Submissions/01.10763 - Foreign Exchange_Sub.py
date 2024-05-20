@@ -233,6 +233,15 @@ def inDataAllPrint(AllCandid, caseNum):
             print("\n")
 
 
+def inDataPrint(Candid, candNum):
+
+    print(f"\t\t\tCandid. num.: {candNum}")
+    print()
+
+    for cnd, cand in enumerate(Candid):
+        print(f"\t\t\t\t{cnd + 1:2}. {cand}")
+
+
 if __name__ == '__main__':
 
     print("Input:")
@@ -253,11 +262,7 @@ if __name__ == '__main__':
         print()
         caseCnt += 1
 
-        print(f"\t\t\tCandid. num.: {candNum}")
-        print()
-
-        for cnd, cand in enumerate(Candid):
-            print(f"\t\t\t\t{cnd + 1:2}. {cand}")
+        inDataPrint(Candid, candNum)
 
         candNum = int(InLines.pop(0))
 
