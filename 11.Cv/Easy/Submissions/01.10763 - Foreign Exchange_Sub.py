@@ -136,13 +136,7 @@ def inDataAllRead(InputRaw):
     return AllCandid, caseCnt
 
 
-if __name__ == '__main__':
-
-    print("Input:")
-    print(InputRaw)
-    print()
-
-    AllCandid, caseNum = inDataAllRead(InputRaw)
+def inDataAllPrint(AllCandid, caseNum):
 
     print(f"\tCases: {caseNum}")
     print()
@@ -157,10 +151,21 @@ if __name__ == '__main__':
         print()
 
         for cnd, cand in enumerate(Candid):
-            print(f"\t\t\t\t{cnd + 1:2}. {cand}")
+            print(f"\t\t\t\t{cnd+1:2}. {cand}")
 
-        if (caseCnt + 1) < caseNum:
+        if (caseCnt+1) < caseNum:
             print("\n")
+
+
+if __name__ == '__main__':
+
+    print("Input:")
+    print(InputRaw)
+    print()
+
+    AllCandid, caseNum = inDataAllRead(InputRaw)
+
+    inDataAllPrint(AllCandid, caseNum)
 
 
 """__Output__"""
