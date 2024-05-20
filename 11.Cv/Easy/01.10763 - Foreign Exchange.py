@@ -100,42 +100,6 @@ InputRaw_Lst = [InputOrg_Raw, InputUVa_Raw]
 InputRaw = InputRaw_Lst[0]
 
 
-def inDataAllRead_Prt(InputRaw):
-    """
-            Reads all the input data and sorts them
-        into a list of lists (AllCandid)
-    """
-
-    InLines = InputRaw.split("\n")
-
-    candNum = int(InLines.pop(0))
-    caseCnt = 0
-
-    AllCandid = []
-
-    while candNum != 0:
-
-        caseCnt += 1
-        Candid = []
-
-        print(f"\tCases: {candNum}")
-        print()
-
-        for cnd in range(candNum):
-            cand = (list(map(int, InLines.pop(0).split())))
-
-            print(f"\t\t{cand}")
-
-            Candid.append(cand)
-
-        AllCandid.append(Candid)
-        candNum = int(InLines.pop(0))
-
-        print("\n")
-
-    return AllCandid, caseCnt
-
-
 def inDataAllRead(InputRaw):
     """
             Reads all the input data and sorts them
@@ -332,6 +296,32 @@ def extDataPrint(DataFr, DataTo):
             print(f"\t\t\t\t\t{FrTo:3}:   0  |  {DataTo[FrTo]:2}")
 
 
+def checkExchPlaces(DataFr, DataTo):
+    """
+            Check if there is place for all
+        the exchange candidates
+    """
+
+    NoPlace = False
+
+    for FrKys in DataFr.keys():
+        for Fr in range(DataFr[FrKys]):
+
+            if FrKys in DataTo:
+                if DataTo[FrKys]:
+                    DataTo[FrKys] -= 1
+
+                else:
+                    NoPlace = True
+                    return NoPlace
+
+            else:
+                NoPlace = True
+                return NoPlace
+
+    return NoPlace
+
+
 if __name__ == '__main__':
 
     print("Input:")
@@ -356,6 +346,15 @@ if __name__ == '__main__':
         print()
 
         extDataPrint(DataFr, DataTo)
+        print()
+
+        NoPlace = checkExchPlaces(DataFr, DataTo)
+
+        if NoPlace:
+            print("\t\t\tNO, not enough exchange places found")
+        else:
+            print("\t\t\tYES, enough exchange places found")
+
 
         candNum = int(InLines.pop(0))
 
@@ -368,58 +367,6 @@ if __name__ == '__main__':
     # AllCandid, caseNum, AllDataFr, AllDataTo = inDataAllExtract(InputRaw)
     #
     # inDataAllPrint(AllCandid, caseNum)
-
-    """Org Driver Code"""
-
-        # print()
-        #
-        # print("\t\tFrom/To Data:")
-        # print()
-        #
-        # FrToKys = set(list(DataFr.keys()) + list(DataTo.keys()))
-        #
-        # for FrTo in FrToKys:
-        #
-        #     if FrTo in DataFr:
-        #         if FrTo in DataTo:
-        #             print(f"\t\t\t{FrTo:3}:  {DataFr[FrTo]:2}  |  {DataTo[FrTo]:2}")
-        #
-        #         else:
-        #             print(f"\t\t\t{FrTo:3}:  {DataFr[FrTo]:2}  |   0")
-        #
-        #     else:
-        #         print(f"\t\t\t{FrTo:3}:   0  |  {DataTo[FrTo]:2}")
-        #
-        # print()
-        #
-        # NoPlace = False
-        #
-        # for FrKys in DataFr.keys():
-        #     for Fr in range(DataFr[FrKys]):
-        #
-        #         if FrKys in DataTo:
-        #             if DataTo[FrKys]:
-        #                 DataTo[FrKys] -= 1
-        #
-        #             else:
-        #                 NoPlace = True
-        #                 break
-        #
-        #         else:
-        #             NoPlace = True
-        #             break
-        #
-        #     if NoPlace:
-        #         break
-        #
-        # if NoPlace:
-        #     print("\t\tNO, no all exchange places found")
-        # else:
-        #     print("\t\tYES, yes all exchange places found")
-        #
-        # print("\n")
-        #
-        # candNum = int(InLines.pop(0))
 
 
 """__Output__"""
@@ -475,6 +422,8 @@ Input:
 					200:   1  |   1
 					 57:   1  |   1
 
+			YES, enough exchange places found
+
 
 		2. Case
 
@@ -513,6 +462,8 @@ Input:
 					 18:   0  |   1
 					 19:   1  |   0
 					 20:   0  |   1
+
+			NO, not enough exchange places found
 
 Process finished with exit code 0
 
