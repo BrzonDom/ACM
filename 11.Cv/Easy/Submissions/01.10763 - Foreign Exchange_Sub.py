@@ -185,24 +185,12 @@ def inDataExtract_DataFrTo_In(candNum):
     DataTo = defaultdict(int)
 
     for cnd in range(candNum):
-        cand = list(map(int, sys.stdin.readline().split()))
-
-        Candid.append(cand)
-
-        fr, to = cand[0], cand[1]
+        fr, to = map(int, sys.stdin.readline().split())
 
         DataFr[fr] += 1
         DataTo[to] += 1
 
-        # if fr in DataFr:
-        #     DataFr[fr] += 1
-        # else:
-        #     DataFr[fr] = 1
-        #
-        # if to in DataTo:
-        #     DataTo[to] += 1
-        # else:
-        #     DataTo[to] = 1
+        Candid.append((fr, to))
 
     return Candid, DataFr, DataTo
 
@@ -216,22 +204,10 @@ def inDataExtract_DataAll_In(candNum):
     DataAll = defaultdict(int)
 
     for cnd in range(candNum):
-        cand = tuple(map(int, sys.stdin.readline().split()))
-
-        fr, to = cand[0], cand[1]
+        fr, to = map(int, sys.stdin.readline().split())
 
         DataAll[fr] += 1
         DataAll[to] -= 1
-
-        # if fr in DataAll:
-        #     DataAll[fr] += 1
-        # else:
-        #     DataAll[fr] = 1
-        #
-        # if to in DataAll:
-        #     DataAll[to] -= 1
-        # else:
-        #     DataAll[to] = -1
 
     return DataAll
 
@@ -294,15 +270,15 @@ def checkExchPlaces_DataAll(DataAll):
 
 if __name__ == '__main__':
 
-    print("Input:")
-    print(InputRaw)
+    # print("Input:")
+    # print(InputRaw)
 
     # InLines = InputRaw.split("\n")
 
     # candNum = int(InLines.pop(0))
     candNum = int(sys.stdin.readline())
 
-    caseCnt = 1
+    # caseCnt = 1
 
     while candNum != 0:
         # print("\n")
@@ -313,7 +289,7 @@ if __name__ == '__main__':
 
         # print(f"\t\t{caseCnt}. Case")
         # print()
-        caseCnt += 1
+        # caseCnt += 1
 
         # inDataPrint(Candid, candNum)
         # print()
