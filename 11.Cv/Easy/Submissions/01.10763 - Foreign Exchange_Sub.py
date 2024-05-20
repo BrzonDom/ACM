@@ -166,7 +166,7 @@ def extDataPrint(DataFr, DataTo):
 """__Code__"""
 
 
-def inDataExtract_In(candNum):
+def inDataExtract_DataFrTo_In(candNum):
     """
             Reads input data for a case and sorts
         them into a list (Candid)
@@ -198,6 +198,32 @@ def inDataExtract_In(candNum):
             DataTo[to] = 1
 
     return Candid, DataFr, DataTo
+
+
+def inDataExtract_DataAll_In(candNum):
+    """
+            Reads input data for a case and
+        extracts the into a single dictionary (DataAll)
+    """
+
+    DataAll = {}
+
+    for cnd in range(candNum):
+        cand = tuple(map(int, InLines.pop(0).split()))
+
+        fr, to = cand[0], cand[1]
+
+        if fr in DataAll:
+            DataAll[fr] += 1
+        else:
+            DataAll[fr] = 1
+
+        if to in DataAll:
+            DataAll[to] -= 1
+        else:
+            DataAll[to] = -1
+
+    return DataAll
 
 
 def checkExchPlaces(DataFr, DataTo):
@@ -241,7 +267,9 @@ if __name__ == '__main__':
     while candNum != 0:
         # print("\n")
 
-        Candid, DataFr, DataTo = inDataExtract_In(candNum)
+        Candid, DataFr, DataTo = inDataExtract_DataFrTo_In(candNum)
+
+        # DataAll = inDataExtract_DataAll_In(candNum)
 
         # print(f"\t\t{caseCnt}. Case")
         # print()
