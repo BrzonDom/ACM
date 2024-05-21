@@ -2,7 +2,7 @@
 HOTELS - Hotels Along the Croatian Coast
 https://www.spoj.com/problems/HOTELS/
 
-    There are N hotels along the beautiful Adriatic coast. Each hotel has its value in Euros.
+        There are N hotels along the beautiful Adriatic coast. Each hotel has its value in Euros.
     Sroljo has won M Euros on the lottery. Now he wants to buy a sequence of consecutive hotels, such that the sum
     of the values of these consecutive hotels is as great as possible - but not greater than M.
     You are to calculate this greatest possible total value.
@@ -50,7 +50,7 @@ def infExtrc(lineInf, lineHtls):
     return htlNum, mnyNum, Htls
 
 
-def fndMaxMny(Htls, mnyNum):
+def fndMaxMny_For(Htls, mnyNum):
     mnyMax = 0
     htlMax = []
 
@@ -72,6 +72,30 @@ def fndMaxMny(Htls, mnyNum):
     print()
 
     return mnyMax, htlMax
+
+
+def fndMaxMny_Ptr(Htls, mnyNum):
+
+    htlNum = len(Htls)
+
+    strHs = 0
+    endHs = 1
+
+    while endHs <= htlNum:
+
+        curHtls = Htls[strHs:endHs]
+        sumHtls = sum(curHtls)
+
+        print(f"\t\t\t{strHs} | {endHs} : {Htls[strHs:endHs]} ({sumHtls})")
+
+        if sum(Htls[strHs:endHs]) < mnyNum:
+            endHs += 1
+
+        elif sum(Htls[strHs:endHs]) > mnyNum:
+            strHs += 1
+
+        else:
+            endHs += 1
 
 
 if __name__ == "__main__":
@@ -104,7 +128,9 @@ if __name__ == "__main__":
         # print(f"\t\tHotels: {Htls}")
         # print()
 
-        mnyMax, htlMax = fndMaxMny(Htls, mnyNum)
+        fndMaxMny_Ptr(Htls, mnyNum)
+
+        # mnyMax, htlMax = fndMaxMny_For(Htls, mnyNum)
 
         # mnyMax = 0
         # htlMax = []
@@ -126,8 +152,8 @@ if __name__ == "__main__":
         #         break
         # print()
 
-        print(f"\t\tMax money: {mnyMax}")
-        print(f"\t\tMax hotels: {htlMax}")
+        # print(f"\t\tMax money: {mnyMax}")
+        # print(f"\t\tMax hotels: {htlMax}")
 
         print("\n")
 
@@ -147,19 +173,13 @@ Input:
 
 		Hotels: [2, 1, 3, 4, 5]
 
-			[2] (2)
-			[2, 1] (3)
-			[2, 1, 3] (6)
-			[2, 1, 3, 4] (10)
-			[1] (1)
-			[1, 3] (4)
-			[1, 3, 4] (8)
-			[3] (3)
-			[3, 4] (7)
-			[3, 4, 5] (12)
-
-		Max money: 12
-		Max hotels: [3, 4, 5]
+			0 | 1 : [2] (2)
+			0 | 2 : [2, 1] (3)
+			0 | 3 : [2, 1, 3] (6)
+			0 | 4 : [2, 1, 3, 4] (10)
+			0 | 5 : [2, 1, 3, 4, 5] (15)
+			1 | 5 : [1, 3, 4, 5] (13)
+			2 | 5 : [3, 4, 5] (12)
 
 
 	2. Case
@@ -169,14 +189,13 @@ Input:
 
 		Hotels: [7, 3, 5, 6]
 
-			[7] (7)
-			[3] (3)
-			[3, 5] (8)
-			[5] (5)
-			[6] (6)
-
-		Max money: 8
-		Max hotels: [3, 5]
+			0 | 1 : [7] (7)
+			0 | 2 : [7, 3] (10)
+			1 | 2 : [3] (3)
+			1 | 3 : [3, 5] (8)
+			1 | 4 : [3, 5, 6] (14)
+			2 | 4 : [5, 6] (11)
+			3 | 4 : [6] (6)
 
 
 
