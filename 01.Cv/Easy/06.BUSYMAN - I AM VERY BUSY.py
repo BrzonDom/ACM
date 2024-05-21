@@ -133,7 +133,6 @@ def dataRead(InLines):
     return actTimes, actNum
 
 
-
 def actExtract_Prt(actTimes):
 
     # ActLst = []
@@ -166,14 +165,69 @@ def actExtract_Prt(actTimes):
 
         # ActLst.append(curAct)
 
-        # print(f"\t\t\t\tActiv.: {curAct.tm}")
-        # print(f"\t\t\t\t\tActiv. count  : {curAct.ct}")
-        # print(f"\t\t\t\t\tActiv. free   : {curAct.fr}")
-        # print(f"\t\t\t\t\tActiv. missed : {curAct.ms}")
-        # print()
+        print(f"\t\t\t\tActiv.: {curTm}")
+        print(f"\t\t\t\t\tActiv. count  : {len(frdActs[curTm])}")
+        print(f"\t\t\t\t\tActiv. free   : {frdActs[curTm]}")
+        print(f"\t\t\t\t\tActiv. missed : {msdActs[curTm]}")
+        print()
 
     # return ActLst, frdActs, msdActs
     return frdActs, msdActs
+
+
+def actExtract(actTimes):
+
+    # ActLst = []
+
+    frdActs = {}
+    msdActs = {}
+
+    for curTm in actTimes:
+
+        # curAct = Act(curTm, 0, [], [])
+
+        frdActs[curTm] = []
+        msdActs[curTm] = []
+
+        for nxtTm in actTimes:
+
+            if curTm == nxtTm:
+                continue
+
+            elif nxtTm[0] >= curTm[1] or nxtTm[1] <= curTm[0]:
+                # curAct.ct += 1
+                # curAct.addFr(nxtTm)
+
+                frdActs[curTm].append(nxtTm)
+
+            else:
+                # curAct.addMs(nxtTm)
+
+                msdActs[curTm].append(nxtTm)
+
+        # ActLst.append(curAct)
+
+    # return ActLst, frdActs, msdActs
+    return frdActs, msdActs
+
+
+def actSort_Prt(actTimes):
+
+    actTimes.sort(key=lambda tm: tm[1])
+
+    actNum = len(actTimes)
+
+    print(f"\t\t\tAct. num.: {actNum}")
+    print()
+
+    print("\t\t\tActivities:")
+
+    for a, act in enumerate(actTimes):
+
+        print(f"\t\t\t\t{a+1}. {act}")
+    print()
+
+    return actTimes
 
 
 def fndMaxTable_BFS(curTbl, maxTbl):
@@ -222,10 +276,12 @@ if __name__ == "__main__":
         print(f"\t\t{case+1}. Case")
         print()
 
-        actTimes, actNum = dataRead_Prt(InLines)
+        actTimes, actNum = dataRead(InLines)
 
         # ActLst, frdActs, msdActs = actExtract_Prt(actTimes)
-        frdActs, msdActs = actExtract_Prt(actTimes)
+        frdActs, msdActs = actExtract(actTimes)
+
+        actTimes = actSort_Prt(actTimes)
 
         maxTbl = Table([], 0, None, None)
 
@@ -281,17 +337,17 @@ Input:
 			Act. num.: 3
 
 			Activities:
-				1. (3, 9)
-				2. (2, 8)
+				1. (2, 8)
+				2. (3, 9)
 				3. (6, 9)
-
-				Activ.: (3, 9)
-					Activ. free   : []
-					Activ. missed : [(2, 8), (6, 9)]
 
 				Activ.: (2, 8)
 					Activ. free   : []
 					Activ. missed : [(3, 9), (6, 9)]
+
+				Activ.: (3, 9)
+					Activ. free   : []
+					Activ. missed : [(2, 8), (6, 9)]
 
 				Activ.: (6, 9)
 					Activ. free   : []
@@ -299,7 +355,7 @@ Input:
 
 
 			Max Table:
-				Sched.: [(3, 9)]
+				Sched.: [(2, 8)]
 				Activ. count: 1
 
 
@@ -340,40 +396,40 @@ Input:
 			Act. num.: 6
 
 			Activities:
-				1. (7, 9)
-				2. (0, 10)
-				3. (4, 5)
+				1. (4, 5)
+				2. (5, 7)
+				3. (7, 9)
 				4. (8, 9)
-				5. (4, 10)
-				6. (5, 7)
-
-				Activ.: (7, 9)
-					Activ. free   : [(4, 5), (5, 7)]
-					Activ. missed : [(0, 10), (8, 9), (4, 10)]
-
-				Activ.: (0, 10)
-					Activ. free   : []
-					Activ. missed : [(7, 9), (4, 5), (8, 9), (4, 10), (5, 7)]
+				5. (0, 10)
+				6. (4, 10)
 
 				Activ.: (4, 5)
 					Activ. free   : [(7, 9), (8, 9), (5, 7)]
 					Activ. missed : [(0, 10), (4, 10)]
 
+				Activ.: (5, 7)
+					Activ. free   : [(7, 9), (4, 5), (8, 9)]
+					Activ. missed : [(0, 10), (4, 10)]
+
+				Activ.: (7, 9)
+					Activ. free   : [(4, 5), (5, 7)]
+					Activ. missed : [(0, 10), (8, 9), (4, 10)]
+
 				Activ.: (8, 9)
 					Activ. free   : [(4, 5), (5, 7)]
 					Activ. missed : [(7, 9), (0, 10), (4, 10)]
+
+				Activ.: (0, 10)
+					Activ. free   : []
+					Activ. missed : [(7, 9), (4, 5), (8, 9), (4, 10), (5, 7)]
 
 				Activ.: (4, 10)
 					Activ. free   : []
 					Activ. missed : [(7, 9), (0, 10), (4, 5), (8, 9), (5, 7)]
 
-				Activ.: (5, 7)
-					Activ. free   : [(7, 9), (4, 5), (8, 9)]
-					Activ. missed : [(0, 10), (4, 10)]
-
 
 			Max Table:
-				Sched.: [(7, 9), (4, 5), (5, 7)]
+				Sched.: [(4, 5), (7, 9), (5, 7)]
 				Activ. count: 3
 
 Process finished with exit code 0
