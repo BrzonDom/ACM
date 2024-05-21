@@ -26,6 +26,10 @@ https://www.spoj.com/problems/HOTELS/
 
 """
 
+
+"""33078607 	2024-05-21 17:39:48 	BrzonDom	Hotels Along the Croatian Coast	accepted edit    ideone it 	0.85 	45M 	PYTHON3"""
+
+
 InputRaw_Str = """
 5 12
 2 1 3 4 5
@@ -35,6 +39,8 @@ InputRaw_Str = """
 
 InputRaw_Str = InputRaw_Str[1:-1]
 
+
+"""
 
 def infExtrc_Prt(lineInf, lineHtls):
 
@@ -143,6 +149,9 @@ def fndMaxMny_Two(Htls, mnyNum):
             return maxHtls, maxMny
 
     return maxHtls, maxMny
+    
+    
+"""
 
 
 """__Code__"""
