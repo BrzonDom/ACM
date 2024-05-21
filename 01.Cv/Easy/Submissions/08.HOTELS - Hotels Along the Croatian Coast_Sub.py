@@ -156,11 +156,31 @@ def fndMaxMny_Two(Htls, mnyNum):
     return maxHtls, maxMny
 
 
+def fndMaxMny_Sub(Htls, htlNum, mnyNum):
+
+    maxMny = 0
+    curMny = 0
+    endHs = 0
+
+    for strHs in range(htlNum):
+
+        while endHs < htlNum and curMny + Htls[endHs] <= mnyNum:
+
+            curMny += Htls[endHs]
+            endHs += 1
+
+        maxMny = max(maxMny, curMny)
+
+        curMny -= Htls[strHs]
+
+    return maxMny
+
+
 if __name__ == "__main__":
 
-    print("Input:")
-    print(InputRaw_Str)
-    print()
+    # print("Input:")
+    # print(InputRaw_Str)
+    # print()
 
     lineInf = input()
     lineHtls = input()
@@ -176,7 +196,9 @@ if __name__ == "__main__":
     # print()
 
     # maxHtls, maxMny = fndMaxMny_TwoPrt(Htls, mnyNum)
-    maxHtls, maxMny = fndMaxMny_Two(Htls, mnyNum)
+    # maxHtls, maxMny = fndMaxMny_Two(Htls, mnyNum)
+
+    maxMny = fndMaxMny_Sub(Htls, htlNum, mnyNum)
 
     print(maxMny)
 
@@ -208,5 +230,3 @@ if __name__ == "__main__":
     # print(f"\t\tMax hotels: {maxHtls}")
 
     # print("\n")
-
-
