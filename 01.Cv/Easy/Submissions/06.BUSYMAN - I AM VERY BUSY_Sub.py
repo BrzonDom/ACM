@@ -71,28 +71,6 @@ InputRaw_Str = """
 InputRaw_Str = InputRaw_Str[1:-1]
 
 
-class Act:
-    def __init__(self, tm, ct, fr, ms):
-        self.tm = tm
-        self.ct = ct
-        self.fr = fr
-        self.ms = ms
-
-    def addFr(self, nxtFr):
-        self.fr.append(nxtFr)
-
-    def addMs(self, nxtMs):
-        self.ms.append(nxtMs)
-
-
-class Table:
-    def __init__(self, sch, cnt, frAct, msAct):
-        self.sch = sch
-        self.cnt = cnt
-        self.frAct = frAct
-        self.msAct = msAct
-
-
 def inDataRead_Prt(InLines):
 
     actNum = int(InLines.pop(0))
@@ -135,6 +113,31 @@ def inDataRead_In_Prt():
     return actTimes, actNum
 
 
+"""__Code__"""
+
+
+class Act:
+    def __init__(self, tm, ct, fr, ms):
+        self.tm = tm
+        self.ct = ct
+        self.fr = fr
+        self.ms = ms
+
+    def addFr(self, nxtFr):
+        self.fr.append(nxtFr)
+
+    def addMs(self, nxtMs):
+        self.ms.append(nxtMs)
+
+
+class Table:
+    def __init__(self, sch, cnt, frAct, msAct):
+        self.sch = sch
+        self.cnt = cnt
+        self.frAct = frAct
+        self.msAct = msAct
+
+
 def inDataRead_In():
 
     actNum = int(input())
@@ -147,7 +150,7 @@ def inDataRead_In():
     return actTimes, actNum
 
 
-def dataExtract_Prt(actTimes):
+def dataExtract(actTimes):
 
     ActLst = []
 
@@ -179,12 +182,6 @@ def dataExtract_Prt(actTimes):
 
         ActLst.append(curAct)
 
-        # print(f"\t\t\t\tActiv.: {curAct.tm}")
-        # print(f"\t\t\t\t\tActiv. count  : {curAct.ct}")
-        # print(f"\t\t\t\t\tActiv. free   : {curAct.fr}")
-        # print(f"\t\t\t\t\tActiv. missed : {curAct.ms}")
-        # print()
-
     return ActLst, frdActs, msdActs
 
 
@@ -202,12 +199,6 @@ def fndMaxTable(curTbl, maxTbl):
 
         nxtTbl = Table(nxtSch, nxtCnt, nxtFrd, nxtMsd)
 
-        # print(f"\t\t\t\t\tSched.: {nxtSch}")
-        # print(f"\t\t\t\t\t\tActiv. count  : {nxtCnt}")
-        # print(f"\t\t\t\t\t\tActiv. free   : {nxtFrd}")
-        # print(f"\t\t\t\t\t\tActiv. missed : {nxtMsd}")
-        # print()
-
         return fndMaxTable(nxtTbl, maxTbl)
 
     if curTbl.cnt > maxTbl.cnt:
@@ -218,49 +209,32 @@ def fndMaxTable(curTbl, maxTbl):
 
 if __name__ == "__main__":
 
-    print("Input:")
-    print(InputRaw_Str)
-    print()
+    # print("Input:")
+    # print(InputRaw_Str)
+    # print()
 
-    InLines = InputRaw_Str.split("\n")
+    # InLines = InputRaw_Str.split("\n")
 
     # caseNum = int(InLines.pop(0))
     caseNum = int(input())
 
-    # print(f"\tCases: {caseNum}")
-    # print()
-
     for case in range(caseNum):
-
-        # print(f"\t\t{case+1}. Case")
-        # print()
 
         # actTimes, actNum = inDataRead_Prt(InLines)
         # actTimes, actNum = inDataRead_In_Prt()
         actTimes, actNum = inDataRead_In()
 
-        ActLst, frdActs, msdActs = dataExtract_Prt(actTimes)
+        ActLst, frdActs, msdActs = dataExtract(actTimes)
 
         maxTbl = Table([], 0, None, None)
 
         for curAct in ActLst:
 
-            # print(f"\t\t\t\tActiv.: {curAct.tm}")
-            # print(f"\t\t\t\t\tActiv. free   : {curAct.fr}")
-            # print(f"\t\t\t\t\tActiv. missed : {curAct.ms}")
-            # print()
-
             curTbl = Table([curAct.tm], 1, curAct.fr, curAct.ms)
 
             maxTbl = fndMaxTable(curTbl, maxTbl)
 
-        # print()
-
-        # print(f"\t\t\tMax Table:")
-        # print(f"\t\t\t\tSched.: {maxTbl.sch}")
-        # print(f"\t\t\t\tActiv. count: {maxTbl.cnt}")
-
-        print(f"{maxTbl.cnt}")
+        print(maxTbl.cnt)
 
         # if (case+1) < caseNum:
         #     print("\n")
