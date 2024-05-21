@@ -258,6 +258,22 @@ def fndMaxTable_BFS(curTbl, maxTbl):
     return maxTbl
 
 
+def fndMaxAct_End(actTimes):
+
+    actCnt = 0
+    prevEnd = 0
+
+    for act in actTimes:
+        strAct, endAct = act[0], act[1]
+
+        if strAct >= prevEnd:
+
+            actCnt += 1
+            prevEnd = endAct
+
+    return actCnt
+
+
 if __name__ == "__main__":
 
     print("Input:")
@@ -283,6 +299,11 @@ if __name__ == "__main__":
 
         actTimes = actSort_Prt(actTimes)
 
+        maxAct = fndMaxAct_End(actTimes)
+
+        print(f"\t\t\tMax num. act.: {maxAct}")
+
+        """
         maxTbl = Table([], 0, None, None)
 
         for curAct in actTimes:
@@ -304,6 +325,7 @@ if __name__ == "__main__":
         print(f"\t\t\t\tActiv. count: {maxTbl.cnt}")
         # print(f"\t\t\t\tActiv. free   : {maxTbl.frAct}")
         # print(f"\t\t\t\tActiv. missed : {maxTbl.msAct}")
+        """
 
         if (case+1) < caseNum:
             print("\n")
@@ -341,22 +363,7 @@ Input:
 				2. (3, 9)
 				3. (6, 9)
 
-				Activ.: (2, 8)
-					Activ. free   : []
-					Activ. missed : [(3, 9), (6, 9)]
-
-				Activ.: (3, 9)
-					Activ. free   : []
-					Activ. missed : [(2, 8), (6, 9)]
-
-				Activ.: (6, 9)
-					Activ. free   : []
-					Activ. missed : [(3, 9), (2, 8)]
-
-
-			Max Table:
-				Sched.: [(2, 8)]
-				Activ. count: 1
+			Max num. act.: 1
 
 
 		2. Case
@@ -369,26 +376,7 @@ Input:
 				3. (7, 8)
 				4. (1, 8)
 
-				Activ.: (1, 7)
-					Activ. free   : [(7, 8)]
-					Activ. missed : [(5, 8), (1, 8)]
-
-				Activ.: (5, 8)
-					Activ. free   : []
-					Activ. missed : [(1, 7), (7, 8), (1, 8)]
-
-				Activ.: (7, 8)
-					Activ. free   : [(1, 7)]
-					Activ. missed : [(5, 8), (1, 8)]
-
-				Activ.: (1, 8)
-					Activ. free   : []
-					Activ. missed : [(1, 7), (5, 8), (7, 8)]
-
-
-			Max Table:
-				Sched.: [(1, 7), (7, 8)]
-				Activ. count: 2
+			Max num. act.: 2
 
 
 		3. Case
@@ -403,34 +391,7 @@ Input:
 				5. (0, 10)
 				6. (4, 10)
 
-				Activ.: (4, 5)
-					Activ. free   : [(7, 9), (8, 9), (5, 7)]
-					Activ. missed : [(0, 10), (4, 10)]
-
-				Activ.: (5, 7)
-					Activ. free   : [(7, 9), (4, 5), (8, 9)]
-					Activ. missed : [(0, 10), (4, 10)]
-
-				Activ.: (7, 9)
-					Activ. free   : [(4, 5), (5, 7)]
-					Activ. missed : [(0, 10), (8, 9), (4, 10)]
-
-				Activ.: (8, 9)
-					Activ. free   : [(4, 5), (5, 7)]
-					Activ. missed : [(7, 9), (0, 10), (4, 10)]
-
-				Activ.: (0, 10)
-					Activ. free   : []
-					Activ. missed : [(7, 9), (4, 5), (8, 9), (4, 10), (5, 7)]
-
-				Activ.: (4, 10)
-					Activ. free   : []
-					Activ. missed : [(7, 9), (0, 10), (4, 5), (8, 9), (5, 7)]
-
-
-			Max Table:
-				Sched.: [(4, 5), (7, 9), (5, 7)]
-				Activ. count: 3
+			Max num. act.: 3
 
 Process finished with exit code 0
 
