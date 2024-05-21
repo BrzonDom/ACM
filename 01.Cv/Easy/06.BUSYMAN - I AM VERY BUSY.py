@@ -71,6 +71,15 @@ InputRaw_Str = """
 
 InputRaw_Str = InputRaw_Str[1:-1]
 
+
+class Act:
+    def __init__(self, tm, ct, fr, ms):
+        self.tm = tm
+        self.ct = ct
+        self.fr = fr
+        self.ms = ms
+
+
 if __name__ == "__main__":
 
     print("Input:")
@@ -112,11 +121,15 @@ if __name__ == "__main__":
         freeMss = {}
         freeCnt = {}
 
+        ActLst = []
+
         for curTm in actTimes:
 
             freeAct[curTm] = []
             freeMss[curTm] = []
-            freeCnt[curTm] = 1
+            freeCnt[curTm] = 0
+
+            curAct = Act(curTm, 0, [], [])
 
             for nxtTm in actTimes:
 
@@ -128,16 +141,29 @@ if __name__ == "__main__":
                     freeCnt[curTm] += 1
                     freeAct[curTm] += [nxtTm]
 
+                    curAct.ct += 1
+                    curAct.fr.append(nxtTm)
+
                 else:
                     freeMss[curTm] += [nxtTm]
 
+                    curAct.ms.append(nxtTm)
+
             # print(f"\t\t{str(curTm):8} [{freeCnt[curTm]}] : {freeAct[curTm]}")
 
-            print(f"\t\t\t\tActiv.: {curTm}")
-            print(f"\t\t\t\t\tActiv. count  : {freeCnt[curTm]}")
-            print(f"\t\t\t\t\tActiv. free   : {freeAct[curTm]}")
-            print(f"\t\t\t\t\tActiv. missed : {freeMss[curTm]}")
+            ActLst.append(curAct)
+
+            print(f"\t\t\t\tActiv.: {curAct.tm}")
+            print(f"\t\t\t\t\tActiv. count  : {curAct.ct}")
+            print(f"\t\t\t\t\tActiv. free   : {curAct.fr}")
+            print(f"\t\t\t\t\tActiv. missed : {curAct.ms}")
             print()
+
+            # print(f"\t\t\t\tActiv.: {curTm}")
+            # print(f"\t\t\t\t\tActiv. count  : {freeCnt[curTm]}")
+            # print(f"\t\t\t\t\tActiv. free   : {freeAct[curTm]}")
+            # print(f"\t\t\t\t\tActiv. missed : {freeMss[curTm]}")
+            # print()
 
         if (case+1) < caseNum:
             print("\n")
@@ -176,17 +202,17 @@ Input:
 				3. (6, 9)
 
 				Activ.: (3, 9)
-					Activ. count  : 1
+					Activ. count  : 0
 					Activ. free   : []
 					Activ. missed : [(2, 8), (6, 9)]
 
 				Activ.: (2, 8)
-					Activ. count  : 1
+					Activ. count  : 0
 					Activ. free   : []
 					Activ. missed : [(3, 9), (6, 9)]
 
 				Activ.: (6, 9)
-					Activ. count  : 1
+					Activ. count  : 0
 					Activ. free   : []
 					Activ. missed : [(3, 9), (2, 8)]
 
@@ -203,22 +229,22 @@ Input:
 				4. (1, 8)
 
 				Activ.: (1, 7)
-					Activ. count  : 2
+					Activ. count  : 1
 					Activ. free   : [(7, 8)]
 					Activ. missed : [(5, 8), (1, 8)]
 
 				Activ.: (5, 8)
-					Activ. count  : 1
+					Activ. count  : 0
 					Activ. free   : []
 					Activ. missed : [(1, 7), (7, 8), (1, 8)]
 
 				Activ.: (7, 8)
-					Activ. count  : 2
+					Activ. count  : 1
 					Activ. free   : [(1, 7)]
 					Activ. missed : [(5, 8), (1, 8)]
 
 				Activ.: (1, 8)
-					Activ. count  : 1
+					Activ. count  : 0
 					Activ. free   : []
 					Activ. missed : [(1, 7), (5, 8), (7, 8)]
 
@@ -237,32 +263,32 @@ Input:
 				6. (5, 7)
 
 				Activ.: (7, 9)
-					Activ. count  : 3
+					Activ. count  : 2
 					Activ. free   : [(4, 5), (5, 7)]
 					Activ. missed : [(0, 10), (8, 9), (4, 10)]
 
 				Activ.: (0, 10)
-					Activ. count  : 1
+					Activ. count  : 0
 					Activ. free   : []
 					Activ. missed : [(7, 9), (4, 5), (8, 9), (4, 10), (5, 7)]
 
 				Activ.: (4, 5)
-					Activ. count  : 4
+					Activ. count  : 3
 					Activ. free   : [(7, 9), (8, 9), (5, 7)]
 					Activ. missed : [(0, 10), (4, 10)]
 
 				Activ.: (8, 9)
-					Activ. count  : 3
+					Activ. count  : 2
 					Activ. free   : [(4, 5), (5, 7)]
 					Activ. missed : [(7, 9), (0, 10), (4, 10)]
 
 				Activ.: (4, 10)
-					Activ. count  : 1
+					Activ. count  : 0
 					Activ. free   : []
 					Activ. missed : [(7, 9), (0, 10), (4, 5), (8, 9), (5, 7)]
 
 				Activ.: (5, 7)
-					Activ. count  : 4
+					Activ. count  : 3
 					Activ. free   : [(7, 9), (4, 5), (8, 9)]
 					Activ. missed : [(0, 10), (4, 10)]
 
