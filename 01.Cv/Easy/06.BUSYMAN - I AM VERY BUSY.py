@@ -214,13 +214,14 @@ if __name__ == "__main__":
             curTbl = Table([curAct.tm], 1, curAct.fr, curAct.ms)
 
             maxTbl = fndMaxTable(curTbl, maxTbl)
+
         print()
 
         print(f"\t\t\tMax Table:")
         print(f"\t\t\t\tSched.: {maxTbl.sch}")
-        print(f"\t\t\t\tActiv. count  : {maxTbl.cnt}")
-        print(f"\t\t\t\tActiv. free   : {maxTbl.frAct}")
-        print(f"\t\t\t\tActiv. missed : {maxTbl.msAct}")
+        print(f"\t\t\t\tActiv. count: {maxTbl.cnt}")
+        # print(f"\t\t\t\tActiv. free   : {maxTbl.frAct}")
+        # print(f"\t\t\t\tActiv. missed : {maxTbl.msAct}")
 
         if (case+1) < caseNum:
             print("\n")
@@ -273,9 +274,7 @@ Input:
 
 			Max Table:
 				Sched.: [(3, 9)]
-				Activ. count  : 1
-				Activ. free   : []
-				Activ. missed : [(2, 8), (6, 9)]
+				Activ. count: 1
 
 
 		2. Case
@@ -307,9 +306,7 @@ Input:
 
 			Max Table:
 				Sched.: [(1, 7), (7, 8)]
-				Activ. count  : 2
-				Activ. free   : []
-				Activ. missed : [(1, 8), (5, 8)]
+				Activ. count: 2
 
 
 		3. Case
@@ -351,9 +348,7 @@ Input:
 
 			Max Table:
 				Sched.: [(7, 9), (4, 5), (5, 7)]
-				Activ. count  : 3
-				Activ. free   : []
-				Activ. missed : [(4, 10), (8, 9), (0, 10)]
+				Activ. count: 3
 
 Process finished with exit code 0
 
