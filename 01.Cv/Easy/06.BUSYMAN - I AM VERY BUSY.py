@@ -110,9 +110,15 @@ def dataExtract_Prt(actTimes):
 
     ActLst = []
 
+    frdActs = {}
+    msdActs = {}
+
     for curTm in actTimes:
 
         curAct = Act(curTm, 0, [], [])
+
+        frdActs[curTm] = []
+        msdActs[curTm] = []
 
         for nxtTm in actTimes:
 
@@ -123,18 +129,22 @@ def dataExtract_Prt(actTimes):
                 curAct.ct += 1
                 curAct.addFr(nxtTm)
 
+                frdActs[curTm].append(nxtTm)
+
             else:
                 curAct.addMs(nxtTm)
 
+                msdActs[curTm].append(nxtTm)
+
         ActLst.append(curAct)
 
-        print(f"\t\t\t\tActiv.: {curAct.tm}")
-        print(f"\t\t\t\t\tActiv. count  : {curAct.ct}")
-        print(f"\t\t\t\t\tActiv. free   : {curAct.fr}")
-        print(f"\t\t\t\t\tActiv. missed : {curAct.ms}")
-        print()
+        # print(f"\t\t\t\tActiv.: {curAct.tm}")
+        # print(f"\t\t\t\t\tActiv. count  : {curAct.ct}")
+        # print(f"\t\t\t\t\tActiv. free   : {curAct.fr}")
+        # print(f"\t\t\t\t\tActiv. missed : {curAct.ms}")
+        # print()
 
-    return ActLst
+    return ActLst, frdActs, msdActs
 
 
 if __name__ == "__main__":
@@ -157,33 +167,15 @@ if __name__ == "__main__":
 
         actTimes, actNum = inDataRead_Prt(InLines)
 
-        # ActLst = []
-        #
-        # for curTm in actTimes:
-        #
-        #     curAct = Act(curTm, 0, [], [])
-        #
-        #     for nxtTm in actTimes:
-        #
-        #         if curTm == nxtTm:
-        #             continue
-        #
-        #         elif nxtTm[0] >= curTm[1] or nxtTm[1] <= curTm[0]:
-        #             curAct.ct += 1
-        #             curAct.addFr(nxtTm)
-        #
-        #         else:
-        #             curAct.addMs(nxtTm)
-        #
-        #     ActLst.append(curAct)
-        #
-        #     print(f"\t\t\t\tActiv.: {curAct.tm}")
-        #     print(f"\t\t\t\t\tActiv. count  : {curAct.ct}")
-        #     print(f"\t\t\t\t\tActiv. free   : {curAct.fr}")
-        #     print(f"\t\t\t\t\tActiv. missed : {curAct.ms}")
-        #     print()
+        ActLst, frdActs, msdActs = dataExtract_Prt(actTimes)
 
-        ActLst = dataExtract_Prt(actTimes)
+        for curAct in ActLst:
+
+            print(f"\t\t\t\tActiv.: {curAct.tm}")
+            print(f"\t\t\t\t\tActiv. count  : {curAct.ct}")
+            print(f"\t\t\t\t\tActiv. free   : {curAct.fr}")
+            print(f"\t\t\t\t\tActiv. missed : {curAct.ms}")
+            print()
 
         if (case+1) < caseNum:
             print("\n")
