@@ -70,7 +70,7 @@ InputRaw_Str = """
 
 InputRaw_Str = InputRaw_Str[1:-1]
 
-
+"""
 def dataRead_Prt(InLines):
 
     actNum = int(InLines.pop(0))
@@ -246,7 +246,7 @@ def fndMaxTable_BFS(curTbl, maxTbl, frdActs, msdActs):
         maxTbl = curTbl
 
     return maxTbl
-
+"""
 
 """__Code__"""
 
@@ -255,12 +255,12 @@ import sys
 
 def inDataExtract():
 
-    actNum = int(input())
+    actNum = int(sys.stdin.readline())
 
     actTimes = []
 
     for act in range(actNum):
-        actTimes.append(tuple(map(int, input().split())))
+        actTimes.append(tuple(map(int, sys.stdin.readline().split())))
 
     actTimes.sort(key=lambda tm: tm[1])
 
