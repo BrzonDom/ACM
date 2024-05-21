@@ -50,9 +50,10 @@ def infExtrc(lineInf, lineHtls):
     return htlNum, mnyNum, Htls
 
 
-def fndMaxMny_For(Htls, mnyNum):
-    mnyMax = 0
-    htlMax = []
+def fndMaxMny_ForPrt(Htls, mnyNum):
+
+    maxMny = 0
+    maxHtls = []
 
     for sH, strHtl in enumerate(Htls):
 
@@ -61,25 +62,28 @@ def fndMaxMny_For(Htls, mnyNum):
             if sum(Htls[sH:sH + eH + 1]) > mnyNum:
                 break
 
-            elif sum(Htls[sH:sH + eH + 1]) > mnyMax:
-                mnyMax = sum(Htls[sH:sH + eH + 1])
-                htlMax = Htls[sH:sH + eH + 1]
+            elif sum(Htls[sH:sH + eH + 1]) > maxMny:
+                maxMny = sum(Htls[sH:sH + eH + 1])
+                maxHtls = Htls[sH:sH + eH + 1]
 
             print(f"\t\t\t{Htls[sH:sH + eH + 1]} ({sum(Htls[sH:sH + eH + 1])})")
 
-        if mnyMax == mnyNum:
+        if maxMny == mnyNum:
             break
     print()
 
-    return mnyMax, htlMax
+    return maxMny, maxHtls
 
 
-def fndMaxMny_Ptr(Htls, mnyNum):
+def fndMaxMny_TwoPrt(Htls, mnyNum):
 
     htlNum = len(Htls)
 
     strHs = 0
     endHs = 1
+
+    maxMny = 0
+    maxHtls = []
 
     while endHs <= htlNum:
 
@@ -88,14 +92,23 @@ def fndMaxMny_Ptr(Htls, mnyNum):
 
         print(f"\t\t\t{strHs} | {endHs} : {Htls[strHs:endHs]} ({sumHtls})")
 
-        if sum(Htls[strHs:endHs]) < mnyNum:
+        if sumHtls < mnyNum:
             endHs += 1
 
-        elif sum(Htls[strHs:endHs]) > mnyNum:
+            if sumHtls > maxMny:
+                maxMny = sumHtls
+                maxHtls = curHtls
+
+        elif sumHtls > mnyNum:
             strHs += 1
 
-        else:
-            endHs += 1
+        elif sumHtls == mnyNum:
+            maxMny = mnyNum
+            maxHtls = curHtls
+
+            return maxHtls, maxMny
+
+    return maxHtls, maxMny
 
 
 if __name__ == "__main__":
@@ -128,12 +141,12 @@ if __name__ == "__main__":
         # print(f"\t\tHotels: {Htls}")
         # print()
 
-        fndMaxMny_Ptr(Htls, mnyNum)
+        fndMaxMny_TwoPrt(Htls, mnyNum)
 
-        # mnyMax, htlMax = fndMaxMny_For(Htls, mnyNum)
+        # maxMny, maxHtls = fndMaxMny_ForPrt(Htls, mnyNum)
 
-        # mnyMax = 0
-        # htlMax = []
+        # maxMny = 0
+        # maxHtls = []
         #
         # for sH, strHtl in enumerate(Htls):
         #
@@ -142,18 +155,18 @@ if __name__ == "__main__":
         #         if sum(Htls[sH:sH+eH+1]) > mnyNum:
         #             break
         #
-        #         elif sum(Htls[sH:sH+eH+1]) > mnyMax:
-        #             mnyMax = sum(Htls[sH:sH+eH+1])
-        #             htlMax = Htls[sH:sH+eH+1]
+        #         elif sum(Htls[sH:sH+eH+1]) > maxMny:
+        #             maxMny = sum(Htls[sH:sH+eH+1])
+        #             maxHtls = Htls[sH:sH+eH+1]
         #
         #         print(f"\t\t\t{Htls[sH:sH + eH + 1]} ({sum(Htls[sH:sH + eH + 1])})")
         #
-        #     if mnyMax == mnyNum:
+        #     if maxMny == mnyNum:
         #         break
         # print()
 
-        # print(f"\t\tMax money: {mnyMax}")
-        # print(f"\t\tMax hotels: {htlMax}")
+        # print(f"\t\tMax money: {maxMny}")
+        # print(f"\t\tMax hotels: {maxHtls}")
 
         print("\n")
 
