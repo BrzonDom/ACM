@@ -50,20 +50,6 @@ def infExtrc_Prt(lineInf, lineHtls):
     return htlNum, mnyNum, Htls
 
 
-def infExtrc(lineInf, lineHtls):
-
-    htlNum, mnyNum = list(map(int, lineInf.split()))
-    # print(f"\t\tNum. of hotels: {htlNum}")
-    # print(f"\t\tNum. of money:  {mnyNum}")
-    # print()
-
-    Htls = list(map(int, lineHtls.split()))
-    # print(f"\t\tHotels: {Htls}")
-    # print()
-
-    return htlNum, mnyNum, Htls
-
-
 def fndMaxMny_ForPrt(Htls, mnyNum):
 
     maxMny = 0
@@ -125,6 +111,17 @@ def fndMaxMny_TwoPrt(Htls, mnyNum):
     return maxHtls, maxMny
 
 
+"""__Code__"""
+
+def infExtrc(lineInf, lineHtls):
+
+    htlNum, mnyNum = list(map(int, lineInf.split()))
+
+    Htls = list(map(int, lineHtls.split()))
+
+    return htlNum, mnyNum, Htls
+
+
 def fndMaxMny_Two(Htls, mnyNum):
 
     htlNum = len(Htls)
@@ -139,8 +136,6 @@ def fndMaxMny_Two(Htls, mnyNum):
 
         curHtls = Htls[strHs:endHs]
         sumHtls = sum(curHtls)
-
-        # print(f"\t\t\t{strHs} | {endHs} : {Htls[strHs:endHs]} ({sumHtls})")
 
         if sumHtls < mnyNum:
             endHs += 1
@@ -160,6 +155,7 @@ def fndMaxMny_Two(Htls, mnyNum):
 
     return maxHtls, maxMny
 
+
 if __name__ == "__main__":
 
     print("Input:")
@@ -172,17 +168,17 @@ if __name__ == "__main__":
     # htlNum, mnyNum, Htls = infExtrc_Prt(lineInf, lineHtls)
     htlNum, mnyNum, Htls = infExtrc(lineInf, lineHtls)
 
-    # htlNum, mnyNum = list(map(int, lineInf.split()))
     # print(f"\t\tNum. of hotels: {htlNum}")
     # print(f"\t\tNum. of money:  {mnyNum}")
     # print()
-    #
-    # Htls = list(map(int, lineHtls.split()))
+
     # print(f"\t\tHotels: {Htls}")
     # print()
 
     # maxHtls, maxMny = fndMaxMny_TwoPrt(Htls, mnyNum)
     maxHtls, maxMny = fndMaxMny_Two(Htls, mnyNum)
+
+    print(maxMny)
 
     # print()
 
@@ -210,8 +206,6 @@ if __name__ == "__main__":
 
     # print(f"\t\tMax money: {maxMny}")
     # print(f"\t\tMax hotels: {maxHtls}")
-
-    print(maxMny)
 
     # print("\n")
 
