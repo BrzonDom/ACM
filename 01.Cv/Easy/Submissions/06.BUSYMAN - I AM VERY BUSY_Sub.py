@@ -267,6 +267,22 @@ def fndMaxTable_BFS(curTbl, maxTbl):
     return maxTbl
 
 
+def fndMaxAct_End(actTimes):
+
+    actCnt = 0
+    prevEnd = 0
+
+    for act in actTimes:
+        strAct, endAct = act[0], act[1]
+
+        if strAct >= prevEnd:
+
+            actCnt += 1
+            prevEnd = endAct
+
+    return actCnt
+
+
 if __name__ == "__main__":
 
     # print("Input:")
@@ -282,19 +298,25 @@ if __name__ == "__main__":
 
         # actTimes, actNum = inDataRead_Prt(InLines)
         # actTimes, actNum = inDataRead_In_Prt()
-        actTimes, actNum = inDataRead()
+        # actTimes, actNum = inDataRead()
+
+        actTimes, actNum = inDataExtract()
 
         frdActs, msdActs = actExtract(actTimes)
 
-        maxTbl = Table([], 0, None, None)
+        maxAct = fndMaxAct_End(actTimes)
 
-        for curAct in actTimes:
+        print(maxAct)
 
-            curTbl = Table([curAct], 1, frdActs[curAct], msdActs[curAct])
-
-            maxTbl = fndMaxTable_BFS(curTbl, maxTbl)
-
-        print(maxTbl.cnt)
+        # maxTbl = Table([], 0, None, None)
+        #
+        # for curAct in actTimes:
+        #
+        #     curTbl = Table([curAct], 1, frdActs[curAct], msdActs[curAct])
+        #
+        #     maxTbl = fndMaxTable_BFS(curTbl, maxTbl)
+        #
+        # print(maxTbl.cnt)
 
         # if (case+1) < caseNum:
         #     print("\n")
