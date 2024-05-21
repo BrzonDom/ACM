@@ -133,6 +133,33 @@ def dataRead(InLines):
     return actTimes, actNum
 
 
+def dataExtract(InLines):
+
+    actNum = int(InLines.pop(0))
+
+    actTimes = []
+
+    for act in range(actNum):
+        actTimes.append(tuple(map(int, InLines.pop(0).split())))
+
+    actTimes.sort(key=lambda tm: tm[1])
+
+    return actTimes, actNum
+
+
+def actPrint(actTimes):
+
+    actNum = len(actTimes)
+
+    print(f"\t\t\tAct. num.: {actNum}")
+    print()
+
+    for a, act in enumerate(actTimes):
+
+        print(f"\t\t\t\t{a+1}. {act}")
+    print()
+
+
 def actExtract_Prt(actTimes):
 
     # ActLst = []
@@ -292,12 +319,16 @@ if __name__ == "__main__":
         print(f"\t\t{case+1}. Case")
         print()
 
-        actTimes, actNum = dataRead(InLines)
+        # actTimes, actNum = dataRead(InLines)
+        #
+        # # ActLst, frdActs, msdActs = actExtract_Prt(actTimes)
+        # frdActs, msdActs = actExtract(actTimes)
+        #
+        # actTimes = actSort_Prt(actTimes)
 
-        # ActLst, frdActs, msdActs = actExtract_Prt(actTimes)
-        frdActs, msdActs = actExtract(actTimes)
+        actTimes, actNum = dataExtract(InLines)
 
-        actTimes = actSort_Prt(actTimes)
+        actPrint(actTimes)
 
         maxAct = fndMaxAct_End(actTimes)
 
@@ -358,7 +389,6 @@ Input:
 
 			Act. num.: 3
 
-			Activities:
 				1. (2, 8)
 				2. (3, 9)
 				3. (6, 9)
@@ -370,7 +400,6 @@ Input:
 
 			Act. num.: 4
 
-			Activities:
 				1. (1, 7)
 				2. (5, 8)
 				3. (7, 8)
@@ -383,7 +412,6 @@ Input:
 
 			Act. num.: 6
 
-			Activities:
 				1. (4, 5)
 				2. (5, 7)
 				3. (7, 9)
