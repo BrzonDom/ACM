@@ -135,6 +135,18 @@ def inDataRead_In_Prt():
     return actTimes, actNum
 
 
+def inDataRead_In():
+
+    actNum = int(input())
+
+    actTimes = []
+
+    for act in range(actNum):
+        actTimes.append(tuple(map(int, input().split())))
+
+    return actTimes, actNum
+
+
 def dataExtract_Prt(actTimes):
 
     ActLst = []
@@ -212,17 +224,17 @@ if __name__ == "__main__":
     # caseNum = int(InLines.pop(0))
     caseNum = int(input())
 
-    print(f"\tCases: {caseNum}")
-    print()
+    # print(f"\tCases: {caseNum}")
+    # print()
 
     for case in range(caseNum):
 
-        print(f"\t\t{case+1}. Case")
-        print()
+        # print(f"\t\t{case+1}. Case")
+        # print()
 
         # actTimes, actNum = inDataRead_Prt(InLines)
-        actTimes, actNum = inDataRead_In_Prt()
-
+        # actTimes, actNum = inDataRead_In_Prt()
+        actTimes, actNum = inDataRead_In()
 
         ActLst, frdActs, msdActs = dataExtract_Prt(actTimes)
 
@@ -230,148 +242,22 @@ if __name__ == "__main__":
 
         for curAct in ActLst:
 
-            print(f"\t\t\t\tActiv.: {curAct.tm}")
-            print(f"\t\t\t\t\tActiv. free   : {curAct.fr}")
-            print(f"\t\t\t\t\tActiv. missed : {curAct.ms}")
-            print()
+            # print(f"\t\t\t\tActiv.: {curAct.tm}")
+            # print(f"\t\t\t\t\tActiv. free   : {curAct.fr}")
+            # print(f"\t\t\t\t\tActiv. missed : {curAct.ms}")
+            # print()
 
             curTbl = Table([curAct.tm], 1, curAct.fr, curAct.ms)
 
             maxTbl = fndMaxTable(curTbl, maxTbl)
 
-        print()
+        # print()
 
-        print(f"\t\t\tMax Table:")
-        print(f"\t\t\t\tSched.: {maxTbl.sch}")
-        print(f"\t\t\t\tActiv. count: {maxTbl.cnt}")
+        # print(f"\t\t\tMax Table:")
+        # print(f"\t\t\t\tSched.: {maxTbl.sch}")
+        # print(f"\t\t\t\tActiv. count: {maxTbl.cnt}")
 
-        if (case+1) < caseNum:
-            print("\n")
+        print(f"{maxTbl.cnt}")
 
-
-"""__Output__"""
-"""
-Input:
-3
-3
-3 9
-2 8
-6 9
-4
-1 7
-5 8
-7 8
-1 8
-6
-7 9
-0 10
-4 5
-8 9
-4 10
-5 7
-
-	Cases: 3
-
-		1. Case
-
-			Act. num.: 3
-
-			Activities:
-				1. (3, 9)
-				2. (2, 8)
-				3. (6, 9)
-
-				Activ.: (3, 9)
-					Activ. free   : []
-					Activ. missed : [(2, 8), (6, 9)]
-
-				Activ.: (2, 8)
-					Activ. free   : []
-					Activ. missed : [(3, 9), (6, 9)]
-
-				Activ.: (6, 9)
-					Activ. free   : []
-					Activ. missed : [(3, 9), (2, 8)]
-
-
-			Max Table:
-				Sched.: [(3, 9)]
-				Activ. count: 1
-
-
-		2. Case
-
-			Act. num.: 4
-
-			Activities:
-				1. (1, 7)
-				2. (5, 8)
-				3. (7, 8)
-				4. (1, 8)
-
-				Activ.: (1, 7)
-					Activ. free   : [(7, 8)]
-					Activ. missed : [(5, 8), (1, 8)]
-
-				Activ.: (5, 8)
-					Activ. free   : []
-					Activ. missed : [(1, 7), (7, 8), (1, 8)]
-
-				Activ.: (7, 8)
-					Activ. free   : [(1, 7)]
-					Activ. missed : [(5, 8), (1, 8)]
-
-				Activ.: (1, 8)
-					Activ. free   : []
-					Activ. missed : [(1, 7), (5, 8), (7, 8)]
-
-
-			Max Table:
-				Sched.: [(1, 7), (7, 8)]
-				Activ. count: 2
-
-
-		3. Case
-
-			Act. num.: 6
-
-			Activities:
-				1. (7, 9)
-				2. (0, 10)
-				3. (4, 5)
-				4. (8, 9)
-				5. (4, 10)
-				6. (5, 7)
-
-				Activ.: (7, 9)
-					Activ. free   : [(4, 5), (5, 7)]
-					Activ. missed : [(0, 10), (8, 9), (4, 10)]
-
-				Activ.: (0, 10)
-					Activ. free   : []
-					Activ. missed : [(7, 9), (4, 5), (8, 9), (4, 10), (5, 7)]
-
-				Activ.: (4, 5)
-					Activ. free   : [(7, 9), (8, 9), (5, 7)]
-					Activ. missed : [(0, 10), (4, 10)]
-
-				Activ.: (8, 9)
-					Activ. free   : [(4, 5), (5, 7)]
-					Activ. missed : [(7, 9), (0, 10), (4, 10)]
-
-				Activ.: (4, 10)
-					Activ. free   : []
-					Activ. missed : [(7, 9), (0, 10), (4, 5), (8, 9), (5, 7)]
-
-				Activ.: (5, 7)
-					Activ. free   : [(7, 9), (4, 5), (8, 9)]
-					Activ. missed : [(0, 10), (4, 10)]
-
-
-			Max Table:
-				Sched.: [(7, 9), (4, 5), (5, 7)]
-				Activ. count: 3
-
-Process finished with exit code 0
-
-"""
+        # if (case+1) < caseNum:
+        #     print("\n")
