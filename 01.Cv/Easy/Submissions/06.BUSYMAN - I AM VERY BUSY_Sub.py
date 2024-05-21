@@ -71,7 +71,7 @@ InputRaw_Str = """
 InputRaw_Str = InputRaw_Str[1:-1]
 
 
-def inDataRead_Prt(InLines):
+def dataRead_Prt(InLines):
 
     actNum = int(InLines.pop(0))
 
@@ -91,7 +91,27 @@ def inDataRead_Prt(InLines):
     return actTimes, actNum
 
 
-def inDataRead_In_Prt():
+def dataRead(InLines):
+
+    actNum = int(InLines.pop(0))
+
+    # print(f"\t\t\tAct. num.: {actNum}")
+    # print()
+    #
+    # print("\t\t\tActivities:")
+
+    actTimes = []
+
+    for act in range(actNum):
+        actTimes.append(tuple(map(int, InLines.pop(0).split())))
+
+    #     print(f"\t\t\t\t{act + 1}. {actTimes[-1]}")
+    # print()
+
+    return actTimes, actNum
+
+
+def inDataRead_Prt():
 
     # actNum = int(InLines.pop(0))
     actNum = int(input())
@@ -127,7 +147,7 @@ class Act:
         self.ms.append(nxtMs)
 
 
-def dataExtractAct(actTimes):
+def actExtractAct(actTimes):
 
     ActLst = []
 
@@ -175,7 +195,7 @@ class Table:
         self.msAct = msAct
 
 
-def inDataRead_In():
+def inDataRead():
 
     actNum = int(sys.stdin.readline())
 
@@ -187,7 +207,21 @@ def inDataRead_In():
     return actTimes, actNum
 
 
-def dataExtract(actTimes):
+def inDataExtract():
+
+    actNum = int(input())
+
+    actTimes = []
+
+    for act in range(actNum):
+        actTimes.append(tuple(map(int, input().split())))
+
+    actTimes.sort(key=lambda tm: tm[1])
+
+    return actTimes, actNum
+
+
+def actExtract(actTimes):
 
     frdActs = {}
     msdActs = {}
@@ -211,7 +245,7 @@ def dataExtract(actTimes):
     return frdActs, msdActs
 
 
-def fndMaxTable(curTbl, maxTbl):
+def fndMaxTable_BFS(curTbl, maxTbl):
 
     for nxtTm in curTbl.frAct:
 
@@ -225,7 +259,7 @@ def fndMaxTable(curTbl, maxTbl):
 
         nxtTbl = Table(nxtSch, nxtCnt, nxtFrd, nxtMsd)
 
-        return fndMaxTable(nxtTbl, maxTbl)
+        return fndMaxTable_BFS(nxtTbl, maxTbl)
 
     if curTbl.cnt > maxTbl.cnt:
         maxTbl = curTbl
@@ -248,9 +282,9 @@ if __name__ == "__main__":
 
         # actTimes, actNum = inDataRead_Prt(InLines)
         # actTimes, actNum = inDataRead_In_Prt()
-        actTimes, actNum = inDataRead_In()
+        actTimes, actNum = inDataRead()
 
-        frdActs, msdActs = dataExtract(actTimes)
+        frdActs, msdActs = actExtract(actTimes)
 
         maxTbl = Table([], 0, None, None)
 
@@ -258,7 +292,7 @@ if __name__ == "__main__":
 
             curTbl = Table([curAct], 1, frdActs[curAct], msdActs[curAct])
 
-            maxTbl = fndMaxTable(curTbl, maxTbl)
+            maxTbl = fndMaxTable_BFS(curTbl, maxTbl)
 
         print(maxTbl.cnt)
 
