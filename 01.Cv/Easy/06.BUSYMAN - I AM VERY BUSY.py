@@ -124,34 +124,11 @@ if __name__ == "__main__":
         print(f"\t\t{case+1}. Case")
         print()
 
-        # actNum = int(InLines.pop(0))
-        #
-        # print(f"\t\t\tAct. num.: {actNum}")
-        # print()
-        #
-        # print("\t\t\tActivities:")
-        #
-        # actTimes = []
-        #
-        # for act in range(actNum):
-        #     actTimes.append(tuple(map(int, InLines.pop(0).split())))
-        #
-        #     print(f"\t\t\t\t{act+1}. {actTimes[-1]}")
-        # print()
-
         actTimes, actNum = inDataRead_Prt(InLines)
-
-        freeAct = {}
-        freeMss = {}
-        freeCnt = {}
 
         ActLst = []
 
         for curTm in actTimes:
-
-            freeAct[curTm] = []
-            freeMss[curTm] = []
-            freeCnt[curTm] = 0
 
             curAct = Act(curTm, 0, [], [])
 
@@ -161,19 +138,11 @@ if __name__ == "__main__":
                     continue
 
                 elif nxtTm[0] >= curTm[1] or nxtTm[1] <= curTm[0]:
-
-                    freeCnt[curTm] += 1
-                    freeAct[curTm] += [nxtTm]
-
                     curAct.ct += 1
                     curAct.addFr(nxtTm)
 
                 else:
-                    freeMss[curTm] += [nxtTm]
-
                     curAct.addMs(nxtTm)
-
-            # print(f"\t\t{str(curTm):8} [{freeCnt[curTm]}] : {freeAct[curTm]}")
 
             ActLst.append(curAct)
 
@@ -182,12 +151,6 @@ if __name__ == "__main__":
             print(f"\t\t\t\t\tActiv. free   : {curAct.fr}")
             print(f"\t\t\t\t\tActiv. missed : {curAct.ms}")
             print()
-
-            # print(f"\t\t\t\tActiv.: {curTm}")
-            # print(f"\t\t\t\t\tActiv. count  : {freeCnt[curTm]}")
-            # print(f"\t\t\t\t\tActiv. free   : {freeAct[curTm]}")
-            # print(f"\t\t\t\t\tActiv. missed : {freeMss[curTm]}")
-            # print()
 
         if (case+1) < caseNum:
             print("\n")
