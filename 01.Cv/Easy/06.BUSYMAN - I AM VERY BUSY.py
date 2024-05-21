@@ -86,19 +86,35 @@ class Act:
         self.ms.append(nxtMs)
 
 
+def inDataRead_Prt(InLines):
+
+    actNum = int(InLines.pop(0))
+
+    print(f"\t\t\tAct. num.: {actNum}")
+    print()
+
+    print("\t\t\tActivities:")
+
+    actTimes = []
+
+    for act in range(actNum):
+        actTimes.append(tuple(map(int, InLines.pop(0).split())))
+
+        print(f"\t\t\t\t{act + 1}. {actTimes[-1]}")
+    print()
+
+    return actTimes, actNum
+
+
 if __name__ == "__main__":
 
     print("Input:")
     print(InputRaw_Str)
     print()
 
-    InputStr_Lst = InputRaw_Str.split("\n")
-    # print(InputStr_Lst)
-    # print()
+    InLines = InputRaw_Str.split("\n")
 
-    InputOrg_Lst = copy.deepcopy(InputStr_Lst)
-
-    caseNum = int(InputStr_Lst.pop(0))
+    caseNum = int(InLines.pop(0))
 
     print(f"\tCases: {caseNum}")
     print()
@@ -108,20 +124,22 @@ if __name__ == "__main__":
         print(f"\t\t{case+1}. Case")
         print()
 
-        actNum = int(InputStr_Lst.pop(0))
+        # actNum = int(InLines.pop(0))
+        #
+        # print(f"\t\t\tAct. num.: {actNum}")
+        # print()
+        #
+        # print("\t\t\tActivities:")
+        #
+        # actTimes = []
+        #
+        # for act in range(actNum):
+        #     actTimes.append(tuple(map(int, InLines.pop(0).split())))
+        #
+        #     print(f"\t\t\t\t{act+1}. {actTimes[-1]}")
+        # print()
 
-        print(f"\t\t\tAct. num.: {actNum}")
-        print()
-
-        print("\t\t\tActivities:")
-
-        actTimes = []
-
-        for act in range(actNum):
-
-            actTimes.append(tuple(map(int, InputStr_Lst.pop(0).split())))
-            print(f"\t\t\t\t{act+1}. {actTimes[-1]}")
-        print()
+        actTimes, actNum = inDataRead_Prt(InLines)
 
         freeAct = {}
         freeMss = {}
