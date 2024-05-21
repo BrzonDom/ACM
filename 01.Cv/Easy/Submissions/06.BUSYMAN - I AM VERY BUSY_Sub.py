@@ -113,6 +113,28 @@ def inDataRead_Prt(InLines):
     return actTimes, actNum
 
 
+def inDataRead_In_Prt():
+
+    # actNum = int(InLines.pop(0))
+    actNum = int(input())
+
+    print(f"\t\t\tAct. num.: {actNum}")
+    print()
+
+    print("\t\t\tActivities:")
+
+    actTimes = []
+
+    for act in range(actNum):
+        # actTimes.append(tuple(map(int, InLines.pop(0).split())))
+        actTimes.append(tuple(map(int, input().split())))
+
+        print(f"\t\t\t\t{act + 1}. {actTimes[-1]}")
+    print()
+
+    return actTimes, actNum
+
+
 def dataExtract_Prt(actTimes):
 
     ActLst = []
@@ -187,7 +209,8 @@ if __name__ == "__main__":
 
     InLines = InputRaw_Str.split("\n")
 
-    caseNum = int(InLines.pop(0))
+    # caseNum = int(InLines.pop(0))
+    caseNum = int(input())
 
     print(f"\tCases: {caseNum}")
     print()
@@ -197,7 +220,9 @@ if __name__ == "__main__":
         print(f"\t\t{case+1}. Case")
         print()
 
-        actTimes, actNum = inDataRead_Prt(InLines)
+        # actTimes, actNum = inDataRead_Prt(InLines)
+        actTimes, actNum = inDataRead_In_Prt()
+
 
         ActLst, frdActs, msdActs = dataExtract_Prt(actTimes)
 
@@ -206,7 +231,6 @@ if __name__ == "__main__":
         for curAct in ActLst:
 
             print(f"\t\t\t\tActiv.: {curAct.tm}")
-            # print(f"\t\t\t\t\tActiv. count  : {curAct.ct}")
             print(f"\t\t\t\t\tActiv. free   : {curAct.fr}")
             print(f"\t\t\t\t\tActiv. missed : {curAct.ms}")
             print()
@@ -220,8 +244,6 @@ if __name__ == "__main__":
         print(f"\t\t\tMax Table:")
         print(f"\t\t\t\tSched.: {maxTbl.sch}")
         print(f"\t\t\t\tActiv. count: {maxTbl.cnt}")
-        # print(f"\t\t\t\tActiv. free   : {maxTbl.frAct}")
-        # print(f"\t\t\t\tActiv. missed : {maxTbl.msAct}")
 
         if (case+1) < caseNum:
             print("\n")
