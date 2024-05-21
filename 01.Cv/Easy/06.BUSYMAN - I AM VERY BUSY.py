@@ -257,7 +257,7 @@ def actSort_Prt(actTimes):
     return actTimes
 
 
-def fndMaxTable_BFS(curTbl, maxTbl):
+def fndMaxTable_BFS(curTbl, maxTbl, frdActs, msdActs):
 
     for nxtTm in curTbl.frAct:
 
@@ -277,7 +277,7 @@ def fndMaxTable_BFS(curTbl, maxTbl):
         # print(f"\t\t\t\t\t\tActiv. missed : {nxtMsd}")
         # print()
 
-        return fndMaxTable_BFS(nxtTbl, maxTbl)
+        return fndMaxTable_BFS(nxtTbl, maxTbl, frdActs, msdActs)
 
     if curTbl.cnt > maxTbl.cnt:
         maxTbl = curTbl
@@ -347,7 +347,7 @@ if __name__ == "__main__":
 
             curTbl = Table([curAct], 1, frdActs[curAct], msdActs[curAct])
 
-            maxTbl = fndMaxTable_BFS(curTbl, maxTbl)
+            maxTbl = fndMaxTable_BFS(curTbl, maxTbl, frdActs, msdActs)
 
         print()
 
