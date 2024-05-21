@@ -111,17 +111,6 @@ def fndMaxMny_TwoPrt(Htls, mnyNum):
     return maxHtls, maxMny
 
 
-"""__Code__"""
-
-def infExtrc(lineInf, lineHtls):
-
-    htlNum, mnyNum = list(map(int, lineInf.split()))
-
-    Htls = list(map(int, lineHtls.split()))
-
-    return htlNum, mnyNum, Htls
-
-
 def fndMaxMny_Two(Htls, mnyNum):
 
     htlNum = len(Htls)
@@ -154,6 +143,18 @@ def fndMaxMny_Two(Htls, mnyNum):
             return maxHtls, maxMny
 
     return maxHtls, maxMny
+
+
+"""__Code__"""
+
+
+def infExtrc(lineInf, lineHtls):
+
+    htlNum, mnyNum = list(map(int, lineInf.split()))
+
+    Htls = list(map(int, lineHtls.split()))
+
+    return htlNum, mnyNum, Htls
 
 
 def fndMaxMny_Sub(Htls, htlNum, mnyNum):
