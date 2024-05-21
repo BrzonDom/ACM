@@ -111,6 +111,41 @@ def fndMaxMny_TwoPrt(Htls, mnyNum):
     return maxHtls, maxMny
 
 
+def fndMaxMny_Two(Htls, mnyNum):
+
+    htlNum = len(Htls)
+
+    strHs = 0
+    endHs = 1
+
+    maxMny = 0
+    maxHtls = []
+
+    while endHs <= htlNum:
+
+        curHtls = Htls[strHs:endHs]
+        sumHtls = sum(curHtls)
+
+        # print(f"\t\t\t{strHs} | {endHs} : {Htls[strHs:endHs]} ({sumHtls})")
+
+        if sumHtls < mnyNum:
+            endHs += 1
+
+            if sumHtls > maxMny:
+                maxMny = sumHtls
+                maxHtls = curHtls
+
+        elif sumHtls > mnyNum:
+            strHs += 1
+
+        elif sumHtls == mnyNum:
+            maxMny = mnyNum
+            maxHtls = curHtls
+
+            return maxHtls, maxMny
+
+    return maxHtls, maxMny
+
 if __name__ == "__main__":
 
     print("Input:")
@@ -131,9 +166,10 @@ if __name__ == "__main__":
     # print(f"\t\tHotels: {Htls}")
     # print()
 
-    maxMny, maxHtls = fndMaxMny_TwoPrt(Htls, mnyNum)
+    # maxHtls, maxMny = fndMaxMny_TwoPrt(Htls, mnyNum)
+    maxHtls, maxMny = fndMaxMny_Two(Htls, mnyNum)
 
-    print()
+    # print()
 
     # maxMny, maxHtls = fndMaxMny_ForPrt(Htls, mnyNum)
 
@@ -157,8 +193,10 @@ if __name__ == "__main__":
     #         break
     # print()
 
-    print(f"\t\tMax money: {maxMny}")
-    print(f"\t\tMax hotels: {maxHtls}")
+    # print(f"\t\tMax money: {maxMny}")
+    # print(f"\t\tMax hotels: {maxHtls}")
+
+    print(maxMny)
 
     # print("\n")
 
