@@ -71,18 +71,18 @@ InputRaw_Str = """
 InputRaw_Str = InputRaw_Str[1:-1]
 
 
-# class Act:
-#     def __init__(self, tm, ct, fr, ms):
-#         self.tm = tm
-#         self.ct = ct
-#         self.fr = fr
-#         self.ms = ms
-#
-#     def addFr(self, nxtFr):
-#         self.fr.append(nxtFr)
-#
-#     def addMs(self, nxtMs):
-#         self.ms.append(nxtMs)
+class Act:
+    def __init__(self, tm, ct, fr, ms):
+        self.tm = tm
+        self.ct = ct
+        self.fr = fr
+        self.ms = ms
+
+    def addFr(self, nxtFr):
+        self.fr.append(nxtFr)
+
+    def addMs(self, nxtMs):
+        self.ms.append(nxtMs)
 
 
 class Table:
@@ -236,6 +236,41 @@ def actExtract(actTimes):
 
     # return ActLst, frdActs, msdActs
     return frdActs, msdActs
+
+
+def actExtractAct(actTimes):
+
+    ActLst = []
+
+    frdActs = {}
+    msdActs = {}
+
+    for curTm in actTimes:
+
+        curAct = Act(curTm, 0, [], [])
+
+        frdActs[curTm] = []
+        msdActs[curTm] = []
+
+        for nxtTm in actTimes:
+
+            if curTm == nxtTm:
+                continue
+
+            elif nxtTm[0] >= curTm[1] or nxtTm[1] <= curTm[0]:
+                curAct.ct += 1
+                curAct.addFr(nxtTm)
+
+                frdActs[curTm].append(nxtTm)
+
+            else:
+                curAct.addMs(nxtTm)
+
+                msdActs[curTm].append(nxtTm)
+
+        ActLst.append(curAct)
+
+    return ActLst, frdActs, msdActs
 
 
 def actSort_Prt(actTimes):
