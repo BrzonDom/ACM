@@ -115,6 +115,8 @@ def inDataRead_In_Prt():
 
 """__Code__"""
 
+import sys
+
 
 class Act:
     def __init__(self, tm, ct, fr, ms):
@@ -140,12 +142,12 @@ class Table:
 
 def inDataRead_In():
 
-    actNum = int(input())
+    actNum = int(sys.stdin.readline())
 
     actTimes = []
 
     for act in range(actNum):
-        actTimes.append(tuple(map(int, input().split())))
+        actTimes.append(tuple(map(int, sys.stdin.readline().split())))
 
     return actTimes, actNum
 
@@ -216,7 +218,7 @@ if __name__ == "__main__":
     # InLines = InputRaw_Str.split("\n")
 
     # caseNum = int(InLines.pop(0))
-    caseNum = int(input())
+    caseNum = int(sys.stdin.readline())
 
     for case in range(caseNum):
 
