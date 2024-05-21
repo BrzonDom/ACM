@@ -77,7 +77,7 @@ def sumHsPrnt(BuySell):
     print()
 
 
-def mvsHsPrnt(BuySell):
+def mvsHs_Prt(BuySell):
 
     cntMvs = 0
 
@@ -118,6 +118,26 @@ def mvsHsPrnt(BuySell):
     return cntMvs
 
 
+def cntMvsHs_Prt(BuySell, hsNum):
+
+    cntMvs = 0
+
+    for hs in range(1, hsNum):
+
+        cntMvs += abs(BuySell[hs-1])
+
+        BuySell[hs] += BuySell[hs-1]
+        BuySell[hs-1] = 0
+
+        print(f"\t\t\t", end="")
+        for bsHs in BuySell:
+            print(f"{bsHs:5}", end=" ")
+        print()
+    print()
+
+    return cntMvs
+
+
 if __name__ == "__main__":
 
     print("Input:")
@@ -142,11 +162,13 @@ if __name__ == "__main__":
         print(f"\t\tBuy Sell list: {BuySell}")
         print()
 
-        shftHsPrnt(BuySell)
+        # shftHsPrnt(BuySell)
+        #
+        # sumHsPrnt(BuySell)
 
-        sumHsPrnt(BuySell)
+        # cntMvs = mvsHs_Prt(BuySell)
 
-        cntMvs = mvsHsPrnt(BuySell)
+        cntMvs = cntMvsHs_Prt(BuySell, hsNum)
 
         print(f"\t\tNeeded moves: {cntMvs}")
 
