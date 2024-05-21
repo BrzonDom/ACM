@@ -93,7 +93,7 @@ class Table:
         self.msAct = msAct
 
 
-def inDataRead_Prt(InLines):
+def dataRead_Prt(InLines):
 
     actNum = int(InLines.pop(0))
 
@@ -113,7 +113,28 @@ def inDataRead_Prt(InLines):
     return actTimes, actNum
 
 
-def dataExtract_Prt(actTimes):
+def dataRead(InLines):
+
+    actNum = int(InLines.pop(0))
+
+    # print(f"\t\t\tAct. num.: {actNum}")
+    # print()
+    #
+    # print("\t\t\tActivities:")
+
+    actTimes = []
+
+    for act in range(actNum):
+        actTimes.append(tuple(map(int, InLines.pop(0).split())))
+
+    #     print(f"\t\t\t\t{act + 1}. {actTimes[-1]}")
+    # print()
+
+    return actTimes, actNum
+
+
+
+def actExtract_Prt(actTimes):
 
     # ActLst = []
 
@@ -201,10 +222,10 @@ if __name__ == "__main__":
         print(f"\t\t{case+1}. Case")
         print()
 
-        actTimes, actNum = inDataRead_Prt(InLines)
+        actTimes, actNum = dataRead_Prt(InLines)
 
-        # ActLst, frdActs, msdActs = dataExtract_Prt(actTimes)
-        frdActs, msdActs = dataExtract_Prt(actTimes)
+        # ActLst, frdActs, msdActs = actExtract_Prt(actTimes)
+        frdActs, msdActs = actExtract_Prt(actTimes)
 
         maxTbl = Table([], 0, None, None)
 
