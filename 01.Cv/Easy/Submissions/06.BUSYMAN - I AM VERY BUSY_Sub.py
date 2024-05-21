@@ -113,11 +113,6 @@ def inDataRead_In_Prt():
     return actTimes, actNum
 
 
-"""__Code__"""
-
-import sys
-
-
 class Act:
     def __init__(self, tm, ct, fr, ms):
         self.tm = tm
@@ -132,27 +127,7 @@ class Act:
         self.ms.append(nxtMs)
 
 
-class Table:
-    def __init__(self, sch, cnt, frAct, msAct):
-        self.sch = sch
-        self.cnt = cnt
-        self.frAct = frAct
-        self.msAct = msAct
-
-
-def inDataRead_In():
-
-    actNum = int(sys.stdin.readline())
-
-    actTimes = []
-
-    for act in range(actNum):
-        actTimes.append(tuple(map(int, sys.stdin.readline().split())))
-
-    return actTimes, actNum
-
-
-def dataExtract(actTimes):
+def dataExtractAct(actTimes):
 
     ActLst = []
 
@@ -185,6 +160,55 @@ def dataExtract(actTimes):
         ActLst.append(curAct)
 
     return ActLst, frdActs, msdActs
+
+
+"""__Code__"""
+
+import sys
+
+
+class Table:
+    def __init__(self, sch, cnt, frAct, msAct):
+        self.sch = sch
+        self.cnt = cnt
+        self.frAct = frAct
+        self.msAct = msAct
+
+
+def inDataRead_In():
+
+    actNum = int(sys.stdin.readline())
+
+    actTimes = []
+
+    for act in range(actNum):
+        actTimes.append(tuple(map(int, sys.stdin.readline().split())))
+
+    return actTimes, actNum
+
+
+def dataExtract(actTimes):
+
+    frdActs = {}
+    msdActs = {}
+
+    for curTm in actTimes:
+
+        frdActs[curTm] = []
+        msdActs[curTm] = []
+
+        for nxtTm in actTimes:
+
+            if curTm == nxtTm:
+                continue
+
+            elif nxtTm[0] >= curTm[1] or nxtTm[1] <= curTm[0]:
+                frdActs[curTm].append(nxtTm)
+
+            else:
+                msdActs[curTm].append(nxtTm)
+
+    return frdActs, msdActs
 
 
 def fndMaxTable(curTbl, maxTbl):
@@ -226,13 +250,13 @@ if __name__ == "__main__":
         # actTimes, actNum = inDataRead_In_Prt()
         actTimes, actNum = inDataRead_In()
 
-        ActLst, frdActs, msdActs = dataExtract(actTimes)
+        frdActs, msdActs = dataExtract(actTimes)
 
         maxTbl = Table([], 0, None, None)
 
-        for curAct in ActLst:
+        for curAct in actTimes:
 
-            curTbl = Table([curAct.tm], 1, curAct.fr, curAct.ms)
+            curTbl = Table([curAct], 1, frdActs[curAct], msdActs[curAct])
 
             maxTbl = fndMaxTable(curTbl, maxTbl)
 
