@@ -147,6 +147,26 @@ class Act:
         self.ms.append(nxtMs)
 
 
+class Table:
+    def __init__(self, sch, cnt, frAct, msAct):
+        self.sch = sch
+        self.cnt = cnt
+        self.frAct = frAct
+        self.msAct = msAct
+
+
+def inDataRead():
+
+    actNum = int(sys.stdin.readline())
+
+    actTimes = []
+
+    for act in range(actNum):
+        actTimes.append(tuple(map(int, sys.stdin.readline().split())))
+
+    return actTimes, actNum
+
+
 def actExtractAct(actTimes):
 
     ActLst = []
@@ -180,45 +200,6 @@ def actExtractAct(actTimes):
         ActLst.append(curAct)
 
     return ActLst, frdActs, msdActs
-
-
-"""__Code__"""
-
-import sys
-
-
-class Table:
-    def __init__(self, sch, cnt, frAct, msAct):
-        self.sch = sch
-        self.cnt = cnt
-        self.frAct = frAct
-        self.msAct = msAct
-
-
-def inDataRead():
-
-    actNum = int(sys.stdin.readline())
-
-    actTimes = []
-
-    for act in range(actNum):
-        actTimes.append(tuple(map(int, sys.stdin.readline().split())))
-
-    return actTimes, actNum
-
-
-def inDataExtract():
-
-    actNum = int(input())
-
-    actTimes = []
-
-    for act in range(actNum):
-        actTimes.append(tuple(map(int, input().split())))
-
-    actTimes.sort(key=lambda tm: tm[1])
-
-    return actTimes, actNum
 
 
 def actExtract(actTimes):
@@ -267,6 +248,25 @@ def fndMaxTable_BFS(curTbl, maxTbl, frdActs, msdActs):
     return maxTbl
 
 
+"""__Code__"""
+
+import sys
+
+
+def inDataExtract():
+
+    actNum = int(input())
+
+    actTimes = []
+
+    for act in range(actNum):
+        actTimes.append(tuple(map(int, input().split())))
+
+    actTimes.sort(key=lambda tm: tm[1])
+
+    return actTimes, actNum
+
+
 def fndMaxAct_End(actTimes):
 
     actCnt = 0
@@ -293,13 +293,7 @@ if __name__ == "__main__":
 
     for case in range(caseNum):
 
-        # actTimes, actNum = inDataRead_Prt(InLines)
-        # actTimes, actNum = inDataRead_In_Prt()
-        # actTimes, actNum = inDataRead()
-
         actTimes, actNum = inDataExtract()
-
-        # frdActs, msdActs = actExtract(actTimes)
 
         maxAct = fndMaxAct_End(actTimes)
 
