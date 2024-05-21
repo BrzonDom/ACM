@@ -47,7 +47,6 @@ https://www.spoj.com/problems/BUSYMAN/
                 3
 
 """
-import copy
 
 InputRaw_Str = """
 3
@@ -84,6 +83,14 @@ class Act:
 
     def addMs(self, nxtMs):
         self.ms.append(nxtMs)
+
+
+class Table:
+    def __init__(self, sch, cnt, frAct, msAct):
+        self.sch = sch
+        self.cnt = cnt
+        self.frAct = frAct
+        self.msAct = msAct
 
 
 def inDataRead_Prt(InLines):
@@ -147,6 +154,25 @@ def dataExtract_Prt(actTimes):
     return ActLst, frdActs, msdActs
 
 
+def fndTables(curTbl, frdActs, msdActs):
+
+    for nxtTm in curTbl.frAct:
+
+        nxtSch = curTbl.sch + [nxtTm]
+        nxtCnt = curTbl.cnt + 1
+        nxtMsd = list(set(curTbl.msAct) | set(msdActs[nxtTm]))
+        nxtFrd = list(set(curTbl.frAct) & set(frdActs[nxtTm]))
+
+        nxtTbl = Table(nxtSch, nxtCnt, nxtFrd, nxtMsd)
+
+        print(f"\t\t\t\t\tSched.: {nxtSch}")
+        print(f"\t\t\t\t\t\tActiv. count  : {nxtCnt}")
+        print(f"\t\t\t\t\t\tActiv. free   : {nxtFrd}")
+        print(f"\t\t\t\t\t\tActiv. missed : {nxtMsd}")
+        print()
+    print()
+
+
 if __name__ == "__main__":
 
     print("Input:")
@@ -172,10 +198,14 @@ if __name__ == "__main__":
         for curAct in ActLst:
 
             print(f"\t\t\t\tActiv.: {curAct.tm}")
-            print(f"\t\t\t\t\tActiv. count  : {curAct.ct}")
+            # print(f"\t\t\t\t\tActiv. count  : {curAct.ct}")
             print(f"\t\t\t\t\tActiv. free   : {curAct.fr}")
             print(f"\t\t\t\t\tActiv. missed : {curAct.ms}")
             print()
+
+            curTbl = Table([curAct.tm], 1, curAct.fr, curAct.ms)
+
+            fndTables(curTbl, frdActs, msdActs)
 
         if (case+1) < caseNum:
             print("\n")
@@ -214,19 +244,19 @@ Input:
 				3. (6, 9)
 
 				Activ.: (3, 9)
-					Activ. count  : 0
 					Activ. free   : []
 					Activ. missed : [(2, 8), (6, 9)]
 
+
 				Activ.: (2, 8)
-					Activ. count  : 0
 					Activ. free   : []
 					Activ. missed : [(3, 9), (6, 9)]
 
+
 				Activ.: (6, 9)
-					Activ. count  : 0
 					Activ. free   : []
 					Activ. missed : [(3, 9), (2, 8)]
+
 
 
 
@@ -241,24 +271,34 @@ Input:
 				4. (1, 8)
 
 				Activ.: (1, 7)
-					Activ. count  : 1
 					Activ. free   : [(7, 8)]
 					Activ. missed : [(5, 8), (1, 8)]
 
+					Sched.: [(1, 7), (7, 8)]
+						Activ. count  : 2
+						Activ. free   : []
+						Activ. missed : [(1, 8), (5, 8)]
+
+
 				Activ.: (5, 8)
-					Activ. count  : 0
 					Activ. free   : []
 					Activ. missed : [(1, 7), (7, 8), (1, 8)]
 
+
 				Activ.: (7, 8)
-					Activ. count  : 1
 					Activ. free   : [(1, 7)]
 					Activ. missed : [(5, 8), (1, 8)]
 
+					Sched.: [(7, 8), (1, 7)]
+						Activ. count  : 2
+						Activ. free   : []
+						Activ. missed : [(1, 8), (5, 8)]
+
+
 				Activ.: (1, 8)
-					Activ. count  : 0
 					Activ. free   : []
 					Activ. missed : [(1, 7), (5, 8), (7, 8)]
+
 
 
 
@@ -275,34 +315,84 @@ Input:
 				6. (5, 7)
 
 				Activ.: (7, 9)
-					Activ. count  : 2
 					Activ. free   : [(4, 5), (5, 7)]
 					Activ. missed : [(0, 10), (8, 9), (4, 10)]
 
+					Sched.: [(7, 9), (4, 5)]
+						Activ. count  : 2
+						Activ. free   : [(5, 7)]
+						Activ. missed : [(4, 10), (8, 9), (0, 10)]
+
+					Sched.: [(7, 9), (5, 7)]
+						Activ. count  : 2
+						Activ. free   : [(4, 5)]
+						Activ. missed : [(4, 10), (8, 9), (0, 10)]
+
+
 				Activ.: (0, 10)
-					Activ. count  : 0
 					Activ. free   : []
 					Activ. missed : [(7, 9), (4, 5), (8, 9), (4, 10), (5, 7)]
 
+
 				Activ.: (4, 5)
-					Activ. count  : 3
 					Activ. free   : [(7, 9), (8, 9), (5, 7)]
 					Activ. missed : [(0, 10), (4, 10)]
 
+					Sched.: [(4, 5), (7, 9)]
+						Activ. count  : 2
+						Activ. free   : [(5, 7)]
+						Activ. missed : [(4, 10), (8, 9), (0, 10)]
+
+					Sched.: [(4, 5), (8, 9)]
+						Activ. count  : 2
+						Activ. free   : [(5, 7)]
+						Activ. missed : [(7, 9), (4, 10), (0, 10)]
+
+					Sched.: [(4, 5), (5, 7)]
+						Activ. count  : 2
+						Activ. free   : [(7, 9), (8, 9)]
+						Activ. missed : [(4, 10), (0, 10)]
+
+
 				Activ.: (8, 9)
-					Activ. count  : 2
 					Activ. free   : [(4, 5), (5, 7)]
 					Activ. missed : [(7, 9), (0, 10), (4, 10)]
 
+					Sched.: [(8, 9), (4, 5)]
+						Activ. count  : 2
+						Activ. free   : [(5, 7)]
+						Activ. missed : [(7, 9), (4, 10), (0, 10)]
+
+					Sched.: [(8, 9), (5, 7)]
+						Activ. count  : 2
+						Activ. free   : [(4, 5)]
+						Activ. missed : [(7, 9), (4, 10), (0, 10)]
+
+
 				Activ.: (4, 10)
-					Activ. count  : 0
 					Activ. free   : []
 					Activ. missed : [(7, 9), (0, 10), (4, 5), (8, 9), (5, 7)]
 
+
 				Activ.: (5, 7)
-					Activ. count  : 3
 					Activ. free   : [(7, 9), (4, 5), (8, 9)]
 					Activ. missed : [(0, 10), (4, 10)]
+
+					Sched.: [(5, 7), (7, 9)]
+						Activ. count  : 2
+						Activ. free   : [(4, 5)]
+						Activ. missed : [(4, 10), (8, 9), (0, 10)]
+
+					Sched.: [(5, 7), (4, 5)]
+						Activ. count  : 2
+						Activ. free   : [(7, 9), (8, 9)]
+						Activ. missed : [(4, 10), (0, 10)]
+
+					Sched.: [(5, 7), (8, 9)]
+						Activ. count  : 2
+						Activ. free   : [(4, 5)]
+						Activ. missed : [(7, 9), (4, 10), (0, 10)]
+
 
 
 Process finished with exit code 0
