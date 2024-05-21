@@ -197,6 +197,9 @@ def fndMaxTable(curTbl, maxTbl):
         nxtMsd = list(set(curTbl.msAct) | set(msdActs[nxtTm]))
         nxtFrd = list(set(curTbl.frAct) & set(frdActs[nxtTm]))
 
+        if maxTbl.cnt > nxtCnt + len(nxtFrd):
+            break
+
         nxtTbl = Table(nxtSch, nxtCnt, nxtFrd, nxtMsd)
 
         # print(f"\t\t\t\t\tSched.: {nxtSch}")
