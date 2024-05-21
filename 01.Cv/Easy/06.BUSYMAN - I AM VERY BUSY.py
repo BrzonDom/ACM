@@ -71,18 +71,18 @@ InputRaw_Str = """
 InputRaw_Str = InputRaw_Str[1:-1]
 
 
-class Act:
-    def __init__(self, tm, ct, fr, ms):
-        self.tm = tm
-        self.ct = ct
-        self.fr = fr
-        self.ms = ms
-
-    def addFr(self, nxtFr):
-        self.fr.append(nxtFr)
-
-    def addMs(self, nxtMs):
-        self.ms.append(nxtMs)
+# class Act:
+#     def __init__(self, tm, ct, fr, ms):
+#         self.tm = tm
+#         self.ct = ct
+#         self.fr = fr
+#         self.ms = ms
+#
+#     def addFr(self, nxtFr):
+#         self.fr.append(nxtFr)
+#
+#     def addMs(self, nxtMs):
+#         self.ms.append(nxtMs)
 
 
 class Table:
@@ -115,14 +115,14 @@ def inDataRead_Prt(InLines):
 
 def dataExtract_Prt(actTimes):
 
-    ActLst = []
+    # ActLst = []
 
     frdActs = {}
     msdActs = {}
 
     for curTm in actTimes:
 
-        curAct = Act(curTm, 0, [], [])
+        # curAct = Act(curTm, 0, [], [])
 
         frdActs[curTm] = []
         msdActs[curTm] = []
@@ -133,17 +133,17 @@ def dataExtract_Prt(actTimes):
                 continue
 
             elif nxtTm[0] >= curTm[1] or nxtTm[1] <= curTm[0]:
-                curAct.ct += 1
-                curAct.addFr(nxtTm)
+                # curAct.ct += 1
+                # curAct.addFr(nxtTm)
 
                 frdActs[curTm].append(nxtTm)
 
             else:
-                curAct.addMs(nxtTm)
+                # curAct.addMs(nxtTm)
 
                 msdActs[curTm].append(nxtTm)
 
-        ActLst.append(curAct)
+        # ActLst.append(curAct)
 
         # print(f"\t\t\t\tActiv.: {curAct.tm}")
         # print(f"\t\t\t\t\tActiv. count  : {curAct.ct}")
@@ -151,10 +151,11 @@ def dataExtract_Prt(actTimes):
         # print(f"\t\t\t\t\tActiv. missed : {curAct.ms}")
         # print()
 
-    return ActLst, frdActs, msdActs
+    # return ActLst, frdActs, msdActs
+    return frdActs, msdActs
 
 
-def fndMaxTable(curTbl, maxTbl):
+def fndMaxTable_BFS(curTbl, maxTbl):
 
     for nxtTm in curTbl.frAct:
 
@@ -174,7 +175,7 @@ def fndMaxTable(curTbl, maxTbl):
         # print(f"\t\t\t\t\t\tActiv. missed : {nxtMsd}")
         # print()
 
-        return fndMaxTable(nxtTbl, maxTbl)
+        return fndMaxTable_BFS(nxtTbl, maxTbl)
 
     if curTbl.cnt > maxTbl.cnt:
         maxTbl = curTbl
@@ -202,21 +203,22 @@ if __name__ == "__main__":
 
         actTimes, actNum = inDataRead_Prt(InLines)
 
-        ActLst, frdActs, msdActs = dataExtract_Prt(actTimes)
+        # ActLst, frdActs, msdActs = dataExtract_Prt(actTimes)
+        frdActs, msdActs = dataExtract_Prt(actTimes)
 
         maxTbl = Table([], 0, None, None)
 
-        for curAct in ActLst:
+        for curAct in actTimes:
 
-            print(f"\t\t\t\tActiv.: {curAct.tm}")
+            print(f"\t\t\t\tActiv.: {curAct}")
             # print(f"\t\t\t\t\tActiv. count  : {curAct.ct}")
-            print(f"\t\t\t\t\tActiv. free   : {curAct.fr}")
-            print(f"\t\t\t\t\tActiv. missed : {curAct.ms}")
+            print(f"\t\t\t\t\tActiv. free   : {frdActs[curAct]}")
+            print(f"\t\t\t\t\tActiv. missed : {msdActs[curAct]}")
             print()
 
-            curTbl = Table([curAct.tm], 1, curAct.fr, curAct.ms)
+            curTbl = Table([curAct], 1, frdActs[curAct], msdActs[curAct])
 
-            maxTbl = fndMaxTable(curTbl, maxTbl)
+            maxTbl = fndMaxTable_BFS(curTbl, maxTbl)
 
         print()
 
