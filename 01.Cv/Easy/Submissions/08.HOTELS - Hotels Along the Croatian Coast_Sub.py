@@ -36,7 +36,7 @@ InputRaw_Str = """
 InputRaw_Str = InputRaw_Str[1:-1]
 
 
-def infExtrc(lineInf, lineHtls):
+def infExtrc_Prt(lineInf, lineHtls):
 
     htlNum, mnyNum = list(map(int, lineInf.split()))
     print(f"\t\tNum. of hotels: {htlNum}")
@@ -46,6 +46,20 @@ def infExtrc(lineInf, lineHtls):
     Htls = list(map(int, lineHtls.split()))
     print(f"\t\tHotels: {Htls}")
     print()
+
+    return htlNum, mnyNum, Htls
+
+
+def infExtrc(lineInf, lineHtls):
+
+    htlNum, mnyNum = list(map(int, lineInf.split()))
+    # print(f"\t\tNum. of hotels: {htlNum}")
+    # print(f"\t\tNum. of money:  {mnyNum}")
+    # print()
+
+    Htls = list(map(int, lineHtls.split()))
+    # print(f"\t\tHotels: {Htls}")
+    # print()
 
     return htlNum, mnyNum, Htls
 
@@ -155,6 +169,7 @@ if __name__ == "__main__":
     lineInf = input()
     lineHtls = input()
 
+    # htlNum, mnyNum, Htls = infExtrc_Prt(lineInf, lineHtls)
     htlNum, mnyNum, Htls = infExtrc(lineInf, lineHtls)
 
     # htlNum, mnyNum = list(map(int, lineInf.split()))
