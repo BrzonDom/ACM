@@ -50,7 +50,7 @@ InputRaw_Str = """
 
 InputRaw_Str = InputRaw_Str[1:-1]
 
-def mvsHsFnd(BuySell):
+def mvsHs(BuySell):
 
     cntMvs = 0
 
@@ -88,6 +88,23 @@ def mvsHsFnd(BuySell):
     return cntMvs
 
 
+"""__Code__"""
+
+
+def cntMvsHs(BuySell, hsNum):
+
+    cntMvs = 0
+
+    for hs in range(1, hsNum):
+
+        cntMvs += abs(BuySell[hs-1])
+
+        BuySell[hs] += BuySell[hs-1]
+        BuySell[hs-1] = 0
+
+    return cntMvs
+
+
 if __name__ == "__main__":
 
     # print("Input:")
@@ -96,11 +113,12 @@ if __name__ == "__main__":
 
     hsNum = int(input())
 
-    caseCnt = 1
+    # caseCnt = 1
 
     while hsNum != 0:
 
         BuySell = list(map(int, input().split()))
+
         # print()
         #
         # print(f"\tNum. of people: {hsNum}")
@@ -108,7 +126,8 @@ if __name__ == "__main__":
         # print(f"\tBuy Sell list: {BuySell}")
         # print()
 
-        cntMvs = mvsHsFnd(BuySell)
+        # cntMvs = mvsHs(BuySell)
+        cntMvs = cntMvsHs(BuySell, hsNum)
 
         # print(f"\t\tNeeded moves: {cntMvs}")
         # print("\n")
@@ -117,4 +136,4 @@ if __name__ == "__main__":
 
         hsNum = int(input())
 
-        caseCnt += 1
+        # caseCnt += 1
