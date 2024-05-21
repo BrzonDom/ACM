@@ -71,82 +71,84 @@ InputRaw_Str = """
 
 InputRaw_Str = InputRaw_Str[1:-1]
 
-print("Input:")
-print(InputRaw_Str)
-print()
+if __name__ == "__main__":
 
-InputStr_Lst = InputRaw_Str.split("\n")
-# print(InputStr_Lst)
-# print()
-
-InputOrg_Lst = copy.deepcopy(InputStr_Lst)
-
-caseNum = int(InputStr_Lst.pop(0))
-
-for case in range(caseNum):
-
-    actNum = int(InputStr_Lst.pop(0))
-
-    print(f"\tAct. num.: {actNum}")
+    print("Input:")
+    print(InputRaw_Str)
     print()
 
-    print("\t\tActivities:")
-
-    actTimes = []
-
-    for act in range(actNum):
-
-        actTimes.append(tuple(map(int, InputStr_Lst.pop(0).split())))
-        print(f"\t\t\t{act+1}. {actTimes[-1]}")
-    print()
-
-    freeAct = {}
-    freeMss = {}
-    freeCnt = {}
-
-    for curTm in actTimes:
-
-        freeAct[curTm] = []
-        freeMss[curTm] = []
-        freeCnt[curTm] = 1
-
-        for nxtTm in actTimes:
-
-            if curTm == nxtTm:
-                continue
-
-            elif nxtTm[0] >= curTm[1] or nxtTm[1] <= curTm[0]:
-
-                freeCnt[curTm] += 1
-                freeAct[curTm] += [nxtTm]
-
-            else:
-                freeMss[curTm] += [nxtTm]
-
-        # print(f"\t\t{str(curTm):8} [{freeCnt[curTm]}] : {freeAct[curTm]}")
-
-        print(f"\t\t\tActiv.: {curTm}")
-        print(f"\t\t\t\tActiv. count  : {freeCnt[curTm]}")
-        print(f"\t\t\t\tActiv. free   : {freeAct[curTm]}")
-        print(f"\t\t\t\tActiv. missed : {freeMss[curTm]}")
-        print()
-
+    InputStr_Lst = InputRaw_Str.split("\n")
+    # print(InputStr_Lst)
     # print()
 
-    # allAct = {}
-    #
-    # for curTm in actTimes:
-    #
-    #     allAct[curTm] = [curTm]
-    #
-    #     for nxtTm in freeAct[curTm]:
-    #
-    #         if nxtTm not in allAct[curTm]:
-    #             allAct[curTm] += [nxtTm]
-    #
-    #     print(f"\t\t{allAct[curTm]}")
+    InputOrg_Lst = copy.deepcopy(InputStr_Lst)
 
-    print("\n")
+    caseNum = int(InputStr_Lst.pop(0))
+
+    for case in range(caseNum):
+
+        actNum = int(InputStr_Lst.pop(0))
+
+        print(f"\tAct. num.: {actNum}")
+        print()
+
+        print("\t\tActivities:")
+
+        actTimes = []
+
+        for act in range(actNum):
+
+            actTimes.append(tuple(map(int, InputStr_Lst.pop(0).split())))
+            print(f"\t\t\t{act+1}. {actTimes[-1]}")
+        print()
+
+        freeAct = {}
+        freeMss = {}
+        freeCnt = {}
+
+        for curTm in actTimes:
+
+            freeAct[curTm] = []
+            freeMss[curTm] = []
+            freeCnt[curTm] = 1
+
+            for nxtTm in actTimes:
+
+                if curTm == nxtTm:
+                    continue
+
+                elif nxtTm[0] >= curTm[1] or nxtTm[1] <= curTm[0]:
+
+                    freeCnt[curTm] += 1
+                    freeAct[curTm] += [nxtTm]
+
+                else:
+                    freeMss[curTm] += [nxtTm]
+
+            # print(f"\t\t{str(curTm):8} [{freeCnt[curTm]}] : {freeAct[curTm]}")
+
+            print(f"\t\t\tActiv.: {curTm}")
+            print(f"\t\t\t\tActiv. count  : {freeCnt[curTm]}")
+            print(f"\t\t\t\tActiv. free   : {freeAct[curTm]}")
+            print(f"\t\t\t\tActiv. missed : {freeMss[curTm]}")
+            print()
+
+        # print()
+
+        # allAct = {}
+        #
+        # for curTm in actTimes:
+        #
+        #     allAct[curTm] = [curTm]
+        #
+        #     for nxtTm in freeAct[curTm]:
+        #
+        #         if nxtTm not in allAct[curTm]:
+        #             allAct[curTm] += [nxtTm]
+        #
+        #     print(f"\t\t{allAct[curTm]}")
+
+        print("\n")
 
 
 """__Output__"""
