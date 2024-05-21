@@ -48,6 +48,10 @@ https://www.spoj.com/problems/BUSYMAN/
 
 """
 
+
+"""33077850 	2024-05-21 14:30:18 	BrzonDom	I AM VERY BUSY	accepted edit    ideone it 	1.04 	16M 	PYTHON3"""
+
+
 InputRaw_Str = """
 3
 3
@@ -248,7 +252,9 @@ def fndMaxTable_BFS(curTbl, maxTbl, frdActs, msdActs):
     return maxTbl
 """
 
+
 """__Code__"""
+
 
 import sys
 
