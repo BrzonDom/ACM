@@ -141,7 +141,7 @@ if __name__ == "__main__":
         # print(f"\t\tHotels: {Htls}")
         # print()
 
-        maxMny, maxHtls = fndMaxMny_TwoPrt(Htls, mnyNum)
+        maxHtls, maxMny = fndMaxMny_TwoPrt(Htls, mnyNum)
 
         print()
 
@@ -196,8 +196,8 @@ Input:
 			1 | 5 : [1, 3, 4, 5] (13)
 			2 | 5 : [3, 4, 5] (12)
 
-		Max money: [3, 4, 5]
-		Max hotels: 12
+		Max money: 12
+		Max hotels: [3, 4, 5]
 
 
 	2. Case
@@ -215,8 +215,8 @@ Input:
 			2 | 4 : [5, 6] (11)
 			3 | 4 : [6] (6)
 
-		Max money: [3, 5]
-		Max hotels: 8
+		Max money: 8
+		Max hotels: [3, 5]
 
 
 
