@@ -164,7 +164,7 @@ def fndMaxTable(curTbl, maxTbl):
         nxtFrd = list(set(curTbl.frAct) & set(frdActs[nxtTm]))
 
         if maxTbl.cnt > nxtCnt + len(nxtFrd):
-            break
+            return maxTbl
 
         nxtTbl = Table(nxtSch, nxtCnt, nxtFrd, nxtMsd)
 
