@@ -85,21 +85,27 @@ if __name__ == "__main__":
 
     caseNum = int(InputStr_Lst.pop(0))
 
+    print(f"\tCases: {caseNum}")
+    print()
+
     for case in range(caseNum):
+
+        print(f"\t\t{case+1}. Case")
+        print()
 
         actNum = int(InputStr_Lst.pop(0))
 
-        print(f"\tAct. num.: {actNum}")
+        print(f"\t\t\tAct. num.: {actNum}")
         print()
 
-        print("\t\tActivities:")
+        print("\t\t\tActivities:")
 
         actTimes = []
 
         for act in range(actNum):
 
             actTimes.append(tuple(map(int, InputStr_Lst.pop(0).split())))
-            print(f"\t\t\t{act+1}. {actTimes[-1]}")
+            print(f"\t\t\t\t{act+1}. {actTimes[-1]}")
         print()
 
         freeAct = {}
@@ -127,28 +133,14 @@ if __name__ == "__main__":
 
             # print(f"\t\t{str(curTm):8} [{freeCnt[curTm]}] : {freeAct[curTm]}")
 
-            print(f"\t\t\tActiv.: {curTm}")
-            print(f"\t\t\t\tActiv. count  : {freeCnt[curTm]}")
-            print(f"\t\t\t\tActiv. free   : {freeAct[curTm]}")
-            print(f"\t\t\t\tActiv. missed : {freeMss[curTm]}")
+            print(f"\t\t\t\tActiv.: {curTm}")
+            print(f"\t\t\t\t\tActiv. count  : {freeCnt[curTm]}")
+            print(f"\t\t\t\t\tActiv. free   : {freeAct[curTm]}")
+            print(f"\t\t\t\t\tActiv. missed : {freeMss[curTm]}")
             print()
 
-        # print()
-
-        # allAct = {}
-        #
-        # for curTm in actTimes:
-        #
-        #     allAct[curTm] = [curTm]
-        #
-        #     for nxtTm in freeAct[curTm]:
-        #
-        #         if nxtTm not in allAct[curTm]:
-        #             allAct[curTm] += [nxtTm]
-        #
-        #     print(f"\t\t{allAct[curTm]}")
-
-        print("\n")
+        if (case+1) < caseNum:
+            print("\n")
 
 
 """__Output__"""
@@ -172,104 +164,107 @@ Input:
 4 10
 5 7
 
-	Act. num.: 3
+	Cases: 3
 
-		Activities:
+		1. Case
 
-			1. (3, 9)
-			2. (2, 8)
-			3. (6, 9)
+			Act. num.: 3
 
-			Activ.: (3, 9)
-				Activ. count  : 1
-				Activ. free   : []
-				Activ. missed : [(2, 8), (6, 9)]
+			Activities:
+				1. (3, 9)
+				2. (2, 8)
+				3. (6, 9)
 
-			Activ.: (2, 8)
-				Activ. count  : 1
-				Activ. free   : []
-				Activ. missed : [(3, 9), (6, 9)]
+				Activ.: (3, 9)
+					Activ. count  : 1
+					Activ. free   : []
+					Activ. missed : [(2, 8), (6, 9)]
 
-			Activ.: (6, 9)
-				Activ. count  : 1
-				Activ. free   : []
-				Activ. missed : [(3, 9), (2, 8)]
+				Activ.: (2, 8)
+					Activ. count  : 1
+					Activ. free   : []
+					Activ. missed : [(3, 9), (6, 9)]
 
-
-
-	Act. num.: 4
-
-		Activities:
-
-			1. (1, 7)
-			2. (5, 8)
-			3. (7, 8)
-			4. (1, 8)
-
-			Activ.: (1, 7)
-				Activ. count  : 2
-				Activ. free   : [(7, 8)]
-				Activ. missed : [(5, 8), (1, 8)]
-
-			Activ.: (5, 8)
-				Activ. count  : 1
-				Activ. free   : []
-				Activ. missed : [(1, 7), (7, 8), (1, 8)]
-
-			Activ.: (7, 8)
-				Activ. count  : 2
-				Activ. free   : [(1, 7)]
-				Activ. missed : [(5, 8), (1, 8)]
-
-			Activ.: (1, 8)
-				Activ. count  : 1
-				Activ. free   : []
-				Activ. missed : [(1, 7), (5, 8), (7, 8)]
+				Activ.: (6, 9)
+					Activ. count  : 1
+					Activ. free   : []
+					Activ. missed : [(3, 9), (2, 8)]
 
 
 
-	Act. num.: 6
+		2. Case
 
-		Activities:
+			Act. num.: 4
 
-			1. (7, 9)
-			2. (0, 10)
-			3. (4, 5)
-			4. (8, 9)
-			5. (4, 10)
-			6. (5, 7)
+			Activities:
+				1. (1, 7)
+				2. (5, 8)
+				3. (7, 8)
+				4. (1, 8)
 
-			Activ.: (7, 9)
-				Activ. count  : 3
-				Activ. free   : [(4, 5), (5, 7)]
-				Activ. missed : [(0, 10), (8, 9), (4, 10)]
+				Activ.: (1, 7)
+					Activ. count  : 2
+					Activ. free   : [(7, 8)]
+					Activ. missed : [(5, 8), (1, 8)]
 
-			Activ.: (0, 10)
-				Activ. count  : 1
-				Activ. free   : []
-				Activ. missed : [(7, 9), (4, 5), (8, 9), (4, 10), (5, 7)]
+				Activ.: (5, 8)
+					Activ. count  : 1
+					Activ. free   : []
+					Activ. missed : [(1, 7), (7, 8), (1, 8)]
 
-			Activ.: (4, 5)
-				Activ. count  : 4
-				Activ. free   : [(7, 9), (8, 9), (5, 7)]
-				Activ. missed : [(0, 10), (4, 10)]
+				Activ.: (7, 8)
+					Activ. count  : 2
+					Activ. free   : [(1, 7)]
+					Activ. missed : [(5, 8), (1, 8)]
 
-			Activ.: (8, 9)
-				Activ. count  : 3
-				Activ. free   : [(4, 5), (5, 7)]
-				Activ. missed : [(7, 9), (0, 10), (4, 10)]
-
-			Activ.: (4, 10)
-				Activ. count  : 1
-				Activ. free   : []
-				Activ. missed : [(7, 9), (0, 10), (4, 5), (8, 9), (5, 7)]
-
-			Activ.: (5, 7)
-				Activ. count  : 4
-				Activ. free   : [(7, 9), (4, 5), (8, 9)]
-				Activ. missed : [(0, 10), (4, 10)]
+				Activ.: (1, 8)
+					Activ. count  : 1
+					Activ. free   : []
+					Activ. missed : [(1, 7), (5, 8), (7, 8)]
 
 
+
+		3. Case
+
+			Act. num.: 6
+
+			Activities:
+				1. (7, 9)
+				2. (0, 10)
+				3. (4, 5)
+				4. (8, 9)
+				5. (4, 10)
+				6. (5, 7)
+
+				Activ.: (7, 9)
+					Activ. count  : 3
+					Activ. free   : [(4, 5), (5, 7)]
+					Activ. missed : [(0, 10), (8, 9), (4, 10)]
+
+				Activ.: (0, 10)
+					Activ. count  : 1
+					Activ. free   : []
+					Activ. missed : [(7, 9), (4, 5), (8, 9), (4, 10), (5, 7)]
+
+				Activ.: (4, 5)
+					Activ. count  : 4
+					Activ. free   : [(7, 9), (8, 9), (5, 7)]
+					Activ. missed : [(0, 10), (4, 10)]
+
+				Activ.: (8, 9)
+					Activ. count  : 3
+					Activ. free   : [(4, 5), (5, 7)]
+					Activ. missed : [(7, 9), (0, 10), (4, 10)]
+
+				Activ.: (4, 10)
+					Activ. count  : 1
+					Activ. free   : []
+					Activ. missed : [(7, 9), (0, 10), (4, 5), (8, 9), (5, 7)]
+
+				Activ.: (5, 7)
+					Activ. count  : 4
+					Activ. free   : [(7, 9), (4, 5), (8, 9)]
+					Activ. missed : [(0, 10), (4, 10)]
 
 
 Process finished with exit code 0
