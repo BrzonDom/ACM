@@ -35,7 +35,13 @@ https://www.spoj.com/problems/GERGOVIA/
             =>  9
                 9000
 
+
 """
+
+
+"""33077268 	2024-05-21 12:08:00 	BrzonDom	Wine trading in Gergovia	accepted edit    ideone it 	0.22 	21M 	PYTHON3"""
+
+
 import copy
 
 InputRaw_Str = """
