@@ -117,110 +117,49 @@ if __name__ == "__main__":
     print(InputRaw_Str)
     print()
 
-    InputStr_Lst = InputRaw_Str.split("\n")
+    lineInf = input()
+    lineHtls = input()
 
-    # print(InputStr_Lst)
+    htlNum, mnyNum, Htls = infExtrc(lineInf, lineHtls)
 
-    caseCnt = 1
+    # htlNum, mnyNum = list(map(int, lineInf.split()))
+    # print(f"\t\tNum. of hotels: {htlNum}")
+    # print(f"\t\tNum. of money:  {mnyNum}")
+    # print()
+    #
+    # Htls = list(map(int, lineHtls.split()))
+    # print(f"\t\tHotels: {Htls}")
+    # print()
 
-    for lineInf, lineHtls in zip(InputStr_Lst[::2], InputStr_Lst[1::2]):
+    maxMny, maxHtls = fndMaxMny_TwoPrt(Htls, mnyNum)
 
-        print(f"\t{caseCnt}. Case")
-        print()
+    print()
 
-        caseCnt += 1
+    # maxMny, maxHtls = fndMaxMny_ForPrt(Htls, mnyNum)
 
-        htlNum, mnyNum, Htls = infExtrc(lineInf, lineHtls)
+    # maxMny = 0
+    # maxHtls = []
+    #
+    # for sH, strHtl in enumerate(Htls):
+    #
+    #     for eH, endHtl in enumerate(Htls[sH:]):
+    #
+    #         if sum(Htls[sH:sH+eH+1]) > mnyNum:
+    #             break
+    #
+    #         elif sum(Htls[sH:sH+eH+1]) > maxMny:
+    #             maxMny = sum(Htls[sH:sH+eH+1])
+    #             maxHtls = Htls[sH:sH+eH+1]
+    #
+    #         print(f"\t\t\t{Htls[sH:sH + eH + 1]} ({sum(Htls[sH:sH + eH + 1])})")
+    #
+    #     if maxMny == mnyNum:
+    #         break
+    # print()
 
-        # htlNum, mnyNum = list(map(int, lineInf.split()))
-        # print(f"\t\tNum. of hotels: {htlNum}")
-        # print(f"\t\tNum. of money:  {mnyNum}")
-        # print()
-        #
-        # Htls = list(map(int, lineHtls.split()))
-        # print(f"\t\tHotels: {Htls}")
-        # print()
+    print(f"\t\tMax money: {maxMny}")
+    print(f"\t\tMax hotels: {maxHtls}")
 
-        maxMny, maxHtls = fndMaxMny_TwoPrt(Htls, mnyNum)
+    # print("\n")
 
-        print()
-
-        # maxMny, maxHtls = fndMaxMny_ForPrt(Htls, mnyNum)
-
-        # maxMny = 0
-        # maxHtls = []
-        #
-        # for sH, strHtl in enumerate(Htls):
-        #
-        #     for eH, endHtl in enumerate(Htls[sH:]):
-        #
-        #         if sum(Htls[sH:sH+eH+1]) > mnyNum:
-        #             break
-        #
-        #         elif sum(Htls[sH:sH+eH+1]) > maxMny:
-        #             maxMny = sum(Htls[sH:sH+eH+1])
-        #             maxHtls = Htls[sH:sH+eH+1]
-        #
-        #         print(f"\t\t\t{Htls[sH:sH + eH + 1]} ({sum(Htls[sH:sH + eH + 1])})")
-        #
-        #     if maxMny == mnyNum:
-        #         break
-        # print()
-
-        print(f"\t\tMax money: {maxMny}")
-        print(f"\t\tMax hotels: {maxHtls}")
-
-        print("\n")
-
-
-"""__Output__"""
-"""
-Input:
-5 12
-2 1 3 4 5
-4 9
-7 3 5 6
-
-	1. Case
-
-		Num. of hotels: 5
-		Num. of money:  12
-
-		Hotels: [2, 1, 3, 4, 5]
-
-			0 | 1 : [2] (2)
-			0 | 2 : [2, 1] (3)
-			0 | 3 : [2, 1, 3] (6)
-			0 | 4 : [2, 1, 3, 4] (10)
-			0 | 5 : [2, 1, 3, 4, 5] (15)
-			1 | 5 : [1, 3, 4, 5] (13)
-			2 | 5 : [3, 4, 5] (12)
-
-		Max money: [3, 4, 5]
-		Max hotels: 12
-
-
-	2. Case
-
-		Num. of hotels: 4
-		Num. of money:  9
-
-		Hotels: [7, 3, 5, 6]
-
-			0 | 1 : [7] (7)
-			0 | 2 : [7, 3] (10)
-			1 | 2 : [3] (3)
-			1 | 3 : [3, 5] (8)
-			1 | 4 : [3, 5, 6] (14)
-			2 | 4 : [5, 6] (11)
-			3 | 4 : [6] (6)
-
-		Max money: [3, 5]
-		Max hotels: 8
-
-
-
-Process finished with exit code 0
-
-"""
 
