@@ -79,6 +79,12 @@ class Act:
         self.fr = fr
         self.ms = ms
 
+    def addFr(self, nxtFr):
+        self.fr.append(nxtFr)
+
+    def addMs(self, nxtMs):
+        self.ms.append(nxtMs)
+
 
 if __name__ == "__main__":
 
@@ -142,12 +148,12 @@ if __name__ == "__main__":
                     freeAct[curTm] += [nxtTm]
 
                     curAct.ct += 1
-                    curAct.fr.append(nxtTm)
+                    curAct.addFr(nxtTm)
 
                 else:
                     freeMss[curTm] += [nxtTm]
 
-                    curAct.ms.append(nxtTm)
+                    curAct.addMs(nxtTm)
 
             # print(f"\t\t{str(curTm):8} [{freeCnt[curTm]}] : {freeAct[curTm]}")
 
