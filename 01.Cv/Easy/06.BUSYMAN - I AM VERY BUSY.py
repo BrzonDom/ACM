@@ -106,6 +106,37 @@ def inDataRead_Prt(InLines):
     return actTimes, actNum
 
 
+def dataExtract_Prt(actTimes):
+
+    ActLst = []
+
+    for curTm in actTimes:
+
+        curAct = Act(curTm, 0, [], [])
+
+        for nxtTm in actTimes:
+
+            if curTm == nxtTm:
+                continue
+
+            elif nxtTm[0] >= curTm[1] or nxtTm[1] <= curTm[0]:
+                curAct.ct += 1
+                curAct.addFr(nxtTm)
+
+            else:
+                curAct.addMs(nxtTm)
+
+        ActLst.append(curAct)
+
+        print(f"\t\t\t\tActiv.: {curAct.tm}")
+        print(f"\t\t\t\t\tActiv. count  : {curAct.ct}")
+        print(f"\t\t\t\t\tActiv. free   : {curAct.fr}")
+        print(f"\t\t\t\t\tActiv. missed : {curAct.ms}")
+        print()
+
+    return ActLst
+
+
 if __name__ == "__main__":
 
     print("Input:")
@@ -126,31 +157,33 @@ if __name__ == "__main__":
 
         actTimes, actNum = inDataRead_Prt(InLines)
 
-        ActLst = []
+        # ActLst = []
+        #
+        # for curTm in actTimes:
+        #
+        #     curAct = Act(curTm, 0, [], [])
+        #
+        #     for nxtTm in actTimes:
+        #
+        #         if curTm == nxtTm:
+        #             continue
+        #
+        #         elif nxtTm[0] >= curTm[1] or nxtTm[1] <= curTm[0]:
+        #             curAct.ct += 1
+        #             curAct.addFr(nxtTm)
+        #
+        #         else:
+        #             curAct.addMs(nxtTm)
+        #
+        #     ActLst.append(curAct)
+        #
+        #     print(f"\t\t\t\tActiv.: {curAct.tm}")
+        #     print(f"\t\t\t\t\tActiv. count  : {curAct.ct}")
+        #     print(f"\t\t\t\t\tActiv. free   : {curAct.fr}")
+        #     print(f"\t\t\t\t\tActiv. missed : {curAct.ms}")
+        #     print()
 
-        for curTm in actTimes:
-
-            curAct = Act(curTm, 0, [], [])
-
-            for nxtTm in actTimes:
-
-                if curTm == nxtTm:
-                    continue
-
-                elif nxtTm[0] >= curTm[1] or nxtTm[1] <= curTm[0]:
-                    curAct.ct += 1
-                    curAct.addFr(nxtTm)
-
-                else:
-                    curAct.addMs(nxtTm)
-
-            ActLst.append(curAct)
-
-            print(f"\t\t\t\tActiv.: {curAct.tm}")
-            print(f"\t\t\t\t\tActiv. count  : {curAct.ct}")
-            print(f"\t\t\t\t\tActiv. free   : {curAct.fr}")
-            print(f"\t\t\t\t\tActiv. missed : {curAct.ms}")
-            print()
+        ActLst = dataExtract_Prt(actTimes)
 
         if (case+1) < caseNum:
             print("\n")
